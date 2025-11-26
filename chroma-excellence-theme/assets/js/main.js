@@ -256,6 +256,70 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
+   * Location Hero Image Carousel
+   */
+  const locationCarousel = document.querySelector('[data-location-carousel]');
+  if (locationCarousel) {
+    const track = locationCarousel.querySelector('[data-location-carousel-track]');
+    const dots = locationCarousel.querySelectorAll('[data-location-dot]');
+    const prevBtn = locationCarousel.querySelector('[data-location-prev]');
+    const nextBtn = locationCarousel.querySelector('[data-location-next]');
+    const slides = locationCarousel.querySelectorAll('[data-location-slide]');
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    const goToSlide = (index) => {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+
+      currentIndex = index;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      // Update dots
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.classList.remove('bg-white/50', 'w-2');
+          dot.classList.add('bg-white', 'w-6');
+        } else {
+          dot.classList.remove('bg-white', 'w-6');
+          dot.classList.add('bg-white/50', 'w-2');
+        }
+      });
+    };
+
+    const nextSlide = () => goToSlide(currentIndex + 1);
+    const prevSlide = () => goToSlide(currentIndex - 1);
+
+    // Dot navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => goToSlide(index));
+    });
+
+    // Arrow navigation
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeThreshold = 50;
+      if (touchStartX - touchEndX > swipeThreshold) {
+        nextSlide();
+      } else if (touchEndX - touchStartX > swipeThreshold) {
+        prevSlide();
+      }
+    });
+  }
+
+  /**
    * Parent Reviews Carousel
    */
   const reviewsCarousel = document.querySelector('[data-reviews-carousel]');

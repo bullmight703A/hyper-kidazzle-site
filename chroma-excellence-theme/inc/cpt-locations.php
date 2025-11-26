@@ -242,6 +242,7 @@ function chroma_render_location_custom_fields_meta_box( $post ) {
 
 	// Get existing values
 	$hero_subtitle     = get_post_meta( $post->ID, 'location_hero_subtitle', true );
+	$hero_gallery      = get_post_meta( $post->ID, 'location_hero_gallery', true );
 	$tagline          = get_post_meta( $post->ID, 'location_tagline', true );
 	$description      = get_post_meta( $post->ID, 'location_description', true );
 	$google_rating    = get_post_meta( $post->ID, 'location_google_rating', true );
@@ -333,6 +334,12 @@ function chroma_render_location_custom_fields_meta_box( $post ) {
 			<label for="location_hero_subtitle"><?php _e( 'Hero Subtitle', 'chroma-excellence' ); ?></label>
 			<input type="text" id="location_hero_subtitle" name="location_hero_subtitle" value="<?php echo esc_attr( $hero_subtitle ); ?>" placeholder="e.g., Now Enrolling: Pre-K & Toddlers" />
 			<small><?php _e( 'Small badge text shown above the location name', 'chroma-excellence' ); ?></small>
+		</div>
+
+		<div class="chroma-meta-field">
+			<label for="location_hero_gallery"><?php _e( 'Hero Image Gallery (URLs)', 'chroma-excellence' ); ?></label>
+			<textarea id="location_hero_gallery" name="location_hero_gallery" rows="4" placeholder="Enter image URLs, one per line:&#10;https://example.com/image1.jpg&#10;https://example.com/image2.jpg&#10;https://example.com/image3.jpg"><?php echo esc_textarea( $hero_gallery ); ?></textarea>
+			<small><?php _e( 'Enter image URLs (one per line). If provided, these will display as a carousel in the hero section. Leave empty to use the featured image.', 'chroma-excellence' ); ?></small>
 		</div>
 
 		<div class="chroma-meta-field">
@@ -540,6 +547,7 @@ function chroma_save_location_custom_fields( $post_id ) {
 	// Save fields
 	$fields = array(
 		'location_hero_subtitle',
+		'location_hero_gallery',
 		'location_tagline',
 		'location_description',
 		'location_google_rating',

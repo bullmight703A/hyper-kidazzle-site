@@ -25,8 +25,21 @@ while ( have_posts() ) :
 
 	// Additional meta fields (with defaults)
 	$hero_subtitle     = get_post_meta( $location_id, 'location_hero_subtitle', true ) ?: "Now Enrolling: Pre-K & Toddlers";
+	$hero_gallery_raw  = get_post_meta( $location_id, 'location_hero_gallery', true );
 	$tagline          = get_post_meta( $location_id, 'location_tagline', true ) ?: "{$city}'s home for brilliant beginnings.";
 	$description      = get_post_meta( $location_id, 'location_description', true ) ?: get_the_excerpt();
+
+	// Parse hero gallery URLs (one per line)
+	$hero_gallery = array();
+	if ( ! empty( $hero_gallery_raw ) ) {
+		$lines = explode( "\n", $hero_gallery_raw );
+		foreach ( $lines as $line ) {
+			$url = trim( $line );
+			if ( ! empty( $url ) && filter_var( $url, FILTER_VALIDATE_URL ) ) {
+				$hero_gallery[] = esc_url( $url );
+			}
+		}
+	}
 	$google_rating    = get_post_meta( $location_id, 'location_google_rating', true ) ?: '4.9';
 	$hours            = get_post_meta( $location_id, 'location_hours', true ) ?: '7am - 6pm';
 	$ages_served      = get_post_meta( $location_id, 'location_ages_served', true ) ?: '6w - 12y';
@@ -125,15 +138,47 @@ while ( have_posts() ) :
 				</div>
 			</div>
 
-			<!-- Hero Image -->
+			<!-- Hero Image / Carousel -->
 			<div class="relative fade-in-up delay-200 hidden md:block">
 				<div class="absolute inset-0 bg-chroma-blue/10 rounded-[3rem] rotate-6 transform translate-x-4 translate-y-4"></div>
-				<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
-					<?php if ( has_post_thumbnail() ) : ?>
+				<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]" <?php if ( count( $hero_gallery ) > 1 ) echo 'data-location-carousel'; ?>>
+					<?php if ( ! empty( $hero_gallery ) ) : ?>
+						<!-- Gallery Carousel -->
+						<div class="relative w-full h-full">
+							<div class="flex transition-transform duration-500 ease-in-out h-full" data-location-carousel-track>
+								<?php foreach ( $hero_gallery as $index => $image_url ) : ?>
+									<div class="w-full h-full flex-shrink-0" data-location-slide="<?php echo esc_attr( $index ); ?>">
+										<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $location_name ); ?> - Image <?php echo esc_attr( $index + 1 ); ?>" class="w-full h-full object-cover" loading="lazy" />
+									</div>
+								<?php endforeach; ?>
+							</div>
+
+							<?php if ( count( $hero_gallery ) > 1 ) : ?>
+								<!-- Navigation Arrows -->
+								<button class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/90 rounded-full shadow-lg text-brand-ink hover:bg-white transition" data-location-prev aria-label="Previous image">
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+									</svg>
+								</button>
+								<button class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/90 rounded-full shadow-lg text-brand-ink hover:bg-white transition" data-location-next aria-label="Next image">
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+									</svg>
+								</button>
+
+								<!-- Dots -->
+								<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2" data-location-dots>
+									<?php foreach ( $hero_gallery as $index => $image_url ) : ?>
+										<button class="w-2 h-2 rounded-full transition-all <?php echo 0 === $index ? 'bg-white w-6' : 'bg-white/50'; ?>" data-location-dot="<?php echo esc_attr( $index ); ?>" aria-label="Go to image <?php echo esc_attr( $index + 1 ); ?>"></button>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
+						</div>
+					<?php elseif ( has_post_thumbnail() ) : ?>
 						<?php the_post_thumbnail( 'large', array( 'class' => 'w-full h-full object-cover' ) ); ?>
 					<?php else : ?>
-                                                <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1000&auto=format&fit=crop" alt="<?php echo esc_attr( $location_name ); ?> Campus" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1000" height="750" />
-                                        <?php endif; ?>
+						<img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1000&auto=format&fit=crop" alt="<?php echo esc_attr( $location_name ); ?> Campus" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1000" height="750" />
+					<?php endif; ?>
 
 					<!-- Floating Review Badge -->
 					<div class="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-float max-w-[200px]">
