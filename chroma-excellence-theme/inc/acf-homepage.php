@@ -895,6 +895,48 @@ function chroma_home_featured_stories() {
 }
 
 /**
+ * Parent Reviews for homepage carousel
+ */
+function chroma_home_default_parent_reviews() {
+        return array(
+                array(
+                        'name'    => 'Sarah M.',
+                        'location' => 'Marietta Campus',
+                        'rating'  => '5',
+                        'review'  => 'Our daughter has flourished at Chroma. The teachers genuinely care, and the Prismpath curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
+                ),
+                array(
+                        'name'    => 'James & Lisa T.',
+                        'location' => 'Johns Creek Campus',
+                        'rating'  => '5',
+                        'review'  => 'After touring several centers, Chroma stood out immediately. The transparency, the warmth, and the expert care made our decision easy. Our son has been there for two years and we\'ve never looked back.',
+                ),
+                array(
+                        'name'    => 'Maria G.',
+                        'location' => 'Austell Campus',
+                        'rating'  => '5',
+                        'review'  => 'The family-style meals, the daily communication, the beautiful facilities — everything exceeds expectations. Chroma feels like an extension of our family, and our twins are thriving.',
+                ),
+        );
+}
+
+function chroma_home_parent_reviews() {
+        $reviews = chroma_home_get_theme_mod_json( 'chroma_home_parent_reviews_json', chroma_home_default_parent_reviews() );
+
+        return array_map(
+                function ( $review ) {
+                        return array(
+                                'name'    => sanitize_text_field( $review['name'] ?? '' ),
+                                'location' => sanitize_text_field( $review['location'] ?? '' ),
+                                'rating'  => absint( $review['rating'] ?? 5 ),
+                                'review'  => sanitize_textarea_field( $review['review'] ?? '' ),
+                        );
+                },
+                $reviews
+        );
+}
+
+/**
  * Checkers for optional sections
  */
 function chroma_home_has_prismpath_panels() {
@@ -919,4 +961,9 @@ function chroma_home_has_faq() {
 
 function chroma_home_has_stats() {
         return true;
+}
+
+function chroma_home_has_parent_reviews() {
+        $reviews = chroma_home_parent_reviews();
+        return ! empty( $reviews );
 }

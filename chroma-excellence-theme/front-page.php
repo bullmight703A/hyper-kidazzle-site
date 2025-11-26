@@ -36,6 +36,11 @@ get_header();
 <?php get_template_part( 'template-parts/home/schedule-tabs' ); ?>
 <?php endif; ?>
 
+<!-- Parent Reviews Carousel -->
+<?php if ( chroma_home_has_parent_reviews() ) : ?>
+<?php get_template_part( 'template-parts/home/parent-reviews' ); ?>
+<?php endif; ?>
+
 <!-- Locations Preview -->
 <?php get_template_part( 'template-parts/home/locations-preview' ); ?>
 
