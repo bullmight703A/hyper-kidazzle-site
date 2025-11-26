@@ -32,14 +32,20 @@
 				<div class="md:col-span-1">
 					<h3 class="font-bold text-sm mb-3">Contact</h3>
 					<div class="space-y-2 text-xs text-white/70">
-						<?php if ( $phone = chroma_global_phone() ) : ?>
-							<p><a href="tel:<?php echo esc_attr( $phone ); ?>" class="hover:text-white"><?php echo esc_html( $phone ); ?></a></p>
+						<?php
+						// Get contact info from customizer (with fallback to global settings)
+						$footer_phone = get_theme_mod( 'chroma_footer_phone', '' ) ?: chroma_global_phone();
+						$footer_email = get_theme_mod( 'chroma_footer_email', '' ) ?: chroma_global_email();
+						$footer_address = get_theme_mod( 'chroma_footer_address', '' ) ?: chroma_global_full_address();
+						?>
+						<?php if ( $footer_phone ) : ?>
+							<p><a href="tel:<?php echo esc_attr( $footer_phone ); ?>" class="hover:text-white"><?php echo esc_html( $footer_phone ); ?></a></p>
 						<?php endif; ?>
-						<?php if ( $email = chroma_global_email() ) : ?>
-							<p><a href="mailto:<?php echo esc_attr( $email ); ?>" class="hover:text-white"><?php echo esc_html( $email ); ?></a></p>
+						<?php if ( $footer_email ) : ?>
+							<p><a href="mailto:<?php echo esc_attr( $footer_email ); ?>" class="hover:text-white"><?php echo esc_html( $footer_email ); ?></a></p>
 						<?php endif; ?>
-						<?php if ( $address = chroma_global_full_address() ) : ?>
-							<p class="mt-2"><?php echo esc_html( $address ); ?></p>
+						<?php if ( $footer_address ) : ?>
+							<p class="mt-2"><?php echo esc_html( $footer_address ); ?></p>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -48,21 +54,39 @@
 				<div class="md:col-span-1">
 					<h3 class="font-bold text-sm mb-3">Follow Us</h3>
 					<div class="flex gap-3">
-                                                <?php if ( $facebook = chroma_global_facebook_url() ) : ?>
-                                                        <a href="<?php echo esc_url( $facebook ); ?>" target="_blank" rel="noopener" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-                                                                <i class="fa-brands fa-facebook-f text-xs"></i>
-                                                        </a>
-                                                <?php endif; ?>
-                                                <?php if ( $instagram = chroma_global_instagram_url() ) : ?>
-                                                        <a href="<?php echo esc_url( $instagram ); ?>" target="_blank" rel="noopener" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-                                                                <i class="fa-brands fa-instagram text-xs"></i>
-                                                        </a>
-                                                <?php endif; ?>
-                                                <?php if ( $linkedin = chroma_global_linkedin_url() ) : ?>
-                                                        <a href="<?php echo esc_url( $linkedin ); ?>" target="_blank" rel="noopener" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-                                                                <i class="fa-brands fa-linkedin-in text-xs"></i>
-                                                        </a>
-                                                <?php endif; ?>
+						<?php
+						// Get social links from customizer (with fallback to global settings)
+						$footer_facebook = get_theme_mod( 'chroma_footer_facebook', '' ) ?: chroma_global_facebook_url();
+						$footer_instagram = get_theme_mod( 'chroma_footer_instagram', '' ) ?: chroma_global_instagram_url();
+						$footer_linkedin = get_theme_mod( 'chroma_footer_linkedin', '' ) ?: chroma_global_linkedin_url();
+						$footer_twitter = get_theme_mod( 'chroma_footer_twitter', '' );
+						$footer_youtube = get_theme_mod( 'chroma_footer_youtube', '' );
+						?>
+						<?php if ( $footer_facebook ) : ?>
+							<a href="<?php echo esc_url( $footer_facebook ); ?>" target="_blank" rel="noopener" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+								<i class="fa-brands fa-facebook-f text-xs"></i>
+							</a>
+						<?php endif; ?>
+						<?php if ( $footer_instagram ) : ?>
+							<a href="<?php echo esc_url( $footer_instagram ); ?>" target="_blank" rel="noopener" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+								<i class="fa-brands fa-instagram text-xs"></i>
+							</a>
+						<?php endif; ?>
+						<?php if ( $footer_linkedin ) : ?>
+							<a href="<?php echo esc_url( $footer_linkedin ); ?>" target="_blank" rel="noopener" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+								<i class="fa-brands fa-linkedin-in text-xs"></i>
+							</a>
+						<?php endif; ?>
+						<?php if ( $footer_twitter ) : ?>
+							<a href="<?php echo esc_url( $footer_twitter ); ?>" target="_blank" rel="noopener" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+								<i class="fa-brands fa-x-twitter text-xs"></i>
+							</a>
+						<?php endif; ?>
+						<?php if ( $footer_youtube ) : ?>
+							<a href="<?php echo esc_url( $footer_youtube ); ?>" target="_blank" rel="noopener" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+								<i class="fa-brands fa-youtube text-xs"></i>
+							</a>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>
