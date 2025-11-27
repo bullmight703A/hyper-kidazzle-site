@@ -157,16 +157,25 @@ function chroma_home_prismpath_panels() {
 
         $cards = chroma_home_get_theme_mod_json( 'chroma_home_prismpath_cards_json', $defaults['cards'] );
         $cards = array_map(
-                function ( $card ) {
+                function ( $card, $index ) use ( $defaults ) {
+                        // Merge with defaults to ensure icon fields exist
+                        $default_card = $defaults['cards'][ $index ] ?? array();
+                        $merged = array_merge( $default_card, $card );
+
                         return array(
-                                'badge'   => sanitize_text_field( $card['badge'] ?? '' ),
-                                'heading' => sanitize_text_field( $card['heading'] ?? '' ),
-                                'text'    => sanitize_textarea_field( $card['text'] ?? '' ),
-                                'button'  => sanitize_text_field( $card['button'] ?? '' ),
-                                'url'     => esc_url_raw( $card['url'] ?? '' ),
+                                'badge'      => sanitize_text_field( $merged['badge'] ?? '' ),
+                                'heading'    => sanitize_text_field( $merged['heading'] ?? '' ),
+                                'text'       => sanitize_textarea_field( $merged['text'] ?? '' ),
+                                'button'     => sanitize_text_field( $merged['button'] ?? '' ),
+                                'url'        => esc_url_raw( $merged['url'] ?? '' ),
+                                'icon'       => sanitize_text_field( $merged['icon'] ?? '' ),
+                                'icon_bg'    => sanitize_text_field( $merged['icon_bg'] ?? '' ),
+                                'icon_badge' => sanitize_text_field( $merged['icon_badge'] ?? '' ),
+                                'icon_check' => sanitize_text_field( $merged['icon_check'] ?? '' ),
                         );
                 },
-                $cards
+                $cards,
+                array_keys( $cards )
         );
 
         $readiness = $defaults['readiness'];
