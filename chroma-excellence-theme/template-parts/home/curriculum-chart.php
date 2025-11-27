@@ -27,6 +27,14 @@ $first        = $profile_list[0];
                         <div class="flex flex-wrap gap-2 text-xs" data-curriculum-buttons>
                                 <?php foreach ( $profiles['profiles'] as $index => $profile ) :
                                         $label = $profile['label'] ?? ucfirst( $profile['key'] );
+
+                                        // Separate emoji from text (emoji at start of string)
+                                        $emoji = '';
+                                        $text = $label;
+                                        if ( preg_match( '/^([\x{1F300}-\x{1F9FF}]|[\x{2600}-\x{26FF}]|[\x{2700}-\x{27BF}])\s*/u', $label, $matches ) ) {
+                                                $emoji = $matches[0];
+                                                $text = trim( substr( $label, strlen( $emoji ) ) );
+                                        }
                                 ?>
                                         <?php
                                         $is_active = 0 === $index;
@@ -34,7 +42,9 @@ $first        = $profile_list[0];
                                                 ? 'bg-chroma-blue text-white shadow-soft'
                                                 : 'bg-white text-brand-ink/70 hover:border-chroma-blue';
                                         ?>
-                                        <button class="px-4 py-2 rounded-full font-semibold border border-chroma-blue/20 <?php echo esc_attr( $button_classes ); ?>" data-curriculum-button="<?php echo esc_attr( $profile['key'] ); ?>"><?php echo esc_html( $label ); ?></button>
+                                        <button class="px-4 py-2 rounded-full font-semibold border border-chroma-blue/20 <?php echo esc_attr( $button_classes ); ?>" data-curriculum-button="<?php echo esc_attr( $profile['key'] ); ?>">
+                                                <?php if ( $emoji ) : ?><span class="inline-block mr-1"><?php echo esc_html( $emoji ); ?></span><?php endif; ?><?php echo esc_html( $text ); ?>
+                                        </button>
                                 <?php endforeach; ?>
                         </div>
                         <div class="bg-white rounded-3xl border-l-4 border-chroma-red shadow-soft p-6 md:p-7">
