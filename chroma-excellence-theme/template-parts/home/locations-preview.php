@@ -24,6 +24,19 @@ if ( ! function_exists( 'chroma_region_emoji' ) ) {
     }
 }
 
+if ( ! function_exists( 'chroma_region_colors' ) ) {
+    function chroma_region_colors( $label ) {
+        $map = array(
+            'Cobb County'      => array( 'border' => 'chroma-red', 'bg' => 'chroma-redLight' ),
+            'Gwinnett County'  => array( 'border' => 'chroma-blue', 'bg' => 'chroma-blueLight' ),
+            'North Metro'      => array( 'border' => 'chroma-green', 'bg' => 'chroma-greenLight' ),
+            'South Metro'      => array( 'border' => 'chroma-yellow', 'bg' => 'chroma-yellowLight' ),
+        );
+
+        return $map[ $label ] ?? array( 'border' => 'chroma-red', 'bg' => 'chroma-redLight' );
+    }
+}
+
 $map_json = $locations_data['map_points'] ?? array();
 $grouped  = $locations_data['grouped'] ?? array();
 ?>
@@ -57,12 +70,16 @@ $grouped  = $locations_data['grouped'] ?? array();
 
         <!-- Featured Locations Grid -->
         <?php if ( ! empty( $grouped ) ) : ?>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <?php foreach ( $grouped as $group ) : ?>
+                <?php
+                $region_label = $group['label'] ?? '';
+                $region_colors = chroma_region_colors( $region_label );
+                ?>
                 <div class="bg-white border border-chroma-blue/10 rounded-3xl p-6 shadow-soft">
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="text-xl"><?php echo esc_html( chroma_region_emoji( $group['label'] ?? '' ) ); ?></span>
-                        <h3 class="text-xs uppercase tracking-[0.18em] text-brand-ink/60 font-semibold"><?php echo esc_html( $group['label'] ?? '' ); ?></h3>
+                        <span class="text-xl"><?php echo esc_html( chroma_region_emoji( $region_label ) ); ?></span>
+                        <h3 class="text-xs uppercase tracking-[0.18em] text-brand-ink/60 font-semibold"><?php echo esc_html( $region_label ); ?></h3>
                     </div>
                     <?php if ( ! empty( $group['locations'] ) ) : ?>
                         <ul class="space-y-4">
@@ -72,9 +89,12 @@ $grouped  = $locations_data['grouped'] ?? array();
                                 $phone   = $location['phone'] ?? '';
                                 $address = $location['address'] ?? '';
                                 $url     = $location['url'] ?? '#';
+
+                                $hover_border = 'hover:border-' . $region_colors['border'] . '/50';
+                                $hover_bg = 'hover:bg-' . $region_colors['bg'];
                             ?>
                                 <li class="pb-2">
-                                    <div class="flex items-start justify-between gap-3 p-3 rounded-xl border border-chroma-blue/10 hover:border-chroma-red/50 hover:bg-chroma-redLight transition">
+                                    <div class="flex items-start justify-between gap-3 p-3 rounded-xl border border-chroma-blue/10 <?php echo esc_attr( $hover_border . ' ' . $hover_bg ); ?> transition">
                                         <div>
                                             <a href="<?php echo esc_url( $url ); ?>" class="text-lg font-semibold text-brand-ink hover:text-chroma-blue transition-colors">
                                                 <?php echo esc_html( $location['title'] ); ?>

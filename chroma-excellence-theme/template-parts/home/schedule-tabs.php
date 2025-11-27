@@ -45,16 +45,23 @@ if ( empty( $tracks ) ) {
                         ?>
                         <div class="<?php echo esc_attr( $panel_classes ); ?>" data-schedule-panel="<?php echo esc_attr( $track['key'] ); ?>">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                                        <?php
+                                        // Get track-specific colors
+                                        $track_color = ! empty( $track['color'] ) ? $track['color'] : 'chroma-blue';
+                                        $timeline_color = 'bg-' . $track_color . '/20';
+                                        $badge_color = 'text-' . $track_color;
+                                        $title_color = 'text-' . $track_color;
+                                        ?>
                                         <div class="rounded-[3rem] p-10 h-full <?php echo esc_attr( $backgroundTint ); ?>">
                                                 <h3 class="text-2xl font-serif text-brand-ink mb-6"><?php echo esc_html( $track['title'] ); ?></h3>
                                                 <p class="text-brand-ink/70 mb-8 leading-relaxed"><?php echo esc_html( $track['description'] ?? '' ); ?></p>
                                                 <div class="space-y-6 relative">
-                                                        <div class="absolute left-[19px] top-2 bottom-2 w-0.5 bg-chroma-blue/20"></div>
+                                                        <div class="absolute left-[19px] top-2 bottom-2 w-0.5 <?php echo esc_attr( $timeline_color ); ?>"></div>
                                                         <?php foreach ( $track['steps'] as $step ) : ?>
                                                                 <div class="flex gap-6 items-start">
-                                                                        <div class="w-10 h-10 rounded-full bg-white text-brand-ink flex items-center justify-center shadow-sm relative z-10 text-xs font-bold"><?php echo esc_html( $step['time'] ); ?></div>
+                                                                        <div class="w-10 h-10 rounded-full bg-white <?php echo esc_attr( $badge_color ); ?> flex items-center justify-center shadow-sm relative z-10 text-xs font-bold"><?php echo esc_html( $step['time'] ); ?></div>
                                                                         <div>
-                                                                                <h4 class="font-bold text-brand-ink"><?php echo esc_html( $step['title'] ); ?></h4>
+                                                                                <h4 class="font-bold <?php echo esc_attr( $title_color ); ?>"><?php echo esc_html( $step['title'] ); ?></h4>
                                                                                 <p class="text-sm text-brand-ink/60"><?php echo esc_html( $step['copy'] ); ?></p>
                                                                         </div>
                                                                 </div>
