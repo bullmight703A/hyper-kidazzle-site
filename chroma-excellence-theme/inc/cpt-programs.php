@@ -341,12 +341,18 @@ function chroma_program_locations_meta_box_render( $post ) {
 	}
 	?>
 	<p><?php _e( 'Select the locations where this program is available:', 'chroma-excellence' ); ?></p>
-	<div style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background: #f9f9f9;">
+	<p style="margin-bottom: 10px;">
+		<button type="button" id="chroma-toggle-all-locations" class="button button-secondary" style="margin-bottom: 5px;">
+			<?php _e( 'Select All / Deselect All', 'chroma-excellence' ); ?>
+		</button>
+	</p>
+	<div id="chroma-locations-list" style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background: #f9f9f9;">
 		<?php if ( ! empty( $all_locations ) ) : ?>
 			<?php foreach ( $all_locations as $location ) : ?>
 				<label style="display: block; margin-bottom: 8px;">
 					<input
 						type="checkbox"
+						class="chroma-location-checkbox"
 						name="program_locations[]"
 						value="<?php echo esc_attr( $location->ID ); ?>"
 						<?php checked( in_array( $location->ID, $selected_locations ) ); ?>
@@ -359,6 +365,22 @@ function chroma_program_locations_meta_box_render( $post ) {
 		<?php endif; ?>
 	</div>
 	<p><small><?php _e( 'This program will only appear on selected location pages.', 'chroma-excellence' ); ?></small></p>
+
+	<script>
+	(function($) {
+		$(document).ready(function() {
+			$('#chroma-toggle-all-locations').on('click', function(e) {
+				e.preventDefault();
+
+				var checkboxes = $('.chroma-location-checkbox');
+				var allChecked = checkboxes.length === checkboxes.filter(':checked').length;
+
+				// If all are checked, uncheck all. Otherwise, check all.
+				checkboxes.prop('checked', !allChecked);
+			});
+		});
+	})(jQuery);
+	</script>
 	<?php
 }
 
