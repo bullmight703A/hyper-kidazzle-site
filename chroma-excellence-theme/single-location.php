@@ -129,19 +129,22 @@ while (have_posts()):
 					<div class="grid grid-cols-3 gap-6 border-t border-brand-ink/5 pt-8">
 						<div>
 							<div class="text-2xl font-serif font-bold text-chroma-red mb-1">
-								<?php echo esc_html($ages_served); ?></div>
+								<?php echo esc_html($ages_served); ?>
+							</div>
 							<div class="text-[10px] uppercase tracking-wider text-brand-ink/50 font-semibold">Ages Served
 							</div>
 						</div>
 						<div>
 							<div class="text-2xl font-serif font-bold text-chroma-yellow mb-1">
-								<?php echo esc_html($google_rating); ?></div>
+								<?php echo esc_html($google_rating); ?>
+							</div>
 							<div class="text-[10px] uppercase tracking-wider text-brand-ink/50 font-semibold">Google Rating
 							</div>
 						</div>
 						<div>
 							<div class="text-2xl font-serif font-bold text-chroma-green mb-1">
-								<?php echo esc_html($hours); ?></div>
+								<?php echo esc_html($hours); ?>
+							</div>
 							<div class="text-[10px] uppercase tracking-wider text-brand-ink/50 font-semibold">Mon - Fri
 							</div>
 						</div>
@@ -295,7 +298,7 @@ while (have_posts()):
 			<section id="director" class="py-20 bg-chroma-blueDark text-white relative overflow-hidden">
 				<div class="absolute right-0 top-0 w-1/2 h-full bg-white/5 skew-x-12 transform origin-top-right"></div>
 
-				<div class="max-w-6xl mx-auto px-4 lg:px-6 relative z-10 grid md:grid-cols-[300px,1fr] gap-12 items-center">
+				<div class="max-w-6xl mx-auto px-4 lg:px-6 relative z-10 grid md:grid-cols-[1fr,2fr] gap-12 items-center">
 					<?php if ($director_photo): ?>
 						<div class="relative">
 							<div class="absolute inset-0 bg-chroma-yellow rounded-[2.5rem] rotate-3"></div>
@@ -308,7 +311,8 @@ while (have_posts()):
 						<span class="text-chroma-yellow font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Meet the
 							Director</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Welcome to Chroma
-							<?php echo esc_html($city); ?>.</h2>
+							<?php echo esc_html($city); ?>.
+						</h2>
 						<div class="space-y-4 text-white/80 text-lg leading-relaxed mb-8">
 							<?php echo wpautop(wp_kses_post($director_bio)); ?>
 						</div>
