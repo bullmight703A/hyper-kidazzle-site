@@ -199,6 +199,30 @@ wp_enqueue_style(
 <i class="fa-regular fa-star"></i>
 ```
 
+**Where Font Awesome Is Used:**
+- Prismpath section (bento box cards)
+- Hero section (graduation cap badge)
+- About page (section icons)
+- Locations (map markers)
+- Hardcoded in template files (NOT in meta boxes)
+
+**⚠️ Important: Program Icons vs Font Awesome**
+
+**Program Icon Meta Box** uses **EMOJIS** (not Font Awesome):
+```
+✅ Correct:  👶 (paste emoji)
+❌ Wrong:    fa-solid fa-baby (don't use Font Awesome classes)
+```
+
+**Font Awesome icons** are hardcoded in template files:
+```php
+<i class="fa-solid fa-heart"></i>  <!-- In template files only -->
+```
+
+**Quick Reference:**
+- **In WordPress Admin meta boxes** → Use emojis (👶, 🎨, 🎓)
+- **In theme template files** → Use Font Awesome (`fa-solid fa-heart`)
+
 **Troubleshooting:**
 
 If icons don't show up:
