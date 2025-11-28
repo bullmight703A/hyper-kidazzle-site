@@ -69,7 +69,7 @@ require_once CHROMA_THEME_DIR . '/inc/monthly-seo-cron.php';
 
 
 require_once CHROMA_THEME_DIR . '/inc/security.php';
-require_once CHROMA_THEME_DIR . '/inc/critical-css.php';
+// require_once CHROMA_THEME_DIR . '/inc/critical-css.php';
 
 
 /**
