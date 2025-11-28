@@ -227,3 +227,15 @@ function chroma_async_styles($html, $handle, $href, $media)
         return $html;
 }
 add_filter('style_loader_tag', 'chroma_async_styles', 10, 4);
+
+/**
+ * Add type="module" to scripts to bypass legacy transpilation
+ */
+function chroma_add_module_type_attribute($tag, $handle, $src)
+{
+        if ('chroma-main' === $handle || 'chroma-map-facade' === $handle) {
+                $tag = str_replace('<script ', '<script type="module" ', $tag);
+        }
+        return $tag;
+}
+add_filter('script_loader_tag', 'chroma_add_module_type_attribute', 10, 3);
