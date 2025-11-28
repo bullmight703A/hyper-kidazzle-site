@@ -1,0 +1,52 @@
+# BEGIN WP Performance Cache Headers
+# Added by Performance Optimization - Phase 1
+\u003cIfModule mod_expires.c\u003e
+    ExpiresActive On
+    
+    # Images - Cache for 1 year
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Video - Cache for 1 year
+    ExpiresByType video/mp4 "access plus 1 year"
+    ExpiresByType video/webm "access plus 1 year"
+    
+    # Fonts - Cache for 1 year
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    
+    # CSS and JavaScript - Cache for 1 month (shorter due to potential updates)
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    
+    # Default for other files
+    ExpiresDefault "access plus 2 weeks"
+\u003c/IfModule\u003e
+
+# Cache-Control Headers for browser caching
+\u003cIfModule mod_headers.c\u003e
+    # Images - 1 year cache
+    \u003cFilesMatch "\\.(jpg|jpeg|png|gif|webp|svg|ico)$"\u003e
+        Header set Cache-Control "max-age=31536000, public"
+    \u003c/FilesMatch\u003e
+    
+    # CSS and JavaScript - 1 month cache
+    \u003cFilesMatch "\\.(css|js)$"\u003e
+        Header set Cache-Control "max-age=2592000, public"
+    \u003c/FilesMatch\u003e
+    
+    # Fonts - 1 year cache
+    \u003cFilesMatch "\\.(ttf|otf|woff|woff2)$"\u003e
+        Header set Cache-Control "max-age=31536000, public"
+    \u003c/FilesMatch\u003e
+\u003c/IfModule\u003e
+# END WP Performance Cache Headers

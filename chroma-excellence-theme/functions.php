@@ -65,4 +65,46 @@ require_once CHROMA_THEME_DIR . '/inc/seo-engine.php';
 require_once CHROMA_THEME_DIR . '/inc/city-slug-logic.php';
 require_once CHROMA_THEME_DIR . '/inc/spanish-variant-generator.php';
 require_once CHROMA_THEME_DIR . '/inc/monthly-seo-cron.php';
+
 require_once CHROMA_THEME_DIR . '/inc/security.php';
+
+/**
+ * Performance Optimizations - Phase 1
+ * Added: [Current Date]
+ */
+
+// Force image dimensions to prevent layout shift (CLS improvement)
+add_filter('wp_img_tag_add_width_and_height_attr', '__return_true');
+
+// Force Elementor to output image dimensions
+add_filter('elementor/image/print_dimensions', '__return_true');
+
+/**
+ * Add width and height attributes to post thumbnails for CLS optimization
+ */
+function chroma_add_thumbnail_dimensions($html, $post_id, $attachment_id) {
+    if (!$attachment_id) {
+        return $html;
+    }
+    
+    $attachment = get_post($attachment_id);
+    if ($attachment && $attachment->post_type === 'attachment') {
+        $metadata = wp_get_attachment_metadata($attachment_id);
+        
+        if (isset($metadata['width']) && isset($metadata['height'])) {
+            // Only add if not already present
+            if (strpos($html, 'width=') === false) {
+                $html = str_replace('<img', sprintf(
+                    '<img width="%d" height="%d"',
+                    $metadata['width'],
+                    $metadata['height']
+                ), $html);
+            }
+        }
+    }
+    
+    return $html;
+}
+add_filter('post_thumbnail_html', 'chroma_add_thumbnail_dimensions', 10, 3);
+add_filter('get_image_tag', 'chroma_add_thumbnail_dimensions', 10, 3);
+
