@@ -142,8 +142,6 @@ function chroma_resource_hints($urls, $relation_type)
                         'href' => 'https://fonts.gstatic.com',
                         'crossorigin' => 'anonymous',
                 );
-                $urls[] = 'https://cdnjs.cloudflare.com';
-
                 if (is_front_page() || is_singular('program') || is_post_type_archive('program')) {
                         $urls[] = 'https://cdn.jsdelivr.net';
                 }
@@ -153,7 +151,6 @@ function chroma_resource_hints($urls, $relation_type)
                 }
 
                 // Preconnect to external origins identified in audit
-                $urls[] = 'https://fonts.bunny.net';
                 $urls[] = 'https://widgets.leadconnectorhq.com';
                 $urls[] = 'https://services.leadconnectorhq.com';
                 $urls[] = 'https://images.leadconnectorhq.com';
@@ -162,8 +159,6 @@ function chroma_resource_hints($urls, $relation_type)
         if ('dns-prefetch' === $relation_type) {
                 $urls[] = '//fonts.googleapis.com';
                 $urls[] = '//fonts.gstatic.com';
-                $urls[] = '//cdnjs.cloudflare.com';
-
                 if (is_front_page() || is_singular('program') || is_post_type_archive('program')) {
                         $urls[] = '//cdn.jsdelivr.net';
                 }
@@ -171,8 +166,6 @@ function chroma_resource_hints($urls, $relation_type)
                 if (chroma_should_load_maps()) {
                         $urls[] = '//unpkg.com';
                 }
-
-                $urls[] = '//fonts.bunny.net';
                 $urls[] = '//widgets.leadconnectorhq.com';
                 $urls[] = '//services.leadconnectorhq.com';
                 $urls[] = '//images.leadconnectorhq.com';
@@ -192,12 +185,15 @@ function chroma_enqueue_admin_assets($hook)
                 return;
         }
 
-        // Font Awesome for icon previews in admin
+        // Font Awesome for icon previews in admin (using local version)
+        $fa_path = CHROMA_THEME_DIR . '/assets/css/font-awesome.css';
+        $fa_version = file_exists($fa_path) ? filemtime($fa_path) : '6.4.0';
+
         wp_enqueue_style(
                 'font-awesome-admin',
-                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+                CHROMA_THEME_URI . '/assets/css/font-awesome.css',
                 array(),
-                '6.4.0'
+                $fa_version // Use same version as frontend for consistency
         );
 
         // Media uploader
