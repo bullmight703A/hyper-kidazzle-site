@@ -219,7 +219,7 @@ add_action('admin_enqueue_scripts', 'chroma_enqueue_admin_assets');
  */
 function chroma_async_styles($html, $handle, $href, $media)
 {
-        if ('font-awesome' === $handle || 'chroma-fonts' === $handle || ('chroma-main' === $handle && is_front_page())) {
+        if ('chroma-fonts' === $handle || ('chroma-main' === $handle && is_front_page())) {
                 $html = str_replace("media='print'", "media='print' onload=\"this.media='all'\"", $html);
                 // Add fallback for no-js
                 $html .= "<noscript><link rel='stylesheet' href='{$href}' media='all'></noscript>";
