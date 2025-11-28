@@ -6,6 +6,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+  alert('DEBUG: Chroma Main JS Loaded');
   const safeParseJSON = (value, fallback) => {
     try {
       return JSON.parse(value);
