@@ -53,15 +53,13 @@ function chroma_enqueue_assets()
         $css_path = CHROMA_THEME_DIR . '/assets/css/main.css';
         $css_version = file_exists($css_path) ? filemtime($css_path) : CHROMA_VERSION;
 
-        // If front page, we inline critical CSS (which is the full file), so we DO NOT enqueue it to avoid blocking.
-        // For other pages, we load it normally.
-        // Always enqueue main stylesheet to prevent "white screen" if critical CSS fails
+        // Main CSS is deferred using media='print' trick - Critical CSS is inlined via critical-css.php
         wp_enqueue_style(
                 'chroma-main',
                 CHROMA_THEME_URI . '/assets/css/main.css',
                 array(),
                 $css_version,
-                'all'
+                'print' // Load as print initially, will be changed to 'all' after load
         );
 
         // Chart.js for curriculum radar (homepage and program pages).
@@ -211,11 +209,12 @@ function chroma_enqueue_admin_assets($hook)
 add_action('admin_enqueue_scripts', 'chroma_enqueue_admin_assets');
 
 /**
- * Async load CSS for fonts to prevent render blocking
+ * Async load CSS to prevent render blocking
  */
 function chroma_async_styles($html, $handle, $href, $media)
 {
-        if ('chroma-fonts' === $handle || ('chroma-main' === $handle && is_front_page())) {
+        // Defer Google Fonts and main CSS using media='print' trick
+        if ('chroma-fonts' === $handle || 'chroma-main' === $handle) {
                 $html = str_replace("media='print'", "media='print' onload=\"this.media='all'\"", $html);
                 // Add fallback for no-js
                 $html .= "<noscript><link rel='stylesheet' href='{$href}' media='all'></noscript>";
