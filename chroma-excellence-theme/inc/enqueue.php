@@ -67,7 +67,7 @@ function chroma_enqueue_assets()
         // Chart.js for curriculum radar (homepage and program pages).
         $script_dependencies = array();
 
-        if (is_front_page() || is_singular('program') || is_post_type_archive('program')) {
+        if (is_front_page() || is_singular('program')) {
                 $chart_js_path = CHROMA_THEME_DIR . '/assets/js/chart.min.js';
                 $chart_js_version = file_exists($chart_js_path) ? filemtime($chart_js_path) : '4.4.1';
 
@@ -146,6 +146,8 @@ function chroma_resource_hints($urls, $relation_type)
                 $urls[] = 'https://widgets.leadconnectorhq.com';
                 $urls[] = 'https://services.leadconnectorhq.com';
                 $urls[] = 'https://images.leadconnectorhq.com';
+                $urls[] = 'https://stcdn.leadconnectorhq.com';
+                $urls[] = 'https://fonts.bunny.net';
         }
 
         if ('dns-prefetch' === $relation_type) {
@@ -160,6 +162,8 @@ function chroma_resource_hints($urls, $relation_type)
                 $urls[] = '//widgets.leadconnectorhq.com';
                 $urls[] = '//services.leadconnectorhq.com';
                 $urls[] = '//images.leadconnectorhq.com';
+                $urls[] = '//stcdn.leadconnectorhq.com';
+                $urls[] = '//fonts.bunny.net';
         }
 
         return array_unique($urls, SORT_REGULAR);
@@ -215,5 +219,35 @@ function chroma_async_styles($html, $handle, $href, $media)
         return $html;
 }
 add_filter('style_loader_tag', 'chroma_async_styles', 10, 4);
+
+/**
+ * Dequeue CDN styles (specifically Font Awesome) to force local loading.
+ * Runs at priority 100 to ensure it runs after plugins.
+ */
+function chroma_dequeue_cdn_styles()
+{
+        global $wp_styles;
+        if (empty($wp_styles->queue)) {
+                return;
+        }
+
+        foreach ($wp_styles->queue as $handle) {
+                if (!isset($wp_styles->registered[$handle])) {
+                        continue;
+                }
+
+                $src = $wp_styles->registered[$handle]->src;
+
+                // Check if it's Font Awesome and coming from a CDN
+                if (
+                        (strpos($handle, 'font-awesome') !== false || strpos($handle, 'fontawesome') !== false || strpos($handle, 'fa-') !== false) &&
+                        (strpos($src, 'cdnjs') !== false || strpos($src, 'cloudflare') !== false || strpos($src, 'jsdelivr') !== false)
+                ) {
+                        wp_dequeue_style($handle);
+                        wp_deregister_style($handle);
+                }
+        }
+}
+add_action('wp_enqueue_scripts', 'chroma_dequeue_cdn_styles', 100);
 
 
