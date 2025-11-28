@@ -67,4 +67,65 @@ require_once CHROMA_THEME_DIR . '/inc/spanish-variant-generator.php';
 require_once CHROMA_THEME_DIR . '/inc/monthly-seo-cron.php';
 
 
+
 require_once CHROMA_THEME_DIR . '/inc/security.php';
+
+/**
+ * Performance Optimizations - Phase 1 (Safe Mode)
+ * Added: [Current Date]
+ */
+
+// Force image dimensions to prevent layout shift (CLS improvement)
+add_filter('wp_img_tag_add_width_and_height_attr', '__return_true');
+
+// Force Elementor to output image dimensions
+add_filter('elementor/image/print_dimensions', '__return_true');
+
+/**
+ * Add width and height attributes to post thumbnails for CLS optimization
+ * Filter: post_thumbnail_html
+ */
+function chroma_add_post_thumbnail_dims($html, $post_id, $post_thumbnail_id)
+{
+    if (!$post_thumbnail_id) {
+        return $html;
+    }
+    return chroma_inject_dimensions($html, $post_thumbnail_id);
+}
+add_filter('post_thumbnail_html', 'chroma_add_post_thumbnail_dims', 10, 3);
+
+/**
+ * Add width and height attributes to content images
+ * Filter: get_image_tag
+ */
+function chroma_add_content_image_dims($html, $id, $alt)
+{
+    if (!$id) {
+        return $html;
+    }
+    return chroma_inject_dimensions($html, $id);
+}
+add_filter('get_image_tag', 'chroma_add_content_image_dims', 10, 3);
+
+/**
+ * Helper function to inject dimensions
+ */
+function chroma_inject_dimensions($html, $attachment_id)
+{
+    // If width is already defined, skip
+    if (strpos($html, 'width=') !== false) {
+        return $html;
+    }
+
+    $metadata = wp_get_attachment_metadata($attachment_id);
+    if (isset($metadata['width']) && isset($metadata['height'])) {
+        $html = str_replace('<img', sprintf(
+            '<img width="%d" height="%d"',
+            $metadata['width'],
+            $metadata['height']
+        ), $html);
+    }
+
+    return $html;
+}
+
