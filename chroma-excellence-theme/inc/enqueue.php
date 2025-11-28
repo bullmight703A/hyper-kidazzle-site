@@ -29,13 +29,15 @@ function chroma_should_load_maps()
  */
 function chroma_enqueue_assets()
 {
-        // Google Fonts.
+        // Self-Hosted Fonts (Outfit, Playfair Display).
+        $fonts_path = CHROMA_THEME_DIR . '/assets/css/fonts.css';
+        $fonts_version = file_exists($fonts_path) ? filemtime($fonts_path) : CHROMA_VERSION;
         wp_enqueue_style(
                 'chroma-fonts',
-                'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap',
+                CHROMA_THEME_URI . '/assets/css/fonts.css',
                 array(),
-                null,
-                'all' // Load synchronously to ensure fonts appear
+                $fonts_version,
+                'all'
         );
 
         // Font Awesome (Local).
