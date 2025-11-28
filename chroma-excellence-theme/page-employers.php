@@ -178,12 +178,12 @@ $contact_title = get_post_meta($page_id, 'employers_contact_title', true) ?: 'Bu
 					<?php echo esc_html($contact_title); ?>
 				</h2>
 				<form class="max-w-md mx-auto space-y-4 text-brand-ink">
-					<input type="text" name="company_name" placeholder="Company Name" class="w-full p-4 rounded-xl"
-						required>
-					<input type="text" name="contact_name" placeholder="HR Contact Name" class="w-full p-4 rounded-xl"
-						required>
-					<input type="email" name="work_email" placeholder="Work Email" class="w-full p-4 rounded-xl"
-						required>
+					<input type="text" name="company_name" placeholder="Company Name" aria-label="Company Name"
+						class="w-full p-4 rounded-xl" required>
+					<input type="text" name="contact_name" placeholder="HR Contact Name" aria-label="HR Contact Name"
+						class="w-full p-4 rounded-xl" required>
+					<input type="email" name="work_email" placeholder="Work Email" aria-label="Work Email"
+						class="w-full p-4 rounded-xl" required>
 					<button type="submit"
 						class="w-full py-4 bg-chroma-yellow text-brand-ink font-bold rounded-full uppercase tracking-widest hover:bg-white transition-colors">
 						Request Info Kit

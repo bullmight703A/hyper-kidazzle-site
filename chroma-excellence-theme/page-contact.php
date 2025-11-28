@@ -66,8 +66,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 
 				<!-- Form -->
 				<div class="bg-brand-cream p-10 rounded-[3rem] border border-brand-ink/5 shadow-soft">
-					<form class="space-y-6" method="post"
-						action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+					<form class="space-y-6" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 						<input type="hidden" name="action" value="chroma_contact_form">
 						<?php wp_nonce_field('chroma_contact_form_action', 'chroma_contact_form_nonce'); ?>
 
@@ -76,7 +75,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 								<label
 									class="block text-xs font-bold uppercase tracking-wider text-brand-ink/50 mb-2">First
 									Name *</label>
-								<input type="text" name="first_name"
+								<input type="text" name="first_name" aria-label="First Name"
 									class="w-full p-4 rounded-xl border border-brand-ink/10 focus:border-chroma-blue focus:outline-none bg-white"
 									placeholder="Jane" required>
 							</div>
@@ -84,7 +83,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 								<label
 									class="block text-xs font-bold uppercase tracking-wider text-brand-ink/50 mb-2">Last
 									Name *</label>
-								<input type="text" name="last_name"
+								<input type="text" name="last_name" aria-label="Last Name"
 									class="w-full p-4 rounded-xl border border-brand-ink/10 focus:border-chroma-blue focus:outline-none bg-white"
 									placeholder="Doe" required>
 							</div>
@@ -95,7 +94,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 								<label
 									class="block text-xs font-bold uppercase tracking-wider text-brand-ink/50 mb-2">Email
 									Address *</label>
-								<input type="email" name="email"
+								<input type="email" name="email" aria-label="Email Address"
 									class="w-full p-4 rounded-xl border border-brand-ink/10 focus:border-chroma-blue focus:outline-none bg-white"
 									placeholder="you@example.com" required>
 							</div>
@@ -103,7 +102,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 								<label
 									class="block text-xs font-bold uppercase tracking-wider text-brand-ink/50 mb-2">Phone
 									Number *</label>
-								<input type="tel" name="phone"
+								<input type="tel" name="phone" aria-label="Phone Number"
 									class="w-full p-4 rounded-xl border border-brand-ink/10 focus:border-chroma-blue focus:outline-none bg-white"
 									placeholder="(555) 123-4567" required>
 							</div>
@@ -114,7 +113,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 								<label
 									class="block text-xs font-bold uppercase tracking-wider text-brand-ink/50 mb-2">Preferred
 									Campus</label>
-								<select name="preferred_campus"
+								<select name="preferred_campus" aria-label="Preferred Campus"
 									class="w-full p-4 rounded-xl border border-brand-ink/10 focus:border-chroma-blue focus:outline-none bg-white">
 									<option value="">Select a location...</option>
 									<?php
@@ -150,7 +149,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 								<label
 									class="block text-xs font-bold uppercase tracking-wider text-brand-ink/50 mb-2">Child's
 									Age</label>
-								<input type="text" name="child_age"
+								<input type="text" name="child_age" aria-label="Child's Age"
 									class="w-full p-4 rounded-xl border border-brand-ink/10 focus:border-chroma-blue focus:outline-none bg-white"
 									placeholder="e.g. 2 years">
 							</div>
@@ -159,7 +158,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 						<div>
 							<label
 								class="block text-xs font-bold uppercase tracking-wider text-brand-ink/50 mb-2">Topic</label>
-							<select name="topic"
+							<select name="topic" aria-label="Topic"
 								class="w-full p-4 rounded-xl border border-brand-ink/10 focus:border-chroma-blue focus:outline-none bg-white">
 								<option>Schedule a Tour</option>
 								<option>Tuition Inquiry</option>
@@ -172,7 +171,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 						<div>
 							<label
 								class="block text-xs font-bold uppercase tracking-wider text-brand-ink/50 mb-2">Message</label>
-							<textarea name="message" rows="4"
+							<textarea name="message" rows="4" aria-label="Message"
 								class="w-full p-4 rounded-xl border border-brand-ink/10 focus:border-chroma-blue focus:outline-none bg-white"
 								placeholder="Tell us about your family's needs..."></textarea>
 						</div>
