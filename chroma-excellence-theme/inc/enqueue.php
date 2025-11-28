@@ -152,6 +152,12 @@ function chroma_resource_hints($urls, $relation_type)
                 if (chroma_should_load_maps()) {
                         $urls[] = 'https://unpkg.com';
                 }
+
+                // Preconnect to external origins identified in audit
+                $urls[] = 'https://fonts.bunny.net';
+                $urls[] = 'https://widgets.leadconnectorhq.com';
+                $urls[] = 'https://services.leadconnectorhq.com';
+                $urls[] = 'https://images.leadconnectorhq.com';
         }
 
         if ('dns-prefetch' === $relation_type) {
@@ -166,6 +172,11 @@ function chroma_resource_hints($urls, $relation_type)
                 if (chroma_should_load_maps()) {
                         $urls[] = '//unpkg.com';
                 }
+
+                $urls[] = '//fonts.bunny.net';
+                $urls[] = '//widgets.leadconnectorhq.com';
+                $urls[] = '//services.leadconnectorhq.com';
+                $urls[] = '//images.leadconnectorhq.com';
         }
 
         return array_unique($urls, SORT_REGULAR);
