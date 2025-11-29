@@ -78,27 +78,41 @@ while (have_posts()):
 			),
 		),
 	));
+
+	// Get Region Colors
+	$location_regions = wp_get_post_terms($location_id, 'location_region');
+	$region_term = !empty($location_regions) && !is_wp_error($location_regions) ? $location_regions[0] : null;
+	$region_colors = $region_term ? chroma_get_region_color_from_term($region_term->term_id) : array(
+		'bg' => 'chroma-blueLight',
+		'text' => 'chroma-blue',
+		'border' => 'chroma-blue',
+	);
 	?>
 
 	<main>
 		<!-- Hero Section -->
 		<section class="relative pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden">
 			<!-- Background Shapes -->
-			<div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-chroma-blue/5 to-transparent -z-10"></div>
-			<div class="absolute -top-24 left-10 w-96 h-96 bg-chroma-yellow/10 rounded-full blur-3xl -z-10"></div>
+			<div
+				class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-<?php echo esc_attr($region_colors['border']); ?>/5 to-transparent -z-10">
+			</div>
+			<div
+				class="absolute -top-24 left-10 w-96 h-96 bg-<?php echo esc_attr($region_colors['border']); ?>/10 rounded-full blur-3xl -z-10">
+			</div>
 
 			<div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-16 items-center">
 				<div class="fade-in-up">
 					<div
-						class="inline-flex items-center gap-2 bg-white border border-chroma-blue/15 px-3 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-ink/70 shadow-sm mb-6">
-						<span class="w-2 h-2 rounded-full bg-chroma-green animate-pulse"></span>
+						class="inline-flex items-center gap-2 bg-white border border-<?php echo esc_attr($region_colors['border']); ?>/15 px-3 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-ink/70 shadow-sm mb-6">
+						<span
+							class="w-2 h-2 rounded-full bg-<?php echo esc_attr($region_colors['text']); ?> animate-pulse"></span>
 						<?php echo esc_html($hero_subtitle); ?>
 					</div>
 
 					<h1 class="font-serif text-[2.8rem] sm:text-[3.5rem] leading-none text-brand-ink mb-4">
 						<?php echo esc_html($location_name); ?>
 					</h1>
-					<p class="font-serif text-2xl italic text-chroma-blue mb-6">
+					<p class="font-serif text-2xl italic text-<?php echo esc_attr($region_colors['text']); ?> mb-6">
 						<?php echo esc_html($tagline); ?>
 					</p>
 
@@ -108,12 +122,12 @@ while (have_posts()):
 
 					<div class="flex flex-wrap gap-4 mb-10">
 						<a href="#tour"
-							class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-chroma-blue text-white text-xs font-bold uppercase tracking-[0.2em] shadow-soft hover:bg-chroma-blueDark transition-all hover:-translate-y-1">
+							class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-<?php echo esc_attr($region_colors['text']); ?> text-white text-xs font-bold uppercase tracking-[0.2em] shadow-soft hover:bg-chroma-blueDark transition-all hover:-translate-y-1">
 							Schedule Visit
 						</a>
 						<?php if ($phone): ?>
 							<a href="tel:<?php echo esc_attr(preg_replace('/[^0-9]/', '', $phone)); ?>"
-								class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-brand-ink/10 bg-white text-brand-ink text-xs font-bold uppercase tracking-[0.2em] hover:border-chroma-blue hover:text-chroma-blue transition-all">
+								class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-brand-ink/10 bg-white text-brand-ink text-xs font-bold uppercase tracking-[0.2em] hover:border-<?php echo esc_attr($region_colors['border']); ?> hover:text-<?php echo esc_attr($region_colors['text']); ?> transition-all">
 								<?php echo esc_html($phone); ?>
 							</a>
 						<?php endif; ?>
@@ -148,7 +162,7 @@ while (have_posts()):
 				<!-- Hero Image / Carousel -->
 				<div class="relative fade-in-up delay-200 block">
 					<div
-						class="absolute inset-0 bg-chroma-blue/10 rounded-[3rem] rotate-6 transform translate-x-4 translate-y-4">
+						class="absolute inset-0 bg-<?php echo esc_attr($region_colors['text']); ?>/10 rounded-[3rem] rotate-6 transform translate-x-4 translate-y-4">
 					</div>
 					<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-square md:aspect-[4/3]"
 						<?php if (count($hero_gallery) > 1)
@@ -252,7 +266,8 @@ while (have_posts()):
 		<section id="about" class="py-20 bg-white">
 			<div class="max-w-7xl mx-auto px-4 lg:px-6">
 				<div class="text-center mb-16 max-w-3xl mx-auto">
-					<span class="text-chroma-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Campus
+					<span
+						class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Campus
 						Features</span>
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">Designed for discovery.</h2>
 					<p class="text-brand-ink/80">Every corner of our <?php echo esc_html($city); ?> campus is
@@ -321,14 +336,18 @@ while (have_posts()):
 					class="max-w-6xl mx-auto px-4 lg:px-6 relative z-10 <?php echo $director_photo ? 'grid md:grid-cols-[1fr,2fr] gap-12 items-center' : 'max-w-4xl'; ?>">
 					<?php if ($director_photo): ?>
 						<div class="relative">
-							<div class="absolute inset-0 bg-chroma-yellow rounded-[2.5rem] rotate-3"></div>
+							<div
+								class="absolute inset-0 bg-<?php echo esc_attr($region_colors['text']); ?> rounded-[2.5rem] rotate-3">
+							</div>
 							<img src="<?php echo esc_url($director_photo); ?>" alt="<?php echo esc_attr($director_name); ?>"
 								class="relative rounded-[2.5rem] w-full object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-500" />
 						</div>
 					<?php endif; ?>
 
 					<div>
-						<span class="text-chroma-yellow font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Meet the
+						<span
+							class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Meet
+							the
 							Director</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Welcome to Chroma
 							<?php echo esc_html($city); ?>.
@@ -356,14 +375,17 @@ while (have_posts()):
 			<section id="virtual-tour" class="py-20 bg-white">
 				<div class="max-w-6xl mx-auto px-4 lg:px-6">
 					<div class="text-center mb-12">
-						<span class="text-chroma-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Explore Our
+						<span
+							class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Explore
+							Our
 							Campus</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">Take a Virtual Tour</h2>
 						<p class="text-brand-ink/70 max-w-2xl mx-auto">Walk through our <?php echo esc_html($city); ?> campus
 							from the comfort of your home. Explore our classrooms, outdoor play areas, and learning spaces.</p>
 					</div>
 
-					<div class="relative rounded-3xl overflow-hidden shadow-2xl border border-chroma-blue/10 bg-brand-cream">
+					<div
+						class="relative rounded-3xl overflow-hidden shadow-2xl border border-<?php echo esc_attr($region_colors['border']); ?>/10 bg-brand-cream">
 						<?php
 						// Allow safe HTML tags for embeds (iframe, script)
 						$allowed_tags = wp_kses_allowed_html('post');
@@ -405,7 +427,7 @@ while (have_posts()):
 							</p>
 						</div>
 						<a href="<?php echo esc_url(chroma_get_program_archive_url()); ?>"
-							class="text-chroma-blue font-bold text-sm uppercase tracking-wider hover:text-chroma-blueDark flex items-center gap-2">
+							class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold text-sm uppercase tracking-wider hover:text-chroma-blueDark flex items-center gap-2">
 							View Curriculum Details <i class="fa-solid fa-arrow-right"></i>
 						</a>
 					</div>
@@ -466,7 +488,9 @@ while (have_posts()):
 
 				<!-- Info Side -->
 				<div>
-					<span class="text-chroma-green font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Visit Us</span>
+					<span
+						class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Visit
+						Us</span>
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">Come see the magic in person.
 					</h2>
 					<p class="text-brand-ink/80 mb-8">
@@ -491,7 +515,7 @@ while (have_posts()):
 						<?php if ($address): ?>
 							<div class="flex gap-4">
 								<div
-									class="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-chroma-blue text-lg shrink-0">
+									class="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-<?php echo esc_attr($region_colors['text']); ?> text-lg shrink-0">
 									<i class="fa-solid fa-location-dot"></i>
 								</div>
 								<div>
@@ -502,7 +526,8 @@ while (have_posts()):
 									</p>
 									<?php if ($lat && $lng): ?>
 										<a href="https://www.google.com/maps/search/?api=1&query=<?php echo esc_attr($lat); ?>,<?php echo esc_attr($lng); ?>"
-											target="_blank" class="text-xs font-bold text-chroma-blue uppercase mt-1 inline-block">
+											target="_blank"
+											class="text-xs font-bold text-<?php echo esc_attr($region_colors['text']); ?> uppercase mt-1 inline-block">
 											Get Directions
 										</a>
 									<?php endif; ?>
@@ -513,7 +538,7 @@ while (have_posts()):
 						<?php if ($phone || $email): ?>
 							<div class="flex gap-4">
 								<div
-									class="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-chroma-blue text-lg shrink-0">
+									class="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-<?php echo esc_attr($region_colors['text']); ?> text-lg shrink-0">
 									<i class="fa-solid fa-phone"></i>
 								</div>
 								<div>
@@ -521,11 +546,11 @@ while (have_posts()):
 									<p class="text-sm text-brand-ink/70">
 										<?php if ($phone): ?>
 											Phone: <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9]/', '', $phone)); ?>"
-												class="hover:text-chroma-blue"><?php echo esc_html($phone); ?></a><br>
+												class="hover:text-<?php echo esc_attr($region_colors['text']); ?>"><?php echo esc_html($phone); ?></a><br>
 										<?php endif; ?>
 										<?php if ($email): ?>
 											Email: <a href="mailto:<?php echo esc_attr($email); ?>"
-												class="hover:text-chroma-blue"><?php echo esc_html($email); ?></a>
+												class="hover:text-<?php echo esc_attr($region_colors['text']); ?>"><?php echo esc_html($email); ?></a>
 										<?php endif; ?>
 									</p>
 								</div>
@@ -534,7 +559,7 @@ while (have_posts()):
 
 						<div class="flex gap-4">
 							<div
-								class="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-chroma-blue text-lg shrink-0">
+								class="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-<?php echo esc_attr($region_colors['text']); ?> text-lg shrink-0">
 								<i class="fa-solid fa-clock"></i>
 							</div>
 							<div>
@@ -552,7 +577,7 @@ while (have_posts()):
 								?>
 								<div class="flex gap-4">
 									<div
-										class="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-chroma-blue text-lg shrink-0">
+										class="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-<?php echo esc_attr($region_colors['text']); ?> text-lg shrink-0">
 										<i class="fa-solid fa-bus"></i>
 									</div>
 									<div>
@@ -601,7 +626,7 @@ while (have_posts()):
 
 				<!-- Form Side -->
 				<div id="tour"
-					class="bg-brand-cream p-8 md:p-10 rounded-[2.5rem] shadow-soft border border-chroma-blue/10 h-fit sticky top-28">
+					class="bg-brand-cream p-8 md:p-10 rounded-[2.5rem] shadow-soft border border-<?php echo esc_attr($region_colors['border']); ?>/10 h-fit sticky top-28">
 					<h3 class="font-serif text-2xl font-bold text-brand-ink mb-2">Request a Tour</h3>
 					<p class="text-sm text-brand-ink/80 mb-6">Fill out the form below and we'll contact you to confirm a
 						time.</p>

@@ -12,7 +12,7 @@
 		href="<?php echo esc_url(get_template_directory_uri() . '/assets/webfonts/PlayfairDisplay-Bold.woff2'); ?>"
 		crossorigin>
 	<?php wp_head(); ?>
-	<?php echo get_theme_mod( 'chroma_header_scripts' ); ?>
+	<?php echo get_theme_mod('chroma_header_scripts'); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -59,6 +59,17 @@
 					array_shift($all_lines);
 					$line2_array = array_filter($all_lines);
 				}
+
+				// Dynamic Region Color Logic
+				$secondary_text_class = 'text-chroma-blue'; // Default
+				if (is_singular('location')) {
+					$location_regions = wp_get_post_terms(get_the_ID(), 'location_region');
+					$region_term = !empty($location_regions) && !is_wp_error($location_regions) ? $location_regions[0] : null;
+					if ($region_term) {
+						$colors = chroma_get_region_color_from_term($region_term->term_id);
+						$secondary_text_class = $colors['text'];
+					}
+				}
 				?>
 				<?php if ($line1 || !empty($line2_array)): ?>
 					<div class="leading-tight">
@@ -67,7 +78,7 @@
 						<?php endif; ?>
 						<?php if (!empty($line2_array)): ?>
 							<?php foreach ($line2_array as $line2): ?>
-								<p class="text-[10px] uppercase tracking-[0.2em] text-chroma-blue"><?php echo esc_html($line2); ?>
+								<p class="text-[10px] uppercase tracking-[0.2em] <?php echo esc_attr($secondary_text_class); ?>"><?php echo esc_html($line2); ?>
 								</p>
 							<?php endforeach; ?>
 						<?php endif; ?>

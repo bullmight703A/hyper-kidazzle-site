@@ -459,3 +459,20 @@ function chroma_is_location_open($hours_string)
 
     return ($current_minutes >= $start_minutes && $current_minutes < $end_minutes);
 }
+
+/**
+ * Helper function to get region color from term meta
+ */
+function chroma_get_region_color_from_term($term_id)
+{
+    $color_bg = get_term_meta($term_id, 'region_color_bg', true);
+    $color_text = get_term_meta($term_id, 'region_color_text', true);
+    $color_border = get_term_meta($term_id, 'region_color_border', true);
+
+    // Fallback to default green if no colors set
+    return array(
+        'bg' => $color_bg ?: 'chroma-greenLight',
+        'text' => $color_text ?: 'chroma-green',
+        'border' => $color_border ?: 'chroma-green',
+    );
+}
