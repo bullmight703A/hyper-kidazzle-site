@@ -109,6 +109,22 @@ function chroma_enqueue_assets()
                         font-size: 1.25rem !important; /* Increase icon size */
                 }
                 
+                /* Footer Navigation Links - Touch Target Fix */
+                footer nav a {
+                        display: inline-block !important;
+                        min-height: 48px !important;
+                        min-width: 48px !important;
+                        padding: 12px 16px !important;
+                        line-height: 1.5 !important;
+                }
+                
+                /* Review Carousel Dots - Touch Target Fix (48px) */
+                [data-reviews-dots] button {
+                        min-width: 48px !important;
+                        min-height: 48px !important;
+                        padding: 12px !important;
+                }
+                
                 /* Form Labels - Ensure visibility if hidden */
                 .chroma-tour-form label {
                         display: block !important;
