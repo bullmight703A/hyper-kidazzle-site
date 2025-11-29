@@ -56,6 +56,7 @@ require_once CHROMA_THEME_DIR . '/inc/about-seo.php';
 require_once CHROMA_THEME_DIR . '/inc/customizer-home.php';
 require_once CHROMA_THEME_DIR . '/inc/customizer-header.php';
 require_once CHROMA_THEME_DIR . '/inc/customizer-footer.php';
+require_once CHROMA_THEME_DIR . '/inc/customizer-locations.php';
 
 // Legacy helper files (ACF plugin optional; helpers run on core WP functions only)
 require_once CHROMA_THEME_DIR . '/inc/acf-options.php';
@@ -284,7 +285,7 @@ function chroma_lazy_load_leadconnector()
     <script>
         (function () {
             var loaded = false;
-            
+
             // Function to load the widget
             var loadWidget = function () {
                 if (loaded) return;
@@ -312,7 +313,7 @@ function chroma_lazy_load_leadconnector()
                 // Mobile: Lazy load after 3.5 seconds
                 console.log('Mobile detected: Lazy loading LeadConnector (3.5s delay)');
                 setTimeout(loadWidget, 3500);
-                
+
                 // Or on user interaction
                 var events = ['mousedown', 'touchstart', 'keydown', 'scroll'];
                 events.forEach(function (event) {
@@ -321,7 +322,7 @@ function chroma_lazy_load_leadconnector()
             } else {
                 // Desktop: Load immediately (but defer slightly to let LCP finish)
                 console.log('Desktop detected: Loading LeadConnector immediately');
-                setTimeout(loadWidget, 100); 
+                setTimeout(loadWidget, 100);
             }
         })();
     </script>
