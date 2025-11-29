@@ -127,7 +127,7 @@
 				<button data-mobile-nav-toggle class="text-3xl text-brand-ink" aria-label="Close menu">×</button>
 			</div>
 			<nav class="flex-1 px-6 py-6 text-lg font-semibold text-brand-ink space-y-6">
-				<?php chroma_primary_nav(); ?>
+				<?php chroma_mobile_nav(); ?>
 				<a href="<?php echo esc_url(home_url('/contact#tour')); ?>"
 					class="block bg-brand-ink text-white text-center py-3 rounded-2xl shadow-soft hover:bg-chroma-blueDark transition mt-4">
 					Book A Tour
