@@ -128,6 +128,16 @@ function chroma_footer_contact_nav()
  */
 class Chroma_Primary_Nav_Walker extends Walker_Nav_Menu
 {
+	function start_lvl(&$output, $depth = 0, $args = null)
+	{
+		// No submenu wrapper needed
+	}
+
+	function end_lvl(&$output, $depth = 0, $args = null)
+	{
+		// No submenu wrapper needed
+	}
+
 	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 	{
 		$classes = 'hover:text-chroma-blue transition';
@@ -152,6 +162,16 @@ class Chroma_Primary_Nav_Walker extends Walker_Nav_Menu
  */
 class Chroma_Footer_Nav_Walker extends Walker_Nav_Menu
 {
+	function start_lvl(&$output, $depth = 0, $args = null)
+	{
+		// No submenu wrapper needed
+	}
+
+	function end_lvl(&$output, $depth = 0, $args = null)
+	{
+		// No submenu wrapper needed
+	}
+
 	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 	{
 		$output .= '<a href="' . esc_url($item->url) . '" class="block hover:text-white transition">';
@@ -198,6 +218,16 @@ function chroma_mobile_nav_fallback()
  */
 class Chroma_Mobile_Nav_Walker extends Walker_Nav_Menu
 {
+	function start_lvl(&$output, $depth = 0, $args = null)
+	{
+		// No submenu wrapper needed
+	}
+
+	function end_lvl(&$output, $depth = 0, $args = null)
+	{
+		// No submenu wrapper needed
+	}
+
 	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 	{
 		$classes = 'block py-3 border-b border-brand-ink/5 text-lg font-semibold text-brand-ink hover:text-chroma-blue transition';
