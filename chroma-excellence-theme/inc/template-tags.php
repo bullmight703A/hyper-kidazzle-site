@@ -7,21 +7,22 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
 /**
  * Trimmed Excerpt
  */
-function chroma_trimmed_excerpt( $length = 20, $post_id = null ) {
+function chroma_trimmed_excerpt($length = 20, $post_id = null)
+{
     $post_id = $post_id ?: get_the_ID();
-    $excerpt = has_excerpt( $post_id ) ? get_the_excerpt( $post_id ) : get_the_content( null, false, $post_id );
-    $excerpt = wp_strip_all_tags( $excerpt );
-    $words   = explode( ' ', $excerpt );
+    $excerpt = has_excerpt($post_id) ? get_the_excerpt($post_id) : get_the_content(null, false, $post_id);
+    $excerpt = wp_strip_all_tags($excerpt);
+    $words = explode(' ', $excerpt);
 
-    if ( count( $words ) > $length ) {
-        $excerpt = implode( ' ', array_slice( $words, 0, $length ) ) . '...';
+    if (count($words) > $length) {
+        $excerpt = implode(' ', array_slice($words, 0, $length)) . '...';
     }
 
     return $excerpt;
@@ -30,10 +31,11 @@ function chroma_trimmed_excerpt( $length = 20, $post_id = null ) {
 /**
  * Safe meta accessor
  */
-function chroma_get_meta_value( $post_id, $key, $default = '' ) {
-    $value = get_post_meta( $post_id, $key, true );
+function chroma_get_meta_value($post_id, $key, $default = '')
+{
+    $value = get_post_meta($post_id, $key, true);
 
-    if ( '' === $value || null === $value ) {
+    if ('' === $value || null === $value) {
         return $default;
     }
 
@@ -43,62 +45,96 @@ function chroma_get_meta_value( $post_id, $key, $default = '' ) {
 /**
  * Location meta bundle
  */
-function chroma_get_location_fields( $post_id = null ) {
+function chroma_get_location_fields($post_id = null)
+{
     $post_id = $post_id ?: get_the_ID();
 
     return array(
-        'address'   => chroma_get_meta_value( $post_id, 'location_address', '' ),
-        'city'      => chroma_get_meta_value( $post_id, 'location_city', '' ),
-        'state'     => chroma_get_meta_value( $post_id, 'location_state', 'GA' ),
-        'zip'       => chroma_get_meta_value( $post_id, 'location_zip', '' ),
-        'phone'     => chroma_get_meta_value( $post_id, 'location_phone', '' ),
-        'email'     => chroma_get_meta_value( $post_id, 'location_email', '' ),
-        'latitude'  => chroma_get_meta_value( $post_id, 'location_latitude', '' ),
-        'longitude' => chroma_get_meta_value( $post_id, 'location_longitude', '' ),
+        'address' => chroma_get_meta_value($post_id, 'location_address', ''),
+        'city' => chroma_get_meta_value($post_id, 'location_city', ''),
+        'state' => chroma_get_meta_value($post_id, 'location_state', 'GA'),
+        'zip' => chroma_get_meta_value($post_id, 'location_zip', ''),
+        'phone' => chroma_get_meta_value($post_id, 'location_phone', ''),
+        'email' => chroma_get_meta_value($post_id, 'location_email', ''),
+        'latitude' => chroma_get_meta_value($post_id, 'location_latitude', ''),
+        'longitude' => chroma_get_meta_value($post_id, 'location_longitude', ''),
     );
 }
 
 /**
  * Program meta bundle
  */
-function chroma_get_program_fields( $post_id = null ) {
+function chroma_get_program_fields($post_id = null)
+{
     $post_id = $post_id ?: get_the_ID();
 
+    // Get manual icon override
+    $icon = chroma_get_meta_value($post_id, 'program_icon', '');
+
+    // Smart Defaults if no manual icon set
+    if (empty($icon)) {
+        $slug = get_post_field('post_name', $post_id);
+
+        // Map slugs to emojis
+        if (strpos($slug, 'infant') !== false) {
+            $icon = '👶';
+        } elseif (strpos($slug, 'toddler') !== false) {
+            $icon = '🚀';
+        } elseif (strpos($slug, 'preschool') !== false) {
+            $icon = '🎨';
+        } elseif (strpos($slug, 'pre-k') !== false || strpos($slug, 'prek') !== false) {
+            $icon = '🖍️'; // Pre-K Prep
+            if (strpos($slug, 'ga') !== false) {
+                $icon = '🎓'; // GA Pre-K
+            }
+        } elseif (strpos($slug, 'school') !== false) {
+            $icon = '🚌'; // After School / Schoolagers
+        } elseif (strpos($slug, 'camp') !== false) {
+            $icon = '☀️';
+        } elseif (strpos($slug, 'parent') !== false) {
+            $icon = '🎉';
+        } else {
+            $icon = 'fas fa-child'; // Fallback
+        }
+    }
+
     return array(
-        'age_range' => chroma_get_meta_value( $post_id, 'program_age_range', '' ),
-        'excerpt'   => chroma_get_meta_value( $post_id, 'program_short_description', '' ),
-        'icon'      => chroma_get_meta_value( $post_id, 'program_icon_class', 'fas fa-child' ),
-        'color'     => chroma_get_meta_value( $post_id, 'program_color', 'chroma-teal' ),
+        'age_range' => chroma_get_meta_value($post_id, 'program_age_range', ''),
+        'excerpt' => chroma_get_meta_value($post_id, 'program_short_description', ''),
+        'icon' => $icon,
+        'color' => chroma_get_meta_value($post_id, 'program_color', 'chroma-teal'),
     );
 }
 
 /**
  * Program anchor slug helper
  */
-function chroma_get_program_anchor_slug( $post_id = null ) {
+function chroma_get_program_anchor_slug($post_id = null)
+{
     $post_id = $post_id ?: get_the_ID();
-    $anchor  = chroma_get_meta_value( $post_id, 'program_anchor_slug', '' );
+    $anchor = chroma_get_meta_value($post_id, 'program_anchor_slug', '');
 
-    if ( ! $anchor ) {
-        $anchor = get_post_field( 'post_name', $post_id );
+    if (!$anchor) {
+        $anchor = get_post_field('post_name', $post_id);
     }
 
-    return sanitize_title( $anchor );
+    return sanitize_title($anchor);
 }
 
 /**
  * Program SEO intro fields
  */
-function chroma_get_program_seo_fields( $post_id = null ) {
+function chroma_get_program_seo_fields($post_id = null)
+{
     $post_id = $post_id ?: get_the_ID();
 
-    $highlights = chroma_get_meta_value( $post_id, 'program_seo_highlights', '' );
-    $highlights = preg_split( '/\r\n|\r|\n/', $highlights );
-    $highlights = array_filter( array_map( 'trim', (array) $highlights ) );
+    $highlights = chroma_get_meta_value($post_id, 'program_seo_highlights', '');
+    $highlights = preg_split('/\r\n|\r|\n/', $highlights);
+    $highlights = array_filter(array_map('trim', (array) $highlights));
 
     return array(
-        'heading'    => chroma_get_meta_value( $post_id, 'program_seo_heading', '' ),
-        'summary'    => chroma_get_meta_value( $post_id, 'program_seo_summary', '' ),
+        'heading' => chroma_get_meta_value($post_id, 'program_seo_heading', ''),
+        'summary' => chroma_get_meta_value($post_id, 'program_seo_summary', ''),
         'highlights' => $highlights,
     );
 }
@@ -106,16 +142,17 @@ function chroma_get_program_seo_fields( $post_id = null ) {
 /**
  * Program SEO meta tags
  */
-function chroma_get_program_meta_tags( $post_id = null ) {
-    $post_id   = $post_id ?: get_the_ID();
-    $meta_desc = chroma_get_meta_value( $post_id, 'program_meta_description', '' );
+function chroma_get_program_meta_tags($post_id = null)
+{
+    $post_id = $post_id ?: get_the_ID();
+    $meta_desc = chroma_get_meta_value($post_id, 'program_meta_description', '');
 
-    if ( ! $meta_desc ) {
-        $meta_desc = has_excerpt( $post_id ) ? get_the_excerpt( $post_id ) : chroma_trimmed_excerpt( 32, $post_id );
+    if (!$meta_desc) {
+        $meta_desc = has_excerpt($post_id) ? get_the_excerpt($post_id) : chroma_trimmed_excerpt(32, $post_id);
     }
 
     return array(
-        'title'       => chroma_get_meta_value( $post_id, 'program_meta_title', get_the_title( $post_id ) ),
+        'title' => chroma_get_meta_value($post_id, 'program_meta_title', get_the_title($post_id)),
         'description' => $meta_desc,
     );
 }
@@ -123,28 +160,29 @@ function chroma_get_program_meta_tags( $post_id = null ) {
 /**
  * Program FAQ items as structured array
  */
-function chroma_get_program_faq_items( $post_id = null ) {
+function chroma_get_program_faq_items($post_id = null)
+{
     $post_id = $post_id ?: get_the_ID();
-    $raw     = chroma_get_meta_value( $post_id, 'program_faq_items', '' );
+    $raw = chroma_get_meta_value($post_id, 'program_faq_items', '');
 
-    if ( ! $raw ) {
+    if (!$raw) {
         return array();
     }
 
-    $rows = preg_split( '/\r\n|\r|\n/', $raw );
-    $rows = array_filter( array_map( 'trim', (array) $rows ) );
-    $faq  = array();
+    $rows = preg_split('/\r\n|\r|\n/', $raw);
+    $rows = array_filter(array_map('trim', (array) $rows));
+    $faq = array();
 
-    foreach ( $rows as $row ) {
-        $parts = array_map( 'trim', explode( '|', $row, 2 ) );
+    foreach ($rows as $row) {
+        $parts = array_map('trim', explode('|', $row, 2));
 
-        if ( count( $parts ) < 2 || ! $parts[0] || ! $parts[1] ) {
+        if (count($parts) < 2 || !$parts[0] || !$parts[1]) {
             continue;
         }
 
         $faq[] = array(
-            'question' => wp_strip_all_tags( $parts[0] ),
-            'answer'   => wp_kses_post( $parts[1] ),
+            'question' => wp_strip_all_tags($parts[0]),
+            'answer' => wp_kses_post($parts[1]),
         );
     }
 
@@ -154,40 +192,42 @@ function chroma_get_program_faq_items( $post_id = null ) {
 /**
  * Render FAQ schema JSON-LD
  */
-function chroma_render_program_faq_schema( $faq_items ) {
-    if ( empty( $faq_items ) ) {
+function chroma_render_program_faq_schema($faq_items)
+{
+    if (empty($faq_items)) {
         return;
     }
 
     $entities = array();
 
-    foreach ( $faq_items as $item ) {
+    foreach ($faq_items as $item) {
         $entities[] = array(
-            '@type'          => 'Question',
-            'name'           => $item['question'],
+            '@type' => 'Question',
+            'name' => $item['question'],
             'acceptedAnswer' => array(
                 '@type' => 'Answer',
-                'text'  => wp_strip_all_tags( $item['answer'] ),
+                'text' => wp_strip_all_tags($item['answer']),
             ),
         );
     }
 
     $schema = array(
-        '@context'    => 'https://schema.org',
-        '@type'       => 'FAQPage',
-        'mainEntity'  => $entities,
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => $entities,
     );
 
-    echo '<script type="application/ld+json">' . wp_json_encode( $schema ) . '</script>';
+    echo '<script type="application/ld+json">' . wp_json_encode($schema) . '</script>';
 }
 
 /**
  * Cached lookup of program anchors keyed by slug and title
  */
-function chroma_get_program_anchor_lookup() {
+function chroma_get_program_anchor_lookup()
+{
     static $lookup;
 
-    if ( null !== $lookup ) {
+    if (null !== $lookup) {
         return $lookup;
     }
 
@@ -195,23 +235,23 @@ function chroma_get_program_anchor_lookup() {
 
     $programs = get_posts(
         array(
-            'post_type'      => 'program',
-            'post_status'    => 'publish',
+            'post_type' => 'program',
+            'post_status' => 'publish',
             'posts_per_page' => -1,
-            'fields'         => 'ids',
-            'orderby'        => 'menu_order title',
-            'order'          => 'ASC',
+            'fields' => 'ids',
+            'orderby' => 'menu_order title',
+            'order' => 'ASC',
         )
     );
 
-    foreach ( $programs as $program_id ) {
-        $anchor        = chroma_get_program_anchor_slug( $program_id );
-        $slug          = get_post_field( 'post_name', $program_id );
-        $title_anchor  = sanitize_title( get_the_title( $program_id ) );
+    foreach ($programs as $program_id) {
+        $anchor = chroma_get_program_anchor_slug($program_id);
+        $slug = get_post_field('post_name', $program_id);
+        $title_anchor = sanitize_title(get_the_title($program_id));
 
-        $lookup[ $anchor ]       = $anchor;
-        $lookup[ $slug ]         = $anchor;
-        $lookup[ $title_anchor ] = $anchor;
+        $lookup[$anchor] = $anchor;
+        $lookup[$slug] = $anchor;
+        $lookup[$title_anchor] = $anchor;
     }
 
     return $lookup;
@@ -220,78 +260,83 @@ function chroma_get_program_anchor_lookup() {
 /**
  * Resolve an anchor slug for a given program key
  */
-function chroma_program_anchor_for_key( $key ) {
+function chroma_program_anchor_for_key($key)
+{
     $lookup = chroma_get_program_anchor_lookup();
-    $key    = sanitize_title( $key );
+    $key = sanitize_title($key);
 
-    return $lookup[ $key ] ?? $key;
+    return $lookup[$key] ?? $key;
 }
 
 /**
  * Program color class mapping
  */
-function chroma_program_color_classes( $color_key ) {
+function chroma_program_color_classes($color_key)
+{
     $map = array(
-        'chroma-teal'   => array(
+        'chroma-teal' => array(
             'gradient_from' => 'from-chroma-teal/10',
-            'gradient_to'   => 'to-chroma-teal/5',
-            'text'          => 'text-chroma-teal',
-            'button'        => 'bg-chroma-teal',
+            'gradient_to' => 'to-chroma-teal/5',
+            'text' => 'text-chroma-teal',
+            'button' => 'bg-chroma-teal',
         ),
-        'chroma-red'    => array(
+        'chroma-red' => array(
             'gradient_from' => 'from-chroma-red/10',
-            'gradient_to'   => 'to-chroma-red/5',
-            'text'          => 'text-chroma-red',
-            'button'        => 'bg-chroma-red',
+            'gradient_to' => 'to-chroma-red/5',
+            'text' => 'text-chroma-red',
+            'button' => 'bg-chroma-red',
         ),
         'chroma-yellow' => array(
             'gradient_from' => 'from-chroma-yellow/10',
-            'gradient_to'   => 'to-chroma-yellow/5',
-            'text'          => 'text-chroma-yellow',
-            'button'        => 'bg-chroma-yellow',
+            'gradient_to' => 'to-chroma-yellow/5',
+            'text' => 'text-chroma-yellow',
+            'button' => 'bg-chroma-yellow',
         ),
-        'chroma-blue'   => array(
+        'chroma-blue' => array(
             'gradient_from' => 'from-chroma-blue/10',
-            'gradient_to'   => 'to-chroma-blue/5',
-            'text'          => 'text-chroma-blue',
-            'button'        => 'bg-chroma-blue',
+            'gradient_to' => 'to-chroma-blue/5',
+            'text' => 'text-chroma-blue',
+            'button' => 'bg-chroma-blue',
         ),
-        'chroma-green'  => array(
+        'chroma-green' => array(
             'gradient_from' => 'from-chroma-green/10',
-            'gradient_to'   => 'to-chroma-green/5',
-            'text'          => 'text-chroma-green',
-            'button'        => 'bg-chroma-green',
+            'gradient_to' => 'to-chroma-green/5',
+            'text' => 'text-chroma-green',
+            'button' => 'bg-chroma-green',
         ),
     );
 
-    return $map[ $color_key ] ?? $map['chroma-teal'];
+    return $map[$color_key] ?? $map['chroma-teal'];
 }
 
 /**
  * Eyebrow Badge
  */
-function chroma_eyebrow( $text, $color = 'blue' ) {
+function chroma_eyebrow($text, $color = 'blue')
+{
     $color_class = 'text-chroma-' . $color;
-    echo '<span class="' . esc_attr( $color_class ) . ' font-bold tracking-[0.2em] text-[11px] uppercase mb-3 block">' . esc_html( $text ) . '</span>';
+    echo '<span class="' . esc_attr($color_class) . ' font-bold tracking-[0.2em] text-[11px] uppercase mb-3 block">' . esc_html($text) . '</span>';
 }
 
 /**
  * Archive Pagination
  */
-function chroma_archive_pagination() {
-    the_posts_pagination( array(
-        'mid_size'  => 2,
-        'prev_text' => __( '← Previous', 'chroma-excellence' ),
-        'next_text' => __( 'Next →', 'chroma-excellence' ),
-        'class'     => 'flex items-center justify-center gap-2 mt-12',
-    ) );
+function chroma_archive_pagination()
+{
+    the_posts_pagination(array(
+        'mid_size' => 2,
+        'prev_text' => __('← Previous', 'chroma-excellence'),
+        'next_text' => __('Next →', 'chroma-excellence'),
+        'class' => 'flex items-center justify-center gap-2 mt-12',
+    ));
 }
 
 /**
  * Location Address Line
  */
-function chroma_location_address_line( $post_id = null ) {
-    $fields  = chroma_get_location_fields( $post_id );
+function chroma_location_address_line($post_id = null)
+{
+    $fields = chroma_get_location_fields($post_id);
     $address = $fields['address'];
 
     return $address ?: '';
@@ -300,12 +345,13 @@ function chroma_location_address_line( $post_id = null ) {
 /**
  * Location City State
  */
-function chroma_location_city_state( $post_id = null ) {
-    $fields = chroma_get_location_fields( $post_id );
-    $city   = $fields['city'];
-    $state  = $fields['state'];
+function chroma_location_city_state($post_id = null)
+{
+    $fields = chroma_get_location_fields($post_id);
+    $city = $fields['city'];
+    $state = $fields['state'];
 
-    if ( ! $city ) {
+    if (!$city) {
         return '';
     }
 
@@ -315,12 +361,13 @@ function chroma_location_city_state( $post_id = null ) {
 /**
  * Badge Helper
  */
-function chroma_badge( $text, $color = 'blue' ) {
-    $bg_class   = 'bg-chroma-' . $color . '/10';
+function chroma_badge($text, $color = 'blue')
+{
+    $bg_class = 'bg-chroma-' . $color . '/10';
     $text_class = 'text-chroma-' . $color;
 
-    echo '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ' . esc_attr( $bg_class . ' ' . $text_class ) . '">';
-    echo esc_html( $text );
+    echo '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ' . esc_attr($bg_class . ' ' . $text_class) . '">';
+    echo esc_html($text);
     echo '</span>';
 }
 
@@ -331,33 +378,34 @@ function chroma_badge( $text, $color = 'blue' ) {
  * @param string $url The URL to sanitize
  * @return string Sanitized URL or empty string if invalid
  */
-function chroma_sanitize_url_field( $url ) {
-    if ( empty( $url ) ) {
+function chroma_sanitize_url_field($url)
+{
+    if (empty($url)) {
         return '';
     }
 
-    $url = trim( $url );
+    $url = trim($url);
 
     // Check if it's a mailto link
-    if ( strpos( $url, 'mailto:' ) === 0 ) {
-        return sanitize_email( str_replace( 'mailto:', '', $url ) ) ? $url : '';
+    if (strpos($url, 'mailto:') === 0) {
+        return sanitize_email(str_replace('mailto:', '', $url)) ? $url : '';
     }
 
     // Check if it's a tel link
-    if ( strpos( $url, 'tel:' ) === 0 ) {
+    if (strpos($url, 'tel:') === 0) {
         return $url; // Tel links are generally safe
     }
 
     // Check if it's an anchor link (starting with #)
-    if ( strpos( $url, '#' ) === 0 ) {
-        return sanitize_text_field( $url );
+    if (strpos($url, '#') === 0) {
+        return sanitize_text_field($url);
     }
 
     // For regular URLs, use esc_url_raw
-    $sanitized = esc_url_raw( $url, array( 'http', 'https' ) );
+    $sanitized = esc_url_raw($url, array('http', 'https'));
 
     // Validate that it's a proper URL
-    if ( filter_var( $sanitized, FILTER_VALIDATE_URL ) ) {
+    if (filter_var($sanitized, FILTER_VALIDATE_URL)) {
         return $sanitized;
     }
 
