@@ -29,6 +29,9 @@ function chroma_should_load_maps()
  */
 function chroma_enqueue_assets()
 {
+        // DEBUG: Confirm this function is executing
+        echo '<!-- DEBUG: chroma_enqueue_assets is running -->';
+
         $script_dependencies = array();
 
         // Self-Hosted Fonts (Outfit, Playfair Display).
