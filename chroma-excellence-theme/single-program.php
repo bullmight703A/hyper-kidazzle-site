@@ -75,7 +75,7 @@ while (have_posts()):
 					</h1>
 
 					<?php if ($hero_description): ?>
-						<p class="text-lg text-brand-ink/70 mb-12 max-w-2xl">
+						<p class="text-lg text-brand-ink/70 mb-20 max-w-2xl">
 							<?php echo wp_kses_post(wpautop($hero_description)); ?>
 						</p>
 					<?php endif; ?>
@@ -184,20 +184,6 @@ while (have_posts()):
 			<?php endif; endif; ?>
 
 		<!-- CTA Section -->
-		<section class="py-20 bg-brand-cream">
-			<div class="max-w-4xl mx-auto px-4 lg:px-6 text-center">
-				<h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-ink mb-6">Ready to learn more?</h2>
-				<p class="text-brand-ink/70 mb-10">Schedule a tour to see our <?php echo esc_html(get_the_title()); ?>
-					program in action and meet our dedicated teachers.</p>
-				<div class="flex flex-wrap justify-center gap-4">
-					<a href="<?php echo esc_url(home_url('/locations')); ?>"
-						class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
-						Find a Location
-					</a>
-					<a href="#tour"
-						class="px-8 py-4 bg-<?php echo esc_attr($colors['main']); ?> text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:opacity-90 transition-colors shadow-lg">
-						Schedule a Tour
-					</a>
 				</div>
 			</div>
 		</section>
