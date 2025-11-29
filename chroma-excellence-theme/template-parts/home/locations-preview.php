@@ -46,17 +46,15 @@ $grouped = $locations_data['grouped'] ?? array();
                     <?php
                     $region_label = $group['label'] ?? '';
                     $term_id = $group['term_id'] ?? 0;
-
+                    
                     // Get dynamic colors
                     $region_colors = chroma_get_region_color_from_term($term_id);
                     ?>
-                    <div
-                        class="bg-white border border-<?php echo esc_attr($region_colors['border']); ?>/10 rounded-3xl p-6 shadow-soft">
+                    <div class="bg-white border border-<?php echo esc_attr($region_colors['border']); ?>/10 rounded-3xl p-6 shadow-soft">
                         <div class="flex items-center gap-2 mb-3">
                             <span class="text-xl"><?php echo esc_html(chroma_region_emoji($region_label)); ?></span>
                             <h3 class="text-xs uppercase tracking-[0.18em] text-brand-ink/60 font-semibold">
-                                <?php echo esc_html($region_label); ?>
-                            </h3>
+                                <?php echo esc_html($region_label); ?></h3>
                         </div>
                         <?php if (!empty($group['locations'])): ?>
                             <ul class="space-y-4">
@@ -71,13 +69,13 @@ $grouped = $locations_data['grouped'] ?? array();
                                     $hover_bg = 'hover:bg-' . $region_colors['bg'];
                                     ?>
                                     <li class="pb-2">
-                                        <div
-                                            class="flex items-start justify-between gap-3 p-3 rounded-xl border border-<?php echo esc_attr($region_colors['border']); ?>/10 <?php echo esc_attr($hover_border . ' ' . $hover_bg); ?> transition">
+                                        <a href="<?php echo esc_url($url); ?>"
+                                            class="group flex items-start justify-between gap-3 p-3 rounded-xl border border-<?php echo esc_attr($region_colors['border']); ?>/10 <?php echo esc_attr($hover_border . ' ' . $hover_bg); ?> transition block">
                                             <div>
-                                                <a href="<?php echo esc_url($url); ?>"
-                                                    class="text-lg font-semibold text-brand-ink hover:text-<?php echo esc_attr($region_colors['text']); ?> transition-colors">
+                                                <div
+                                                    class="text-lg font-semibold text-brand-ink group-hover:text-<?php echo esc_attr($region_colors['text']); ?> transition-colors">
                                                     <?php echo esc_html($location['title']); ?>
-                                                </a>
+                                                </div>
                                                 <?php if ($city && $state): ?>
                                                     <div class="text-<?php echo esc_attr($region_colors['text']); ?> font-semibold">
                                                         <?php echo esc_html($city . ', ' . strtoupper($state)); ?>
@@ -96,7 +94,7 @@ $grouped = $locations_data['grouped'] ?? array();
                                                     </p>
                                                 <?php endif; ?>
                                             </div>
-                                        </div>
+                                        </a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>

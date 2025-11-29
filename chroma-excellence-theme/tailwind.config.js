@@ -47,7 +47,7 @@ module.exports = {
     // Dynamic Chroma Colors (bg, text, border, gradients)
     {
       pattern: /(bg|text|border|from)-chroma-(red|blue|green|yellow|purple|orange|teal)(Light|Dark)?/,
-      variants: ['hover'],
+      variants: ['hover', 'group-hover'],
     },
     // Opacity variants for backgrounds and borders
     {

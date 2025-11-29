@@ -791,6 +791,9 @@ a:focus:not(:focus-visible),
 .mr-1 {
   margin-right: 0.25rem;
 }
+.mr-2 {
+  margin-right: 0.5rem;
+}
 .mt-0\.5 {
   margin-top: 0.125rem;
 }
@@ -5227,6 +5230,9 @@ a:focus:not(:focus-visible),
 }
 .p-2 {
   padding: 0.5rem;
+}
+.p-3 {
+  padding: 0.75rem;
 }
 .p-4 {
   padding: 1rem;
@@ -12977,13 +12983,5993 @@ a:focus:not(:focus-visible),
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.group:hover .group-hover\:border-chroma-blue {
+  --tw-border-opacity: 1;
+  border-color: rgb(74 108 124 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-blue\/0 {
+  border-color: rgb(74 108 124 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/10 {
+  border-color: rgb(74 108 124 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/100 {
+  border-color: rgb(74 108 124 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/15 {
+  border-color: rgb(74 108 124 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/20 {
+  border-color: rgb(74 108 124 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/25 {
+  border-color: rgb(74 108 124 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/30 {
+  border-color: rgb(74 108 124 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/35 {
+  border-color: rgb(74 108 124 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/40 {
+  border-color: rgb(74 108 124 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/45 {
+  border-color: rgb(74 108 124 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/5 {
+  border-color: rgb(74 108 124 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/50 {
+  border-color: rgb(74 108 124 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/55 {
+  border-color: rgb(74 108 124 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/60 {
+  border-color: rgb(74 108 124 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/65 {
+  border-color: rgb(74 108 124 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/70 {
+  border-color: rgb(74 108 124 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/75 {
+  border-color: rgb(74 108 124 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/80 {
+  border-color: rgb(74 108 124 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/85 {
+  border-color: rgb(74 108 124 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/90 {
+  border-color: rgb(74 108 124 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-blue\/95 {
+  border-color: rgb(74 108 124 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark {
+  --tw-border-opacity: 1;
+  border-color: rgb(47 72 88 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/0 {
+  border-color: rgb(47 72 88 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/10 {
+  border-color: rgb(47 72 88 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/100 {
+  border-color: rgb(47 72 88 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/15 {
+  border-color: rgb(47 72 88 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/20 {
+  border-color: rgb(47 72 88 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/25 {
+  border-color: rgb(47 72 88 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/30 {
+  border-color: rgb(47 72 88 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/35 {
+  border-color: rgb(47 72 88 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/40 {
+  border-color: rgb(47 72 88 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/45 {
+  border-color: rgb(47 72 88 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/5 {
+  border-color: rgb(47 72 88 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/50 {
+  border-color: rgb(47 72 88 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/55 {
+  border-color: rgb(47 72 88 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/60 {
+  border-color: rgb(47 72 88 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/65 {
+  border-color: rgb(47 72 88 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/70 {
+  border-color: rgb(47 72 88 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/75 {
+  border-color: rgb(47 72 88 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/80 {
+  border-color: rgb(47 72 88 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/85 {
+  border-color: rgb(47 72 88 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/90 {
+  border-color: rgb(47 72 88 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-blueDark\/95 {
+  border-color: rgb(47 72 88 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight {
+  --tw-border-opacity: 1;
+  border-color: rgb(227 233 236 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/0 {
+  border-color: rgb(227 233 236 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/10 {
+  border-color: rgb(227 233 236 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/100 {
+  border-color: rgb(227 233 236 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/15 {
+  border-color: rgb(227 233 236 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/20 {
+  border-color: rgb(227 233 236 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/25 {
+  border-color: rgb(227 233 236 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/30 {
+  border-color: rgb(227 233 236 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/35 {
+  border-color: rgb(227 233 236 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/40 {
+  border-color: rgb(227 233 236 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/45 {
+  border-color: rgb(227 233 236 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/5 {
+  border-color: rgb(227 233 236 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/50 {
+  border-color: rgb(227 233 236 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/55 {
+  border-color: rgb(227 233 236 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/60 {
+  border-color: rgb(227 233 236 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/65 {
+  border-color: rgb(227 233 236 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/70 {
+  border-color: rgb(227 233 236 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/75 {
+  border-color: rgb(227 233 236 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/80 {
+  border-color: rgb(227 233 236 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/85 {
+  border-color: rgb(227 233 236 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/90 {
+  border-color: rgb(227 233 236 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-blueLight\/95 {
+  border-color: rgb(227 233 236 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-green {
+  --tw-border-opacity: 1;
+  border-color: rgb(74 124 89 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-green\/0 {
+  border-color: rgb(74 124 89 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-green\/10 {
+  border-color: rgb(74 124 89 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-green\/100 {
+  border-color: rgb(74 124 89 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-green\/15 {
+  border-color: rgb(74 124 89 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-green\/20 {
+  border-color: rgb(74 124 89 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-green\/25 {
+  border-color: rgb(74 124 89 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-green\/30 {
+  border-color: rgb(74 124 89 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-green\/35 {
+  border-color: rgb(74 124 89 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-green\/40 {
+  border-color: rgb(74 124 89 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-green\/45 {
+  border-color: rgb(74 124 89 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-green\/5 {
+  border-color: rgb(74 124 89 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-green\/50 {
+  border-color: rgb(74 124 89 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-green\/55 {
+  border-color: rgb(74 124 89 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-green\/60 {
+  border-color: rgb(74 124 89 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-green\/65 {
+  border-color: rgb(74 124 89 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-green\/70 {
+  border-color: rgb(74 124 89 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-green\/75 {
+  border-color: rgb(74 124 89 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-green\/80 {
+  border-color: rgb(74 124 89 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-green\/85 {
+  border-color: rgb(74 124 89 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-green\/90 {
+  border-color: rgb(74 124 89 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-green\/95 {
+  border-color: rgb(74 124 89 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight {
+  --tw-border-opacity: 1;
+  border-color: rgb(227 236 230 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/0 {
+  border-color: rgb(227 236 230 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/10 {
+  border-color: rgb(227 236 230 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/100 {
+  border-color: rgb(227 236 230 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/15 {
+  border-color: rgb(227 236 230 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/20 {
+  border-color: rgb(227 236 230 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/25 {
+  border-color: rgb(227 236 230 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/30 {
+  border-color: rgb(227 236 230 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/35 {
+  border-color: rgb(227 236 230 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/40 {
+  border-color: rgb(227 236 230 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/45 {
+  border-color: rgb(227 236 230 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/5 {
+  border-color: rgb(227 236 230 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/50 {
+  border-color: rgb(227 236 230 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/55 {
+  border-color: rgb(227 236 230 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/60 {
+  border-color: rgb(227 236 230 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/65 {
+  border-color: rgb(227 236 230 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/70 {
+  border-color: rgb(227 236 230 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/75 {
+  border-color: rgb(227 236 230 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/80 {
+  border-color: rgb(227 236 230 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/85 {
+  border-color: rgb(227 236 230 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/90 {
+  border-color: rgb(227 236 230 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-greenLight\/95 {
+  border-color: rgb(227 236 230 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-orange {
+  --tw-border-opacity: 1;
+  border-color: rgb(194 101 36 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-orange\/0 {
+  border-color: rgb(194 101 36 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/10 {
+  border-color: rgb(194 101 36 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/100 {
+  border-color: rgb(194 101 36 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/15 {
+  border-color: rgb(194 101 36 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/20 {
+  border-color: rgb(194 101 36 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/25 {
+  border-color: rgb(194 101 36 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/30 {
+  border-color: rgb(194 101 36 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/35 {
+  border-color: rgb(194 101 36 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/40 {
+  border-color: rgb(194 101 36 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/45 {
+  border-color: rgb(194 101 36 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/5 {
+  border-color: rgb(194 101 36 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/50 {
+  border-color: rgb(194 101 36 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/55 {
+  border-color: rgb(194 101 36 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/60 {
+  border-color: rgb(194 101 36 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/65 {
+  border-color: rgb(194 101 36 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/70 {
+  border-color: rgb(194 101 36 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/75 {
+  border-color: rgb(194 101 36 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/80 {
+  border-color: rgb(194 101 36 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/85 {
+  border-color: rgb(194 101 36 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/90 {
+  border-color: rgb(194 101 36 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-orange\/95 {
+  border-color: rgb(194 101 36 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 240 230 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/0 {
+  border-color: rgb(254 240 230 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/10 {
+  border-color: rgb(254 240 230 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/100 {
+  border-color: rgb(254 240 230 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/15 {
+  border-color: rgb(254 240 230 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/20 {
+  border-color: rgb(254 240 230 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/25 {
+  border-color: rgb(254 240 230 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/30 {
+  border-color: rgb(254 240 230 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/35 {
+  border-color: rgb(254 240 230 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/40 {
+  border-color: rgb(254 240 230 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/45 {
+  border-color: rgb(254 240 230 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/5 {
+  border-color: rgb(254 240 230 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/50 {
+  border-color: rgb(254 240 230 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/55 {
+  border-color: rgb(254 240 230 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/60 {
+  border-color: rgb(254 240 230 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/65 {
+  border-color: rgb(254 240 230 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/70 {
+  border-color: rgb(254 240 230 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/75 {
+  border-color: rgb(254 240 230 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/80 {
+  border-color: rgb(254 240 230 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/85 {
+  border-color: rgb(254 240 230 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/90 {
+  border-color: rgb(254 240 230 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-orangeLight\/95 {
+  border-color: rgb(254 240 230 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-purple {
+  --tw-border-opacity: 1;
+  border-color: rgb(125 91 166 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-purple\/0 {
+  border-color: rgb(125 91 166 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/10 {
+  border-color: rgb(125 91 166 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/100 {
+  border-color: rgb(125 91 166 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/15 {
+  border-color: rgb(125 91 166 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/20 {
+  border-color: rgb(125 91 166 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/25 {
+  border-color: rgb(125 91 166 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/30 {
+  border-color: rgb(125 91 166 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/35 {
+  border-color: rgb(125 91 166 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/40 {
+  border-color: rgb(125 91 166 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/45 {
+  border-color: rgb(125 91 166 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/5 {
+  border-color: rgb(125 91 166 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/50 {
+  border-color: rgb(125 91 166 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/55 {
+  border-color: rgb(125 91 166 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/60 {
+  border-color: rgb(125 91 166 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/65 {
+  border-color: rgb(125 91 166 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/70 {
+  border-color: rgb(125 91 166 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/75 {
+  border-color: rgb(125 91 166 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/80 {
+  border-color: rgb(125 91 166 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/85 {
+  border-color: rgb(125 91 166 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/90 {
+  border-color: rgb(125 91 166 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-purple\/95 {
+  border-color: rgb(125 91 166 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight {
+  --tw-border-opacity: 1;
+  border-color: rgb(243 235 249 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/0 {
+  border-color: rgb(243 235 249 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/10 {
+  border-color: rgb(243 235 249 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/100 {
+  border-color: rgb(243 235 249 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/15 {
+  border-color: rgb(243 235 249 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/20 {
+  border-color: rgb(243 235 249 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/25 {
+  border-color: rgb(243 235 249 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/30 {
+  border-color: rgb(243 235 249 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/35 {
+  border-color: rgb(243 235 249 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/40 {
+  border-color: rgb(243 235 249 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/45 {
+  border-color: rgb(243 235 249 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/5 {
+  border-color: rgb(243 235 249 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/50 {
+  border-color: rgb(243 235 249 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/55 {
+  border-color: rgb(243 235 249 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/60 {
+  border-color: rgb(243 235 249 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/65 {
+  border-color: rgb(243 235 249 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/70 {
+  border-color: rgb(243 235 249 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/75 {
+  border-color: rgb(243 235 249 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/80 {
+  border-color: rgb(243 235 249 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/85 {
+  border-color: rgb(243 235 249 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/90 {
+  border-color: rgb(243 235 249 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-purpleLight\/95 {
+  border-color: rgb(243 235 249 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-red {
+  --tw-border-opacity: 1;
+  border-color: rgb(168 75 56 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-red\/0 {
+  border-color: rgb(168 75 56 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-red\/10 {
+  border-color: rgb(168 75 56 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-red\/100 {
+  border-color: rgb(168 75 56 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-red\/15 {
+  border-color: rgb(168 75 56 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-red\/20 {
+  border-color: rgb(168 75 56 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-red\/25 {
+  border-color: rgb(168 75 56 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-red\/30 {
+  border-color: rgb(168 75 56 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-red\/35 {
+  border-color: rgb(168 75 56 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-red\/40 {
+  border-color: rgb(168 75 56 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-red\/45 {
+  border-color: rgb(168 75 56 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-red\/5 {
+  border-color: rgb(168 75 56 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-red\/50 {
+  border-color: rgb(168 75 56 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-red\/55 {
+  border-color: rgb(168 75 56 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-red\/60 {
+  border-color: rgb(168 75 56 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-red\/65 {
+  border-color: rgb(168 75 56 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-red\/70 {
+  border-color: rgb(168 75 56 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-red\/75 {
+  border-color: rgb(168 75 56 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-red\/80 {
+  border-color: rgb(168 75 56 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-red\/85 {
+  border-color: rgb(168 75 56 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-red\/90 {
+  border-color: rgb(168 75 56 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-red\/95 {
+  border-color: rgb(168 75 56 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-redLight {
+  --tw-border-opacity: 1;
+  border-color: rgb(244 229 226 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/0 {
+  border-color: rgb(244 229 226 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/10 {
+  border-color: rgb(244 229 226 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/100 {
+  border-color: rgb(244 229 226 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/15 {
+  border-color: rgb(244 229 226 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/20 {
+  border-color: rgb(244 229 226 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/25 {
+  border-color: rgb(244 229 226 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/30 {
+  border-color: rgb(244 229 226 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/35 {
+  border-color: rgb(244 229 226 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/40 {
+  border-color: rgb(244 229 226 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/45 {
+  border-color: rgb(244 229 226 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/5 {
+  border-color: rgb(244 229 226 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/50 {
+  border-color: rgb(244 229 226 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/55 {
+  border-color: rgb(244 229 226 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/60 {
+  border-color: rgb(244 229 226 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/65 {
+  border-color: rgb(244 229 226 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/70 {
+  border-color: rgb(244 229 226 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/75 {
+  border-color: rgb(244 229 226 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/80 {
+  border-color: rgb(244 229 226 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/85 {
+  border-color: rgb(244 229 226 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/90 {
+  border-color: rgb(244 229 226 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-redLight\/95 {
+  border-color: rgb(244 229 226 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-teal {
+  --tw-border-opacity: 1;
+  border-color: rgb(36 142 194 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-teal\/0 {
+  border-color: rgb(36 142 194 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/10 {
+  border-color: rgb(36 142 194 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/100 {
+  border-color: rgb(36 142 194 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/15 {
+  border-color: rgb(36 142 194 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/20 {
+  border-color: rgb(36 142 194 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/25 {
+  border-color: rgb(36 142 194 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/30 {
+  border-color: rgb(36 142 194 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/35 {
+  border-color: rgb(36 142 194 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/40 {
+  border-color: rgb(36 142 194 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/45 {
+  border-color: rgb(36 142 194 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/5 {
+  border-color: rgb(36 142 194 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/50 {
+  border-color: rgb(36 142 194 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/55 {
+  border-color: rgb(36 142 194 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/60 {
+  border-color: rgb(36 142 194 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/65 {
+  border-color: rgb(36 142 194 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/70 {
+  border-color: rgb(36 142 194 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/75 {
+  border-color: rgb(36 142 194 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/80 {
+  border-color: rgb(36 142 194 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/85 {
+  border-color: rgb(36 142 194 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/90 {
+  border-color: rgb(36 142 194 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-teal\/95 {
+  border-color: rgb(36 142 194 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight {
+  --tw-border-opacity: 1;
+  border-color: rgb(230 244 254 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/0 {
+  border-color: rgb(230 244 254 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/10 {
+  border-color: rgb(230 244 254 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/100 {
+  border-color: rgb(230 244 254 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/15 {
+  border-color: rgb(230 244 254 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/20 {
+  border-color: rgb(230 244 254 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/25 {
+  border-color: rgb(230 244 254 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/30 {
+  border-color: rgb(230 244 254 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/35 {
+  border-color: rgb(230 244 254 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/40 {
+  border-color: rgb(230 244 254 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/45 {
+  border-color: rgb(230 244 254 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/5 {
+  border-color: rgb(230 244 254 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/50 {
+  border-color: rgb(230 244 254 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/55 {
+  border-color: rgb(230 244 254 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/60 {
+  border-color: rgb(230 244 254 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/65 {
+  border-color: rgb(230 244 254 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/70 {
+  border-color: rgb(230 244 254 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/75 {
+  border-color: rgb(230 244 254 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/80 {
+  border-color: rgb(230 244 254 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/85 {
+  border-color: rgb(230 244 254 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/90 {
+  border-color: rgb(230 244 254 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-tealLight\/95 {
+  border-color: rgb(230 244 254 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-yellow {
+  --tw-border-opacity: 1;
+  border-color: rgb(194 160 36 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/0 {
+  border-color: rgb(194 160 36 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/10 {
+  border-color: rgb(194 160 36 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/100 {
+  border-color: rgb(194 160 36 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/15 {
+  border-color: rgb(194 160 36 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/20 {
+  border-color: rgb(194 160 36 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/25 {
+  border-color: rgb(194 160 36 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/30 {
+  border-color: rgb(194 160 36 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/35 {
+  border-color: rgb(194 160 36 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/40 {
+  border-color: rgb(194 160 36 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/45 {
+  border-color: rgb(194 160 36 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/5 {
+  border-color: rgb(194 160 36 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/50 {
+  border-color: rgb(194 160 36 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/55 {
+  border-color: rgb(194 160 36 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/60 {
+  border-color: rgb(194 160 36 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/65 {
+  border-color: rgb(194 160 36 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/70 {
+  border-color: rgb(194 160 36 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/75 {
+  border-color: rgb(194 160 36 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/80 {
+  border-color: rgb(194 160 36 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/85 {
+  border-color: rgb(194 160 36 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/90 {
+  border-color: rgb(194 160 36 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-yellow\/95 {
+  border-color: rgb(194 160 36 / 0.95);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 248 230 / var(--tw-border-opacity, 1));
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/0 {
+  border-color: rgb(254 248 230 / 0);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/10 {
+  border-color: rgb(254 248 230 / 0.1);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/100 {
+  border-color: rgb(254 248 230 / 1);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/15 {
+  border-color: rgb(254 248 230 / 0.15);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/20 {
+  border-color: rgb(254 248 230 / 0.2);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/25 {
+  border-color: rgb(254 248 230 / 0.25);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/30 {
+  border-color: rgb(254 248 230 / 0.3);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/35 {
+  border-color: rgb(254 248 230 / 0.35);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/40 {
+  border-color: rgb(254 248 230 / 0.4);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/45 {
+  border-color: rgb(254 248 230 / 0.45);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/5 {
+  border-color: rgb(254 248 230 / 0.05);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/50 {
+  border-color: rgb(254 248 230 / 0.5);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/55 {
+  border-color: rgb(254 248 230 / 0.55);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/60 {
+  border-color: rgb(254 248 230 / 0.6);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/65 {
+  border-color: rgb(254 248 230 / 0.65);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/70 {
+  border-color: rgb(254 248 230 / 0.7);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/75 {
+  border-color: rgb(254 248 230 / 0.75);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/80 {
+  border-color: rgb(254 248 230 / 0.8);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/85 {
+  border-color: rgb(254 248 230 / 0.85);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/90 {
+  border-color: rgb(254 248 230 / 0.9);
+}
+
+.group:hover .group-hover\:border-chroma-yellowLight\/95 {
+  border-color: rgb(254 248 230 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-blue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 108 124 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/0 {
+  background-color: rgb(74 108 124 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/10 {
+  background-color: rgb(74 108 124 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/100 {
+  background-color: rgb(74 108 124 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/15 {
+  background-color: rgb(74 108 124 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/20 {
+  background-color: rgb(74 108 124 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/25 {
+  background-color: rgb(74 108 124 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/30 {
+  background-color: rgb(74 108 124 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/35 {
+  background-color: rgb(74 108 124 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/40 {
+  background-color: rgb(74 108 124 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/45 {
+  background-color: rgb(74 108 124 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/5 {
+  background-color: rgb(74 108 124 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/50 {
+  background-color: rgb(74 108 124 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/55 {
+  background-color: rgb(74 108 124 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/60 {
+  background-color: rgb(74 108 124 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/65 {
+  background-color: rgb(74 108 124 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/70 {
+  background-color: rgb(74 108 124 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/75 {
+  background-color: rgb(74 108 124 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/80 {
+  background-color: rgb(74 108 124 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/85 {
+  background-color: rgb(74 108 124 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/90 {
+  background-color: rgb(74 108 124 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-blue\/95 {
+  background-color: rgb(74 108 124 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(47 72 88 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/0 {
+  background-color: rgb(47 72 88 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/10 {
+  background-color: rgb(47 72 88 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/100 {
+  background-color: rgb(47 72 88 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/15 {
+  background-color: rgb(47 72 88 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/20 {
+  background-color: rgb(47 72 88 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/25 {
+  background-color: rgb(47 72 88 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/30 {
+  background-color: rgb(47 72 88 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/35 {
+  background-color: rgb(47 72 88 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/40 {
+  background-color: rgb(47 72 88 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/45 {
+  background-color: rgb(47 72 88 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/5 {
+  background-color: rgb(47 72 88 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/50 {
+  background-color: rgb(47 72 88 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/55 {
+  background-color: rgb(47 72 88 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/60 {
+  background-color: rgb(47 72 88 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/65 {
+  background-color: rgb(47 72 88 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/70 {
+  background-color: rgb(47 72 88 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/75 {
+  background-color: rgb(47 72 88 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/80 {
+  background-color: rgb(47 72 88 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/85 {
+  background-color: rgb(47 72 88 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/90 {
+  background-color: rgb(47 72 88 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-blueDark\/95 {
+  background-color: rgb(47 72 88 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(227 233 236 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/0 {
+  background-color: rgb(227 233 236 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/10 {
+  background-color: rgb(227 233 236 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/100 {
+  background-color: rgb(227 233 236 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/15 {
+  background-color: rgb(227 233 236 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/20 {
+  background-color: rgb(227 233 236 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/25 {
+  background-color: rgb(227 233 236 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/30 {
+  background-color: rgb(227 233 236 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/35 {
+  background-color: rgb(227 233 236 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/40 {
+  background-color: rgb(227 233 236 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/45 {
+  background-color: rgb(227 233 236 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/5 {
+  background-color: rgb(227 233 236 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/50 {
+  background-color: rgb(227 233 236 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/55 {
+  background-color: rgb(227 233 236 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/60 {
+  background-color: rgb(227 233 236 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/65 {
+  background-color: rgb(227 233 236 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/70 {
+  background-color: rgb(227 233 236 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/75 {
+  background-color: rgb(227 233 236 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/80 {
+  background-color: rgb(227 233 236 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/85 {
+  background-color: rgb(227 233 236 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/90 {
+  background-color: rgb(227 233 236 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-blueLight\/95 {
+  background-color: rgb(227 233 236 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-green {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 124 89 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-green\/0 {
+  background-color: rgb(74 124 89 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/10 {
+  background-color: rgb(74 124 89 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/100 {
+  background-color: rgb(74 124 89 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/15 {
+  background-color: rgb(74 124 89 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/20 {
+  background-color: rgb(74 124 89 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/25 {
+  background-color: rgb(74 124 89 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/30 {
+  background-color: rgb(74 124 89 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/35 {
+  background-color: rgb(74 124 89 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/40 {
+  background-color: rgb(74 124 89 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/45 {
+  background-color: rgb(74 124 89 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/5 {
+  background-color: rgb(74 124 89 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/50 {
+  background-color: rgb(74 124 89 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/55 {
+  background-color: rgb(74 124 89 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/60 {
+  background-color: rgb(74 124 89 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/65 {
+  background-color: rgb(74 124 89 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/70 {
+  background-color: rgb(74 124 89 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/75 {
+  background-color: rgb(74 124 89 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/80 {
+  background-color: rgb(74 124 89 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/85 {
+  background-color: rgb(74 124 89 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/90 {
+  background-color: rgb(74 124 89 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-green\/95 {
+  background-color: rgb(74 124 89 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(227 236 230 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/0 {
+  background-color: rgb(227 236 230 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/10 {
+  background-color: rgb(227 236 230 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/100 {
+  background-color: rgb(227 236 230 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/15 {
+  background-color: rgb(227 236 230 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/20 {
+  background-color: rgb(227 236 230 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/25 {
+  background-color: rgb(227 236 230 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/30 {
+  background-color: rgb(227 236 230 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/35 {
+  background-color: rgb(227 236 230 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/40 {
+  background-color: rgb(227 236 230 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/45 {
+  background-color: rgb(227 236 230 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/5 {
+  background-color: rgb(227 236 230 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/50 {
+  background-color: rgb(227 236 230 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/55 {
+  background-color: rgb(227 236 230 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/60 {
+  background-color: rgb(227 236 230 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/65 {
+  background-color: rgb(227 236 230 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/70 {
+  background-color: rgb(227 236 230 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/75 {
+  background-color: rgb(227 236 230 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/80 {
+  background-color: rgb(227 236 230 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/85 {
+  background-color: rgb(227 236 230 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/90 {
+  background-color: rgb(227 236 230 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-greenLight\/95 {
+  background-color: rgb(227 236 230 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-orange {
+  --tw-bg-opacity: 1;
+  background-color: rgb(194 101 36 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/0 {
+  background-color: rgb(194 101 36 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/10 {
+  background-color: rgb(194 101 36 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/100 {
+  background-color: rgb(194 101 36 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/15 {
+  background-color: rgb(194 101 36 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/20 {
+  background-color: rgb(194 101 36 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/25 {
+  background-color: rgb(194 101 36 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/30 {
+  background-color: rgb(194 101 36 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/35 {
+  background-color: rgb(194 101 36 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/40 {
+  background-color: rgb(194 101 36 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/45 {
+  background-color: rgb(194 101 36 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/5 {
+  background-color: rgb(194 101 36 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/50 {
+  background-color: rgb(194 101 36 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/55 {
+  background-color: rgb(194 101 36 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/60 {
+  background-color: rgb(194 101 36 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/65 {
+  background-color: rgb(194 101 36 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/70 {
+  background-color: rgb(194 101 36 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/75 {
+  background-color: rgb(194 101 36 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/80 {
+  background-color: rgb(194 101 36 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/85 {
+  background-color: rgb(194 101 36 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/90 {
+  background-color: rgb(194 101 36 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-orange\/95 {
+  background-color: rgb(194 101 36 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 240 230 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/0 {
+  background-color: rgb(254 240 230 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/10 {
+  background-color: rgb(254 240 230 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/100 {
+  background-color: rgb(254 240 230 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/15 {
+  background-color: rgb(254 240 230 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/20 {
+  background-color: rgb(254 240 230 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/25 {
+  background-color: rgb(254 240 230 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/30 {
+  background-color: rgb(254 240 230 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/35 {
+  background-color: rgb(254 240 230 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/40 {
+  background-color: rgb(254 240 230 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/45 {
+  background-color: rgb(254 240 230 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/5 {
+  background-color: rgb(254 240 230 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/50 {
+  background-color: rgb(254 240 230 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/55 {
+  background-color: rgb(254 240 230 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/60 {
+  background-color: rgb(254 240 230 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/65 {
+  background-color: rgb(254 240 230 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/70 {
+  background-color: rgb(254 240 230 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/75 {
+  background-color: rgb(254 240 230 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/80 {
+  background-color: rgb(254 240 230 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/85 {
+  background-color: rgb(254 240 230 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/90 {
+  background-color: rgb(254 240 230 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-orangeLight\/95 {
+  background-color: rgb(254 240 230 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-purple {
+  --tw-bg-opacity: 1;
+  background-color: rgb(125 91 166 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/0 {
+  background-color: rgb(125 91 166 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/10 {
+  background-color: rgb(125 91 166 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/100 {
+  background-color: rgb(125 91 166 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/15 {
+  background-color: rgb(125 91 166 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/20 {
+  background-color: rgb(125 91 166 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/25 {
+  background-color: rgb(125 91 166 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/30 {
+  background-color: rgb(125 91 166 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/35 {
+  background-color: rgb(125 91 166 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/40 {
+  background-color: rgb(125 91 166 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/45 {
+  background-color: rgb(125 91 166 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/5 {
+  background-color: rgb(125 91 166 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/50 {
+  background-color: rgb(125 91 166 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/55 {
+  background-color: rgb(125 91 166 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/60 {
+  background-color: rgb(125 91 166 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/65 {
+  background-color: rgb(125 91 166 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/70 {
+  background-color: rgb(125 91 166 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/75 {
+  background-color: rgb(125 91 166 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/80 {
+  background-color: rgb(125 91 166 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/85 {
+  background-color: rgb(125 91 166 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/90 {
+  background-color: rgb(125 91 166 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-purple\/95 {
+  background-color: rgb(125 91 166 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 235 249 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/0 {
+  background-color: rgb(243 235 249 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/10 {
+  background-color: rgb(243 235 249 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/100 {
+  background-color: rgb(243 235 249 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/15 {
+  background-color: rgb(243 235 249 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/20 {
+  background-color: rgb(243 235 249 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/25 {
+  background-color: rgb(243 235 249 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/30 {
+  background-color: rgb(243 235 249 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/35 {
+  background-color: rgb(243 235 249 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/40 {
+  background-color: rgb(243 235 249 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/45 {
+  background-color: rgb(243 235 249 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/5 {
+  background-color: rgb(243 235 249 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/50 {
+  background-color: rgb(243 235 249 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/55 {
+  background-color: rgb(243 235 249 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/60 {
+  background-color: rgb(243 235 249 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/65 {
+  background-color: rgb(243 235 249 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/70 {
+  background-color: rgb(243 235 249 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/75 {
+  background-color: rgb(243 235 249 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/80 {
+  background-color: rgb(243 235 249 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/85 {
+  background-color: rgb(243 235 249 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/90 {
+  background-color: rgb(243 235 249 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-purpleLight\/95 {
+  background-color: rgb(243 235 249 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-red {
+  --tw-bg-opacity: 1;
+  background-color: rgb(168 75 56 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-red\/0 {
+  background-color: rgb(168 75 56 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/10 {
+  background-color: rgb(168 75 56 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/100 {
+  background-color: rgb(168 75 56 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/15 {
+  background-color: rgb(168 75 56 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/20 {
+  background-color: rgb(168 75 56 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/25 {
+  background-color: rgb(168 75 56 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/30 {
+  background-color: rgb(168 75 56 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/35 {
+  background-color: rgb(168 75 56 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/40 {
+  background-color: rgb(168 75 56 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/45 {
+  background-color: rgb(168 75 56 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/5 {
+  background-color: rgb(168 75 56 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/50 {
+  background-color: rgb(168 75 56 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/55 {
+  background-color: rgb(168 75 56 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/60 {
+  background-color: rgb(168 75 56 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/65 {
+  background-color: rgb(168 75 56 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/70 {
+  background-color: rgb(168 75 56 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/75 {
+  background-color: rgb(168 75 56 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/80 {
+  background-color: rgb(168 75 56 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/85 {
+  background-color: rgb(168 75 56 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/90 {
+  background-color: rgb(168 75 56 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-red\/95 {
+  background-color: rgb(168 75 56 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 229 226 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/0 {
+  background-color: rgb(244 229 226 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/10 {
+  background-color: rgb(244 229 226 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/100 {
+  background-color: rgb(244 229 226 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/15 {
+  background-color: rgb(244 229 226 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/20 {
+  background-color: rgb(244 229 226 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/25 {
+  background-color: rgb(244 229 226 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/30 {
+  background-color: rgb(244 229 226 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/35 {
+  background-color: rgb(244 229 226 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/40 {
+  background-color: rgb(244 229 226 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/45 {
+  background-color: rgb(244 229 226 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/5 {
+  background-color: rgb(244 229 226 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/50 {
+  background-color: rgb(244 229 226 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/55 {
+  background-color: rgb(244 229 226 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/60 {
+  background-color: rgb(244 229 226 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/65 {
+  background-color: rgb(244 229 226 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/70 {
+  background-color: rgb(244 229 226 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/75 {
+  background-color: rgb(244 229 226 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/80 {
+  background-color: rgb(244 229 226 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/85 {
+  background-color: rgb(244 229 226 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/90 {
+  background-color: rgb(244 229 226 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-redLight\/95 {
+  background-color: rgb(244 229 226 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-teal {
+  --tw-bg-opacity: 1;
+  background-color: rgb(36 142 194 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/0 {
+  background-color: rgb(36 142 194 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/10 {
+  background-color: rgb(36 142 194 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/100 {
+  background-color: rgb(36 142 194 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/15 {
+  background-color: rgb(36 142 194 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/20 {
+  background-color: rgb(36 142 194 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/25 {
+  background-color: rgb(36 142 194 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/30 {
+  background-color: rgb(36 142 194 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/35 {
+  background-color: rgb(36 142 194 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/40 {
+  background-color: rgb(36 142 194 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/45 {
+  background-color: rgb(36 142 194 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/5 {
+  background-color: rgb(36 142 194 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/50 {
+  background-color: rgb(36 142 194 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/55 {
+  background-color: rgb(36 142 194 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/60 {
+  background-color: rgb(36 142 194 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/65 {
+  background-color: rgb(36 142 194 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/70 {
+  background-color: rgb(36 142 194 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/75 {
+  background-color: rgb(36 142 194 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/80 {
+  background-color: rgb(36 142 194 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/85 {
+  background-color: rgb(36 142 194 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/90 {
+  background-color: rgb(36 142 194 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-teal\/95 {
+  background-color: rgb(36 142 194 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(230 244 254 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/0 {
+  background-color: rgb(230 244 254 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/10 {
+  background-color: rgb(230 244 254 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/100 {
+  background-color: rgb(230 244 254 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/15 {
+  background-color: rgb(230 244 254 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/20 {
+  background-color: rgb(230 244 254 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/25 {
+  background-color: rgb(230 244 254 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/30 {
+  background-color: rgb(230 244 254 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/35 {
+  background-color: rgb(230 244 254 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/40 {
+  background-color: rgb(230 244 254 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/45 {
+  background-color: rgb(230 244 254 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/5 {
+  background-color: rgb(230 244 254 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/50 {
+  background-color: rgb(230 244 254 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/55 {
+  background-color: rgb(230 244 254 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/60 {
+  background-color: rgb(230 244 254 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/65 {
+  background-color: rgb(230 244 254 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/70 {
+  background-color: rgb(230 244 254 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/75 {
+  background-color: rgb(230 244 254 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/80 {
+  background-color: rgb(230 244 254 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/85 {
+  background-color: rgb(230 244 254 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/90 {
+  background-color: rgb(230 244 254 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-tealLight\/95 {
+  background-color: rgb(230 244 254 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow {
+  --tw-bg-opacity: 1;
+  background-color: rgb(194 160 36 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/0 {
+  background-color: rgb(194 160 36 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/10 {
+  background-color: rgb(194 160 36 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/100 {
+  background-color: rgb(194 160 36 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/15 {
+  background-color: rgb(194 160 36 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/20 {
+  background-color: rgb(194 160 36 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/25 {
+  background-color: rgb(194 160 36 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/30 {
+  background-color: rgb(194 160 36 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/35 {
+  background-color: rgb(194 160 36 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/40 {
+  background-color: rgb(194 160 36 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/45 {
+  background-color: rgb(194 160 36 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/5 {
+  background-color: rgb(194 160 36 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/50 {
+  background-color: rgb(194 160 36 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/55 {
+  background-color: rgb(194 160 36 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/60 {
+  background-color: rgb(194 160 36 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/65 {
+  background-color: rgb(194 160 36 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/70 {
+  background-color: rgb(194 160 36 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/75 {
+  background-color: rgb(194 160 36 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/80 {
+  background-color: rgb(194 160 36 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/85 {
+  background-color: rgb(194 160 36 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/90 {
+  background-color: rgb(194 160 36 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-yellow\/95 {
+  background-color: rgb(194 160 36 / 0.95);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 248 230 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/0 {
+  background-color: rgb(254 248 230 / 0);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/10 {
+  background-color: rgb(254 248 230 / 0.1);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/100 {
+  background-color: rgb(254 248 230 / 1);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/15 {
+  background-color: rgb(254 248 230 / 0.15);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/20 {
+  background-color: rgb(254 248 230 / 0.2);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/25 {
+  background-color: rgb(254 248 230 / 0.25);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/30 {
+  background-color: rgb(254 248 230 / 0.3);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/35 {
+  background-color: rgb(254 248 230 / 0.35);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/40 {
+  background-color: rgb(254 248 230 / 0.4);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/45 {
+  background-color: rgb(254 248 230 / 0.45);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/5 {
+  background-color: rgb(254 248 230 / 0.05);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/50 {
+  background-color: rgb(254 248 230 / 0.5);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/55 {
+  background-color: rgb(254 248 230 / 0.55);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/60 {
+  background-color: rgb(254 248 230 / 0.6);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/65 {
+  background-color: rgb(254 248 230 / 0.65);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/70 {
+  background-color: rgb(254 248 230 / 0.7);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/75 {
+  background-color: rgb(254 248 230 / 0.75);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/80 {
+  background-color: rgb(254 248 230 / 0.8);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/85 {
+  background-color: rgb(254 248 230 / 0.85);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/90 {
+  background-color: rgb(254 248 230 / 0.9);
+}
+
+.group:hover .group-hover\:bg-chroma-yellowLight\/95 {
+  background-color: rgb(254 248 230 / 0.95);
+}
+
 .group:hover .group-hover\:bg-transparent {
   background-color: transparent;
+}
+
+.group:hover .group-hover\:from-chroma-blue {
+  --tw-gradient-from: #4A6C7C var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/0 {
+  --tw-gradient-from: rgb(74 108 124 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/10 {
+  --tw-gradient-from: rgb(74 108 124 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/100 {
+  --tw-gradient-from: rgb(74 108 124 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/15 {
+  --tw-gradient-from: rgb(74 108 124 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/20 {
+  --tw-gradient-from: rgb(74 108 124 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/25 {
+  --tw-gradient-from: rgb(74 108 124 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/30 {
+  --tw-gradient-from: rgb(74 108 124 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/35 {
+  --tw-gradient-from: rgb(74 108 124 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/40 {
+  --tw-gradient-from: rgb(74 108 124 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/45 {
+  --tw-gradient-from: rgb(74 108 124 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/5 {
+  --tw-gradient-from: rgb(74 108 124 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/50 {
+  --tw-gradient-from: rgb(74 108 124 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/55 {
+  --tw-gradient-from: rgb(74 108 124 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/60 {
+  --tw-gradient-from: rgb(74 108 124 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/65 {
+  --tw-gradient-from: rgb(74 108 124 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/70 {
+  --tw-gradient-from: rgb(74 108 124 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/75 {
+  --tw-gradient-from: rgb(74 108 124 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/80 {
+  --tw-gradient-from: rgb(74 108 124 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/85 {
+  --tw-gradient-from: rgb(74 108 124 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/90 {
+  --tw-gradient-from: rgb(74 108 124 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blue\/95 {
+  --tw-gradient-from: rgb(74 108 124 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 108 124 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark {
+  --tw-gradient-from: #2F4858 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/0 {
+  --tw-gradient-from: rgb(47 72 88 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/10 {
+  --tw-gradient-from: rgb(47 72 88 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/100 {
+  --tw-gradient-from: rgb(47 72 88 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/15 {
+  --tw-gradient-from: rgb(47 72 88 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/20 {
+  --tw-gradient-from: rgb(47 72 88 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/25 {
+  --tw-gradient-from: rgb(47 72 88 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/30 {
+  --tw-gradient-from: rgb(47 72 88 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/35 {
+  --tw-gradient-from: rgb(47 72 88 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/40 {
+  --tw-gradient-from: rgb(47 72 88 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/45 {
+  --tw-gradient-from: rgb(47 72 88 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/5 {
+  --tw-gradient-from: rgb(47 72 88 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/50 {
+  --tw-gradient-from: rgb(47 72 88 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/55 {
+  --tw-gradient-from: rgb(47 72 88 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/60 {
+  --tw-gradient-from: rgb(47 72 88 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/65 {
+  --tw-gradient-from: rgb(47 72 88 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/70 {
+  --tw-gradient-from: rgb(47 72 88 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/75 {
+  --tw-gradient-from: rgb(47 72 88 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/80 {
+  --tw-gradient-from: rgb(47 72 88 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/85 {
+  --tw-gradient-from: rgb(47 72 88 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/90 {
+  --tw-gradient-from: rgb(47 72 88 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueDark\/95 {
+  --tw-gradient-from: rgb(47 72 88 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(47 72 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight {
+  --tw-gradient-from: #E3E9EC var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/0 {
+  --tw-gradient-from: rgb(227 233 236 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/10 {
+  --tw-gradient-from: rgb(227 233 236 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/100 {
+  --tw-gradient-from: rgb(227 233 236 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/15 {
+  --tw-gradient-from: rgb(227 233 236 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/20 {
+  --tw-gradient-from: rgb(227 233 236 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/25 {
+  --tw-gradient-from: rgb(227 233 236 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/30 {
+  --tw-gradient-from: rgb(227 233 236 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/35 {
+  --tw-gradient-from: rgb(227 233 236 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/40 {
+  --tw-gradient-from: rgb(227 233 236 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/45 {
+  --tw-gradient-from: rgb(227 233 236 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/5 {
+  --tw-gradient-from: rgb(227 233 236 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/50 {
+  --tw-gradient-from: rgb(227 233 236 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/55 {
+  --tw-gradient-from: rgb(227 233 236 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/60 {
+  --tw-gradient-from: rgb(227 233 236 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/65 {
+  --tw-gradient-from: rgb(227 233 236 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/70 {
+  --tw-gradient-from: rgb(227 233 236 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/75 {
+  --tw-gradient-from: rgb(227 233 236 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/80 {
+  --tw-gradient-from: rgb(227 233 236 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/85 {
+  --tw-gradient-from: rgb(227 233 236 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/90 {
+  --tw-gradient-from: rgb(227 233 236 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-blueLight\/95 {
+  --tw-gradient-from: rgb(227 233 236 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 233 236 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green {
+  --tw-gradient-from: #4A7C59 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/0 {
+  --tw-gradient-from: rgb(74 124 89 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/10 {
+  --tw-gradient-from: rgb(74 124 89 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/100 {
+  --tw-gradient-from: rgb(74 124 89 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/15 {
+  --tw-gradient-from: rgb(74 124 89 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/20 {
+  --tw-gradient-from: rgb(74 124 89 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/25 {
+  --tw-gradient-from: rgb(74 124 89 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/30 {
+  --tw-gradient-from: rgb(74 124 89 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/35 {
+  --tw-gradient-from: rgb(74 124 89 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/40 {
+  --tw-gradient-from: rgb(74 124 89 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/45 {
+  --tw-gradient-from: rgb(74 124 89 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/5 {
+  --tw-gradient-from: rgb(74 124 89 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/50 {
+  --tw-gradient-from: rgb(74 124 89 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/55 {
+  --tw-gradient-from: rgb(74 124 89 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/60 {
+  --tw-gradient-from: rgb(74 124 89 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/65 {
+  --tw-gradient-from: rgb(74 124 89 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/70 {
+  --tw-gradient-from: rgb(74 124 89 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/75 {
+  --tw-gradient-from: rgb(74 124 89 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/80 {
+  --tw-gradient-from: rgb(74 124 89 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/85 {
+  --tw-gradient-from: rgb(74 124 89 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/90 {
+  --tw-gradient-from: rgb(74 124 89 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-green\/95 {
+  --tw-gradient-from: rgb(74 124 89 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(74 124 89 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight {
+  --tw-gradient-from: #E3ECE6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/0 {
+  --tw-gradient-from: rgb(227 236 230 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/10 {
+  --tw-gradient-from: rgb(227 236 230 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/100 {
+  --tw-gradient-from: rgb(227 236 230 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/15 {
+  --tw-gradient-from: rgb(227 236 230 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/20 {
+  --tw-gradient-from: rgb(227 236 230 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/25 {
+  --tw-gradient-from: rgb(227 236 230 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/30 {
+  --tw-gradient-from: rgb(227 236 230 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/35 {
+  --tw-gradient-from: rgb(227 236 230 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/40 {
+  --tw-gradient-from: rgb(227 236 230 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/45 {
+  --tw-gradient-from: rgb(227 236 230 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/5 {
+  --tw-gradient-from: rgb(227 236 230 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/50 {
+  --tw-gradient-from: rgb(227 236 230 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/55 {
+  --tw-gradient-from: rgb(227 236 230 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/60 {
+  --tw-gradient-from: rgb(227 236 230 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/65 {
+  --tw-gradient-from: rgb(227 236 230 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/70 {
+  --tw-gradient-from: rgb(227 236 230 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/75 {
+  --tw-gradient-from: rgb(227 236 230 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/80 {
+  --tw-gradient-from: rgb(227 236 230 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/85 {
+  --tw-gradient-from: rgb(227 236 230 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/90 {
+  --tw-gradient-from: rgb(227 236 230 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-greenLight\/95 {
+  --tw-gradient-from: rgb(227 236 230 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(227 236 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange {
+  --tw-gradient-from: #C26524 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/0 {
+  --tw-gradient-from: rgb(194 101 36 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/10 {
+  --tw-gradient-from: rgb(194 101 36 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/100 {
+  --tw-gradient-from: rgb(194 101 36 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/15 {
+  --tw-gradient-from: rgb(194 101 36 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/20 {
+  --tw-gradient-from: rgb(194 101 36 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/25 {
+  --tw-gradient-from: rgb(194 101 36 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/30 {
+  --tw-gradient-from: rgb(194 101 36 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/35 {
+  --tw-gradient-from: rgb(194 101 36 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/40 {
+  --tw-gradient-from: rgb(194 101 36 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/45 {
+  --tw-gradient-from: rgb(194 101 36 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/5 {
+  --tw-gradient-from: rgb(194 101 36 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/50 {
+  --tw-gradient-from: rgb(194 101 36 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/55 {
+  --tw-gradient-from: rgb(194 101 36 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/60 {
+  --tw-gradient-from: rgb(194 101 36 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/65 {
+  --tw-gradient-from: rgb(194 101 36 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/70 {
+  --tw-gradient-from: rgb(194 101 36 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/75 {
+  --tw-gradient-from: rgb(194 101 36 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/80 {
+  --tw-gradient-from: rgb(194 101 36 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/85 {
+  --tw-gradient-from: rgb(194 101 36 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/90 {
+  --tw-gradient-from: rgb(194 101 36 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orange\/95 {
+  --tw-gradient-from: rgb(194 101 36 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 101 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight {
+  --tw-gradient-from: #FEF0E6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/0 {
+  --tw-gradient-from: rgb(254 240 230 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/10 {
+  --tw-gradient-from: rgb(254 240 230 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/100 {
+  --tw-gradient-from: rgb(254 240 230 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/15 {
+  --tw-gradient-from: rgb(254 240 230 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/20 {
+  --tw-gradient-from: rgb(254 240 230 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/25 {
+  --tw-gradient-from: rgb(254 240 230 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/30 {
+  --tw-gradient-from: rgb(254 240 230 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/35 {
+  --tw-gradient-from: rgb(254 240 230 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/40 {
+  --tw-gradient-from: rgb(254 240 230 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/45 {
+  --tw-gradient-from: rgb(254 240 230 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/5 {
+  --tw-gradient-from: rgb(254 240 230 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/50 {
+  --tw-gradient-from: rgb(254 240 230 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/55 {
+  --tw-gradient-from: rgb(254 240 230 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/60 {
+  --tw-gradient-from: rgb(254 240 230 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/65 {
+  --tw-gradient-from: rgb(254 240 230 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/70 {
+  --tw-gradient-from: rgb(254 240 230 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/75 {
+  --tw-gradient-from: rgb(254 240 230 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/80 {
+  --tw-gradient-from: rgb(254 240 230 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/85 {
+  --tw-gradient-from: rgb(254 240 230 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/90 {
+  --tw-gradient-from: rgb(254 240 230 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-orangeLight\/95 {
+  --tw-gradient-from: rgb(254 240 230 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 240 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple {
+  --tw-gradient-from: #7D5BA6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/0 {
+  --tw-gradient-from: rgb(125 91 166 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/10 {
+  --tw-gradient-from: rgb(125 91 166 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/100 {
+  --tw-gradient-from: rgb(125 91 166 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/15 {
+  --tw-gradient-from: rgb(125 91 166 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/20 {
+  --tw-gradient-from: rgb(125 91 166 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/25 {
+  --tw-gradient-from: rgb(125 91 166 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/30 {
+  --tw-gradient-from: rgb(125 91 166 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/35 {
+  --tw-gradient-from: rgb(125 91 166 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/40 {
+  --tw-gradient-from: rgb(125 91 166 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/45 {
+  --tw-gradient-from: rgb(125 91 166 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/5 {
+  --tw-gradient-from: rgb(125 91 166 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/50 {
+  --tw-gradient-from: rgb(125 91 166 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/55 {
+  --tw-gradient-from: rgb(125 91 166 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/60 {
+  --tw-gradient-from: rgb(125 91 166 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/65 {
+  --tw-gradient-from: rgb(125 91 166 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/70 {
+  --tw-gradient-from: rgb(125 91 166 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/75 {
+  --tw-gradient-from: rgb(125 91 166 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/80 {
+  --tw-gradient-from: rgb(125 91 166 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/85 {
+  --tw-gradient-from: rgb(125 91 166 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/90 {
+  --tw-gradient-from: rgb(125 91 166 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purple\/95 {
+  --tw-gradient-from: rgb(125 91 166 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(125 91 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight {
+  --tw-gradient-from: #F3EBF9 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/0 {
+  --tw-gradient-from: rgb(243 235 249 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/10 {
+  --tw-gradient-from: rgb(243 235 249 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/100 {
+  --tw-gradient-from: rgb(243 235 249 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/15 {
+  --tw-gradient-from: rgb(243 235 249 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/20 {
+  --tw-gradient-from: rgb(243 235 249 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/25 {
+  --tw-gradient-from: rgb(243 235 249 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/30 {
+  --tw-gradient-from: rgb(243 235 249 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/35 {
+  --tw-gradient-from: rgb(243 235 249 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/40 {
+  --tw-gradient-from: rgb(243 235 249 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/45 {
+  --tw-gradient-from: rgb(243 235 249 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/5 {
+  --tw-gradient-from: rgb(243 235 249 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/50 {
+  --tw-gradient-from: rgb(243 235 249 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/55 {
+  --tw-gradient-from: rgb(243 235 249 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/60 {
+  --tw-gradient-from: rgb(243 235 249 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/65 {
+  --tw-gradient-from: rgb(243 235 249 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/70 {
+  --tw-gradient-from: rgb(243 235 249 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/75 {
+  --tw-gradient-from: rgb(243 235 249 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/80 {
+  --tw-gradient-from: rgb(243 235 249 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/85 {
+  --tw-gradient-from: rgb(243 235 249 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/90 {
+  --tw-gradient-from: rgb(243 235 249 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-purpleLight\/95 {
+  --tw-gradient-from: rgb(243 235 249 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(243 235 249 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red {
+  --tw-gradient-from: #A84B38 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/0 {
+  --tw-gradient-from: rgb(168 75 56 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/10 {
+  --tw-gradient-from: rgb(168 75 56 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/100 {
+  --tw-gradient-from: rgb(168 75 56 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/15 {
+  --tw-gradient-from: rgb(168 75 56 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/20 {
+  --tw-gradient-from: rgb(168 75 56 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/25 {
+  --tw-gradient-from: rgb(168 75 56 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/30 {
+  --tw-gradient-from: rgb(168 75 56 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/35 {
+  --tw-gradient-from: rgb(168 75 56 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/40 {
+  --tw-gradient-from: rgb(168 75 56 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/45 {
+  --tw-gradient-from: rgb(168 75 56 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/5 {
+  --tw-gradient-from: rgb(168 75 56 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/50 {
+  --tw-gradient-from: rgb(168 75 56 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/55 {
+  --tw-gradient-from: rgb(168 75 56 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/60 {
+  --tw-gradient-from: rgb(168 75 56 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/65 {
+  --tw-gradient-from: rgb(168 75 56 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/70 {
+  --tw-gradient-from: rgb(168 75 56 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/75 {
+  --tw-gradient-from: rgb(168 75 56 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/80 {
+  --tw-gradient-from: rgb(168 75 56 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/85 {
+  --tw-gradient-from: rgb(168 75 56 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/90 {
+  --tw-gradient-from: rgb(168 75 56 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-red\/95 {
+  --tw-gradient-from: rgb(168 75 56 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 75 56 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight {
+  --tw-gradient-from: #F4E5E2 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/0 {
+  --tw-gradient-from: rgb(244 229 226 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/10 {
+  --tw-gradient-from: rgb(244 229 226 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/100 {
+  --tw-gradient-from: rgb(244 229 226 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/15 {
+  --tw-gradient-from: rgb(244 229 226 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/20 {
+  --tw-gradient-from: rgb(244 229 226 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/25 {
+  --tw-gradient-from: rgb(244 229 226 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/30 {
+  --tw-gradient-from: rgb(244 229 226 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/35 {
+  --tw-gradient-from: rgb(244 229 226 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/40 {
+  --tw-gradient-from: rgb(244 229 226 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/45 {
+  --tw-gradient-from: rgb(244 229 226 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/5 {
+  --tw-gradient-from: rgb(244 229 226 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/50 {
+  --tw-gradient-from: rgb(244 229 226 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/55 {
+  --tw-gradient-from: rgb(244 229 226 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/60 {
+  --tw-gradient-from: rgb(244 229 226 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/65 {
+  --tw-gradient-from: rgb(244 229 226 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/70 {
+  --tw-gradient-from: rgb(244 229 226 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/75 {
+  --tw-gradient-from: rgb(244 229 226 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/80 {
+  --tw-gradient-from: rgb(244 229 226 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/85 {
+  --tw-gradient-from: rgb(244 229 226 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/90 {
+  --tw-gradient-from: rgb(244 229 226 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-redLight\/95 {
+  --tw-gradient-from: rgb(244 229 226 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(244 229 226 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal {
+  --tw-gradient-from: #248EC2 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/0 {
+  --tw-gradient-from: rgb(36 142 194 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/10 {
+  --tw-gradient-from: rgb(36 142 194 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/100 {
+  --tw-gradient-from: rgb(36 142 194 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/15 {
+  --tw-gradient-from: rgb(36 142 194 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/20 {
+  --tw-gradient-from: rgb(36 142 194 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/25 {
+  --tw-gradient-from: rgb(36 142 194 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/30 {
+  --tw-gradient-from: rgb(36 142 194 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/35 {
+  --tw-gradient-from: rgb(36 142 194 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/40 {
+  --tw-gradient-from: rgb(36 142 194 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/45 {
+  --tw-gradient-from: rgb(36 142 194 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/5 {
+  --tw-gradient-from: rgb(36 142 194 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/50 {
+  --tw-gradient-from: rgb(36 142 194 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/55 {
+  --tw-gradient-from: rgb(36 142 194 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/60 {
+  --tw-gradient-from: rgb(36 142 194 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/65 {
+  --tw-gradient-from: rgb(36 142 194 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/70 {
+  --tw-gradient-from: rgb(36 142 194 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/75 {
+  --tw-gradient-from: rgb(36 142 194 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/80 {
+  --tw-gradient-from: rgb(36 142 194 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/85 {
+  --tw-gradient-from: rgb(36 142 194 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/90 {
+  --tw-gradient-from: rgb(36 142 194 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-teal\/95 {
+  --tw-gradient-from: rgb(36 142 194 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 142 194 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight {
+  --tw-gradient-from: #E6F4FE var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/0 {
+  --tw-gradient-from: rgb(230 244 254 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/10 {
+  --tw-gradient-from: rgb(230 244 254 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/100 {
+  --tw-gradient-from: rgb(230 244 254 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/15 {
+  --tw-gradient-from: rgb(230 244 254 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/20 {
+  --tw-gradient-from: rgb(230 244 254 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/25 {
+  --tw-gradient-from: rgb(230 244 254 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/30 {
+  --tw-gradient-from: rgb(230 244 254 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/35 {
+  --tw-gradient-from: rgb(230 244 254 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/40 {
+  --tw-gradient-from: rgb(230 244 254 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/45 {
+  --tw-gradient-from: rgb(230 244 254 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/5 {
+  --tw-gradient-from: rgb(230 244 254 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/50 {
+  --tw-gradient-from: rgb(230 244 254 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/55 {
+  --tw-gradient-from: rgb(230 244 254 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/60 {
+  --tw-gradient-from: rgb(230 244 254 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/65 {
+  --tw-gradient-from: rgb(230 244 254 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/70 {
+  --tw-gradient-from: rgb(230 244 254 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/75 {
+  --tw-gradient-from: rgb(230 244 254 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/80 {
+  --tw-gradient-from: rgb(230 244 254 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/85 {
+  --tw-gradient-from: rgb(230 244 254 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/90 {
+  --tw-gradient-from: rgb(230 244 254 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-tealLight\/95 {
+  --tw-gradient-from: rgb(230 244 254 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(230 244 254 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow {
+  --tw-gradient-from: #C2A024 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/0 {
+  --tw-gradient-from: rgb(194 160 36 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/10 {
+  --tw-gradient-from: rgb(194 160 36 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/100 {
+  --tw-gradient-from: rgb(194 160 36 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/15 {
+  --tw-gradient-from: rgb(194 160 36 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/20 {
+  --tw-gradient-from: rgb(194 160 36 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/25 {
+  --tw-gradient-from: rgb(194 160 36 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/30 {
+  --tw-gradient-from: rgb(194 160 36 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/35 {
+  --tw-gradient-from: rgb(194 160 36 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/40 {
+  --tw-gradient-from: rgb(194 160 36 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/45 {
+  --tw-gradient-from: rgb(194 160 36 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/5 {
+  --tw-gradient-from: rgb(194 160 36 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/50 {
+  --tw-gradient-from: rgb(194 160 36 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/55 {
+  --tw-gradient-from: rgb(194 160 36 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/60 {
+  --tw-gradient-from: rgb(194 160 36 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/65 {
+  --tw-gradient-from: rgb(194 160 36 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/70 {
+  --tw-gradient-from: rgb(194 160 36 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/75 {
+  --tw-gradient-from: rgb(194 160 36 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/80 {
+  --tw-gradient-from: rgb(194 160 36 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/85 {
+  --tw-gradient-from: rgb(194 160 36 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/90 {
+  --tw-gradient-from: rgb(194 160 36 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellow\/95 {
+  --tw-gradient-from: rgb(194 160 36 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(194 160 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight {
+  --tw-gradient-from: #FEF8E6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/0 {
+  --tw-gradient-from: rgb(254 248 230 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/10 {
+  --tw-gradient-from: rgb(254 248 230 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/100 {
+  --tw-gradient-from: rgb(254 248 230 / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/15 {
+  --tw-gradient-from: rgb(254 248 230 / 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/20 {
+  --tw-gradient-from: rgb(254 248 230 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/25 {
+  --tw-gradient-from: rgb(254 248 230 / 0.25) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/30 {
+  --tw-gradient-from: rgb(254 248 230 / 0.3) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/35 {
+  --tw-gradient-from: rgb(254 248 230 / 0.35) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/40 {
+  --tw-gradient-from: rgb(254 248 230 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/45 {
+  --tw-gradient-from: rgb(254 248 230 / 0.45) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/5 {
+  --tw-gradient-from: rgb(254 248 230 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/50 {
+  --tw-gradient-from: rgb(254 248 230 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/55 {
+  --tw-gradient-from: rgb(254 248 230 / 0.55) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/60 {
+  --tw-gradient-from: rgb(254 248 230 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/65 {
+  --tw-gradient-from: rgb(254 248 230 / 0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/70 {
+  --tw-gradient-from: rgb(254 248 230 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/75 {
+  --tw-gradient-from: rgb(254 248 230 / 0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/80 {
+  --tw-gradient-from: rgb(254 248 230 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/85 {
+  --tw-gradient-from: rgb(254 248 230 / 0.85) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/90 {
+  --tw-gradient-from: rgb(254 248 230 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:from-chroma-yellowLight\/95 {
+  --tw-gradient-from: rgb(254 248 230 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 248 230 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .group:hover .group-hover\:text-chroma-blue {
   --tw-text-opacity: 1;
   color: rgb(74 108 124 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-blue\/0 {
+  color: rgb(74 108 124 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/10 {
+  color: rgb(74 108 124 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/100 {
+  color: rgb(74 108 124 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/15 {
+  color: rgb(74 108 124 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/20 {
+  color: rgb(74 108 124 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/25 {
+  color: rgb(74 108 124 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/30 {
+  color: rgb(74 108 124 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/35 {
+  color: rgb(74 108 124 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/40 {
+  color: rgb(74 108 124 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/45 {
+  color: rgb(74 108 124 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/5 {
+  color: rgb(74 108 124 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/50 {
+  color: rgb(74 108 124 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/55 {
+  color: rgb(74 108 124 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/60 {
+  color: rgb(74 108 124 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/65 {
+  color: rgb(74 108 124 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/70 {
+  color: rgb(74 108 124 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/75 {
+  color: rgb(74 108 124 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/80 {
+  color: rgb(74 108 124 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/85 {
+  color: rgb(74 108 124 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/90 {
+  color: rgb(74 108 124 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-blue\/95 {
+  color: rgb(74 108 124 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark {
+  --tw-text-opacity: 1;
+  color: rgb(47 72 88 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/0 {
+  color: rgb(47 72 88 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/10 {
+  color: rgb(47 72 88 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/100 {
+  color: rgb(47 72 88 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/15 {
+  color: rgb(47 72 88 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/20 {
+  color: rgb(47 72 88 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/25 {
+  color: rgb(47 72 88 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/30 {
+  color: rgb(47 72 88 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/35 {
+  color: rgb(47 72 88 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/40 {
+  color: rgb(47 72 88 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/45 {
+  color: rgb(47 72 88 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/5 {
+  color: rgb(47 72 88 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/50 {
+  color: rgb(47 72 88 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/55 {
+  color: rgb(47 72 88 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/60 {
+  color: rgb(47 72 88 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/65 {
+  color: rgb(47 72 88 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/70 {
+  color: rgb(47 72 88 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/75 {
+  color: rgb(47 72 88 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/80 {
+  color: rgb(47 72 88 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/85 {
+  color: rgb(47 72 88 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/90 {
+  color: rgb(47 72 88 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-blueDark\/95 {
+  color: rgb(47 72 88 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight {
+  --tw-text-opacity: 1;
+  color: rgb(227 233 236 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/0 {
+  color: rgb(227 233 236 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/10 {
+  color: rgb(227 233 236 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/100 {
+  color: rgb(227 233 236 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/15 {
+  color: rgb(227 233 236 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/20 {
+  color: rgb(227 233 236 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/25 {
+  color: rgb(227 233 236 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/30 {
+  color: rgb(227 233 236 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/35 {
+  color: rgb(227 233 236 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/40 {
+  color: rgb(227 233 236 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/45 {
+  color: rgb(227 233 236 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/5 {
+  color: rgb(227 233 236 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/50 {
+  color: rgb(227 233 236 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/55 {
+  color: rgb(227 233 236 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/60 {
+  color: rgb(227 233 236 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/65 {
+  color: rgb(227 233 236 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/70 {
+  color: rgb(227 233 236 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/75 {
+  color: rgb(227 233 236 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/80 {
+  color: rgb(227 233 236 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/85 {
+  color: rgb(227 233 236 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/90 {
+  color: rgb(227 233 236 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-blueLight\/95 {
+  color: rgb(227 233 236 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-green {
+  --tw-text-opacity: 1;
+  color: rgb(74 124 89 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-green\/0 {
+  color: rgb(74 124 89 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-green\/10 {
+  color: rgb(74 124 89 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-green\/100 {
+  color: rgb(74 124 89 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-green\/15 {
+  color: rgb(74 124 89 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-green\/20 {
+  color: rgb(74 124 89 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-green\/25 {
+  color: rgb(74 124 89 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-green\/30 {
+  color: rgb(74 124 89 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-green\/35 {
+  color: rgb(74 124 89 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-green\/40 {
+  color: rgb(74 124 89 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-green\/45 {
+  color: rgb(74 124 89 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-green\/5 {
+  color: rgb(74 124 89 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-green\/50 {
+  color: rgb(74 124 89 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-green\/55 {
+  color: rgb(74 124 89 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-green\/60 {
+  color: rgb(74 124 89 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-green\/65 {
+  color: rgb(74 124 89 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-green\/70 {
+  color: rgb(74 124 89 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-green\/75 {
+  color: rgb(74 124 89 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-green\/80 {
+  color: rgb(74 124 89 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-green\/85 {
+  color: rgb(74 124 89 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-green\/90 {
+  color: rgb(74 124 89 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-green\/95 {
+  color: rgb(74 124 89 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight {
+  --tw-text-opacity: 1;
+  color: rgb(227 236 230 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/0 {
+  color: rgb(227 236 230 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/10 {
+  color: rgb(227 236 230 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/100 {
+  color: rgb(227 236 230 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/15 {
+  color: rgb(227 236 230 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/20 {
+  color: rgb(227 236 230 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/25 {
+  color: rgb(227 236 230 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/30 {
+  color: rgb(227 236 230 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/35 {
+  color: rgb(227 236 230 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/40 {
+  color: rgb(227 236 230 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/45 {
+  color: rgb(227 236 230 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/5 {
+  color: rgb(227 236 230 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/50 {
+  color: rgb(227 236 230 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/55 {
+  color: rgb(227 236 230 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/60 {
+  color: rgb(227 236 230 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/65 {
+  color: rgb(227 236 230 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/70 {
+  color: rgb(227 236 230 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/75 {
+  color: rgb(227 236 230 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/80 {
+  color: rgb(227 236 230 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/85 {
+  color: rgb(227 236 230 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/90 {
+  color: rgb(227 236 230 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-greenLight\/95 {
+  color: rgb(227 236 230 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-orange {
+  --tw-text-opacity: 1;
+  color: rgb(194 101 36 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-orange\/0 {
+  color: rgb(194 101 36 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/10 {
+  color: rgb(194 101 36 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/100 {
+  color: rgb(194 101 36 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/15 {
+  color: rgb(194 101 36 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/20 {
+  color: rgb(194 101 36 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/25 {
+  color: rgb(194 101 36 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/30 {
+  color: rgb(194 101 36 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/35 {
+  color: rgb(194 101 36 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/40 {
+  color: rgb(194 101 36 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/45 {
+  color: rgb(194 101 36 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/5 {
+  color: rgb(194 101 36 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/50 {
+  color: rgb(194 101 36 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/55 {
+  color: rgb(194 101 36 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/60 {
+  color: rgb(194 101 36 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/65 {
+  color: rgb(194 101 36 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/70 {
+  color: rgb(194 101 36 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/75 {
+  color: rgb(194 101 36 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/80 {
+  color: rgb(194 101 36 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/85 {
+  color: rgb(194 101 36 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/90 {
+  color: rgb(194 101 36 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-orange\/95 {
+  color: rgb(194 101 36 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight {
+  --tw-text-opacity: 1;
+  color: rgb(254 240 230 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/0 {
+  color: rgb(254 240 230 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/10 {
+  color: rgb(254 240 230 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/100 {
+  color: rgb(254 240 230 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/15 {
+  color: rgb(254 240 230 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/20 {
+  color: rgb(254 240 230 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/25 {
+  color: rgb(254 240 230 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/30 {
+  color: rgb(254 240 230 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/35 {
+  color: rgb(254 240 230 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/40 {
+  color: rgb(254 240 230 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/45 {
+  color: rgb(254 240 230 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/5 {
+  color: rgb(254 240 230 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/50 {
+  color: rgb(254 240 230 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/55 {
+  color: rgb(254 240 230 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/60 {
+  color: rgb(254 240 230 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/65 {
+  color: rgb(254 240 230 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/70 {
+  color: rgb(254 240 230 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/75 {
+  color: rgb(254 240 230 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/80 {
+  color: rgb(254 240 230 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/85 {
+  color: rgb(254 240 230 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/90 {
+  color: rgb(254 240 230 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-orangeLight\/95 {
+  color: rgb(254 240 230 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-purple {
+  --tw-text-opacity: 1;
+  color: rgb(125 91 166 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-purple\/0 {
+  color: rgb(125 91 166 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/10 {
+  color: rgb(125 91 166 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/100 {
+  color: rgb(125 91 166 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/15 {
+  color: rgb(125 91 166 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/20 {
+  color: rgb(125 91 166 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/25 {
+  color: rgb(125 91 166 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/30 {
+  color: rgb(125 91 166 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/35 {
+  color: rgb(125 91 166 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/40 {
+  color: rgb(125 91 166 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/45 {
+  color: rgb(125 91 166 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/5 {
+  color: rgb(125 91 166 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/50 {
+  color: rgb(125 91 166 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/55 {
+  color: rgb(125 91 166 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/60 {
+  color: rgb(125 91 166 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/65 {
+  color: rgb(125 91 166 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/70 {
+  color: rgb(125 91 166 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/75 {
+  color: rgb(125 91 166 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/80 {
+  color: rgb(125 91 166 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/85 {
+  color: rgb(125 91 166 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/90 {
+  color: rgb(125 91 166 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-purple\/95 {
+  color: rgb(125 91 166 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight {
+  --tw-text-opacity: 1;
+  color: rgb(243 235 249 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/0 {
+  color: rgb(243 235 249 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/10 {
+  color: rgb(243 235 249 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/100 {
+  color: rgb(243 235 249 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/15 {
+  color: rgb(243 235 249 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/20 {
+  color: rgb(243 235 249 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/25 {
+  color: rgb(243 235 249 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/30 {
+  color: rgb(243 235 249 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/35 {
+  color: rgb(243 235 249 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/40 {
+  color: rgb(243 235 249 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/45 {
+  color: rgb(243 235 249 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/5 {
+  color: rgb(243 235 249 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/50 {
+  color: rgb(243 235 249 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/55 {
+  color: rgb(243 235 249 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/60 {
+  color: rgb(243 235 249 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/65 {
+  color: rgb(243 235 249 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/70 {
+  color: rgb(243 235 249 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/75 {
+  color: rgb(243 235 249 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/80 {
+  color: rgb(243 235 249 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/85 {
+  color: rgb(243 235 249 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/90 {
+  color: rgb(243 235 249 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-purpleLight\/95 {
+  color: rgb(243 235 249 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-red {
+  --tw-text-opacity: 1;
+  color: rgb(168 75 56 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-red\/0 {
+  color: rgb(168 75 56 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-red\/10 {
+  color: rgb(168 75 56 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-red\/100 {
+  color: rgb(168 75 56 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-red\/15 {
+  color: rgb(168 75 56 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-red\/20 {
+  color: rgb(168 75 56 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-red\/25 {
+  color: rgb(168 75 56 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-red\/30 {
+  color: rgb(168 75 56 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-red\/35 {
+  color: rgb(168 75 56 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-red\/40 {
+  color: rgb(168 75 56 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-red\/45 {
+  color: rgb(168 75 56 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-red\/5 {
+  color: rgb(168 75 56 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-red\/50 {
+  color: rgb(168 75 56 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-red\/55 {
+  color: rgb(168 75 56 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-red\/60 {
+  color: rgb(168 75 56 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-red\/65 {
+  color: rgb(168 75 56 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-red\/70 {
+  color: rgb(168 75 56 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-red\/75 {
+  color: rgb(168 75 56 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-red\/80 {
+  color: rgb(168 75 56 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-red\/85 {
+  color: rgb(168 75 56 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-red\/90 {
+  color: rgb(168 75 56 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-red\/95 {
+  color: rgb(168 75 56 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-redLight {
+  --tw-text-opacity: 1;
+  color: rgb(244 229 226 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/0 {
+  color: rgb(244 229 226 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/10 {
+  color: rgb(244 229 226 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/100 {
+  color: rgb(244 229 226 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/15 {
+  color: rgb(244 229 226 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/20 {
+  color: rgb(244 229 226 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/25 {
+  color: rgb(244 229 226 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/30 {
+  color: rgb(244 229 226 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/35 {
+  color: rgb(244 229 226 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/40 {
+  color: rgb(244 229 226 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/45 {
+  color: rgb(244 229 226 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/5 {
+  color: rgb(244 229 226 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/50 {
+  color: rgb(244 229 226 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/55 {
+  color: rgb(244 229 226 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/60 {
+  color: rgb(244 229 226 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/65 {
+  color: rgb(244 229 226 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/70 {
+  color: rgb(244 229 226 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/75 {
+  color: rgb(244 229 226 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/80 {
+  color: rgb(244 229 226 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/85 {
+  color: rgb(244 229 226 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/90 {
+  color: rgb(244 229 226 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-redLight\/95 {
+  color: rgb(244 229 226 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-teal {
+  --tw-text-opacity: 1;
+  color: rgb(36 142 194 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-teal\/0 {
+  color: rgb(36 142 194 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/10 {
+  color: rgb(36 142 194 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/100 {
+  color: rgb(36 142 194 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/15 {
+  color: rgb(36 142 194 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/20 {
+  color: rgb(36 142 194 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/25 {
+  color: rgb(36 142 194 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/30 {
+  color: rgb(36 142 194 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/35 {
+  color: rgb(36 142 194 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/40 {
+  color: rgb(36 142 194 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/45 {
+  color: rgb(36 142 194 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/5 {
+  color: rgb(36 142 194 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/50 {
+  color: rgb(36 142 194 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/55 {
+  color: rgb(36 142 194 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/60 {
+  color: rgb(36 142 194 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/65 {
+  color: rgb(36 142 194 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/70 {
+  color: rgb(36 142 194 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/75 {
+  color: rgb(36 142 194 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/80 {
+  color: rgb(36 142 194 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/85 {
+  color: rgb(36 142 194 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/90 {
+  color: rgb(36 142 194 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-teal\/95 {
+  color: rgb(36 142 194 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight {
+  --tw-text-opacity: 1;
+  color: rgb(230 244 254 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/0 {
+  color: rgb(230 244 254 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/10 {
+  color: rgb(230 244 254 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/100 {
+  color: rgb(230 244 254 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/15 {
+  color: rgb(230 244 254 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/20 {
+  color: rgb(230 244 254 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/25 {
+  color: rgb(230 244 254 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/30 {
+  color: rgb(230 244 254 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/35 {
+  color: rgb(230 244 254 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/40 {
+  color: rgb(230 244 254 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/45 {
+  color: rgb(230 244 254 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/5 {
+  color: rgb(230 244 254 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/50 {
+  color: rgb(230 244 254 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/55 {
+  color: rgb(230 244 254 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/60 {
+  color: rgb(230 244 254 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/65 {
+  color: rgb(230 244 254 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/70 {
+  color: rgb(230 244 254 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/75 {
+  color: rgb(230 244 254 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/80 {
+  color: rgb(230 244 254 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/85 {
+  color: rgb(230 244 254 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/90 {
+  color: rgb(230 244 254 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-tealLight\/95 {
+  color: rgb(230 244 254 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-yellow {
+  --tw-text-opacity: 1;
+  color: rgb(194 160 36 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/0 {
+  color: rgb(194 160 36 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/10 {
+  color: rgb(194 160 36 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/100 {
+  color: rgb(194 160 36 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/15 {
+  color: rgb(194 160 36 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/20 {
+  color: rgb(194 160 36 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/25 {
+  color: rgb(194 160 36 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/30 {
+  color: rgb(194 160 36 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/35 {
+  color: rgb(194 160 36 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/40 {
+  color: rgb(194 160 36 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/45 {
+  color: rgb(194 160 36 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/5 {
+  color: rgb(194 160 36 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/50 {
+  color: rgb(194 160 36 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/55 {
+  color: rgb(194 160 36 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/60 {
+  color: rgb(194 160 36 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/65 {
+  color: rgb(194 160 36 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/70 {
+  color: rgb(194 160 36 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/75 {
+  color: rgb(194 160 36 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/80 {
+  color: rgb(194 160 36 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/85 {
+  color: rgb(194 160 36 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/90 {
+  color: rgb(194 160 36 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-yellow\/95 {
+  color: rgb(194 160 36 / 0.95);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight {
+  --tw-text-opacity: 1;
+  color: rgb(254 248 230 / var(--tw-text-opacity, 1));
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/0 {
+  color: rgb(254 248 230 / 0);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/10 {
+  color: rgb(254 248 230 / 0.1);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/100 {
+  color: rgb(254 248 230 / 1);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/15 {
+  color: rgb(254 248 230 / 0.15);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/20 {
+  color: rgb(254 248 230 / 0.2);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/25 {
+  color: rgb(254 248 230 / 0.25);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/30 {
+  color: rgb(254 248 230 / 0.3);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/35 {
+  color: rgb(254 248 230 / 0.35);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/40 {
+  color: rgb(254 248 230 / 0.4);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/45 {
+  color: rgb(254 248 230 / 0.45);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/5 {
+  color: rgb(254 248 230 / 0.05);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/50 {
+  color: rgb(254 248 230 / 0.5);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/55 {
+  color: rgb(254 248 230 / 0.55);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/60 {
+  color: rgb(254 248 230 / 0.6);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/65 {
+  color: rgb(254 248 230 / 0.65);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/70 {
+  color: rgb(254 248 230 / 0.7);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/75 {
+  color: rgb(254 248 230 / 0.75);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/80 {
+  color: rgb(254 248 230 / 0.8);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/85 {
+  color: rgb(254 248 230 / 0.85);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/90 {
+  color: rgb(254 248 230 / 0.9);
+}
+
+.group:hover .group-hover\:text-chroma-yellowLight\/95 {
+  color: rgb(254 248 230 / 0.95);
 }
 
 .group:hover .group-hover\:text-white {
