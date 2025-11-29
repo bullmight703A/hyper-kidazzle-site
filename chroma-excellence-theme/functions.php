@@ -258,20 +258,18 @@ add_action('wp_head', 'chroma_add_meta_description', 1);
  */
 function chroma_dequeue_leadconnector_plugin()
 {
-    // Only dequeue on mobile to improve LCP/FCP
-    if (wp_is_mobile()) {
-        // Dequeue all LeadConnector plugin scripts
-        wp_dequeue_script('leadconnector-widget');
-        wp_deregister_script('leadconnector-widget');
-        wp_dequeue_script('leadconnector');
-        wp_deregister_script('leadconnector');
-        wp_dequeue_script('lc-widget');
-        wp_deregister_script('lc-widget');
+    // Always dequeue to allow JS to handle loading logic (Cloudflare compatible)
+    // Dequeue all LeadConnector plugin scripts
+    wp_dequeue_script('leadconnector-widget');
+    wp_deregister_script('leadconnector-widget');
+    wp_dequeue_script('leadconnector');
+    wp_deregister_script('leadconnector');
+    wp_dequeue_script('lc-widget');
+    wp_deregister_script('lc-widget');
 
-        // Also dequeue any styles
-        wp_dequeue_style('leadconnector');
-        wp_deregister_style('leadconnector');
-    }
+    // Also dequeue any styles
+    wp_dequeue_style('leadconnector');
+    wp_deregister_style('leadconnector');
 }
 add_action('wp_enqueue_scripts', 'chroma_dequeue_leadconnector_plugin', 9999);
 
@@ -282,14 +280,12 @@ add_action('wp_enqueue_scripts', 'chroma_dequeue_leadconnector_plugin', 9999);
  */
 function chroma_lazy_load_leadconnector()
 {
-    // Only lazy load on mobile
-    if (!wp_is_mobile()) {
-        return;
-    }
     ?>
     <script>
         (function () {
             var loaded = false;
+            
+            // Function to load the widget
             var loadWidget = function () {
                 if (loaded) return;
                 loaded = true;
@@ -306,16 +302,27 @@ function chroma_lazy_load_leadconnector()
                 script.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
                 script.async = true;
                 document.body.appendChild(script);
+                console.log('LeadConnector Widget Loaded');
             };
 
-            // Load after 3 seconds
-            setTimeout(loadWidget, 3000);
+            // Device Detection Logic (Client-Side)
+            var isMobile = window.innerWidth < 768;
 
-            // Or load on first user interaction (whichever comes first)
-            var events = ['mousedown', 'touchstart', 'keydown', 'scroll'];
-            events.forEach(function (event) {
-                window.addEventListener(event, loadWidget, { once: true, passive: true });
-            });
+            if (isMobile) {
+                // Mobile: Lazy load after 3.5 seconds
+                console.log('Mobile detected: Lazy loading LeadConnector (3.5s delay)');
+                setTimeout(loadWidget, 3500);
+                
+                // Or on user interaction
+                var events = ['mousedown', 'touchstart', 'keydown', 'scroll'];
+                events.forEach(function (event) {
+                    window.addEventListener(event, loadWidget, { once: true, passive: true });
+                });
+            } else {
+                // Desktop: Load immediately (but defer slightly to let LCP finish)
+                console.log('Desktop detected: Loading LeadConnector immediately');
+                setTimeout(loadWidget, 100); 
+            }
         })();
     </script>
     <?php
