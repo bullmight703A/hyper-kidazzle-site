@@ -120,7 +120,7 @@ function chroma_enqueue_assets()
         $js_version = file_exists($js_path) ? filemtime($js_path) : CHROMA_VERSION;
 
         wp_enqueue_script(
-                'chroma-main',
+                'chroma-main-js',
                 CHROMA_THEME_URI . '/assets/js/main.js',
                 $script_dependencies,
                 $js_version,
@@ -128,7 +128,7 @@ function chroma_enqueue_assets()
         );
 
         // Defer removed to prevent race conditions with inline scripts and dependencies
-        // wp_script_add_data('chroma-main', 'defer', true);
+        // wp_script_add_data('chroma-main-js', 'defer', true);
 
         // Map Facade (Lazy Load Leaflet).
         $should_load_maps = chroma_should_load_maps();
@@ -137,7 +137,7 @@ function chroma_enqueue_assets()
                 wp_enqueue_script(
                         'chroma-map-facade',
                         CHROMA_THEME_URI . '/assets/js/map-facade.js',
-                        array('chroma-main'), // Depend on main to ensure chromaData is available
+                        array('chroma-main-js'), // Depend on main to ensure chromaData is available
                         $js_version,
                         true
                 );
@@ -146,7 +146,7 @@ function chroma_enqueue_assets()
 
         // Localize script for AJAX and dynamic data.
         wp_localize_script(
-                'chroma-main',
+                'chroma-main-js',
                 'chromaData',
                 array(
                         'ajaxUrl' => admin_url('admin-ajax.php'),
