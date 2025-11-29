@@ -198,16 +198,18 @@ add_filter('script_loader_tag', 'chroma_defer_scripts', 10, 3);
 /**
  * LCP Optimization: Preload hero image to improve Largest Content Paint
  */
-function chroma_preload_lcp_image() {
-	$logo_url = get_template_directory_uri() . '/assets/images/chroma-1920w.webp';
-	echo '<link rel='preload' as='image' href='' . esc_url($logo_url) . '' fetchpriority='high'>' . "\n";
+function chroma_preload_lcp_image()
+{
+    $logo_url = get_template_directory_uri() . '/assets/images/chroma-1920w.webp';
+    echo '<link rel="preload" as="image" href="' . esc_url($logo_url) . '" fetchpriority="high">' . "\n";
 }
 add_action('wp_head', 'chroma_preload_lcp_image', 1);
 
 /**
  * LiteSpeed Cache: Exclude LCP/hero images from lazy loading
  */
-function chroma_litespeed_exclude_lcp() {
-	return array('chroma-1920w', 'chroma-logo', 'hero');
+function chroma_litespeed_exclude_lcp()
+{
+    return array('chroma-1920w', 'chroma-logo', 'hero');
 }
 add_filter('litespeed_img_lazy_exclude', 'chroma_litespeed_exclude_lcp');
