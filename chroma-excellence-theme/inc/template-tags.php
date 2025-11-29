@@ -476,3 +476,18 @@ function chroma_get_region_color_from_term($term_id)
         'border' => $color_border ?: 'chroma-green',
     );
 }
+
+/**
+ * Region Emoji Helper
+ */
+function chroma_region_emoji($label)
+{
+    $map = array(
+        'Cobb County' => '🍑',
+        'Gwinnett County' => '🌳',
+        'North Metro' => '🏙️',
+        'South Metro' => '⛰️',
+    );
+
+    return $map[$label] ?? '📍';
+}

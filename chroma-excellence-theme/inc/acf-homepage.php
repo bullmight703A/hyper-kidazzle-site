@@ -7,94 +7,99 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
         exit;
 }
 
 /**
  * Get Home Page ID (for thumbnail rendering)
  */
-function chroma_get_home_page_id() {
-        return get_option( 'page_on_front' ) ?: 0;
+function chroma_get_home_page_id()
+{
+        return get_option('page_on_front') ?: 0;
 }
 
-function chroma_home_default_hero() {
-return array(
-'heading'         => 'The art of <span class="italic text-chroma-red">growing up.</span>',
-'subheading'      => 'Where accredited excellence meets the warmth of home. A modern sanctuary powered by our proprietary Prismpath™ learning model for children 6 weeks to 12 years.',
-'cta_label'       => 'Schedule a Tour',
-'cta_url'         => '#tour',
-'secondary_label' => 'View Programs',
-'secondary_url'   => chroma_get_program_archive_url(),
-);
-}
-
-function chroma_home_default_stats() {
+function chroma_home_default_hero()
+{
         return array(
-                array( 'value' => '19+', 'label' => 'Metro campuses' ),
-                array( 'value' => '2,000+', 'label' => 'Children enrolled' ),
-                array( 'value' => '4.8', 'label' => 'Avg parent rating' ),
-                array( 'value' => '6w–12y', 'label' => 'Age range' ),
+                'heading' => 'The art of <span class="italic text-chroma-red">growing up.</span>',
+                'subheading' => 'Where accredited excellence meets the warmth of home. A modern sanctuary powered by our proprietary Prismpath™ learning model for children 6 weeks to 12 years.',
+                'cta_label' => 'Schedule a Tour',
+                'cta_url' => '#tour',
+                'secondary_label' => 'View Programs',
+                'secondary_url' => chroma_get_program_archive_url(),
         );
 }
 
-function chroma_home_default_prismpath() {
+function chroma_home_default_stats()
+{
         return array(
-                'feature'   => array(
-                        'eyebrow'    => 'The Chroma Standard',
-                        'heading'    => 'Grounded in Expertise. Wrapped in Love.',
+                array('value' => '19+', 'label' => 'Metro campuses'),
+                array('value' => '2,000+', 'label' => 'Children enrolled'),
+                array('value' => '4.8', 'label' => 'Avg parent rating'),
+                array('value' => '6w–12y', 'label' => 'Age range'),
+        );
+}
+
+function chroma_home_default_prismpath()
+{
+        return array(
+                'feature' => array(
+                        'eyebrow' => 'The Chroma Standard',
+                        'heading' => 'Grounded in Expertise. Wrapped in Love.',
                         'subheading' => '',
-                        'cta_label'  => 'Meet the Team',
-                        'cta_url'    => '/about',
+                        'cta_label' => 'Meet the Team',
+                        'cta_url' => '/about',
                 ),
-                'cards'     => array(
+                'cards' => array(
                         array(
-                                'badge'        => 'Proprietary Model',
-                                'heading'      => 'The Prismpath™ Curriculum',
-                                'text'         => 'Just as a prism refracts light into a full spectrum of color, Prismpath™ refracts play into a full spectrum of development.',
-                                'icon_bg'      => 'fa-solid fa-shapes',
-                                'icon_badge'   => 'fa-brands fa-connectdevelop',
-                                'icon_check'   => 'fa-solid fa-check-circle',
+                                'badge' => 'Proprietary Model',
+                                'heading' => 'The Prismpath™ Curriculum',
+                                'text' => 'Just as a prism refracts light into a full spectrum of color, Prismpath™ refracts play into a full spectrum of development.',
+                                'icon_bg' => 'fa-solid fa-shapes',
+                                'icon_badge' => 'fa-brands fa-connectdevelop',
+                                'icon_check' => 'fa-solid fa-check-circle',
                         ),
                         array(
-                                'badge'     => '',
-                                'heading'   => 'Expert Care, Extended Family.',
-                                'text'      => 'Our educators are state-certified professionals who understand that the most important credential is kindness.',
-                                'button'    => 'Meet the Team',
-                                'url'       => '/about',
-                                'icon_bg'   => 'fa-solid fa-heart',
+                                'badge' => '',
+                                'heading' => 'Expert Care, Extended Family.',
+                                'text' => 'Our educators are state-certified professionals who understand that the most important credential is kindness.',
+                                'button' => 'Meet the Team',
+                                'url' => '/about',
+                                'icon_bg' => 'fa-solid fa-heart',
                                 'icon_badge' => 'fa-solid fa-user-check',
                         ),
                         array(
-                                'badge'   => '',
+                                'badge' => '',
                                 'heading' => 'Wholesome Fuel',
-                                'text'    => 'Organic, balanced meals served family-style to fuel growing minds.',
-                                'icon'    => 'fa-solid fa-apple-whole',
+                                'text' => 'Organic, balanced meals served family-style to fuel growing minds.',
+                                'icon' => 'fa-solid fa-apple-whole',
                         ),
                         array(
-                                'badge'   => '',
+                                'badge' => '',
                                 'heading' => 'Uncompromised Safety',
-                                'text'    => 'Secure, monitored facilities with open-door transparency for parents.',
-                                'icon'    => 'fa-solid fa-shield-halved',
+                                'text' => 'Secure, monitored facilities with open-door transparency for parents.',
+                                'icon' => 'fa-solid fa-shield-halved',
                         ),
                 ),
                 'readiness' => array(
-                        'heading'     => 'Kindergarten Readiness',
+                        'heading' => 'Kindergarten Readiness',
                         'description' => 'Our graduates enter school confident, socially capable, and academically prepared.',
                 ),
         );
 }
 
-function chroma_home_get_theme_mod_json( $key, $default = array() ) {
-        $raw = get_theme_mod( $key, '' );
+function chroma_home_get_theme_mod_json($key, $default = array())
+{
+        $raw = get_theme_mod($key, '');
 
-        if ( empty( $raw ) ) {
+        if (empty($raw)) {
                 return $default;
         }
 
-        $decoded = json_decode( $raw, true );
+        $decoded = json_decode($raw, true);
 
-        if ( JSON_ERROR_NONE !== json_last_error() || ! is_array( $decoded ) ) {
+        if (JSON_ERROR_NONE !== json_last_error() || !is_array($decoded)) {
                 return $default;
         }
 
@@ -104,35 +109,37 @@ function chroma_home_get_theme_mod_json( $key, $default = array() ) {
 /**
  * Home Hero Data
  */
-function chroma_home_hero() {
+function chroma_home_hero()
+{
         $defaults = chroma_home_default_hero();
 
         return array(
-                'heading'         => wp_kses_post( get_theme_mod( 'chroma_home_hero_heading', $defaults['heading'] ) ),
-                'subheading'      => sanitize_text_field( get_theme_mod( 'chroma_home_hero_subheading', $defaults['subheading'] ) ),
-                'cta_label'       => sanitize_text_field( get_theme_mod( 'chroma_home_hero_cta_label', $defaults['cta_label'] ) ),
-                'cta_url'         => esc_url_raw( get_theme_mod( 'chroma_home_hero_cta_url', $defaults['cta_url'] ) ),
-                'secondary_label' => sanitize_text_field( get_theme_mod( 'chroma_home_hero_secondary_label', $defaults['secondary_label'] ) ),
-                'secondary_url'   => esc_url_raw( get_theme_mod( 'chroma_home_hero_secondary_url', $defaults['secondary_url'] ) ),
+                'heading' => wp_kses_post(get_theme_mod('chroma_home_hero_heading', $defaults['heading'])),
+                'subheading' => sanitize_text_field(get_theme_mod('chroma_home_hero_subheading', $defaults['subheading'])),
+                'cta_label' => sanitize_text_field(get_theme_mod('chroma_home_hero_cta_label', $defaults['cta_label'])),
+                'cta_url' => esc_url_raw(get_theme_mod('chroma_home_hero_cta_url', $defaults['cta_url'])),
+                'secondary_label' => sanitize_text_field(get_theme_mod('chroma_home_hero_secondary_label', $defaults['secondary_label'])),
+                'secondary_url' => esc_url_raw(get_theme_mod('chroma_home_hero_secondary_url', $defaults['secondary_url'])),
         );
 }
 
 /**
  * Home Stats
  */
-function chroma_home_stats() {
-        $stats    = chroma_home_get_theme_mod_json( 'chroma_home_stats_json', chroma_home_default_stats() );
-        $cleaned  = array();
+function chroma_home_stats()
+{
+        $stats = chroma_home_get_theme_mod_json('chroma_home_stats_json', chroma_home_default_stats());
+        $cleaned = array();
 
         // Define color cycle for stats (red, yellow, blue, green)
-        $colors = array( 'chroma-red', 'chroma-yellow', 'chroma-blue', 'chroma-green' );
-        $index  = 0;
+        $colors = array('chroma-red', 'chroma-yellow', 'chroma-blue', 'chroma-green');
+        $index = 0;
 
-        foreach ( $stats as $stat ) {
+        foreach ($stats as $stat) {
                 $cleaned[] = array(
-                        'value' => sanitize_text_field( $stat['value'] ?? '' ),
-                        'label' => sanitize_text_field( $stat['label'] ?? '' ),
-                        'color' => $colors[ $index % count( $colors ) ],
+                        'value' => sanitize_text_field($stat['value'] ?? ''),
+                        'label' => sanitize_text_field($stat['label'] ?? ''),
+                        'color' => $colors[$index % count($colors)],
                 );
                 $index++;
         }
@@ -143,156 +150,159 @@ function chroma_home_stats() {
 /**
  * Prismpath expertise panels
  */
-function chroma_home_prismpath_panels() {
+function chroma_home_prismpath_panels()
+{
         $defaults = chroma_home_default_prismpath();
 
         $feature = $defaults['feature'];
         $feature = array(
-                'eyebrow'    => sanitize_text_field( get_theme_mod( 'chroma_home_prismpath_eyebrow', $feature['eyebrow'] ) ),
-                'heading'    => sanitize_text_field( get_theme_mod( 'chroma_home_prismpath_heading', $feature['heading'] ) ),
-                'subheading' => sanitize_text_field( get_theme_mod( 'chroma_home_prismpath_subheading', $feature['subheading'] ) ),
-                'cta_label'  => sanitize_text_field( get_theme_mod( 'chroma_home_prismpath_cta_label', $feature['cta_label'] ) ),
-                'cta_url'    => esc_url_raw( get_theme_mod( 'chroma_home_prismpath_cta_url', $feature['cta_url'] ) ),
+                'eyebrow' => sanitize_text_field(get_theme_mod('chroma_home_prismpath_eyebrow', $feature['eyebrow'])),
+                'heading' => sanitize_text_field(get_theme_mod('chroma_home_prismpath_heading', $feature['heading'])),
+                'subheading' => sanitize_text_field(get_theme_mod('chroma_home_prismpath_subheading', $feature['subheading'])),
+                'cta_label' => sanitize_text_field(get_theme_mod('chroma_home_prismpath_cta_label', $feature['cta_label'])),
+                'cta_url' => esc_url_raw(get_theme_mod('chroma_home_prismpath_cta_url', $feature['cta_url'])),
         );
 
-        $cards = chroma_home_get_theme_mod_json( 'chroma_home_prismpath_cards_json', $defaults['cards'] );
+        $cards = chroma_home_get_theme_mod_json('chroma_home_prismpath_cards_json', $defaults['cards']);
         $cards = array_map(
-                function ( $card, $index ) use ( $defaults ) {
+                function ($card, $index) use ($defaults) {
                         // Get default card for this index
-                        $default_card = $defaults['cards'][ $index ] ?? array();
+                        $default_card = $defaults['cards'][$index] ?? array();
 
                         // Explicitly set each field, preferring saved data but falling back to defaults
                         // Use ?: operator for icons to handle empty strings, not just null
                         return array(
-                                'badge'      => sanitize_text_field( $card['badge'] ?? $default_card['badge'] ?? '' ),
-                                'heading'    => sanitize_text_field( $card['heading'] ?? $default_card['heading'] ?? '' ),
-                                'text'       => sanitize_textarea_field( $card['text'] ?? $default_card['text'] ?? '' ),
-                                'button'     => sanitize_text_field( $card['button'] ?? $default_card['button'] ?? '' ),
-                                'url'        => esc_url_raw( $card['url'] ?? $default_card['url'] ?? '' ),
+                                'badge' => sanitize_text_field($card['badge'] ?? $default_card['badge'] ?? ''),
+                                'heading' => sanitize_text_field($card['heading'] ?? $default_card['heading'] ?? ''),
+                                'text' => sanitize_textarea_field($card['text'] ?? $default_card['text'] ?? ''),
+                                'button' => sanitize_text_field($card['button'] ?? $default_card['button'] ?? ''),
+                                'url' => esc_url_raw($card['url'] ?? $default_card['url'] ?? ''),
                                 // Use ?: to check for empty strings, not just null - falls back to defaults
-                                'icon'       => sanitize_text_field( ( $card['icon'] ?? '' ) ?: ( $default_card['icon'] ?? '' ) ),
-                                'icon_bg'    => sanitize_text_field( ( $card['icon_bg'] ?? '' ) ?: ( $default_card['icon_bg'] ?? '' ) ),
-                                'icon_badge' => sanitize_text_field( ( $card['icon_badge'] ?? '' ) ?: ( $default_card['icon_badge'] ?? '' ) ),
-                                'icon_check' => sanitize_text_field( ( $card['icon_check'] ?? '' ) ?: ( $default_card['icon_check'] ?? '' ) ),
+                                'icon' => sanitize_text_field(($card['icon'] ?? '') ?: ($default_card['icon'] ?? '')),
+                                'icon_bg' => sanitize_text_field(($card['icon_bg'] ?? '') ?: ($default_card['icon_bg'] ?? '')),
+                                'icon_badge' => sanitize_text_field(($card['icon_badge'] ?? '') ?: ($default_card['icon_badge'] ?? '')),
+                                'icon_check' => sanitize_text_field(($card['icon_check'] ?? '') ?: ($default_card['icon_check'] ?? '')),
                         );
                 },
                 $cards,
-                array_keys( $cards )
+                array_keys($cards)
         );
 
         $readiness = $defaults['readiness'];
         $readiness = array(
-                'heading'     => sanitize_text_field( get_theme_mod( 'chroma_home_prismpath_readiness_heading', $readiness['heading'] ) ),
-                'description' => sanitize_textarea_field( get_theme_mod( 'chroma_home_prismpath_readiness_desc', $readiness['description'] ) ),
+                'heading' => sanitize_text_field(get_theme_mod('chroma_home_prismpath_readiness_heading', $readiness['heading'])),
+                'description' => sanitize_textarea_field(get_theme_mod('chroma_home_prismpath_readiness_desc', $readiness['description'])),
         );
 
         return array(
-                'feature'   => $feature,
-                'cards'     => $cards,
+                'feature' => $feature,
+                'cards' => $cards,
                 'readiness' => $readiness,
         );
 }
 
-function chroma_home_default_program_wizard_options() {
-	$program_url = chroma_get_program_archive_url();
+function chroma_home_default_program_wizard_options()
+{
+        $program_url = chroma_get_program_archive_url();
 
-	return array(
-		array(
-			'key'         => 'infant',
-			'emoji'       => '👶',
-			'label'       => "Infant\n(6 weeks–12m)",
-			'description' => 'Low ratios, safe sleep practices, responsive caregiving, and sensory play in a peaceful, predictable environment.',
-			'link'        => $program_url . '#infant',
-		),
-		array(
-			'key'         => 'toddler',
-			'emoji'       => '🚀',
-			'label'       => "Toddler\n(1 year)",
-			'description' => 'Curated environments for walkers and explorers with language bursts and social skills.',
-			'link'        => $program_url . '#toddler',
-		),
-		array(
-			'key'         => 'preschool',
-			'emoji'       => '🎨',
-			'label'       => "Preschool\n(2 years)",
-			'description' => 'Early concepts in math, literacy, and science introduced through hands-on centers and guided play.',
-			'link'        => $program_url . '#preschool',
-		),
-		array(
-			'key'         => 'prep',
-			'emoji'       => '✏️',
-			'label'       => "Pre-K Prep\n(3 years)",
-			'description' => 'Structured centers and small-group instruction that build independence before GA Pre-K.',
-			'link'        => $program_url . '#pre-k-prep',
-		),
-		array(
-			'key'         => 'prek',
-			'emoji'       => '🎓',
-			'label'       => "GA Pre-K\n(4 years)",
-			'description' => 'Balanced academic readiness, social-emotional learning, and joyful experiences aligned with GA standards.',
-			'link'        => $program_url . '#ga-pre-k',
-		),
-		array(
-			'key'         => 'afterschool',
-			'emoji'       => '🚌',
-			'label'       => "After School\n(5–12 years)",
-			'description' => 'Transportation from local schools, homework support, clubs, and outdoor play.',
-			'link'        => $program_url . '#after-school',
-		),
-	);
+        return array(
+                array(
+                        'key' => 'infant',
+                        'emoji' => '👶',
+                        'label' => "Infant\n(6 weeks–12m)",
+                        'description' => 'Low ratios, safe sleep practices, responsive caregiving, and sensory play in a peaceful, predictable environment.',
+                        'link' => $program_url . '#infant',
+                ),
+                array(
+                        'key' => 'toddler',
+                        'emoji' => '🚀',
+                        'label' => "Toddler\n(1 year)",
+                        'description' => 'Curated environments for walkers and explorers with language bursts and social skills.',
+                        'link' => $program_url . '#toddler',
+                ),
+                array(
+                        'key' => 'preschool',
+                        'emoji' => '🎨',
+                        'label' => "Preschool\n(2 years)",
+                        'description' => 'Early concepts in math, literacy, and science introduced through hands-on centers and guided play.',
+                        'link' => $program_url . '#preschool',
+                ),
+                array(
+                        'key' => 'prep',
+                        'emoji' => '✏️',
+                        'label' => "Pre-K Prep\n(3 years)",
+                        'description' => 'Structured centers and small-group instruction that build independence before GA Pre-K.',
+                        'link' => $program_url . '#pre-k-prep',
+                ),
+                array(
+                        'key' => 'prek',
+                        'emoji' => '🎓',
+                        'label' => "GA Pre-K\n(4 years)",
+                        'description' => 'Balanced academic readiness, social-emotional learning, and joyful experiences aligned with GA standards.',
+                        'link' => $program_url . '#ga-pre-k',
+                ),
+                array(
+                        'key' => 'afterschool',
+                        'emoji' => '🚌',
+                        'label' => "After School\n(5–12 years)",
+                        'description' => 'Transportation from local schools, homework support, clubs, and outdoor play.',
+                        'link' => $program_url . '#after-school',
+                ),
+        );
 }
 
-function chroma_home_default_curriculum_profiles() {
+function chroma_home_default_curriculum_profiles()
+{
         return array(
-                'labels'   => array( 'Physical', 'Emotional', 'Social', 'Academic', 'Creative' ),
+                'labels' => array('Physical', 'Emotional', 'Social', 'Academic', 'Creative'),
                 'profiles' => array(
                         array(
-                                'key'         => 'infant',
-                                'label'       => 'Infant',
-                                'title'       => 'Foundation Phase',
+                                'key' => 'infant',
+                                'label' => 'Infant',
+                                'title' => 'Foundation Phase',
                                 'description' => 'Infant classrooms emphasize emotional security, attachment, physical health, and sensory experiences. Academics are embedded through language-rich interactions.',
-                                'color'       => '#D67D6B',
-                                'data'        => array( 90, 90, 40, 15, 40 ),
+                                'color' => '#D67D6B',
+                                'data' => array(90, 90, 40, 15, 40),
                         ),
                         array(
-                                'key'         => 'toddler',
-                                'label'       => 'Toddler',
-                                'title'       => 'Discovery Phase',
+                                'key' => 'toddler',
+                                'label' => 'Toddler',
+                                'title' => 'Discovery Phase',
                                 'description' => 'Toddlers explore movement, language, early problem-solving, and social skills through guided play and routines.',
-                                'color'       => '#4A6C7C',
-                                'data'        => array( 85, 75, 65, 30, 70 ),
+                                'color' => '#4A6C7C',
+                                'data' => array(85, 75, 65, 30, 70),
                         ),
                         array(
-                                'key'         => 'preschool',
-                                'label'       => 'Preschool',
-                                'title'       => 'Exploration Phase',
+                                'key' => 'preschool',
+                                'label' => 'Preschool',
+                                'title' => 'Exploration Phase',
                                 'description' => 'Preschoolers work on early literacy, math concepts, dramatic play, and collaborative projects, supported by strong routines.',
-                                'color'       => '#E6BE75',
-                                'data'        => array( 75, 65, 70, 55, 80 ),
+                                'color' => '#E6BE75',
+                                'data' => array(75, 65, 70, 55, 80),
                         ),
                         array(
-                                'key'         => 'prep',
-                                'label'       => 'Pre-K Prep',
-                                'title'       => 'Pre-K Prep Phase',
+                                'key' => 'prep',
+                                'label' => 'Pre-K Prep',
+                                'title' => 'Pre-K Prep Phase',
                                 'description' => 'Children build stamina for small-group work, early writing, and multi-step directions while strengthening self-regulation.',
-                                'color'       => '#2F4858',
-                                'data'        => array( 65, 60, 75, 75, 70 ),
+                                'color' => '#2F4858',
+                                'data' => array(65, 60, 75, 75, 70),
                         ),
                         array(
-                                'key'         => 'prek',
-                                'label'       => 'GA Pre-K',
-                                'title'       => 'GA Pre-K Readiness',
+                                'key' => 'prek',
+                                'label' => 'GA Pre-K',
+                                'title' => 'GA Pre-K Readiness',
                                 'description' => 'Balanced academic readiness, social-emotional learning, and joyful experiences aligned with GA standards.',
-                                'color'       => '#4A6C7C',
-                                'data'        => array( 60, 60, 80, 90, 70 ),
+                                'color' => '#4A6C7C',
+                                'data' => array(60, 60, 80, 90, 70),
                         ),
                         array(
-                                'key'         => 'afterschool',
-                                'label'       => 'After School',
-                                'title'       => 'Enrichment Phase',
+                                'key' => 'afterschool',
+                                'label' => 'After School',
+                                'title' => 'Enrichment Phase',
                                 'description' => 'School-age programming offers homework help, social clubs, athletic play, and creative enrichment for older children.',
-                                'color'       => '#E6BE75',
-                                'data'        => array( 50, 70, 85, 75, 80 ),
+                                'color' => '#E6BE75',
+                                'data' => array(50, 70, 85, 75, 80),
                         ),
                 ),
         );
@@ -301,122 +311,125 @@ function chroma_home_default_curriculum_profiles() {
 /**
  * Home FAQ Items
  */
-function chroma_home_default_faq_items() {
+function chroma_home_default_faq_items()
+{
         return array(
                 array(
                         'question' => 'Do you offer GA Lottery Pre-K?',
-                        'answer'   => 'Yes. Many Chroma locations offer free GA Lottery Pre-K for 4-year-olds.',
+                        'answer' => 'Yes. Many Chroma locations offer free GA Lottery Pre-K for 4-year-olds.',
                 ),
                 array(
                         'question' => 'What ages do you serve?',
-                        'answer'   => 'Most campuses serve children from 6 weeks through 12 years old.',
+                        'answer' => 'Most campuses serve children from 6 weeks through 12 years old.',
                 ),
                 array(
                         'question' => 'Are meals and snacks included?',
-                        'answer'   => 'Yes. Through the Child and Adult Care Food Program (CACFP).',
+                        'answer' => 'Yes. Through the Child and Adult Care Food Program (CACFP).',
                 ),
                 array(
                         'question' => 'How do you communicate with parents?',
-                        'answer'   => 'We use a modern parent app and in-person conversations to keep you informed.',
+                        'answer' => 'We use a modern parent app and in-person conversations to keep you informed.',
                 ),
                 array(
                         'question' => 'Can I tour before enrolling?',
-                        'answer'   => 'Absolutely. We encourage tours so you can meet the Director and see classrooms in action.',
+                        'answer' => 'Absolutely. We encourage tours so you can meet the Director and see classrooms in action.',
                 ),
         );
 }
 
-function chroma_home_default_faq() {
+function chroma_home_default_faq()
+{
         return array(
-                'heading'    => 'Common questions from parents',
+                'heading' => 'Common questions from parents',
                 'subheading' => 'We’ve answered a few of the questions parents ask most when choosing childcare and early learning.',
-                'items'      => chroma_home_default_faq_items(),
-                'cta_text'   => '',
-                'cta_label'  => '',
-                'cta_link'   => '',
+                'items' => chroma_home_default_faq_items(),
+                'cta_text' => '',
+                'cta_label' => '',
+                'cta_link' => '',
         );
 }
 
 /**
  * Curriculum radar profiles
  */
-function chroma_home_default_schedule_tracks() {
+function chroma_home_default_schedule_tracks()
+{
         return array(
                 array(
-                        'key'         => 'infant',
-                        'label'       => 'Infants',
-                        'title'       => 'The Nurturing Nest',
+                        'key' => 'infant',
+                        'label' => 'Infants',
+                        'title' => 'The Nurturing Nest',
                         'description' => 'Individualized schedules follow infants’ cues for sleeping and eating, with gentle sensory play.',
-                        'color'       => 'chroma-blue',
-                        'background'  => 'bg-chroma-blueLight',
-                        'image'       => 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=800&auto=format&fit=crop',
-                        'steps'       => array(
+                        'color' => 'chroma-blue',
+                        'background' => 'bg-chroma-blueLight',
+                        'image' => 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=800&auto=format&fit=crop',
+                        'steps' => array(
                                 array(
-                                        'time'  => 'AM',
+                                        'time' => 'AM',
                                         'title' => 'Warm Welcome & Cuddles',
-                                        'copy'  => 'Transition from parent, bottle feeding, and floor play.',
+                                        'copy' => 'Transition from parent, bottle feeding, and floor play.',
                                 ),
                                 array(
-                                        'time'  => 'Mid',
+                                        'time' => 'Mid',
                                         'title' => 'Sensory Discovery',
-                                        'copy'  => 'Tummy time, soft textures, and mirror play.',
+                                        'copy' => 'Tummy time, soft textures, and mirror play.',
                                 ),
                                 array(
-                                        'time'  => 'PM',
+                                        'time' => 'PM',
                                         'title' => 'Stroller Walk & Songs',
-                                        'copy'  => 'Fresh air (weather permitting) and gentle music.',
+                                        'copy' => 'Fresh air (weather permitting) and gentle music.',
                                 ),
                         ),
                 ),
                 array(
-                        'key'         => 'toddler',
-                        'label'       => 'Toddlers',
-                        'title'       => 'Explorers & Builders',
+                        'key' => 'toddler',
+                        'label' => 'Toddlers',
+                        'title' => 'Explorers & Builders',
                         'description' => 'Structured circle time and communal meals help toddlers understand social cues and transitions.',
-                        'color'       => 'chroma-yellow',
-                        'background'  => 'bg-chroma-yellowLight',
-                        'image'       => 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop',
-                        'steps'       => array(
+                        'color' => 'chroma-yellow',
+                        'background' => 'bg-chroma-yellowLight',
+                        'image' => 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop',
+                        'steps' => array(
                                 array(
-                                        'time'  => '9:00',
+                                        'time' => '9:00',
                                         'title' => 'Morning Circle',
-                                        'copy'  => 'Songs, greeting friends, and introducing the daily theme.',
+                                        'copy' => 'Songs, greeting friends, and introducing the daily theme.',
                                 ),
                                 array(
-                                        'time'  => '10:30',
+                                        'time' => '10:30',
                                         'title' => 'Prismpath Play',
-                                        'copy'  => 'Block building, art stations, and guided motor skills.',
+                                        'copy' => 'Block building, art stations, and guided motor skills.',
                                 ),
                                 array(
-                                        'time'  => '12:00',
+                                        'time' => '12:00',
                                         'title' => 'Family-Style Lunch',
-                                        'copy'  => 'Learning to pass bowls, use utensils, and chat with friends.',
+                                        'copy' => 'Learning to pass bowls, use utensils, and chat with friends.',
                                 ),
                         ),
                 ),
                 array(
-                        'key'         => 'prek',
-                        'label'       => 'Pre-K',
-                        'title'       => 'Kindergarten Readiness',
+                        'key' => 'prek',
+                        'label' => 'Pre-K',
+                        'title' => 'Kindergarten Readiness',
                         'description' => 'The Pre-K rhythm mirrors elementary flow, building stamina and focus.',
-                        'color'       => 'chroma-red',
-                        'background'  => 'bg-chroma-redLight',
-                        'image'       => 'https://images.unsplash.com/photo-1503919545874-86c1d9a04595?q=80&w=800&auto=format&fit=crop',
-                        'steps'       => array(
+                        'color' => 'chroma-red',
+                        'background' => 'bg-chroma-redLight',
+                        'image' => 'https://images.unsplash.com/photo-1503919545874-86c1d9a04595?q=80&w=800&auto=format&fit=crop',
+                        'steps' => array(
                                 array(
-                                        'time'  => '9:00',
+                                        'time' => '9:00',
                                         'title' => 'Literacy & Logic',
-                                        'copy'  => 'Phonics games, calendar math, and story comprehension.',
+                                        'copy' => 'Phonics games, calendar math, and story comprehension.',
                                 ),
                                 array(
-                                        'time'  => '11:00',
+                                        'time' => '11:00',
                                         'title' => 'Project-Based Learning',
-                                        'copy'  => 'Collaborative science experiments and art projects.',
+                                        'copy' => 'Collaborative science experiments and art projects.',
                                 ),
                                 array(
-                                        'time'  => '2:00',
+                                        'time' => '2:00',
                                         'title' => 'Social Centers',
-                                        'copy'  => 'Dramatic play and negotiation skills.',
+                                        'copy' => 'Dramatic play and negotiation skills.',
                                 ),
                         ),
                 ),
@@ -426,98 +439,100 @@ function chroma_home_default_schedule_tracks() {
 /**
  * Age-based program wizard options - Pull from Program CPT
  */
-function chroma_home_program_wizard_options() {
-	// Query all published programs
-	$programs = new WP_Query( array(
-		'post_type'      => 'program',
-		'posts_per_page' => -1,
-		'orderby'        => 'menu_order',
-		'order'          => 'ASC',
-		'post_status'    => 'publish',
-	) );
+function chroma_home_program_wizard_options()
+{
+        // Query all published programs
+        $programs = new WP_Query(array(
+                'post_type' => 'program',
+                'posts_per_page' => -1,
+                'orderby' => 'menu_order',
+                'order' => 'ASC',
+                'post_status' => 'publish',
+        ));
 
-	if ( ! $programs->have_posts() ) {
-		// Fallback to theme mod options if no programs exist
-		$options     = chroma_home_get_theme_mod_json( 'chroma_home_program_wizard_json', chroma_home_default_program_wizard_options() );
-		$program_url = chroma_get_program_archive_url();
+        if (!$programs->have_posts()) {
+                // Fallback to theme mod options if no programs exist
+                $options = chroma_home_get_theme_mod_json('chroma_home_program_wizard_json', chroma_home_default_program_wizard_options());
+                $program_url = chroma_get_program_archive_url();
 
-		return array_map(
-			function ( $item ) use ( $program_url ) {
-				$key         = sanitize_title( $item['key'] ?? '' );
-				$anchor_slug = chroma_program_anchor_for_key( $key );
-				$link_target = $anchor_slug ?: $key;
+                return array_map(
+                        function ($item) use ($program_url) {
+                                $key = sanitize_title($item['key'] ?? '');
+                                $anchor_slug = chroma_program_anchor_for_key($key);
+                                $link_target = $anchor_slug ?: $key;
 
-				return array(
-					'key'         => $key,
-					'emoji'       => sanitize_text_field( $item['emoji'] ?? '' ),
-					'label'       => sanitize_text_field( $item['label'] ?? '' ),
-					'description' => sanitize_textarea_field( $item['description'] ?? '' ),
-					'link'        => esc_url_raw( $program_url . '#' . $link_target ),
-				);
-			},
-			$options
-		);
-	}
+                                return array(
+                                        'key' => $key,
+                                        'emoji' => sanitize_text_field($item['emoji'] ?? ''),
+                                        'label' => sanitize_text_field($item['label'] ?? ''),
+                                        'description' => sanitize_textarea_field($item['description'] ?? ''),
+                                        'link' => esc_url_raw($program_url . '#' . $link_target),
+                                );
+                        },
+                        $options
+                );
+        }
 
-	// Build options from program posts
-	$options = array();
-	while ( $programs->have_posts() ) {
-		$programs->the_post();
-		$post_id = get_the_ID();
+        // Build options from program posts
+        $options = array();
+        while ($programs->have_posts()) {
+                $programs->the_post();
+                $post_id = get_the_ID();
 
-		// Get program meta
-		$icon        = get_post_meta( $post_id, 'program_icon', true ) ?: '📚';
-		$age_range   = get_post_meta( $post_id, 'program_age_range', true ) ?: '';
-		$excerpt     = get_the_excerpt() ?: '';
-		$anchor_slug = get_post_meta( $post_id, 'program_anchor_slug', true ) ?: get_post_field( 'post_name', $post_id );
+                // Get program meta
+                $icon = get_post_meta($post_id, 'program_icon', true) ?: '📚';
+                $age_range = get_post_meta($post_id, 'program_age_range', true) ?: '';
+                $excerpt = get_the_excerpt() ?: '';
+                $anchor_slug = get_post_meta($post_id, 'program_anchor_slug', true) ?: get_post_field('post_name', $post_id);
 
-		// Build label with line break for display
-		$label = get_the_title();
-		if ( $age_range ) {
-			$label .= ' (' . $age_range . ')';
-		}
+                // Build label with line break for display
+                $label = get_the_title();
+                if ($age_range) {
+                        $label .= ' (' . $age_range . ')';
+                }
 
-		$options[] = array(
-			'key'         => $anchor_slug,
-			'emoji'       => $icon,
-			'label'       => $label,
-			'description' => $excerpt,
-			'link'        => get_permalink( $post_id ),
-		);
-	}
+                $options[] = array(
+                        'key' => $anchor_slug,
+                        'emoji' => $icon,
+                        'label' => $label,
+                        'description' => $excerpt,
+                        'link' => get_permalink($post_id),
+                );
+        }
 
-	wp_reset_postdata();
+        wp_reset_postdata();
 
-	return $options;
+        return $options;
 }
 
-function chroma_home_curriculum_profiles() {
+function chroma_home_curriculum_profiles()
+{
         $defaults = chroma_home_default_curriculum_profiles();
-        $profiles = chroma_home_get_theme_mod_json( 'chroma_home_curriculum_profiles_json', $defaults['profiles'] );
+        $profiles = chroma_home_get_theme_mod_json('chroma_home_curriculum_profiles_json', $defaults['profiles']);
 
         $profiles = array_map(
-                function ( $profile ) {
+                function ($profile) {
                         $color = $profile['color'] ?? '';
-                        if ( ! sanitize_hex_color( $color ) ) {
+                        if (!sanitize_hex_color($color)) {
                                 $color = '#4A6C7C';
                         }
 
-                        $data = array_map( 'floatval', $profile['data'] ?? array() );
+                        $data = array_map('floatval', $profile['data'] ?? array());
 
                         return array(
-                                'key'         => sanitize_title( $profile['key'] ?? '' ),
-                                'label'       => sanitize_text_field( $profile['label'] ?? '' ),
-                                'title'       => sanitize_text_field( $profile['title'] ?? '' ),
-                                'description' => sanitize_textarea_field( $profile['description'] ?? '' ),
-                                'color'       => $color,
-                                'data'        => $data,
+                                'key' => sanitize_title($profile['key'] ?? ''),
+                                'label' => sanitize_text_field($profile['label'] ?? ''),
+                                'title' => sanitize_text_field($profile['title'] ?? ''),
+                                'description' => sanitize_textarea_field($profile['description'] ?? ''),
+                                'color' => $color,
+                                'data' => $data,
                         );
                 },
                 $profiles
         );
 
         return array(
-                'labels'   => $defaults['labels'],
+                'labels' => $defaults['labels'],
                 'profiles' => $profiles,
         );
 }
@@ -525,49 +540,50 @@ function chroma_home_curriculum_profiles() {
 /**
  * Daily schedule tracks - Pull from Program CPT
  */
-function chroma_home_schedule_tracks() {
+function chroma_home_schedule_tracks()
+{
         // Query all published programs with schedule data
-        $programs = new WP_Query( array(
-                'post_type'      => 'program',
+        $programs = new WP_Query(array(
+                'post_type' => 'program',
                 'posts_per_page' => -1,
-                'orderby'        => 'menu_order',
-                'order'          => 'ASC',
-                'post_status'    => 'publish',
-                'meta_query'     => array(
+                'orderby' => 'menu_order',
+                'order' => 'ASC',
+                'post_status' => 'publish',
+                'meta_query' => array(
                         array(
-                                'key'     => 'program_schedule_items',
+                                'key' => 'program_schedule_items',
                                 'compare' => '!=',
-                                'value'   => '',
+                                'value' => '',
                         ),
                 ),
-        ) );
+        ));
 
-        if ( ! $programs->have_posts() ) {
+        if (!$programs->have_posts()) {
                 // Fallback to theme mod/defaults if no programs have schedule data
-                $tracks = chroma_home_get_theme_mod_json( 'chroma_home_schedule_tracks_json', chroma_home_default_schedule_tracks() );
+                $tracks = chroma_home_get_theme_mod_json('chroma_home_schedule_tracks_json', chroma_home_default_schedule_tracks());
 
                 return array_map(
-                        function ( $track ) {
+                        function ($track) {
                                 $steps = array_map(
-                                        function ( $step ) {
+                                        function ($step) {
                                                 return array(
-                                                        'time'  => sanitize_text_field( $step['time'] ?? '' ),
-                                                        'title' => sanitize_text_field( $step['title'] ?? '' ),
-                                                        'copy'  => sanitize_textarea_field( $step['copy'] ?? '' ),
+                                                        'time' => sanitize_text_field($step['time'] ?? ''),
+                                                        'title' => sanitize_text_field($step['title'] ?? ''),
+                                                        'copy' => sanitize_textarea_field($step['copy'] ?? ''),
                                                 );
                                         },
                                         $track['steps'] ?? array()
                                 );
 
                                 return array(
-                                        'key'         => sanitize_title( $track['key'] ?? '' ),
-                                        'label'       => sanitize_text_field( $track['label'] ?? '' ),
-                                        'title'       => sanitize_text_field( $track['title'] ?? '' ),
-                                        'description' => sanitize_textarea_field( $track['description'] ?? '' ),
-                                        'color'       => sanitize_text_field( $track['color'] ?? '' ),
-                                        'background'  => sanitize_text_field( $track['background'] ?? '' ),
-                                        'image'       => esc_url_raw( $track['image'] ?? '' ),
-                                        'steps'       => $steps,
+                                        'key' => sanitize_title($track['key'] ?? ''),
+                                        'label' => sanitize_text_field($track['label'] ?? ''),
+                                        'title' => sanitize_text_field($track['title'] ?? ''),
+                                        'description' => sanitize_textarea_field($track['description'] ?? ''),
+                                        'color' => sanitize_text_field($track['color'] ?? ''),
+                                        'background' => sanitize_text_field($track['background'] ?? ''),
+                                        'image' => esc_url_raw($track['image'] ?? ''),
+                                        'steps' => $steps,
                                 );
                         },
                         $tracks
@@ -576,69 +592,69 @@ function chroma_home_schedule_tracks() {
 
         // Build tracks from program posts
         $tracks = array();
-        while ( $programs->have_posts() ) {
+        while ($programs->have_posts()) {
                 $programs->the_post();
                 $post_id = get_the_ID();
 
                 // Get program meta
-                $anchor_slug     = get_post_meta( $post_id, 'program_anchor_slug', true ) ?: get_post_field( 'post_name', $post_id );
-                $schedule_title  = get_post_meta( $post_id, 'program_schedule_title', true );
-                $schedule_items  = get_post_meta( $post_id, 'program_schedule_items', true );
-                $color_scheme    = get_post_meta( $post_id, 'program_color_scheme', true ) ?: 'blue';
+                $anchor_slug = get_post_meta($post_id, 'program_anchor_slug', true) ?: get_post_field('post_name', $post_id);
+                $schedule_title = get_post_meta($post_id, 'program_schedule_title', true);
+                $schedule_items = get_post_meta($post_id, 'program_schedule_items', true);
+                $color_scheme = get_post_meta($post_id, 'program_color_scheme', true) ?: 'blue';
 
                 // Get program title and excerpt for label and description
                 $program_title = get_the_title();
-                $description   = get_the_excerpt() ?: '';
+                $description = get_the_excerpt() ?: '';
 
                 // Parse schedule items (format: Badge|Title|Description, one per line)
                 $steps = array();
-                if ( ! empty( $schedule_items ) ) {
-                        $lines = explode( "\n", $schedule_items );
-                        foreach ( $lines as $line ) {
-                                $line = trim( $line );
-                                if ( empty( $line ) ) {
+                if (!empty($schedule_items)) {
+                        $lines = explode("\n", $schedule_items);
+                        foreach ($lines as $line) {
+                                $line = trim($line);
+                                if (empty($line)) {
                                         continue;
                                 }
 
-                                $parts = explode( '|', $line );
-                                if ( count( $parts ) >= 3 ) {
+                                $parts = explode('|', $line);
+                                if (count($parts) >= 3) {
                                         $steps[] = array(
-                                                'time'  => sanitize_text_field( trim( $parts[0] ) ),
-                                                'title' => sanitize_text_field( trim( $parts[1] ) ),
-                                                'copy'  => sanitize_textarea_field( trim( $parts[2] ) ),
+                                                'time' => sanitize_text_field(trim($parts[0])),
+                                                'title' => sanitize_text_field(trim($parts[1])),
+                                                'copy' => sanitize_textarea_field(trim($parts[2])),
                                         );
                                 }
                         }
                 }
 
                 // Skip if no valid steps
-                if ( empty( $steps ) ) {
+                if (empty($steps)) {
                         continue;
                 }
 
                 // Get featured image URL
-                $image_url = get_the_post_thumbnail_url( $post_id, 'large' );
+                $image_url = get_the_post_thumbnail_url($post_id, 'large');
 
                 // Map color scheme to Tailwind classes
                 $color_map = array(
-                        'red'      => array( 'color' => 'chroma-red', 'background' => 'bg-chroma-redLight' ),
-                        'blue'     => array( 'color' => 'chroma-blue', 'background' => 'bg-chroma-blueLight' ),
-                        'yellow'   => array( 'color' => 'chroma-yellow', 'background' => 'bg-chroma-yellowLight' ),
-                        'blueDark' => array( 'color' => 'chroma-blueDark', 'background' => 'bg-chroma-blueDark/10' ),
-                        'green'    => array( 'color' => 'chroma-green', 'background' => 'bg-chroma-greenLight' ),
+                        'red' => array('color' => 'chroma-red', 'background' => 'bg-chroma-redLight'),
+                        'blue' => array('color' => 'chroma-blue', 'background' => 'bg-chroma-blueLight'),
+                        'yellow' => array('color' => 'chroma-yellow', 'background' => 'bg-chroma-yellowLight'),
+                        'blueDark' => array('color' => 'chroma-blueDark', 'background' => 'bg-chroma-blueDark/10'),
+                        'green' => array('color' => 'chroma-green', 'background' => 'bg-chroma-greenLight'),
                 );
 
-                $colors = $color_map[ $color_scheme ] ?? $color_map['blue'];
+                $colors = $color_map[$color_scheme] ?? $color_map['blue'];
 
                 $tracks[] = array(
-                        'key'         => $anchor_slug,
-                        'label'       => $program_title,
-                        'title'       => $schedule_title ?: $program_title,
+                        'key' => $anchor_slug,
+                        'label' => $program_title,
+                        'title' => $schedule_title ?: $program_title,
                         'description' => $description,
-                        'color'       => $colors['color'],
-                        'background'  => $colors['background'],
-                        'image'       => $image_url ?: '',
-                        'steps'       => $steps,
+                        'color' => $colors['color'],
+                        'background' => $colors['background'],
+                        'image' => $image_url ?: '',
+                        'steps' => $steps,
                 );
         }
 
@@ -650,226 +666,230 @@ function chroma_home_schedule_tracks() {
 /**
  * Home FAQ block
  */
-function chroma_home_faq_items() {
-        $items = chroma_home_get_theme_mod_json( 'chroma_home_faq_items_json', chroma_home_default_faq_items() );
+function chroma_home_faq_items()
+{
+        $items = chroma_home_get_theme_mod_json('chroma_home_faq_items_json', chroma_home_default_faq_items());
 
         return array_map(
-                function ( $item ) {
+                function ($item) {
                         return array(
-                                'question' => sanitize_text_field( $item['question'] ?? '' ),
-                                'answer'   => sanitize_textarea_field( $item['answer'] ?? '' ),
+                                'question' => sanitize_text_field($item['question'] ?? ''),
+                                'answer' => sanitize_textarea_field($item['answer'] ?? ''),
                         );
                 },
                 $items
         );
 }
 
-function chroma_home_faq() {
+function chroma_home_faq()
+{
         $defaults = chroma_home_default_faq();
 
         return array(
-                'heading'    => sanitize_text_field( get_theme_mod( 'chroma_home_faq_heading', $defaults['heading'] ) ),
-                'subheading' => sanitize_text_field( get_theme_mod( 'chroma_home_faq_subheading', $defaults['subheading'] ) ),
-                'items'      => chroma_home_faq_items(),
-                'cta_text'   => '',
-                'cta_label'  => '',
-                'cta_link'   => '',
+                'heading' => sanitize_text_field(get_theme_mod('chroma_home_faq_heading', $defaults['heading'])),
+                'subheading' => sanitize_text_field(get_theme_mod('chroma_home_faq_subheading', $defaults['subheading'])),
+                'items' => chroma_home_faq_items(),
+                'cta_text' => '',
+                'cta_label' => '',
+                'cta_link' => '',
         );
 }
 
-function chroma_home_locations_preview() {
+function chroma_home_locations_preview()
+{
         static $cached;
 
-        if ( isset( $cached ) ) {
+        if (isset($cached)) {
                 return $cached;
         }
 
-        $heading     = sanitize_text_field( get_theme_mod( 'chroma_home_locations_heading', '19+ neighborhood locations across Metro Atlanta' ) );
-        $subheading  = sanitize_text_field( get_theme_mod( 'chroma_home_locations_subheading', 'Find a Chroma campus near your home or work. All locations share the same safety standards, curriculum framework, and warm Chroma culture.' ) );
-        $cta_label   = sanitize_text_field( get_theme_mod( 'chroma_home_locations_cta_label', 'View All Locations' ) );
-        $cta_link    = esc_url_raw( get_theme_mod( 'chroma_home_locations_cta_link', '/locations' ) );
-        $taxonomy    = 'location_region';
-        $fallback    = (object) array(
-                'name' => __( 'Other Areas', 'chroma-excellence' ),
+        $heading = sanitize_text_field(get_theme_mod('chroma_home_locations_heading', '19+ neighborhood locations across Metro Atlanta'));
+        $subheading = sanitize_text_field(get_theme_mod('chroma_home_locations_subheading', 'Find a Chroma campus near your home or work. All locations share the same safety standards, curriculum framework, and warm Chroma culture.'));
+        $cta_label = sanitize_text_field(get_theme_mod('chroma_home_locations_cta_label', 'View All Locations'));
+        $cta_link = esc_url_raw(get_theme_mod('chroma_home_locations_cta_link', '/locations'));
+        $taxonomy = 'location_region';
+        $fallback = (object) array(
+                'name' => __('Other Areas', 'chroma-excellence'),
                 'slug' => 'other-areas',
         );
 
         $locations = get_posts(
                 array(
-                        'post_type'        => 'location',
-                        'post_status'      => 'publish',
-                        'posts_per_page'   => -1,
-                        'orderby'          => 'title',
-                        'order'            => 'ASC',
+                        'post_type' => 'location',
+                        'post_status' => 'publish',
+                        'posts_per_page' => -1,
+                        'orderby' => 'title',
+                        'order' => 'ASC',
                         'suppress_filters' => true,
                 )
         );
 
         $map_points = array();
-        $featured   = array();
-        $grouped    = array();
+        $featured = array();
+        $grouped = array();
 
-        foreach ( $locations as $location ) {
-                $post_id   = $location->ID;
-                $title     = get_the_title( $post_id );
-                $permalink = get_permalink( $post_id );
+        foreach ($locations as $location) {
+                $post_id = $location->ID;
+                $title = get_the_title($post_id);
+                $permalink = get_permalink($post_id);
 
-                $fields  = chroma_get_location_fields( $post_id );
-                $city    = $fields['city'];
-                $state   = $fields['state'];
-                $phone   = $fields['phone'];
+                $fields = chroma_get_location_fields($post_id);
+                $city = $fields['city'];
+                $state = $fields['state'];
+                $phone = $fields['phone'];
                 $address = $fields['address'];
 
                 $lat = $fields['latitude'];
                 $lng = $fields['longitude'];
 
-                if ( $lat && $lng ) {
+                if ($lat && $lng) {
                         $map_points[] = array(
-                                'id'    => $post_id,
-                                'name'  => $title,
-                                'lat'   => (float) $lat,
-                                'lng'   => (float) $lng,
-                                'url'   => $permalink,
-                                'city'  => $city,
+                                'id' => $post_id,
+                                'name' => $title,
+                                'lat' => (float) $lat,
+                                'lng' => (float) $lng,
+                                'url' => $permalink,
+                                'city' => $city,
                                 'state' => $state,
                         );
                 }
 
                 $location_data = array(
-                        'title'   => $title,
-                        'city'    => $city,
-                        'state'   => $state,
+                        'title' => $title,
+                        'city' => $city,
+                        'state' => $state,
                         'address' => $address,
-                        'phone'   => $phone,
-                        'url'     => $permalink,
+                        'phone' => $phone,
+                        'url' => $permalink,
                 );
 
                 $featured[] = $location_data;
 
-                $terms = get_the_terms( $post_id, $taxonomy );
-                if ( empty( $terms ) || is_wp_error( $terms ) ) {
-                        $terms = array( $fallback );
+                $terms = get_the_terms($post_id, $taxonomy);
+                if (empty($terms) || is_wp_error($terms)) {
+                        $terms = array($fallback);
                 }
 
-                foreach ( $terms as $term ) {
-                        $group_key = $term->slug ? sanitize_title( $term->slug ) : sanitize_title( $term->name );
+                foreach ($terms as $term) {
+                        $group_key = $term->slug ? sanitize_title($term->slug) : sanitize_title($term->name);
 
-                        if ( ! isset( $grouped[ $group_key ] ) ) {
-                                $grouped[ $group_key ] = array(
-                                        'label'     => $term->name,
-                                        'slug'      => $term->slug ?: $group_key,
+                        if (!isset($grouped[$group_key])) {
+                                $grouped[$group_key] = array(
+                                        'label' => $term->name,
+                                        'slug' => $term->slug ?: $group_key,
+                                        'term_id' => $term->term_id ?? 0,
                                         'locations' => array(),
                                 );
                         }
 
-                        $grouped[ $group_key ]['locations'][] = $location_data;
+                        $grouped[$group_key]['locations'][] = $location_data;
                 }
         }
 
         // If no dynamic locations exist, retain the previous static defaults.
-        if ( empty( $featured ) ) {
+        if (empty($featured)) {
                 $map_points = array(
                         array(
-                                'id'    => 1,
-                                'name'  => 'Marietta – East',
-                                'lat'   => 33.975,
-                                'lng'   => -84.507,
-                                'url'   => '/locations/marietta-east',
-                                'city'  => 'Marietta',
+                                'id' => 1,
+                                'name' => 'Marietta – East',
+                                'lat' => 33.975,
+                                'lng' => -84.507,
+                                'url' => '/locations/marietta-east',
+                                'city' => 'Marietta',
                                 'state' => 'GA',
                         ),
                         array(
-                                'id'    => 2,
-                                'name'  => 'Austell – Tramore',
-                                'lat'   => 33.815,
-                                'lng'   => -84.63,
-                                'url'   => '/locations/austell-tramore',
-                                'city'  => 'Austell',
+                                'id' => 2,
+                                'name' => 'Austell – Tramore',
+                                'lat' => 33.815,
+                                'lng' => -84.63,
+                                'url' => '/locations/austell-tramore',
+                                'city' => 'Austell',
                                 'state' => 'GA',
                         ),
                         array(
-                                'id'    => 3,
-                                'name'  => 'Lawrenceville',
-                                'lat'   => 33.956,
-                                'lng'   => -83.99,
-                                'url'   => '/locations/lawrenceville',
-                                'city'  => 'Lawrenceville',
+                                'id' => 3,
+                                'name' => 'Lawrenceville',
+                                'lat' => 33.956,
+                                'lng' => -83.99,
+                                'url' => '/locations/lawrenceville',
+                                'city' => 'Lawrenceville',
                                 'state' => 'GA',
                         ),
                         array(
-                                'id'    => 4,
-                                'name'  => 'Johns Creek',
-                                'lat'   => 34.028,
-                                'lng'   => -84.198,
-                                'url'   => '/locations/johns-creek',
-                                'city'  => 'Johns Creek',
+                                'id' => 4,
+                                'name' => 'Johns Creek',
+                                'lat' => 34.028,
+                                'lng' => -84.198,
+                                'url' => '/locations/johns-creek',
+                                'city' => 'Johns Creek',
                                 'state' => 'GA',
                         ),
                 );
 
                 $featured = array(
                         array(
-                                'title'   => 'Marietta – East',
-                                'city'    => 'Marietta',
-                                'state'   => 'GA',
+                                'title' => 'Marietta – East',
+                                'city' => 'Marietta',
+                                'state' => 'GA',
                                 'address' => '2499 Shallowford Rd',
-                                'phone'   => '(770) 555-1201',
-                                'url'     => '/locations/marietta-east',
+                                'phone' => '(770) 555-1201',
+                                'url' => '/locations/marietta-east',
                         ),
                         array(
-                                'title'   => 'Austell – Tramore',
-                                'city'    => 'Austell',
-                                'state'   => 'GA',
+                                'title' => 'Austell – Tramore',
+                                'city' => 'Austell',
+                                'state' => 'GA',
                                 'address' => '2081 Mesa Valley Rd',
-                                'phone'   => '(770) 555-4432',
-                                'url'     => '/locations/austell-tramore',
+                                'phone' => '(770) 555-4432',
+                                'url' => '/locations/austell-tramore',
                         ),
                         array(
-                                'title'   => 'Lawrenceville',
-                                'city'    => 'Lawrenceville',
-                                'state'   => 'GA',
+                                'title' => 'Lawrenceville',
+                                'city' => 'Lawrenceville',
+                                'state' => 'GA',
                                 'address' => '3650 Club Dr NW',
-                                'phone'   => '(770) 555-8890',
-                                'url'     => '/locations/lawrenceville',
+                                'phone' => '(770) 555-8890',
+                                'url' => '/locations/lawrenceville',
                         ),
                 );
 
                 $grouped = array(
                         'metro-atlanta' => array(
-                                'label'     => 'Metro Atlanta',
-                                'slug'      => 'metro-atlanta',
+                                'label' => 'Metro Atlanta',
+                                'slug' => 'metro-atlanta',
                                 'locations' => $featured,
                         ),
                 );
         }
 
-        foreach ( $grouped as &$group ) {
+        foreach ($grouped as &$group) {
                 usort(
                         $group['locations'],
-                        function ( $a, $b ) {
-                                return strnatcasecmp( $a['title'], $b['title'] );
+                        function ($a, $b) {
+                                return strnatcasecmp($a['title'], $b['title']);
                         }
                 );
         }
-        unset( $group );
+        unset($group);
 
-        if ( ! empty( $grouped ) ) {
+        if (!empty($grouped)) {
                 uasort(
                         $grouped,
-                        function ( $a, $b ) {
-                                return strnatcasecmp( $a['label'], $b['label'] );
+                        function ($a, $b) {
+                                return strnatcasecmp($a['label'], $b['label']);
                         }
                 );
         }
 
         $cached = array(
-                'heading'      => $heading,
-                'subheading'   => $subheading,
-                'cta_label'    => $cta_label,
-                'cta_link'     => $cta_link,
-                'map_points'   => $map_points,
-                'featured'     => $featured,
-                'grouped'      => $grouped,
+                'heading' => $heading,
+                'subheading' => $subheading,
+                'cta_label' => $cta_label,
+                'cta_link' => $cta_link,
+                'map_points' => $map_points,
+                'featured' => $featured,
+                'grouped' => $grouped,
                 'taxonomy_key' => $taxonomy,
         );
 
@@ -879,9 +899,10 @@ function chroma_home_locations_preview() {
 /**
  * Tour CTA content
  */
-function chroma_home_tour_cta() {
+function chroma_home_tour_cta()
+{
         return array(
-                'heading'    => 'Schedule a private tour',
+                'heading' => 'Schedule a private tour',
                 'subheading' => 'Share a few details and your preferred campus. A Chroma Director will reach out to confirm tour times.',
                 'trust_text' => 'No obligation. We’ll never share your information.',
         );
@@ -890,7 +911,8 @@ function chroma_home_tour_cta() {
 /**
  * Home Featured Locations (static)
  */
-function chroma_home_featured_locations() {
+function chroma_home_featured_locations()
+{
         $locations = chroma_home_locations_preview();
         return $locations['featured'];
 }
@@ -898,22 +920,23 @@ function chroma_home_featured_locations() {
 /**
  * Home Featured Stories (static placeholders)
  */
-function chroma_home_featured_stories() {
+function chroma_home_featured_stories()
+{
         return array(
                 array(
-                        'title'   => 'Inside the Prismpath™ Classroom',
+                        'title' => 'Inside the Prismpath™ Classroom',
                         'excerpt' => 'Take a peek at how our educators weave play and academics together each day.',
-                        'url'     => '/stories/prismpath-classroom',
+                        'url' => '/stories/prismpath-classroom',
                 ),
                 array(
-                        'title'   => 'Family-Style Dining at Chroma',
+                        'title' => 'Family-Style Dining at Chroma',
                         'excerpt' => 'Why shared meals matter for social-emotional growth and independence.',
-                        'url'     => '/stories/family-style-dining',
+                        'url' => '/stories/family-style-dining',
                 ),
                 array(
-                        'title'   => 'Partnering with Parents',
+                        'title' => 'Partnering with Parents',
                         'excerpt' => 'See how we communicate daily to keep families connected to the classroom.',
-                        'url'     => '/stories/partnering-with-parents',
+                        'url' => '/stories/partnering-with-parents',
                 ),
         );
 }
@@ -921,39 +944,41 @@ function chroma_home_featured_stories() {
 /**
  * Parent Reviews for homepage carousel
  */
-function chroma_home_default_parent_reviews() {
+function chroma_home_default_parent_reviews()
+{
         return array(
                 array(
-                        'name'    => 'Sarah M.',
+                        'name' => 'Sarah M.',
                         'location' => 'Marietta Campus',
-                        'rating'  => '5',
-                        'review'  => 'Our daughter has flourished at Chroma. The teachers genuinely care, and the Prismpath curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
+                        'rating' => '5',
+                        'review' => 'Our daughter has flourished at Chroma. The teachers genuinely care, and the Prismpath curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
                 ),
                 array(
-                        'name'    => 'James & Lisa T.',
+                        'name' => 'James & Lisa T.',
                         'location' => 'Johns Creek Campus',
-                        'rating'  => '5',
-                        'review'  => 'After touring several centers, Chroma stood out immediately. The transparency, the warmth, and the expert care made our decision easy. Our son has been there for two years and we\'ve never looked back.',
+                        'rating' => '5',
+                        'review' => 'After touring several centers, Chroma stood out immediately. The transparency, the warmth, and the expert care made our decision easy. Our son has been there for two years and we\'ve never looked back.',
                 ),
                 array(
-                        'name'    => 'Maria G.',
+                        'name' => 'Maria G.',
                         'location' => 'Austell Campus',
-                        'rating'  => '5',
-                        'review'  => 'The family-style meals, the daily communication, the beautiful facilities — everything exceeds expectations. Chroma feels like an extension of our family, and our twins are thriving.',
+                        'rating' => '5',
+                        'review' => 'The family-style meals, the daily communication, the beautiful facilities — everything exceeds expectations. Chroma feels like an extension of our family, and our twins are thriving.',
                 ),
         );
 }
 
-function chroma_home_parent_reviews() {
-        $reviews = chroma_home_get_theme_mod_json( 'chroma_home_parent_reviews_json', chroma_home_default_parent_reviews() );
+function chroma_home_parent_reviews()
+{
+        $reviews = chroma_home_get_theme_mod_json('chroma_home_parent_reviews_json', chroma_home_default_parent_reviews());
 
         return array_map(
-                function ( $review ) {
+                function ($review) {
                         return array(
-                                'name'    => sanitize_text_field( $review['name'] ?? '' ),
-                                'location' => sanitize_text_field( $review['location'] ?? '' ),
-                                'rating'  => absint( $review['rating'] ?? 5 ),
-                                'review'  => sanitize_textarea_field( $review['review'] ?? '' ),
+                                'name' => sanitize_text_field($review['name'] ?? ''),
+                                'location' => sanitize_text_field($review['location'] ?? ''),
+                                'rating' => absint($review['rating'] ?? 5),
+                                'review' => sanitize_textarea_field($review['review'] ?? ''),
                         );
                 },
                 $reviews
@@ -963,31 +988,38 @@ function chroma_home_parent_reviews() {
 /**
  * Checkers for optional sections
  */
-function chroma_home_has_prismpath_panels() {
+function chroma_home_has_prismpath_panels()
+{
         return true;
 }
 
-function chroma_home_has_program_wizard() {
+function chroma_home_has_program_wizard()
+{
         return true;
 }
 
-function chroma_home_has_curriculum_profiles() {
+function chroma_home_has_curriculum_profiles()
+{
         return true;
 }
 
-function chroma_home_has_schedule_tracks() {
+function chroma_home_has_schedule_tracks()
+{
         return true;
 }
 
-function chroma_home_has_faq() {
+function chroma_home_has_faq()
+{
         return true;
 }
 
-function chroma_home_has_stats() {
+function chroma_home_has_stats()
+{
         return true;
 }
 
-function chroma_home_has_parent_reviews() {
+function chroma_home_has_parent_reviews()
+{
         $reviews = chroma_home_parent_reviews();
-        return ! empty( $reviews );
+        return !empty($reviews);
 }

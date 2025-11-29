@@ -51,7 +51,7 @@ module.exports = {
     },
     // Opacity variants for backgrounds and borders
     {
-      pattern: /(bg|border|from)-chroma-(red|blue|green|yellow|purple|orange|teal)(Light|Dark)?\/(5|10|15|30)/,
+      pattern: /(bg|border|from)-chroma-(red|blue|green|yellow|purple|orange|teal)(Light|Dark)?\/(5|10|15|30|50)/,
       variants: ['hover'],
     },
   ],

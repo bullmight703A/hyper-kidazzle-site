@@ -791,9 +791,6 @@ a:focus:not(:focus-visible),
 .mr-1 {
   margin-right: 0.25rem;
 }
-.mr-2 {
-  margin-right: 0.5rem;
-}
 .mt-0\.5 {
   margin-top: 0.125rem;
 }
@@ -5230,9 +5227,6 @@ a:focus:not(:focus-visible),
 }
 .p-2 {
   padding: 0.5rem;
-}
-.p-3 {
-  padding: 0.75rem;
 }
 .p-4 {
   padding: 1rem;
