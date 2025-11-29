@@ -75,7 +75,7 @@ while (have_posts()):
 					</h1>
 
 					<?php if ($hero_description): ?>
-						<p class="text-lg text-brand-ink/70 mb-20 max-w-2xl">
+						<p class="text-lg text-brand-ink/70 mb-32 max-w-2xl">
 							<?php echo wp_kses_post(wpautop($hero_description)); ?>
 						</p>
 					<?php endif; ?>
@@ -184,8 +184,8 @@ while (have_posts()):
 			<?php endif; endif; ?>
 
 		<!-- CTA Section -->
-				</div>
-			</div>
+		</div>
+		</div>
 		</section>
 	</main>
 
@@ -266,15 +266,15 @@ while (have_posts()):
 			},
 			plugins: { legend: { display: false } }
 		}
-										});
-									};
+											});
+										};
 		document.body.appendChild(script);
-								}
-							});
-						}, { rootMargin: '200px' }); // Start loading 200px before view
+									}
+								});
+							}, { rootMargin: '200px' }); // Start loading 200px before view
 		observer.observe(ctx);
-					}
-				});
+						}
+					});
 	</script>
 
 	<?php

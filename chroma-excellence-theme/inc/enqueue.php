@@ -166,6 +166,11 @@ function chroma_enqueue_assets()
                         header .container > nav {
                                 display: flex !important;
                         }
+                        
+                        /* Force CTA Button Visibility */
+                        header .container > a[href*='contact'] {
+                                display: flex !important;
+                        }
                 }
         ";
         wp_add_inline_style('chroma-main', $custom_css);
