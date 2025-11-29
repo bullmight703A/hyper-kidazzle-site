@@ -5,12 +5,7 @@ const path = require('path');
 // Configuration
 const BASE_URL = 'https://x3yyntt5tp.wpdns.site';
 const PAGES = [
-    { name: 'Homepage', url: '/' },
-    { name: 'Single Program', url: '/programs/infant-care/' },
-    { name: 'Single Location', url: '/locations/midway-campus/' },
-    { name: 'Contact', url: '/contact/' },
-    { name: 'Programs Archive', url: '/programs/' },
-    { name: 'Locations Archive', url: '/locations/' }
+    { name: 'About Us', url: '/about/' }
 ];
 
 const OUTPUT_DIR = 'lighthouse-reports';
