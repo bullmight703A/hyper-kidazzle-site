@@ -130,6 +130,16 @@ function chroma_get_region_color_from_term($term_id)
 						$hours_string = get_post_meta($location_id, 'location_hours', true);
 						$is_open = chroma_is_location_open($hours_string);
 
+						// Badge Text Logic
+						$hero_subtitle = get_post_meta($location_id, 'location_hero_subtitle', true);
+						if (!empty($hero_subtitle)) {
+							$badge_text = $hero_subtitle;
+						} elseif ($is_new) {
+							$badge_text = 'New Campus';
+						} else {
+							$badge_text = get_theme_mod('chroma_locations_badge_fallback', 'Now Enrolling');
+						}
+
 						// Get age ranges/programs
 						$ages_served = get_post_meta($location_id, 'location_ages_served', true) ?: 'Infant - 12y';
 						$special_programs_raw = get_post_meta($location_id, 'location_special_programs', true);
@@ -149,7 +159,7 @@ function chroma_get_region_color_from_term($term_id)
 
 								<div
 									class="absolute top-0 right-0 bg-<?php echo esc_attr($is_new ? $colors['text'] : $colors['border']); ?> text-<?php echo esc_attr($is_new ? 'brand-ink' : 'white'); ?> text-[10px] font-bold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
-									<?php echo $is_new ? 'New Campus' : esc_html(get_theme_mod('chroma_locations_badge_fallback', 'Now Enrolling')); ?>
+									<?php echo esc_html($badge_text); ?>
 								</div>
 
 								<div class="flex justify-between items-start mb-4 mt-2">
