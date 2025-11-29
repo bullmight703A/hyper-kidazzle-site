@@ -381,3 +381,26 @@ function chroma_litespeed_exclude_lcp() {
 	return array('chroma-logo', 'chroma Early Learning', 'logo_optimized');
 }
 add_filter('litespeed_img_lazy_exclude', 'chroma_litespeed_exclude_lcp');
+/**
+ * LCP Optimization: Preload hero image to improve Largest Contentful Paint
+ */
+function chroma_preload_lcp_image() {
+	// Get the custom logo if set, otherwise use theme default WebP logo
+	$custom_logo_id = get_theme_mod('custom_logo');
+	if ($custom_logo_id) {
+		$logo_data = wp_get_attachment_image_src($custom_logo_id, 'full');
+		$logo_url = $logo_data ? $logo_data[0] : get_template_directory_uri() . '/assets/images/logo_optimized_140x140.webp';
+	} else {
+		$logo_url = get_template_directory_uri() . '/assets/images/logo_optimized_140x140.webp';
+	}
+	echo '<link rel="preload" as="image" href="' . esc_url($logo_url) . '" fetchpriority="high">' . "\n";
+}
+add_action('wp_head', 'chroma_preload_lcp_image', 1);
+
+/**
+ * LiteSpeed Cache: Exclude LCP/hero images from lazy loading
+ */
+function chroma_litespeed_exclude_lcp() {
+	return array('logo_optimized', 'chroma Early Learning');
+}
+add_filter('litespeed_img_lazy_exclude', 'chroma_litespeed_exclude_lcp');
