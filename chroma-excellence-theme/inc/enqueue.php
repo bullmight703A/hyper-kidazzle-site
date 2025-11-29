@@ -87,15 +87,15 @@ function chroma_enqueue_assets()
 
         // CRITICAL ACCESSIBILITY FIXES (Injected Inline to bypass cache/build)
         $custom_css = "
-                /* Darkened Brand Colors for WCAG AA Compliance */
-                .text-chroma-red { color: #A84B38 !important; }
-                .bg-chroma-red { background-color: #A84B38 !important; }
-                .text-chroma-orange { color: #C26524 !important; }
-                .bg-chroma-orange { background-color: #C26524 !important; }
-                .text-chroma-green { color: #5E7066 !important; }
-                .bg-chroma-green { background-color: #5E7066 !important; }
-                .text-chroma-yellow { color: #9C7835 !important; }
-                .bg-chroma-yellow { background-color: #9C7835 !important; }
+                /* Darkened Brand Colors for WCAG AA Compliance (Enhanced) */
+                .text-chroma-red { color: #964030 !important; }
+                .bg-chroma-red { background-color: #964030 !important; }
+                .text-chroma-orange { color: #A8551E !important; }
+                .bg-chroma-orange { background-color: #A8551E !important; }
+                .text-chroma-green { color: #4D5C54 !important; }
+                .bg-chroma-green { background-color: #4D5C54 !important; }
+                .text-chroma-yellow { color: #8C6B2F !important; }
+                .bg-chroma-yellow { background-color: #8C6B2F !important; }
                 
                 /* Footer Social Links - Touch Target Fix (48px) */
                 footer .flex.gap-3 a {
@@ -106,7 +106,7 @@ function chroma_enqueue_assets()
                         justify-content: center !important;
                 }
                 footer .flex.gap-3 a i {
-                        font-size: 1.25rem !important; /* Increase icon size */
+                        font-size: 1.25rem !important;
                 }
                 
                 /* Footer Navigation Links - Touch Target Fix */
@@ -116,6 +116,8 @@ function chroma_enqueue_assets()
                         min-width: 48px !important;
                         padding: 12px 16px !important;
                         line-height: 1.5 !important;
+                        display: flex !important;
+                        align-items: center !important;
                 }
                 
                 /* Review Carousel Dots - Touch Target Fix (48px) */
@@ -124,12 +126,33 @@ function chroma_enqueue_assets()
                         min-height: 48px !important;
                         padding: 12px !important;
                 }
+
+                /* Global Button Touch Targets */
+                a[class*='px-8'][class*='py-4'], 
+                button[class*='px-8'][class*='py-4'] {
+                        min-height: 48px !important;
+                        display: inline-flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                }
+
+                /* Form Inputs Touch Targets */
+                input[type='text'],
+                input[type='email'],
+                input[type='tel'],
+                input[type='number'],
+                select,
+                textarea {
+                        min-height: 48px !important;
+                        font-size: 16px !important; /* Prevent iOS zoom */
+                }
                 
                 /* Form Labels - Ensure visibility if hidden */
                 .chroma-tour-form label {
                         display: block !important;
                         color: #263238 !important; /* Brand Ink */
                         opacity: 1 !important;
+                        margin-bottom: 0.5rem !important;
                 }
         ";
         wp_add_inline_style('chroma-main', $custom_css);
