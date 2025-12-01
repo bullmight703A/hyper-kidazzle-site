@@ -592,12 +592,22 @@ function chroma_home_schedule_tracks()
 
         // Build tracks from program posts
         $tracks = array();
+        $used_keys = array();
+
         while ($programs->have_posts()) {
                 $programs->the_post();
                 $post_id = get_the_ID();
 
                 // Get program meta
                 $anchor_slug = get_post_meta($post_id, 'program_anchor_slug', true) ?: get_post_field('post_name', $post_id);
+
+                // Ensure unique key
+                $key = $anchor_slug;
+                if (isset($used_keys[$key])) {
+                        $key .= '-' . $post_id;
+                }
+                $used_keys[$key] = true;
+
                 $schedule_title = get_post_meta($post_id, 'program_schedule_title', true);
                 $schedule_items = get_post_meta($post_id, 'program_schedule_items', true);
                 $color_scheme = get_post_meta($post_id, 'program_color_scheme', true) ?: 'blue';
@@ -647,7 +657,7 @@ function chroma_home_schedule_tracks()
                 $colors = $color_map[$color_scheme] ?? $color_map['blue'];
 
                 $tracks[] = array(
-                        'key' => $anchor_slug,
+                        'key' => $key,
                         'label' => $program_title,
                         'title' => $schedule_title ?: $program_title,
                         'description' => $description,

@@ -53,53 +53,73 @@ if (empty($tracks)) {
                         ?>
                         <div class="<?php echo esc_attr($panel_classes); ?>"
                                 data-schedule-panel="<?php echo esc_attr($track['key']); ?>">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                                        <?php
-                                        // Get track-specific colors
-                                        $track_color = !empty($track['color']) ? $track['color'] : 'chroma-blue';
-                                        $timeline_color = 'bg-' . $track_color . '/20';
-                                        $badge_color = 'text-' . $track_color;
-                                        $title_color = 'text-' . $track_color;
-                                        ?>
-                                        <div class="rounded-[3rem] p-10 h-full <?php echo esc_attr($backgroundTint); ?>">
-                                                <h3 class="text-2xl font-serif text-brand-ink mb-6">
-                                                        <?php echo esc_html($track['title']); ?></h3>
-                                                <p class="text-brand-ink/70 mb-8 leading-relaxed">
-                                                        <?php echo esc_html($track['description'] ?? ''); ?></p>
-                                                <div class="space-y-6 relative">
-                                                        <div
-                                                                class="absolute left-[19px] top-2 bottom-2 w-0.5 <?php echo esc_attr($timeline_color); ?>">
-                                                        </div>
-                                                        <?php foreach ($track['steps'] as $step): ?>
-                                                                <div class="flex gap-6 items-start">
-                                                                        <div
-                                                                                class="w-36 h-10 px-2 rounded-full bg-white <?php echo esc_attr($badge_color); ?> flex items-center justify-center shadow-sm relative z-10 text-xs font-bold flex-shrink-0">
-                                                                                <?php echo esc_html($step['time']); ?></div>
-                                                                        <div class="flex-1 pt-2">
-                                                                                <?php if (!empty($step['title'])): ?>
-                                                                                        <h4
-                                                                                                class="font-bold <?php echo esc_attr($title_color); ?> mb-1">
-                                                                                                <?php echo esc_html($step['title']); ?></h4>
-                                                                                <?php endif; ?>
-                                                                                <p class="text-sm text-brand-ink/80">
-                                                                                        <?php echo esc_html($step['copy']); ?></p>
-                                                                        </div>
+                                <?php
+                                // Get track-specific colors
+                                $track_color = !empty($track['color']) ? $track['color'] : 'chroma-blue';
+                                $badge_bg = 'bg-' . $track_color; // Solid background for active state
+                                $badge_text = 'text-' . $track_color;
+                                ?>
+                                <div class="rounded-[3rem] p-8 md:p-12 <?php echo esc_attr($backgroundTint); ?> text-center">
+
+                                        <!-- Header -->
+                                        <div class="max-w-3xl mx-auto mb-8">
+                                                <h3 class="text-3xl font-serif text-brand-ink mb-4">
+                                                        <?php echo esc_html($track['title']); ?>
+                                                </h3>
+                                                <p class="text-brand-ink/70 leading-relaxed">
+                                                        <?php echo esc_html($track['description'] ?? ''); ?>
+                                                </p>
+                                        </div>
+
+                                        <!-- Image -->
+                                        <div class="max-w-4xl mx-auto mb-10">
+                                                <div class="rounded-[2rem] overflow-hidden shadow-lg aspect-video bg-white/50">
+                                                        <?php if (!empty($track['image'])): ?>
+                                                                <img src="<?php echo esc_url($track['image']); ?>"
+                                                                        alt="<?php echo esc_attr($track['title']); ?>"
+                                                                        class="w-full h-full object-cover" />
+                                                        <?php else: ?>
+                                                                <div
+                                                                        class="w-full h-full flex items-center justify-center text-chroma-blueDark/20 text-6xl">
+                                                                        <i class="fa-solid fa-image"></i>
                                                                 </div>
-                                                        <?php endforeach; ?>
+                                                        <?php endif; ?>
                                                 </div>
                                         </div>
-                                        <div
-                                                class="rounded-[3rem] overflow-hidden shadow-2xl h-[320px] md:h-[400px] bg-chroma-blueLight">
-                                                <?php if (!empty($track['image'])): ?>
-                                                        <img src="<?php echo esc_url($track['image']); ?>"
-                                                                alt="<?php echo esc_attr($track['title']); ?>"
-                                                                class="w-full h-full object-cover" />
-                                                <?php else: ?>
-                                                        <div
-                                                                class="w-full h-full flex items-center justify-center text-chroma-blueDark/60 text-5xl">
-                                                                <i class="fa-solid fa-image"></i></div>
+
+                                        <!-- Time Buttons -->
+                                        <div class="flex flex-wrap justify-center gap-4 mb-10 max-w-2xl mx-auto">
+                                                <?php foreach ($track['steps'] as $i => $step): ?>
+                                                        <?php
+                                                        $is_first = 0 === $i;
+                                                        $btn_classes = $is_first
+                                                                ? 'bg-brand-ink text-white shadow-md transform scale-105'
+                                                                : 'bg-white text-brand-ink/70 hover:text-brand-ink hover:bg-white/80';
+                                                        ?>
+                                                        <button class="w-16 h-16 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
+                                                                data-schedule-step-trigger
+                                                                data-title="<?php echo esc_attr($step['title']); ?>"
+                                                                data-copy="<?php echo esc_attr($step['copy']); ?>"
+                                                                aria-label="<?php echo esc_attr($step['time']); ?>">
+                                                                <?php echo esc_html($step['time']); ?>
+                                                        </button>
+                                                <?php endforeach; ?>
+                                        </div>
+
+                                        <!-- Dynamic Content -->
+                                        <div class="max-w-2xl mx-auto min-h-[120px]" data-schedule-content>
+                                                <?php if (!empty($track['steps'][0])): ?>
+                                                        <h4 class="text-xl font-bold text-brand-ink mb-3 transition-colors duration-300"
+                                                                data-content-title>
+                                                                <?php echo esc_html($track['steps'][0]['title']); ?>
+                                                        </h4>
+                                                        <p class="text-brand-ink/80 leading-relaxed transition-opacity duration-300"
+                                                                data-content-copy>
+                                                                <?php echo esc_html($track['steps'][0]['copy']); ?>
+                                                        </p>
                                                 <?php endif; ?>
                                         </div>
+
                                 </div>
                         </div>
                 <?php endforeach; ?>

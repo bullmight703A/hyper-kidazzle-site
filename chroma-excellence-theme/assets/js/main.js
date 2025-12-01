@@ -241,6 +241,36 @@ document.addEventListener('DOMContentLoaded', function () {
     if (defaultKey) {
       activate(defaultKey);
     }
+
+    // Handle internal step clicks (Time buttons)
+    const stepTriggers = schedule.querySelectorAll('[data-schedule-step-trigger]');
+    stepTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', function () {
+        // Find parent panel
+        const panel = this.closest('[data-schedule-panel]');
+        if (!panel) return;
+
+        // Reset all triggers in this panel
+        const panelTriggers = panel.querySelectorAll('[data-schedule-step-trigger]');
+        panelTriggers.forEach(t => {
+          t.classList.remove('bg-brand-ink', 'text-white', 'shadow-md', 'scale-105');
+          t.classList.add('bg-white', 'text-brand-ink/70', 'hover:text-brand-ink', 'hover:bg-white/80');
+        });
+
+        // Activate clicked trigger
+        this.classList.remove('bg-white', 'text-brand-ink/70', 'hover:text-brand-ink', 'hover:bg-white/80');
+        this.classList.add('bg-brand-ink', 'text-white', 'shadow-md', 'scale-105');
+
+        // Update content
+        const title = this.getAttribute('data-title');
+        const copy = this.getAttribute('data-copy');
+        const contentTitle = panel.querySelector('[data-content-title]');
+        const contentCopy = panel.querySelector('[data-content-copy]');
+
+        if (contentTitle) contentTitle.textContent = title;
+        if (contentCopy) contentCopy.textContent = copy;
+      });
+    });
   }
 
   /**

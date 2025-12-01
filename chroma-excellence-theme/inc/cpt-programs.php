@@ -31,7 +31,7 @@ function chroma_register_program_cpt()
 	$args = array(
 		'label' => __('Program', 'chroma-excellence'),
 		'labels' => $labels,
-		'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'),
 		'public' => true,
 		'menu_position' => 20,
 		'menu_icon' => 'dashicons-welcome-learn-more',
@@ -722,8 +722,8 @@ function chroma_program_single_page_meta_box_render($post)
 
 	<div class="chroma-single-field">
 		<label for="program_prism_title"><?php _e('Prism Section Title', 'chroma-excellence'); ?></label>
-		<input type="text" id="program_prism_title" name="program_prism_title"
-			value="<?php echo esc_attr($prism_title); ?>" placeholder="e.g., Building Trust & Body." />
+		<input type="text" id="program_prism_title" name="program_prism_title" value="<?php echo esc_attr($prism_title); ?>"
+			placeholder="e.g., Building Trust & Body." />
 		<small><?php _e('Title for the Prismpath focus section', 'chroma-excellence'); ?></small>
 	</div>
 
