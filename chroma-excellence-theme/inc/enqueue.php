@@ -34,17 +34,15 @@ function chroma_enqueue_assets()
 
         $script_dependencies = array('jquery');
 
-
-
-        // Font Awesome (Local).
-        $fa_path = CHROMA_THEME_DIR . '/assets/css/font-awesome.css';
+        // Font Awesome (Subset)
+        $fa_path = CHROMA_THEME_DIR . '/assets/css/font-awesome-subset.css';
         $fa_version = file_exists($fa_path) ? filemtime($fa_path) : '6.4.0';
         wp_enqueue_style(
                 'chroma-font-awesome',
-                CHROMA_THEME_URI . '/assets/css/font-awesome.css',
+                CHROMA_THEME_URI . '/assets/css/font-awesome-subset.css',
                 array(),
                 $fa_version,
-                'all' // Load synchronously to ensure icons appear
+                'all'
         );
 
         if (is_front_page()) {
@@ -287,13 +285,10 @@ add_action('admin_enqueue_scripts', 'chroma_enqueue_admin_assets');
 /**
  * Async load CSS for fonts only (not main CSS to prevent FOUC)
  */
-/**
- * Async load CSS for fonts only (not main CSS to prevent FOUC)
- */
 function chroma_async_styles($html, $handle, $href, $media)
 {
-        // Defer Font Awesome (keep chroma-fonts synchronous for LCP)
-        if (in_array($handle, array('chroma-font-awesome'))) {
+        // Defer Font Awesome AND Main CSS (Critical CSS inlined in header)
+        if (in_array($handle, array('chroma-font-awesome', 'chroma-main'))) {
                 // Add data-no-optimize to prevent LiteSpeed from combining/blocking this file
                 $html = str_replace('<link', '<link data-no-optimize="1"', $html);
 

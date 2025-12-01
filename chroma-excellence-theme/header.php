@@ -9,43 +9,6 @@
 		crossorigin>
 	<link rel="preload" as="font" href="<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Bold.woff2"
 		type="font/woff2" crossorigin>
-	<link rel="preload" as="font"
-		href="<?php echo get_template_directory_uri(); ?>/assets/webfonts/PlayfairDisplay-Bold.woff2" type="font/woff2"
-		crossorigin>
-	<link rel="preload" as="image"
-		href="<?php echo get_template_directory_uri(); ?>/assets/images/logo_chromacropped_70x70.webp"
-		type="image/webp">
-	<style>
-		/* Critical Font Definitions - Inlined for LCP */
-		@font-face {
-			font-family: 'Outfit';
-			font-style: normal;
-			font-weight: 400;
-			font-display: swap;
-			src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Regular.woff2') format('woff2');
-		}
-
-		@font-face {
-			font-family: 'Outfit';
-			font-style: normal;
-			font-weight: 700;
-			font-display: swap;
-			src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Bold.woff2') format('woff2');
-		}
-
-		@font-face {
-			font-family: 'Playfair Display';
-			font-style: normal;
-			font-weight: 700;
-			font-display: swap;
-			src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/PlayfairDisplay-Bold.woff2') format('woff2');
-		}
-	</style>
-	<?php wp_head(); ?>
-</head>
-
-<body <?php body_class(); ?>>
-	<?php wp_body_open(); ?>
 
 	<!-- Skip Links for Accessibility -->
 	<a href="#main-content"
