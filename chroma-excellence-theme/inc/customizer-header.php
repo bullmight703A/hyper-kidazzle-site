@@ -72,7 +72,6 @@ function chroma_header_customizer_settings($wp_customize)
 		'type' => 'textarea',
 	));
 
-}
 	// Logo Width (Desktop)
 	$wp_customize->add_setting('chroma_logo_width_desktop', array(
 		'default' => 70,
