@@ -15,19 +15,6 @@ if (!defined('ABSPATH')) {
 /**
  * Load Core Classes
  */
-require_once __DIR__ . '/class-meta-box-base.php';
-require_once __DIR__ . '/class-fallback-resolver.php';
-require_once __DIR__ . '/class-field-sanitizer.php';
-require_once __DIR__ . '/class-seo-dashboard.php';
-require_once __DIR__ . '/class-citation-datasets.php';
-require_once __DIR__ . '/class-image-alt-automation.php';
-require_once __DIR__ . '/class-admin-help.php';
-require_once __DIR__ . '/endpoints/kml-endpoint.php';
-
-/**
- * Load Meta Boxes
- */
-require_once __DIR__ . '/meta-boxes/class-location-citation-facts.php';
 require_once __DIR__ . '/meta-boxes/class-location-events.php';
 require_once __DIR__ . '/meta-boxes/class-location-howto.php';
 require_once __DIR__ . '/meta-boxes/class-location-llm-context.php';
@@ -61,7 +48,9 @@ function chroma_advanced_seo_init()
 	(new Chroma_SEO_Dashboard())->init();
 	(new Chroma_Citation_Datasets())->init();
 	(new Chroma_Image_Alt_Automation())->init();
+	(new Chroma_Image_Alt_Automation())->init();
 	(new Chroma_Admin_Help())->init();
+	(new Chroma_Breadcrumbs())->init();
 
 	// Meta Boxes
 	(new Chroma_Location_Citation_Facts())->register();

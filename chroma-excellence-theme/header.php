@@ -120,3 +120,4 @@
 	</div>
 
 	<main id="main-content" class="pt-20 lg:pt-24">
+		<?php do_action('chroma_breadcrumbs'); ?>

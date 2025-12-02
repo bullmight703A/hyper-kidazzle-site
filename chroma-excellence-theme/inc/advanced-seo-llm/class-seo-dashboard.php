@@ -80,23 +80,98 @@ class Chroma_SEO_Dashboard
      */
     public function render_page()
     {
-        $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'overview';
+        $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'seo';
         ?>
         <div class="wrap">
             <h1 class="wp-heading-inline">SEO & LLM Data Dashboard</h1>
-            
+
             <nav class="nav-tab-wrapper">
-                <a href="?post_type=location&page=chroma-seo-dashboard&tab=overview" class="nav-tab <?php echo $active_tab === 'overview' ? 'nav-tab-active' : ''; ?>">Overview</a>
-                <a href="?post_type=location&page=chroma-seo-dashboard&tab=inspector" class="nav-tab <?php echo $active_tab === 'inspector' ? 'nav-tab-active' : ''; ?>">Page Inspector</a>
+                <a href="?post_type=location&page=chroma-seo-dashboard&tab=seo"
+                    class="nav-tab <?php echo $active_tab === 'seo' ? 'nav-tab-active' : ''; ?>">SEO</a>
+                <a href="?post_type=location&page=chroma-seo-dashboard&tab=geo"
+                    class="nav-tab <?php echo $active_tab === 'geo' ? 'nav-tab-active' : ''; ?>">GEO</a>
+                <a href="?post_type=location&page=chroma-seo-dashboard&tab=llm"
+                    class="nav-tab <?php echo $active_tab === 'llm' ? 'nav-tab-active' : ''; ?>">LLM</a>
+                <a href="?post_type=location&page=chroma-seo-dashboard&tab=breadcrumbs"
+                    class="nav-tab <?php echo $active_tab === 'breadcrumbs' ? 'nav-tab-active' : ''; ?>">Breadcrumbs</a>
+                <a href="?post_type=location&page=chroma-seo-dashboard&tab=help"
+                    class="nav-tab <?php echo $active_tab === 'help' ? 'nav-tab-active' : ''; ?>">Help</a>
             </nav>
 
             <br>
 
-            <?php if ($active_tab === 'overview'): ?>
-                <?php $this->render_overview_tab(); ?>
-            <?php else: ?>
+            <?php
+            switch ($active_tab) {
+                case 'seo':
+                    $this->render_overview_tab();
+                    break;
+                case 'geo':
+                    $this->render_geo_tab();
+                    break;
+                case 'llm':
+                    $this->render_llm_tab();
+                    break;
+                case 'breadcrumbs':
+                    if (class_exists('Chroma_Breadcrumbs')) {
+                        (new Chroma_Breadcrumbs())->render_settings();
+                    } else {
+                        echo '<p>Breadcrumbs module not loaded.</p>';
+                    }
+                    break;
+                case 'help':
+                    do_action('chroma_seo_dashboard_content');
+                    break;
+                default:
+                    $this->render_overview_tab();
+                    break;
+            }
+            ?>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render GEO Tab
+     */
+    private function render_geo_tab()
+    {
+        ?>
+        <div class="chroma-seo-card">
+            <h2>🌍 Geo-Optimization Settings</h2>
+            <p>Manage your location-based SEO settings.</p>
+
+            <div class="chroma-doc-section" style="margin-top: 20px;">
+                <h3>KML File</h3>
+                <p>Your KML file is automatically generated and available at:</p>
+                <code><a href="<?php echo home_url('/locations.kml'); ?>" target="_blank"><?php echo home_url('/locations.kml'); ?></a></code>
+                <p class="description">Submit this URL to Google Earth and other geo-directories.</p>
+            </div>
+
+            <div class="chroma-doc-section" style="margin-top: 20px;">
+                <h3>Service Area Defaults</h3>
+                <p>If a location does not have specific coordinates set, the system will attempt to geocode the address
+                    automatically.</p>
+                <p>Default Radius: <strong>10 miles</strong></p>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render LLM Tab
+     */
+    private function render_llm_tab()
+    {
+        ?>
+        <div class="chroma-seo-card">
+            <h2>🤖 LLM Optimization & Inspector</h2>
+            <p>Tools to optimize how Large Language Models (ChatGPT, Gemini, etc.) understand your content.</p>
+
+            <div style="margin-top: 20px;">
+                <h3>Page Inspector</h3>
+                <p>Use this tool to view and edit the specific Schema/LLM data for any page.</p>
                 <?php $this->render_inspector_tab(); ?>
-            <?php endif; ?>
+            </div>
         </div>
         <?php
     }
@@ -104,7 +179,8 @@ class Chroma_SEO_Dashboard
     /**
      * Render Overview Tab
      */
-    private function render_overview_tab() {
+    private function render_overview_tab()
+    {
         $locations = get_posts([
             'post_type' => 'location',
             'posts_per_page' => -1,
@@ -151,8 +227,10 @@ class Chroma_SEO_Dashboard
                     ?>
                     <tr>
                         <td>
-                            <strong><a href="<?php echo get_edit_post_link($id); ?>"><?php echo get_the_title($id); ?></a></strong><br>
-                            <small><?php echo get_post_meta($id, 'location_city', true); ?>, <?php echo get_post_meta($id, 'location_state', true); ?></small>
+                            <strong><a
+                                    href="<?php echo get_edit_post_link($id); ?>"><?php echo get_the_title($id); ?></a></strong><br>
+                            <small><?php echo get_post_meta($id, 'location_city', true); ?>,
+                                <?php echo get_post_meta($id, 'location_state', true); ?></small>
                         </td>
                         <td>
                             <?php if ($geo_manual): ?>
@@ -161,7 +239,8 @@ class Chroma_SEO_Dashboard
                                 <span class="chroma-badge chroma-badge-auto">Auto</span>
                             <?php endif; ?>
                             <?php if ($geo_data): ?>
-                                <div><?php echo number_format($geo_data['lat'], 4); ?>, <?php echo number_format($geo_data['lng'], 4); ?></div>
+                                <div><?php echo number_format($geo_data['lat'], 4); ?>,
+                                    <?php echo number_format($geo_data['lng'], 4); ?></div>
                                 <div>Radius: <?php echo $geo_data['radius']; ?> mi</div>
                             <?php else: ?>
                                 <span class="chroma-cross">×</span> No coordinates
@@ -183,30 +262,38 @@ class Chroma_SEO_Dashboard
                         </td>
                         <td>
                             <div style="margin-bottom: 4px;">
-                                <?php if ($quality): ?><span class="chroma-check">✓</span> Quality Rated<?php else: ?><span class="chroma-cross">×</span> Not Rated<?php endif; ?>
+                                <?php if ($quality): ?><span class="chroma-check">✓</span> Quality Rated<?php else: ?><span
+                                        class="chroma-cross">×</span> Not Rated<?php endif; ?>
                             </div>
                             <div>
-                                <?php if ($rating): ?><span class="chroma-check">✓</span> Google: <?php echo esc_html($rating); ?><?php else: ?><span style="color: #ccc;">-</span> No Rating<?php endif; ?>
+                                <?php if ($rating): ?><span class="chroma-check">✓</span> Google:
+                                    <?php echo esc_html($rating); ?>            <?php else: ?><span style="color: #ccc;">-</span> No
+                                    Rating<?php endif; ?>
                             </div>
                         </td>
                         <td>
                             <div style="margin-bottom: 4px;">
-                                <?php if ($video): ?><span class="chroma-check">✓</span> Video Tour<?php else: ?><span class="chroma-cross">×</span> No Video<?php endif; ?>
+                                <?php if ($video): ?><span class="chroma-check">✓</span> Video Tour<?php else: ?><span
+                                        class="chroma-cross">×</span> No Video<?php endif; ?>
                             </div>
                             <div>
-                                <?php if ($price): ?><span class="chroma-check">✓</span> Pricing<?php else: ?><span class="chroma-cross">×</span> No Price<?php endif; ?>
+                                <?php if ($price): ?><span class="chroma-check">✓</span> Pricing<?php else: ?><span
+                                        class="chroma-cross">×</span> No Price<?php endif; ?>
                             </div>
                         </td>
                         <td>
                             <div style="margin-bottom: 4px;">
-                                <?php if (!empty($events)): ?><span class="chroma-check">✓</span> <?php echo count($events); ?> Events<?php else: ?><span style="color: #ccc;">-</span> No Events<?php endif; ?>
+                                <?php if (!empty($events)): ?><span class="chroma-check">✓</span> <?php echo count($events); ?>
+                                    Events<?php else: ?><span style="color: #ccc;">-</span> No Events<?php endif; ?>
                             </div>
                             <div>
-                                <?php if (!empty($howto)): ?><span class="chroma-check">✓</span> Enrollment Steps<?php else: ?><span class="chroma-cross">×</span> No Steps<?php endif; ?>
+                                <?php if (!empty($howto)): ?><span class="chroma-check">✓</span> Enrollment Steps<?php else: ?><span
+                                        class="chroma-cross">×</span> No Steps<?php endif; ?>
                             </div>
                         </td>
                         <td>
-                            <a href="?post_type=location&page=chroma-seo-dashboard&tab=inspector&post_id=<?php echo $id; ?>" class="button button-small">Inspect</a>
+                            <a href="?post_type=location&page=chroma-seo-dashboard&tab=inspector&post_id=<?php echo $id; ?>"
+                                class="button button-small">Inspect</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -218,7 +305,8 @@ class Chroma_SEO_Dashboard
     /**
      * Render Inspector Tab
      */
-    private function render_inspector_tab() {
+    private function render_inspector_tab()
+    {
         $locations = get_posts(['post_type' => 'location', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
         $programs = get_posts(['post_type' => 'program', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
         $selected_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
@@ -229,12 +317,14 @@ class Chroma_SEO_Dashboard
                 <option value="">-- Select a Page --</option>
                 <optgroup label="Locations">
                     <?php foreach ($locations as $loc): ?>
-                        <option value="<?php echo $loc->ID; ?>" <?php selected($selected_id, $loc->ID); ?>><?php echo esc_html($loc->post_title); ?></option>
+                        <option value="<?php echo $loc->ID; ?>" <?php selected($selected_id, $loc->ID); ?>>
+                            <?php echo esc_html($loc->post_title); ?></option>
                     <?php endforeach; ?>
                 </optgroup>
                 <optgroup label="Programs">
                     <?php foreach ($programs as $prog): ?>
-                        <option value="<?php echo $prog->ID; ?>" <?php selected($selected_id, $prog->ID); ?>><?php echo esc_html($prog->post_title); ?></option>
+                        <option value="<?php echo $prog->ID; ?>" <?php selected($selected_id, $prog->ID); ?>>
+                            <?php echo esc_html($prog->post_title); ?></option>
                     <?php endforeach; ?>
                 </optgroup>
             </select>
@@ -246,78 +336,78 @@ class Chroma_SEO_Dashboard
         </div>
 
         <script>
-        jQuery(document).ready(function($) {
-            var selectedId = '<?php echo $selected_id; ?>';
-            if(selectedId && selectedId != '0') {
-                loadInspectorData(selectedId);
-            }
-
-            $('#chroma-inspector-select').on('change', function() {
-                var id = $(this).val();
-                if(id) loadInspectorData(id);
-            });
-
-            function loadInspectorData(id) {
-                $('#chroma-inspector-spinner').addClass('is-active');
-                $.post(ajaxurl, {
-                    action: 'chroma_fetch_schema_inspector',
-                    post_id: id
-                }, function(response) {
-                    $('#chroma-inspector-spinner').removeClass('is-active');
-                    if(response.success) {
-                        $('#chroma-inspector-content').html(response.data.html);
-                    } else {
-                        alert('Error loading data');
-                    }
-                });
-            }
-
-            // Save Handler
-            $(document).on('click', '#chroma-inspector-save', function(e) {
-                e.preventDefault();
-                var btn = $(this);
-                btn.prop('disabled', true).text('Saving...');
-                
-                var data = {
-                    action: 'chroma_save_schema_inspector',
-                    post_id: $('#chroma-inspector-post-id').val(),
-                    fields: {}
-                };
-
-                $('.chroma-inspector-field-row').each(function() {
-                    var key = $(this).data('key');
-                    var useFallback = $(this).find('.use-fallback-check').is(':checked');
-                    var value = $(this).find('.manual-value-input').val();
-                    
-                    // If "Use Fallback" is checked, we send empty string to delete meta
-                    // If unchecked, we send the manual value
-                    data.fields[key] = useFallback ? '' : value;
-                });
-
-                $.post(ajaxurl, data, function(response) {
-                    btn.prop('disabled', false).text('Update Schema Settings');
-                    if(response.success) {
-                        alert('Settings saved successfully!');
-                        loadInspectorData(data.post_id); // Reload to refresh
-                    } else {
-                        alert('Error saving settings.');
-                    }
-                });
-            });
-
-            // Toggle Handler
-            $(document).on('change', '.use-fallback-check', function() {
-                var row = $(this).closest('tr');
-                var input = row.find('.manual-value-input');
-                if($(this).is(':checked')) {
-                    input.prop('disabled', true).addClass('disabled');
-                    row.removeClass('modified');
-                } else {
-                    input.prop('disabled', false).removeClass('disabled');
-                    row.addClass('modified');
+            jQuery(document).ready(function ($) {
+                var selectedId = '<?php echo $selected_id; ?>';
+                if (selectedId && selectedId != '0') {
+                    loadInspectorData(selectedId);
                 }
+
+                $('#chroma-inspector-select').on('change', function () {
+                    var id = $(this).val();
+                    if (id) loadInspectorData(id);
+                });
+
+                function loadInspectorData(id) {
+                    $('#chroma-inspector-spinner').addClass('is-active');
+                    $.post(ajaxurl, {
+                        action: 'chroma_fetch_schema_inspector',
+                        post_id: id
+                    }, function (response) {
+                        $('#chroma-inspector-spinner').removeClass('is-active');
+                        if (response.success) {
+                            $('#chroma-inspector-content').html(response.data.html);
+                        } else {
+                            alert('Error loading data');
+                        }
+                    });
+                }
+
+                // Save Handler
+                $(document).on('click', '#chroma-inspector-save', function (e) {
+                    e.preventDefault();
+                    var btn = $(this);
+                    btn.prop('disabled', true).text('Saving...');
+
+                    var data = {
+                        action: 'chroma_save_schema_inspector',
+                        post_id: $('#chroma-inspector-post-id').val(),
+                        fields: {}
+                    };
+
+                    $('.chroma-inspector-field-row').each(function () {
+                        var key = $(this).data('key');
+                        var useFallback = $(this).find('.use-fallback-check').is(':checked');
+                        var value = $(this).find('.manual-value-input').val();
+
+                        // If "Use Fallback" is checked, we send empty string to delete meta
+                        // If unchecked, we send the manual value
+                        data.fields[key] = useFallback ? '' : value;
+                    });
+
+                    $.post(ajaxurl, data, function (response) {
+                        btn.prop('disabled', false).text('Update Schema Settings');
+                        if (response.success) {
+                            alert('Settings saved successfully!');
+                            loadInspectorData(data.post_id); // Reload to refresh
+                        } else {
+                            alert('Error saving settings.');
+                        }
+                    });
+                });
+
+                // Toggle Handler
+                $(document).on('change', '.use-fallback-check', function () {
+                    var row = $(this).closest('tr');
+                    var input = row.find('.manual-value-input');
+                    if ($(this).is(':checked')) {
+                        input.prop('disabled', true).addClass('disabled');
+                        row.removeClass('modified');
+                    } else {
+                        input.prop('disabled', false).removeClass('disabled');
+                        row.addClass('modified');
+                    }
+                });
             });
-        });
         </script>
         <?php
     }
@@ -325,15 +415,17 @@ class Chroma_SEO_Dashboard
     /**
      * AJAX: Fetch Inspector Data
      */
-    public function ajax_fetch_inspector_data() {
+    public function ajax_fetch_inspector_data()
+    {
         $post_id = intval($_POST['post_id']);
-        if(!$post_id) wp_send_json_error();
+        if (!$post_id)
+            wp_send_json_error();
 
         // Define fields based on post type
         $post_type = get_post_type($post_id);
         $fields = [];
 
-        if($post_type === 'location') {
+        if ($post_type === 'location') {
             $fields = [
                 'schema_loc_name' => ['label' => 'Schema Name', 'fallback' => get_the_title($post_id)],
                 'schema_loc_description' => ['label' => 'Description', 'fallback' => get_the_excerpt($post_id)],
@@ -349,7 +441,7 @@ class Chroma_SEO_Dashboard
                 'seo_llm_service_area_lng' => ['label' => 'Service Area Lng', 'fallback' => get_post_meta($post_id, 'location_longitude', true)],
                 'seo_llm_service_area_radius' => ['label' => 'Service Radius (mi)', 'fallback' => '10'],
             ];
-        } elseif($post_type === 'program') {
+        } elseif ($post_type === 'program') {
             $fields = [
                 'schema_prog_name' => ['label' => 'Schema Name', 'fallback' => get_the_title($post_id)],
                 'schema_prog_description' => ['label' => 'Description', 'fallback' => get_the_excerpt($post_id)],
@@ -376,12 +468,14 @@ class Chroma_SEO_Dashboard
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($fields as $key => $config): 
+                <?php foreach ($fields as $key => $config):
                     $manual_value = get_post_meta($post_id, $key, true);
                     $has_manual = !empty($manual_value);
                     ?>
-                    <tr class="chroma-inspector-field-row <?php echo $has_manual ? 'modified' : ''; ?>" data-key="<?php echo esc_attr($key); ?>">
-                        <td><strong><?php echo esc_html($config['label']); ?></strong><br><small style="color:#999"><?php echo esc_html($key); ?></small></td>
+                    <tr class="chroma-inspector-field-row <?php echo $has_manual ? 'modified' : ''; ?>"
+                        data-key="<?php echo esc_attr($key); ?>">
+                        <td><strong><?php echo esc_html($config['label']); ?></strong><br><small
+                                style="color:#999"><?php echo esc_html($key); ?></small></td>
                         <td>
                             <div class="chroma-value-fallback"><?php echo esc_html($config['fallback'] ?: '(Empty)'); ?></div>
                         </td>
@@ -406,16 +500,19 @@ class Chroma_SEO_Dashboard
     /**
      * AJAX: Save Inspector Data
      */
-    public function ajax_save_inspector_data() {
-        if(!current_user_can('edit_posts')) wp_send_json_error();
-        
+    public function ajax_save_inspector_data()
+    {
+        if (!current_user_can('edit_posts'))
+            wp_send_json_error();
+
         $post_id = intval($_POST['post_id']);
         $fields = $_POST['fields'];
 
-        if(!$post_id || !is_array($fields)) wp_send_json_error();
+        if (!$post_id || !is_array($fields))
+            wp_send_json_error();
 
-        foreach($fields as $key => $value) {
-            if($value === '') {
+        foreach ($fields as $key => $value) {
+            if ($value === '') {
                 delete_post_meta($post_id, $key);
             } else {
                 update_post_meta($post_id, $key, sanitize_text_field($value));
