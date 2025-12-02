@@ -154,41 +154,88 @@ while (have_posts()):
 		<?php if ($schedule_items):
 			$schedule_items_array = array_filter(array_map('trim', explode("\n", $schedule_items)));
 			if (!empty($schedule_items_array)):
-				?>
-				<section id="schedule" class="py-24 bg-white">
-					<div class="max-w-4xl mx-auto px-4 lg:px-6">
-						<h2 class="text-3xl font-serif font-bold text-center mb-12"><?php echo esc_html($schedule_title); ?></h2>
-						<div class="space-y-4">
-							<?php foreach ($schedule_items_array as $item):
-								$parts = explode('|', $item);
-								if (count($parts) >= 3):
-									$badge = trim($parts[0]);
-									$title = trim($parts[1]);
-									$description = trim($parts[2]);
-									?>
-									<details
-										class="group bg-brand-cream rounded-2xl p-4 border border-brand-ink/5 cursor-pointer open:bg-white open:shadow-soft transition-all duration-300">
-										<summary class="flex items-center justify-between font-bold text-brand-ink list-none">
-											<div class="flex items-center gap-4">
-												<span
-													class="w-10 h-10 rounded-full bg-<?php echo esc_attr($colors['light']); ?> text-<?php echo esc_attr($colors['main']); ?> font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm text-[10px]">
-													<?php echo esc_html($badge); ?>
-												</span>
-												<span class="text-lg"><?php echo esc_html($title); ?></span>
-											</div>
-											<span
-												class="text-<?php echo esc_attr($colors['main']); ?> group-open:rotate-180 transition-transform duration-300">
-												<i class="fa-solid fa-chevron-down"></i>
-											</span>
-										</summary>
-										<div class="mt-3 pl-[3.5rem] text-brand-ink/80 leading-relaxed text-sm">
-											<?php echo wp_kses_post(wpautop($description)); ?>
+				$steps = array();
+				foreach ($schedule_items_array as $item) {
+					$parts = explode('|', $item);
+					if (count($parts) >= 3) {
+						$steps[] = array(
+							'time' => trim($parts[0]),
+							'title' => trim($parts[1]),
+							'copy' => trim($parts[2]),
+						);
+					}
+				}
+
+				if (!empty($steps)):
+					$total_steps = count($steps);
+					$split_index = ceil($total_steps / 2);
+					$top_steps = array_slice($steps, 0, $split_index);
+					$bottom_steps = array_slice($steps, $split_index);
+					?>
+					<section id="schedule" class="py-24 bg-white">
+						<div class="max-w-6xl mx-auto px-4 lg:px-6" data-schedule>
+							<h2 class="text-3xl font-serif font-bold text-center mb-12 text-brand-ink"><?php echo esc_html($schedule_title); ?></h2>
+							
+							<div class="tab-content active" data-schedule-panel="program">
+								<div class="rounded-[3rem] p-8 md:p-12 bg-brand-cream text-center">
+									
+									<!-- Time Bubbles -->
+									<div class="relative max-w-5xl mx-auto mb-10">
+										<!-- Top Row -->
+										<div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-4 relative z-10 max-w-full">
+											<?php foreach ($top_steps as $i => $step): ?>
+												<?php
+												$is_first = 0 === $i;
+												$btn_classes = $is_first
+													? 'bg-brand-ink text-white shadow-md transform scale-105'
+													: 'bg-white text-brand-ink/70 hover:text-brand-ink hover:bg-white/80';
+												?>
+												<button class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
+													data-schedule-step-trigger
+													data-title="<?php echo esc_attr($step['title']); ?>"
+													data-copy="<?php echo esc_attr($step['copy']); ?>"
+													aria-label="<?php echo esc_attr($step['time']); ?>">
+													<?php echo esc_html($step['time']); ?>
+												</button>
+											<?php endforeach; ?>
 										</div>
-									</details>
-								<?php endif; endforeach; ?>
+
+										<!-- Bottom Row -->
+										<div class="flex flex-wrap justify-center gap-2 md:gap-4 relative z-10 max-w-full">
+											<?php foreach ($bottom_steps as $i => $step): ?>
+												<?php
+												$btn_classes = 'bg-white text-brand-ink/70 hover:text-brand-ink hover:bg-white/80';
+												?>
+												<button class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
+													data-schedule-step-trigger
+													data-title="<?php echo esc_attr($step['title']); ?>"
+													data-copy="<?php echo esc_attr($step['copy']); ?>"
+													aria-label="<?php echo esc_attr($step['time']); ?>">
+													<?php echo esc_html($step['time']); ?>
+												</button>
+											<?php endforeach; ?>
+										</div>
+									</div>
+
+									<!-- Dynamic Content -->
+									<div class="max-w-2xl mx-auto min-h-[120px]" data-schedule-content>
+										<?php if (!empty($steps[0])): ?>
+											<h4 class="text-xl font-bold text-brand-ink mb-3 transition-colors duration-300"
+												data-content-title>
+												<?php echo esc_html($steps[0]['title']); ?>
+											</h4>
+											<p class="text-brand-ink/80 leading-relaxed transition-opacity duration-300"
+												data-content-copy>
+												<?php echo esc_html($steps[0]['copy']); ?>
+											</p>
+										<?php endif; ?>
+									</div>
+
+								</div>
+							</div>
 						</div>
-					</div>
-				</section>
+					</section>
+				<?php endif; ?>
 			<?php endif; endif; ?>
 
 		<!-- CTA Section -->

@@ -75,6 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Programs wizard
    */
+  /**
+   * Programs wizard
+   */
   const wizard = document.querySelector('[data-program-wizard]');
   if (wizard) {
     const options = safeParseJSON(wizard.getAttribute('data-options') || '[]', []);
@@ -82,27 +85,54 @@ document.addEventListener('DOMContentLoaded', function () {
     const result = wizard.querySelector('[data-program-wizard-result]');
     const title = wizard.querySelector('[data-program-wizard-title]');
     const desc = wizard.querySelector('[data-program-wizard-description]');
+    const image = wizard.querySelector('[data-program-wizard-image]');
     const learnLink = wizard.querySelector('[data-program-wizard-link]');
     const resetBtn = wizard.querySelector('[data-program-wizard-reset]');
+
+    const showResult = (selected) => {
+      if (!result) return;
+
+      // Populate data
+      if (title) title.textContent = selected.label;
+      if (desc) desc.textContent = selected.description;
+      if (learnLink && selected.link) learnLink.setAttribute('href', selected.link);
+      if (image && selected.image) image.src = selected.image;
+
+      // Hide options
+      wizard.querySelector('[data-program-wizard-options]')?.classList.add('hidden');
+
+      // Show result with animation
+      result.classList.remove('hidden');
+      // Small delay to allow display:grid to apply before transitioning opacity
+      requestAnimationFrame(() => {
+        result.classList.remove('opacity-0', 'translate-y-4');
+        result.classList.add('opacity-100', 'translate-y-0');
+      });
+    };
+
+    const resetWizard = () => {
+      if (!result) return;
+
+      // Hide result with animation
+      result.classList.add('opacity-0', 'translate-y-4');
+      result.classList.remove('opacity-100', 'translate-y-0');
+
+      // Wait for transition to finish before hiding
+      setTimeout(() => {
+        result.classList.add('hidden');
+        wizard.querySelector('[data-program-wizard-options]')?.classList.remove('hidden');
+      }, 500); // Matches duration-500
+    };
 
     optionButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         const key = btn.getAttribute('data-program-wizard-option');
         const selected = options.find((o) => o.key === key);
-        if (!selected || !result) return;
-
-        wizard.querySelector('[data-program-wizard-options]')?.classList.add('hidden');
-        result.classList.remove('hidden');
-        if (title) title.textContent = selected.label;
-        if (desc) desc.textContent = selected.description;
-        if (learnLink && selected.link) learnLink.setAttribute('href', selected.link);
+        if (selected) showResult(selected);
       });
     });
 
-    resetBtn?.addEventListener('click', () => {
-      wizard.querySelector('[data-program-wizard-options]')?.classList.remove('hidden');
-      result?.classList.add('hidden');
-    });
+    resetBtn?.addEventListener('click', resetWizard);
   }
 
   /**

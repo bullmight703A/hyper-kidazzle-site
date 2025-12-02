@@ -488,7 +488,8 @@ function chroma_home_program_wizard_options()
                 // Build label with line break for display
                 $label = get_the_title();
                 if ($age_range) {
-                        $label .= ' (' . $age_range . ')';
+                        $clean_range = trim($age_range, '() ');
+                        $label .= ' (' . $clean_range . ')';
                 }
 
                 $options[] = array(
@@ -497,6 +498,7 @@ function chroma_home_program_wizard_options()
                         'label' => $label,
                         'description' => $excerpt,
                         'link' => get_permalink($post_id),
+                        'image' => $image_url, // Added image URL
                 );
         }
 
