@@ -15,17 +15,33 @@ if (!defined('ABSPATH')) {
 class Chroma_Program_Relationships extends Chroma_Advanced_SEO_Meta_Box_Base
 {
     /**
-     * Constructor
+     * Get the meta box ID
+     *
+     * @return string
      */
-    public function __construct()
+    public function get_id()
     {
-        parent::__construct(
-            'chroma_program_relationships',
-            __('Program Relationships & Availability', 'chroma-excellence'),
-            'program',
-            'normal',
-            'high'
-        );
+        return 'chroma_program_relationships';
+    }
+
+    /**
+     * Get the meta box title
+     *
+     * @return string
+     */
+    public function get_title()
+    {
+        return __('Program Relationships & Availability', 'chroma-excellence');
+    }
+
+    /**
+     * Get post types this meta box applies to
+     *
+     * @return array
+     */
+    public function get_post_types()
+    {
+        return ['program'];
     }
 
     /**

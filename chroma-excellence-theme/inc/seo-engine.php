@@ -96,36 +96,90 @@ function chroma_location_schema()
         }
 
         $location_id = get_the_ID();
-        $location_fields = chroma_get_location_fields($location_id);
 
-        // Get custom values or fallbacks
+        // Ensure Advanced SEO classes are available
+        if (!class_exists('Chroma_Fallback_Resolver')) {
+                return;
+        }
+
+        // 1. DATA GATHERING
+        // -----------------
+        $location_fields = chroma_get_location_fields($location_id);
+        $service_area = Chroma_Fallback_Resolver::get_service_area_circle($location_id);
+
+        // Meta Fields
         $name = get_post_meta($location_id, 'schema_loc_name', true) ?: get_the_title();
         $description = get_post_meta($location_id, 'schema_loc_description', true) ?: (get_the_excerpt() ?: chroma_trimmed_excerpt(30, $location_id));
         $telephone = get_post_meta($location_id, 'schema_loc_telephone', true) ?: $location_fields['phone'];
         $email = get_post_meta($location_id, 'schema_loc_email', true) ?: $location_fields['email'];
-        $price_range = get_post_meta($location_id, 'schema_loc_price_range', true);
-        $opening_hours = get_post_meta($location_id, 'schema_loc_opening_hours', true);
+        $opening_hours_raw = get_post_meta($location_id, 'schema_loc_opening_hours', true) ?: $location_fields['hours'];
         $payment = get_post_meta($location_id, 'schema_loc_payment_accepted', true);
+        $price_range = get_post_meta($location_id, 'seo_llm_price_min', true);
+        $quality_rated = get_post_meta($location_id, 'location_quality_rated', true);
+        $ages_served = get_post_meta($location_id, 'location_ages_served', true);
+        $school_pickups = get_post_meta($location_id, 'location_school_pickups', true);
+        // Director
+        $director_name = get_post_meta($location_id, 'location_director_name', true);
+        $director_bio = get_post_meta($location_id, 'location_director_bio', true);
+        $director_photo = get_post_meta($location_id, 'location_director_photo', true);
 
+        // Price Range Formatting
+        if ($price_range) {
+                $price_max = get_post_meta($location_id, 'seo_llm_price_max', true);
+                $currency = get_post_meta($location_id, 'seo_llm_price_currency', true) ?: 'USD';
+                $frequency = get_post_meta($location_id, 'seo_llm_price_frequency', true) ?: 'week';
+                $price_range = "$currency $price_range" . ($price_max ? "-$price_max" : "") . " per $frequency";
+        } else {
+                // Fallback to manual schema field or default
+                $price_range = get_post_meta($location_id, 'schema_loc_price_range', true) ?: '$$';
+        }
+
+        // 2. SCHEMA CONSTRUCTION
+        // ----------------------
         $schema = array(
-                '@context' => 'https://schema.org',
-                '@type' => array('ChildCare', 'LocalBusiness'),
+                '@type' => array('ChildCare', 'Preschool', 'EducationalOrganization', 'LocalBusiness'),
+                '@id' => get_permalink() . '#organization',
                 'name' => $name,
                 'description' => $description,
                 'url' => get_permalink(),
                 'image' => get_the_post_thumbnail_url($location_id, 'full'),
+                'logo' => chroma_get_global_setting('global_logo', ''),
+                'telephone' => $telephone,
+                'email' => $email,
+                'priceRange' => $price_range,
                 'address' => array(
                         '@type' => 'PostalAddress',
                         'streetAddress' => $location_fields['address'],
                         'addressLocality' => $location_fields['city'],
                         'addressRegion' => $location_fields['state'],
                         'postalCode' => $location_fields['zip'],
+                        'addressCountry' => 'US'
                 ),
-                'telephone' => $telephone,
-                'email' => $email,
         );
 
-        if ($location_fields['latitude'] && $location_fields['longitude']) {
+        // Social Profiles (sameAs)
+        $socials = array_filter(array(
+                chroma_global_facebook_url(),
+                chroma_global_instagram_url(),
+                chroma_global_linkedin_url(),
+        ));
+        if (!empty($socials)) {
+                $schema['sameAs'] = array_values($socials);
+        }
+
+        // Geo Coordinates
+        if ($service_area) {
+                $schema['geo'] = array(
+                        '@type' => 'GeoCoordinates',
+                        'latitude' => $service_area['lat'],
+                        'longitude' => $service_area['lng'],
+                );
+                $schema['areaServed'] = array(
+                        '@type' => 'GeoCircle',
+                        'geoMidpoint' => $schema['geo'],
+                        'geoRadius' => ($service_area['radius'] * 1609.34) // Miles to meters
+                );
+        } elseif ($location_fields['latitude'] && $location_fields['longitude']) {
                 $schema['geo'] = array(
                         '@type' => 'GeoCoordinates',
                         'latitude' => $location_fields['latitude'],
@@ -133,13 +187,136 @@ function chroma_location_schema()
                 );
         }
 
-        // Add optional fields if provided
-        if ($price_range) {
-                $schema['priceRange'] = $price_range;
+        // Google Maps
+        if ($location_fields['map_link']) {
+                $schema['hasMap'] = $location_fields['map_link']; // Assuming this exists or we construct it
+        } else {
+                // Construct Google Maps URL from address
+                $addr_string = urlencode($location_fields['address'] . ', ' . $location_fields['city'] . ', ' . $location_fields['state'] . ' ' . $location_fields['zip']);
+                $schema['hasMap'] = "https://www.google.com/maps/search/?api=1&query=$addr_string";
         }
-        if ($opening_hours) {
-                $schema['openingHours'] = explode("\n", $opening_hours);
+
+        // Hours (OpeningHoursSpecification)
+        if ($opening_hours_raw) {
+                // Simple parser: assumes "7am - 6pm" or similar format
+                // If it contains newlines, treat as multiple entries
+                $hours_lines = explode("\n", $opening_hours_raw);
+                $specs = array();
+
+                foreach ($hours_lines as $line) {
+                        // Try to extract times
+                        if (preg_match('/(\d{1,2}(?::\d{2})?\s*[ap]m)\s*-\s*(\d{1,2}(?::\d{2})?\s*[ap]m)/i', $line, $matches)) {
+                                $opens = date("H:i", strtotime($matches[1]));
+                                $closes = date("H:i", strtotime($matches[2]));
+
+                                $specs[] = array(
+                                        '@type' => 'OpeningHoursSpecification',
+                                        'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'),
+                                        'opens' => $opens,
+                                        'closes' => $closes
+                                );
+                        }
+                }
+
+                if (!empty($specs)) {
+                        $schema['openingHoursSpecification'] = $specs;
+                } else {
+                        // Fallback to simple string if parsing fails
+                        $schema['openingHours'] = $opening_hours_raw;
+                }
         }
+
+        // Attributes & Credentials
+        $knowsAbout = array();
+        if ($quality_rated) {
+                $knowsAbout[] = 'Quality Rated Provider';
+                $schema['amenityFeature'][] = array(
+                        '@type' => 'LocationFeatureSpecification',
+                        'name' => 'Quality Rated',
+                        'value' => true
+                );
+        }
+        if ($school_pickups) {
+                $schema['amenityFeature'][] = array(
+                        '@type' => 'LocationFeatureSpecification',
+                        'name' => 'School Transportation',
+                        'value' => true
+                );
+        }
+        if (!empty($knowsAbout)) {
+                $schema['knowsAbout'] = $knowsAbout;
+        }
+
+        // Audience (Ages)
+        if ($ages_served) {
+                $schema['audience'] = array(
+                        '@type' => 'PeopleAudience',
+                        'audienceType' => 'families',
+                        'name' => "Children ages $ages_served"
+                );
+        }
+
+        // Staff (Director)
+        if ($director_name) {
+                $schema['employee'] = array(
+                        '@type' => 'Person',
+                        'name' => $director_name,
+                        'jobTitle' => 'Center Director',
+                        'description' => $director_bio ? wp_strip_all_tags($director_bio) : ''
+                );
+                if ($director_photo) {
+                        $schema['employee']['image'] = $director_photo;
+                }
+        }
+
+        // Offers (Programs)
+        // Query programs associated with this location
+        $related_programs = get_posts(array(
+                'post_type' => 'program',
+                'posts_per_page' => -1,
+                'meta_query' => array(
+                        array(
+                                'key' => 'program_locations',
+                                'value' => '"' . $location_id . '"', // Serialized array search (approximate)
+                                'compare' => 'LIKE'
+                        )
+                )
+        ));
+
+        if (!empty($related_programs)) {
+                $offers = array();
+                foreach ($related_programs as $program) {
+                        $offers[] = array(
+                                '@type' => 'Offer',
+                                'name' => $program->post_title,
+                                'description' => get_the_excerpt($program->ID),
+                                'url' => get_permalink($program->ID),
+                                'category' => get_post_meta($program->ID, 'program_age_range', true) ?: 'Child Care'
+                        );
+                }
+                $schema['makesOffer'] = $offers;
+                $schema['hasOfferCatalog'] = array(
+                        '@type' => 'OfferCatalog',
+                        'name' => 'Early Learning Programs',
+                        'itemListElement' => $offers
+                );
+        }
+
+        // Reviews (Aggregate Rating)
+        $rating_value = get_post_meta($location_id, 'seo_llm_rating_value', true) ?: get_post_meta($location_id, 'location_google_rating', true);
+        $rating_count = get_post_meta($location_id, 'seo_llm_rating_count', true);
+
+        if ($rating_value) {
+                $schema['aggregateRating'] = array(
+                        '@type' => 'AggregateRating',
+                        'ratingValue' => $rating_value,
+                        'reviewCount' => $rating_count ?: '1', // Fallback to 1 if count missing but rating exists
+                        'bestRating' => '5',
+                        'worstRating' => '1'
+                );
+        }
+
+        // Payment
         if ($payment) {
                 $schema['paymentAccepted'] = $payment;
         }
@@ -267,11 +444,11 @@ function chroma_breadcrumb_schema()
 
         // Add breadcrumb items based on page type
         if (is_singular('program')) {
-                // Programs: Home > Programs > Program Name
+                // Programs: Home > Early Learning Programs > Program Name
                 $items[] = array(
                         '@type' => 'ListItem',
                         'position' => $position++,
-                        'name' => 'Programs',
+                        'name' => 'Early Learning Programs',
                         'item' => get_post_type_archive_link('program'),
                 );
                 $items[] = array(
@@ -281,11 +458,11 @@ function chroma_breadcrumb_schema()
                         'item' => get_permalink(),
                 );
         } elseif (is_singular('location')) {
-                // Locations: Home > Locations > Location Name
+                // Locations: Home > ChildCare Centers > Location Name
                 $items[] = array(
                         '@type' => 'ListItem',
                         'position' => $position++,
-                        'name' => 'Locations',
+                        'name' => 'ChildCare Centers',
                         'item' => get_post_type_archive_link('location') ?: home_url('/locations/'),
                 );
                 $items[] = array(
@@ -295,11 +472,11 @@ function chroma_breadcrumb_schema()
                         'item' => get_permalink(),
                 );
         } elseif (is_singular('post')) {
-                // Blog posts: Home > Stories > Post Name
+                // Blog posts: Home > Parenting Resources > Post Name
                 $items[] = array(
                         '@type' => 'ListItem',
                         'position' => $position++,
-                        'name' => 'Stories',
+                        'name' => 'Parenting Resources',
                         'item' => home_url('/stories/'),
                 );
                 $items[] = array(
@@ -321,7 +498,7 @@ function chroma_breadcrumb_schema()
                 $items[] = array(
                         '@type' => 'ListItem',
                         'position' => $position++,
-                        'name' => 'Programs',
+                        'name' => 'Early Learning Programs',
                         'item' => get_post_type_archive_link('program'),
                 );
         } elseif (is_post_type_archive('location')) {
@@ -329,7 +506,7 @@ function chroma_breadcrumb_schema()
                 $items[] = array(
                         '@type' => 'ListItem',
                         'position' => $position++,
-                        'name' => 'Locations',
+                        'name' => 'ChildCare Centers',
                         'item' => get_post_type_archive_link('location'),
                 );
         }

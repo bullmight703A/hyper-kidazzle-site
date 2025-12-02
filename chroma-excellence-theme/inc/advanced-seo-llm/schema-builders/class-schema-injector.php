@@ -12,6 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+class Chroma_Schema_Injector
 {
     /**
      * Output Person Schema for Directors
