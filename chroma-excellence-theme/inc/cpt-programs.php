@@ -634,7 +634,7 @@ function chroma_program_single_page_meta_box_render($post)
 	$hero_title = get_post_meta($post->ID, 'program_hero_title', true);
 	$hero_description = get_post_meta($post->ID, 'program_hero_description', true);
 
-	// Prismpath section
+	// Curriculum Focus section
 	$prism_title = get_post_meta($post->ID, 'program_prism_title', true);
 	$prism_description = get_post_meta($post->ID, 'program_prism_description', true);
 	$prism_focus_items = get_post_meta($post->ID, 'program_prism_focus_items', true);
@@ -717,25 +717,25 @@ function chroma_program_single_page_meta_box_render($post)
 	</div>
 
 	<div class="chroma-section-divider">
-		<h3 style="margin-top: 0; color: #0073aa;">Prismpath™ Focus Section</h3>
+		<h3 style="margin-top: 0; color: #0073aa;">Curriculum Focus Section</h3>
 	</div>
 
 	<div class="chroma-single-field">
-		<label for="program_prism_title"><?php _e('Prism Section Title', 'chroma-excellence'); ?></label>
+		<label for="program_prism_title"><?php _e('Curriculum Section Title', 'chroma-excellence'); ?></label>
 		<input type="text" id="program_prism_title" name="program_prism_title" value="<?php echo esc_attr($prism_title); ?>"
 			placeholder="e.g., Building Trust & Body." />
-		<small><?php _e('Title for the Prismpath focus section', 'chroma-excellence'); ?></small>
+		<small><?php _e('Title for the curriculum focus section', 'chroma-excellence'); ?></small>
 	</div>
 
 	<div class="chroma-single-field">
-		<label for="program_prism_description"><?php _e('Prism Description', 'chroma-excellence'); ?></label>
+		<label for="program_prism_description"><?php _e('Curriculum Description', 'chroma-excellence'); ?></label>
 		<textarea id="program_prism_description" name="program_prism_description" rows="4"
 			placeholder="In the first year, the brain grows faster than at any other time..."><?php echo esc_textarea($prism_description); ?></textarea>
-		<small><?php _e('Description explaining the program\'s Prismpath focus', 'chroma-excellence'); ?></small>
+		<small><?php _e('Description explaining the program\'s curriculum focus', 'chroma-excellence'); ?></small>
 	</div>
 
 	<div class="chroma-single-field">
-		<label><?php _e('Prismpath Chart Values (0-100)', 'chroma-excellence'); ?></label>
+		<label><?php _e('Curriculum Chart Values (0-100)', 'chroma-excellence'); ?></label>
 		<div class="chroma-chart-inputs">
 			<div class="chroma-chart-input">
 				<label for="program_prism_physical"

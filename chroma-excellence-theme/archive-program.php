@@ -20,7 +20,7 @@ $programs_query = $wp_query;
 		<div class="absolute inset-0 z-0">
 			<div class="absolute inset-0 bg-brand-ink/60 z-10"></div>
 			<img src="https://images.unsplash.com/photo-1587654780291-39c940483713?q=80&w=1600&auto=format&fit=crop"
-				alt="Chroma Programs" class="w-full h-full object-cover">
+				alt="Kidazzle Programs" class="w-full h-full object-cover">
 		</div>
 
 		<!-- Content -->
@@ -33,7 +33,7 @@ $programs_query = $wp_query;
 				<p class="text-lg text-brand-ink/80 max-w-2xl mx-auto mb-10 fade-in-up delay-200">
 					From sensory discovery in our infant suites to the project-based learning of Pre-K, every program
 					uses
-					our proprietary Prismpath™ model to meet children exactly where they are.
+					our proprietary Kidazzle™ model to meet children exactly where they are.
 				</p>
 			</div>
 	</section>
@@ -153,7 +153,7 @@ $programs_query = $wp_query;
 					<div class="absolute top-0 right-0 p-12 opacity-10 text-9xl"><i
 							class="fa-brands fa-connectdevelop"></i>
 					</div>
-					<h2 class="font-serif text-3xl font-bold mb-6 relative z-10">The Prismpath™ Model</h2>
+					<h2 class="font-serif text-3xl font-bold mb-6 relative z-10">The Kidazzle™ Model</h2>
 					<p class="text-white/80 text-lg leading-relaxed mb-8 relative z-10">
 						Just as a prism refracts light into a full spectrum of color, our proprietary curriculum
 						refracts play into five key pillars of development.
@@ -193,7 +193,8 @@ $programs_query = $wp_query;
 				<h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">More than just daycare.</h2>
 				<p class="text-brand-ink/70 text-lg leading-relaxed mb-8">
 					We believe that education isn't just about filling a bucket, but lighting a fire. Our curriculum
-					ensures that by the time your child graduates from Chroma, they are not just "school ready"—they are
+					ensures that by the time your child graduates from Kidazzle, they are not just "school ready"—they
+					are
 					life ready.
 				</p>
 				<div class="grid grid-cols-2 gap-6">
@@ -217,7 +218,7 @@ $programs_query = $wp_query;
 		<div class="max-w-4xl mx-auto px-4 lg:px-6 text-center">
 			<h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-ink mb-6">Ready to find your fit?</h2>
 			<p class="text-brand-ink/70 mb-10">Every campus offers tours so you can meet the teachers, see the
-				classrooms, and experience the Chroma culture firsthand.</p>
+				classrooms, and experience the Kidazzle culture firsthand.</p>
 			<div class="flex flex-wrap justify-center gap-4">
 				<a href="<?php echo esc_url(home_url('/locations')); ?>"
 					class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-chroma-blue hover:text-chroma-blue transition-colors">Find

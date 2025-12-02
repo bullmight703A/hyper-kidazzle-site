@@ -1,12 +1,12 @@
 <?php
 /**
- * Template Part: Prismpath Expertise Section
+ * Template Part: Curriculum Expertise Section
  * "Grounded in Expertise. Wrapped in Love." - Bento grid with colored cards
  *
  * @package Chroma_Excellence
  */
 
-$panels = chroma_home_prismpath_panels();
+$panels = chroma_home_kidazzle_panels();
 
 $feature = $panels['feature'];
 $cards = $panels['cards'];
@@ -23,13 +23,14 @@ $readiness_heading = $readiness['heading'];
 $readiness_text = $readiness['description'];
 ?>
 
-<section id="prismpath" class="py-24 px-4 lg:px-6 bg-white relative overflow-hidden" data-section="prismpath">
+<section id="kidazzle-standard" class="py-24 px-4 lg:px-6 bg-white relative overflow-hidden"
+	data-section="kidazzle-standard">
 	<div class="absolute -left-10 top-10 w-80 h-80 bg-chroma-blue/5 rounded-full blur-3xl"></div>
 
 	<div class="max-w-[1200px] mx-auto">
 		<!-- Section Header -->
 		<div class="text-center mb-12">
-			<span class="text-chroma-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">The Chroma
+			<span class="text-chroma-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">The Kidazzle
 				Standard</span>
 			<h2 class="text-3xl md:text-5xl font-serif text-brand-ink"><?php echo esc_html($heading); ?></h2>
 			<?php if ($subheading): ?>

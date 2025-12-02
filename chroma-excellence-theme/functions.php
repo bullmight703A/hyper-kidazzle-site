@@ -1,10 +1,10 @@
 <?php
 /**
- * Chroma Excellence Theme Functions
+ * Kidazzle Theme Functions
  *
  * Homepage Template: front-page.php (WordPress default)
  *
- * @package Chroma_Excellence
+ * @package Kidazzle_Theme
  * @since 1.0.0
  */
 

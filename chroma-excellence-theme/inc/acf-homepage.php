@@ -23,7 +23,7 @@ function chroma_home_default_hero()
 {
         return array(
                 'heading' => 'The art of <span class="italic text-chroma-red">growing up.</span>',
-                'subheading' => 'Where accredited excellence meets the warmth of home. A modern sanctuary powered by our proprietary Prismpath™ learning model for children 6 weeks to 12 years.',
+                'subheading' => 'Where accredited excellence meets the warmth of home. A modern sanctuary powered by our proprietary Kidazzle learning model for children 6 weeks to 12 years.',
                 'cta_label' => 'Schedule a Tour',
                 'cta_url' => '#tour',
                 'secondary_label' => 'View Programs',
@@ -41,11 +41,11 @@ function chroma_home_default_stats()
         );
 }
 
-function chroma_home_default_prismpath()
+function chroma_home_default_kidazzle()
 {
         return array(
                 'feature' => array(
-                        'eyebrow' => 'The Chroma Standard',
+                        'eyebrow' => 'The Kidazzle Standard',
                         'heading' => 'Grounded in Expertise. Wrapped in Love.',
                         'subheading' => '',
                         'cta_label' => 'Meet the Team',
@@ -54,8 +54,8 @@ function chroma_home_default_prismpath()
                 'cards' => array(
                         array(
                                 'badge' => 'Proprietary Model',
-                                'heading' => 'The Prismpath™ Curriculum',
-                                'text' => 'Just as a prism refracts light into a full spectrum of color, Prismpath™ refracts play into a full spectrum of development.',
+                                'heading' => 'The Kidazzle Curriculum',
+                                'text' => 'Just as a prism refracts light into a full spectrum of color, our curriculum refracts play into a full spectrum of development.',
                                 'icon_bg' => 'fa-solid fa-shapes',
                                 'icon_badge' => 'fa-brands fa-connectdevelop',
                                 'icon_check' => 'fa-solid fa-check-circle',
@@ -150,9 +150,9 @@ function chroma_home_stats()
 /**
  * Prismpath expertise panels
  */
-function chroma_home_prismpath_panels()
+function chroma_home_kidazzle_panels()
 {
-        $defaults = chroma_home_default_prismpath();
+        $defaults = chroma_home_default_kidazzle();
 
         $feature = $defaults['feature'];
         $feature = array(
@@ -397,7 +397,7 @@ function chroma_home_default_schedule_tracks()
                                 ),
                                 array(
                                         'time' => '10:30',
-                                        'title' => 'Prismpath Play',
+                                        'title' => 'Curriculum Play',
                                         'copy' => 'Block building, art stations, and guided motor skills.',
                                 ),
                                 array(
@@ -714,7 +714,7 @@ function chroma_home_locations_preview()
         }
 
         $heading = sanitize_text_field(get_theme_mod('chroma_home_locations_heading', '19+ neighborhood locations across Metro Atlanta'));
-        $subheading = sanitize_text_field(get_theme_mod('chroma_home_locations_subheading', 'Find a Chroma campus near your home or work. All locations share the same safety standards, curriculum framework, and warm Chroma culture.'));
+        $subheading = sanitize_text_field(get_theme_mod('chroma_home_locations_subheading', 'Find a Kidazzle campus near your home or work. All locations share the same safety standards, curriculum framework, and warm Kidazzle culture.'));
         $cta_label = sanitize_text_field(get_theme_mod('chroma_home_locations_cta_label', 'View All Locations'));
         $cta_link = esc_url_raw(get_theme_mod('chroma_home_locations_cta_link', '/locations'));
         $taxonomy = 'location_region';
@@ -913,7 +913,7 @@ function chroma_home_tour_cta()
 {
         return array(
                 'heading' => 'Schedule a private tour',
-                'subheading' => 'Share a few details and your preferred campus. A Chroma Director will reach out to confirm tour times.',
+                'subheading' => 'Share a few details and your preferred campus. A Kidazzle Director will reach out to confirm tour times.',
                 'trust_text' => 'No obligation. We’ll never share your information.',
         );
 }
@@ -934,12 +934,12 @@ function chroma_home_featured_stories()
 {
         return array(
                 array(
-                        'title' => 'Inside the Prismpath™ Classroom',
+                        'title' => 'Inside the Kidazzle™ Classroom',
                         'excerpt' => 'Take a peek at how our educators weave play and academics together each day.',
-                        'url' => '/stories/prismpath-classroom',
+                        'url' => '/stories/kidazzle-classroom',
                 ),
                 array(
-                        'title' => 'Family-Style Dining at Chroma',
+                        'title' => 'Family-Style Dining at Kidazzle',
                         'excerpt' => 'Why shared meals matter for social-emotional growth and independence.',
                         'url' => '/stories/family-style-dining',
                 ),
@@ -961,7 +961,7 @@ function chroma_home_default_parent_reviews()
                         'name' => 'Sarah M.',
                         'location' => 'Marietta Campus',
                         'rating' => '5',
-                        'review' => 'Our daughter has flourished at Chroma. The teachers genuinely care, and the Prismpath curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
+                        'review' => 'Our daughter has flourished at Kidazzle. The teachers genuinely care, and the Kidazzle curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
                 ),
                 array(
                         'name' => 'James & Lisa T.',
@@ -973,7 +973,7 @@ function chroma_home_default_parent_reviews()
                         'name' => 'Maria G.',
                         'location' => 'Austell Campus',
                         'rating' => '5',
-                        'review' => 'The family-style meals, the daily communication, the beautiful facilities — everything exceeds expectations. Chroma feels like an extension of our family, and our twins are thriving.',
+                        'review' => 'The family-style meals, the daily communication, the beautiful facilities — everything exceeds expectations. Kidazzle feels like an extension of our family, and our twins are thriving.',
                 ),
         );
 }

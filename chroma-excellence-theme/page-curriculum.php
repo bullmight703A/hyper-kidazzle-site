@@ -186,7 +186,7 @@ Planning',
 // CTA Section
 $cta_title = get_post_meta($page_id, 'curriculum_cta_title', true) ?: 'See the curriculum in action.';
 $cta_description = get_post_meta($page_id, 'curriculum_cta_description', true) ?: 'Schedule a tour to see our "Third
-Teacher" classrooms and meet the educators bringing Prismpath™ to life.';
+Teacher" classrooms and meet the educators bringing our curriculum to life.';
 ?>
 
 <main id="primary" class="site-main" role="main">
@@ -216,7 +216,7 @@ Teacher" classrooms and meet the educators bringing Prismpath™ to life.';
 			</div>
 		</section>
 
-		<!-- Prismpath Framework Section -->
+		<!-- Curriculum Framework Section -->
 		<section id="framework" class="py-24 px-4 lg:px-6 bg-white">
 			<div class="max-w-7xl mx-auto">
 				<div class="text-center mb-16">

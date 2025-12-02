@@ -19,8 +19,8 @@ while (have_posts()):
 	$hero_title = get_post_meta($program_id, 'program_hero_title', true) ?: get_the_title();
 	$hero_description = get_post_meta($program_id, 'program_hero_description', true) ?: get_the_excerpt();
 
-	// Prismpath section
-	$prism_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our Prismpath™ Focus';
+	// Kidazzle Focus section
+	$prism_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our Kidazzle™ Focus';
 	$prism_description = get_post_meta($program_id, 'program_prism_description', true);
 	$prism_focus_items = get_post_meta($program_id, 'program_prism_focus_items', true);
 
@@ -81,7 +81,7 @@ while (have_posts()):
 					<?php endif; ?>
 
 					<div class="flex gap-4" style="margin-top: 3rem;">
-						<a href="#prism"
+						<a href="#kidazzle-focus"
 							class="px-8 py-4 bg-<?php echo esc_attr($colors['main']); ?> text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:opacity-90 transition-colors shadow-lg">View
 							Curriculum</a>
 						<a href="<?php echo esc_url(home_url('/programs')); ?>"
@@ -107,8 +107,8 @@ while (have_posts()):
 			</div>
 		</section>
 
-		<!-- The Prismpath Focus (Chart) -->
-		<section id="prism" class="py-24 bg-brand-cream">
+		<!-- The Kidazzle Focus (Chart) -->
+		<section id="kidazzle-focus" class="py-24 bg-brand-cream">
 			<div class="max-w-6xl mx-auto px-4 lg:px-6">
 				<div class="grid lg:grid-cols-2 gap-16 items-center">
 					<div class="bg-white rounded-[3rem] p-8 shadow-soft border border-brand-ink/5 order-2 lg:order-1">
@@ -116,7 +116,7 @@ while (have_posts()):
 					</div>
 					<div class="order-1 lg:order-2">
 						<span
-							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Prismpath™
+							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Kidazzle™
 							Focus</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 							<?php echo esc_html($prism_title); ?>
@@ -203,7 +203,7 @@ while (have_posts()):
 	</style>
 
 	<script>
-		// Prismpath Chart Config - Lazy Loaded
+		// Kidazzle Chart Config - Lazy Loaded
 		document.addEventListener('DOMContentLoaded', function () {
 			const ctx = document.getElementById('programChart');
 			if (ctx) {
@@ -264,15 +264,15 @@ while (have_posts()):
 			},
 			plugins: { legend: { display: false } }
 		}
-													});
-												};
+															});
+														};
 		document.body.appendChild(script);
-											}
-										});
-									}, { rootMargin: '200px' }); // Start loading 200px before view
+													}
+												});
+											}, { rootMargin: '200px' }); // Start loading 200px before view
 		observer.observe(ctx);
-								}
-							});
+										}
+									});
 	</script>
 
 	<?php

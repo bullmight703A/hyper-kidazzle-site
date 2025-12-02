@@ -1,7 +1,7 @@
 {
-  "name": "chroma-excellence-theme",
+  "name": "kidazzle-theme",
   "version": "1.0.0",
-  "description": "Custom WordPress theme for Chroma Early Learning Academy with Prismpath™ curriculum",
+  "description": "Custom WordPress theme for Kidazzle Early Learning Academy with Kidazzle™ curriculum",
   "private": true,
   "scripts": {
     "dev:css": "postcss assets/css/input.css -o assets/css/main.css --watch",
@@ -16,7 +16,7 @@
     "childcare",
     "education"
   ],
-  "author": "Chroma Development Team",
+  "author": "Kidazzle Development Team",
   "license": "UNLICENSED",
   "devDependencies": {
     "autoprefixer": "^10.4.16",

@@ -2,7 +2,7 @@
 /**
  * The template for displaying the footer
  *
- * @package Chroma_Excellence
+ * @package Kidazzle_Theme
  */
 ?>
 </main>
