@@ -13,6 +13,22 @@
  * Base Styles
  */
 @layer base {
+  @font-face {
+    font-family: 'Outfit';
+    src: url('../webfonts/Outfit-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Outfit';
+    src: url('../webfonts/Outfit-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
   html {
     overflow-x: hidden;
   }
