@@ -483,7 +483,8 @@ function chroma_home_program_wizard_options()
                 $icon = get_post_meta($post_id, 'program_icon', true) ?: '📚';
                 $age_range = get_post_meta($post_id, 'program_age_range', true) ?: '';
                 $excerpt = get_the_excerpt() ?: '';
-                $anchor_slug = get_post_meta($post_id, 'program_anchor_slug', true) ?: get_post_field('post_name', $post_id);
+                // Use post_name (slug) as the unique key to prevent collisions from cloned meta values
+                $anchor_slug = get_post_field('post_name', $post_id);
 
                 // Get image with fallback
                 $image_url = get_the_post_thumbnail_url($post_id, 'large');
@@ -607,7 +608,8 @@ function chroma_home_schedule_tracks()
                 $post_id = get_the_ID();
 
                 // Get program meta
-                $anchor_slug = get_post_meta($post_id, 'program_anchor_slug', true) ?: get_post_field('post_name', $post_id);
+                // Use post_name (slug) as the unique key to prevent collisions from cloned meta values
+                $anchor_slug = get_post_field('post_name', $post_id);
 
                 // Ensure unique key
                 $key = $anchor_slug;

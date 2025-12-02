@@ -17,9 +17,17 @@ if (empty($options)) {
 function chroma_get_wizard_color_classes($key)
 {
     $map = array(
+        'infant-care' => 'bg-chroma-redLight border-chroma-red/30 hover:border-chroma-red',
+        'toddlers' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
+        'preschool' => 'bg-white border-chroma-yellow/20 hover:border-chroma-yellow',
+        'pre-k-prep' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
+        'pre-k-ga-pre-k' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
+        'schoolagers' => 'bg-white border-chroma-green/20 hover:border-chroma-green',
+        'camp' => 'bg-white border-chroma-orange/20 hover:border-chroma-orange',
+        'parents-day-out' => 'bg-white border-chroma-teal/20 hover:border-chroma-teal',
+        // Fallbacks for old keys just in case
         'infant' => 'bg-chroma-redLight border-chroma-red/30 hover:border-chroma-red',
         'toddler' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
-        'preschool' => 'bg-white border-chroma-yellow/20 hover:border-chroma-yellow',
         'prep' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
         'prek' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
         'afterschool' => 'bg-white border-chroma-green/20 hover:border-chroma-green',
