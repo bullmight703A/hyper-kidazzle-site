@@ -29,6 +29,24 @@ require_once __DIR__ . '/meta-boxes/class-hreflang-options.php';
 require_once __DIR__ . '/meta-boxes/class-city-landing-meta.php';
 
 /**
+ * Load Core Classes (Missing Requires Added)
+ */
+require_once __DIR__ . '/class-seo-dashboard.php';
+require_once __DIR__ . '/class-citation-datasets.php';
+require_once __DIR__ . '/class-image-alt-automation.php';
+require_once __DIR__ . '/class-admin-help.php';
+require_once __DIR__ . '/class-breadcrumbs.php';
+
+/**
+ * Load Core Classes (Missing Requires Added)
+ */
+require_once __DIR__ . '/class-seo-dashboard.php';
+require_once __DIR__ . '/class-citation-datasets.php';
+require_once __DIR__ . '/class-image-alt-automation.php';
+require_once __DIR__ . '/class-admin-help.php';
+require_once __DIR__ . '/class-breadcrumbs.php';
+
+/**
  * Load Schema Builders
  */
 require_once __DIR__ . '/schema-builders/class-event-builder.php';
