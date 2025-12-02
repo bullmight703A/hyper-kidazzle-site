@@ -16,34 +16,15 @@ if (!defined('ABSPATH')) {
 require_once __DIR__ . '/class-meta-box-base.php';
 require_once __DIR__ . '/class-fallback-resolver.php';
 require_once __DIR__ . '/class-field-sanitizer.php';
+require_once __DIR__ . '/class-image-alt-automation.php';
+
+// Initialize Image Alt Automation
+$chroma_image_alt = new Chroma_Image_Alt_Automation();
+$chroma_image_alt->init();
 
 // Load schema builders
 require_once __DIR__ . '/schema-builders/class-service-area-builder.php';
 require_once __DIR__ . '/schema-builders/class-llm-context-builder.php';
-
-// Load meta boxes
-require_once __DIR__ . '/meta-boxes/class-location-service-area.php';
-require_once __DIR__ . '/meta-boxes/class-location-llm-context.php';
-require_once __DIR__ . '/meta-boxes/class-location-llm-prompt.php';
-require_once __DIR__ . '/meta-boxes/class-location-reviews.php';
-require_once __DIR__ . '/meta-boxes/class-location-citation-facts.php';
-
-// Register meta boxes
-function chroma_register_advanced_seo_meta_boxes()
-{
-    $meta_boxes = [
-        new Chroma_Location_Service_Area_Meta_Box(),
-        new Chroma_Location_LLM_Context_Meta_Box(),
-        new Chroma_Location_LLM_Prompt_Meta_Box(),
-        new Chroma_Location_Reviews_Meta_Box(),
-        new Chroma_Location_Citation_Facts_Meta_Box(),
-    ];
-
-    foreach ($meta_boxes as $box) {
-        $box->register();
-    }
-}
-add_action('init', 'chroma_register_advanced_seo_meta_boxes');
 
 // Enqueue admin assets
 function chroma_advanced_seo_admin_assets($hook)
