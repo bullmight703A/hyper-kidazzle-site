@@ -13,53 +13,77 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Helper to safely load files
+ */
+function chroma_safe_require($path)
+{
+	if (file_exists($path)) {
+		require_once $path;
+		return true;
+	}
+	return false;
+}
+
+/**
  * Load Base Classes & Helpers
  */
-require_once __DIR__ . '/class-meta-box-base.php';
-require_once __DIR__ . '/class-field-sanitizer.php';
-require_once __DIR__ . '/class-fallback-resolver.php';
+chroma_safe_require(__DIR__ . '/class-meta-box-base.php');
+chroma_safe_require(__DIR__ . '/class-field-sanitizer.php');
+chroma_safe_require(__DIR__ . '/class-fallback-resolver.php');
 
 /**
  * Load Core Classes
  */
-// require_once __DIR__ . '/meta-boxes/class-location-events.php';
-// require_once __DIR__ . '/meta-boxes/class-location-howto.php';
-// require_once __DIR__ . '/meta-boxes/class-location-llm-context.php';
-// require_once __DIR__ . '/meta-boxes/class-location-llm-prompt.php';
-// require_once __DIR__ . '/meta-boxes/class-location-media.php';
-// require_once __DIR__ . '/meta-boxes/class-location-pricing.php';
-// require_once __DIR__ . '/meta-boxes/class-location-reviews.php';
-// require_once __DIR__ . '/meta-boxes/class-location-service-area.php';
-// require_once __DIR__ . '/meta-boxes/class-program-relationships.php';
-// require_once __DIR__ . '/meta-boxes/class-universal-faq.php';
-// require_once __DIR__ . '/meta-boxes/class-hreflang-options.php';
-// require_once __DIR__ . '/meta-boxes/class-city-landing-meta.php';
-// require_once __DIR__ . '/meta-boxes/class-location-citation-facts.php';
+chroma_safe_require(__DIR__ . '/class-seo-dashboard.php');
+chroma_safe_require(__DIR__ . '/class-citation-datasets.php');
+chroma_safe_require(__DIR__ . '/class-image-alt-automation.php');
+chroma_safe_require(__DIR__ . '/class-admin-help.php');
+chroma_safe_require(__DIR__ . '/class-breadcrumbs.php');
 
 /**
- * Load Core Classes (Missing Requires Added)
+ * Load Meta Boxes
  */
-// require_once __DIR__ . '/class-seo-dashboard.php';
-// require_once __DIR__ . '/class-citation-datasets.php';
-// require_once __DIR__ . '/class-image-alt-automation.php';
-// require_once __DIR__ . '/class-admin-help.php';
-// require_once __DIR__ . '/class-breadcrumbs.php';
+$meta_boxes = [
+	'class-location-events.php',
+	'class-location-howto.php',
+	'class-location-llm-context.php',
+	'class-location-llm-prompt.php',
+	'class-location-media.php',
+	'class-location-pricing.php',
+	'class-location-reviews.php',
+	'class-location-service-area.php',
+	'class-program-relationships.php',
+	'class-universal-faq.php',
+	'class-hreflang-options.php',
+	'class-city-landing-meta.php',
+	'class-location-citation-facts.php'
+];
+
+foreach ($meta_boxes as $file) {
+	chroma_safe_require(__DIR__ . '/meta-boxes/' . $file);
+}
 
 /**
  * Load Endpoints
  */
-// require_once __DIR__ . '/endpoints/kml-endpoint.php';
+chroma_safe_require(__DIR__ . '/endpoints/kml-endpoint.php');
 
 /**
  * Load Schema Builders
  */
-// require_once __DIR__ . '/schema-builders/class-event-builder.php';
-// require_once __DIR__ . '/schema-builders/class-howto-builder.php';
-// require_once __DIR__ . '/schema-builders/class-llm-context-builder.php';
-// require_once __DIR__ . '/schema-builders/class-schema-injector.php';
-// require_once __DIR__ . '/schema-builders/class-service-area-builder.php';
-// require_once __DIR__ . '/schema-builders/class-universal-faq-builder.php';
-// require_once __DIR__ . '/schema-builders/class-page-type-builder.php';
+$schema_builders = [
+	'class-event-builder.php',
+	'class-howto-builder.php',
+	'class-llm-context-builder.php',
+	'class-schema-injector.php',
+	'class-service-area-builder.php',
+	'class-universal-faq-builder.php',
+	'class-page-type-builder.php'
+];
+
+foreach ($schema_builders as $file) {
+	chroma_safe_require(__DIR__ . '/schema-builders/' . $file);
+}
 
 /**
  * Initialize Modules
@@ -67,33 +91,51 @@ require_once __DIR__ . '/class-fallback-resolver.php';
 function chroma_advanced_seo_init()
 {
 	// Core Modules
-	// (new Chroma_SEO_Dashboard())->init();
-	// (new Chroma_Citation_Datasets())->init();
-	// (new Chroma_Image_Alt_Automation())->init();
-	// (new Chroma_Admin_Help())->init();
-	// (new Chroma_Breadcrumbs())->init();
+	if (class_exists('Chroma_SEO_Dashboard'))
+		(new Chroma_SEO_Dashboard())->init();
+	if (class_exists('Chroma_Citation_Datasets'))
+		(new Chroma_Citation_Datasets())->init();
+	if (class_exists('Chroma_Image_Alt_Automation'))
+		(new Chroma_Image_Alt_Automation())->init();
+	if (class_exists('Chroma_Admin_Help'))
+		(new Chroma_Admin_Help())->init();
+	if (class_exists('Chroma_Breadcrumbs'))
+		(new Chroma_Breadcrumbs())->init();
 
 	// Meta Boxes
-	// (new Chroma_Location_Citation_Facts())->register();
-	// (new Chroma_Location_Events())->register();
-	// (new Chroma_Location_HowTo())->register();
-	// (new Chroma_Location_LLM_Context())->register();
-	// (new Chroma_Location_LLM_Prompt())->register();
-	// (new Chroma_Location_Media())->register();
-	// (new Chroma_Location_Pricing())->register();
-	// (new Chroma_Location_Reviews())->register();
-	// (new Chroma_Location_Service_Area())->register();
-	// (new Chroma_Program_Relationships())->register();
-	// (new Chroma_Universal_FAQ())->register();
-	// (new Chroma_Hreflang_Options())->register();
-	// (new Chroma_City_Landing_Meta())->register();
+	$meta_classes = [
+		'Chroma_Location_Citation_Facts',
+		'Chroma_Location_Events',
+		'Chroma_Location_HowTo',
+		'Chroma_Location_LLM_Context',
+		'Chroma_Location_LLM_Prompt',
+		'Chroma_Location_Media',
+		'Chroma_Location_Pricing',
+		'Chroma_Location_Reviews',
+		'Chroma_Location_Service_Area',
+		'Chroma_Program_Relationships',
+		'Chroma_Universal_FAQ',
+		'Chroma_Hreflang_Options',
+		'Chroma_City_Landing_Meta'
+	];
+
+	foreach ($meta_classes as $class) {
+		if (class_exists($class)) {
+			(new $class())->register();
+		}
+	}
 
 	// Schema Builders (Hooks)
-	// add_action('wp_head', ['Chroma_Event_Schema_Builder', 'output']);
-	// add_action('wp_head', ['Chroma_HowTo_Schema_Builder', 'output']);
-	// add_action('wp_head', ['Chroma_Schema_Injector', 'output_person_schema']);
-	// add_action('wp_head', ['Chroma_Universal_FAQ_Builder', 'output']);
-	// add_action('wp_head', ['Chroma_Page_Type_Builder', 'output']);
+	if (class_exists('Chroma_Event_Schema_Builder'))
+		add_action('wp_head', ['Chroma_Event_Schema_Builder', 'output']);
+	if (class_exists('Chroma_HowTo_Schema_Builder'))
+		add_action('wp_head', ['Chroma_HowTo_Schema_Builder', 'output']);
+	if (class_exists('Chroma_Schema_Injector'))
+		add_action('wp_head', ['Chroma_Schema_Injector', 'output_person_schema']);
+	if (class_exists('Chroma_Universal_FAQ_Builder'))
+		add_action('wp_head', ['Chroma_Universal_FAQ_Builder', 'output']);
+	if (class_exists('Chroma_Page_Type_Builder'))
+		add_action('wp_head', ['Chroma_Page_Type_Builder', 'output']);
 }
 add_action('init', 'chroma_advanced_seo_init');
 
