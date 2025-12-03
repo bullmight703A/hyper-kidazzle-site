@@ -83,7 +83,7 @@ require_once CHROMA_THEME_DIR . '/inc/monthly-seo-cron.php';
 // require_once CHROMA_THEME_DIR . '/inc/llm-seo/bootstrap.php';
 
 // Advanced SEO/LLM Module (Editable Fields)
-// require_once CHROMA_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php';
+require_once CHROMA_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php';
 
 
 
