@@ -161,6 +161,26 @@ $related_query = new WP_Query($related_args);
             <p class="text-xs text-brand-ink/80"><?php echo esc_html($author_title); ?></p>
           </div>
         </div>
+      </header>
+
+      <?php if ($featured_image): ?>
+        <div class="max-w-5xl mx-auto px-4 lg:px-6 mb-12">
+          <img src="<?php echo esc_url($featured_image); ?>" alt="<?php the_title_attribute(); ?>"
+            class="w-full h-auto rounded-3xl shadow-lg">
+        </div>
+      <?php endif; ?>
+
+      <div class="max-w-3xl mx-auto px-4 lg:px-6 pb-20">
+        <div
+          class="post-content prose prose-lg prose-headings:font-serif prose-headings:font-bold prose-p:text-brand-ink/80 prose-a:text-chroma-blue hover:prose-a:text-chroma-blue/80 transition-colors">
+          <?php
+          while (have_posts()):
+            the_post();
+            the_content();
+          endwhile;
+          ?>
+        </div>
+      </div>
     </article>
 
     <?php if ($related_query->have_posts()): ?>

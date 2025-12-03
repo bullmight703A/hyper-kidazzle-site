@@ -25,6 +25,7 @@ class Chroma_SEO_Dashboard
         add_action('wp_ajax_chroma_fetch_schema_inspector', [$this, 'ajax_fetch_inspector_data']);
         add_action('wp_ajax_chroma_save_schema_inspector', [$this, 'ajax_save_inspector_data']);
         add_action('wp_ajax_chroma_get_schema_fields', [$this, 'ajax_get_schema_fields']);
+        add_action('wp_ajax_chroma_fetch_social_preview', [$this, 'ajax_fetch_social_preview']);
         add_action('admin_init', [$this, 'register_settings']);
     }
 
@@ -85,6 +86,12 @@ class Chroma_SEO_Dashboard
             .chroma-inspector-controls { background: #fff; padding: 20px; border: 1px solid #ccd0d4; margin-bottom: 20px; display: flex; gap: 20px; align-items: center; }
             .chroma-inspector-table input[type="text"], .chroma-inspector-table textarea { width: 100%; }
             .chroma-inspector-row.modified { background-color: #f0f6fc; }
+            
+            /* Health Dots */
+            .chroma-health-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
+            .chroma-health-good { background-color: #00a32a; }
+            .chroma-health-ok { background-color: #dba617; }
+            .chroma-health-poor { background-color: #d63638; opacity: 0.3; }
 		');
     }
 
@@ -117,6 +124,8 @@ class Chroma_SEO_Dashboard
                     class="nav-tab <?php echo $active_tab === 'schema-builder' ? 'nav-tab-active' : ''; ?>">Schema Builder</a>
                 <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=breadcrumbs'); ?>"
                     class="nav-tab <?php echo $active_tab === 'breadcrumbs' ? 'nav-tab-active' : ''; ?>">Breadcrumbs</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=social'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'social' ? 'nav-tab-active' : ''; ?>">Social Preview</a>
                 <?php do_action('chroma_seo_dashboard_tabs'); ?>
             </nav>
 
@@ -154,6 +163,9 @@ class Chroma_SEO_Dashboard
                     } else {
                         echo '<p>Breadcrumbs module not loaded.</p>';
                     }
+                    break;
+                case 'social':
+                    $this->render_social_tab();
                     break;
                 default:
                     // Allow other tabs to render via action
@@ -199,40 +211,17 @@ class Chroma_SEO_Dashboard
     /**
      * Render LLM Tab
      */
+    /**
+     * Render LLM Tab
+     */
     private function render_llm_tab()
     {
-        ?>
-        <div class="chroma-seo-card">
-            <h2>🤖 LLM Optimization Settings</h2>
-            <p>Configure global settings for Large Language Model (LLM) context and optimization.</p>
-
-            <form method="post" action="options.php">
-                <?php settings_fields('chroma_llm_options'); ?>
-                <?php do_settings_sections('chroma_llm_options'); ?>
-
-                <table class="form-table">
-                    <tr>
-                        <th scope="row">Global Brand Voice</th>
-                        <td>
-                            <textarea name="chroma_llm_brand_voice" rows="3" class="large-text"
-                                placeholder="e.g., Professional, nurturing, and authoritative..."><?php echo esc_textarea(get_option('chroma_llm_brand_voice')); ?></textarea>
-                            <p class="description">This voice context is appended to all LLM prompts.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Global Brand Context</th>
-                        <td>
-                            <textarea name="chroma_llm_brand_context" rows="5" class="large-text"
-                                placeholder="e.g., We are a leading childcare provider in Georgia..."><?php echo esc_textarea(get_option('chroma_llm_brand_context')); ?></textarea>
-                            <p class="description">General context about the brand provided to LLMs.</p>
-                        </td>
-                    </tr>
-                </table>
-
-                <?php submit_button(); ?>
-            </form>
-        </div>
-        <?php
+        global $chroma_llm_client;
+        if ($chroma_llm_client) {
+            $chroma_llm_client->render_settings();
+        } else {
+            echo '<p>LLM Client not loaded.</p>';
+        }
     }
 
     /**
@@ -258,9 +247,10 @@ class Chroma_SEO_Dashboard
         <table class="chroma-seo-table widefat fixed striped">
             <thead>
                 <tr>
+                    <th style="width: 50px;">Status</th>
                     <th style="width: 250px;">Title</th>
                     <th>LLM Context</th>
-                    <th>LLM Prompt</th>
+                    <th>Schema</th>
                     <th style="width: 100px;">Actions</th>
                 </tr>
             </thead>
@@ -272,10 +262,18 @@ class Chroma_SEO_Dashboard
                     // LLM Context
                     $intent_manual = get_post_meta($id, 'seo_llm_primary_intent', true);
                     $desc = Chroma_Fallback_Resolver::get_llm_description($id);
-                    // LLM Prompt
-                    $prompt_manual = get_post_meta($id, 'seo_llm_custom_prompt', true);
+                    // Schema
+                    $schemas = get_post_meta($id, '_chroma_post_schemas', true);
+                    $schema_count = is_array($schemas) ? count($schemas) : 0;
+
+                    // Health
+                    $health = $this->calculate_health($id, $intent_manual, $schema_count);
                     ?>
                     <tr>
+                        <td style="text-align: center;">
+                            <span class="chroma-health-dot chroma-health-<?php echo esc_attr($health['status']); ?>"
+                                title="<?php echo esc_attr($health['message']); ?>"></span>
+                        </td>
                         <td>
                             <strong><a
                                     href="<?php echo admin_url('post.php?post=' . $id . '&action=edit'); ?>"><?php echo esc_html($p->post_title); ?></a></strong>
@@ -298,8 +296,8 @@ class Chroma_SEO_Dashboard
                             </div>
                         </td>
                         <td>
-                            <?php if ($prompt_manual): ?>
-                                <span class="chroma-check">✓</span> Custom Prompt Set
+                            <?php if ($schema_count > 0): ?>
+                                <span class="chroma-check">✓</span> <?php echo $schema_count; ?> Custom Schema(s)
                             <?php else: ?>
                                 <span style="color: #ccc;">-</span> Default
                             <?php endif; ?>
@@ -313,6 +311,20 @@ class Chroma_SEO_Dashboard
             </tbody>
         </table>
         <?php
+    }
+
+    /**
+     * Calculate SEO Health
+     */
+    private function calculate_health($post_id, $intent, $schema_count)
+    {
+        if ($intent && $schema_count > 0) {
+            return ['status' => 'good', 'message' => 'Excellent! Custom Intent & Schema defined.'];
+        } elseif ($intent || $schema_count > 0) {
+            return ['status' => 'ok', 'message' => 'Good. Either Intent or Schema is customized.'];
+        } else {
+            return ['status' => 'poor', 'message' => 'Basic. Using all default values.'];
+        }
     }
 
     /**
@@ -568,6 +580,48 @@ class Chroma_SEO_Dashboard
                         }
                     });
                 });
+                // AI Auto-Fill Handler
+                $(document).on('click', '.chroma-ai-autofill', function (e) {
+                    e.preventDefault();
+                    var btn = $(this);
+                    var block = btn.closest('.chroma-schema-block');
+                    var type = btn.data('type');
+                    var postId = $('#chroma-inspector-post-id').val();
+
+                    if (!confirm('This will overwrite existing fields with AI-generated content. Continue?')) {
+                        return;
+                    }
+
+                    btn.prop('disabled', true).text('Generating...');
+
+                    $.post(ajaxurl, {
+                        action: 'chroma_generate_schema',
+                        post_id: postId,
+                        schema_type: type
+                    }, function (response) {
+                        btn.prop('disabled', false).html('<span class="dashicons dashicons-superhero" style="font-size: 14px; width: 14px; height: 14px; vertical-align: middle;"></span> Auto-Fill');
+
+                        if (response.success) {
+                            var data = response.data;
+                            // Populate fields
+                            $.each(data, function (key, value) {
+                                var input = block.find('[data-name="' + key + '"]');
+                                if (input.length) {
+                                    if (input.hasClass('chroma-repeater-input')) {
+                                        // Handle simple repeater logic if needed, for now supports simple fields
+                                    } else {
+                                        input.val(value);
+                                        // Highlight change
+                                        input.css('background-color', '#f0f6fc').animate({ backgroundColor: '#fff' }, 2000);
+                                    }
+                                }
+                            });
+                            alert('✨ Content generated successfully!');
+                        } else {
+                            alert('AI Error: ' + (response.data && response.data.message ? response.data.message : 'Unknown error'));
+                        }
+                    });
+                });
             });
         </script>
         <?php
@@ -643,9 +697,17 @@ class Chroma_SEO_Dashboard
         ?>
         <div class="chroma-schema-block" data-type="<?php echo esc_attr($type); ?>"
             style="background: #fff; border: 1px solid #ccd0d4; padding: 15px; margin-bottom: 15px; position: relative;">
-            <h3 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-                <?php echo esc_html($def['label']); ?>
-                <button class="chroma-remove-schema button-link-delete" style="float: right;">Remove</button>
+            <h3
+                style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span><?php echo esc_html($def['label']); ?></span>
+                <div>
+                    <button class="button button-small chroma-ai-autofill" data-type="<?php echo esc_attr($type); ?>"
+                        style="margin-right: 10px; border-color: #8c64ff; color: #6b42e4;">
+                        <span class="dashicons dashicons-superhero"
+                            style="font-size: 14px; width: 14px; height: 14px; vertical-align: middle;"></span> Auto-Fill
+                    </button>
+                    <button class="chroma-remove-schema button-link-delete">Remove</button>
+                </div>
             </h3>
 
             <table class="form-table" style="margin-top: 0;">
@@ -794,5 +856,121 @@ class Chroma_SEO_Dashboard
         update_post_meta($post_id, '_chroma_post_schemas', $clean_schemas);
 
         wp_send_json_success();
+    }
+    /**
+     * Render Social Preview Tab
+     */
+    private function render_social_tab()
+    {
+        $posts = get_posts(['post_type' => 'post', 'posts_per_page' => 50]);
+        ?>
+        <div class="chroma-seo-card">
+            <h2>Social Media Preview</h2>
+            <p>Preview how your posts will look on Facebook, Twitter, and LinkedIn.</p>
+
+            <div style="margin: 20px 0;">
+                <label for="chroma-social-select"><strong>Select Post:</strong></label>
+                <select id="chroma-social-select">
+                    <option value="">-- Select a Post --</option>
+                    <?php foreach ($posts as $p): ?>
+                        <option value="<?php echo $p->ID; ?>"><?php echo esc_html($p->post_title); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div id="chroma-social-preview-container" style="display: none; max-width: 600px;">
+                <div class="chroma-seo-card">
+                    <h3>Facebook / OG Preview</h3>
+                    <div
+                        style="border: 1px solid #dadde1; border-radius: 8px; overflow: hidden; font-family: Helvetica, Arial, sans-serif;">
+                        <div id="chroma-og-image"
+                            style="height: 315px; background-color: #f0f2f5; background-size: cover; background-position: center;">
+                        </div>
+                        <div style="padding: 10px 12px; background: #f0f2f5; border-top: 1px solid #dadde1;">
+                            <div style="font-size: 12px; color: #606770; text-transform: uppercase;" id="chroma-og-site">
+                                <?php echo $_SERVER['HTTP_HOST']; ?></div>
+                            <div style="font-family: Georgia, serif; font-size: 16px; color: #1d2129; font-weight: 600; margin: 5px 0;"
+                                id="chroma-og-title">Page Title</div>
+                            <div style="font-size: 14px; color: #606770; line-height: 20px; max-height: 40px; overflow: hidden;"
+                                id="chroma-og-desc">Page description goes here...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            jQuery(document).ready(function ($) {
+                $('#chroma-social-select').on('change', function () {
+                    var pid = $(this).val();
+                    if (!pid) {
+                        $('#chroma-social-preview-container').hide();
+                        return;
+                    }
+
+                    $.post(ajaxurl, {
+                        action: 'chroma_fetch_social_preview',
+                        nonce: '<?php echo wp_create_nonce('chroma_seo_dashboard_nonce'); ?>',
+                        post_id: pid
+                    }, function (response) {
+                        if (response.success) {
+                            var data = response.data;
+                            $('#chroma-og-title').text(data.title);
+                            $('#chroma-og-desc').text(data.description);
+                            $('#chroma-og-site').text(data.site_name);
+
+                            if (data.image) {
+                                $('#chroma-og-image').css('background-image', 'url(' + data.image + ')');
+                            } else {
+                                $('#chroma-og-image').css('background-image', 'none');
+                            }
+
+                            $('#chroma-social-preview-container').show();
+                        }
+                    });
+                });
+            });
+        </script>
+        <?php
+    }
+
+    /**
+     * AJAX: Fetch Social Preview Data
+     */
+    public function ajax_fetch_social_preview()
+    {
+        check_ajax_referer('chroma_seo_dashboard_nonce', 'nonce');
+        $post_id = intval($_POST['post_id']);
+        if (!$post_id)
+            wp_send_json_error();
+
+        $post = get_post($post_id);
+        if (!$post)
+            wp_send_json_error();
+
+        // Use our Fallback Resolver to get the actual SEO data
+        $title = get_post_meta($post_id, 'seo_llm_title', true) ?: $post->post_title;
+
+        // Fallback description
+        $desc = '';
+        if (class_exists('Chroma_Fallback_Resolver')) {
+            $desc = Chroma_Fallback_Resolver::get_llm_description($post_id);
+        } else {
+            $desc = get_post_meta($post_id, 'seo_llm_description', true) ?: wp_trim_words($post->post_content, 25);
+        }
+
+        // Image
+        $img_id = get_post_thumbnail_id($post_id);
+        $img_url = '';
+        if ($img_id) {
+            $img_url = wp_get_attachment_image_url($img_id, 'large');
+        }
+
+        wp_send_json_success([
+            'title' => $title,
+            'description' => $desc,
+            'image' => $img_url,
+            'site_name' => $_SERVER['HTTP_HOST']
+        ]);
     }
 }

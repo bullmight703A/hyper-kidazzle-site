@@ -194,7 +194,7 @@ add_filter('upload_mimes', 'chroma_mime_types');
 function chroma_defer_scripts($tag, $handle, $src)
 {
     // List of scripts to defer
-    $defer_scripts = array('gtag', 'did-0014', 'jquery-migrate', 'jquery.min.js');
+    $defer_scripts = array('gtag', 'did-0014');
 
     foreach ($defer_scripts as $script) {
         if (strpos($src, $script) !== false) {
@@ -308,32 +308,4 @@ function chroma_lazy_load_leadconnector()
     <?php
 }
 add_action('wp_footer', 'chroma_lazy_load_leadconnector', 999);
-/**
- * Temporary Debug Endpoint
- * Access via ?chroma_debug_meta=1
- */
-add_action('init', function () {
-    if (isset($_GET['chroma_debug_meta']) && current_user_can('manage_options')) {
-        $locations = get_posts([
-            'post_type' => 'location',
-            'posts_per_page' => -1,
-            'post_status' => 'publish' // Explicitly check publish status
-        ]);
 
-        echo '<table border="1" cellpadding="5"><tr><th>ID</th><th>Title</th><th>Lat</th><th>Lng</th><th>Address</th></tr>';
-        foreach ($locations as $p) {
-            $lat = get_post_meta($p->ID, 'location_latitude', true);
-            $lng = get_post_meta($p->ID, 'location_longitude', true);
-            $addr = get_post_meta($p->ID, 'location_address', true);
-            echo "<tr>";
-            echo "<td>{$p->ID}</td>";
-            echo "<td>" . esc_html($p->post_title) . "</td>";
-            echo "<td>[" . esc_html($lat) . "]</td>"; // Brackets to see whitespace
-            echo "<td>[" . esc_html($lng) . "]</td>";
-            echo "<td>" . esc_html($addr) . "</td>";
-            echo "</tr>";
-        }
-        echo '</table>';
-        exit;
-    }
-});

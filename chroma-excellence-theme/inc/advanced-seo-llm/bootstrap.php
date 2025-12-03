@@ -46,6 +46,11 @@ chroma_safe_require(__DIR__ . '/class-image-alt-automation.php');
 chroma_safe_require(__DIR__ . '/class-admin-help.php');
 chroma_safe_require(__DIR__ . '/class-breadcrumbs.php');
 chroma_safe_require(__DIR__ . '/class-schema-types.php');
+chroma_safe_require(__DIR__ . '/class-llm-client.php');
+
+// Initialize LLM Client
+global $chroma_llm_client;
+$chroma_llm_client = new Chroma_LLM_Client();
 
 /**
  * Load Meta Boxes
