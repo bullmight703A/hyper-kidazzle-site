@@ -732,7 +732,7 @@ function chroma_save_location_custom_fields($post_id)
 		if (isset($_POST[$field])) {
 			$value = wp_unslash($_POST[$field]);
 			// Sanitize based on field type
-			if (in_array($field, array('location_description', 'location_director_bio', 'location_maps_embed', 'location_school_pickups', 'location_seo_content_text', 'location_service_areas', 'location_hero_review_text', 'location_faq_items'))) {
+			if (in_array($field, array('location_description', 'location_director_bio', 'location_maps_embed', 'location_school_pickups', 'location_seo_content_text', 'location_service_areas', 'location_hero_review_text', 'location_faq_items', 'location_hero_gallery', 'location_virtual_tour_embed'))) {
 				$value = sanitize_textarea_field($value);
 			} elseif ($field === 'location_email') {
 				$value = sanitize_email($value);
