@@ -18,7 +18,7 @@ class Chroma_Breadcrumbs
      */
     public function init()
     {
-        add_action('chroma_breadcrumbs', [$this, 'output']);
+        // add_action('chroma_breadcrumbs', [$this, 'output']);
         add_action('wp_head', [$this, 'output_schema']);
         add_action('wp_ajax_chroma_save_breadcrumb_settings', [$this, 'ajax_save_settings']);
         add_action('wp_ajax_chroma_preview_breadcrumbs', [$this, 'ajax_preview_breadcrumbs']);
@@ -47,15 +47,15 @@ class Chroma_Breadcrumbs
         foreach ($items as $index => $item) {
             $is_last = $index === count($items) - 1;
             
-            echo '<li class="flex items-center">';
+            echo '<li class="flex items-center text-[10px] uppercase tracking-wider font-bold">';
             if ($index > 0) {
-                echo '<span class="mx-2 text-gray-300">/</span>';
+                echo '<i class="fa-solid fa-chevron-right text-[8px] text-gray-300 mx-2"></i>';
             }
             
             if ($is_last) {
-                echo '<span class="text-gray-900 font-medium" aria-current="page">' . esc_html($item['label']) . '</span>';
+                echo '<span class="text-chroma-blue" aria-current="page">' . esc_html($item['label']) . '</span>';
             } else {
-                echo '<a href="' . esc_url($item['url']) . '" class="hover:text-chroma-blue transition-colors">' . esc_html($item['label']) . '</a>';
+                echo '<a href="' . esc_url($item['url']) . '" class="text-brand-ink/60 hover:text-chroma-blue transition-colors">' . esc_html($item['label']) . '</a>';
             }
             echo '</li>';
         }

@@ -652,7 +652,7 @@ while (have_posts()):
 
 					<!-- Map Embed -->
 					<?php if ($maps_embed): ?>
-						<div class="mt-10">
+						<div class="mt-10 relative z-0">
 							<div class="w-full h-80 rounded-3xl overflow-hidden shadow-card border border-brand-ink/10">
 								<?php echo wp_kses($maps_embed, array(
 									'iframe' => array(
@@ -670,7 +670,7 @@ while (have_posts()):
 							</div>
 						</div>
 					<?php elseif ($lat && $lng): ?>
-						<div class="mt-10">
+						<div class="mt-10 relative z-0">
 							<div data-chroma-map
 								data-chroma-locations='[{"lat":<?php echo esc_attr($lat); ?>,"lng":<?php echo esc_attr($lng); ?>,"name":"<?php echo esc_js(get_the_title()); ?>","city":"<?php echo esc_js($city); ?>","url":"<?php echo esc_url(get_permalink()); ?>"}]'
 								class="w-full h-80 rounded-3xl overflow-hidden shadow-card border border-brand-ink/10"></div>

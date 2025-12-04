@@ -432,4 +432,93 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+  /**
+   * Location Hero Carousel
+   */
+  const locationCarousel = document.querySelector('[data-location-carousel]');
+  if (locationCarousel) {
+    const track = locationCarousel.querySelector('[data-location-carousel-track]');
+    const slides = locationCarousel.querySelectorAll('[data-location-slide]');
+    const prevBtn = locationCarousel.querySelector('[data-location-prev]');
+    const nextBtn = locationCarousel.querySelector('[data-location-next]');
+    const dots = locationCarousel.querySelectorAll('[data-location-dot]');
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let autoplayInterval = null;
+
+    const updateCarousel = (index) => {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+
+      currentIndex = index;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      // Update dots
+      if (dots.length) {
+        dots.forEach((dot, i) => {
+          if (i === currentIndex) {
+            dot.classList.remove('bg-white/50');
+            dot.classList.add('bg-white', 'w-6');
+          } else {
+            dot.classList.remove('bg-white', 'w-6');
+            dot.classList.add('bg-white/50');
+          }
+        });
+      }
+    };
+
+    const nextSlide = () => updateCarousel(currentIndex + 1);
+    const prevSlide = () => updateCarousel(currentIndex - 1);
+
+    // Event Listeners
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoplay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoplay();
+      });
+    }
+
+    if (dots.length) {
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          updateCarousel(index);
+          resetAutoplay();
+        });
+      });
+    }
+
+    // Autoplay
+    const startAutoplay = () => {
+      if (totalSlides > 1) {
+        autoplayInterval = setInterval(nextSlide, 5000);
+      }
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+    };
+
+    const resetAutoplay = () => {
+      stopAutoplay();
+      startAutoplay();
+    };
+
+    // Start
+    startAutoplay();
+
+    // Pause on hover
+    locationCarousel.addEventListener('mouseenter', stopAutoplay);
+    locationCarousel.addEventListener('mouseleave', startAutoplay);
+  }
 });

@@ -73,6 +73,64 @@ function chroma_register_team_member_meta()
 add_action('init', 'chroma_register_team_member_meta');
 
 /**
+ * Add Meta Box for Team Member Details
+ */
+function chroma_team_member_add_meta_box()
+{
+    add_meta_box(
+        'chroma_team_member_details',
+        __('Team Member Details', 'chroma-excellence'),
+        'chroma_team_member_render_meta_box',
+        'team_member',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'chroma_team_member_add_meta_box');
+
+/**
+ * Render Meta Box Content
+ */
+function chroma_team_member_render_meta_box($post)
+{
+    wp_nonce_field('chroma_team_member_save', 'chroma_team_member_nonce');
+    $value = get_post_meta($post->ID, 'team_member_title', true);
+    ?>
+    <p>
+        <label for="team_member_title"
+            style="font-weight:bold; display:block; margin-bottom:5px;"><?php _e('Job Title / Role', 'chroma-excellence'); ?></label>
+        <input type="text" id="team_member_title" name="team_member_title" value="<?php echo esc_attr($value); ?>"
+            class="widefat" style="width:100%; max-width:400px;">
+        <span class="description"
+            style="display:block; margin-top:5px;"><?php _e('e.g. "Executive Director" or "Lead Teacher"', 'chroma-excellence'); ?></span>
+    </p>
+    <?php
+}
+
+/**
+ * Save Meta Box Data
+ */
+function chroma_team_member_save_meta_box($post_id)
+{
+    if (!isset($_POST['chroma_team_member_nonce']) || !wp_verify_nonce($_POST['chroma_team_member_nonce'], 'chroma_team_member_save')) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    if (isset($_POST['team_member_title'])) {
+        update_post_meta($post_id, 'team_member_title', sanitize_text_field($_POST['team_member_title']));
+    }
+}
+add_action('save_post', 'chroma_team_member_save_meta_box');
+
+/**
  * Add admin columns for Team Members.
  */
 function chroma_team_member_admin_columns($columns)
