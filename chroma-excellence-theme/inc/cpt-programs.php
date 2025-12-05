@@ -649,6 +649,7 @@ function chroma_program_single_page_meta_box_render($post)
 	// Schedule
 	$schedule_title = get_post_meta($post->ID, 'program_schedule_title', true);
 	$schedule_items = get_post_meta($post->ID, 'program_schedule_items', true);
+	$lesson_plan_url = get_post_meta($post->ID, 'program_lesson_plan_url', true);
 	?>
 	<style>
 		.chroma-single-field {
@@ -736,6 +737,45 @@ function chroma_program_single_page_meta_box_render($post)
 
 	<div class="chroma-single-field">
 		<label><?php _e('Prismpath Chart Values (0-100)', 'chroma-excellence'); ?></label>
+
+		<div style="margin-bottom: 10px;">
+			<span
+				style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #666; display: block; margin-bottom: 5px;">Auto-fill
+				Presets:</span>
+			<?php
+			$chart_presets = array(
+				'Infant' => array(90, 90, 40, 15, 40),
+				'Toddler' => array(85, 75, 65, 30, 70),
+				'Preschool' => array(75, 65, 70, 55, 80),
+				'Pre-K Prep' => array(65, 60, 75, 75, 70),
+				'GA Pre-K' => array(60, 60, 80, 90, 70),
+				'After School' => array(50, 70, 85, 75, 80),
+			);
+			foreach ($chart_presets as $name => $values) {
+				echo sprintf(
+					'<button type="button" class="button chroma-chart-preset" data-values="%s" style="margin-right: 5px; margin-bottom: 5px;">%s</button>',
+					esc_attr(json_encode($values)),
+					esc_html($name)
+				);
+			}
+			?>
+		</div>
+
+		<script>
+			jQuery(document).ready(function ($) {
+				$('.chroma-chart-preset').on('click', function () {
+					var values = $(this).data('values');
+					if (values && values.length === 5) {
+						$('#program_prism_physical').val(values[0]);
+						$('#program_prism_emotional').val(values[1]);
+						$('#program_prism_social').val(values[2]);
+						$('#program_prism_academic').val(values[3]);
+						$('#program_prism_creative').val(values[4]);
+					}
+				});
+			});
+		</script>
+
 		<div class="chroma-chart-inputs">
 			<div class="chroma-chart-input">
 				<label for="program_prism_physical"
@@ -837,6 +877,7 @@ function chroma_program_single_page_meta_box_save($post_id)
 		'program_prism_creative' => 'absint',
 		'program_schedule_title' => 'sanitize_text_field',
 		'program_schedule_items' => 'sanitize_textarea_field',
+		'program_lesson_plan_url' => 'esc_url_raw',
 	);
 
 	foreach ($fields as $field => $sanitize_callback) {

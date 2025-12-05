@@ -291,8 +291,12 @@ while (have_posts()):
 							?>
 							<div
 								class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:bg-white/15 transition-colors">
+								<?php
+								// Fix contrast for yellow background icons
+								$icon_text_class = ($value['color'] === 'chroma-yellow') ? 'text-brand-ink' : '';
+								?>
 								<div
-									class="w-12 h-12 bg-<?php echo esc_attr($value['color']); ?> rounded-xl flex items-center justify-center mb-6 text-xl">
+									class="w-12 h-12 bg-<?php echo esc_attr($value['color']); ?> rounded-xl flex items-center justify-center mb-6 text-xl <?php echo esc_attr($icon_text_class); ?>">
 									<i class="<?php echo esc_attr($value['icon']); ?>"></i>
 								</div>
 								<h3 class="font-serif text-xl font-bold mb-3"><?php echo esc_html($value['title']); ?></h3>
