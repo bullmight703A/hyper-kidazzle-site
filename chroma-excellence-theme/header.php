@@ -57,13 +57,7 @@
 
 				<!-- Header Text -->
 				<?php
-				$header_text = get_theme_mod('chroma_header_text', "Early Learning\nAcademy");
-
-				// Force the correct brand layout if the text matches common variations
-				if (stripos($header_text, 'Early Learning') !== false) {
-					// Hard override to ensure exact desired styling: CHROMA (Big) / EARLY LEARNING (Small) / ACADEMY (Small)
-					$header_text = "CHROMA\nEARLY LEARNING\nACADEMY";
-				}
+				$header_text = get_theme_mod('chroma_header_text', "CHROMA\nEarly Learning\nAcademy");
 
 				$lines = explode("\n", $header_text);
 				$first_line = array_shift($lines);
