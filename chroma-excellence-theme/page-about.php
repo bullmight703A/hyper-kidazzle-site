@@ -65,7 +65,7 @@ while (have_posts()):
 	$value2_title = get_post_meta($page_id, 'about_value2_title', true) ?: 'Radical Safety';
 	$value2_desc = get_post_meta($page_id, 'about_value2_desc', true) ?: 'Physical safety is our baseline; emotional safety is our goal. Kids learn best when they feel secure.';
 
-	$value3_icon = get_post_meta($page_id, 'about_value3_icon', true) ?: 'fa-solid fa-lightbulb';
+	$value3_icon = get_post_meta($page_id, 'about_value3_icon', true) ?: 'fa-solid fa-graduation-cap';
 	$value3_title = get_post_meta($page_id, 'about_value3_title', true) ?: 'Academic Excellence';
 	$value3_desc = get_post_meta($page_id, 'about_value3_desc', true) ?: 'Using our Prismpath™ model, we deliver rigorous, age-appropriate learning that feels like play.';
 

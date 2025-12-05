@@ -17,24 +17,24 @@ if (empty($options)) {
 function chroma_get_wizard_color_classes($key)
 {
     $map = array(
-        'infant-care' => 'bg-chroma-redLight border-chroma-red/30 hover:border-chroma-red',
-        'toddlers' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
-        'preschool' => 'bg-white border-chroma-yellow/20 hover:border-chroma-yellow',
-        'pre-k-prep' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
-        'pre-k-ga-pre-k' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
-        'schoolagers' => 'bg-white border-chroma-green/20 hover:border-chroma-green',
-        'camp' => 'bg-white border-chroma-orange/20 hover:border-chroma-orange',
-        'parents-day-out' => 'bg-white border-chroma-teal/20 hover:border-chroma-teal',
+        'infant-care' => 'bg-chroma-redLight border-chroma-red/30 text-brand-ink hover:border-chroma-red hover:text-chroma-red',
+        'toddlers' => 'bg-white border-chroma-blue/20 text-brand-ink hover:border-chroma-blue hover:text-chroma-blue',
+        'preschool' => 'bg-white border-chroma-yellow/20 text-brand-ink hover:border-chroma-yellow hover:text-chroma-yellow',
+        'pre-k-prep' => 'bg-white border-chroma-blue/20 text-brand-ink hover:border-chroma-blue hover:text-chroma-blue',
+        'pre-k-ga-pre-k' => 'bg-white border-chroma-blue/20 text-brand-ink hover:border-chroma-blue hover:text-chroma-blue',
+        'schoolagers' => 'bg-white border-chroma-green/20 text-brand-ink hover:border-chroma-green hover:text-chroma-green',
+        'camp' => 'bg-white border-chroma-orange/20 text-brand-ink hover:border-chroma-orange hover:text-chroma-orange',
+        'parents-day-out' => 'bg-white border-chroma-teal/20 text-brand-ink hover:border-chroma-teal hover:text-chroma-teal',
         // Fallbacks for old keys just in case
-        'infant' => 'bg-chroma-redLight border-chroma-red/30 hover:border-chroma-red',
-        'toddler' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
-        'prep' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
-        'prek' => 'bg-white border-chroma-blue/20 hover:border-chroma-blue',
-        'afterschool' => 'bg-white border-chroma-green/20 hover:border-chroma-green',
+        'infant' => 'bg-chroma-redLight border-chroma-red/30 text-brand-ink hover:border-chroma-red hover:text-chroma-red',
+        'toddler' => 'bg-white border-chroma-blue/20 text-brand-ink hover:border-chroma-blue hover:text-chroma-blue',
+        'prep' => 'bg-white border-chroma-blue/20 text-brand-ink hover:border-chroma-blue hover:text-chroma-blue',
+        'prek' => 'bg-white border-chroma-blue/20 text-brand-ink hover:border-chroma-blue hover:text-chroma-blue',
+        'afterschool' => 'bg-white border-chroma-green/20 text-brand-ink hover:border-chroma-green hover:text-chroma-green',
     );
 
     // Default fallback
-    return $map[$key] ?? 'bg-white border-chroma-blue/20 hover:border-chroma-blue';
+    return $map[$key] ?? 'bg-white border-chroma-blue/20 text-brand-ink hover:border-chroma-blue hover:text-chroma-blue';
 }
 ?>
 
@@ -63,7 +63,7 @@ function chroma_get_wizard_color_classes($key)
                         <span
                             class="text-2xl block mb-2 group-hover:scale-110 transition-transform"><?php echo esc_html($option['emoji']); ?></span>
                         <span
-                            class="font-semibold text-brand-ink text-xs leading-tight"><?php echo wp_kses_post(nl2br($option['label'])); ?></span>
+                            class="font-semibold text-xs leading-tight"><?php echo wp_kses_post(nl2br($option['label'])); ?></span>
                     </button>
                 <?php endforeach; ?>
             </div>

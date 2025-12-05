@@ -189,6 +189,17 @@ function chroma_register_program_meta()
 			)
 		)
 	);
+
+	register_post_meta(
+		'program',
+		'program_lesson_plan_file',
+		array_merge(
+			$meta_args,
+			array(
+				'sanitize_callback' => 'esc_url_raw',
+			)
+		)
+	);
 }
 add_action('init', 'chroma_register_program_meta');
 
@@ -558,6 +569,14 @@ function chroma_program_details_meta_box_render($post)
 	</div>
 
 	<div class="chroma-program-field">
+		<label for="program_lesson_plan_file"><?php _e('Lesson Plan File (URL)', 'chroma-excellence'); ?></label>
+		<input type="text" id="program_lesson_plan_file" name="program_lesson_plan_file"
+			value="<?php echo esc_attr(get_post_meta($post->ID, 'program_lesson_plan_file', true)); ?>"
+			placeholder="https://... (Paste PDF URL here)" />
+		<small><?php _e('Paste the full URL to the PDF lesson plan. If set, a button will appear on the program page.', 'chroma-excellence'); ?></small>
+	</div>
+
+	<div class="chroma-program-field">
 		<label for="program_color_scheme"><?php _e('Color Scheme', 'chroma-excellence'); ?></label>
 		<select id="program_color_scheme" name="program_color_scheme">
 			<option value="red" <?php selected($color_scheme, 'red'); ?>>Red - Infant Care</option>
@@ -607,6 +626,7 @@ function chroma_program_details_meta_box_save($post_id)
 	// Save fields
 	$fields = array(
 		'program_icon' => 'sanitize_text_field',
+		'program_lesson_plan_file' => 'esc_url_raw',
 		'program_age_range' => 'sanitize_text_field',
 		'program_features' => 'sanitize_textarea_field',
 		'program_cta_text' => 'sanitize_text_field',
@@ -736,6 +756,15 @@ function chroma_program_single_page_meta_box_render($post)
 
 	<div class="chroma-single-field">
 		<label><?php _e('Prismpath Chart Values (0-100)', 'chroma-excellence'); ?></label>
+		<div style="margin-bottom: 15px;">
+			<span style="font-size: 12px; font-weight: bold; margin-right: 10px;">Quick Fill:</span>
+			<button type="button" class="button chroma-chart-preset" data-values="[90,90,40,15,40]">Infant</button>
+			<button type="button" class="button chroma-chart-preset" data-values="[85,75,65,30,70]">Toddler</button>
+			<button type="button" class="button chroma-chart-preset" data-values="[75,65,70,55,80]">Preschool</button>
+			<button type="button" class="button chroma-chart-preset" data-values="[65,60,75,75,70]">Pre-K Prep</button>
+			<button type="button" class="button chroma-chart-preset" data-values="[60,60,80,90,70]">GA Pre-K</button>
+			<button type="button" class="button chroma-chart-preset" data-values="[50,70,85,75,80]">After School</button>
+		</div>
 		<div class="chroma-chart-inputs">
 			<div class="chroma-chart-input">
 				<label for="program_prism_physical"
@@ -769,6 +798,19 @@ function chroma_program_single_page_meta_box_render($post)
 			</div>
 		</div>
 		<small><?php _e('Set values 0-100 for each pillar. These create the radar chart.', 'chroma-excellence'); ?></small>
+
+		<script>
+			jQuery(document).ready(function ($) {
+				$('.chroma-chart-preset').on('click', function () {
+					var values = $(this).data('values'); // Array [Phy, Emo, Soc, Aca, Cre]
+					$('#program_prism_physical').val(values[0]);
+					$('#program_prism_emotional').val(values[1]);
+					$('#program_prism_social').val(values[2]);
+					$('#program_prism_academic').val(values[3]);
+					$('#program_prism_creative').val(values[4]);
+				});
+			});
+		</script>
 	</div>
 
 	<div class="chroma-single-field">

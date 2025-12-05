@@ -14,6 +14,7 @@ while (have_posts()):
 	// Get program meta
 	$age_range = get_post_meta($program_id, 'program_age_range', true);
 	$color_scheme = get_post_meta($program_id, 'program_color_scheme', true) ?: 'red';
+	$lesson_plan_url = get_post_meta($program_id, 'program_lesson_plan_file', true);
 
 	// Hero section
 	$hero_title = get_post_meta($program_id, 'program_hero_title', true) ?: get_the_title();
@@ -80,10 +81,16 @@ while (have_posts()):
 						</p>
 					<?php endif; ?>
 
-					<div class="flex gap-4" style="margin-top: 3rem;">
+					<div class="flex gap-4 flex-wrap" style="margin-top: 3rem;">
 						<a href="#prism"
 							class="px-8 py-4 bg-<?php echo esc_attr($colors['main']); ?> text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:opacity-90 transition-colors shadow-lg">View
 							Curriculum</a>
+						<?php if ($lesson_plan_url): ?>
+							<a href="<?php echo esc_url($lesson_plan_url); ?>" target="_blank"
+								class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+								View Lesson Plan
+							</a>
+						<?php endif; ?>
 						<a href="<?php echo esc_url(home_url('/programs')); ?>"
 							class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							All Programs
@@ -175,7 +182,8 @@ while (have_posts()):
 					<section id="schedule" class="py-24 bg-white">
 						<div class="max-w-6xl mx-auto px-4 lg:px-6" data-schedule>
 							<h2 class="text-3xl font-serif font-bold text-center mb-12 text-brand-ink">
-								<?php echo esc_html($schedule_title); ?></h2>
+								<?php echo esc_html($schedule_title); ?>
+							</h2>
 
 							<div class="tab-content active" data-schedule-panel="program">
 								<div class="rounded-[3rem] p-8 md:p-12 bg-brand-cream text-center">
@@ -321,15 +329,15 @@ while (have_posts()):
 			},
 			plugins: { legend: { display: false } }
 		}
-														});
-													};
+																});
+															};
 		document.body.appendChild(script);
-												}
-											});
-										}, { rootMargin: '200px' }); // Start loading 200px before view
+														}
+													});
+												}, { rootMargin: '200px' }); // Start loading 200px before view
 		observer.observe(ctx);
-									}
-								});
+											}
+										});
 	</script>
 
 	<?php

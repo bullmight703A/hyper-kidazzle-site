@@ -42,7 +42,7 @@ $locations_query = new WP_Query(array(
 
 			<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up"
 				style="animation-delay: 0.1s;">
-				<?php echo wp_kses_post(get_theme_mod('chroma_locations_archive_title', 'Find your Chroma <span class="text-chroma-green italic">Community</span> - Our Locations')); ?>
+				<?php echo wp_kses_post(get_theme_mod('chroma_locations_archive_title', 'Find your <span class="text-chroma-green italic">Chroma Community</span> - Our Locations')); ?>
 			</h1>
 
 			<p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
