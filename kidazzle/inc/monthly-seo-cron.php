@@ -50,7 +50,7 @@ add_action( 'switch_theme', 'kidazzle_deactivate_monthly_seo_cron' );
  */
 function kidazzle_monthly_seo_callback() {
 	if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
-		error_log( '[Chroma SEO Cron] Monthly SEO event executed at ' . current_time( 'mysql' ) );
+		error_log( '[Kidazzle SEO Cron] Monthly SEO event executed at ' . current_time( 'mysql' ) );
 	}
 
 	$sitemap_url = home_url( '/?sitemap=xml' );

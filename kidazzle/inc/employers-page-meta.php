@@ -424,7 +424,7 @@ function kidazzle_seed_employers_page_defaults( $post_id ) {
 	$defaults = array(
 		'employers_hero_badge'       => 'Workforce Solutions',
 		'employers_hero_title'       => 'Childcare is critical infrastructure.',
-		'employers_hero_description' => 'Retain top talent and reduce absenteeism by offering premium childcare benefits. Chroma partners with Metro Atlanta\'s leading employers to support working parents.',
+		'employers_hero_description' => 'Retain top talent and reduce absenteeism by offering premium childcare benefits. Kidazzle partners with Metro Atlanta\'s leading employers to support working parents.',
 
 		'employers_solution1_title' => 'Priority Access',
 		'employers_solution1_desc'  => 'Skip the waitlist. Reserve dedicated spots at our 19+ locations exclusively for your employees\' children.',
@@ -437,12 +437,12 @@ function kidazzle_seed_employers_page_defaults( $post_id ) {
 
 		'employers_tax_badge'       => 'Financial Incentives',
 		'employers_tax_title'       => 'Maximize Your ROI with Tax Credits',
-		'employers_tax_description' => 'Partnering with Chroma isn\'t just an investment in your company cultureit\'s a smart financial move. State and Federal programs significantly offset the cost of providing childcare benefits.',
+		'employers_tax_description' => 'Partnering with Kidazzle isn\'t just an investment in your company cultureit\'s a smart financial move. State and Federal programs significantly offset the cost of providing childcare benefits.',
 
 		'employers_federal_icon'       => 'fa-solid fa-landmark',
 		'employers_federal_title'      => 'Federal 45F Credit',
 		'employers_federal_subtitle'   => 'Employer-Provided Child Care Credit',
-		'employers_federal_desc'       => 'The IRS allows businesses to claim a tax credit of up to <strong>$150,000 annually</strong>. This covers 25% of qualified childcare facility expenditures (such as contracting with Chroma for reserved spots) and 10% of resource and referral expenditures.',
+		'employers_federal_desc'       => 'The IRS allows businesses to claim a tax credit of up to <strong>$150,000 annually</strong>. This covers 25% of qualified childcare facility expenditures (such as contracting with Kidazzle for reserved spots) and 10% of resource and referral expenditures.',
 		'employers_federal_link_text'  => 'View IRS Form 8882',
 		'employers_federal_link_url'   => 'https://www.irs.gov/forms-pubs/about-form-8882',
 

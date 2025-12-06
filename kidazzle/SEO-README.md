@@ -1,4 +1,4 @@
-# Chroma Excellence Theme - SEO Features
+# Kidazzle Excellence Theme - SEO Features
 
 This theme includes a built-in, lightweight SEO engine designed specifically for child care centers. It handles meta tags, schema markup, and social sharing cards automatically, while giving you full manual control when needed.
 

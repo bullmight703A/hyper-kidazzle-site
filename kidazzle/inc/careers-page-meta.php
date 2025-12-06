@@ -406,11 +406,11 @@ function kidazzle_seed_careers_page_defaults( $post_id ) {
 	$defaults = array(
 		'careers_hero_badge'       => 'Join Our Team',
 		'careers_hero_title'       => 'Shape the future. <br><span class="italic text-kidazzle-red">Love your work.</span>',
-		'careers_hero_description' => 'We don\'t just hire staff; we invest in educators. At Chroma, you\'ll find a supportive community, career pathways, and the resources you need to change lives.',
+		'careers_hero_description' => 'We don\'t just hire staff; we invest in educators. At Kidazzle, you\'ll find a supportive community, career pathways, and the resources you need to change lives.',
 		'careers_hero_button_text' => 'View Current Openings',
 		'careers_hero_button_url'  => '#openings',
 
-		'careers_culture_title'       => 'Why Chroma?',
+		'careers_culture_title'       => 'Why Kidazzle?',
 		'careers_culture_description' => 'We take care of you, so you can take care of them.',
 
 		'careers_benefit1_icon'  => 'fa-solid fa-money-bill-wave',
@@ -445,7 +445,7 @@ function kidazzle_seed_careers_page_defaults( $post_id ) {
 		'careers_cta_title'       => 'Don\'t see your role?',
 		'careers_cta_description' => 'We are always growing. Send us your resume and we\'ll keep it on file.',
 		'careers_cta_button_text' => 'Email HR Team',
-		'careers_cta_button_url'  => 'mailto:careers@chromaela.com',
+		'careers_cta_button_url'  => 'mailto:careers@Kidazzleela.com',
 	);
 
 	// Populate all default values

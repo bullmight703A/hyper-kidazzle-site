@@ -18,14 +18,14 @@ $page_id = get_the_ID();
 // Hero Section
 $hero_badge = get_post_meta($page_id, 'contact_hero_badge', true) ?: 'Start Your Journey';
 $hero_title = get_post_meta($page_id, 'contact_hero_title', true) ?: 'We\'d love to meet you.';
-$hero_description = get_post_meta($page_id, 'contact_hero_description', true) ?: 'Ready to experience the Chroma difference? Schedule a tour or ask us a question below to get started.';
+$hero_description = get_post_meta($page_id, 'contact_hero_description', true) ?: 'Ready to experience the Kidazzle difference? Schedule a tour or ask us a question below to get started.';
 
 // Form Settings
 $form_submit_text = get_post_meta($page_id, 'contact_form_submit_text', true) ?: 'Submit Request';
 
 // Corporate Office
 $corporate_title = get_post_meta($page_id, 'contact_corporate_title', true) ?: 'Corporate Office';
-$corporate_name = get_post_meta($page_id, 'contact_corporate_name', true) ?: 'Chroma Early Learning HQ';
+$corporate_name = get_post_meta($page_id, 'contact_corporate_name', true) ?: 'Kidazzle Early Learning HQ';
 $corporate_address = get_post_meta($page_id, 'contact_corporate_address', true) ?: "123 Education Way, Suite 400\nAtlanta, GA 30309";
 $corporate_phone = get_post_meta($page_id, 'contact_corporate_phone', true) ?: '(404) 555-0199';
 
@@ -52,7 +52,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 					<?php echo esc_html($hero_badge); ?>
 				</span>
 				<h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">
-					Contact Chroma Early Learning
+					Contact Kidazzle Early Learning
 				</h1>
 				<p class="text-lg text-brand-ink/90">
 					<?php echo esc_html($hero_description); ?>

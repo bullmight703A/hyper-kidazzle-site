@@ -16,7 +16,7 @@
     "childcare",
     "education"
   ],
-  "author": "Chroma Development Team",
+  "author": "Kidazzle Development Team",
   "license": "UNLICENSED",
   "devDependencies": {
     "autoprefixer": "^10.4.16",

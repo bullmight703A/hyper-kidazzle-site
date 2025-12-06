@@ -93,7 +93,7 @@ class kidazzle_Citation_Datasets
                 <p>
                     <?php _e('Your structured data is available at:', 'kidazzle-theme'); ?>
                     <br>
-                    <code><?php echo esc_url(rest_url('chroma/v1/citation-facts')); ?></code>
+                    <code><?php echo esc_url(rest_url('Kidazzle/v1/citation-facts')); ?></code>
                 </p>
             </div>
 
@@ -174,7 +174,7 @@ class kidazzle_Citation_Datasets
      */
     public function register_api_endpoint()
     {
-        register_rest_route('chroma/v1', '/citation-facts', [
+        register_rest_route('Kidazzle/v1', '/citation-facts', [
             'methods' => 'GET',
             'callback' => [$this, 'get_facts_json'],
             'permission_callback' => '__return_true',

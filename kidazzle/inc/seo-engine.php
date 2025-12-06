@@ -600,9 +600,9 @@ function kidazzle_shared_meta_description()
                 $description = "Best Daycare & Preschool in " . get_the_title() . ", GA. " . $excerpt;
 
         } elseif (is_singular('program')) {
-                // Program Template: "[Program Name] at Chroma Early Learning Academy. [Excerpt]."
+                // Program Template: "[Program Name] at Kidazzle Early Learning Academy. [Excerpt]."
                 $excerpt = has_excerpt() ? get_the_excerpt() : kidazzle_trimmed_excerpt(20, $post_id);
-                $description = get_the_title() . ' at Chroma Early Learning Academy. ' . $excerpt;
+                $description = get_the_title() . ' at Kidazzle Early Learning Academy. ' . $excerpt;
 
         } elseif (is_singular('post')) {
                 // Blog Post Template: "[Title] - [Excerpt]"

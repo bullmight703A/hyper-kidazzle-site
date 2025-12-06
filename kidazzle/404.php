@@ -20,7 +20,7 @@
       theme: {
         extend: {
           fontFamily: { sans: ['Outfit'], serif: ['Playfair Display'] },
-          colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, chroma: { blue: '#4A6C7C', yellow: '#E6BE75' } }
+          colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, Kidazzle: { blue: '#4A6C7C', yellow: '#E6BE75' } }
         }
       }
     }
@@ -39,7 +39,7 @@
     <a href="<?php echo esc_url(home_url('/')); ?>">
       <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?>" srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?> 1x,
                    <?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo-highres.png'); ?> 2x"
-        alt="Chroma Early Learning" class="h-10 w-auto" />
+        alt="Kidazzle Early Learning" class="h-10 w-auto" />
     </a>
   </header>
 

@@ -25,17 +25,17 @@ $location_count = is_array($location_ids) ? count($location_ids) : 0;
 <head>
     <meta charset="UTF-8" />
     <!-- SEO Title: Pure Keyword Focus -->
-    <title>Best Daycare & Preschool in <?php echo esc_html($city); ?>, GA | Chroma Early Learning</title>
+    <title>Best Daycare & Preschool in <?php echo esc_html($city); ?>, GA | Kidazzle Early Learning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="Looking for 5-star rated daycare in <?php echo esc_html($city); ?>? Chroma offers accredited infant care, toddler programs, and Free GA Pre-K at <?php echo esc_html($location_count); ?> convenient locations near you." />
+        content="Looking for 5-star rated daycare in <?php echo esc_html($city); ?>? Kidazzle offers accredited infant care, toddler programs, and Free GA Pre-K at <?php echo esc_html($location_count); ?> convenient locations near you." />
 
     <!-- Organization Schema -->
     <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "name": "Chroma Early Learning Academy - <?php echo esc_js($city); ?> Region",
+    "name": "Kidazzle Early Learning Academy - <?php echo esc_js($city); ?> Region",
     "url": "<?php echo esc_url(get_permalink()); ?>",
     "areaServed": {
       "@type": "City",
@@ -55,7 +55,7 @@ $location_count = is_array($location_ids) ? count($location_ids) : 0;
             theme: {
                 extend: {
                     fontFamily: { sans: ['Outfit', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, chroma: { blue: '#4A6C7C', red: '#D67D6B', green: '#8DA399', yellow: '#E6BE75', blueDark: '#2F4858' } },
+                    colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, Kidazzle: { blue: '#4A6C7C', red: '#D67D6B', green: '#8DA399', yellow: '#E6BE75', blueDark: '#2F4858' } },
                     boxShadow: { soft: '0 20px 40px -10px rgba(74, 108, 124, 0.08)', card: '0 10px 30px -5px rgba(0, 0, 0, 0.04)' }
                 }
             }
@@ -74,7 +74,7 @@ $location_count = is_array($location_ids) ? count($location_ids) : 0;
     <!-- Simplified Header -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-kidazzle-blue/10">
         <div class="max-w-7xl mx-auto px-4 h-[82px] flex items-center justify-between">
-            <a href="/" class="font-bold text-lg text-brand-ink focus:outline-none focus:ring-2 focus:ring-kidazzle-blue rounded-lg px-2">Chroma <span
+            <a href="/" class="font-bold text-lg text-brand-ink focus:outline-none focus:ring-2 focus:ring-kidazzle-blue rounded-lg px-2">Kidazzle <span
                     class="text-kidazzle-blue text-xs uppercase tracking-widest ml-2"><?php echo esc_html($city); ?>
                     Area</span></a>
             <a href="#locations"
@@ -132,7 +132,7 @@ $location_count = is_array($location_ids) ? count($location_ids) : 0;
         <section id="locations" class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 lg:px-6">
                 <div class="text-center mb-16">
-                    <h2 class="font-serif text-3xl font-bold text-brand-ink">Chroma Locations Serving
+                    <h2 class="font-serif text-3xl font-bold text-brand-ink">Kidazzle Locations Serving
                         <?php echo esc_html($city); ?></h2>
                     <p class="text-brand-ink/60 mt-4">Select the campus closest to your home or work.</p>
                 </div>
@@ -256,7 +256,7 @@ $location_count = is_array($location_ids) ? count($location_ids) : 0;
     </main>
 
     <footer class="bg-brand-ink text-white py-12 text-center text-sm opacity-60">
-        <p>© <?php echo date('Y'); ?> Chroma Early Learning. Proudly serving <?php echo esc_html($city); ?> and
+        <p>© <?php echo date('Y'); ?> Kidazzle Early Learning. Proudly serving <?php echo esc_html($city); ?> and
             <?php echo esc_html($county); ?> County.</p>
     </footer>
     <?php wp_footer(); ?>

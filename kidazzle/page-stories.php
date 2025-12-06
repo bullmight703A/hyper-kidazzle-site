@@ -52,7 +52,7 @@ function kidazzle_get_category_color($category_slug)
   $colors = array(
     'parenting' => 'kidazzle-blue',
     'development' => 'kidazzle-green',
-    'inside-chroma' => 'kidazzle-red',
+    'inside-Kidazzle' => 'kidazzle-red',
   );
   return $colors[$category_slug] ?? 'kidazzle-blue';
 }
@@ -73,7 +73,7 @@ function kidazzle_get_category_color($category_slug)
           fontFamily: { sans: ['Outfit'], serif: ['Playfair Display'] },
           colors: {
             brand: { ink: '#263238', cream: '#FFFCF8' },
-            chroma: { red: '#D67D6B', blue: '#4A6C7C', yellow: '#E6BE75', green: '#6BBF73' }
+            Kidazzle: { red: '#D67D6B', blue: '#4A6C7C', yellow: '#E6BE75', green: '#6BBF73' }
           },
           boxShadow: { soft: '0 20px 40px -10px rgba(74, 108, 124, 0.08)' }
         }
@@ -96,7 +96,7 @@ function kidazzle_get_category_color($category_slug)
       <a href="<?php echo esc_url(home_url('/')); ?>">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?>"
           srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?> 1x,
-                     <?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo-highres.png'); ?> 2x" alt="Chroma Early Learning" class="h-10 w-auto" />
+                     <?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo-highres.png'); ?> 2x" alt="Kidazzle Early Learning" class="h-10 w-auto" />
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/80">
         <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-kidazzle-blue">Home</a>
@@ -124,7 +124,7 @@ function kidazzle_get_category_color($category_slug)
     <section class="py-20 bg-white text-center">
       <div class="max-w-4xl mx-auto px-4">
         <span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">The Blog</span>
-        <h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">Chroma Stories</h1>
+        <h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">Kidazzle Stories</h1>
         <p class="text-lg text-brand-ink/90">Parenting tips, classroom spotlights, and insights from our educators.</p>
 
         <!-- Categories -->

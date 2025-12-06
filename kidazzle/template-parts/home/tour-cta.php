@@ -29,7 +29,7 @@ if (!$tour_cta) {
                         echo do_shortcode('[kidazzle_tour_form]');
                     } else {
                         ?>
-                        <div class="text-brand-ink text-sm">Please activate the "Chroma Tour Form" plugin to display the
+                        <div class="text-brand-ink text-sm">Please activate the "Kidazzle Tour Form" plugin to display the
                             tour booking form.</div>
                         <?php
                     }
@@ -42,7 +42,7 @@ if (!$tour_cta) {
             <div
                 class="bg-gradient-to-br from-kidazzle-blue via-kidazzle-green to-kidazzle-yellow text-white p-7 md:p-8 flex flex-col justify-between">
                 <div>
-                    <p class="text-[11px] font-semibold tracking-[0.2em] uppercase mb-2">Why families choose Chroma</p>
+                    <p class="text-[11px] font-semibold tracking-[0.2em] uppercase mb-2">Why families choose Kidazzle</p>
                     <ul class="space-y-3 text-sm">
                         <li class="flex gap-2"><span class="mt-0.5 text-white">✓</span><span>Warm, consistent teachers
                                 who know your child well</span></li>

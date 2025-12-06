@@ -177,7 +177,7 @@ class kidazzle_Schema_Injector
                     'type' => 'Service',
                     'data' => [
                         'name' => $program_name,
-                        'description' => $program_desc ?: sprintf(__('%s program at Chroma Early Learning', 'kidazzle-theme'), $program_name),
+                        'description' => $program_desc ?: sprintf(__('%s program at Kidazzle Early Learning', 'kidazzle-theme'), $program_name),
                         'provider' => [
                             '@type' => 'Organization',
                             'name' => get_bloginfo('name'),

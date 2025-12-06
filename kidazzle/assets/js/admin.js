@@ -1,7 +1,7 @@
 /**
  * Admin JavaScript for Media Uploader
  *
- * @package Chroma_Excellence
+ * @package Kidazzle_Theme
  */
 
 jQuery(document).ready(function($) {

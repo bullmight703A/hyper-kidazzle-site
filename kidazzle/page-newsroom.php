@@ -47,7 +47,7 @@ $newsroom_query = new WP_Query($newsroom_args);
           fontFamily: { sans: ['Outfit'], serif: ['Playfair Display'] },
           colors: {
             brand: { ink: '#263238', cream: '#FFFCF8' },
-            chroma: { blue: '#4A6C7C', yellow: '#E6BE75' }
+            Kidazzle: { blue: '#4A6C7C', yellow: '#E6BE75' }
           }
         }
       }
@@ -68,7 +68,7 @@ $newsroom_query = new WP_Query($newsroom_args);
       <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?>"
           srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?> 1x,
-                     <?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo-highres.png'); ?> 2x" alt="Chroma Early Learning" class="h-10 w-auto" />
+                     <?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo-highres.png'); ?> 2x" alt="Kidazzle Early Learning" class="h-10 w-auto" />
         <span class="text-xs uppercase tracking-widest text-brand-ink/70">Newsroom</span>
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/80">

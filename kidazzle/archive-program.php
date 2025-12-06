@@ -192,7 +192,7 @@ $programs_query = new WP_Query(array(
 				<h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">More than just daycare.</h2>
 				<p class="text-brand-ink text-lg leading-relaxed mb-8">
 					We believe that education isn't just about filling a bucket, but lighting a fire. Our curriculum
-					ensures that by the time your child graduates from Chroma, they are not just "school ready"—they are
+					ensures that by the time your child graduates from Kidazzle, they are not just "school ready"—they are
 					life ready.
 				</p>
 				<div class="grid grid-cols-2 gap-6">
@@ -216,7 +216,7 @@ $programs_query = new WP_Query(array(
 		<div class="max-w-4xl mx-auto px-4 lg:px-6 text-center">
 			<h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-ink mb-6">Ready to find your fit?</h2>
 			<p class="text-brand-ink mb-10">Every campus offers tours so you can meet the teachers, see the
-				classrooms, and experience the Chroma culture firsthand.</p>
+				classrooms, and experience the Kidazzle culture firsthand.</p>
 			<div class="flex flex-wrap justify-center gap-4">
 				<a href="<?php echo esc_url(home_url('/locations')); ?>"
 					class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-kidazzle-blue hover:text-kidazzle-blue transition-colors">Find

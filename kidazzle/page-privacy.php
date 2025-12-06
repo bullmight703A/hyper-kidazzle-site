@@ -39,7 +39,7 @@ for ($i = 1; $i <= 5; $i++) {
       theme: {
         extend: {
           fontFamily: { sans: ['Outfit'], serif: ['Playfair Display'] },
-          colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, chroma: { blue: '#4A6C7C' } }
+          colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, Kidazzle: { blue: '#4A6C7C' } }
         }
       }
     }
@@ -56,7 +56,7 @@ for ($i = 1; $i <= 5; $i++) {
 
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-kidazzle-blue/10">
     <div class="max-w-7xl mx-auto px-4 lg:px-6 h-[82px] flex items-center justify-between">
-      <a href="<?php echo esc_url(home_url('/')); ?>" class="font-bold text-lg text-brand-ink">Chroma</a>
+      <a href="<?php echo esc_url(home_url('/')); ?>" class="font-bold text-lg text-brand-ink">Kidazzle</a>
       <a href="<?php echo esc_url(home_url('/')); ?>"
         class="text-sm font-bold text-brand-ink/90 hover:text-kidazzle-blue">Back to Home</a>
     </div>

@@ -47,7 +47,7 @@ get_header();
         <section class="py-16 bg-brand-cream">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-brand-ink mb-10 text-center">
-                    Why Partner With Chroma?
+                    Why Partner With Kidazzle?
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <?php foreach ($benefits as $benefit): ?>
@@ -91,11 +91,11 @@ get_header();
                     ?>
                     <div class="text-center text-brand-ink/90 py-8">
                         <p class="mb-4">Acquisitions form plugin not activated.</p>
-                        <p class="text-sm">Please activate the "Chroma Acquisitions Form" plugin to display the acquisition
+                        <p class="text-sm">Please activate the "Kidazzle Acquisitions Form" plugin to display the acquisition
                             form.</p>
                         <p class="mt-6">In the meantime, reach out to:</p>
                         <p class="font-semibold text-kidazzle-teal mt-2">
-                            <a href="mailto:acquisitions@chromaela.com">acquisitions@chromaela.com</a>
+                            <a href="mailto:acquisitions@Kidazzleela.com">acquisitions@Kidazzleela.com</a>
                         </p>
                     </div>
                     <?php

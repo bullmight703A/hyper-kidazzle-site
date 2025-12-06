@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Part: Parent Reviews Carousel
- * Testimonials from Chroma parents
+ * Testimonials from Kidazzle parents
  *
  * @package kidazzle_Excellence
  */
@@ -21,7 +21,7 @@ if (empty($reviews)) {
                         <h2 class="text-3xl md:text-4xl font-serif text-brand-ink mb-3">Trusted by thousands of Atlanta
                                 families</h2>
                         <p class="text-brand-ink max-w-2xl mx-auto">Don't just take our word for it. Here's what parents
-                                have to say about their experience with Chroma Early Learning.</p>
+                                have to say about their experience with Kidazzle Early Learning.</p>
                 </div>
 
                 <div class="relative" data-reviews-carousel>

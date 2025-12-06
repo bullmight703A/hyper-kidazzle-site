@@ -358,7 +358,7 @@ while (have_posts()):
 							class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Meet
 							the
 							Director</span>
-						<h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Welcome to Chroma
+						<h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Welcome to Kidazzle
 							<?php echo esc_html($city); ?>.
 						</h2>
 						<div class="space-y-4 text-white/80 text-lg leading-relaxed mb-8">
@@ -500,7 +500,7 @@ while (have_posts()):
 					Stories</span>
 				<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-8">Why Families Love Us</h2>
 				<blockquote class="text-2xl md:text-3xl font-serif italic text-brand-ink/80 leading-relaxed mb-8">
-					"<?php echo esc_html($hero_review_text ?: "We absolutely love Chroma! The teachers are so caring and my child has learned so much."); ?>"
+					"<?php echo esc_html($hero_review_text ?: "We absolutely love Kidazzle! The teachers are so caring and my child has learned so much."); ?>"
 				</blockquote>
 				<cite class="not-italic font-bold text-brand-ink uppercase tracking-wider text-sm">
 					— <?php echo esc_html($hero_review_author ?: "Happy Parent"); ?>
@@ -520,7 +520,7 @@ while (have_posts()):
 					<div class="bg-white rounded-2xl p-6 shadow-sm">
 						<h3 class="font-bold text-brand-ink mb-2">Do you offer tours?</h3>
 						<p class="text-brand-ink/80 text-sm">Yes! We encourage all families to book a tour to see our
-							classrooms, meet our directors, and experience the Chroma difference firsthand.</p>
+							classrooms, meet our directors, and experience the Kidazzle difference firsthand.</p>
 					</div>
 					<div class="bg-white rounded-2xl p-6 shadow-sm">
 						<h3 class="font-bold text-brand-ink mb-2">What ages do you serve?</h3>
@@ -548,7 +548,7 @@ while (have_posts()):
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">Come see the magic in person.
 					</h2>
 					<p class="text-brand-ink/90 mb-8">
-						Tours are the best way to feel the Chroma difference.
+						Tours are the best way to feel the Kidazzle difference.
 						<?php
 						// Parse opening and closing times from hours field
 						$tour_text = ' We are available for tours Monday through Friday';

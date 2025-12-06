@@ -45,7 +45,7 @@ function kidazzle_home_default_prismpath()
 {
         return array(
                 'feature' => array(
-                        'eyebrow' => 'The Chroma Standard',
+                        'eyebrow' => 'The Kidazzle Standard',
                         'heading' => 'Grounded in Expertise. Wrapped in Love.',
                         'subheading' => '',
                         'cta_label' => 'Meet the Team',
@@ -316,7 +316,7 @@ function kidazzle_home_default_faq_items()
         return array(
                 array(
                         'question' => 'Do you offer GA Lottery Pre-K?',
-                        'answer' => 'Yes. Many Chroma locations offer free GA Lottery Pre-K for 4-year-olds.',
+                        'answer' => 'Yes. Many Kidazzle locations offer free GA Lottery Pre-K for 4-year-olds.',
                 ),
                 array(
                         'question' => 'What ages do you serve?',
@@ -724,7 +724,7 @@ function kidazzle_home_locations_preview()
         }
 
         $heading = sanitize_text_field(get_theme_mod('kidazzle_home_locations_heading', '19+ neighborhood locations across Metro Atlanta'));
-        $subheading = sanitize_text_field(get_theme_mod('kidazzle_home_locations_subheading', 'Find a Chroma campus near your home or work. All locations share the same safety standards, curriculum framework, and warm Chroma culture.'));
+        $subheading = sanitize_text_field(get_theme_mod('kidazzle_home_locations_subheading', 'Find a Kidazzle campus near your home or work. All locations share the same safety standards, curriculum framework, and warm Kidazzle culture.'));
         $cta_label = sanitize_text_field(get_theme_mod('kidazzle_home_locations_cta_label', 'View All Locations'));
         $cta_link = esc_url_raw(get_theme_mod('kidazzle_home_locations_cta_link', '/locations'));
         $taxonomy = 'location_region';
@@ -923,7 +923,7 @@ function kidazzle_home_tour_cta()
 {
         return array(
                 'heading' => 'Schedule a private tour',
-                'subheading' => 'Share a few details and your preferred campus. A Chroma Director will reach out to confirm tour times.',
+                'subheading' => 'Share a few details and your preferred campus. A Kidazzle Director will reach out to confirm tour times.',
                 'trust_text' => 'No obligation. We’ll never share your information.',
         );
 }
@@ -949,7 +949,7 @@ function kidazzle_home_featured_stories()
                         'url' => '/stories/prismpath-classroom',
                 ),
                 array(
-                        'title' => 'Family-Style Dining at Chroma',
+                        'title' => 'Family-Style Dining at Kidazzle',
                         'excerpt' => 'Why shared meals matter for social-emotional growth and independence.',
                         'url' => '/stories/family-style-dining',
                 ),
@@ -971,19 +971,19 @@ function kidazzle_home_default_parent_reviews()
                         'name' => 'Sarah M.',
                         'location' => 'Marietta Campus',
                         'rating' => '5',
-                        'review' => 'Our daughter has flourished at Chroma. The teachers genuinely care, and the Prismpath curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
+                        'review' => 'Our daughter has flourished at Kidazzle. The teachers genuinely care, and the Prismpath curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
                 ),
                 array(
                         'name' => 'James & Lisa T.',
                         'location' => 'Johns Creek Campus',
                         'rating' => '5',
-                        'review' => 'After touring several centers, Chroma stood out immediately. The transparency, the warmth, and the expert care made our decision easy. Our son has been there for two years and we\'ve never looked back.',
+                        'review' => 'After touring several centers, Kidazzle stood out immediately. The transparency, the warmth, and the expert care made our decision easy. Our son has been there for two years and we\'ve never looked back.',
                 ),
                 array(
                         'name' => 'Maria G.',
                         'location' => 'Austell Campus',
                         'rating' => '5',
-                        'review' => 'The family-style meals, the daily communication, the beautiful facilities — everything exceeds expectations. Chroma feels like an extension of our family, and our twins are thriving.',
+                        'review' => 'The family-style meals, the daily communication, the beautiful facilities — everything exceeds expectations. Kidazzle feels like an extension of our family, and our twins are thriving.',
                 ),
         );
 }

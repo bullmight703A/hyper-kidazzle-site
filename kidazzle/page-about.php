@@ -16,7 +16,7 @@ while (have_posts()):
 	// Hero Section
 	$hero_badge_text = get_post_meta($page_id, 'about_hero_badge_text', true) ?: 'Established 2015';
 	$hero_title = get_post_meta($page_id, 'about_hero_title', true) ?: 'More than a school. <span class="text-kidazzle-yellow italic">A second home.</span>';
-	$hero_description = get_post_meta($page_id, 'about_hero_description', true) ?: 'We founded Chroma on a simple belief: Early education should be a perfect blend of rigorous cognitive development and the comforting warmth of family.';
+	$hero_description = get_post_meta($page_id, 'about_hero_description', true) ?: 'We founded Kidazzle on a simple belief: Early education should be a perfect blend of rigorous cognitive development and the comforting warmth of family.';
 	$hero_image = get_post_meta($page_id, 'about_hero_image', true) ?: 'https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1000&auto=format&fit=crop';
 
 	// Mission Section
@@ -24,7 +24,7 @@ while (have_posts()):
 
 	// Story Section
 	$story_title = get_post_meta($page_id, 'about_story_title', true) ?: 'From one classroom to a community.';
-	$story_paragraph1 = get_post_meta($page_id, 'about_story_paragraph1', true) ?: 'Chroma Early Learning Academy began with a single location in Lawrenceville and a mission to redefine "daycare." We didn\'t just want to watch children; we wanted to ignite them.';
+	$story_paragraph1 = get_post_meta($page_id, 'about_story_paragraph1', true) ?: 'Kidazzle Early Learning Academy began with a single location in Lawrenceville and a mission to redefine "daycare." We didn\'t just want to watch children; we wanted to ignite them.';
 	$story_paragraph2 = get_post_meta($page_id, 'about_story_paragraph2', true) ?: 'Over the last decade, we have grown into a network of 19+ campuses across Metro Atlanta, yet each location retains the intimacy and personal touch of that very first school. We are locally owned, operated by educators, and driven by the success of our families.';
 	$story_image = get_post_meta($page_id, 'about_story_image', true) ?: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop';
 
@@ -38,7 +38,7 @@ while (have_posts()):
 	$stat4_label = get_post_meta($page_id, 'about_stat4_label', true) ?: 'Licensed';
 
 	// Educators Section
-	$educators_title = get_post_meta($page_id, 'about_educators_title', true) ?: 'The Heart of Chroma.';
+	$educators_title = get_post_meta($page_id, 'about_educators_title', true) ?: 'The Heart of Kidazzle.';
 	$educators_description = get_post_meta($page_id, 'about_educators_description', true) ?: 'We don\'t just hire supervisors; we hire career educators. Our teachers are the most valuable asset in our classrooms, selected for their passion, patience, and professional credentials.';
 
 	$educator1_icon = get_post_meta($page_id, 'about_educator1_icon', true) ?: 'fa-solid fa-certificate';
@@ -54,7 +54,7 @@ while (have_posts()):
 	$educator3_desc = get_post_meta($page_id, 'about_educator3_desc', true) ?: 'Our educators participate in 20+ hours of annual professional development, specializing in the Prismpath™ curriculum and social-emotional learning.';
 
 	// Core Values Section
-	$values_title = get_post_meta($page_id, 'about_values_title', true) ?: 'The Chroma Standard';
+	$values_title = get_post_meta($page_id, 'about_values_title', true) ?: 'The Kidazzle Standard';
 	$values_description = get_post_meta($page_id, 'about_values_description', true) ?: 'Our culture is built on four non-negotiable pillars that guide every decision we make, from hiring teachers to designing playgrounds.';
 
 	$value1_icon = get_post_meta($page_id, 'about_value1_icon', true) ?: 'fa-solid fa-heart';
@@ -91,7 +91,7 @@ while (have_posts()):
 	// Philanthropy Section
 	$philanthropy_title = get_post_meta($page_id, 'about_philanthropy_title', true) ?: 'Giving back to our future.';
 	$philanthropy_subtitle = get_post_meta($page_id, 'about_philanthropy_subtitle', true) ?: 'Foundations For Learning Inc.';
-	$philanthropy_description = get_post_meta($page_id, 'about_philanthropy_description', true) ?: 'At Chroma, our commitment extends beyond our classroom walls. Through our partnership with <strong>Foundations For Learning Inc.</strong>, we work to ensure that quality early education is accessible to every child in our community.';
+	$philanthropy_description = get_post_meta($page_id, 'about_philanthropy_description', true) ?: 'At Kidazzle, our commitment extends beyond our classroom walls. Through our partnership with <strong>Foundations For Learning Inc.</strong>, we work to ensure that quality early education is accessible to every child in our community.';
 	$philanthropy_image = get_post_meta($page_id, 'about_philanthropy_image', true) ?: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop';
 
 	$philanthropy_bullet1_icon = get_post_meta($page_id, 'about_philanthropy_bullet1_icon', true) ?: 'fa-solid fa-hand-holding-heart';
@@ -103,7 +103,7 @@ while (have_posts()):
 
 	// CTA Section
 	$cta_title = get_post_meta($page_id, 'about_cta_title', true) ?: 'Ready to join the family?';
-	$cta_description = get_post_meta($page_id, 'about_cta_description', true) ?: 'Come see why over 2,000 families trust Chroma with their children\'s early years.';
+	$cta_description = get_post_meta($page_id, 'about_cta_description', true) ?: 'Come see why over 2,000 families trust Kidazzle with their children\'s early years.';
 
 	// Get Team Members
 	$team_members = new WP_Query(array(

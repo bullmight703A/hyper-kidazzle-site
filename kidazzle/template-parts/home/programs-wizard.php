@@ -46,7 +46,7 @@ function kidazzle_get_wizard_color_classes($key)
             <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-ink mb-3">Find the right program in 10
                 seconds</h2>
             <p class="text-brand-ink text-sm md:text-base max-w-2xl mx-auto">Choose your child's age and we'll
-                suggest the Chroma program designed for their development stage and your family's needs.</p>
+                suggest the Kidazzle program designed for their development stage and your family's needs.</p>
         </div>
 
         <div class="bg-white rounded-3xl p-6 md:p-8 border border-kidazzle-blue/10 shadow-soft fade-in-up"

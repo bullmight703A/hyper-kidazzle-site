@@ -5,7 +5,7 @@ Please review the list below. I have extracted the names and addresses from the 
 
 | School Name | Address | Target City (Please Fill) |
 | :--- | :--- | :--- |
-| Cherokee Academy by Chroma Early Learning | 1205 Upper Burris Road, Canton, GA 30114 | Canton, Woodstock, Ballground, Milton, Waleska, Jasper |
+| Cherokee Academy by Kidazzle Early Learning | 1205 Upper Burris Road, Canton, GA 30114 | Canton, Woodstock, Ballground, Milton, Waleska, Jasper |
 | East Cobb Campus | 2499 Shallowford Road NE, Marietta, GA 30066 | East Cobb, Marietta, Roswell |
 | Ellenwood Campus | 2765 E Atlanta Rd, Ellenwood, GA 30294 | Ellenwood, Rex, Decatur, Stockbridge, Morrow |
 | Johns Creek | 3580 Old Alabama Rd, Johns Creek, GA 30005 | Johns Creek, Alpharetta, Duluth, Peachtree Corners |

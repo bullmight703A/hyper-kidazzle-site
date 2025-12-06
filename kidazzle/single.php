@@ -43,7 +43,7 @@ $related_query = new WP_Query($related_args);
       theme: {
         extend: {
           fontFamily: { sans: ['Outfit'], serif: ['Playfair Display'] },
-          colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, chroma: { blue: '#4A6C7C', yellow: '#E6BE75', red: '#D67D6B', green: '#6BBF73' } }
+          colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, Kidazzle: { blue: '#4A6C7C', yellow: '#E6BE75', red: '#D67D6B', green: '#6BBF73' } }
         }
       }
     }
@@ -124,7 +124,7 @@ $related_query = new WP_Query($related_args);
       <a href="<?php echo esc_url(home_url('/')); ?>">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?>"
           srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?> 1x,
-                     <?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo-highres.png'); ?> 2x" alt="Chroma Early Learning" class="h-10 w-auto" />
+                     <?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo-highres.png'); ?> 2x" alt="Kidazzle Early Learning" class="h-10 w-auto" />
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/80">
         <?php
@@ -186,7 +186,7 @@ $related_query = new WP_Query($related_args);
     <?php if ($related_query->have_posts()): ?>
       <section class="bg-white py-20 border-t border-brand-ink/5">
         <div class="max-w-6xl mx-auto px-4 lg:px-6">
-          <h3 class="font-serif text-3xl font-bold mb-8 text-center">More from Chroma</h3>
+          <h3 class="font-serif text-3xl font-bold mb-8 text-center">More from Kidazzle</h3>
           <div class="grid md:grid-cols-3 gap-8">
             <?php while ($related_query->have_posts()):
               $related_query->the_post(); ?>

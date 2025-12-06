@@ -33,7 +33,7 @@ function kidazzle_home_customize_register( WP_Customize_Manager $wp_customize ) 
 $wp_customize->add_panel(
 'kidazzle_home_panel',
 array(
-'title'       => __( 'Chroma Homepage', 'kidazzle-theme' ),
+'title'       => __( 'Kidazzle Homepage', 'kidazzle-theme' ),
 'description' => __( 'Adjust hero copy, stats, and JSON-driven homepage sections.', 'kidazzle-theme' ),
 'priority'    => 132,
 )
@@ -270,7 +270,7 @@ array(
 $wp_customize->add_setting( 'kidazzle_home_locations_heading', array( 'default' => '19+ neighborhood locations across Metro Atlanta', 'sanitize_callback' => 'sanitize_text_field' ) );
 $wp_customize->add_control( 'kidazzle_home_locations_heading', array( 'label' => __( 'Locations heading', 'kidazzle-theme' ), 'section' => 'kidazzle_home_locations_section', 'type' => 'text' ) );
 
-$wp_customize->add_setting( 'kidazzle_home_locations_subheading', array( 'default' => 'Find a Chroma campus near your home or work. All locations share the same safety standards, curriculum framework, and warm Chroma culture.', 'sanitize_callback' => 'sanitize_text_field' ) );
+$wp_customize->add_setting( 'kidazzle_home_locations_subheading', array( 'default' => 'Find a Kidazzle campus near your home or work. All locations share the same safety standards, curriculum framework, and warm Kidazzle culture.', 'sanitize_callback' => 'sanitize_text_field' ) );
 $wp_customize->add_control( 'kidazzle_home_locations_subheading', array( 'label' => __( 'Locations subheading', 'kidazzle-theme' ), 'section' => 'kidazzle_home_locations_section', 'type' => 'textarea' ) );
 
 $wp_customize->add_setting( 'kidazzle_home_locations_cta_label', array( 'default' => 'View All Locations', 'sanitize_callback' => 'sanitize_text_field' ) );

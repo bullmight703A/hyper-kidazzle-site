@@ -53,7 +53,7 @@ function kidazzle_about_page_meta_boxes() {
 
 	add_meta_box(
 		'kidazzle-about-values',
-		__( 'Values (Chroma Standard) Section', 'kidazzle-theme' ),
+		__( 'Values (Kidazzle Standard) Section', 'kidazzle-theme' ),
 		'kidazzle_about_values_meta_box_render',
 		'page',
 		'normal',
@@ -301,7 +301,7 @@ function kidazzle_about_educators_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="about_educators_title" name="about_educators_title"
 					   value="<?php echo esc_attr( $educators_title ); ?>"
-					   class="large-text" placeholder="e.g., The Heart of Chroma." />
+					   class="large-text" placeholder="e.g., The Heart of Kidazzle." />
 			</td>
 		</tr>
 		<tr>
@@ -424,7 +424,7 @@ function kidazzle_about_values_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="about_values_title" name="about_values_title"
 					   value="<?php echo esc_attr( $values_title ); ?>"
-					   class="large-text" placeholder="e.g., The Chroma Standard" />
+					   class="large-text" placeholder="e.g., The Kidazzle Standard" />
 			</td>
 		</tr>
 		<tr>
@@ -910,11 +910,11 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 	$defaults = array(
 		'about_hero_badge_text'            => 'Established 2015',
 		'about_hero_title'                 => 'More than a school. <span class="text-kidazzle-yellow italic">A second home.</span>',
-		'about_hero_description'           => 'We founded Chroma on a simple belief: Early education should be a perfect blend of rigorous cognitive development and the comforting warmth of family.',
+		'about_hero_description'           => 'We founded Kidazzle on a simple belief: Early education should be a perfect blend of rigorous cognitive development and the comforting warmth of family.',
 		'about_hero_image'                 => 'https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1000&auto=format&fit=crop',
 		'about_mission_quote'              => '"To cultivate a vibrant community of lifelong learners by blending academic rigor with the nurturing warmth of home, ensuring every child feels seen, valued, and capable."',
 		'about_story_title'                => 'From one classroom to a community.',
-		'about_story_paragraph1'           => 'Chroma Early Learning Academy began with a single location in Lawrenceville and a mission to redefine "daycare." We didn\'t just want to watch children; we wanted to ignite them.',
+		'about_story_paragraph1'           => 'Kidazzle Early Learning Academy began with a single location in Lawrenceville and a mission to redefine "daycare." We didn\'t just want to watch children; we wanted to ignite them.',
 		'about_story_paragraph2'           => 'Over the last decade, we have grown into a network of 19+ campuses across Metro Atlanta, yet each location retains the intimacy and personal touch of that very first school. We are locally owned, operated by educators, and driven by the success of our families.',
 		'about_story_image'                => 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop',
 		'about_stat1_value'                => '19+',
@@ -925,7 +925,7 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 		'about_stat3_label'                => 'Educators',
 		'about_stat4_value'                => '100%',
 		'about_stat4_label'                => 'Licensed',
-		'about_educators_title'            => 'The Heart of Chroma.',
+		'about_educators_title'            => 'The Heart of Kidazzle.',
 		'about_educators_description'      => 'We don\'t just hire supervisors; we hire career educators. Our teachers are the most valuable asset in our classrooms, selected for their passion, patience, and professional credentials.',
 		'about_educator1_icon'             => 'fa-solid fa-certificate',
 		'about_educator1_title'            => 'Certified & Credentialed',
@@ -936,7 +936,7 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 		'about_educator3_icon'             => 'fa-solid fa-chalkboard-user',
 		'about_educator3_title'            => 'Continuous Growth',
 		'about_educator3_desc'             => 'Our educators participate in 20+ hours of annual professional development, specializing in the Prismpath™ curriculum and social-emotional learning.',
-		'about_values_title'               => 'The Chroma Standard',
+		'about_values_title'               => 'The Kidazzle Standard',
 		'about_values_description'         => 'Our culture is built on four non-negotiable pillars that guide every decision we make, from hiring teachers to designing playgrounds.',
 		'about_value1_icon'                => 'fa-solid fa-heart',
 		'about_value1_title'               => 'Unconditional Joy',
@@ -962,7 +962,7 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 		'about_nutrition_image'            => 'https://images.unsplash.com/photo-1606914506133-2230d94922b5?q=80&w=800&auto=format&fit=crop',
 		'about_philanthropy_title'         => 'Giving back to our future.',
 		'about_philanthropy_subtitle'      => 'Foundations For Learning Inc.',
-		'about_philanthropy_description'   => 'At Chroma, our commitment extends beyond our classroom walls. Through our partnership with <strong>Foundations For Learning Inc.</strong>, we work to ensure that quality early education is accessible to every child in our community.',
+		'about_philanthropy_description'   => 'At Kidazzle, our commitment extends beyond our classroom walls. Through our partnership with <strong>Foundations For Learning Inc.</strong>, we work to ensure that quality early education is accessible to every child in our community.',
 		'about_philanthropy_bullet1_icon'  => 'fa-solid fa-hand-holding-heart',
 		'about_philanthropy_bullet1_text'  => 'Scholarship opportunities for families',
 		'about_philanthropy_bullet2_icon'  => 'fa-solid fa-chalkboard-user',
@@ -971,7 +971,7 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 		'about_philanthropy_bullet3_text'  => 'Community outreach programs',
 		'about_philanthropy_image'         => 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop',
 		'about_cta_title'                  => 'Ready to join the family?',
-		'about_cta_description'            => 'Come see why over 2,000 families trust Chroma with their children\'s early years.',
+		'about_cta_description'            => 'Come see why over 2,000 families trust Kidazzle with their children\'s early years.',
 	);
 
 	// Populate all default values

@@ -2,7 +2,7 @@
  * Tailwind CSS Input File
  * Compiled to assets/css/main.css via PostCSS
  *
- * @package Chroma_Excellence
+ * @package Kidazzle_Theme
  */
 
 @tailwind base;
@@ -96,7 +96,7 @@
   textarea:focus-visible,
   select:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid theme('colors.chroma.blue');
+    outline: 2px solid theme('colors.Kidazzle.blue');
     outline-offset: 2px;
     border-radius: 0.25rem;
   }

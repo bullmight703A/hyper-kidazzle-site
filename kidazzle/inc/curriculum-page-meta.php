@@ -87,7 +87,7 @@ function kidazzle_curriculum_hero_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="curriculum_hero_badge" name="curriculum_hero_badge"
 					   value="<?php echo esc_attr( $hero_badge ); ?>"
-					   class="large-text" placeholder="e.g., The Chroma Difference" />
+					   class="large-text" placeholder="e.g., The Kidazzle Difference" />
 			</td>
 		</tr>
 		<tr>
@@ -588,7 +588,7 @@ function kidazzle_seed_curriculum_page_defaults( $post_id ) {
 	}
 
 	$defaults = array(
-		'curriculum_hero_badge'       => 'The Chroma Difference',
+		'curriculum_hero_badge'       => 'The Kidazzle Difference',
 		'curriculum_hero_title'       => 'Scientific rigor. <br><span class="italic text-kidazzle-green">Joyful delivery.</span>',
 		'curriculum_hero_description' => 'Our proprietary Prismpath™ curriculum isn\'t just about ABCs. It\'s a comprehensive framework designed to build the critical thinking, emotional intelligence, and social skills needed for the 21st century.',
 

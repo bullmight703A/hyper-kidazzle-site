@@ -29,7 +29,7 @@ $readiness_text = $readiness['description'];
 	<div class="max-w-[1200px] mx-auto">
 		<!-- Section Header -->
 		<div class="text-center mb-12">
-			<span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">The Chroma
+			<span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">The Kidazzle
 				Standard</span>
 			<h2 class="text-3xl md:text-5xl font-serif text-brand-ink"><?php echo esc_html($heading); ?></h2>
 			<?php if ($subheading): ?>

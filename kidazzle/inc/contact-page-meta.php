@@ -147,7 +147,7 @@ function kidazzle_contact_corporate_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="contact_corporate_name" name="contact_corporate_name"
 					   value="<?php echo esc_attr( $corporate_name ); ?>"
-					   class="large-text" placeholder="e.g., Chroma Early Learning HQ" />
+					   class="large-text" placeholder="e.g., Kidazzle Early Learning HQ" />
 			</td>
 		</tr>
 		<tr>
@@ -346,12 +346,12 @@ function kidazzle_seed_contact_page_defaults( $post_id ) {
 	$defaults = array(
 		'contact_hero_badge'       => 'Start Your Journey',
 		'contact_hero_title'       => 'We\'d love to meet you.',
-		'contact_hero_description' => 'Ready to experience the Chroma difference? Schedule a tour or ask us a question below to get started.',
+		'contact_hero_description' => 'Ready to experience the Kidazzle difference? Schedule a tour or ask us a question below to get started.',
 
 		'contact_form_submit_text' => 'Submit Request',
 
 		'contact_corporate_title'   => 'Corporate Office',
-		'contact_corporate_name'    => 'Chroma Early Learning HQ',
+		'contact_corporate_name'    => 'Kidazzle Early Learning HQ',
 		'contact_corporate_address' => "123 Education Way, Suite 400\nAtlanta, GA 30309",
 		'contact_corporate_phone'   => '(404) 555-0199',
 

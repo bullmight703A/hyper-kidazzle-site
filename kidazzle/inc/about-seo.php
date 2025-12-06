@@ -46,7 +46,7 @@ function kidazzle_get_about_seo_defaults($post_id = null)
 
         return array(
                 'title' => sprintf('About %s | Our Story, Mission & Team', $site_name),
-                'description' => 'Discover how Chroma nurtures whole-child growth through inspired educators, intentional classrooms, and a values-driven culture.',
+                'description' => 'Discover how Kidazzle nurtures whole-child growth through inspired educators, intentional classrooms, and a values-driven culture.',
                 'structured_data' => wp_json_encode($schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
         );
 }

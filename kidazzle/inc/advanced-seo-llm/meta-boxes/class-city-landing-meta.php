@@ -75,7 +75,7 @@ class kidazzle_City_Landing_Meta extends kidazzle_Advanced_SEO_Meta_Box_Base
             <div style="margin-bottom: 20px;">
                 <label for="city_intro_text"><?php _e('Local Intro Text (SEO Optimized):', 'kidazzle-theme'); ?></label>
                 <textarea id="city_intro_text" name="city_intro_text" rows="5" class="widefat"
-                    placeholder="<?php _e('Example: Parents in Canton trust Chroma for...', 'kidazzle-theme'); ?>"><?php echo esc_textarea($intro_text); ?></textarea>
+                    placeholder="<?php _e('Example: Parents in Canton trust Kidazzle for...', 'kidazzle-theme'); ?>"><?php echo esc_textarea($intro_text); ?></textarea>
                 <p class="description">
                     <?php _e('Write a unique introduction about childcare in this specific city.', 'kidazzle-theme'); ?>
                 </p>

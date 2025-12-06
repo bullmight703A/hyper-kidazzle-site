@@ -737,7 +737,7 @@ function kidazzle_seed_parents_page_defaults( $post_id ) {
 	$defaults = array(
 		'parents_hero_badge'       => 'Parent Dashboard',
 		'parents_hero_title'       => 'Partners in your child\'s journey.',
-		'parents_hero_description' => 'Everything you need to manage your enrollment, stay connected, and engage with the Chroma community.',
+		'parents_hero_description' => 'Everything you need to manage your enrollment, stay connected, and engage with the Kidazzle community.',
 
 		'parents_essentials_title' => 'Parent Essentials',
 
@@ -846,10 +846,10 @@ function kidazzle_seed_parents_page_defaults( $post_id ) {
 		'parents_faq3_answer'   => 'We close promptly at 6:00 PM. A late fee of $1 per minute is charged to your account for pickups after 6:05 PM to compensate our staff who stay late.',
 
 		// Referral Banner
-		'parents_referral_title'       => 'Love the Chroma family?',
+		'parents_referral_title'       => 'Love the Kidazzle family?',
 		'parents_referral_description' => 'Refer a friend and receive a <strong>$100 tuition credit</strong> when they enroll.',
 		'parents_referral_button_text' => 'Refer a Friend',
-		'parents_referral_button_url'  => 'mailto:director@chromaela.com?subject=Parent%20Referral',
+		'parents_referral_button_url'  => 'mailto:director@Kidazzleela.com?subject=Parent%20Referral',
 	);
 
 	// Populate all default values

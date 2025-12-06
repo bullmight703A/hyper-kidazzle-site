@@ -76,7 +76,7 @@ $home_id = kidazzle_get_home_page_id();
                 elseif ($hero_image):
                     // Priority 2: Customizer hero image
                     ?>
-                    <img src="<?php echo esc_url($hero_image); ?>" class="w-full h-full object-cover" alt="Chroma Classroom"
+                    <img src="<?php echo esc_url($hero_image); ?>" class="w-full h-full object-cover" alt="Kidazzle Classroom"
                         fetchpriority="high" />
                 <?php elseif (file_exists($hero_video_path)): ?>
                     <!-- Priority 3: Hero video file -->
