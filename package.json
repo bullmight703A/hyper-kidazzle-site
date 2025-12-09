@@ -1,0 +1,27 @@
+{
+  "name": "hyper-kidazzle-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./styles/input.css -o ./styles/output.css --minify",
+    "dev": "npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bullmight703A/hyper-kidazzle-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bullmight703A/hyper-kidazzle-site/issues"
+  },
+  "homepage": "https://github.com/bullmight703A/hyper-kidazzle-site#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.1"
+  }
+}
