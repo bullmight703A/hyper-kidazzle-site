@@ -1,11 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home | KIDazzle Child Care</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDazzle Child Care – Where Learning Is Fun!</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Chart.js (for line + pie chart) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Modular transition + fade */
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* CTA Gradient */
+        .bg-ombre-purple {
+            background: linear-gradient(135deg, #4c1d95, #7c3aed, #c026d3);
+        }
+
+        /* Chart Toggle Active State */
+        .chart-btn-active {
+            background-color: #4c1d95 !important;
+            color: white !important;
+        }
+    </style>
 </head>
-<body>
-Home placeholder - original HTML omitted due to size. Replace with full code as needed.
+
+<body class="bg-white text-slate-800">
+
+    <!-- NAVBAR -->
+    <header class="fixed inset-x-0 top-0 bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer">
+                <img src="./kidazzle-logo.jpg" class="h-12 w-auto" alt="KIDazzle Logo">
+                <h1 class="text-3xl font-extrabold tracking-tight">KID<span class="text-yellow-500">azzle</span></h1>
+            </div>
+
+            <nav class="hidden md:flex space-x-8 font-semibold text-slate-700">
+                <a href="#" class="hover:text-indigo-600">Home</a>
+                <a href="#" class="hover:text-orange-500">About Us</a>
+                <a href="#" class="hover:text-red-500">Programs</a>
+                <a href="#" class="hover:text-green-600">Locations</a>
+                <a href="#" class="hover:text-purple-500">Resources</a>
+                <button class="bg-slate-900 text-white px-6 py-2 rounded-xl hover:bg-slate-700 transition-shadow shadow-lg">
+                    Contact Us
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative h-[700px] flex items-center mt-20">
+        <!-- Background -->
+        <img src="https://images.unsplash.com/photo-1560785496-0c9018085c8f"
+             class="absolute inset-0 w-full h-full object-cover"
+             alt="Kids laughing">
+
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/50 to-transparent"></div>
+
+        <!-- Content -->
+        <div class="relative max-w-3xl mx-auto px-6 text-white space-y-6 fade-in">
+            <div class="flex space-x-3">
+                <span class="bg-yellow-400 text-slate-900 font-bold px-4 py-1.5 rounded-full">Now Enrolling</span>
+                <span class="bg-white/30 px-4 py-1.5 rounded-full font-semibold flex items-center space-x-2">
+                    <i data-lucide="star" class="text-yellow-300"></i>
+                    <span>Since 1994</span>
+                </span>
+            </div>
+
+            <h1 class="text-6xl font-extrabold leading-tight">
+                Where Learning<br>
+                <span class="bg-gradient-to-r from-red-500 via-yellow-500 to-cyan-500 bg-clip-text text-transparent">
+                    is Fun!
+                </span>
+            </h1>
+
+            <p class="text-xl text-slate-200 max-w-xl">
+                From Memphis to Miami to Atlanta, we are an independent, premier learning academy nurturing
+                bright minds for over three decades.
+            </p>
+
+            <div class="flex space-x-4">
+                <a href="#" class="px-8 py-4 rounded-2xl bg-yellow-400 text-black font-bold hover:bg-yellow-500 shadow-xl">
+                    Find Your Center
+                </a>
+                <a href="#" class="px-8 py-4 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold hover:border-indigo-400">
+                    Our Legacy
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOUTHEAST POWERHOUSE -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-center text-4xl font-extrabold mb-16">Defining Excellence Across the Southeast</h2>
+
+            <div class="grid md:grid-cols-3 gap-10">
+
+                <!-- Memphis -->
+                <div class="relative h-96 rounded-[2.5rem] overflow-hidden shadow-lg cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1596425123982-cb2cb2aa993a"
+                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition"
+                         alt="Memphis">
+
+                    <div class="absolute bottom-0 p-8 bg-gradient-to-t from-indigo-900/80 to-transparent text-white">
+                        <h3 class="text-3xl font-bold">Memphis</h3>
+                        <p class="text-indigo-200">Soul, Rhythm, & Rigor</p>
+                    </div>
+                </div>
+
+                <!-- Atlanta -->
+                <div class="relative h-[28rem] rounded-[2.5rem] overflow-hidden shadow-xl border-white border-4 cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1575968770275-d831502049d4"
+                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition"
+                         alt="Atlanta">
+
+                    <div class="absolute bottom-0 p-8 bg-gradient-to-t from-orange-900/80 to-transparent text-white">
+                        <h3 class="text-4xl font-bold">Atlanta</h3>
+                        <p class="text-orange-200">Our Headquarters</p>
+                    </div>
+                </div>
+
+                <!-- Doral -->
+                <div class="relative h-96 rounded-[2.5rem] overflow-hidden shadow-lg cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1535498730771-e735b998cd64"
+                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition"
+                         alt="Miami / Doral">
+
+                    <div class="absolute bottom-0 p-8 bg-gradient-to-t from-cyan-900/80 to-transparent text-white">
+                        <h3 class="text-3xl font-bold">Doral</h3>
+                        <p class="text-cyan-200">Sunshine & STEM</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KIDAZZLE DIFFERENCE -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-center text-5xl font-bold mb-16">The KIDazzle Difference</h2>
+
+            <div class="grid md:grid-cols-4 gap-10">
+
+                <!-- Chef Prepared -->
+                <div class="p-8 rounded-[2rem] border-2 border-orange-100 hover:border-orange-400 transition cursor-pointer shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mb-6">
+                        <i data-lucide="utensils" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Chef-Prepared Meals</h3>
+                </div>
+
+                <!-- Curriculum -->
+                <div class="p-8 rounded-[2rem] border-2 border-cyan-100 hover:border-cyan-400 transition cursor-pointer shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-6">
+                        <i data-lucide="brain" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Creative Curriculum®</h3>
+                </div>
+
+                <!-- Safety -->
+                <div class="p-8 rounded-[2rem] border-2 border-green-100 hover:border-green-400 transition cursor-pointer shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Safety & Security</h3>
+                </div>
+
+                <!-- Staff -->
+                <div class="p-8 rounded-[2rem] border-2 border-red-100 hover:border-red-400 transition cursor-pointer shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-6">
+                        <i data-lucide="heart-handshake" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Dedicated Staff</h3>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ANALYTICS MODULE -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-8">The Complexity of Child Care</h2>
+            <p class="text-slate-600 mb-8">
+                Visualized breakdown of what drives cost, staffing ratios, and learning quality.
+            </p>
+
+            <div class="flex justify-center space-x-4 mb-6">
+                <button id="lineBtn"
+                    class="px-6 py-2 border rounded-xl font-semibold hover:bg-slate-100">
+                    Line Graph
+                </button>
+                <button id="pieBtn"
+                    class="px-6 py-2 border rounded-xl font-semibold hover:bg-slate-100">
+                    Pie Chart
+                </button>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+                <canvas id="kidazzleChart" height="130"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA STRIP -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-6 bg-ombre-purple rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center text-white shadow-2xl">
+            <h3 class="text-3xl font-extrabold">Ready to Start Your Journey?</h3>
+
+            <div class="flex space-x-4 mt-6 md:mt-0">
+                <a href="#" class="bg-white text-purple-700 font-bold px-8 py-3 rounded-xl">
+                    Book a Tour
+                </a>
+                <a href="#" class="border-2 border-white px-8 py-3 rounded-xl font-bold">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 py-20 mt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+
+            <div>
+                <img src="./kidazzle-logo.jpg" class="h-14 mb-6" alt="">
+                <p class="text-slate-400 text-sm">
+                    Providing elite, independent child care for 31 years.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="hover:text-red-400">Programs</li>
+                    <li class="hover:text-green-400">Locations</li>
+                    <li class="hover:text-cyan-400">Admissions</li>
+                    <li class="hover:text-indigo-400">Acquisitions</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4">Resources</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="hover:text-purple-400">Teacher Portal</li>
+                    <li class="hover:text-purple-300">Blog</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4">Contact</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="map-pin"
+                           class="text-slate-500"></i> 
+                        100 Alabama St SW, Atlanta
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="phone"
+                           class="text-slate-500"></i>
+                        <span class="font-bold text-white">877-410-1002</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <p class="text-center text-xs text-slate-500 mt-8">© 2025 KIDazzle Child Care Inc.</p>
+    </footer>
+
+<script>
+    lucide.createIcons();
+
+    let chart;
+    const ctx = document.getElementById('kidazzleChart').getContext('2d');
+
+    function renderChart(type) {
+        if (chart) chart.destroy();
+
+        const data = {
+            labels: ["Teachers", "Facilities", "Food", "Curriculum", "Admin"],
+            datasets: [{
+                label: "Cost Breakdown",
+                data: [45, 25, 15, 10, 5],
+                backgroundColor: ["#fbbf24", "#fb923c", "#7c3aed", "#06b6d4", "#ef4444"],
+                borderWidth: 2,
+                borderColor: "#0f172a",
+            }]
+        };
+
+        chart = new Chart(ctx, {
+            type: type,
+            data: data
+        });
+    }
+
+    document.getElementById("lineBtn").onclick = () => renderChart("line");
+    document.getElementById("pieBtn").onclick = () => renderChart("pie");
+
+    renderChart("line"); // default
+</script>
+
 </body>
 </html>
