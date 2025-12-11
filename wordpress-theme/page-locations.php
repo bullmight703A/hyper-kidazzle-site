@@ -78,17 +78,19 @@
             </div>
         </article>
 
-        <!-- Atlanta -->
-        <article id="atlanta" class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+        <!-- Atlanta Federal Center (Renamed from Atlanta) -->
+        <article id="atlanta-federal-center"
+            class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
             <div class="md:w-1/2 h-64 md:h-auto relative">
                 <img src="https://images.unsplash.com/photo-1575968770275-d831502049d4"
-                    class="absolute inset-0 w-full h-full object-cover" alt="Atlanta Center">
+                    class="absolute inset-0 w-full h-full object-cover" alt="Atlanta Federal Center">
             </div>
             <div class="md:w-1/2 p-10 flex flex-col justify-center">
-                <div class="text-orange-600 font-bold tracking-wider mb-2">GEORGIA (HQ)</div>
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-4">Atlanta</h2>
+                <div class="text-orange-600 font-bold tracking-wider mb-2">DOWNTOWN ATLANTA</div>
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-4">Atlanta Federal Center</h2>
                 <p class="text-slate-600 mb-6">
-                    Located in the heart of the city, our HQ features a state-of-the-art STEM lab and indoor gym.
+                    Located within the Sam Nunn Federal Center, providing premier care for federal employees and
+                    downtown professionals.
                 </p>
                 <div class="space-y-3 mb-8">
                     <div class="flex items-start gap-3 text-slate-600">
@@ -96,7 +98,82 @@
                         <span>100 Alabama St SW,<br>Atlanta, GA 30303</span>
                     </div>
                 </div>
-                <a href="<?php echo site_url('/atlanta'); ?>"
+                <a href="<?php echo site_url('/atlanta-federal-center'); ?>"
+                    class="block text-center bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition">
+                    View Center Details
+                </a>
+            </div>
+        </article>
+
+        <!-- Summit (New) -->
+        <article id="summit" class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+            <div class="md:w-1/2 h-64 md:h-auto relative">
+                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174"
+                    class="absolute inset-0 w-full h-full object-cover" alt="Summit Center">
+            </div>
+            <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                <div class="text-orange-600 font-bold tracking-wider mb-2">MIDTOWN ATLANTA</div>
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-4">Summit Building</h2>
+                <p class="text-slate-600 mb-6">
+                    Convenient care for corporate partners in the heart of Midtown's business district.
+                </p>
+                <div class="space-y-3 mb-8">
+                    <div class="flex items-start gap-3 text-slate-600">
+                        <i data-lucide="map-pin" class="text-slate-400 shrink-0 mt-1"></i>
+                        <span>Midtown Locator (Placeholder),<br>Atlanta, GA 30308</span>
+                    </div>
+                </div>
+                <a href="<?php echo site_url('/summit'); ?>"
+                    class="block text-center bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition">
+                    View Center Details
+                </a>
+            </div>
+        </article>
+
+        <!-- Hampton (New) -->
+        <article id="hampton" class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+            <div class="md:w-1/2 h-64 md:h-auto relative">
+                <img src="https://images.unsplash.com/photo-1502086223501-681a981c9b3a"
+                    class="absolute inset-0 w-full h-full object-cover" alt="Hampton Center">
+            </div>
+            <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                <div class="text-orange-600 font-bold tracking-wider mb-2">GEORGIA</div>
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-4">Hampton</h2>
+                <p class="text-slate-600 mb-6">
+                    A spacious suburban campus featuring nature trails and large outdoor learning environments.
+                </p>
+                <div class="space-y-3 mb-8">
+                    <div class="flex items-start gap-3 text-slate-600">
+                        <i data-lucide="map-pin" class="text-slate-400 shrink-0 mt-1"></i>
+                        <span>Hampton Locator (Placeholder),<br>Hampton, GA</span>
+                    </div>
+                </div>
+                <a href="<?php echo site_url('/hampton'); ?>"
+                    class="block text-center bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition">
+                    View Center Details
+                </a>
+            </div>
+        </article>
+
+        <!-- College Park (New) -->
+        <article id="college-park" class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+            <div class="md:w-1/2 h-64 md:h-auto relative">
+                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350"
+                    class="absolute inset-0 w-full h-full object-cover" alt="College Park Center">
+            </div>
+            <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                <div class="text-orange-600 font-bold tracking-wider mb-2">GEORGIA</div>
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-4">College Park</h2>
+                <p class="text-slate-600 mb-6">
+                    Serving the airport corridor with flexible schedules for traveling families and staff.
+                </p>
+                <div class="space-y-3 mb-8">
+                    <div class="flex items-start gap-3 text-slate-600">
+                        <i data-lucide="map-pin" class="text-slate-400 shrink-0 mt-1"></i>
+                        <span>College Park Locator (Placeholder),<br>College Park, GA</span>
+                    </div>
+                </div>
+                <a href="<?php echo site_url('/college-park'); ?>"
                     class="block text-center bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition">
                     View Center Details
                 </a>
