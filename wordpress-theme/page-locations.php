@@ -18,6 +18,41 @@
 <section class="py-24 bg-slate-50">
     <div class="max-w-7xl mx-auto px-6 space-y-16">
 
+        <!-- West End (New - Top Priority) -->
+        <article id="west-end"
+            class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row border-4 border-indigo-100">
+            <div class="md:w-1/2 h-64 md:h-auto relative">
+                <img src="https://images.unsplash.com/photo-1572025442643-41583a05442c"
+                    class="absolute inset-0 w-full h-full object-cover" alt="West End Center">
+                <div
+                    class="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                    Featured Campus
+                </div>
+            </div>
+            <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                <div class="text-indigo-600 font-bold tracking-wider mb-2">GEORGIA</div>
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-4">West End Center</h2>
+                <p class="text-slate-600 mb-6">
+                    Our premier urban campus designed for modern families. Features extended hours (6:30 AM - 6:30 PM),
+                    keyless entry security, and a parent lounge.
+                </p>
+                <div class="space-y-3 mb-8">
+                    <div class="flex items-start gap-3 text-slate-600">
+                        <i data-lucide="map-pin" class="text-slate-400 shrink-0 mt-1"></i>
+                        <span>800 West End Blvd,<br>West End, GA</span>
+                    </div>
+                    <div class="flex items-start gap-3 text-slate-600">
+                        <i data-lucide="phone" class="text-slate-400 shrink-0 mt-1"></i>
+                        <span>(555) 123-4567</span>
+                    </div>
+                </div>
+                <a href="<?php echo site_url('/west-end'); ?>"
+                    class="block text-center bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg hover:shadow-indigo-200">
+                    View West End Details
+                </a>
+            </div>
+        </article>
+
         <!-- Memphis -->
         <article id="memphis" class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
             <div class="md:w-1/2 h-64 md:h-auto relative">
@@ -61,14 +96,6 @@
                         <span>100 Alabama St SW,<br>Atlanta, GA 30303</span>
                     </div>
                 </div>
-                <!-- West End Link (New) -->
-                <div class="mb-4">
-                    <a href="<?php echo site_url('/west-end'); ?>"
-                        class="text-orange-600 font-bold hover:underline text-sm flex items-center gap-1">
-                        Looking for our West End location? <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-
                 <a href="<?php echo site_url('/atlanta'); ?>"
                     class="block text-center bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition">
                     View Center Details
@@ -101,6 +128,27 @@
             </div>
         </article>
 
+    </div>
+</section>
+
+<!-- CALL TO ACTION (CTA) -->
+<section class="py-20 bg-indigo-900 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-extrabold mb-6">Not Sure Which Location is Best?</h2>
+        <p class="text-indigo-200 text-lg mb-10 max-w-2xl mx-auto">
+            Our team is here to help you find the perfect fit for your family.
+            Schedule a virtual consultation or give us a call today.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="<?php echo site_url('/contact'); ?>"
+                class="bg-white text-indigo-900 font-bold px-8 py-4 rounded-xl hover:bg-indigo-50 transition shadow-xl">
+                Contact Admissions
+            </a>
+            <a href="tel:1-877-410-1002"
+                class="border-2 border-indigo-400 text-indigo-100 font-bold px-8 py-4 rounded-xl hover:bg-indigo-800/50 transition">
+                Call 877-410-1002
+            </a>
+        </div>
     </div>
 </section>
 
