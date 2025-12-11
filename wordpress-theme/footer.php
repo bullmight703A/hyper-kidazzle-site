@@ -48,6 +48,9 @@
 </footer>
 
 <?php wp_footer(); ?>
+<!-- GHL Embed Script -->
+<script src="https://link.msgsndr.com/js/embed.js" type="text/javascript"></script>
+
 <script>
     lucide.createIcons();
     // Re-initialize charts if they exist on the page
@@ -58,11 +61,12 @@
         function renderChart(type) {
             if (chart) chart.destroy();
 
+            // Updated Data for 2024-2025
             const data = {
-                labels: ["Teachers", "Facilities", "Food", "Curriculum", "Admin"],
+                labels: ["Quality Staffing", "Nutrition Program", "Facility Maintenance", "Educational Resources", "Admin"],
                 datasets: [{
-                    label: "Cost Breakdown",
-                    data: [45, 25, 15, 10, 5],
+                    label: "Commitment to Excellence (2025 Projection)",
+                    data: [50, 20, 15, 10, 5],
                     backgroundColor: ["#fbbf24", "#fb923c", "#7c3aed", "#06b6d4", "#ef4444"],
                     borderWidth: 2,
                     borderColor: "#0f172a",
@@ -81,6 +85,12 @@
                             display: true,
                             position: 'bottom',
                             labels: { color: '#475569' }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Where Your Tuition Goes: Investing in Quality',
+                            color: '#1e293b',
+                            font: { size: 16 }
                         }
                     }
                 }

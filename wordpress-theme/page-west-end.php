@@ -57,8 +57,12 @@
                         <span>(555) 123-4567</span>
                     </div>
                 </div>
-                <div class="w-full h-48 bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400">
-                    <span class="flex items-center gap-2"><i data-lucide="map"></i> Map Embed</span>
+                <div
+                    class="w-full h-48 bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400 overflow-hidden">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3317.9156365329354!2d-84.41872118852892!3d33.73699757316587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f503152c16c0cd%3A0xb38668fb068fc4de!2sKIDazzle%20Childcare%20Inc%20%7C%20West%20End!5e0!3m2!1sen!2sus!4v1765462283008!5m2!1sen!2sus"
+                        width="600" height="450" style="border:0; width: 100%; height: 100%;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -73,20 +77,13 @@
 
                 <!-- 
                     =============================================
-                    GO HIGH LEVEL (GHL) FORM EMBED CODE GOES HERE 
+                    GO HIGH LEVEL (GHL) FORM / CALENDAR
                     =============================================
-                    Instruction: Replace the div below with your GHL script/iframe.
                 -->
-                <div id="ghl-form-container"
-                    class="border-2 border-dashed border-indigo-200 rounded-xl p-10 flex flex-col items-center justify-center text-center bg-indigo-50/50 min-h-[400px]">
-                    <div class="bg-white p-4 rounded-full shadow-sm mb-4">
-                        <i data-lucide="file-code" class="w-8 h-8 text-indigo-500"></i>
-                    </div>
-                    <h4 class="font-bold text-indigo-900 mb-2">GHL Form Area</h4>
-                    <p class="text-sm text-indigo-700 max-w-xs">
-                        This is the designated space for your GoHighLevel form.
-                        Embed your script here in the code editor.
-                    </p>
+                <div id="ghl-form-container" class="min-h-[600px] w-full">
+                    <iframe src="https://api.leadconnectorhq.com/widget/booking/QGN3ewkDzTOKKsOH93q6"
+                        style="width: 100%;border:none;overflow: hidden; height: 100%; min-height: 600px;"
+                        scrolling="no" id="msgsndr-calendar"></iframe>
                 </div>
                 <!-- End GHL Embed -->
 
