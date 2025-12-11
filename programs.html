@@ -1,1 +1,126 @@
-<html><body>Programs</body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs - KIDazzle Child Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .bg-ombre-purple {
+            background: linear-gradient(135deg, #4c1d95, #7c3aed, #c026d3);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-800">
+
+    <!-- Navbar -->
+    <header class="fixed inset-x-0 top-0 bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <div
+                    class="h-10 w-10 bg-yellow-400 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                    K</div>
+                <h1 class="text-3xl font-extrabold tracking-tight">KID<span class="text-yellow-500">azzle</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-8 font-semibold text-slate-700">
+                <a href="index.html" class="hover:text-indigo-600">Home</a>
+                <a href="about.html" class="hover:text-orange-500">About Us</a>
+                <a href="programs.html" class="hover:text-red-500 text-red-500">Programs</a>
+                <a href="locations.html" class="hover:text-green-600">Locations</a>
+                <a href="resources.html" class="hover:text-purple-500">Resources</a>
+                <a href="contact.html"
+                    class="bg-slate-900 text-white px-6 py-2 rounded-xl hover:bg-slate-700 transition-shadow shadow-lg">Contact
+                    Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mt-20">
+        <div class="bg-slate-900 py-24 text-white text-center">
+            <h1 class="text-5xl font-extrabold mb-6 fade-in">Our Programs</h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto fade-in">Comprehensive care for every stage of
+                development.</p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Program Cards -->
+            <div
+                class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden group cursor-pointer hover:shadow-2xl transition">
+                <div class="h-48 bg-red-50 flex items-center justify-center text-6xl">👶</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Infants</h3>
+                    <p class="text-slate-500 mb-4">6 weeks - 12 months</p>
+                    <p class="text-sm text-slate-600">Building security, trust, and early sensory experiences.</p>
+                </div>
+            </div>
+
+            <div
+                class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden group cursor-pointer hover:shadow-2xl transition">
+                <div class="h-48 bg-orange-50 flex items-center justify-center text-6xl">🧸</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Toddlers</h3>
+                    <p class="text-slate-500 mb-4">12 - 24 months</p>
+                    <p class="text-sm text-slate-600">Active exploration, vocabulary building, and social play.</p>
+                </div>
+            </div>
+
+            <div
+                class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden group cursor-pointer hover:shadow-2xl transition">
+                <div class="h-48 bg-yellow-50 flex items-center justify-center text-6xl">🎨</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Preschool</h3>
+                    <p class="text-slate-500 mb-4">2 - 3 years</p>
+                    <p class="text-sm text-slate-600">Creative Curriculum® driven early academics and cooperation.</p>
+                </div>
+            </div>
+
+            <div
+                class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden group cursor-pointer hover:shadow-2xl transition">
+                <div class="h-48 bg-green-50 flex items-center justify-center text-6xl">🍑</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">GA Pre-K</h3>
+                    <p class="text-slate-500 mb-4">4 - 5 years</p>
+                    <p class="text-sm text-slate-600">State-funded lottery program preparing children for Kindergarten.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden group cursor-pointer hover:shadow-2xl transition">
+                <div class="h-48 bg-blue-50 flex items-center justify-center text-6xl">🚌</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">After School</h3>
+                    <p class="text-slate-500 mb-4">5 - 12 years</p>
+                    <p class="text-sm text-slate-600">Homework help, STEM activities, and relaxation after school.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-300 py-20 mt-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p>© 2025 KIDazzle Child Care Inc.</p>
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
