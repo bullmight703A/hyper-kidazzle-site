@@ -35,14 +35,10 @@
                         <i data-lucide="map-pin" class="text-slate-400 shrink-0 mt-1"></i>
                         <span>123 Beale Street (Placeholder),<br>Memphis, TN 38103</span>
                     </div>
-                    <div class="flex items-center gap-3 text-slate-600">
-                        <i data-lucide="phone" class="text-slate-400 shrink-0"></i>
-                        <span>(901) 555-0123</span>
-                    </div>
                 </div>
-                <a href="<?php echo site_url('/contact'); ?>"
+                <a href="<?php echo site_url('/memphis'); ?>"
                     class="block text-center bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition">
-                    Schedule Tour
+                    View Center Details
                 </a>
             </div>
         </article>
@@ -64,14 +60,18 @@
                         <i data-lucide="map-pin" class="text-slate-400 shrink-0 mt-1"></i>
                         <span>100 Alabama St SW,<br>Atlanta, GA 30303</span>
                     </div>
-                    <div class="flex items-center gap-3 text-slate-600">
-                        <i data-lucide="phone" class="text-slate-400 shrink-0"></i>
-                        <span>(877) 410-1002</span>
-                    </div>
                 </div>
-                <a href="<?php echo site_url('/contact'); ?>"
+                <!-- West End Link (New) -->
+                <div class="mb-4">
+                    <a href="<?php echo site_url('/west-end'); ?>"
+                        class="text-orange-600 font-bold hover:underline text-sm flex items-center gap-1">
+                        Looking for our West End location? <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <a href="<?php echo site_url('/atlanta'); ?>"
                     class="block text-center bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition">
-                    Schedule Tour
+                    View Center Details
                 </a>
             </div>
         </article>
@@ -93,14 +93,10 @@
                         <i data-lucide="map-pin" class="text-slate-400 shrink-0 mt-1"></i>
                         <span>456 Ocean Drive (Placeholder),<br>Miami, FL 33139</span>
                     </div>
-                    <div class="flex items-center gap-3 text-slate-600">
-                        <i data-lucide="phone" class="text-slate-400 shrink-0"></i>
-                        <span>(305) 555-0199</span>
-                    </div>
                 </div>
-                <a href="<?php echo site_url('/contact'); ?>"
+                <a href="<?php echo site_url('/doral'); ?>"
                     class="block text-center bg-cyan-500 text-white py-3 rounded-xl font-bold hover:bg-cyan-600 transition">
-                    Schedule Tour
+                    View Center Details
                 </a>
             </div>
         </article>
