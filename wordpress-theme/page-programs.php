@@ -48,12 +48,16 @@
                     Our infant program focuses on building secure attachments. Through gentle rocking, talking, and
                     sensory play, we lay the neural foundations for language and trust.
                 </p>
-                <ul class="space-y-2 text-slate-700">
+                <ul class="space-y-2 text-slate-700 mb-6">
                     <li class="flex items-center gap-2"><i data-lucide="check" class="text-cyan-500 w-4 h-4"></i>
                         Individualized schedules</li>
                     <li class="flex items-center gap-2"><i data-lucide="check" class="text-cyan-500 w-4 h-4"></i> Daily
                         reports & photos</li>
                 </ul>
+                <a href="<?php echo site_url('/infants'); ?>"
+                    class="text-indigo-600 font-bold hover:underline flex items-center gap-2">
+                    Learn about Infant Care <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
             </div>
         </div>
 
@@ -65,12 +69,16 @@
                     Curiosity takes center stage! We encourage exploration through music, art, and movement, helping
                     toddlers develop fine motor skills and social boundaries.
                 </p>
-                <ul class="space-y-2 text-slate-700">
+                <ul class="space-y-2 text-slate-700 mb-6">
                     <li class="flex items-center gap-2"><i data-lucide="check" class="text-red-500 w-4 h-4"></i> Potty
                         training support</li>
                     <li class="flex items-center gap-2"><i data-lucide="check" class="text-red-500 w-4 h-4"></i> Outdoor
                         play & discovery</li>
                 </ul>
+                <a href="<?php echo site_url('/toddlers'); ?>"
+                    class="text-indigo-600 font-bold hover:underline flex items-center gap-2">
+                    Explore Toddler Program <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
             </div>
             <div class="order-1 md:order-2 rounded-3xl overflow-hidden shadow-xl">
                 <img src="https://images.unsplash.com/photo-1551843073-4a9a5b6fcd5f" class="w-full h-full object-cover"
@@ -90,12 +98,16 @@
                     Getting ready for big school. This program introduces structured learning in reading, science, and
                     math, while nurturing creativity and emotional intelligence.
                 </p>
-                <ul class="space-y-2 text-slate-700">
+                <ul class="space-y-2 text-slate-700 mb-6">
                     <li class="flex items-center gap-2"><i data-lucide="check" class="text-yellow-500 w-4 h-4"></i> STEM
                         activities</li>
                     <li class="flex items-center gap-2"><i data-lucide="check" class="text-yellow-500 w-4 h-4"></i>
                         Collaborative projects</li>
                 </ul>
+                <a href="<?php echo site_url('/preschool'); ?>"
+                    class="text-indigo-600 font-bold hover:underline flex items-center gap-2">
+                    Preschool Details <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
             </div>
         </div>
 
