@@ -16,6 +16,14 @@
 </section>
 
 <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-10">
+            <a href="<?php echo site_url('/locations'); ?>"
+                class="inline-flex items-center text-indigo-600 font-bold hover:text-indigo-800 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Back to All Locations
+            </a>
+        </div>
+    </div>
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
 
         <!-- Location Info -->
