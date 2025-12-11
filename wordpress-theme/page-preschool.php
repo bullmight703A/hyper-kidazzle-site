@@ -20,6 +20,7 @@
 <section class="py-24 bg-white">
     <div class="max-w-6xl mx-auto px-6">
 
+        <!-- INTRO -->
         <div class="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div>
                 <h2 class="text-3xl font-bold mb-6 text-slate-900">Ready for Launch</h2>
@@ -45,7 +46,8 @@
             </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <!-- HIGHLIGHTS -->
+        <div class="grid md:grid-cols-3 gap-8 mb-24">
             <div
                 class="bg-white border-2 border-slate-100 p-8 rounded-3xl text-center hover:border-green-400 transition cursor-default group">
                 <i data-lucide="book"
@@ -70,6 +72,107 @@
                 <p class="text-slate-500 text-sm">Learning to share, listen, and lead within a respectful group.</p>
             </div>
         </div>
+
+        <!-- SAMPLE MENU & TESTIMONIALS -->
+        <div class="grid md:grid-cols-2 gap-12 items-start mb-24">
+            <!-- MENU -->
+            <div class="bg-white border border-slate-100 p-8 rounded-3xl shadow-lg relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 bg-green-100 text-green-700 px-4 py-1 rounded-bl-xl text-xs font-bold">
+                    POWER LUNCH</div>
+                <h3 class="text-2xl font-bold mb-6 text-slate-800">Fuel for Brain Power</h3>
+                <p class="text-slate-500 mb-6 text-sm">Nutritious meals that sustain energy for an afternoon of
+                    learning.</p>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-50 pb-2">
+                        <span class="font-bold text-slate-700">Main</span>
+                        <span class="text-slate-500 text-sm">Chicken & Veggie Stir-Fry</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-50 pb-2">
+                        <span class="font-bold text-slate-700">Rice</span>
+                        <span class="text-slate-500 text-sm">Brown Rice</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-50 pb-2">
+                        <span class="font-bold text-slate-700">Side</span>
+                        <span class="text-slate-500 text-sm">Mandarin Oranges</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-50 pb-2">
+                        <span class="font-bold text-slate-700">Drink</span>
+                        <span class="text-slate-500 text-sm">1% Milk</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTIMONIAL -->
+            <div class="bg-indigo-900 text-white p-8 rounded-3xl shadow-lg flex flex-col justify-center h-full">
+                <div class="mb-6 text-green-400">
+                    <i data-lucide="quote" class="w-10 h-10 fill-current"></i>
+                </div>
+                <p class="text-lg italic mb-6 leading-relaxed opacity-90">
+                    "My daughter started Kindergarten significantly ahead of her peers. The Pre-K program at KIDazzle is
+                    top notch education."
+                </p>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center font-bold text-white">
+                        KL</div>
+                    <div>
+                        <div class="font-bold">Karen Lewis</div>
+                        <div class="text-indigo-300 text-xs">Pre-K Graduate Parent</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ ACCORDION -->
+        <div class="max-w-3xl mx-auto mb-24">
+            <h2 class="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details
+                    class="group bg-slate-50 p-6 rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer"
+                    open>
+                    <summary class="flex items-center justify-between font-bold text-slate-800">
+                        Is there a graduation ceremony?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        Yes! We host a full cap-and-gown graduation ceremony every spring to celebrate this major
+                        milestone before they head off to "big school."
+                    </p>
+                </details>
+
+                <details
+                    class="group bg-slate-50 p-6 rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                    <summary class="flex items-center justify-between font-bold text-slate-800">
+                        Do you teach reading?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        We teach pre-reading skills including letter recognition, phonics (sounds), and concepts of
+                        print (reading left to right). Many of our children leave reading simple words!
+                    </p>
+                </details>
+
+                <details
+                    class="group bg-slate-50 p-6 rounded-2xl [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                    <summary class="flex items-center justify-between font-bold text-slate-800">
+                        Is it all work and no play?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        Never! At this age, play IS work. We use play-based learning so children are exploring math and
+                        science concepts through building blocks, water tables, and dramatic play.
+                    </p>
+                </details>
+            </div>
+        </div>
+
 
         <div class="bg-slate-900 text-white rounded-3xl p-12 text-center">
             <h2 class="text-3xl font-bold mb-4">Invest in their Future</h2>
