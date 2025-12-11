@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <!-- HERO SECTION -->
-<section class="relative h-[700px] flex items-center">
+<section class="relative h-[700px] flex items-center mt-20">
     <!-- Background -->
     <img src="https://images.unsplash.com/photo-1560785496-0c9018085c8f"
         class="absolute inset-0 w-full h-full object-cover" alt="Kids laughing">
@@ -32,11 +32,11 @@
 
         <div class="flex space-x-4">
             <a href="<?php echo site_url('/locations'); ?>"
-                class="px-8 py-4 rounded-2xl bg-yellow-400 text-black font-bold hover:bg-yellow-500 shadow-xl">
+                class="px-8 py-4 rounded-2xl bg-yellow-400 text-black font-bold hover:bg-yellow-500 shadow-xl inline-block">
                 Find Your Center
             </a>
             <a href="<?php echo site_url('/about'); ?>"
-                class="px-8 py-4 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold hover:border-indigo-400">
+                class="px-8 py-4 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold hover:border-indigo-400 inline-block">
                 Our Legacy
             </a>
         </div>
@@ -50,7 +50,7 @@
 
         <div class="grid md:grid-cols-3 gap-10">
             <!-- Memphis -->
-            <a href="<?php echo site_url('/locations#memphis'); ?>"
+            <a href="<?php echo site_url('/locations'); ?>"
                 class="relative h-96 rounded-[2.5rem] overflow-hidden shadow-lg cursor-pointer group block">
                 <img src="https://images.unsplash.com/photo-1596425123982-cb2cb2aa993a"
                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition" alt="Memphis">
@@ -61,7 +61,7 @@
             </a>
 
             <!-- Atlanta -->
-            <a href="<?php echo site_url('/locations#atlanta'); ?>"
+            <a href="<?php echo site_url('/locations'); ?>"
                 class="relative h-[28rem] rounded-[2.5rem] overflow-hidden shadow-xl border-white border-4 cursor-pointer group block -mt-4">
                 <img src="https://images.unsplash.com/photo-1575968770275-d831502049d4"
                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition" alt="Atlanta">
@@ -72,7 +72,7 @@
             </a>
 
             <!-- Doral -->
-            <a href="<?php echo site_url('/locations#doral'); ?>"
+            <a href="<?php echo site_url('/locations'); ?>"
                 class="relative h-96 rounded-[2.5rem] overflow-hidden shadow-lg cursor-pointer group block">
                 <img src="https://images.unsplash.com/photo-1535498730771-e735b998cd64"
                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition"
@@ -93,7 +93,7 @@
 
         <div class="grid md:grid-cols-4 gap-10">
             <!-- Chef Prepared -->
-            <a href="<?php echo site_url('/about#meals'); ?>"
+            <a href="<?php echo site_url('/about'); ?>"
                 class="p-8 rounded-[2rem] border-2 border-orange-100 hover:border-orange-400 transition cursor-pointer shadow-sm block text-center">
                 <div
                     class="w-14 h-14 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mb-6 mx-auto">
@@ -103,7 +103,7 @@
             </a>
 
             <!-- Curriculum -->
-            <a href="<?php echo site_url('/programs#curriculum'); ?>"
+            <a href="<?php echo site_url('/programs'); ?>"
                 class="p-8 rounded-[2rem] border-2 border-cyan-100 hover:border-cyan-400 transition cursor-pointer shadow-sm block text-center">
                 <div
                     class="w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-6 mx-auto">
@@ -113,7 +113,7 @@
             </a>
 
             <!-- Safety -->
-            <a href="<?php echo site_url('/about#safety'); ?>"
+            <a href="<?php echo site_url('/about'); ?>"
                 class="p-8 rounded-[2rem] border-2 border-green-100 hover:border-green-400 transition cursor-pointer shadow-sm block text-center">
                 <div
                     class="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center mb-6 mx-auto">
@@ -123,7 +123,7 @@
             </a>
 
             <!-- Staff -->
-            <a href="<?php echo site_url('/about#staff'); ?>"
+            <a href="<?php echo site_url('/about'); ?>"
                 class="p-8 rounded-[2rem] border-2 border-red-100 hover:border-red-400 transition cursor-pointer shadow-sm block text-center">
                 <div class="w-14 h-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-6 mx-auto">
                     <i data-lucide="heart-handshake" class="w-7 h-7"></i>
@@ -166,11 +166,11 @@
 
         <div class="flex space-x-4 mt-6 md:mt-0">
             <a href="<?php echo site_url('/locations'); ?>"
-                class="bg-white text-purple-700 font-bold px-8 py-3 rounded-xl hover:bg-purple-50 transition">
+                class="bg-white text-purple-700 font-bold px-8 py-3 rounded-xl hover:bg-purple-50 transition inline-block">
                 Book a Tour
             </a>
             <a href="<?php echo site_url('/contact'); ?>"
-                class="border-2 border-white px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition">
+                class="border-2 border-white px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition inline-block">
                 Apply Now
             </a>
         </div>
