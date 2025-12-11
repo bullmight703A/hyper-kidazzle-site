@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | KIDazzle Child Care</title>
+    <title>Home 8|8 KIDazzle Child Care</title>
     <meta name="description" content="KIDazzle Child Care: 31 years of elite, independent early education in Atlanta, Memphis, and Doral.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
