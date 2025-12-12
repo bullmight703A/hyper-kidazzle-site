@@ -1,50 +1,46 @@
 <!-- FOOTER -->
-<footer class="bg-slate-900 text-slate-300 py-20 mt-20">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+<footer class="bg-slate-900 text-slate-300 py-16 relative mt-12 text-center md:text-left">
+    <div
+        class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow-lg border border-slate-100">
+        <!-- Using custom logo if possible, but hardcoded img in snippet -->
+        <span class="font-bold text-2xl text-slate-900 block px-2">K</span>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8 pt-10">
         <div>
-            <div
-                class="h-10 w-10 bg-yellow-400 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
-                K</div>
-            <p class="text-slate-400 text-sm">
+            <div class="bg-white p-1 rounded inline-block mb-4">
+                <span class="font-bold text-slate-900 text-xl px-2">KIDazzle</span>
+            </div>
+            <p class="text-sm">
                 Providing elite, independent child care for 31 years.
             </p>
         </div>
-
         <div>
-            <h4 class="text-white font-bold mb-4">Quick Links</h4>
+            <h3 class="text-white font-bold mb-4">Quick Links</h3>
             <ul class="space-y-2 text-sm">
-                <li><a href="<?php echo site_url('/programs'); ?>" class="hover:text-red-400">Programs</a></li>
-                <li><a href="<?php echo site_url('/locations'); ?>" class="hover:text-green-400">Locations</a></li>
-                <li><a href="<?php echo site_url('/about'); ?>" class="hover:text-cyan-400">About Us</a></li>
-                <li><a href="<?php echo site_url('/contact'); ?>" class="hover:text-indigo-400">Contact</a></li>
+                <li><a href="<?php echo site_url('/programs'); ?>" class="hover:text-white">Programs</a></li>
+                <li><a href="<?php echo site_url('/locations'); ?>" class="hover:text-white">Locations</a></li>
+                <li><a href="<?php echo site_url('/careers'); ?>" class="hover:text-white">Careers</a></li>
             </ul>
         </div>
-
         <div>
-            <h4 class="text-white font-bold mb-4">Resources</h4>
+            <h3 class="text-white font-bold mb-4">Resources</h3>
             <ul class="space-y-2 text-sm">
-                <li><a href="<?php echo site_url('/resources'); ?>" class="hover:text-purple-400">Teacher Portal</a>
-                </li>
-                <li><a href="<?php echo site_url('/resources'); ?>" class="hover:text-purple-300">Blog</a></li>
+                <li><a href="<?php echo site_url('/teacher-portal'); ?>" class="hover:text-orange-400">Teacher
+                        Portal</a></li>
+                <li><a href="<?php echo site_url('/resources'); ?>" class="hover:text-purple-400">Blog</a></li>
             </ul>
         </div>
-
         <div>
-            <h4 class="text-white font-bold mb-4">Contact</h4>
-            <ul class="space-y-2 text-sm">
-                <li class="flex items-start gap-2">
-                    <i data-lucide="map-pin" class="text-slate-500"></i>
-                    100 Alabama St SW, Atlanta
-                </li>
-                <li class="flex items-center gap-2">
-                    <i data-lucide="phone" class="text-slate-500"></i>
-                    <span class="font-bold text-white">877-410-1002</span>
-                </li>
-            </ul>
+            <h3 class="text-white font-bold mb-4">Contact</h3>
+            <p class="text-sm">
+                100 Alabama St SW, Atlanta, GA<br>
+                <span class="text-white font-bold">877-410-1002</span>
+            </p>
         </div>
     </div>
-
-    <p class="text-center text-xs text-slate-500 mt-8">© <?php echo date('Y'); ?> KIDazzle Child Care Inc.</p>
+    <div class="border-t border-slate-800 mt-12 pt-8 text-center text-xs text-slate-500">
+        <span>© <?php echo date('Y'); ?> KIDazzle Child Care Inc. All Rights Reserved.</span>
+    </div>
 </footer>
 
 <?php wp_footer(); ?>

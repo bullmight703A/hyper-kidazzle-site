@@ -26,7 +26,8 @@
             <div class="p-8 bg-slate-50 rounded-3xl text-center hover:shadow-lg transition">
                 <div
                     class="w-14 h-14 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i data-lucide="graduation-cap" class="w-7 h-7"></i></div>
+                    <i data-lucide="graduation-cap" class="w-7 h-7"></i>
+                </div>
                 <h3 class="text-xl font-bold mb-4">Professional Growth</h3>
                 <p class="text-slate-600">Paid training, CDA sponsorship, and clear pathways to leadership roles.</p>
             </div>
@@ -34,7 +35,8 @@
             <div class="p-8 bg-slate-50 rounded-3xl text-center hover:shadow-lg transition">
                 <div
                     class="w-14 h-14 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i data-lucide="heart" class="w-7 h-7"></i></div>
+                    <i data-lucide="heart" class="w-7 h-7"></i>
+                </div>
                 <h3 class="text-xl font-bold mb-4">Competitive Benefits</h3>
                 <p class="text-slate-600">Health insurance, paid time off, and discounted child care for staff.</p>
             </div>
@@ -42,7 +44,8 @@
             <div class="p-8 bg-slate-50 rounded-3xl text-center hover:shadow-lg transition">
                 <div
                     class="w-14 h-14 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i data-lucide="smile" class="w-7 h-7"></i></div>
+                    <i data-lucide="smile" class="w-7 h-7"></i>
+                </div>
                 <h3 class="text-xl font-bold mb-4">Supportive Culture</h3>
                 <p class="text-slate-600">We are a family-owned business that values every team member's voice.</p>
             </div>
@@ -93,6 +96,18 @@
                     Application</button>
             </form>
         </div>
+    </div>
+</section>
+
+<!-- MAIN CONTENT (Editable in WordPress) -->
+<section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <?php
+        while (have_posts()):
+            the_post();
+            the_content();
+        endwhile;
+        ?>
     </div>
 </section>
 

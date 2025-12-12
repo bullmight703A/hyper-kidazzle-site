@@ -87,3 +87,56 @@ if (!function_exists('wp_footer')) {
     {
     }
 }
+
+// Added for loop compatibility
+if (!function_exists('have_posts')) {
+    function have_posts()
+    {
+        return false;
+    }
+}
+
+if (!function_exists('the_post')) {
+    function the_post()
+    {
+    }
+}
+
+if (!function_exists('the_content')) {
+    function the_content($more_link_text = null, $strip_teaser = false)
+    {
+    }
+}
+
+// Added for functions.php
+if (!function_exists('add_action')) {
+
+    function add_action($hook_name, $callback, $priority = 10, $accepted_args = 1)
+    {
+    }
+}
+
+if (!function_exists('wp_enqueue_style')) {
+    function wp_enqueue_style($handle, $src = '', $deps = array(), $ver = false, $media = 'all')
+    {
+    }
+}
+
+if (!function_exists('wp_enqueue_script')) {
+    function wp_enqueue_script($handle, $src = '', $deps = array(), $ver = false, $in_footer = false)
+    {
+    }
+}
+
+if (!function_exists('get_stylesheet_uri')) {
+    function get_stylesheet_uri()
+    {
+        return '';
+    }
+}
+
+if (!function_exists('add_theme_support')) {
+    function add_theme_support($feature, ...$args)
+    {
+    }
+}

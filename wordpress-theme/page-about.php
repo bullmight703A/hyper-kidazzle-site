@@ -15,6 +15,7 @@
     </div>
 </section>
 
+<!-- MAIN CONTENT (Editable in WordPress) -->
 <!-- QUALITY PILLARS -->
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
@@ -58,8 +59,7 @@
                     secure entry systems, 24/7 monitoring, and rigorous staff vetting processes including FBI background
                     checks.
                 </p>
-                <a href="<?php echo site_url('/contact'); ?>"
-                    class="text-indigo-600 font-bold hover:text-indigo-800 flex items-center gap-2">
+                <a href="/contact" class="text-indigo-600 font-bold hover:text-indigo-800 flex items-center gap-2">
                     Schedule a tour to see for yourself <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
             </div>
@@ -110,6 +110,18 @@
                 </p>
             </div>
         </div>
+    </div>
+</section>
+
+<section class="py-20">
+    <!-- This allows you to edit the text below the Hero in the WordPress Admin -->
+    <div class="max-w-7xl mx-auto px-6">
+        <?php
+        while (have_posts()):
+            the_post();
+            the_content();
+        endwhile;
+        ?>
     </div>
 </section>
 
