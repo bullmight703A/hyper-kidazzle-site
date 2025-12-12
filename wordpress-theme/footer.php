@@ -2,20 +2,15 @@
 <footer class="bg-slate-900 text-slate-300 py-16 relative mt-12 text-center md:text-left">
     <div
         class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow-lg border border-slate-100">
-        <!-- Using custom logo if possible, but hardcoded img in snippet -->
-        <span class="font-bold text-2xl text-slate-900 block px-2">K</span>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8 pt-10">
-        <div>
-            <div class="bg-white p-1 rounded inline-block mb-4">
-                <span class="font-bold text-slate-900 text-xl px-2">KIDazzle</span>
-            </div>
-            <p class="text-sm">
-                Providing elite, independent child care for 31 years.
-            </p>
+        <img src="<?php echo site_url('/kidazzle logo.jpg'); ?>" class="h-10 w-auto"
+            onError="this.style.display='none'"></div>
+    <div class="container mx-auto px-4 grid md:grid-cols-4 gap-8 pt-10">
+        <div><img src="<?php echo site_url('/kidazzle logo.jpg'); ?>"
+                class="h-10 mb-4 mx-auto md:mx-0 bg-white p-1 rounded" onError="this.style.display='none'">
+            <p class="text-sm">Providing elite, independent child care for 31 years.</p>
         </div>
         <div>
-            <h3 class="text-white font-bold mb-4">Quick Links</h3>
+            <h4 class="text-white font-bold mb-4">Quick Links</h4>
             <ul class="space-y-2 text-sm">
                 <li><a href="<?php echo site_url('/programs'); ?>" class="hover:text-white">Programs</a></li>
                 <li><a href="<?php echo site_url('/locations'); ?>" class="hover:text-white">Locations</a></li>
@@ -23,7 +18,7 @@
             </ul>
         </div>
         <div>
-            <h3 class="text-white font-bold mb-4">Resources</h3>
+            <h4 class="text-white font-bold mb-4">Resources</h4>
             <ul class="space-y-2 text-sm">
                 <li><a href="<?php echo site_url('/teacher-portal'); ?>" class="hover:text-orange-400">Teacher
                         Portal</a></li>
@@ -31,16 +26,13 @@
             </ul>
         </div>
         <div>
-            <h3 class="text-white font-bold mb-4">Contact</h3>
-            <p class="text-sm">
-                100 Alabama St SW, Atlanta, GA<br>
-                <span class="text-white font-bold">877-410-1002</span>
+            <h4 class="text-white font-bold mb-4">Contact</h4>
+            <p class="text-sm">100 Alabama St SW, Atlanta, GA<br><span class="text-white font-bold">877-410-1002</span>
             </p>
         </div>
     </div>
-    <div class="border-t border-slate-800 mt-12 pt-8 text-center text-xs text-slate-500">
-        <span>© <?php echo date('Y'); ?> KIDazzle Child Care Inc. All Rights Reserved.</span>
-    </div>
+    <div class="border-t border-slate-800 mt-12 pt-8 text-center text-xs text-slate-500"><span>©
+            <?php echo date('Y'); ?> KIDazzle Child Care Inc. All Rights Reserved.</span></div>
 </footer>
 
 <?php wp_footer(); ?>
