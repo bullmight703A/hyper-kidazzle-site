@@ -50,7 +50,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class("font-sans text-slate-800 bg-white"); ?>>
+<body <?php body_class("font-sans text-slate-800 bg-white selection:bg-yellow-200"); ?>>
 
     <!-- TOP UTILITY BAR -->
     <div
