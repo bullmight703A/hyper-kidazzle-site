@@ -23,6 +23,7 @@ RewriteRule . /index.php [L]
     ExpiresByType image/x-icon "access plus 1 year"
 </IfModule>
 
+
 # Gzip Compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
@@ -34,4 +35,12 @@ RewriteRule . /index.php [L]
     AddOutputFilterByType DEFLATE application/rss+xml
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Increase Upload Limits for Theme Installation
+<IfModule mod_php.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value max_execution_time 300
+    php_value max_input_time 300
 </IfModule>
