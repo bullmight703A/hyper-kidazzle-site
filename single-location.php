@@ -13,16 +13,16 @@ if (!defined('ABSPATH')) {
 
 get_header();
 
-// Get custom fields (assuming updated prefixes or generic names)
-$address = get_field('kidazzle_location_address') ?: '674 Joseph E Lowery Blvd, Atlanta, GA 30310';
-$phone = get_field('kidazzle_location_phone') ?: '(404) 753-8884';
-$email = get_field('kidazzle_location_email') ?: 'westend@kidazzle.com';
-$calendar_embed = get_field('kidazzle_location_calendar');
+// Get custom fields using native WordPress functions (no ACF dependency)
+$address = get_post_meta(get_the_ID(), 'address', true) ?: '674 Joseph E Lowery Blvd, Atlanta, GA 30310';
+$phone = get_post_meta(get_the_ID(), 'phone', true) ?: '(404) 753-8884';
+$email = get_post_meta(get_the_ID(), 'email', true) ?: 'westend@kidazzle.com';
+$calendar_embed = get_post_meta(get_the_ID(), 'calendar_embed', true);
 if (empty($calendar_embed)) {
 	// Default fallback from HTML source
 	$calendar_embed = '<iframe src="https://api.leadconnectorhq.com/widget/booking/QGN3ewkDzTOKKsOH93q6" style="width: 100%; height: 100%; border:none; overflow: hidden;" id="msgsndr-calendar"></iframe>';
 }
-$map_embed = get_field('kidazzle_location_map');
+$map_embed = get_post_meta(get_the_ID(), 'map_embed', true);
 ?>
 
 <!-- HERO SECTION -->
@@ -38,7 +38,7 @@ $map_embed = get_field('kidazzle_location_map');
 	</div>
 	<div class="container mx-auto px-4 text-center relative z-10">
 		<?php
-		$city = get_field('kidazzle_location_city') ?: 'Atlanta, GA';
+		$city = get_post_meta(get_the_ID(), 'city', true) ?: 'Atlanta, GA';
 		?>
 		<span
 			class="bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide mb-6 inline-block backdrop-blur-sm border border-white/10"><?php echo esc_html($city); ?></span>

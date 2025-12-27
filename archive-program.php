@@ -86,7 +86,7 @@ $colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'purple'];
 			while (have_posts()):
 				the_post();
 				$color = $colors[$i % count($colors)];
-				$age_range = get_field('kidazzle_program_age_range') ?: __('All Ages', 'kidazzle');
+				$age_range = get_post_meta(get_the_ID(), 'age_range', true) ?: __('All Ages', 'kidazzle');
 				$i++;
 				?>
 				<a href="<?php the_permalink(); ?>"

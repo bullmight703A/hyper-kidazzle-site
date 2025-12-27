@@ -34,8 +34,8 @@ get_header();
 		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 			<?php while (have_posts()):
 				the_post();
-				$city = get_field('kidazzle_location_city') ?: 'Location';
-				$address = get_field('kidazzle_location_address') ?: __('Address available on contact', 'kidazzle');
+				$city = get_post_meta(get_the_ID(), 'city', true) ?: 'Location';
+				$address = get_post_meta(get_the_ID(), 'address', true) ?: __('Address available on contact', 'kidazzle');
 				?>
 				<div
 					class="border border-slate-200 rounded-[2rem] overflow-hidden hover:shadow-2xl transition bg-white group flex flex-col">

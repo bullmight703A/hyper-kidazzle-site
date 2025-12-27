@@ -30,7 +30,10 @@ while (have_posts()):
 		<div class="relative z-10 container mx-auto px-4 text-white">
 			<span
 				class="bg-white/20 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 inline-block backdrop-blur-sm border border-white/10">
-				<?php echo esc_html(get_field('kidazzle_program_age_range') ?: __('Our Program', 'kidazzle')); ?>
+				<?php 
+				$age_range = get_post_meta(get_the_ID(), 'age_range', true);
+				echo esc_html($age_range ?: __('Our Program', 'kidazzle')); 
+				?>
 			</span>
 			<h1 class="text-4xl md:text-6xl font-extrabold mb-6"><?php the_title(); ?></h1>
 		</div>

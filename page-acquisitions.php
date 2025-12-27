@@ -69,7 +69,7 @@ get_header();
             <h3 class="text-2xl font-bold text-slate-900 mb-6"><?php esc_html_e('Confidential Inquiry', 'kidazzle'); ?>
             </h3>
             <?php
-            $form_shortcode = get_field('kidazzle_acquisitions_form_shortcode');
+            $form_shortcode = get_post_meta(get_the_ID(), 'form_shortcode', true);
             if ($form_shortcode) {
                 echo do_shortcode($form_shortcode);
             } else {
