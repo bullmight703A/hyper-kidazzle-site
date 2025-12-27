@@ -1,7 +1,7 @@
 <?php
 /**
  * Front Page Template (Homepage)
- * Uses hardcoded helpers for modular sections (ACF optional)
+ * New KIDazzle homepage design
  *
  * @package kidazzle
  * @since 1.0.0
@@ -11,48 +11,21 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-<?php get_template_part( 'template-parts/home/hero' ); ?>
+<?php get_template_part('template-parts/home/hero'); ?>
 
-<!-- Prismpath Expertise Section (Bento Grid) -->
-<?php get_template_part( 'template-parts/home/teaching-methodology' ); ?>
+<!-- Southeast Powerhouse - Regional Locations -->
+<?php get_template_part('template-parts/home/southeast-powerhouse'); ?>
 
-<!-- Stats Strip -->
-<?php if ( kidazzle_home_has_stats() ) : ?>
-        <?php get_template_part( 'template-parts/home/stats-strip' ); ?>
-<?php endif; ?>
+<!-- Legacy & Origin Story -->
+<?php get_template_part('template-parts/home/legacy-origin'); ?>
 
-<!-- Programs Wizard -->
-<?php if ( kidazzle_home_has_program_wizard() ) : ?>
-<?php get_template_part( 'template-parts/home/programs-wizard' ); ?>
-<?php endif; ?>
+<!-- KIDazzle Difference - 4 Pillars -->
+<?php get_template_part('template-parts/home/kidazzle-difference'); ?>
 
-<!-- Curriculum Radar -->
-<?php if ( kidazzle_home_has_curriculum_profiles() ) : ?>
-<?php get_template_part( 'template-parts/home/curriculum-chart' ); ?>
-<?php endif; ?>
+<!-- Growth Journey Graph -->
+<?php get_template_part('template-parts/home/growth-journey'); ?>
 
-<!-- Schedule Tabs -->
-<?php if ( kidazzle_home_has_schedule_tracks() ) : ?>
-<?php get_template_part( 'template-parts/home/schedule-tabs' ); ?>
-<?php endif; ?>
-
-<!-- Parent Reviews Carousel -->
-<?php if ( kidazzle_home_has_parent_reviews() ) : ?>
-<?php get_template_part( 'template-parts/home/parent-reviews' ); ?>
-<?php endif; ?>
-
-<!-- Locations Preview -->
-<?php get_template_part( 'template-parts/home/locations-preview' ); ?>
-
-<!-- Tour CTA -->
-<?php get_template_part( 'template-parts/home/tour-cta' ); ?>
-
-<!-- FAQ Section -->
-<?php if ( kidazzle_home_has_faq() ) : ?>
-	<?php get_template_part( 'template-parts/home/faq' ); ?>
-<?php endif; ?>
+<!-- Contact CTA with Lead Connector Form -->
+<?php get_template_part('template-parts/home/contact-cta'); ?>
 
 <?php get_footer(); ?>
-
-
-
