@@ -58,6 +58,15 @@ function kidazzle_get_location_fields($post_id = null)
         'email' => kidazzle_get_meta_value($post_id, 'location_email', ''),
         'latitude' => kidazzle_get_meta_value($post_id, 'location_latitude', ''),
         'longitude' => kidazzle_get_meta_value($post_id, 'location_longitude', ''),
+        'hours' => kidazzle_get_meta_value($post_id, 'location_hours', ''),
+        'maps_embed' => kidazzle_get_meta_value($post_id, 'location_maps_embed', ''),
+        'tour_link' => kidazzle_get_meta_value($post_id, 'location_tour_booking_link', ''),
+        'virtual_tour' => kidazzle_get_meta_value($post_id, 'location_virtual_tour_embed', ''),
+        'gmb_url' => kidazzle_get_meta_value($post_id, 'location_gmb_url', ''),
+        'director_name' => kidazzle_get_meta_value($post_id, 'location_director_name', ''),
+        'director_bio' => kidazzle_get_meta_value($post_id, 'location_director_bio', ''),
+        'director_photo' => kidazzle_get_meta_value($post_id, 'location_director_photo', ''),
+        'tagline' => kidazzle_get_meta_value($post_id, 'location_tagline', ''),
     );
 }
 
@@ -98,11 +107,26 @@ function kidazzle_get_program_fields($post_id = null)
         }
     }
 
+    // Get Color Scheme
+    $scheme = kidazzle_get_meta_value($post_id, 'program_color_scheme', 'teal');
+    
+    // Map short codes to full KIDazzle classes
+    $color_map = array(
+        'red'      => 'KIDazzle-red',
+        'blue'     => 'KIDazzle-blue',
+        'yellow'   => 'KIDazzle-yellow',
+        'green'    => 'KIDazzle-green',
+        'blueDark' => 'KIDazzle-blueDark',
+        'teal'     => 'KIDazzle-teal',
+    );
+    
+    $color_class = $color_map[$scheme] ?? 'KIDazzle-teal';
+
     return array(
         'age_range' => kidazzle_get_meta_value($post_id, 'program_age_range', ''),
-        'excerpt' => kidazzle_get_meta_value($post_id, 'program_short_description', ''),
-        'icon' => $icon,
-        'color' => kidazzle_get_meta_value($post_id, 'program_color', 'KIDazzle-teal'),
+        'excerpt'   => kidazzle_get_meta_value($post_id, 'program_short_description', ''),
+        'icon'      => $icon,
+        'color'     => $color_class,
     );
 }
 
@@ -303,6 +327,12 @@ function kidazzle_program_color_classes($color_key)
             'gradient_to' => 'to-KIDazzle-green/5',
             'text' => 'text-KIDazzle-green',
             'button' => 'bg-KIDazzle-green',
+        ),
+        'KIDazzle-blueDark' => array(
+            'gradient_from' => 'from-KIDazzle-blueDark/10',
+            'gradient_to' => 'to-KIDazzle-blueDark/5',
+            'text' => 'text-KIDazzle-blueDark',
+            'button' => 'bg-KIDazzle-blueDark',
         ),
     );
 

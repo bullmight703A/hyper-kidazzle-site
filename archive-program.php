@@ -82,41 +82,47 @@ $colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'purple'];
 	<?php if (have_posts()): ?>
 		<section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 			<?php
-			$i = 0;
 			while (have_posts()):
 				the_post();
-				$color = $colors[$i % count($colors)];
-				$age_range = get_post_meta(get_the_ID(), 'age_range', true) ?: __('All Ages', 'kidazzle');
-				$i++;
+				// Get Data using helper
+				$fields = kidazzle_get_program_fields();
+				$color_key = $fields['color']; // e.g., KIDazzle-red
+				$age_range = $fields['age_range'] ?: __('All Ages', 'kidazzle');
+				
+				// Map to specific opacities/variants we defined
+				$bg_light = 'bg-' . $color_key . '/5';
+				$bg_overlay = 'bg-' . $color_key . '/10';
+				$pill_bg = 'bg-' . $color_key . '/10';
+				$text_main = 'text-' . $color_key;
 				?>
 				<a href="<?php the_permalink(); ?>"
 					class="group bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
-					<div class="h-48 bg-<?php echo esc_attr($color); ?>-50 relative overflow-hidden">
+					<div class="h-48 <?php echo esc_attr($bg_light); ?> relative overflow-hidden">
 						<?php if (has_post_thumbnail()): ?>
 							<img src="<?php the_post_thumbnail_url('large'); ?>"
 								class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110"
 								alt="<?php the_title_attribute(); ?>">
 						<?php else: ?>
 							<!-- Fallback placeholder -->
-							<div class="absolute inset-0 flex items-center justify-center text-<?php echo esc_attr($color); ?>-200">
+							<div class="absolute inset-0 flex items-center justify-center <?php echo esc_attr($text_main); ?> opacity-30">
 								<i data-lucide="image" class="w-16 h-16"></i>
 							</div>
 						<?php endif; ?>
 						<div
-							class="absolute inset-0 bg-<?php echo esc_attr($color); ?>-900/10 group-hover:bg-transparent transition">
+							class="absolute inset-0 <?php echo esc_attr($bg_overlay); ?> group-hover:bg-transparent transition">
 						</div>
 					</div>
 					<div class="p-8 flex flex-col flex-grow">
 						<div class="flex items-center justify-between mb-2">
 							<h3 class="text-2xl font-bold text-slate-900"><?php the_title(); ?></h3>
 							<span
-								class="bg-<?php echo esc_attr($color); ?>-100 text-<?php echo esc_attr($color); ?>-600 px-3 py-1 rounded-full text-xs font-bold"><?php echo esc_html($age_range); ?></span>
+								class="<?php echo esc_attr($pill_bg . ' ' . $text_main); ?> px-3 py-1 rounded-full text-xs font-bold"><?php echo esc_html($age_range); ?></span>
 						</div>
 						<div class="text-slate-500 text-sm mb-6 flex-grow line-clamp-3">
 							<?php the_excerpt(); ?>
 						</div>
 						<span
-							class="text-<?php echo esc_attr($color); ?>-500 font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+							class="<?php echo esc_attr($text_main); ?> font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
 							<?php esc_html_e('View Details', 'kidazzle'); ?>
 							<i data-lucide="arrow-right" class="w-4 h-4"></i>
 						</span>

@@ -56,6 +56,7 @@ require_once KIDAZZLE_THEME_DIR . '/inc/careers-page-meta.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/employers-page-meta.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/privacy-page-meta.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/schema-meta-boxes.php';
+require_once KIDAZZLE_THEME_DIR . '/inc/page-form-meta.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/general-seo-meta.php';
 
 

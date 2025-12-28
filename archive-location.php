@@ -34,8 +34,14 @@ get_header();
 		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 			<?php while (have_posts()):
 				the_post();
-				$city = get_post_meta(get_the_ID(), 'city', true) ?: 'Location';
-				$address = get_post_meta(get_the_ID(), 'address', true) ?: __('Address available on contact', 'kidazzle');
+				$fields = kidazzle_get_location_fields();
+				$city = $fields['city'] ?: 'Location';
+				$address_line = $fields['address'];
+				$full_address = $address_line ? $address_line . ', ' . $city . ', ' . $fields['state'] : __('Address available on contact', 'kidazzle');
+				
+				// Programs/Badges
+				$programs_raw = get_post_meta(get_the_ID(), 'location_special_programs', true);
+				$programs = $programs_raw ? array_map('trim', explode(',', $programs_raw)) : [];
 				?>
 				<div
 					class="border border-slate-200 rounded-[2rem] overflow-hidden hover:shadow-2xl transition bg-white group flex flex-col">
@@ -59,20 +65,20 @@ get_header();
 						<h3 class="text-2xl font-bold text-slate-900 mb-2"><a href="<?php the_permalink(); ?>"
 								class="hover:text-green-600 transition"><?php the_title(); ?></a></h3>
 						<p class="text-slate-500 mb-4 text-sm flex items-start gap-2">
-							<i data-lucide="map-pin" class="w-4 h-4 mt-1 text-red-400"></i> <?php echo esc_html($address); ?>
+							<i data-lucide="map-pin" class="w-4 h-4 mt-1 text-red-400 shrink-0"></i> 
+							<span><?php echo esc_html($full_address); ?></span>
 						</p>
 						<div class="text-slate-600 mb-6 flex-grow text-sm leading-relaxed">
 							<?php the_excerpt(); ?>
 						</div>
 
-						<?php
-						// Tags as badges
-						$tags = get_the_tags();
-						if ($tags): ?>
+						<?php if (!empty($programs)): ?>
 							<div class="flex flex-wrap gap-2 mb-8">
-								<?php foreach (array_slice($tags, 0, 2) as $tag): ?>
-									<span
-										class="bg-green-50 text-green-700 text-xs px-3 py-1 rounded-full font-bold uppercase"><?php echo esc_html($tag->name); ?></span>
+								<?php foreach (array_slice($programs, 0, 3) as $program): ?>
+									<?php if ($program): ?>
+										<span
+											class="bg-green-50 text-green-700 text-xs px-3 py-1 rounded-full font-bold uppercase"><?php echo esc_html($program); ?></span>
+									<?php endif; ?>
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>

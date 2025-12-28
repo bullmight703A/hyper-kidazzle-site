@@ -657,11 +657,11 @@ function kidazzle_home_schedule_tracks()
 
                 // Map color scheme to Tailwind classes
                 $color_map = array(
-                        'red' => array('color' => 'KIDazzle-red', 'background' => 'bg-KIDazzle-redLight'),
-                        'blue' => array('color' => 'KIDazzle-blue', 'background' => 'bg-KIDazzle-blueLight'),
-                        'yellow' => array('color' => 'KIDazzle-yellow', 'background' => 'bg-KIDazzle-yellowLight'),
+                        'red' => array('color' => 'KIDazzle-red', 'background' => 'bg-KIDazzle-red/10'),
+                        'blue' => array('color' => 'KIDazzle-blue', 'background' => 'bg-KIDazzle-blue/10'),
+                        'yellow' => array('color' => 'KIDazzle-yellow', 'background' => 'bg-KIDazzle-yellow/10'),
                         'blueDark' => array('color' => 'KIDazzle-blueDark', 'background' => 'bg-KIDazzle-blueDark/10'),
-                        'green' => array('color' => 'KIDazzle-green', 'background' => 'bg-KIDazzle-greenLight'),
+                        'green' => array('color' => 'KIDazzle-green', 'background' => 'bg-KIDazzle-green/10'),
                 );
 
                 $colors = $color_map[$color_scheme] ?? $color_map['blue'];

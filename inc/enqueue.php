@@ -531,6 +531,105 @@ function kidazzle_enqueue_assets()
                         'homeUrl' => home_url(),
                 )
         );
+        // MISSING PROGRAM & LOCATION CSS
+        $program_css = "
+            /* KIDazzle Red (#D67D6B) */
+            .text-KIDazzle-red { color: #D67D6B; }
+            .bg-KIDazzle-red { background-color: #D67D6B; }
+            .border-KIDazzle-red { border-color: #D67D6B; }
+            .bg-KIDazzle-red\\/10 { background-color: rgba(214, 125, 107, 0.1); }
+            .bg-KIDazzle-red\\/5 { background-color: rgba(214, 125, 107, 0.05); }
+            .from-KIDazzle-red\\/10 { --tw-gradient-from: rgba(214, 125, 107, 0.1); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(214, 125, 107, 0)); }
+            .to-KIDazzle-red\\/5 { --tw-gradient-to: rgba(214, 125, 107, 0.05); }
+
+            /* KIDazzle Blue (#4A6C7C) */
+            .text-KIDazzle-blue { color: #4A6C7C; }
+            .bg-KIDazzle-blue { background-color: #4A6C7C; }
+            .border-KIDazzle-blue { border-color: #4A6C7C; }
+            .bg-KIDazzle-blue\\/10 { background-color: rgba(74, 108, 124, 0.1); }
+            .bg-KIDazzle-blue\\/5 { background-color: rgba(74, 108, 124, 0.05); }
+            .from-KIDazzle-blue\\/10 { --tw-gradient-from: rgba(74, 108, 124, 0.1); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(74, 108, 124, 0)); }
+            .to-KIDazzle-blue\\/5 { --tw-gradient-to: rgba(74, 108, 124, 0.05); }
+
+            /* KIDazzle Yellow (#E6BE75) */
+            .text-KIDazzle-yellow { color: #E6BE75; }
+            .bg-KIDazzle-yellow { background-color: #E6BE75; }
+            .border-KIDazzle-yellow { border-color: #E6BE75; }
+            .bg-KIDazzle-yellow\\/10 { background-color: rgba(230, 190, 117, 0.1); }
+            .bg-KIDazzle-yellow\\/5 { background-color: rgba(230, 190, 117, 0.05); }
+            .from-KIDazzle-yellow\\/10 { --tw-gradient-from: rgba(230, 190, 117, 0.1); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(230, 190, 117, 0)); }
+            .to-KIDazzle-yellow\\/5 { --tw-gradient-to: rgba(230, 190, 117, 0.05); }
+
+            /* KIDazzle Green (#8DA399) */
+            .text-KIDazzle-green { color: #8DA399; }
+            .bg-KIDazzle-green { background-color: #8DA399; }
+            .border-KIDazzle-green { border-color: #8DA399; }
+            .bg-KIDazzle-green\\/10 { background-color: rgba(141, 163, 153, 0.1); }
+            .bg-KIDazzle-green\\/5 { background-color: rgba(141, 163, 153, 0.05); }
+            .from-KIDazzle-green\\/10 { --tw-gradient-from: rgba(141, 163, 153, 0.1); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(141, 163, 153, 0)); }
+            .to-KIDazzle-green\\/5 { --tw-gradient-to: rgba(141, 163, 153, 0.05); }
+
+            /* KIDazzle BlueDark (#2F4858) */
+            .text-KIDazzle-blueDark { color: #2F4858; }
+            .bg-KIDazzle-blueDark { background-color: #2F4858; }
+            .border-KIDazzle-blueDark { border-color: #2F4858; }
+            .bg-KIDazzle-blueDark\\/10 { background-color: rgba(47, 72, 88, 0.1); }
+            .bg-KIDazzle-blueDark\\/5 { background-color: rgba(47, 72, 88, 0.05); }
+            .from-KIDazzle-blueDark\\/10 { --tw-gradient-from: rgba(47, 72, 88, 0.1); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(47, 72, 88, 0)); }
+            .to-KIDazzle-blueDark\\/5 { --tw-gradient-to: rgba(47, 72, 88, 0.05); }
+            
+             /* KIDazzle Teal (Fallback/Unbranded) - Matching Blue for now or custom */
+            .text-KIDazzle-teal { color: #548687; }
+            .bg-KIDazzle-teal { background-color: #548687; }
+            .border-KIDazzle-teal { border-color: #548687; }
+            .bg-KIDazzle-teal\\/10 { background-color: rgba(84, 134, 135, 0.1); }
+            .bg-KIDazzle-teal\\/5 { background-color: rgba(84, 134, 135, 0.05); }
+            .from-KIDazzle-teal\\/10 { --tw-gradient-from: rgba(84, 134, 135, 0.1); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(84, 134, 135, 0)); }
+            .to-KIDazzle-teal\\/5 { --tw-gradient-to: rgba(84, 134, 135, 0.05); }
+
+            /* Dyn Colors */
+            .bg-red-50 { background-color: #fef2f2; }
+            .bg-yellow-50 { background-color: #fefce8; }
+            .bg-green-50 { background-color: #f0fdf4; }
+            .bg-purple-50 { background-color: #faf5ff; }
+            
+            .bg-red-100 { background-color: #fee2e2; }
+            .bg-orange-100 { background-color: #ffedd5; }
+            .bg-yellow-100 { background-color: #fef9c3; }
+            .bg-green-100 { background-color: #dcfce7; }
+            .bg-cyan-100 { background-color: #cffafe; }
+            
+            .bg-indigo-900 { background-color: #312e81; }
+            .bg-indigo-900\\/60 { background-color: rgb(49 46 129 / 0.6); }
+            
+            .bg-red-900\\/10 { background-color: rgb(127 29 29 / 0.1); }
+            .bg-orange-900\\/10 { background-color: rgb(124 45 18 / 0.1); }
+            .bg-yellow-900\\/10 { background-color: rgb(113 63 18 / 0.1); }
+            .bg-green-900\\/10 { background-color: rgb(20 83 45 / 0.1); }
+            .bg-cyan-900\\/10 { background-color: rgb(22 78 99 / 0.1); }
+            .bg-purple-900\\/10 { background-color: rgb(88 28 135 / 0.1); }
+            
+            .text-red-200 { color: #fecaca; }
+            .text-orange-200 { color: #fed7aa; }
+            .text-yellow-200 { color: #fde68a; }
+            .text-green-200 { color: #bbf7d0; }
+            .text-cyan-200 { color: #a5f3fc; }
+            .text-purple-200 { color: #e9d5ff; }
+
+            .text-blue-500 { color: #3b82f6; }
+            .text-purple-500 { color: #a855f7; }
+            
+            .text-green-600 { color: #16a34a; }
+            .text-purple-600 { color: #9333ea; }
+            .text-indigo-900 { color: #312e81; }
+            
+            .border-indigo-100 { border-color: #e0e7ff; }
+            
+            .bg-gradient-to-t { background-image: linear-gradient(to top, var(--tw-gradient-stops)); }
+            .from-slate-900\\/80 { --tw-gradient-from: rgb(15 23 42 / 0.8); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(15 23 42 / 0)); }
+            .to-transparent { --tw-gradient-to: transparent; }
+        ";
+        wp_add_inline_style('KIDazzle-main', $program_css);
 }
 add_action('wp_enqueue_scripts', 'kidazzle_enqueue_assets');
 

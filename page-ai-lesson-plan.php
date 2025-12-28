@@ -101,7 +101,7 @@ get_header();
                 <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-8 max-w-lg mx-auto">
                     <?php
                     // Check for a LeadConnector form shortcode or similar
-                    $form_shortcode = get_post_meta(get_the_ID(), 'form_shortcode', true);
+                    				$form_shortcode = get_post_meta(get_the_ID(), 'kidazzle_form_shortcode', true);
                     if ($form_shortcode):
                         echo do_shortcode($form_shortcode);
                     else:

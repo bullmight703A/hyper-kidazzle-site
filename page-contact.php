@@ -97,7 +97,7 @@ get_header();
 				<?php esc_html_e('Fill out the form below and we will get back to you shortly.', 'kidazzle'); ?></p>
 
 			<?php
-			$form_shortcode = get_post_meta(get_the_ID(), 'form_shortcode', true);
+			$form_shortcode = get_post_meta(get_the_ID(), 'kidazzle_form_shortcode', true);
 			if ($form_shortcode) {
 				echo do_shortcode($form_shortcode);
 			} else {
