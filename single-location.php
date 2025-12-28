@@ -145,7 +145,7 @@ $pickups = $pickups_raw ? preg_split('/\r\n|\r|\n/', $pickups_raw) : [];
 					</div>
 				<?php else: ?>
 					<!-- Fallback Default Calendar -->
-					<div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] min-h-[800px] flex items-center justify-center relative p-6">
+					<div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] h-[800px] flex items-center justify-center relative p-6">
 						<iframe src="https://api.leadconnectorhq.com/widget/booking/QGN3ewkDzTOKKsOH93q6" style="width: 100%; height: 100%; border:none; overflow: hidden;" id="msgsndr-calendar"></iframe>
 					</div>
 				<?php endif; ?>
@@ -161,7 +161,7 @@ $pickups = $pickups_raw ? preg_split('/\r\n|\r|\n/', $pickups_raw) : [];
 		</div>
 
 		<!-- Sidebar -->
-		<div class="space-y-8">
+		<div class="space-y-8 sticky top-32 h-fit">
 			<div class="bg-slate-900 p-8 rounded-[2rem] text-white shadow-xl relative overflow-hidden">
 				<div class="relative z-10">
 					<h3 class="text-xl font-bold mb-6 border-b border-slate-700 pb-4"><?php esc_html_e('Contact Info', 'kidazzle'); ?></h3>

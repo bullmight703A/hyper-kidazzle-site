@@ -62,10 +62,10 @@ while (have_posts()):
 	</div>
 
 	<div class="container mx-auto px-4 py-16">
-		<div class="grid lg:grid-cols-3 gap-12">
+		<div class="grid lg:grid-cols-12 gap-8">
 
 			<!-- Main Content -->
-			<main class="lg:col-span-2 space-y-8 text-lg text-slate-700 leading-relaxed">
+			<main class="lg:col-span-8 space-y-8 text-lg text-slate-700 leading-relaxed">
 				<?php the_content(); ?>
 
 				<div class="mt-12 p-8 <?php echo esc_attr($highlight_box_class); ?> rounded-3xl border <?php echo esc_attr($highlight_border_class); ?>">
@@ -108,7 +108,7 @@ while (have_posts()):
 			</main>
 
 			<!-- Sidebar / Enroll CTA -->
-			<aside class="space-y-8">
+			<aside class="lg:col-span-4 space-y-8">
 				<div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 sticky top-32">
 					<h3 class="text-2xl font-bold text-slate-900 mb-6"><?php esc_html_e('Join This Program', 'kidazzle'); ?>
 					</h3>
