@@ -1,8 +1,21 @@
 <?php
 /**
- * Single Location Template
+ * Template Name: Single Location
+ * Template Post Type: location, page
  * 
- * KIDazzle Child Care Theme
+ * A fully dynamic location template that uses WordPress custom fields
+ * for all location-specific data. Compatible with ACF or native meta.
+ * 
+ * Custom Fields Expected:
+ * - location_city (text) - e.g., "Atlanta, GA"
+ * - location_tagline (text) - e.g., "Rooted in culture, bursting with creativity."
+ * - location_address (textarea) - Full address
+ * - location_phone (text) - Phone number
+ * - location_email (text) - Email address
+ * - location_accent_color (text) - e.g., "green", "cyan", "purple"
+ * - location_booking_widget_id (text) - LeadConnector widget ID
+ * - location_hero_icon (text) - Lucide icon name, e.g., "map-pin", "plane"
+ * - location_features (repeater/serialized array) - Array of feature objects
  * 
  * @package Kidazzle
  */
@@ -13,200 +26,247 @@ if (!defined('ABSPATH')) {
 
 get_header();
 
-// Get Location Data
-$fields = kidazzle_get_location_fields();
-$address_line = $fields['address'];
-$city = $fields['city'];
-$state = $fields['state'];
-$zip = $fields['zip'];
-$full_address = $address_line . ', ' . $city . ', ' . $state . ' ' . $zip;
-$phone = $fields['phone'];
-$email = $fields['email'];
-$hours = $fields['hours'];
-$map_embed = $fields['maps_embed'];
-$director_name = $fields['director_name'];
-$director_bio = $fields['director_bio'];
-$director_photo = $fields['director_photo'];
-$tagline = $fields['tagline'];
-$tour_link = $fields['tour_link'];
+// Start the Loop.
+while (have_posts()):
+	the_post();
 
-// Badges/Programs
-$programs_raw = get_post_meta(get_the_ID(), 'location_special_programs', true);
-$programs = $programs_raw ? array_map('trim', explode(',', $programs_raw)) : [];
+	// Get custom fields with defaults
+	$location_city = get_post_meta(get_the_ID(), 'location_city', true) ?: 'Atlanta, GA';
+	$location_tagline = get_post_meta(get_the_ID(), 'location_tagline', true) ?: 'Where learning meets love.';
+	$location_address = get_post_meta(get_the_ID(), 'location_address', true) ?: '100 Alabama St SW, Atlanta, GA 30303';
+	$location_phone = get_post_meta(get_the_ID(), 'location_phone', true) ?: '877-410-1002';
+	$location_email = get_post_meta(get_the_ID(), 'location_email', true) ?: 'info@kidazzle.com';
+	$accent_color = get_post_meta(get_the_ID(), 'location_accent_color', true) ?: 'green';
+	$booking_widget_id = get_post_meta(get_the_ID(), 'location_booking_widget_id', true) ?: 'QGN3ewkDzTOKKsOH93q6';
+	$hero_icon = get_post_meta(get_the_ID(), 'location_hero_icon', true) ?: 'map-pin';
+	$google_map_embed = get_post_meta(get_the_ID(), 'location_map_embed', true);
 
-// Pickups
-$pickups_raw = get_post_meta(get_the_ID(), 'location_school_pickups', true);
-$pickups = $pickups_raw ? preg_split('/\r\n|\r|\n/', $pickups_raw) : [];
+	// Get features - can be ACF repeater or serialized array
+	$features_raw = get_post_meta(get_the_ID(), 'location_features', true);
 
-?>
+	// Default features if none set
+	$default_features = array(
+		array(
+			'icon' => 'heart',
+			'color' => 'red',
+			'title' => 'Loving Care',
+			'subtitle' => 'Family Environment'
+		),
+		array(
+			'icon' => 'book-open',
+			'color' => 'blue',
+			'title' => 'Creative Curriculum',
+			'subtitle' => 'Research-Based'
+		),
+		array(
+			'icon' => 'graduation-cap',
+			'color' => 'green',
+			'title' => 'GA Pre-K',
+			'subtitle' => 'Lottery Funded'
+		)
+	);
 
-<!-- HERO SECTION -->
-<div class="bg-slate-900 py-24 text-white relative overflow-hidden">
-	<div class="absolute inset-0 z-0">
-		<?php if (has_post_thumbnail()): ?>
-			<img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>"
-				class="w-full h-full object-cover opcacity-20">
-		<?php else: ?>
-			<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/694489509b0de40cdd3adafb.png"
-				alt="<?php the_title_attribute(); ?>" class="w-full h-full object-cover opacity-20">
-		<?php endif; ?>
-		<div class="absolute inset-0 bg-slate-900/80"></div>
+	$features = !empty($features_raw) && is_array($features_raw) ? $features_raw : $default_features;
+
+	// Clean phone for tel: link
+	$phone_clean = preg_replace('/[^0-9]/', '', $location_phone);
+	?>
+
+	<!-- Hero Section -->
+	<div class="rounded-[3rem] overflow-hidden relative h-[500px] shadow-lg group bg-slate-900 mt-6 mx-4 md:mx-0">
+		<div class="absolute inset-0 z-0">
+			<?php if (has_post_thumbnail()): ?>
+				<?php the_post_thumbnail('full', array('class' => 'w-full h-full object-cover transition duration-[3000ms] group-hover:scale-105 opacity-60', 'alt' => get_the_title())); ?>
+			<?php else: ?>
+				<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/694489509b0de40cdd3adafb.png"
+					alt="<?php the_title_attribute(); ?>"
+					class="w-full h-full object-cover transition duration-[3000ms] group-hover:scale-105 opacity-60">
+			<?php endif; ?>
+			<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+		</div>
+
+		<div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center p-8 md:p-16">
+			<div
+				class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full mb-6">
+				<i data-lucide="<?php echo esc_attr($hero_icon); ?>"
+					class="w-4 h-4 text-<?php echo esc_attr($accent_color); ?>-400"></i>
+				<span class="font-bold text-xs uppercase tracking-widest"><?php echo esc_html($location_city); ?></span>
+			</div>
+			<h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 drop-shadow-xl tracking-tight">
+				<?php the_title(); ?> <span
+					class="text-<?php echo esc_attr($accent_color); ?>-400"><?php esc_html_e('Center', 'kidazzle'); ?></span>
+			</h1>
+			<p class="text-lg md:text-2xl text-white/90 font-medium max-w-2xl leading-relaxed drop-shadow-md">
+				<?php echo esc_html($location_tagline); ?>
+			</p>
+		</div>
 	</div>
-	<div class="container mx-auto px-4 text-center relative z-10">
-		<span
-			class="bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide mb-6 inline-block backdrop-blur-sm border border-white/10">
-			<?php echo esc_html($city ? $city . ', ' . $state : 'Locations'); ?>
-		</span>
-		<h1 class="text-5xl md:text-6xl font-extrabold mb-4"><?php the_title(); ?></h1>
-		<?php if ($tagline): ?>
-			<p class="text-xl max-w-2xl mx-auto text-slate-300"><?php echo esc_html($tagline); ?></p>
-		<?php else: ?>
-			<p class="text-xl max-w-2xl mx-auto text-slate-300"><?php echo esc_html(get_the_excerpt()); ?></p>
-		<?php endif; ?>
-	</div>
-</div>
 
-<div class="container mx-auto px-4 py-16">
-	<div class="grid lg:grid-cols-3 gap-12">
-		<div class="lg:col-span-2 space-y-12">
+	<!-- Main Content Grid -->
+	<div class="grid lg:grid-cols-12 gap-6 pt-4 mx-4 md:mx-0">
 
-			<!-- About / SEO Content (Top) -->
-			<section>
-				<h2 class="text-3xl font-bold text-slate-900 mb-6"><?php esc_html_e('About This Center', 'kidazzle'); ?>
-				</h2>
-				<div class="text-slate-600 leading-relaxed text-lg mb-8 content-area">
+		<!-- Left Column (8 cols) -->
+		<div class="lg:col-span-8 space-y-6">
+
+			<!-- About This Center -->
+			<div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-200 shadow-sm">
+				<h2 class="text-3xl font-extrabold text-slate-900 mb-6">
+					<?php esc_html_e('About This Center', 'kidazzle'); ?></h2>
+				<div class="text-lg text-slate-600 leading-relaxed mb-8 entry-content">
 					<?php the_content(); ?>
 				</div>
 
-				<!-- Dynamic Features Grid (Badges) -->
-				<?php if (!empty($programs)): ?>
-					<div class="grid md:grid-cols-3 gap-4 mb-8">
-						<?php foreach ($programs as $program): ?>
-							<?php if ($program): ?>
-								<div
-									class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center hover:bg-slate-100 transition group cursor-pointer">
-									<i data-lucide="check-circle" class="w-8 h-8 mx-auto mb-3 text-indigo-500"></i>
-									<h4 class="font-bold text-slate-900"><?php echo esc_html($program); ?></h4>
-								</div>
+				<!-- Dynamic Features Grid -->
+				<div class="grid md:grid-cols-3 gap-4">
+					<?php foreach ($features as $feature):
+						$f_icon = isset($feature['icon']) ? $feature['icon'] : 'star';
+						$f_color = isset($feature['color']) ? $feature['color'] : 'slate';
+						$f_title = isset($feature['title']) ? $feature['title'] : 'Feature';
+						$f_subtitle = isset($feature['subtitle']) ? $feature['subtitle'] : '';
+						?>
+						<div
+							class="bg-<?php echo esc_attr($f_color); ?>-50 p-6 rounded-3xl border border-<?php echo esc_attr($f_color); ?>-100 text-center">
+							<i data-lucide="<?php echo esc_attr($f_icon); ?>"
+								class="w-8 h-8 mx-auto mb-3 text-<?php echo esc_attr($f_color); ?>-600"></i>
+							<h4 class="font-bold text-slate-900"><?php echo esc_html($f_title); ?></h4>
+							<?php if ($f_subtitle): ?>
+								<p class="text-xs text-slate-500 mt-1"><?php echo esc_html($f_subtitle); ?></p>
 							<?php endif; ?>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
-			</section>
-
-			<!-- Director Section -->
-			<?php if ($director_name): ?>
-				<section class="bg-indigo-50 p-8 rounded-3xl border border-indigo-100 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
-					<?php if ($director_photo): ?>
-						<img src="<?php echo esc_url($director_photo); ?>" alt="<?php echo esc_attr($director_name); ?>" class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md shrink-0">
-					<?php endif; ?>
-					<div>
-						<h3 class="text-2xl font-bold text-indigo-900 mb-2"><?php echo esc_html($director_name); ?></h3>
-						<p class="text-indigo-600 font-bold uppercase text-sm tracking-wider mb-4"><?php esc_html_e('Campus Director', 'kidazzle'); ?></p>
-						<p class="text-slate-700 leading-relaxed"><?php echo nl2br(esc_html($director_bio)); ?></p>
-					</div>
-				</section>
-			<?php endif; ?>
-
-			<!-- School Pickups -->
-			<?php if (!empty($pickups) && $pickups[0]): ?>
-				<section>
-					<h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-						<i data-lucide="bus" class="text-yellow-500"></i>
-						<?php esc_html_e('School Pickups', 'kidazzle'); ?>
-					</h3>
-					<div class="grid sm:grid-cols-2 gap-4">
-						<?php foreach ($pickups as $school): ?>
-							<?php if (trim($school)): ?>
-								<div class="flex items-center gap-3 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
-									<div class="bg-yellow-100 p-2 rounded-lg text-yellow-600">
-										<i data-lucide="school" class="w-5 h-5"></i>
-									</div>
-									<span class="font-bold text-slate-700"><?php echo esc_html(trim($school)); ?></span>
-								</div>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					</div>
-				</section>
-			<?php endif; ?>
-
-			<!-- Calendar / Map -->
-			<div class="bg-white p-8 rounded-[2rem] shadow-xl border-t-8 border-yellow-400" id="tour">
-				<h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2"><i data-lucide="calendar"
-						class="text-yellow-500"></i> <?php esc_html_e('Book a Tour', 'kidazzle'); ?></h3>
-				
-				<?php if ($tour_link): ?>
-					<div class="text-center py-12 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
-						<p class="text-lg text-slate-600 mb-6"><?php esc_html_e('Ready to see our campus? Schedule your visit today.', 'kidazzle'); ?></p>
-						<a href="<?php echo esc_url($tour_link); ?>" target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 transition shadow-lg">
-							<i data-lucide="calendar-check"></i>
-							<?php esc_html_e('Schedule Tour Online', 'kidazzle'); ?>
-						</a>
-					</div>
-				<?php else: ?>
-					<!-- Fallback Default Calendar -->
-					<div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] h-[800px] flex items-center justify-center relative p-6">
-						<iframe src="https://api.leadconnectorhq.com/widget/booking/QGN3ewkDzTOKKsOH93q6" style="width: 100%; height: 100%; border:none; overflow: hidden;" id="msgsndr-calendar"></iframe>
-					</div>
-				<?php endif; ?>
-			</div>
-
-			<!-- Map (Bottom) -->
-			<?php if ($map_embed): ?>
-				<section
-					class="bg-slate-100 rounded-[2rem] h-96 flex items-center justify-center text-slate-400 border-2 border-slate-200 overflow-hidden relative">
-					<?php echo $map_embed; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</section>
-			<?php endif; ?>
-		</div>
-
-		<!-- Sidebar -->
-		<div class="space-y-8 sticky top-32 h-fit">
-			<div class="bg-slate-900 p-8 rounded-[2rem] text-white shadow-xl relative overflow-hidden">
-				<div class="relative z-10">
-					<h3 class="text-xl font-bold mb-6 border-b border-slate-700 pb-4"><?php esc_html_e('Contact Info', 'kidazzle'); ?></h3>
-					<div class="space-y-6 text-base">
-						<?php if ($full_address): ?>
-							<div class="flex items-start gap-4">
-								<i data-lucide="map-pin" class="text-red-400 mt-1 shrink-0"></i>
-								<span class="text-slate-300"><?php echo esc_html($full_address); ?></span>
-							</div>
-						<?php endif; ?>
-						
-						<?php if ($phone): ?>
-							<div class="flex items-center gap-4">
-								<i data-lucide="phone" class="text-green-400 shrink-0"></i> 
-								<a href="tel:<?php echo esc_attr(preg_replace('/[^0-9]/', '', $phone)); ?>" class="font-bold hover:text-white transition"><?php echo esc_html($phone); ?></a>
-							</div>
-						<?php endif; ?>
-						
-						<?php if ($email): ?>
-							<div class="flex items-center gap-4">
-								<i data-lucide="mail" class="text-cyan-400 shrink-0"></i>
-								<a href="mailto:<?php echo esc_attr($email); ?>" class="hover:text-white transition break-all"><?php echo esc_html($email); ?></a>
-							</div>
-						<?php endif; ?>
-
-						<?php if ($hours): ?>
-							<div class="flex items-center gap-4 pt-4 border-t border-slate-700">
-								<i data-lucide="clock" class="text-yellow-400 shrink-0"></i>
-								<span class="text-slate-300"><?php echo esc_html($hours); ?></span>
-							</div>
-						<?php endif; ?>
-					</div>
+						</div>
+					<?php endforeach; ?>
 				</div>
 			</div>
 
-			<!-- Enroll CTA -->
-			<div class="bg-gradient-to-br from-indigo-600 to-purple-700 p-8 rounded-[2rem] shadow-lg text-white text-center">
-				<h3 class="text-xl font-bold mb-4"><?php esc_html_e('Join Our Family', 'kidazzle'); ?></h3>
-				<p class="text-indigo-100 mb-6 text-sm"><?php esc_html_e('Spaces are limited. Apply today to secure your spot.', 'kidazzle'); ?></p>
-				<a href="<?php echo esc_url(home_url('/enrollment/')); ?>" class="block w-full bg-white text-indigo-700 font-bold py-3 rounded-xl hover:bg-slate-50 transition shadow-md">
-					<?php esc_html_e('Apply Now', 'kidazzle'); ?>
+			<!-- Book a Tour -->
+			<div
+				class="bg-white p-8 md:p-12 rounded-[2.5rem] border-l-[12px] border-<?php echo esc_attr($accent_color); ?>-400 shadow-lg">
+				<div class="flex items-center gap-4 mb-8">
+					<div
+						class="w-12 h-12 bg-<?php echo esc_attr($accent_color); ?>-100 rounded-full flex items-center justify-center text-<?php echo esc_attr($accent_color); ?>-600">
+						<i data-lucide="calendar" class="w-6 h-6"></i>
+					</div>
+					<h2 class="text-3xl font-extrabold text-slate-900"><?php esc_html_e('Book a Tour', 'kidazzle'); ?></h2>
+				</div>
+
+				<div class="w-full h-[800px] rounded-2xl overflow-hidden border border-slate-100">
+					<iframe src="https://api.leadconnectorhq.com/widget/booking/<?php echo esc_attr($booking_widget_id); ?>"
+						style="width: 100%; height: 100%; border:none;" id="msgsndr-calendar">
+					</iframe>
+				</div>
+			</div>
+
+			<!-- Map Placeholder -->
+			<div
+				class="bg-slate-100 rounded-[2.5rem] h-80 flex items-center justify-center text-slate-400 border border-slate-200 relative overflow-hidden">
+				<?php if ($google_map_embed): ?>
+					<?php echo $google_map_embed; // Already sanitized iframe ?>
+				<?php else: ?>
+					<div class="text-center">
+						<i data-lucide="map" class="w-12 h-12 mx-auto mb-2 opacity-50"></i>
+						<p class="font-bold"><?php esc_html_e('Google Map Embed Placeholder', 'kidazzle'); ?></p>
+						<p class="text-sm">(<?php echo esc_html($location_address); ?>)</p>
+					</div>
+				<?php endif; ?>
+			</div>
+
+		</div>
+
+		<!-- Right Column (4 cols) -->
+		<div class="lg:col-span-4 space-y-6">
+
+			<!-- Contact Info Card -->
+			<div class="bg-slate-900 p-8 rounded-[2.5rem] text-white shadow-xl">
+				<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+					<i data-lucide="info" class="text-<?php echo esc_attr($accent_color); ?>-400"></i>
+					<?php esc_html_e('Contact Info', 'kidazzle'); ?>
+				</h3>
+				<div class="space-y-6">
+					<div class="flex items-start gap-4">
+						<div class="bg-white/10 p-2 rounded-lg"><i data-lucide="map-pin" class="w-5 h-5 text-red-400"></i>
+						</div>
+						<div>
+							<span
+								class="font-bold block text-sm text-slate-400 uppercase tracking-wide mb-1"><?php esc_html_e('Address', 'kidazzle'); ?></span>
+							<span class="leading-relaxed"><?php echo nl2br(esc_html($location_address)); ?></span>
+						</div>
+					</div>
+					<div class="flex items-start gap-4">
+						<div class="bg-white/10 p-2 rounded-lg"><i data-lucide="phone" class="w-5 h-5 text-green-400"></i>
+						</div>
+						<div>
+							<span
+								class="font-bold block text-sm text-slate-400 uppercase tracking-wide mb-1"><?php esc_html_e('Phone', 'kidazzle'); ?></span>
+							<span class="font-bold text-lg"><?php echo esc_html($location_phone); ?></span>
+						</div>
+					</div>
+					<div class="flex items-start gap-4">
+						<div class="bg-white/10 p-2 rounded-lg"><i data-lucide="mail" class="w-5 h-5 text-cyan-400"></i>
+						</div>
+						<div>
+							<span
+								class="font-bold block text-sm text-slate-400 uppercase tracking-wide mb-1"><?php esc_html_e('Email', 'kidazzle'); ?></span>
+							<a href="mailto:<?php echo esc_attr($location_email); ?>"
+								class="hover:text-white underline decoration-<?php echo esc_attr($accent_color); ?>-400"><?php echo esc_html($location_email); ?></a>
+						</div>
+					</div>
+				</div>
+				<div class="mt-8 pt-8 border-t border-slate-800">
+					<a href="tel:<?php echo esc_attr($phone_clean); ?>"
+						class="block w-full bg-<?php echo esc_attr($accent_color); ?>-500 hover:bg-<?php echo esc_attr($accent_color); ?>-400 text-slate-900 font-bold text-center py-4 rounded-xl transition">
+						<?php esc_html_e('Call Now', 'kidazzle'); ?>
+					</a>
+				</div>
+			</div>
+
+			<!-- Questions Card -->
+			<div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-200">
+				<h3 class="text-xl font-bold text-slate-900 mb-4"><?php esc_html_e('Have Questions?', 'kidazzle'); ?></h3>
+				<p class="text-slate-500 text-sm mb-6">
+					<?php esc_html_e('Send a quick message directly to the Center Director.', 'kidazzle'); ?></p>
+				<div
+					class="bg-slate-50 border-dashed border-2 border-slate-300 rounded-2xl h-64 flex items-center justify-center text-center p-6">
+					<span
+						class="text-slate-400 text-sm font-medium"><?php esc_html_e('Embed Location-Specific Form Here', 'kidazzle'); ?><br>(LeadConnector
+						/ 123FormBuilder)</span>
+				</div>
+			</div>
+
+			<!-- Explore More Card -->
+			<div
+				class="bg-<?php echo esc_attr($accent_color); ?>-600 p-8 rounded-[2.5rem] text-white shadow-lg text-center">
+				<h3 class="font-bold text-lg mb-4"><?php esc_html_e('Explore More', 'kidazzle'); ?></h3>
+				<div class="space-y-3">
+					<a href="<?php echo esc_url(home_url('/locations/')); ?>"
+						class="block bg-white/20 hover:bg-white/30 py-3 rounded-xl font-bold text-sm transition"><?php esc_html_e('View All Locations', 'kidazzle'); ?></a>
+					<a href="<?php echo esc_url(home_url('/programs/')); ?>"
+						class="block bg-white/20 hover:bg-white/30 py-3 rounded-xl font-bold text-sm transition"><?php esc_html_e('View Programs', 'kidazzle'); ?></a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- CTA Section -->
+	<div
+		class="bg-gradient-to-br from-[#4c1d95] to-[#c026d3] rounded-[3rem] p-10 md:p-14 text-white shadow-2xl relative overflow-hidden mt-12 mb-8 mx-4 md:mx-0">
+		<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+			<div class="text-left max-w-2xl">
+				<h3 class="text-3xl md:text-4xl font-extrabold mb-3"><?php esc_html_e('Ready to Join?', 'kidazzle'); ?></h3>
+				<p class="text-purple-100 text-lg">
+					<?php printf(esc_html__('Secure your spot at our %s center today.', 'kidazzle'), get_the_title()); ?>
+				</p>
+			</div>
+			<div class="flex flex-col sm:flex-row gap-4 shrink-0">
+				<a href="<?php echo esc_url(home_url('/enrollment/')); ?>"
+					class="bg-white text-purple-900 px-8 py-4 rounded-full font-bold hover:bg-yellow-400 hover:text-black transition shadow-lg whitespace-nowrap">
+					<?php esc_html_e('Enroll Now', 'kidazzle'); ?>
 				</a>
 			</div>
 		</div>
 	</div>
-</div>
 
-<?php get_footer(); ?>
+<?php
+endwhile; // End of the loop.
+
+get_footer();
+?>

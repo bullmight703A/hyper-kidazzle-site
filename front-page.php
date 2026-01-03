@@ -11,19 +11,23 @@ get_header();
 ?>
 
 <!-- Hero Section -->
+<!-- Hero Section -->
 <?php get_template_part('template-parts/home/hero'); ?>
 
-<!-- Southeast Powerhouse - Regional Locations -->
+<!-- Marquee Ticker -->
+<?php get_template_part('template-parts/home/marquee'); ?>
+
+<!-- Programs at a Glance -->
+<?php get_template_part('template-parts/home/programs-grid'); ?>
+
+<!-- Regional Footprint -->
 <?php get_template_part('template-parts/home/southeast-powerhouse'); ?>
 
 <!-- Legacy & Origin Story -->
 <?php get_template_part('template-parts/home/legacy-origin'); ?>
 
-<!-- KIDazzle Difference - 4 Pillars -->
+<!-- KIDazzle Difference - Grid -->
 <?php get_template_part('template-parts/home/kidazzle-difference'); ?>
-
-<!-- Growth Journey Graph -->
-<?php get_template_part('template-parts/home/growth-journey'); ?>
 
 <!-- Contact CTA with Lead Connector Form -->
 <?php get_template_part('template-parts/home/contact-cta'); ?>

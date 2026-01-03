@@ -1,9 +1,6 @@
 <?php
 /**
  * Template Name: AI Lesson Plan Page
- * AI Lesson Planning & Automation Features
- * 
- * KIDazzle Child Care Theme
  * 
  * @package Kidazzle
  */
@@ -15,126 +12,121 @@ if (!defined('ABSPATH')) {
 get_header();
 ?>
 
-<!-- Hero Section -->
-<div class="relative py-32 text-center overflow-hidden">
+<div class="rounded-[3rem] overflow-hidden relative h-[500px] shadow-lg group bg-slate-900 mt-6 mx-4 md:mx-0">
     <div class="absolute inset-0 z-0">
-        <?php if (has_post_thumbnail()): ?>
-            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>"
-                class="w-full h-full object-cover">
-        <?php else: ?>
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-                alt="<?php esc_attr_e('Teacher planning with technology', 'kidazzle'); ?>"
-                class="w-full h-full object-cover">
-        <?php endif; ?>
-        <div class="absolute inset-0 bg-purple-900/70"></div>
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            alt="<?php esc_attr_e('Teacher planning', 'kidazzle'); ?>"
+            class="w-full h-full object-cover transition duration-[3000ms] group-hover:scale-105 opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/50 to-transparent"></div>
     </div>
-    <div class="relative z-10 container mx-auto px-4 text-white">
-        <span
-            class="bg-white/20 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 inline-block backdrop-blur-sm border border-white/10"><?php esc_html_e('Innovation in Education', 'kidazzle'); ?></span>
-        <h1 class="text-5xl md:text-6xl font-extrabold mb-6"><?php the_title(); ?></h1>
-        <p class="text-xl md:text-2xl max-w-2xl mx-auto text-purple-100 drop-shadow-md">
-            <?php echo esc_html(get_the_excerpt() ?: __('Embracing automation to empower teachers and elevate early education.', 'kidazzle')); ?>
+
+    <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center p-8 md:p-16">
+        <div
+            class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full mb-6">
+            <i data-lucide="cpu" class="w-4 h-4 text-purple-300"></i>
+            <span
+                class="font-bold text-xs uppercase tracking-widest"><?php esc_html_e('Innovation in Education', 'kidazzle'); ?></span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-xl tracking-tight">
+            <?php esc_html_e('AI-Powered', 'kidazzle'); ?> <br>
+            <span class="text-purple-300"><?php esc_html_e('Lesson Planning', 'kidazzle'); ?></span>
+        </h1>
+        <p class="text-lg md:text-2xl text-white/90 font-medium max-w-3xl leading-relaxed drop-shadow-md">
+            <?php esc_html_e('Embracing automation to empower teachers and elevate early education.', 'kidazzle'); ?>
         </p>
     </div>
 </div>
 
-<!-- Main Content -->
-<div class="container mx-auto px-4 py-20 space-y-24">
+<div class="grid lg:grid-cols-2 gap-6 items-stretch mt-6 mx-4 md:mx-0">
 
-    <!-- The Innovation Story -->
-    <section class="grid md:grid-cols-2 gap-16 items-center">
-        <div>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
-                <?php esc_html_e("Grade 'A' Plans in Minutes", 'kidazzle'); ?></h2>
-            <div class="space-y-6 text-lg text-slate-600 leading-relaxed">
-                <?php the_content(); ?>
-
-                <?php if (!get_the_content()):  // Fallback content if page is empty ?>
-                    <p>
-                        <?php esc_html_e('At KIDazzle, we are revolutionizing the classroom by embracing <strong>Artificial Intelligence and Automation</strong>. Teachers often spend hours engaging in administrative work, taking time away from what matters most—interacting with your child.', 'kidazzle'); ?>
-                    </p>
-                    <p>
-                        <?php esc_html_e('With our new AI tools, our educators can generate comprehensive, standards-aligned lesson plans for <strong>all age groups</strong> in a fraction of the time. This technology ensures every activity is educational, creative, and tailored to the specific developmental needs of the class.', 'kidazzle'); ?>
-                    </p>
-                <?php endif; ?>
-
-                <ul class="space-y-3 mt-4">
-                    <li class="flex items-center gap-3 font-bold text-slate-700"><i data-lucide="check-circle"
-                            class="text-purple-500"></i>
-                        <?php esc_html_e('Consistent Quality Across Centers', 'kidazzle'); ?></li>
-                    <li class="flex items-center gap-3 font-bold text-slate-700"><i data-lucide="check-circle"
-                            class="text-purple-500"></i>
-                        <?php esc_html_e('More Face-Time with Students', 'kidazzle'); ?></li>
-                    <li class="flex items-center gap-3 font-bold text-slate-700"><i data-lucide="check-circle"
-                            class="text-purple-500"></i> <?php esc_html_e('Infinite Creative Resources', 'kidazzle'); ?>
-                    </li>
-                </ul>
-            </div>
+    <div class="bg-white rounded-[3rem] p-10 md:p-16 border border-slate-200">
+        <h2 class="text-3xl font-extrabold text-slate-900 mb-6">
+            <?php esc_html_e("Grade 'A' Plans in Minutes", 'kidazzle'); ?></h2>
+        <div class="space-y-6 text-lg text-slate-600 leading-relaxed font-medium">
+            <p><?php esc_html_e('At KIDazzle, we are revolutionizing the classroom by embracing', 'kidazzle'); ?>
+                <strong><?php esc_html_e('Artificial Intelligence and Automation', 'kidazzle'); ?></strong>.
+                <?php esc_html_e('Teachers often spend hours engaging in administrative work, taking time away from what matters most—interacting with your child.', 'kidazzle'); ?>
+            </p>
+            <p><?php esc_html_e('With our new AI tools, our educators can generate comprehensive, standards-aligned lesson plans for', 'kidazzle'); ?>
+                <strong><?php esc_html_e('all age groups', 'kidazzle'); ?></strong>
+                <?php esc_html_e('in a fraction of the time. This technology ensures every activity is educational, creative, and tailored.', 'kidazzle'); ?>
+            </p>
         </div>
-        <div class="bg-purple-50 rounded-[3rem] p-10 border border-purple-100 flex items-center justify-center">
-            <div class="text-center">
-                <i data-lucide="cpu" class="w-24 h-24 text-purple-400 mx-auto mb-6"></i>
-                <h3 class="text-2xl font-bold text-purple-900 mb-2"><?php esc_html_e('Smart Automation', 'kidazzle'); ?>
+    </div>
+
+    <div class="flex flex-col gap-4">
+
+        <div
+            class="module-card bg-purple-50 p-8 rounded-[2.5rem] border border-purple-100 flex items-center gap-6 h-full">
+            <div
+                class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-purple-600 shadow-sm shrink-0">
+                <i data-lucide="award" class="w-8 h-8"></i>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-purple-900"><?php esc_html_e('Consistent Quality', 'kidazzle'); ?>
                 </h3>
-                <p class="text-purple-700">
-                    <?php esc_html_e('Turning hours of paperwork into minutes of planning.', 'kidazzle'); ?></p>
+                <p class="text-purple-700 text-sm mt-1">
+                    <?php esc_html_e('Standardized excellence across all centers.', 'kidazzle'); ?></p>
             </div>
         </div>
-    </section>
 
-    <!-- Sample Download Section (Lead Capture) -->
-    <section class="max-w-4xl mx-auto">
-        <div class="bg-white rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
+        <div class="module-card bg-white p-8 rounded-[2.5rem] border border-slate-200 flex items-center gap-6 h-full">
+            <div
+                class="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-600 shadow-sm shrink-0">
+                <i data-lucide="clock" class="w-8 h-8"></i>
             </div>
-
-            <div class="p-12 text-center">
-                <span
-                    class="text-purple-600 font-extrabold tracking-widest uppercase text-sm block mb-2"><?php esc_html_e('Free Resource', 'kidazzle'); ?></span>
-                <h2 class="text-3xl font-bold text-slate-900 mb-6">
-                    <?php esc_html_e('See the Difference Yourself', 'kidazzle'); ?></h2>
-                <p class="text-slate-600 mb-10 max-w-2xl mx-auto">
-                    <?php esc_html_e('Curious about what a "Grade A" AI-assisted lesson plan looks like? Enter your details below to instantly receive sample plans for Infants, Toddlers, and Preschoolers.', 'kidazzle'); ?>
-                </p>
-
-                <!-- LEAD CAPTURE FORM PLACEHOLDER -->
-                <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-8 max-w-lg mx-auto">
-                    <?php
-                    // Check for a LeadConnector form shortcode or similar
-                    				$form_shortcode = get_post_meta(get_the_ID(), 'kidazzle_form_shortcode', true);
-                    if ($form_shortcode):
-                        echo do_shortcode($form_shortcode);
-                    else:
-                        ?>
-                        <div class="space-y-4">
-                            <!-- Visual representation of the form fields -->
-                            <div class="text-left">
-                                <label
-                                    class="block text-sm font-bold text-slate-700 mb-1"><?php esc_html_e('Full Name', 'kidazzle'); ?></label>
-                                <div class="h-10 bg-white border border-slate-300 rounded-lg w-full"></div>
-                            </div>
-                            <div class="text-left">
-                                <label
-                                    class="block text-sm font-bold text-slate-700 mb-1"><?php esc_html_e('Email Address', 'kidazzle'); ?></label>
-                                <div class="h-10 bg-white border border-slate-300 rounded-lg w-full"></div>
-                            </div>
-                            <button
-                                class="w-full bg-purple-600 text-white font-bold py-3 rounded-xl hover:bg-purple-700 transition shadow-lg mt-4 flex items-center justify-center gap-2">
-                                <i data-lucide="download"></i> <?php esc_html_e('Download Sample Plans', 'kidazzle'); ?>
-                            </button>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-4 font-mono">
-                            <?php esc_html_e('[ CRM Form Embed Code Goes Here ]', 'kidazzle'); ?>
-                        </p>
-                    <?php endif; ?>
-                </div>
-                <p class="text-xs text-slate-400 mt-6">
-                    <?php esc_html_e('By downloading, you agree to receive updates from KIDazzle. We respect your privacy.', 'kidazzle'); ?>
-                </p>
+            <div>
+                <h3 class="text-xl font-bold text-slate-900"><?php esc_html_e('More Face-Time', 'kidazzle'); ?></h3>
+                <p class="text-slate-500 text-sm mt-1">
+                    <?php esc_html_e('Less paperwork, more student interaction.', 'kidazzle'); ?></p>
             </div>
         </div>
-    </section>
 
+        <div class="module-card bg-white p-8 rounded-[2.5rem] border border-slate-200 flex items-center gap-6 h-full">
+            <div
+                class="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-600 shadow-sm shrink-0">
+                <i data-lucide="infinity" class="w-8 h-8"></i>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-slate-900"><?php esc_html_e('Infinite Resources', 'kidazzle'); ?></h3>
+                <p class="text-slate-500 text-sm mt-1">
+                    <?php esc_html_e('Creative ideas at the touch of a button.', 'kidazzle'); ?></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-gradient-to-br from-[#4c1d95] to-[#c026d3] rounded-[3rem] p-4 md:p-12 shadow-2xl mt-8 mx-4 md:mx-0">
+    <div class="bg-white rounded-[2.5rem] p-8 md:p-16 max-w-4xl mx-auto shadow-inner text-center">
+
+        <div
+            class="inline-block bg-purple-50 text-purple-600 px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest mb-6">
+            <?php esc_html_e('Free Resource', 'kidazzle'); ?>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
+            <?php esc_html_e('See the Difference Yourself', 'kidazzle'); ?></h2>
+        <p class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <?php esc_html_e('Curious about what a "Grade A" AI-assisted lesson plan looks like? Enter your details below to instantly receive sample plans for Infants, Toddlers, and Preschoolers via email.', 'kidazzle'); ?>
+        </p>
+
+        <div class="max-w-xl mx-auto bg-slate-50 rounded-3xl p-4 border border-slate-200 min-h-[450px]">
+            <iframe src="https://api.leadconnectorhq.com/widget/form/JBSdmwoZNYxCAPtNDQ4p"
+                style="width:100%;height:100%;border:none;border-radius:3px" id="inline-JBSdmwoZNYxCAPtNDQ4p"
+                data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
+                data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate"
+                data-deactivation-value="" data-form-name="Email our all things for leads or parents" data-height="432"
+                data-layout-iframe-id="inline-JBSdmwoZNYxCAPtNDQ4p" data-form-id="JBSdmwoZNYxCAPtNDQ4p"
+                title="Email our all things for leads or parents">
+            </iframe>
+            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </div>
+
+        <p class="text-xs text-slate-400 mt-6">
+            <?php esc_html_e('By downloading, you agree to receive updates from KIDazzle. We respect your privacy.', 'kidazzle'); ?>
+        </p>
+    </div>
 </div>
 
 <?php get_footer(); ?>

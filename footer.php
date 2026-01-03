@@ -11,41 +11,24 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 ?>
-</main><!-- #main-content -->
+</main>
 
-<!-- FOOTER -->
-<footer class="bg-slate-900 text-slate-300 py-16 relative mt-12 text-center md:text-left" role="contentinfo">
-	<div
-		class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow-lg border border-slate-100">
-		<?php if (has_custom_logo()):
-			$custom_logo_id = get_theme_mod('custom_logo');
-			$logo_url = wp_get_attachment_image_url($custom_logo_id, 'thumbnail');
-			?>
-			<img src="<?php echo esc_url($logo_url); ?>" class="h-10 w-auto"
-				alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-		<?php else: ?>
-			<span class="text-xl font-extrabold text-black px-2">KID<span class="text-yellow-500">azzle</span></span>
-		<?php endif; ?>
-	</div>
-
-	<div class="container mx-auto px-4 grid md:grid-cols-4 gap-8 pt-10">
-		<!-- Column 1: About -->
+<footer class="bg-[#1A1A1A] text-slate-400 py-16 mt-16 px-6">
+	<div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
 		<div>
 			<?php if (has_custom_logo()):
 				$custom_logo_id = get_theme_mod('custom_logo');
 				$logo_url = wp_get_attachment_image_url($custom_logo_id, 'medium');
 				?>
-				<img src="<?php echo esc_url($logo_url); ?>" class="h-10 mb-4 mx-auto md:mx-0 bg-white p-1 rounded"
+				<img src="<?php echo esc_url($logo_url); ?>" class="h-12 mb-6 bg-white rounded-lg p-2 w-auto"
 					alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
 			<?php else: ?>
-				<h2 class="text-2xl font-extrabold text-white mb-4">KID<span class="text-yellow-500">azzle</span></h2>
+				<h2 class="text-2xl font-extrabold text-white mb-6">KID<span class="text-yellow-500">azzle</span></h2>
 			<?php endif; ?>
 			<p class="text-sm">
 				<?php echo esc_html(get_theme_mod('kidazzle_footer_tagline', 'Providing elite, independent child care for 31 years.')); ?>
 			</p>
 		</div>
-
-		<!-- Column 2: Quick Links -->
 		<div>
 			<h4 class="text-white font-bold mb-4"><?php esc_html_e('Quick Links', 'kidazzle'); ?></h4>
 			<?php
@@ -58,37 +41,27 @@ if (!defined('ABSPATH')) {
 			));
 			?>
 		</div>
-
-		<!-- Column 3: Resources -->
 		<div>
 			<h4 class="text-white font-bold mb-4"><?php esc_html_e('Resources', 'kidazzle'); ?></h4>
 			<?php
 			wp_nav_menu(array(
-				'theme_location' => 'footer_contact',
+				'theme_location' => 'footer_contact', // Using existing location name
 				'container' => false,
 				'menu_class' => 'space-y-2 text-sm',
-				'fallback_cb' => 'kidazzle_footer_nav_fallback',
+				'fallback_cb' => false,
 				'depth' => 1,
 			));
 			?>
 		</div>
-
-		<!-- Column 4: Contact -->
 		<div>
 			<h4 class="text-white font-bold mb-4"><?php esc_html_e('Contact', 'kidazzle'); ?></h4>
 			<p class="text-sm">
-				<?php echo esc_html(get_theme_mod('kidazzle_address', '100 Alabama St SW, Atlanta, GA')); ?><br>
-				<span
-					class="text-white font-bold"><?php echo esc_html(get_theme_mod('kidazzle_phone', '877-410-1002')); ?></span>
-			</p>
-			<a href="<?php echo esc_url(home_url('/contact/')); ?>"
-				class="text-cyan-400 underline mt-2 inline-block"><?php esc_html_e('Open Contact Form', 'kidazzle'); ?></a>
+				<?php echo esc_html(get_theme_mod('kidazzle_address', '100 Alabama St SW, Atlanta, GA')); ?></p>
+			<p class="text-sm mt-2"><?php echo esc_html(get_theme_mod('kidazzle_phone', '877-410-1002')); ?></p>
 		</div>
 	</div>
-
-	<div class="border-t border-slate-800 mt-12 pt-8 text-center text-xs text-slate-500">
-		<span>&copy; <?php echo date('Y'); ?> <?php echo esc_html(get_bloginfo('name')); ?>.
-			<?php esc_html_e('All Rights Reserved.', 'kidazzle'); ?></span>
+	<div class="max-w-7xl mx-auto border-t border-gray-800 mt-12 pt-8 text-center text-xs">
+		&copy; <?php echo date('Y'); ?> <?php echo esc_html(get_bloginfo('name')); ?>.
 	</div>
 </footer>
 
