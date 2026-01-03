@@ -91,7 +91,6 @@ if (!defined('ABSPATH')) {
 					'items_wrap' => '%3$s',
 					'fallback_cb' => 'kidazzle_primary_nav_fallback',
 					'depth' => 1,
-					'walker' => new Kidazzle_Pill_Nav_Walker(), // Custom walker for pill styling if needed, or just standard links
 				));
 				?>
 			</div>
