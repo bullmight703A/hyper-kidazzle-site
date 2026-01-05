@@ -19,7 +19,8 @@ jobs:
           server: 185.181.252.19
           username: wdi1lvh
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
+          port: 22
+          protocol: sftp
           # ⚠️ IMPORTANT: Update this path to match your server's theme folder
           # Common paths: /public_html/..., /www/..., or just /
           server-dir: /public_html/wp-content/themes/kidazzle/
