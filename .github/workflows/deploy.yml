@@ -16,9 +16,10 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: 185.181.252.19
+          username: bullmight@wdi1ba00h7.wpdns.site
           password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
           # ⚠️ IMPORTANT: Update this path to match your server's theme folder
           # Common paths: /public_html/..., /www/..., or just /
           server-dir: /public_html/wp-content/themes/kidazzle/
