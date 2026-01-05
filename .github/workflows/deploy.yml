@@ -22,6 +22,8 @@ jobs:
           # ⚠️ IMPORTANT: Update this path to match your server's theme folder
           # It is usually: /wp-content/themes/your-theme-folder/
           server-dir: /wp-content/themes/kidazzle/
+          # "loose" security helps with self-signed certificates or shared hosting issues
+          security: loose
           exclude: |
             **/.git*
             **/.git*/**
