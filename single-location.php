@@ -3,8 +3,7 @@
  * Template Name: Single Location
  * Template Post Type: location, page
  * 
- * A fully dynamic location template that uses WordPress custom fields
- * for all location-specific data. Compatible with ACF or native meta.
+ * A fully dynamic location template using WordPress custom fields.
  * 
  * Custom Fields Expected:
  * - location_city (text) - e.g., "Atlanta, GA"
@@ -14,7 +13,7 @@
  * - location_email (text) - Email address
  * - location_accent_color (text) - e.g., "green", "cyan", "purple"
  * - location_booking_widget_id (text) - LeadConnector widget ID
- * - location_hero_icon (text) - Lucide icon name, e.g., "map-pin", "plane"
+ * - location_features (array) - Features with icon, color, title, subtitle
  * 
  * @package Kidazzle
  */
@@ -37,13 +36,11 @@ while (have_posts()):
 	$location_email = get_post_meta(get_the_ID(), 'location_email', true) ?: 'info@kidazzle.com';
 	$accent_color = get_post_meta(get_the_ID(), 'location_accent_color', true) ?: 'green';
 	$booking_widget_id = get_post_meta(get_the_ID(), 'location_booking_widget_id', true) ?: 'QGN3ewkDzTOKKsOH93q6';
-	$hero_icon = get_post_meta(get_the_ID(), 'location_hero_icon', true) ?: 'map-pin';
-	$google_map_embed = get_post_meta(get_the_ID(), 'location_map_embed', true);
 
 	// Default features
 	$default_features = array(
-		array('icon' => 'heart', 'color' => 'red', 'title' => 'Loving Care', 'subtitle' => 'Family Environment'),
-		array('icon' => 'book-open', 'color' => 'blue', 'title' => 'Creative Curriculum', 'subtitle' => 'Research-Based'),
+		array('icon' => 'palette', 'color' => 'purple', 'title' => 'Arts Focus', 'subtitle' => 'Community Education'),
+		array('icon' => 'landmark', 'color' => 'orange', 'title' => 'Historic District', 'subtitle' => 'Local Heritage'),
 		array('icon' => 'graduation-cap', 'color' => 'green', 'title' => 'GA Pre-K', 'subtitle' => 'Lottery Funded')
 	);
 
@@ -55,7 +52,7 @@ while (have_posts()):
 	?>
 
 	<!-- Hero Section -->
-	<div class="rounded-[3rem] overflow-hidden relative h-[500px] shadow-lg group bg-slate-900 mt-6 mx-4 md:mx-0">
+	<div class="rounded-[3rem] overflow-hidden relative h-[500px] shadow-lg group bg-slate-900">
 		<div class="absolute inset-0 z-0">
 			<?php if (has_post_thumbnail()): ?>
 				<?php the_post_thumbnail('full', array('class' => 'w-full h-full object-cover transition duration-[3000ms] group-hover:scale-105 opacity-60', 'alt' => get_the_title())); ?>
@@ -70,8 +67,7 @@ while (have_posts()):
 		<div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center p-8 md:p-16">
 			<div
 				class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full mb-6">
-				<i data-lucide="<?php echo esc_attr($hero_icon); ?>"
-					class="w-4 h-4 text-<?php echo esc_attr($accent_color); ?>-400"></i>
+				<i data-lucide="map-pin" class="w-4 h-4 text-<?php echo esc_attr($accent_color); ?>-400"></i>
 				<span class="font-bold text-xs uppercase tracking-widest"><?php echo esc_html($location_city); ?></span>
 			</div>
 			<h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 drop-shadow-xl tracking-tight">
@@ -85,7 +81,7 @@ while (have_posts()):
 	</div>
 
 	<!-- Main Content Grid -->
-	<div class="grid lg:grid-cols-12 gap-6 pt-4 mx-4 md:mx-0">
+	<div class="grid lg:grid-cols-12 gap-6 pt-4 mt-6">
 
 		<!-- Left Column (8 cols) -->
 		<div class="lg:col-span-8 space-y-6">
@@ -120,11 +116,9 @@ while (have_posts()):
 			</div>
 
 			<!-- Book a Tour -->
-			<div
-				class="bg-white p-8 md:p-12 rounded-[2.5rem] border-l-[12px] border-<?php echo esc_attr($accent_color); ?>-400 shadow-lg">
+			<div class="bg-white p-8 md:p-12 rounded-[2.5rem] border-l-[12px] border-yellow-400 shadow-lg">
 				<div class="flex items-center gap-4 mb-8">
-					<div
-						class="w-12 h-12 bg-<?php echo esc_attr($accent_color); ?>-100 rounded-full flex items-center justify-center text-<?php echo esc_attr($accent_color); ?>-600">
+					<div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600">
 						<i data-lucide="calendar" class="w-6 h-6"></i>
 					</div>
 					<h2 class="text-3xl font-extrabold text-slate-900"><?php esc_html_e('Book a Tour', 'kidazzle'); ?></h2>
@@ -174,7 +168,7 @@ while (have_posts()):
 							<span
 								class="font-bold block text-sm text-slate-400 uppercase tracking-wide mb-1"><?php esc_html_e('Email', 'kidazzle'); ?></span>
 							<a href="mailto:<?php echo esc_attr($location_email); ?>"
-								class="hover:text-white underline decoration-<?php echo esc_attr($accent_color); ?>-400"><?php echo esc_html($location_email); ?></a>
+								class="hover:text-white underline decoration-cyan-400"><?php echo esc_html($location_email); ?></a>
 						</div>
 					</div>
 				</div>
@@ -187,8 +181,7 @@ while (have_posts()):
 			</div>
 
 			<!-- Explore More Card -->
-			<div
-				class="bg-<?php echo esc_attr($accent_color); ?>-600 p-8 rounded-[2.5rem] text-white shadow-lg text-center">
+			<div class="bg-indigo-600 p-8 rounded-[2.5rem] text-white shadow-lg text-center">
 				<h3 class="font-bold text-lg mb-4"><?php esc_html_e('Explore More', 'kidazzle'); ?></h3>
 				<div class="space-y-3">
 					<a href="<?php echo esc_url(home_url('/locations/')); ?>"
@@ -203,7 +196,7 @@ while (have_posts()):
 
 	<!-- CTA Section -->
 	<div
-		class="bg-gradient-to-br from-[#4c1d95] to-[#c026d3] rounded-[3rem] p-10 md:p-14 text-white shadow-2xl relative overflow-hidden mt-12 mb-8 mx-4 md:mx-0">
+		class="bg-gradient-to-br from-[#4c1d95] to-[#c026d3] rounded-[3rem] p-10 md:p-14 text-white shadow-2xl relative overflow-hidden mt-12">
 		<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
 			<div class="text-left max-w-2xl">
 				<h3 class="text-3xl md:text-4xl font-extrabold mb-3"><?php esc_html_e('Ready to Join?', 'kidazzle'); ?></h3>

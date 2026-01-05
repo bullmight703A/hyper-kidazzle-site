@@ -89,7 +89,7 @@ require_once KIDAZZLE_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php';
 
 
 require_once KIDAZZLE_THEME_DIR . '/inc/security.php';
-require_once KIDAZZLE_THEME_DIR . '/inc/critical-css.php';
+
 
 /**
  * Remove Legacy JavaScript & Styles
