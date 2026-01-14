@@ -2,7 +2,7 @@
 /**
  * Spanish Variant Generator and Language Switcher
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -12,63 +12,110 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Detect Current Language Heuristically
- * Based on URL patterns (no ACF required)
+ * Detect Current Language
+ * Delegates to plugin if available, otherwise uses basic URL check.
  */
-function kidazzle_detect_current_language() {
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+function Kidazzle_detect_current_language() {
+    // Plugin integration
+    if (class_exists('Kidazzle_Multilingual_Manager')) {
+        return Kidazzle_Multilingual_Manager::is_spanish() ? 'es' : 'en';
+    }
 
-	// Check if URL contains '/es/' or '-es'
+	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	if ( strpos( $current_url, '/es/' ) !== false || strpos( $current_url, '-es' ) !== false ) {
 		return 'es';
 	}
-
 	return 'en';
 }
 
 /**
  * Get Alternate URL
+ * Delegates to plugin logic.
  */
-function kidazzle_get_alternate_url( $target_lang = 'es' ) {
-	$current_lang = kidazzle_detect_current_language();
+function Kidazzle_get_alternate_url( $target_lang = 'es' ) {
+    // Plugin integration
+    if (function_exists('Kidazzle_get_alternates')) {
+        $alternates = Kidazzle_get_alternates();
+        return $alternates[$target_lang] ?? '';
+    }
 
+    // Fallback logic (Manual Only)
+	$current_lang = Kidazzle_detect_current_language();
 	if ( $current_lang === $target_lang ) {
-		return ''; // Already on target language
+		return '';
 	}
-
-        // Check post meta fields
-        $alternate_en = get_post_meta( get_the_ID(), 'alternate_url_en', true );
-        $alternate_es = get_post_meta( get_the_ID(), 'alternate_url_es', true );
-
-	if ( $target_lang === 'es' && $alternate_es ) {
-		return $alternate_es;
-	}
-
-	if ( $target_lang === 'en' && $alternate_en ) {
-		return $alternate_en;
-	}
-
-	return '';
+    $meta_key = ($target_lang === 'es') ? 'alternate_url_es' : 'alternate_url_en';
+    return get_post_meta( get_the_ID(), $meta_key, true );
 }
 
 /**
  * Render Language Switcher
  */
-function kidazzle_render_language_switcher() {
-	$current_lang = kidazzle_detect_current_language();
-	$alternate_url = kidazzle_get_alternate_url( $current_lang === 'en' ? 'es' : 'en' );
+function Kidazzle_render_language_switcher() {
+	$current_lang = Kidazzle_detect_current_language();
+    $target_lang = ($current_lang === 'en') ? 'es' : 'en';
+	$alternate_url = Kidazzle_get_alternate_url( $target_lang );
 
 	if ( ! $alternate_url ) {
 		return;
 	}
 
 	$label = $current_lang === 'en' ? 'Español' : 'English';
+    $flag = $current_lang === 'en' ? '🇪🇸' : '🇺🇸';
 
 	?>
-	<div class="kidazzle-language-switcher">
-		<a href="<?php echo esc_url( $alternate_url ); ?>" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-brand-navy/20 text-xs font-semibold hover:border-brand-navy transition">
-			<i class="fa-solid fa-globe"></i>
-			<span><?php echo esc_html( $label ); ?></span>
+    <style>
+    .Kidazzle-language-switcher {
+        display: inline-flex;
+    }
+    .Kidazzle-language-switcher a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #333;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .Kidazzle-language-switcher a:hover {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
+    }
+    .Kidazzle-language-switcher .lang-flag {
+        font-size: 16px;
+        line-height: 1;
+    }
+    .Kidazzle-language-switcher .lang-label {
+        letter-spacing: 0.025em;
+    }
+    /* RTL Support */
+    [dir="rtl"] .Kidazzle-language-switcher a {
+        flex-direction: row-reverse;
+    }
+    /* Dark mode variant */
+    .lang-es .Kidazzle-language-switcher a,
+    body.dark-mode .Kidazzle-language-switcher a {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    body.dark-mode .Kidazzle-language-switcher a:hover {
+        background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    </style>
+	<div class="Kidazzle-language-switcher">
+		<a href="<?php echo esc_url( $alternate_url ); ?>">
+            <span class="lang-flag"><?php echo $flag; ?></span>
+			<span class="lang-label"><?php echo esc_html( $label ); ?></span>
 		</a>
 	</div>
 	<?php

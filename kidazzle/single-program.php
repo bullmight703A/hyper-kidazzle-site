@@ -2,7 +2,7 @@
 /**
  * Single Program Template
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  */
 
 get_header();
@@ -38,13 +38,13 @@ while (have_posts()):
 
 	// Color mapping
 	$color_map = array(
-		'red' => array('main' => 'kidazzle-red', 'light' => 'kidazzle-redLight'),
-		'blue' => array('main' => 'kidazzle-blue', 'light' => 'kidazzle-blueLight'),
-		'yellow' => array('main' => 'kidazzle-yellow', 'light' => 'kidazzle-yellowLight'),
-		'blueDark' => array('main' => 'kidazzle-blueDark', 'light' => 'kidazzle-blueLight'),
-		'green' => array('main' => 'kidazzle-green', 'light' => 'kidazzle-greenLight'),
-		'orange' => array('main' => 'kidazzle-orange', 'light' => 'kidazzle-orangeLight'),
-		'teal' => array('main' => 'kidazzle-teal', 'light' => 'kidazzle-tealLight'),
+		'red' => array('main' => 'Kidazzle-red', 'light' => 'Kidazzle-redLight'),
+		'blue' => array('main' => 'Kidazzle-blue', 'light' => 'Kidazzle-blueLight'),
+		'yellow' => array('main' => 'Kidazzle-yellow', 'light' => 'Kidazzle-yellowLight'),
+		'blueDark' => array('main' => 'Kidazzle-blueDark', 'light' => 'Kidazzle-blueLight'),
+		'green' => array('main' => 'Kidazzle-green', 'light' => 'Kidazzle-greenLight'),
+		'orange' => array('main' => 'Kidazzle-orange', 'light' => 'Kidazzle-orangeLight'),
+		'teal' => array('main' => 'Kidazzle-teal', 'light' => 'Kidazzle-tealLight'),
 	);
 
 	$colors = $color_map[$color_scheme] ?? $color_map['red'];
@@ -86,12 +86,17 @@ while (have_posts()):
 							class="px-8 py-4 bg-<?php echo esc_attr($colors['main']); ?> text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:opacity-90 transition-colors shadow-lg">View
 							Curriculum</a>
 						<?php if ($lesson_plan_url): ?>
-							<a href="<?php echo esc_url($lesson_plan_url); ?>" target="_blank"
-								class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							<button type="button" id="lesson-plan-trigger"
+								data-lesson-url="<?php echo esc_url($lesson_plan_url); ?>"
+								class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors cursor-pointer">
 								View Lesson Plan
-							</a>
+							</button>
 						<?php endif; ?>
-						<a href="<?php echo esc_url(home_url('/programs')); ?>"
+						<a href="<?php echo esc_url(get_post_type_archive_link('location')); ?>"
+							class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							View Locations
+						</a>
+						<a href="<?php echo esc_url(home_url('/programs/')); ?>"
 							class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							All Programs
 						</a>
@@ -141,7 +146,7 @@ while (have_posts()):
 								?>
 								<ul class="space-y-3 text-sm text-brand-ink/90">
 									<?php
-									$item_colors = array('kidazzle-red', 'kidazzle-yellow', 'kidazzle-green', 'kidazzle-blue', 'brand-ink/20');
+									$item_colors = array('Kidazzle-red', 'Kidazzle-yellow', 'Kidazzle-green', 'Kidazzle-blue', 'brand-ink/20');
 									foreach ($focus_items_array as $index => $item):
 										$item_color = $item_colors[$index % count($item_colors)];
 										?>
@@ -250,6 +255,21 @@ while (have_posts()):
 		</div>
 		</div>
 		</section>
+
+		<?php 
+		// Age Calculator Widget
+		Kidazzle_Program_Enhancements::render_age_calculator($program_id);
+		
+		// FAQ Section with Schema
+		Kidazzle_Program_Enhancements::render_faq_section($program_id);
+		
+		// Photo Gallery
+		Kidazzle_Program_Enhancements::render_gallery_section($program_id);
+		
+		// Parent Testimonials
+		Kidazzle_Program_Enhancements::render_testimonials_section($program_id);
+		?>
+
 	</main>
 
 	<style>
@@ -329,16 +349,103 @@ while (have_posts()):
 			},
 			plugins: { legend: { display: false } }
 		}
-																});
-															};
+																		});
+																	};
 		document.body.appendChild(script);
-														}
-													});
-												}, { rootMargin: '200px' }); // Start loading 200px before view
+																}
+															});
+														}, { rootMargin: '200px' }); // Start loading 200px before view
 		observer.observe(ctx);
-											}
-										});
+													}
+												});
 	</script>
+
+	<?php if ($lesson_plan_url): ?>
+		<!-- Lesson Plan Modal -->
+		<div id="lesson-plan-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+			<!-- Backdrop -->
+			<div class="absolute inset-0 bg-brand-ink/80 backdrop-blur-sm transition-opacity" id="lesson-plan-backdrop"></div>
+
+			<!-- Modal Container -->
+			<div
+				class="absolute inset-4 md:inset-10 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fade-in-up">
+				<!-- Header -->
+				<div
+					class="bg-brand-cream border-b border-brand-ink/5 px-6 py-4 flex items-center justify-between flex-shrink-0">
+					<h3 class="font-serif text-xl font-bold text-brand-ink">
+						<i class="fa-solid fa-file-signature text-<?php echo esc_attr($colors['main']); ?> mr-2"></i>
+						<?php echo esc_html(get_the_title()); ?> Lesson Plan
+					</h3>
+					<div class="flex items-center gap-4">
+						<a href="<?php echo esc_url($lesson_plan_url); ?>" target="_blank" id="lesson-plan-external"
+							class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-Kidazzle-blue transition-colors hidden md:flex items-center gap-1">
+							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							Open in new tab
+						</a>
+						<a href="<?php echo esc_url($lesson_plan_url); ?>" download
+							class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors hidden md:flex items-center gap-1">
+							<i class="fa-solid fa-download"></i>
+							Download
+						</a>
+						<button id="lesson-plan-close"
+							class="w-10 h-10 rounded-full bg-white border border-brand-ink/10 flex items-center justify-center text-brand-ink hover:bg-Kidazzle-red hover:text-white hover:border-Kidazzle-red transition-all">
+							<i class="fa-solid fa-xmark text-lg"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- PDF Container -->
+				<div class="flex-grow relative bg-gray-100">
+					<div id="lesson-plan-loader" class="absolute inset-0 flex items-center justify-center bg-white z-10">
+						<div class="text-center">
+							<div
+								class="w-12 h-12 border-4 border-<?php echo esc_attr($colors['main']); ?>/20 border-t-<?php echo esc_attr($colors['main']); ?> rounded-full animate-spin mx-auto mb-4">
+							</div>
+							<p class="text-brand-ink/60 text-sm">Loading lesson plan...</p>
+						</div>
+					</div>
+					<iframe id="lesson-plan-frame" src="" class="w-full h-full border-0"></iframe>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const trigger = document.getElementById('lesson-plan-trigger');
+				const modal = document.getElementById('lesson-plan-modal');
+				const backdrop = document.getElementById('lesson-plan-backdrop');
+				const closeBtn = document.getElementById('lesson-plan-close');
+				const iframe = document.getElementById('lesson-plan-frame');
+				const loader = document.getElementById('lesson-plan-loader');
+
+				function openModal() {
+					const url = trigger.getAttribute('data-lesson-url');
+					modal.classList.remove('hidden');
+					document.body.style.overflow = 'hidden';
+					loader.classList.remove('hidden');
+					iframe.src = url;
+					iframe.onload = function () {
+						loader.classList.add('hidden');
+					};
+				}
+
+				function closeModal() {
+					modal.classList.add('hidden');
+					document.body.style.overflow = '';
+					iframe.src = '';
+				}
+
+				if (trigger) trigger.addEventListener('click', openModal);
+				if (closeBtn) closeBtn.addEventListener('click', closeModal);
+				if (backdrop) backdrop.addEventListener('click', closeModal);
+				document.addEventListener('keydown', function (e) {
+					if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+						closeModal();
+					}
+				});
+			});
+		</script>
+	<?php endif; ?>
 
 	<?php
 endwhile;

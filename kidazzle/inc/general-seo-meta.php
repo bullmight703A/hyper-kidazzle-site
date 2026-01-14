@@ -3,7 +3,7 @@
  * General SEO Meta Boxes
  * Adds "SEO Meta" box to all public post types
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -15,34 +15,34 @@ if (!defined('ABSPATH')) {
 /**
  * Register SEO Meta Box
  */
-function kidazzle_register_general_seo_meta_box()
+function Kidazzle_register_general_seo_meta_box()
 {
     $screens = array('post', 'page', 'program', 'location');
 
     foreach ($screens as $screen) {
         add_meta_box(
-            'kidazzle-general-seo',
+            'Kidazzle-general-seo',
             __('SEO Meta', 'kidazzle-theme'),
-            'kidazzle_render_general_seo_meta_box',
+            'Kidazzle_render_general_seo_meta_box',
             $screen,
             'side',
             'high'
         );
     }
 }
-add_action('add_meta_boxes', 'kidazzle_register_general_seo_meta_box');
+add_action('add_meta_boxes', 'Kidazzle_register_general_seo_meta_box');
 
 /**
  * Render SEO Meta Box
  */
-function kidazzle_render_general_seo_meta_box($post)
+function Kidazzle_render_general_seo_meta_box($post)
 {
-    wp_nonce_field('kidazzle_general_seo_nonce', 'kidazzle_general_seo_nonce_field');
+    wp_nonce_field('Kidazzle_general_seo_nonce', 'Kidazzle_general_seo_nonce_field');
 
     $meta_description = get_post_meta($post->ID, 'meta_description', true);
     $meta_keywords = get_post_meta($post->ID, 'meta_keywords', true);
     ?>
-    <div class="kidazzle-seo-field" style="margin-bottom: 15px;">
+    <div class="Kidazzle-seo-field" style="margin-bottom: 15px;">
         <label for="meta_description" style="display: block; font-weight: 600; margin-bottom: 5px;">
             <?php _e('Meta Description', 'kidazzle-theme'); ?>
         </label>
@@ -53,7 +53,7 @@ function kidazzle_render_general_seo_meta_box($post)
         </p>
     </div>
 
-    <div class="kidazzle-seo-field">
+    <div class="Kidazzle-seo-field">
         <label for="meta_keywords" style="display: block; font-weight: 600; margin-bottom: 5px;">
             <?php _e('Meta Keywords', 'kidazzle-theme'); ?>
         </label>
@@ -63,16 +63,67 @@ function kidazzle_render_general_seo_meta_box($post)
             <?php _e('Comma-separated list. Leave empty to use auto-generated keywords.', 'kidazzle-theme'); ?>
         </p>
     </div>
+    </div>
+
+    <!-- AI Auto-Fill -->
+    <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+        <button type="button" id="Kidazzle-seo-autofill" class="button">
+            <span class="dashicons dashicons-superhero"
+                style="font-size: 16px; width: 16px; height: 16px; vertical-align: middle; margin-right: 3px;"></span>
+            <?php _e('Auto-Fill with AI', 'kidazzle-theme'); ?>
+        </button>
+        <span class="spinner" id="Kidazzle-seo-spinner" style="float: none; margin: 0 5px;"></span>
+        <p class="description" style="margin-top: 5px;">
+            <?php _e('Generates a description and keywords based on page content.', 'kidazzle-theme'); ?>
+        </p>
+    </div>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#Kidazzle-seo-autofill').on('click', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var post_id = $('#post_ID').val();
+
+                if (!confirm('<?php _e('This will overwrite existing SEO fields with AI-generated content. Continue?', 'kidazzle-theme'); ?>')) {
+                    return;
+                }
+
+                btn.prop('disabled', true);
+                $('#Kidazzle-seo-spinner').addClass('is-active');
+
+                $.post(ajaxurl, {
+                    action: 'Kidazzle_generate_general_seo_meta',
+                    nonce: '<?php echo wp_create_nonce('Kidazzle_seo_dashboard_nonce'); ?>', // Reusing dashboard nonce for simplicity
+                    post_id: post_id
+                }, function (response) {
+                    btn.prop('disabled', false);
+                    $('#Kidazzle-seo-spinner').removeClass('is-active');
+
+                    if (response.success) {
+                        $('#meta_description').val(response.data.description).css('background-color', '#f0f6fc').animate({ backgroundColor: '#fff' }, 2000);
+                        $('#meta_keywords').val(response.data.keywords).css('background-color', '#f0f6fc').animate({ backgroundColor: '#fff' }, 2000);
+                    } else {
+                        alert('Error: ' + (response.data.message || 'Unknown error'));
+                    }
+                }).fail(function () {
+                    btn.prop('disabled', false);
+                    $('#Kidazzle-seo-spinner').removeClass('is-active');
+                    alert('Network error.');
+                });
+            });
+        });
+    </script>
     <?php
 }
 
 /**
  * Save SEO Meta Box
  */
-function kidazzle_save_general_seo_meta($post_id)
+function Kidazzle_save_general_seo_meta($post_id)
 {
     // Verify nonce
-    if (!isset($_POST['kidazzle_general_seo_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_general_seo_nonce_field']), 'kidazzle_general_seo_nonce')) {
+    if (!isset($_POST['Kidazzle_general_seo_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['Kidazzle_general_seo_nonce_field']), 'Kidazzle_general_seo_nonce')) {
         return;
     }
 
@@ -97,4 +148,4 @@ function kidazzle_save_general_seo_meta($post_id)
         update_post_meta($post_id, 'meta_keywords', sanitize_textarea_field($_POST['meta_keywords']));
     }
 }
-add_action('save_post', 'kidazzle_save_general_seo_meta');
+add_action('save_post', 'Kidazzle_save_general_seo_meta');

@@ -2,7 +2,7 @@
 /**
  * About Page Meta Boxes
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -14,95 +14,95 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register About Page Meta Boxes
  */
-function kidazzle_about_page_meta_boxes() {
+function Kidazzle_about_page_meta_boxes() {
 	add_meta_box(
-		'kidazzle-about-hero',
+		'Kidazzle-about-hero',
 		__( 'Hero Section', 'kidazzle-theme' ),
-		'kidazzle_about_hero_meta_box_render',
+		'Kidazzle_about_hero_meta_box_render',
 		'page',
 		'normal',
 		'high'
 	);
 
 	add_meta_box(
-		'kidazzle-about-mission',
+		'Kidazzle-about-mission',
 		__( 'Mission Section', 'kidazzle-theme' ),
-		'kidazzle_about_mission_meta_box_render',
+		'Kidazzle_about_mission_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-about-story',
+		'Kidazzle-about-story',
 		__( 'Story Section', 'kidazzle-theme' ),
-		'kidazzle_about_story_meta_box_render',
+		'Kidazzle_about_story_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-about-educators',
+		'Kidazzle-about-educators',
 		__( 'Educators Section', 'kidazzle-theme' ),
-		'kidazzle_about_educators_meta_box_render',
+		'Kidazzle_about_educators_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-about-values',
+		'Kidazzle-about-values',
 		__( 'Values (Kidazzle Standard) Section', 'kidazzle-theme' ),
-		'kidazzle_about_values_meta_box_render',
+		'Kidazzle_about_values_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-about-leadership',
+		'Kidazzle-about-leadership',
 		__( 'Leadership Section', 'kidazzle-theme' ),
-		'kidazzle_about_leadership_meta_box_render',
+		'Kidazzle_about_leadership_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-about-nutrition',
+		'Kidazzle-about-nutrition',
 		__( 'Nutrition & Wellness Section', 'kidazzle-theme' ),
-		'kidazzle_about_nutrition_meta_box_render',
+		'Kidazzle_about_nutrition_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-about-philanthropy',
+		'Kidazzle-about-philanthropy',
 		__( 'Philanthropy Section', 'kidazzle-theme' ),
-		'kidazzle_about_philanthropy_meta_box_render',
+		'Kidazzle_about_philanthropy_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-about-cta',
+		'Kidazzle-about-cta',
 		__( 'CTA Section', 'kidazzle-theme' ),
-		'kidazzle_about_cta_meta_box_render',
+		'Kidazzle_about_cta_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 }
-add_action( 'add_meta_boxes', 'kidazzle_about_page_meta_boxes' );
+add_action( 'add_meta_boxes', 'Kidazzle_about_page_meta_boxes' );
 
 /**
  * Hero Section Meta Box
  */
-function kidazzle_about_hero_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_hero_meta', 'kidazzle_about_hero_nonce' );
+function Kidazzle_about_hero_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_hero_meta', 'Kidazzle_about_hero_nonce' );
 
 	$hero_badge_text = get_post_meta( $post->ID, 'about_hero_badge_text', true );
 	$hero_title = get_post_meta( $post->ID, 'about_hero_title', true );
@@ -125,7 +125,7 @@ function kidazzle_about_hero_meta_box_render( $post ) {
 				<input type="text" id="about_hero_title" name="about_hero_title"
 					   value="<?php echo esc_attr( $hero_title ); ?>"
 					   class="large-text" placeholder="e.g., More than a school. A second home." />
-				<p class="description">Use &lt;span class='text-kidazzle-yellow italic'&gt;text&lt;/span&gt; for yellow italic text</p>
+				<p class="description">Use &lt;span class='text-Kidazzle-yellow italic'&gt;text&lt;/span&gt; for yellow italic text</p>
 			</td>
 		</tr>
 		<tr>
@@ -140,9 +140,9 @@ function kidazzle_about_hero_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="about_hero_image" name="about_hero_image"
 					   value="<?php echo esc_attr( $hero_image ); ?>"
-					   class="large-text kidazzle-image-field" />
-				<button type="button" class="button kidazzle-upload-button" data-field="about_hero_image">Select Image</button>
-				<button type="button" class="button kidazzle-clear-button" data-field="about_hero_image">Clear</button>
+					   class="large-text Kidazzle-image-field" />
+				<button type="button" class="button Kidazzle-upload-button" data-field="about_hero_image">Select Image</button>
+				<button type="button" class="button Kidazzle-clear-button" data-field="about_hero_image">Clear</button>
 			</td>
 		</tr>
 	</table>
@@ -152,8 +152,8 @@ function kidazzle_about_hero_meta_box_render( $post ) {
 /**
  * Mission Section Meta Box
  */
-function kidazzle_about_mission_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_mission_meta', 'kidazzle_about_mission_nonce' );
+function Kidazzle_about_mission_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_mission_meta', 'Kidazzle_about_mission_nonce' );
 
 	$mission_quote = get_post_meta( $post->ID, 'about_mission_quote', true );
 	?>
@@ -173,8 +173,8 @@ function kidazzle_about_mission_meta_box_render( $post ) {
 /**
  * Story Section Meta Box
  */
-function kidazzle_about_story_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_story_meta', 'kidazzle_about_story_nonce' );
+function Kidazzle_about_story_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_story_meta', 'Kidazzle_about_story_nonce' );
 
 	$story_title = get_post_meta( $post->ID, 'about_story_title', true );
 	$story_paragraph1 = get_post_meta( $post->ID, 'about_story_paragraph1', true );
@@ -218,9 +218,9 @@ function kidazzle_about_story_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="about_story_image" name="about_story_image"
 					   value="<?php echo esc_attr( $story_image ); ?>"
-					   class="large-text kidazzle-image-field" />
-				<button type="button" class="button kidazzle-upload-button" data-field="about_story_image">Select Image</button>
-				<button type="button" class="button kidazzle-clear-button" data-field="about_story_image">Clear</button>
+					   class="large-text Kidazzle-image-field" />
+				<button type="button" class="button Kidazzle-upload-button" data-field="about_story_image">Select Image</button>
+				<button type="button" class="button Kidazzle-clear-button" data-field="about_story_image">Clear</button>
 			</td>
 		</tr>
 		<tr>
@@ -277,8 +277,8 @@ function kidazzle_about_story_meta_box_render( $post ) {
 /**
  * Educators Section Meta Box
  */
-function kidazzle_about_educators_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_educators_meta', 'kidazzle_about_educators_nonce' );
+function Kidazzle_about_educators_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_educators_meta', 'Kidazzle_about_educators_nonce' );
 
 	$educators_title = get_post_meta( $post->ID, 'about_educators_title', true );
 	$educators_description = get_post_meta( $post->ID, 'about_educators_description', true );
@@ -396,8 +396,8 @@ function kidazzle_about_educators_meta_box_render( $post ) {
 /**
  * Core Values Section Meta Box
  */
-function kidazzle_about_values_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_values_meta', 'kidazzle_about_values_nonce' );
+function Kidazzle_about_values_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_values_meta', 'Kidazzle_about_values_nonce' );
 
 	$values_title = get_post_meta( $post->ID, 'about_values_title', true );
 	$values_description = get_post_meta( $post->ID, 'about_values_description', true );
@@ -545,8 +545,8 @@ function kidazzle_about_values_meta_box_render( $post ) {
 /**
  * Leadership Section Meta Box
  */
-function kidazzle_about_leadership_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_leadership_meta', 'kidazzle_about_leadership_nonce' );
+function Kidazzle_about_leadership_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_leadership_meta', 'Kidazzle_about_leadership_nonce' );
 
 	$leadership_title = get_post_meta( $post->ID, 'about_leadership_title', true );
 	?>
@@ -567,8 +567,8 @@ function kidazzle_about_leadership_meta_box_render( $post ) {
 /**
  * Nutrition Section Meta Box
  */
-function kidazzle_about_nutrition_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_nutrition_meta', 'kidazzle_about_nutrition_nonce' );
+function Kidazzle_about_nutrition_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_nutrition_meta', 'Kidazzle_about_nutrition_nonce' );
 
 	$nutrition_title = get_post_meta( $post->ID, 'about_nutrition_title', true );
 	$nutrition_description = get_post_meta( $post->ID, 'about_nutrition_description', true );
@@ -638,9 +638,9 @@ function kidazzle_about_nutrition_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="about_nutrition_image" name="about_nutrition_image"
 					   value="<?php echo esc_attr( $nutrition_image ); ?>"
-					   class="large-text kidazzle-image-field" />
-				<button type="button" class="button kidazzle-upload-button" data-field="about_nutrition_image">Select Image</button>
-				<button type="button" class="button kidazzle-clear-button" data-field="about_nutrition_image">Clear</button>
+					   class="large-text Kidazzle-image-field" />
+				<button type="button" class="button Kidazzle-upload-button" data-field="about_nutrition_image">Select Image</button>
+				<button type="button" class="button Kidazzle-clear-button" data-field="about_nutrition_image">Clear</button>
 			</td>
 		</tr>
 	</table>
@@ -650,8 +650,8 @@ function kidazzle_about_nutrition_meta_box_render( $post ) {
 /**
  * Philanthropy Section Meta Box
  */
-function kidazzle_about_philanthropy_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_philanthropy_meta', 'kidazzle_about_philanthropy_nonce' );
+function Kidazzle_about_philanthropy_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_philanthropy_meta', 'Kidazzle_about_philanthropy_nonce' );
 
 	$philanthropy_title = get_post_meta( $post->ID, 'about_philanthropy_title', true );
 	$philanthropy_subtitle = get_post_meta( $post->ID, 'about_philanthropy_subtitle', true );
@@ -730,9 +730,9 @@ function kidazzle_about_philanthropy_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="about_philanthropy_image" name="about_philanthropy_image"
 					   value="<?php echo esc_attr( $philanthropy_image ); ?>"
-					   class="large-text kidazzle-image-field" />
-				<button type="button" class="button kidazzle-upload-button" data-field="about_philanthropy_image">Select Image</button>
-				<button type="button" class="button kidazzle-clear-button" data-field="about_philanthropy_image">Clear</button>
+					   class="large-text Kidazzle-image-field" />
+				<button type="button" class="button Kidazzle-upload-button" data-field="about_philanthropy_image">Select Image</button>
+				<button type="button" class="button Kidazzle-clear-button" data-field="about_philanthropy_image">Clear</button>
 			</td>
 		</tr>
 	</table>
@@ -742,8 +742,8 @@ function kidazzle_about_philanthropy_meta_box_render( $post ) {
 /**
  * CTA Section Meta Box
  */
-function kidazzle_about_cta_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_about_cta_meta', 'kidazzle_about_cta_nonce' );
+function Kidazzle_about_cta_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_about_cta_meta', 'Kidazzle_about_cta_nonce' );
 
 	$cta_title = get_post_meta( $post->ID, 'about_cta_title', true );
 	$cta_description = get_post_meta( $post->ID, 'about_cta_description', true );
@@ -771,7 +771,7 @@ function kidazzle_about_cta_meta_box_render( $post ) {
 /**
  * Save About Page Meta
  */
-function kidazzle_save_about_page_meta( $post_id ) {
+function Kidazzle_save_about_page_meta( $post_id ) {
 	// Check if this is the About page
 	if ( get_post_type( $post_id ) !== 'page' ) {
 		return;
@@ -779,16 +779,16 @@ function kidazzle_save_about_page_meta( $post_id ) {
 
 	// Define all meta fields
 	$meta_boxes = array(
-		'kidazzle_about_hero_nonce' => array(
+		'Kidazzle_about_hero_nonce' => array(
 			'about_hero_badge_text'  => 'sanitize_text_field',
 			'about_hero_title'       => 'sanitize_text_field',
 			'about_hero_description' => 'sanitize_textarea_field',
 			'about_hero_image'       => 'esc_url_raw',
 		),
-		'kidazzle_about_mission_nonce' => array(
+		'Kidazzle_about_mission_nonce' => array(
 			'about_mission_quote' => 'sanitize_textarea_field',
 		),
-		'kidazzle_about_story_nonce' => array(
+		'Kidazzle_about_story_nonce' => array(
 			'about_story_title'      => 'sanitize_text_field',
 			'about_story_paragraph1' => 'sanitize_textarea_field',
 			'about_story_paragraph2' => 'sanitize_textarea_field',
@@ -802,7 +802,7 @@ function kidazzle_save_about_page_meta( $post_id ) {
 			'about_stat4_value'      => 'sanitize_text_field',
 			'about_stat4_label'      => 'sanitize_text_field',
 		),
-		'kidazzle_about_educators_nonce' => array(
+		'Kidazzle_about_educators_nonce' => array(
 			'about_educators_title'       => 'sanitize_text_field',
 			'about_educators_description' => 'sanitize_textarea_field',
 			'about_educator1_icon'        => 'sanitize_text_field',
@@ -815,7 +815,7 @@ function kidazzle_save_about_page_meta( $post_id ) {
 			'about_educator3_title'       => 'sanitize_text_field',
 			'about_educator3_desc'        => 'sanitize_textarea_field',
 		),
-		'kidazzle_about_values_nonce' => array(
+		'Kidazzle_about_values_nonce' => array(
 			'about_values_title'       => 'sanitize_text_field',
 			'about_values_description' => 'sanitize_textarea_field',
 			'about_value1_icon'        => 'sanitize_text_field',
@@ -831,10 +831,10 @@ function kidazzle_save_about_page_meta( $post_id ) {
 			'about_value4_title'       => 'sanitize_text_field',
 			'about_value4_desc'        => 'sanitize_textarea_field',
 		),
-		'kidazzle_about_leadership_nonce' => array(
+		'Kidazzle_about_leadership_nonce' => array(
 			'about_leadership_title' => 'sanitize_text_field',
 		),
-		'kidazzle_about_nutrition_nonce' => array(
+		'Kidazzle_about_nutrition_nonce' => array(
 			'about_nutrition_title'        => 'sanitize_text_field',
 			'about_nutrition_description'  => 'sanitize_textarea_field',
 			'about_nutrition_bullet1_icon' => 'sanitize_text_field',
@@ -845,7 +845,7 @@ function kidazzle_save_about_page_meta( $post_id ) {
 			'about_nutrition_bullet3_text' => 'sanitize_text_field',
 			'about_nutrition_image'        => 'esc_url_raw',
 		),
-		'kidazzle_about_philanthropy_nonce' => array(
+		'Kidazzle_about_philanthropy_nonce' => array(
 			'about_philanthropy_title'        => 'sanitize_text_field',
 			'about_philanthropy_subtitle'     => 'sanitize_text_field',
 			'about_philanthropy_description'  => 'sanitize_textarea_field',
@@ -857,7 +857,7 @@ function kidazzle_save_about_page_meta( $post_id ) {
 			'about_philanthropy_bullet3_text' => 'sanitize_text_field',
 			'about_philanthropy_image'        => 'esc_url_raw',
 		),
-		'kidazzle_about_cta_nonce' => array(
+		'Kidazzle_about_cta_nonce' => array(
 			'about_cta_title'       => 'sanitize_text_field',
 			'about_cta_description' => 'sanitize_textarea_field',
 		),
@@ -883,12 +883,12 @@ function kidazzle_save_about_page_meta( $post_id ) {
 		}
 	}
 }
-add_action( 'save_post', 'kidazzle_save_about_page_meta' );
+add_action( 'save_post', 'Kidazzle_save_about_page_meta' );
 
 /**
  * Seed default values for About page when template is first applied
  */
-function kidazzle_seed_about_page_defaults( $post_id ) {
+function Kidazzle_seed_about_page_defaults( $post_id ) {
 	// Check if this is a page
 	if ( get_post_type( $post_id ) !== 'page' ) {
 		return;
@@ -909,7 +909,7 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 	// Default values array
 	$defaults = array(
 		'about_hero_badge_text'            => 'Established 2015',
-		'about_hero_title'                 => 'More than a school. <span class="text-kidazzle-yellow italic">A second home.</span>',
+		'about_hero_title'                 => 'More than a school. <span class="text-Kidazzle-yellow italic">A second home.</span>',
 		'about_hero_description'           => 'We founded Kidazzle on a simple belief: Early education should be a perfect blend of rigorous cognitive development and the comforting warmth of family.',
 		'about_hero_image'                 => 'https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1000&auto=format&fit=crop',
 		'about_mission_quote'              => '"To cultivate a vibrant community of lifelong learners by blending academic rigor with the nurturing warmth of home, ensuring every child feels seen, valued, and capable."',
@@ -982,4 +982,4 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 	// Mark as seeded
 	update_post_meta( $post_id, '_about_defaults_seeded', '1' );
 }
-add_action( 'save_post', 'kidazzle_seed_about_page_defaults', 5 );
+add_action( 'save_post', 'Kidazzle_seed_about_page_defaults', 5 );

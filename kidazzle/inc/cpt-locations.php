@@ -2,7 +2,7 @@
 /**
  * Custom Post Type: Locations
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 /**
  * Register Location CPT
  */
-function kidazzle_register_location_cpt()
+function Kidazzle_register_location_cpt()
 {
 	$labels = array(
 		'name' => _x('Locations', 'Post Type General Name', 'kidazzle-theme'),
@@ -40,12 +40,12 @@ function kidazzle_register_location_cpt()
 
 	register_post_type('location', $args);
 }
-add_action('init', 'kidazzle_register_location_cpt', 0);
+add_action('init', 'Kidazzle_register_location_cpt', 0);
 
 /**
  * Register Location taxonomy (counties/regions)
  */
-function kidazzle_register_location_taxonomy()
+function Kidazzle_register_location_taxonomy()
 {
 	$labels = array(
 		'name' => _x('Location Regions', 'taxonomy general name', 'kidazzle-theme'),
@@ -80,12 +80,12 @@ function kidazzle_register_location_taxonomy()
 		)
 	);
 }
-add_action('init', 'kidazzle_register_location_taxonomy', 1);
+add_action('init', 'Kidazzle_register_location_taxonomy', 1);
 
 /**
  * Add admin columns
  */
-function kidazzle_location_admin_columns($columns)
+function Kidazzle_location_admin_columns($columns)
 {
 	$new_columns = array();
 	$new_columns['cb'] = $columns['cb'];
@@ -98,12 +98,12 @@ function kidazzle_location_admin_columns($columns)
 
 	return $new_columns;
 }
-add_filter('manage_location_posts_columns', 'kidazzle_location_admin_columns');
+add_filter('manage_location_posts_columns', 'Kidazzle_location_admin_columns');
 
 /**
  * Populate admin columns
  */
-function kidazzle_location_admin_column_content($column, $post_id)
+function Kidazzle_location_admin_column_content($column, $post_id)
 {
 	switch ($column) {
 		case 'city':
@@ -126,23 +126,23 @@ function kidazzle_location_admin_column_content($column, $post_id)
 			break;
 	}
 }
-add_action('manage_location_posts_custom_column', 'kidazzle_location_admin_column_content', 10, 2);
+add_action('manage_location_posts_custom_column', 'Kidazzle_location_admin_column_content', 10, 2);
 
 /**
  * Make columns sortable
  */
-function kidazzle_location_sortable_columns($columns)
+function Kidazzle_location_sortable_columns($columns)
 {
 	$columns['city'] = 'city';
 	$columns['state'] = 'state';
 	return $columns;
 }
-add_filter('manage_edit-location_sortable_columns', 'kidazzle_location_sortable_columns');
+add_filter('manage_edit-location_sortable_columns', 'Kidazzle_location_sortable_columns');
 
 /**
  * Custom title placeholder
  */
-function kidazzle_location_title_placeholder($title)
+function Kidazzle_location_title_placeholder($title)
 {
 	$screen = get_current_screen();
 	if ('location' === $screen->post_type) {
@@ -150,46 +150,46 @@ function kidazzle_location_title_placeholder($title)
 	}
 	return $title;
 }
-add_filter('enter_title_here', 'kidazzle_location_title_placeholder');
+add_filter('enter_title_here', 'Kidazzle_location_title_placeholder');
 
 /**
  * Add custom fields to location_region taxonomy
  */
-function kidazzle_location_region_add_form_fields()
+function Kidazzle_location_region_add_form_fields()
 {
 	?>
 	<div class="form-field">
 		<label for="region_color_bg"><?php _e('Background Color Class', 'kidazzle-theme'); ?></label>
-		<input type="text" name="region_color_bg" id="region_color_bg" value="kidazzle-greenLight"
-			placeholder="e.g., kidazzle-greenLight">
+		<input type="text" name="region_color_bg" id="region_color_bg" value="Kidazzle-greenLight"
+			placeholder="e.g., Kidazzle-greenLight">
 		<p class="description">
-			<?php _e('Tailwind background color class (e.g., kidazzle-greenLight, kidazzle-redLight, kidazzle-blueLight, kidazzle-yellowLight, kidazzle-purpleLight, kidazzle-orangeLight, kidazzle-tealLight)', 'kidazzle-theme'); ?>
+			<?php _e('Tailwind background color class (e.g., Kidazzle-greenLight, Kidazzle-redLight, Kidazzle-blueLight, Kidazzle-yellowLight, Kidazzle-purpleLight, Kidazzle-orangeLight, Kidazzle-tealLight)', 'kidazzle-theme'); ?>
 		</p>
 	</div>
 	<div class="form-field">
 		<label for="region_color_text"><?php _e('Text Color Class', 'kidazzle-theme'); ?></label>
-		<input type="text" name="region_color_text" id="region_color_text" value="kidazzle-green"
-			placeholder="e.g., kidazzle-green">
+		<input type="text" name="region_color_text" id="region_color_text" value="Kidazzle-green"
+			placeholder="e.g., Kidazzle-green">
 		<p class="description">
-			<?php _e('Tailwind text color class (e.g., kidazzle-green, kidazzle-red, kidazzle-blue, kidazzle-yellow, kidazzle-purple, kidazzle-orange, kidazzle-teal)', 'kidazzle-theme'); ?>
+			<?php _e('Tailwind text color class (e.g., Kidazzle-green, Kidazzle-red, Kidazzle-blue, Kidazzle-yellow, Kidazzle-purple, Kidazzle-orange, Kidazzle-teal)', 'kidazzle-theme'); ?>
 		</p>
 	</div>
 	<div class="form-field">
 		<label for="region_color_border"><?php _e('Border Color Class', 'kidazzle-theme'); ?></label>
-		<input type="text" name="region_color_border" id="region_color_border" value="kidazzle-green"
-			placeholder="e.g., kidazzle-green">
+		<input type="text" name="region_color_border" id="region_color_border" value="Kidazzle-green"
+			placeholder="e.g., Kidazzle-green">
 		<p class="description">
-			<?php _e('Tailwind border color class (e.g., kidazzle-green, kidazzle-red, kidazzle-blue, kidazzle-yellow, kidazzle-purple, kidazzle-orange, kidazzle-teal)', 'kidazzle-theme'); ?>
+			<?php _e('Tailwind border color class (e.g., Kidazzle-green, Kidazzle-red, Kidazzle-blue, Kidazzle-yellow, Kidazzle-purple, Kidazzle-orange, Kidazzle-teal)', 'kidazzle-theme'); ?>
 		</p>
 	</div>
 	<?php
 }
-add_action('location_region_add_form_fields', 'kidazzle_location_region_add_form_fields');
+add_action('location_region_add_form_fields', 'Kidazzle_location_region_add_form_fields');
 
 /**
  * Add custom fields to location_region taxonomy edit form
  */
-function kidazzle_location_region_edit_form_fields($term)
+function Kidazzle_location_region_edit_form_fields($term)
 {
 	$color_bg = get_term_meta($term->term_id, 'region_color_bg', true);
 	$color_text = get_term_meta($term->term_id, 'region_color_text', true);
@@ -200,9 +200,9 @@ function kidazzle_location_region_edit_form_fields($term)
 		</th>
 		<td>
 			<input type="text" name="region_color_bg" id="region_color_bg"
-				value="<?php echo esc_attr($color_bg ?: 'kidazzle-greenLight'); ?>">
+				value="<?php echo esc_attr($color_bg ?: 'Kidazzle-greenLight'); ?>">
 			<p class="description">
-				<?php _e('Tailwind background color class (e.g., kidazzle-greenLight, kidazzle-redLight, kidazzle-blueLight, kidazzle-yellowLight, kidazzle-purpleLight, kidazzle-orangeLight, kidazzle-tealLight)', 'kidazzle-theme'); ?>
+				<?php _e('Tailwind background color class (e.g., Kidazzle-greenLight, Kidazzle-redLight, Kidazzle-blueLight, Kidazzle-yellowLight, Kidazzle-purpleLight, Kidazzle-orangeLight, Kidazzle-tealLight)', 'kidazzle-theme'); ?>
 			</p>
 		</td>
 	</tr>
@@ -210,9 +210,9 @@ function kidazzle_location_region_edit_form_fields($term)
 		<th scope="row"><label for="region_color_text"><?php _e('Text Color Class', 'kidazzle-theme'); ?></label></th>
 		<td>
 			<input type="text" name="region_color_text" id="region_color_text"
-				value="<?php echo esc_attr($color_text ?: 'kidazzle-green'); ?>">
+				value="<?php echo esc_attr($color_text ?: 'Kidazzle-green'); ?>">
 			<p class="description">
-				<?php _e('Tailwind text color class (e.g., kidazzle-green, kidazzle-red, kidazzle-blue, kidazzle-yellow, kidazzle-purple, kidazzle-orange, kidazzle-teal)', 'kidazzle-theme'); ?>
+				<?php _e('Tailwind text color class (e.g., Kidazzle-green, Kidazzle-red, Kidazzle-blue, Kidazzle-yellow, Kidazzle-purple, Kidazzle-orange, Kidazzle-teal)', 'kidazzle-theme'); ?>
 			</p>
 		</td>
 	</tr>
@@ -221,20 +221,20 @@ function kidazzle_location_region_edit_form_fields($term)
 		</th>
 		<td>
 			<input type="text" name="region_color_border" id="region_color_border"
-				value="<?php echo esc_attr($color_border ?: 'kidazzle-green'); ?>">
+				value="<?php echo esc_attr($color_border ?: 'Kidazzle-green'); ?>">
 			<p class="description">
-				<?php _e('Tailwind border color class (e.g., kidazzle-green, kidazzle-red, kidazzle-blue, kidazzle-yellow, kidazzle-purple, kidazzle-orange, kidazzle-teal)', 'kidazzle-theme'); ?>
+				<?php _e('Tailwind border color class (e.g., Kidazzle-green, Kidazzle-red, Kidazzle-blue, Kidazzle-yellow, Kidazzle-purple, Kidazzle-orange, Kidazzle-teal)', 'kidazzle-theme'); ?>
 			</p>
 		</td>
 	</tr>
 	<?php
 }
-add_action('location_region_edit_form_fields', 'kidazzle_location_region_edit_form_fields');
+add_action('location_region_edit_form_fields', 'Kidazzle_location_region_edit_form_fields');
 
 /**
  * Save location_region taxonomy custom fields
  */
-function kidazzle_save_location_region_meta($term_id)
+function Kidazzle_save_location_region_meta($term_id)
 {
 	if (isset($_POST['region_color_bg'])) {
 		update_term_meta($term_id, 'region_color_bg', sanitize_text_field($_POST['region_color_bg']));
@@ -246,31 +246,31 @@ function kidazzle_save_location_region_meta($term_id)
 		update_term_meta($term_id, 'region_color_border', sanitize_text_field($_POST['region_color_border']));
 	}
 }
-add_action('created_location_region', 'kidazzle_save_location_region_meta');
-add_action('edited_location_region', 'kidazzle_save_location_region_meta');
+add_action('created_location_region', 'Kidazzle_save_location_region_meta');
+add_action('edited_location_region', 'Kidazzle_save_location_region_meta');
 
 /**
  * Add meta box for location custom fields
  */
-function kidazzle_location_custom_fields_meta_box()
+function Kidazzle_location_custom_fields_meta_box()
 {
 	add_meta_box(
-		'kidazzle-location-custom-fields',
+		'Kidazzle-location-custom-fields',
 		__('Location Details', 'kidazzle-theme'),
-		'kidazzle_render_location_custom_fields_meta_box',
+		'Kidazzle_render_location_custom_fields_meta_box',
 		'location',
 		'normal',
 		'high'
 	);
 }
-add_action('add_meta_boxes', 'kidazzle_location_custom_fields_meta_box');
+add_action('add_meta_boxes', 'Kidazzle_location_custom_fields_meta_box');
 
 /**
  * Render location custom fields meta box
  */
-function kidazzle_render_location_custom_fields_meta_box($post)
+function Kidazzle_render_location_custom_fields_meta_box($post)
 {
-	wp_nonce_field('kidazzle_location_meta_nonce', 'kidazzle_location_meta_nonce_field');
+	wp_nonce_field('Kidazzle_location_meta_nonce', 'Kidazzle_location_meta_nonce_field');
 
 	// Get existing values
 	$hero_subtitle = get_post_meta($post->ID, 'location_hero_subtitle', true);
@@ -301,37 +301,38 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 	$latitude = get_post_meta($post->ID, 'location_latitude', true);
 	$longitude = get_post_meta($post->ID, 'location_longitude', true);
 	$service_areas = get_post_meta($post->ID, 'location_service_areas', true);
+	$gmb_url = get_post_meta($post->ID, 'location_gmb_url', true);
 	?>
 	<style>
-		.kidazzle-meta-field {
+		.Kidazzle-meta-field {
 			margin-bottom: 20px;
 		}
 
-		.kidazzle-meta-field label {
+		.Kidazzle-meta-field label {
 			display: block;
 			font-weight: 600;
 			margin-bottom: 5px;
 		}
 
-		.kidazzle-meta-field input[type="text"],
-		.kidazzle-meta-field textarea {
+		.Kidazzle-meta-field input[type="text"],
+		.Kidazzle-meta-field textarea {
 			width: 100%;
 		}
 
-		.kidazzle-meta-field small {
+		.Kidazzle-meta-field small {
 			display: block;
 			margin-top: 5px;
 			color: #666;
 			font-style: italic;
 		}
 
-		.kidazzle-meta-section {
+		.Kidazzle-meta-section {
 			border-top: 1px solid #ddd;
 			padding-top: 20px;
 			margin-top: 20px;
 		}
 
-		.kidazzle-meta-section h4 {
+		.Kidazzle-meta-section h4 {
 			margin-top: 0;
 			margin-bottom: 15px;
 			font-size: 14px;
@@ -340,7 +341,7 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 			color: #555;
 		}
 
-		.kidazzle-icon-preview {
+		.Kidazzle-icon-preview {
 			display: inline-flex;
 			align-items: center;
 			gap: 10px;
@@ -351,12 +352,12 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 			font-size: 13px;
 		}
 
-		.kidazzle-icon-preview i {
+		.Kidazzle-icon-preview i {
 			font-size: 16px;
 			color: #2271b1;
 		}
 
-		.kidazzle-image-preview img {
+		.Kidazzle-image-preview img {
 			max-width: 200px;
 			height: auto;
 			margin-top: 10px;
@@ -366,7 +367,7 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		}
 	</style>
 
-	<div class="kidazzle-meta-section" style="border-top: none; padding-top: 0; margin-top: 0;">
+	<div class="Kidazzle-meta-section" style="border-top: none; padding-top: 0; margin-top: 0;">
 		<div
 			style="background: #e7f5ff; padding: 15px; border-radius: 4px; margin-bottom: 20px; border-left: 4px solid #2271b1;">
 			<p style="margin: 0 0 10px 0; font-weight: 600;">
@@ -376,19 +377,19 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 				The following icons will appear on your location page:
 			</p>
 			<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;">
-				<div class="kidazzle-icon-preview">
+				<div class="Kidazzle-icon-preview">
 					<i class="fa-solid fa-location-dot"></i>
 					<span>Address</span>
 				</div>
-				<div class="kidazzle-icon-preview">
+				<div class="Kidazzle-icon-preview">
 					<i class="fa-solid fa-phone"></i>
 					<span>Phone/Email</span>
 				</div>
-				<div class="kidazzle-icon-preview">
+				<div class="Kidazzle-icon-preview">
 					<i class="fa-solid fa-clock"></i>
 					<span>Hours</span>
 				</div>
-				<div class="kidazzle-icon-preview">
+				<div class="Kidazzle-icon-preview">
 					<i class="fa-solid fa-bus"></i>
 					<span>School Pickups</span>
 				</div>
@@ -396,52 +397,52 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<h4><?php _e('Hero Section', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_hero_subtitle"><?php _e('Hero Subtitle', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_hero_subtitle" name="location_hero_subtitle"
 				value="<?php echo esc_attr($hero_subtitle); ?>" placeholder="e.g., Now Enrolling: Pre-K & Toddlers" />
 			<small><?php _e('Small badge text shown above the location name', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_hero_review_text"><?php _e('Hero Review Text', 'kidazzle-theme'); ?></label>
 			<textarea id="location_hero_review_text" name="location_hero_review_text" rows="3"
 				placeholder="The best decision we made for our daughter..."><?php echo esc_textarea($hero_review_text); ?></textarea>
 			<small><?php _e('Review text displayed in the floating badge (leave empty to hide)', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_hero_review_author"><?php _e('Hero Review Author', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_hero_review_author" name="location_hero_review_author"
 				value="<?php echo esc_attr($hero_review_author); ?>" placeholder="Parent Review" />
 			<small><?php _e('Author of the review (defaults to "Parent Review" if empty)', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_hero_gallery"><?php _e('Hero Image Gallery (URLs)', 'kidazzle-theme'); ?></label>
 			<textarea id="location_hero_gallery" name="location_hero_gallery" rows="4"
 				placeholder="Enter image URLs, one per line:&#10;https://example.com/image1.jpg&#10;https://example.com/image2.jpg&#10;https://example.com/image3.jpg"><?php echo esc_textarea($hero_gallery); ?></textarea>
 			<small><?php _e('Enter image URLs (one per line). If provided, these will display as a carousel in the hero section. Leave empty to use the featured image.', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_virtual_tour_embed"><?php _e('Virtual Tour Embed Code', 'kidazzle-theme'); ?></label>
 			<textarea id="location_virtual_tour_embed" name="location_virtual_tour_embed" rows="6"
 				placeholder="Paste your virtual tour embed code (iframe, script, etc.):&#10;&lt;iframe src=&quot;https://example.com/tour&quot; width=&quot;100%&quot; height=&quot;600&quot;&gt;&lt;/iframe&gt;"><?php echo esc_textarea($virtual_tour_embed); ?></textarea>
 			<small><?php _e('Paste the full embed code for your virtual tour. If provided, this will display on the location page. If empty, no space will be created on the page.', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_tagline"><?php _e('Tagline', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_tagline" name="location_tagline" value="<?php echo esc_attr($tagline); ?>"
 				placeholder="e.g., Lawrenceville's home for brilliant beginnings." />
 			<small><?php _e('Main tagline for this location (last 2 words will be italicized)', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_description"><?php _e('Description', 'kidazzle-theme'); ?></label>
 			<textarea id="location_description" name="location_description" rows="3"
 				placeholder="Short description of this location..."><?php echo esc_textarea($description); ?></textarea>
@@ -449,24 +450,24 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<h4><?php _e('Location Stats', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_ages_served"><?php _e('Ages Served', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_ages_served" name="location_ages_served"
 				value="<?php echo esc_attr($ages_served); ?>" placeholder="e.g., 6w - 12y" />
 			<small><?php _e('Age range served at this location', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_special_programs"><?php _e('Special Programs (Badges)', 'kidazzle-theme'); ?></label>
 			<textarea id="location_special_programs" name="location_special_programs" rows="2"
 				placeholder="e.g., GA Pre-K, Summer Camp"><?php echo esc_textarea(get_post_meta($post->ID, 'location_special_programs', true)); ?></textarea>
 			<small><?php _e('Enter programs separated by commas. These appear as badges on the location card.', 'kidazzle-theme'); ?></small>
 		</div>
 
-	<div class="kidazzle-meta-field">
+	<div class="Kidazzle-meta-field">
 		<label for="location_quality_rated">
 			<input type="checkbox" id="location_quality_rated" name="location_quality_rated" value="1"
 				<?php checked(get_post_meta($post->ID, 'location_quality_rated', true), '1'); ?> />
@@ -474,14 +475,14 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</label>
 		<small><?php _e('Check if this location has achieved Georgia\'s Quality Rated status', 'kidazzle-theme'); ?></small>
 	</div>
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_google_rating"><?php _e('Google Rating', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_google_rating" name="location_google_rating"
 				value="<?php echo esc_attr($google_rating); ?>" placeholder="e.g., 4.9" />
 			<small><?php _e('Google rating for this location (e.g., 4.9)', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_hours"><?php _e('Hours', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_hours" name="location_hours" value="<?php echo esc_attr($hours); ?>"
 				placeholder="e.g., 7am - 6pm" />
@@ -489,81 +490,81 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<h4><?php _e('Campus Director', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_director_name"><?php _e('Director Name', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_director_name" name="location_director_name"
 				value="<?php echo esc_attr($director_name); ?>" placeholder="e.g., Sarah Williams" />
 			<small><?php _e('Name of the campus director (leave empty to hide director section)', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_director_bio"><?php _e('Director Bio', 'kidazzle-theme'); ?></label>
 			<textarea id="location_director_bio" name="location_director_bio" rows="4"
 				placeholder="Brief bio of the director..."><?php echo esc_textarea($director_bio); ?></textarea>
 			<small><?php _e('Brief bio/welcome message from the director', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_director_photo"><?php _e('Director Photo', 'kidazzle-theme'); ?></label>
-			<input type="text" id="location_director_photo" name="location_director_photo" class="kidazzle-image-field"
+			<input type="text" id="location_director_photo" name="location_director_photo" class="Kidazzle-image-field"
 				value="<?php echo esc_attr($director_photo); ?>" placeholder="https://..."
 				style="width: calc(100% - 220px); display: inline-block;" />
-			<button type="button" class="button kidazzle-upload-button" data-field="location_director_photo"
+			<button type="button" class="button Kidazzle-upload-button" data-field="location_director_photo"
 				style="margin-left: 5px;">
 				<i class="fa-solid fa-upload"></i> Upload Image
 			</button>
-			<button type="button" class="button kidazzle-clear-button" data-field="location_director_photo"
+			<button type="button" class="button Kidazzle-clear-button" data-field="location_director_photo"
 				style="margin-left: 5px;">
 				<i class="fa-solid fa-times"></i> Clear
 			</button>
-			<div class="kidazzle-image-preview"></div>
+			<div class="Kidazzle-image-preview"></div>
 			<small><?php _e('Director photo (optional)', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_director_signature"><?php _e('Director Signature Image', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_director_signature" name="location_director_signature"
-				class="kidazzle-image-field" value="<?php echo esc_attr($director_signature); ?>" placeholder="https://..."
+				class="Kidazzle-image-field" value="<?php echo esc_attr($director_signature); ?>" placeholder="https://..."
 				style="width: calc(100% - 220px); display: inline-block;" />
-			<button type="button" class="button kidazzle-upload-button" data-field="location_director_signature"
+			<button type="button" class="button Kidazzle-upload-button" data-field="location_director_signature"
 				style="margin-left: 5px;">
 				<i class="fa-solid fa-upload"></i> Upload Image
 			</button>
-			<button type="button" class="button kidazzle-clear-button" data-field="location_director_signature"
+			<button type="button" class="button Kidazzle-clear-button" data-field="location_director_signature"
 				style="margin-left: 5px;">
 				<i class="fa-solid fa-times"></i> Clear
 			</button>
-			<div class="kidazzle-image-preview"></div>
+			<div class="Kidazzle-image-preview"></div>
 			<small><?php _e('Director signature image (optional)', 'kidazzle-theme'); ?></small>
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<h4><?php _e('Address & Contact', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_address"><?php _e('Street Address', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_address" name="location_address" value="<?php echo esc_attr($address); ?>"
 				placeholder="e.g., 123 Main Street" />
 		</div>
 
 		<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px;">
-			<div class="kidazzle-meta-field">
+			<div class="Kidazzle-meta-field">
 				<label for="location_city"><?php _e('City', 'kidazzle-theme'); ?></label>
 				<input type="text" id="location_city" name="location_city" value="<?php echo esc_attr($city); ?>"
 					placeholder="e.g., Lawrenceville" />
 			</div>
 
-			<div class="kidazzle-meta-field">
+			<div class="Kidazzle-meta-field">
 				<label for="location_state"><?php _e('State', 'kidazzle-theme'); ?></label>
 				<input type="text" id="location_state" name="location_state" value="<?php echo esc_attr($state); ?>"
 					placeholder="GA" />
 			</div>
 
-			<div class="kidazzle-meta-field">
+			<div class="Kidazzle-meta-field">
 				<label for="location_zip"><?php _e('ZIP Code', 'kidazzle-theme'); ?></label>
 				<input type="text" id="location_zip" name="location_zip" value="<?php echo esc_attr($zip); ?>"
 					placeholder="30043" />
@@ -571,13 +572,13 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 
 		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-			<div class="kidazzle-meta-field">
+			<div class="Kidazzle-meta-field">
 				<label for="location_phone"><?php _e('Phone', 'kidazzle-theme'); ?></label>
 				<input type="text" id="location_phone" name="location_phone" value="<?php echo esc_attr($phone); ?>"
 					placeholder="(770) 555-1234" />
 			</div>
 
-			<div class="kidazzle-meta-field">
+			<div class="Kidazzle-meta-field">
 				<label for="location_email"><?php _e('Email', 'kidazzle-theme'); ?></label>
 				<input type="email" id="location_email" name="location_email" value="<?php echo esc_attr($email); ?>"
 					placeholder="info@example.com" />
@@ -585,14 +586,14 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 
 		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-			<div class="kidazzle-meta-field">
+			<div class="Kidazzle-meta-field">
 				<label for="location_latitude"><?php _e('Latitude', 'kidazzle-theme'); ?></label>
 				<input type="text" id="location_latitude" name="location_latitude"
 					value="<?php echo esc_attr($latitude); ?>" placeholder="33.9562" />
 				<small><?php _e('For map integration (optional)', 'kidazzle-theme'); ?></small>
 			</div>
 
-			<div class="kidazzle-meta-field">
+			<div class="Kidazzle-meta-field">
 				<label for="location_longitude"><?php _e('Longitude', 'kidazzle-theme'); ?></label>
 				<input type="text" id="location_longitude" name="location_longitude"
 					value="<?php echo esc_attr($longitude); ?>" placeholder="-83.8781" />
@@ -601,10 +602,17 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
-		<h4><?php _e('Google Maps', 'kidazzle-theme'); ?></h4>
+	<div class="Kidazzle-meta-section">
+		<h4><?php _e('Google Maps & GMB', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
+			<label for="location_gmb_url"><?php _e('Google My Business URL', 'kidazzle-theme'); ?></label>
+			<input type="url" id="location_gmb_url" name="location_gmb_url"
+				value="<?php echo esc_attr($gmb_url); ?>" placeholder="https://maps.google.com/?cid=..." />
+			<small><?php _e('Direct URL to your Google My Business listing. Used by AI to enhance content generation.', 'kidazzle-theme'); ?></small>
+		</div>
+
+		<div class="Kidazzle-meta-field">
 			<label for="location_maps_embed"><?php _e('Google Maps Embed Code', 'kidazzle-theme'); ?></label>
 			<textarea id="location_maps_embed" name="location_maps_embed" rows="5"
 				placeholder='<iframe src="https://www.google.com/maps/embed?..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'><?php echo esc_textarea($maps_embed); ?></textarea>
@@ -612,10 +620,10 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<h4><?php _e('Tour Booking', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_tour_booking_link"><?php _e('Tour Booking Link', 'kidazzle-theme'); ?></label>
 			<input type="url" id="location_tour_booking_link" name="location_tour_booking_link"
 				value="<?php echo esc_attr($tour_booking_link); ?>" placeholder="https://..." />
@@ -623,10 +631,10 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<h4><?php _e('School Pickups', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_school_pickups"><?php _e('Elementary Schools', 'kidazzle-theme'); ?></label>
 			<textarea id="location_school_pickups" name="location_school_pickups" rows="5"
 				placeholder="Enter one school name per line, e.g.:&#10;Lawrenceville Elementary&#10;Pleasant Hill Elementary&#10;Grace Elementary"><?php echo esc_textarea($school_pickups); ?></textarea>
@@ -634,10 +642,10 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<h4><?php _e('Location SEO Content', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_seo_content_title"><?php _e('SEO Content Title', 'kidazzle-theme'); ?></label>
 			<input type="text" id="location_seo_content_title" name="location_seo_content_title"
 				value="<?php echo esc_attr($seo_content_title); ?>"
@@ -645,7 +653,7 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 			<small><?php _e('Title for the location-specific content section (e.g., "Early Education and Care in [City], GA")', 'kidazzle-theme'); ?></small>
 		</div>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_seo_content_text"><?php _e('SEO Content Description', 'kidazzle-theme'); ?></label>
 			<textarea id="location_seo_content_text" name="location_seo_content_text" rows="6"
 				placeholder="Our school is more than a daycare..."><?php echo esc_textarea($seo_content_text); ?></textarea>
@@ -653,10 +661,10 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<h4><?php _e('Location-Specific FAQs (LLM SEO)', 'kidazzle-theme'); ?></h4>
 
-		<div class="kidazzle-meta-field">
+		<div class="Kidazzle-meta-field">
 			<label for="location_faq_items"><?php _e('FAQ Items', 'kidazzle-theme'); ?></label>
 			<textarea id="location_faq_items" name="location_faq_items" rows="8"
 				placeholder="Format (one per line):&#10;What are your hours?|We're open Mon-Fri 6:30am-6:30pm&#10;Do you provide meals?|Yes, breakfast, lunch, and snack included"><?php echo esc_textarea(get_post_meta($post->ID, 'location_faq_items', true)); ?></textarea>
@@ -664,7 +672,7 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="kidazzle-meta-section">
+	<div class="Kidazzle-meta-section">
 		<p><strong><?php _e('Note:', 'kidazzle-theme'); ?></strong>
 			<?php _e('Use the "Featured Image" box in the sidebar to set the hero image for this location. Programs available at this location can be managed from the Programs admin section.', 'kidazzle-theme'); ?>
 		</p>
@@ -675,10 +683,10 @@ function kidazzle_render_location_custom_fields_meta_box($post)
 /**
  * Save location custom fields
  */
-function kidazzle_save_location_custom_fields($post_id)
+function Kidazzle_save_location_custom_fields($post_id)
 {
 	// Verify nonce
-	if (!isset($_POST['kidazzle_location_meta_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_location_meta_nonce_field']), 'kidazzle_location_meta_nonce')) {
+	if (!isset($_POST['Kidazzle_location_meta_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['Kidazzle_location_meta_nonce_field']), 'Kidazzle_location_meta_nonce')) {
 		return;
 	}
 
@@ -726,17 +734,35 @@ function kidazzle_save_location_custom_fields($post_id)
 		'location_service_areas',
 		'location_special_programs',
 		'location_faq_items',
+		'location_gmb_url',
 	);
 
 	foreach ($fields as $field) {
 		if (isset($_POST[$field])) {
 			$value = wp_unslash($_POST[$field]);
 			// Sanitize based on field type
-			if (in_array($field, array('location_description', 'location_director_bio', 'location_maps_embed', 'location_school_pickups', 'location_seo_content_text', 'location_service_areas', 'location_hero_review_text', 'location_faq_items', 'location_hero_gallery', 'location_virtual_tour_embed'))) {
+			if (in_array($field, array('location_description', 'location_director_bio', 'location_school_pickups', 'location_seo_content_text', 'location_service_areas', 'location_hero_review_text', 'location_faq_items', 'location_hero_gallery'))) {
 				$value = sanitize_textarea_field($value);
+			} elseif ($field === 'location_maps_embed' || $field === 'location_virtual_tour_embed') {
+				// Allow iframes and scripts for embeds
+				$allowed_tags = wp_kses_allowed_html('post');
+				$allowed_tags['iframe'] = array(
+					'src' => true,
+					'width' => true,
+					'height' => true,
+					'frameborder' => true,
+					'allowfullscreen' => true,
+					'allow' => true, 'loading' => true,
+					'style' => true,
+					'class' => true,
+					'title' => true,
+					'referrerpolicy' => true
+				);
+				$allowed_tags['script'] = array('src' => true, 'type' => true, 'async' => true, 'defer' => true);
+				$value = wp_kses($value, $allowed_tags);
 			} elseif ($field === 'location_email') {
 				$value = sanitize_email($value);
-			} elseif ($field === 'location_tour_booking_link') {
+			} elseif ($field === 'location_tour_booking_link' || $field === 'location_gmb_url') {
 				$value = esc_url_raw($value);
 			} else {
 				$value = sanitize_text_field($value);
@@ -749,4 +775,4 @@ function kidazzle_save_location_custom_fields($post_id)
 	$quality_rated = isset($_POST['location_quality_rated']) ? '1' : '';
 	update_post_meta($post_id, 'location_quality_rated', $quality_rated);
 }
-add_action('save_post_location', 'kidazzle_save_location_custom_fields');
+add_action('save_post_location', 'Kidazzle_save_location_custom_fields');

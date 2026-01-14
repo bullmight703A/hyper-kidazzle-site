@@ -2,21 +2,21 @@
 /**
  * Single Location Template
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  */
 
 get_header();
 
 while (have_posts()):
 	the_post();
-	$location_fields = kidazzle_get_location_fields();
+	$location_fields = Kidazzle_get_location_fields();
 	$location_id = get_the_ID();
 	$location_name = get_the_title();
 
 	// Get location meta
 	$phone = $location_fields['phone'];
 	$email = $location_fields['email'];
-	$address = kidazzle_location_address_line();
+	$address = Kidazzle_location_address_line();
 	$city = $location_fields['city'];
 	$state = $location_fields['state'];
 	$zip = $location_fields['zip'];
@@ -67,7 +67,7 @@ while (have_posts()):
 	// Get programs at this location
 	$programs_query = new WP_Query(array(
 		'post_type' => 'program',
-		'posts_per_page' => 6,
+		'posts_per_page' => -1,
 		'orderby' => 'menu_order',
 		'order' => 'ASC',
 		'meta_query' => array(
@@ -82,10 +82,10 @@ while (have_posts()):
 	// Get Region Colors
 	$location_regions = wp_get_post_terms($location_id, 'location_region');
 	$region_term = !empty($location_regions) && !is_wp_error($location_regions) ? $location_regions[0] : null;
-	$region_colors = $region_term ? kidazzle_get_region_color_from_term($region_term->term_id) : array(
-		'bg' => 'kidazzle-blueLight',
-		'text' => 'kidazzle-blue',
-		'border' => 'kidazzle-blue',
+	$region_colors = $region_term ? Kidazzle_get_region_color_from_term($region_term->term_id) : array(
+		'bg' => 'Kidazzle-blueLight',
+		'text' => 'Kidazzle-blue',
+		'border' => 'Kidazzle-blue',
 	);
 	?>
 
@@ -122,7 +122,7 @@ while (have_posts()):
 
 					<div class="flex flex-wrap gap-4 mb-10">
 						<a href="#tour"
-							class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-<?php echo esc_attr($region_colors['text']); ?> text-white text-xs font-bold uppercase tracking-[0.2em] shadow-soft hover:bg-kidazzle-blueDark transition-all hover:-translate-y-1">
+							class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-<?php echo esc_attr($region_colors['text']); ?> text-white text-xs font-bold uppercase tracking-[0.2em] shadow-soft hover:bg-Kidazzle-blueDark transition-all hover:-translate-y-1">
 							Schedule Visit
 						</a>
 						<?php if ($phone): ?>
@@ -136,21 +136,21 @@ while (have_posts()):
 					<!-- Quick Stats -->
 					<div class="grid grid-cols-3 gap-6 border-t border-brand-ink/5 pt-8">
 						<div>
-							<div class="text-2xl font-serif font-bold text-kidazzle-red mb-1">
+							<div class="text-2xl font-serif font-bold text-Kidazzle-red mb-1">
 								<?php echo esc_html($ages_served); ?>
 							</div>
 							<div class="text-[10px] uppercase tracking-wider text-brand-ink/80 font-semibold">Ages Served
 							</div>
 						</div>
 						<div>
-							<div class="text-2xl font-serif font-bold text-kidazzle-yellow mb-1">
+							<div class="text-2xl font-serif font-bold text-Kidazzle-yellow mb-1">
 								<?php echo esc_html($google_rating); ?>
 							</div>
 							<div class="text-[10px] uppercase tracking-wider text-brand-ink/80 font-semibold">Google Rating
 							</div>
 						</div>
 						<div>
-							<div class="text-2xl font-serif font-bold text-kidazzle-green mb-1">
+							<div class="text-2xl font-serif font-bold text-Kidazzle-green mb-1">
 								<?php echo esc_html($hours); ?>
 							</div>
 							<div class="text-[10px] uppercase tracking-wider text-brand-ink/80 font-semibold">Mon - Fri
@@ -252,16 +252,16 @@ while (have_posts()):
 						if ($hero_review_text):
 							?>
 							<div
-								class="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-float max-w-[200px] fade-in-up delay-300">
+								class="hidden lg:block absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-float max-w-[200px] fade-in-up delay-300 z-20">
 								<div class="flex items-center gap-1 mb-2">
 									<?php for ($i = 0; $i < 5; $i++): ?>
-										<i class="fa-solid fa-star text-kidazzle-yellow text-sm"></i>
+										<i class="fa-solid fa-star text-Kidazzle-yellow text-sm"></i>
 									<?php endfor; ?>
 								</div>
 								<p class="text-xs font-serif italic text-brand-ink/90">
 									"<?php echo esc_html($hero_review_text); ?>"
 								</p>
-								<p class="text-[10px] font-bold text-brand-ink/70 mt-2 uppercase tracking-wide">—
+								<p class="text-[10px] font-bold text-brand-ink mt-2 uppercase tracking-wide">—
 									<?php echo esc_html($hero_review_author); ?>
 								</p>
 							</div>
@@ -287,9 +287,9 @@ while (have_posts()):
 				<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 					<!-- Feature 1 -->
 					<div
-						class="group p-8 rounded-[2rem] bg-brand-cream border border-kidazzle-blue/10 hover:border-kidazzle-blue/30 transition-all hover:-translate-y-1">
+						class="group p-8 rounded-[2rem] bg-brand-cream border border-Kidazzle-blue/10 hover:border-Kidazzle-blue/30 transition-all hover:-translate-y-1">
 						<div
-							class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-kidazzle-blue text-xl mb-6 group-hover:scale-110 transition-transform">
+							class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-Kidazzle-blue text-xl mb-6 group-hover:scale-110 transition-transform">
 							<i class="fa-solid fa-shield-halved"></i>
 						</div>
 						<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">Secure Access</h3>
@@ -299,9 +299,9 @@ while (have_posts()):
 
 					<!-- Feature 2 -->
 					<div
-						class="group p-8 rounded-[2rem] bg-brand-cream border border-kidazzle-blue/10 hover:border-kidazzle-red/30 transition-all hover:-translate-y-1">
+						class="group p-8 rounded-[2rem] bg-brand-cream border border-Kidazzle-blue/10 hover:border-Kidazzle-red/30 transition-all hover:-translate-y-1">
 						<div
-							class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-kidazzle-red text-xl mb-6 group-hover:scale-110 transition-transform">
+							class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-Kidazzle-red text-xl mb-6 group-hover:scale-110 transition-transform">
 							<i class="fa-solid fa-tree"></i>
 						</div>
 						<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">Nature Playground</h3>
@@ -311,9 +311,9 @@ while (have_posts()):
 
 					<!-- Feature 3 -->
 					<div
-						class="group p-8 rounded-[2rem] bg-brand-cream border border-kidazzle-blue/10 hover:border-kidazzle-yellow/30 transition-all hover:-translate-y-1">
+						class="group p-8 rounded-[2rem] bg-brand-cream border border-Kidazzle-blue/10 hover:border-Kidazzle-yellow/30 transition-all hover:-translate-y-1">
 						<div
-							class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-kidazzle-yellow text-xl mb-6 group-hover:scale-110 transition-transform">
+							class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-Kidazzle-yellow text-xl mb-6 group-hover:scale-110 transition-transform">
 							<i class="fa-solid fa-flask"></i>
 						</div>
 						<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">STEM Atelier</h3>
@@ -323,9 +323,9 @@ while (have_posts()):
 
 					<!-- Feature 4 -->
 					<div
-						class="group p-8 rounded-[2rem] bg-brand-cream border border-kidazzle-blue/10 hover:border-kidazzle-green/30 transition-all hover:-translate-y-1">
+						class="group p-8 rounded-[2rem] bg-brand-cream border border-Kidazzle-blue/10 hover:border-Kidazzle-green/30 transition-all hover:-translate-y-1">
 						<div
-							class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-kidazzle-green text-xl mb-6 group-hover:scale-110 transition-transform">
+							class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-Kidazzle-green text-xl mb-6 group-hover:scale-110 transition-transform">
 							<i class="fa-solid fa-graduation-cap"></i>
 						</div>
 						<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">GA Lottery Pre-K</h3>
@@ -338,7 +338,7 @@ while (have_posts()):
 
 		<?php if ($director_name): ?>
 			<!-- Director's Welcome -->
-			<section id="director" class="py-20 bg-kidazzle-blueDark text-white relative overflow-hidden">
+			<section id="director" class="py-20 bg-Kidazzle-blueDark text-white relative overflow-hidden">
 				<div class="absolute right-0 top-0 w-1/2 h-full bg-white/5 skew-x-12 transform origin-top-right"></div>
 
 				<div
@@ -349,7 +349,7 @@ while (have_posts()):
 								class="absolute inset-0 bg-<?php echo esc_attr($region_colors['text']); ?> rounded-[2.5rem] rotate-3">
 							</div>
 							<img src="<?php echo esc_url($director_photo); ?>" alt="<?php echo esc_attr($director_name); ?>"
-								class="relative rounded-[2.5rem] w-full object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-500" />
+								class="relative rounded-[2.5rem] w-full object-cover shadow-2xl grayscale transition-all duration-1000 ease-out" data-reveal-color />
 						</div>
 					<?php endif; ?>
 
@@ -435,8 +435,8 @@ while (have_posts()):
 							<p class="text-brand-ink/80">Curriculum tailored to the specific developmental window of your child.
 							</p>
 						</div>
-						<a href="<?php echo esc_url(kidazzle_get_program_archive_url()); ?>"
-							class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold text-sm uppercase tracking-wider hover:text-kidazzle-blueDark flex items-center gap-2">
+						<a href="<?php echo esc_url(Kidazzle_get_program_archive_url()); ?>"
+							class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold text-sm uppercase tracking-wider hover:text-Kidazzle-blueDark flex items-center gap-2">
 							View Curriculum Details <i class="fa-solid fa-arrow-right"></i>
 						</a>
 					</div>
@@ -444,31 +444,32 @@ while (have_posts()):
 					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 						<?php
 						$color_map = array(
-							'infant' => array('bg' => 'kidazzle-redLight', 'text' => 'kidazzle-red', 'border' => 'kidazzle-red/30'),
-							'toddler' => array('bg' => 'kidazzle-blueLight', 'text' => 'kidazzle-blue', 'border' => 'kidazzle-blue/30'),
-							'preschool' => array('bg' => 'kidazzle-yellowLight', 'text' => 'kidazzle-yellow', 'border' => 'kidazzle-yellow/30'),
-							'prek' => array('bg' => 'kidazzle-greenLight', 'text' => 'kidazzle-green', 'border' => 'kidazzle-green/30'),
-							'afterschool' => array('bg' => 'kidazzle-blueLight', 'text' => 'kidazzle-blue', 'border' => 'kidazzle-blue/30'),
+							'infant' => array('bg' => 'Kidazzle-redLight', 'text' => 'Kidazzle-red', 'border' => 'Kidazzle-red/30'),
+							'toddler' => array('bg' => 'Kidazzle-blueLight', 'text' => 'Kidazzle-blue', 'border' => 'Kidazzle-blue/30'),
+							'preschool' => array('bg' => 'Kidazzle-yellowLight', 'text' => 'Kidazzle-yellow', 'border' => 'Kidazzle-yellow/30'),
+							'prek' => array('bg' => 'Kidazzle-greenLight', 'text' => 'Kidazzle-green', 'border' => 'Kidazzle-green/30'),
+							'afterschool' => array('bg' => 'Kidazzle-blueLight', 'text' => 'Kidazzle-blue', 'border' => 'Kidazzle-blue/30'),
 						);
 
 						while ($programs_query->have_posts()):
 							$programs_query->the_post();
-							$program_fields = kidazzle_get_program_fields();
+							$program_fields = Kidazzle_get_program_fields();
 							$age_range = $program_fields['age_range'];
-							$excerpt = $program_fields['excerpt'] ?: get_the_excerpt();
+							$excerpt = $program_fields['excerpt'] ?: ($programs_query->post->post_excerpt ?: wp_trim_words(wp_strip_all_tags($programs_query->post->post_content), 25, '...'));
 							$slug = get_post_field('post_name');
 							$colors = $color_map[$slug] ?? $color_map['toddler'];
 							$prog_img = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
 							?>
 							<div
-								class="bg-white rounded-3xl shadow-card border border-brand-ink/5 hover:border-<?php echo esc_attr($colors['border']); ?> transition group overflow-hidden flex flex-col">
+								class="bg-white rounded-3xl shadow-card border border-brand-ink/5 hover:border-<?php echo esc_attr($colors['border']); ?> transition group overflow-hidden flex flex-col relative">
+								<a href="<?php the_permalink(); ?>" class="absolute inset-0 z-0" aria-label="Learn more about <?php the_title_attribute(); ?>"></a>
 								<?php if ($prog_img): ?>
-									<div class="h-48 overflow-hidden">
+									<div class="h-48 overflow-hidden relative z-0">
 										<img src="<?php echo esc_url($prog_img); ?>" alt="<?php the_title(); ?>"
 											class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
 									</div>
 								<?php endif; ?>
-								<div class="p-6 flex-1 flex flex-col">
+								<div class="p-6 flex-1 flex flex-col relative z-0">
 									<div class="flex justify-between items-start mb-4">
 										<?php if ($age_range): ?>
 											<span
@@ -480,7 +481,7 @@ while (have_posts()):
 									<h3 class="font-serif text-xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
 									<p class="text-sm text-brand-ink/90 mb-6 flex-1"><?php echo esc_html($excerpt); ?></p>
 									<a href="<?php the_permalink(); ?>"
-										class="text-xs font-bold text-<?php echo esc_attr($colors['text']); ?> uppercase tracking-wider hover:underline mt-auto">
+										class="relative z-10 text-xs font-bold text-<?php echo esc_attr($colors['text']); ?> uppercase tracking-wider hover:underline mt-auto">
 										Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
 									</a>
 								</div>
@@ -640,7 +641,7 @@ while (have_posts()):
 										<ul class="text-sm text-brand-ink/80 mt-2 space-y-1">
 											<?php foreach ($schools as $school): ?>
 												<li class="flex items-start gap-2">
-													<i class="fa-solid fa-check text-kidazzle-green text-xs mt-1"></i>
+													<i class="fa-solid fa-check text-Kidazzle-green text-xs mt-1"></i>
 													<span><?php echo esc_html($school); ?></span>
 												</li>
 											<?php endforeach; ?>
@@ -671,8 +672,8 @@ while (have_posts()):
 						</div>
 					<?php elseif ($lat && $lng): ?>
 						<div class="mt-10 relative z-0">
-							<div data-kidazzle-map
-								data-kidazzle-locations='[{"lat":<?php echo esc_attr($lat); ?>,"lng":<?php echo esc_attr($lng); ?>,"name":"<?php echo esc_js(get_the_title()); ?>","city":"<?php echo esc_js($city); ?>","url":"<?php echo esc_url(get_permalink()); ?>"}]'
+							<div data-Kidazzle-map
+								data-Kidazzle-locations='[{"lat":<?php echo esc_attr($lat); ?>,"lng":<?php echo esc_attr($lng); ?>,"name":"<?php echo esc_js(get_the_title()); ?>","city":"<?php echo esc_js($city); ?>","url":"<?php echo esc_url(get_permalink()); ?>"}]'
 								class="w-full h-80 rounded-3xl overflow-hidden shadow-card border border-brand-ink/10"></div>
 						</div>
 					<?php endif; ?>
@@ -685,17 +686,17 @@ while (have_posts()):
 					<p class="text-sm text-brand-ink/90 mb-6">Fill out the form below and we'll contact you to confirm a
 						time.</p>
 
-					<?php echo do_shortcode('[kidazzle_tour_form location_id="' . $location_id . '"]'); ?>
+					<?php echo do_shortcode('[Kidazzle_tour_form location_id="' . $location_id . '"]'); ?>
 
 					<?php if ($tour_booking_link): ?>
 						<div class="mt-6 text-center">
 							<div class="flex items-center gap-4 mb-4">
 								<div class="flex-1 h-px bg-brand-ink/10"></div>
-								<span class="text-sm text-brand-ink/70 font-medium uppercase tracking-wider">or</span>
+								<span class="text-sm text-brand-ink font-medium uppercase tracking-wider">or</span>
 								<div class="flex-1 h-px bg-brand-ink/10"></div>
 							</div>
 							<a href="<?php echo esc_url($tour_booking_link); ?>" target="_blank"
-								class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-kidazzle-green text-white text-xs font-bold uppercase tracking-[0.2em] shadow-soft hover:bg-kidazzle-greenDark transition-all hover:-translate-y-1">
+								class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-Kidazzle-green text-white text-xs font-bold uppercase tracking-[0.2em] shadow-soft hover:bg-Kidazzle-greenDark transition-all hover:-translate-y-1">
 								Book a Tour Now
 							</a>
 						</div>

@@ -2,7 +2,7 @@
 /**
  * Register City Custom Post Type
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-function kidazzle_register_city_cpt()
+function Kidazzle_register_city_cpt()
 {
     $labels = array(
         'name' => _x('Cities', 'Post Type General Name', 'kidazzle-theme'),
@@ -56,7 +56,7 @@ function kidazzle_register_city_cpt()
         'show_in_admin_bar' => true,
         'show_in_nav_menus' => true,
         'can_export' => true,
-        'has_archive' => false,
+        'has_archive' => 'communities',
         'exclude_from_search' => false,
         'publicly_queryable' => true,
         'capability_type' => 'page',
@@ -65,4 +65,4 @@ function kidazzle_register_city_cpt()
     );
     register_post_type('city', $args);
 }
-add_action('init', 'kidazzle_register_city_cpt', 0);
+add_action('init', 'Kidazzle_register_city_cpt', 0);

@@ -2,7 +2,7 @@
 /**
  * Custom Post Type: Programs
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 /**
  * Register Program CPT
  */
-function kidazzle_register_program_cpt()
+function Kidazzle_register_program_cpt()
 {
 	$labels = array(
 		'name' => _x('Programs', 'Post Type General Name', 'kidazzle-theme'),
@@ -26,7 +26,7 @@ function kidazzle_register_program_cpt()
 		'view_item' => __('View Program', 'kidazzle-theme'),
 	);
 
-	$program_slug = kidazzle_get_program_base_slug();
+	$program_slug = Kidazzle_get_program_base_slug();
 
 	$args = array(
 		'label' => __('Program', 'kidazzle-theme'),
@@ -42,12 +42,12 @@ function kidazzle_register_program_cpt()
 
 	register_post_type('program', $args);
 }
-add_action('init', 'kidazzle_register_program_cpt', 0);
+add_action('init', 'Kidazzle_register_program_cpt', 0);
 
 /**
  * Add admin columns for Programs
  */
-function kidazzle_program_admin_columns($columns)
+function Kidazzle_program_admin_columns($columns)
 {
 	$new_columns = array();
 	$new_columns['cb'] = $columns['cb'];
@@ -58,12 +58,12 @@ function kidazzle_program_admin_columns($columns)
 
 	return $new_columns;
 }
-add_filter('manage_program_posts_columns', 'kidazzle_program_admin_columns');
+add_filter('manage_program_posts_columns', 'Kidazzle_program_admin_columns');
 
 /**
  * Populate admin columns
  */
-function kidazzle_program_admin_column_content($column, $post_id)
+function Kidazzle_program_admin_column_content($column, $post_id)
 {
 	switch ($column) {
 		case 'age_range':
@@ -82,12 +82,12 @@ function kidazzle_program_admin_column_content($column, $post_id)
 			break;
 	}
 }
-add_action('manage_program_posts_custom_column', 'kidazzle_program_admin_column_content', 10, 2);
+add_action('manage_program_posts_custom_column', 'Kidazzle_program_admin_column_content', 10, 2);
 
 /**
  * Custom title placeholder
  */
-function kidazzle_program_title_placeholder($title)
+function Kidazzle_program_title_placeholder($title)
 {
 	$screen = get_current_screen();
 	if ('program' === $screen->post_type) {
@@ -95,12 +95,12 @@ function kidazzle_program_title_placeholder($title)
 	}
 	return $title;
 }
-add_filter('enter_title_here', 'kidazzle_program_title_placeholder');
+add_filter('enter_title_here', 'Kidazzle_program_title_placeholder');
 
 /**
  * Register meta fields for Program anchors and SEO intro
  */
-function kidazzle_register_program_meta()
+function Kidazzle_register_program_meta()
 {
 	$meta_args = array(
 		'object_subtype' => 'program',
@@ -201,30 +201,30 @@ function kidazzle_register_program_meta()
 		)
 	);
 }
-add_action('init', 'kidazzle_register_program_meta');
+add_action('init', 'Kidazzle_register_program_meta');
 
 /**
  * Add meta box for anchor and SEO intro fields
  */
-function kidazzle_program_meta_box()
+function Kidazzle_program_meta_box()
 {
 	add_meta_box(
-		'kidazzle-program-anchor-seo',
+		'Kidazzle-program-anchor-seo',
 		__('Program Anchor & SEO Intro', 'kidazzle-theme'),
-		'kidazzle_program_meta_box_render',
+		'Kidazzle_program_meta_box_render',
 		'program',
 		'side',
 		'default'
 	);
 }
-add_action('add_meta_boxes', 'kidazzle_program_meta_box');
+add_action('add_meta_boxes', 'Kidazzle_program_meta_box');
 
 /**
  * Render the meta box fields
  */
-function kidazzle_program_meta_box_render($post)
+function Kidazzle_program_meta_box_render($post)
 {
-	wp_nonce_field('kidazzle_program_meta_nonce', 'kidazzle_program_meta_nonce_field');
+	wp_nonce_field('Kidazzle_program_meta_nonce', 'Kidazzle_program_meta_nonce_field');
 
 	$anchor = get_post_meta($post->ID, 'program_anchor_slug', true);
 	$heading = get_post_meta($post->ID, 'program_seo_heading', true);
@@ -286,9 +286,9 @@ function kidazzle_program_meta_box_render($post)
 /**
  * Save meta box fields
  */
-function kidazzle_program_meta_box_save($post_id)
+function Kidazzle_program_meta_box_save($post_id)
 {
-	if (!isset($_POST['kidazzle_program_meta_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_program_meta_nonce_field']), 'kidazzle_program_meta_nonce')) {
+	if (!isset($_POST['Kidazzle_program_meta_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['Kidazzle_program_meta_nonce_field']), 'Kidazzle_program_meta_nonce')) {
 		return;
 	}
 
@@ -318,48 +318,48 @@ function kidazzle_program_meta_box_save($post_id)
 	update_post_meta($post_id, 'program_meta_description', $meta_desc);
 	update_post_meta($post_id, 'program_faq_items', $faq_items);
 }
-add_action('save_post', 'kidazzle_program_meta_box_save');
+add_action('save_post', 'Kidazzle_program_meta_box_save');
 
 /**
  * Add meta box for program locations
  */
-function kidazzle_program_locations_meta_box()
+function Kidazzle_program_locations_meta_box()
 {
 	add_meta_box(
-		'kidazzle-program-locations',
+		'Kidazzle-program-locations',
 		__('Available at Locations', 'kidazzle-theme'),
-		'kidazzle_program_locations_meta_box_render',
+		'Kidazzle_program_locations_meta_box_render',
 		'program',
 		'side',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-program-details',
+		'Kidazzle-program-details',
 		__('Program Details', 'kidazzle-theme'),
-		'kidazzle_program_details_meta_box_render',
+		'Kidazzle_program_details_meta_box_render',
 		'program',
 		'normal',
 		'high'
 	);
 
 	add_meta_box(
-		'kidazzle-program-single-page',
+		'Kidazzle-program-single-page',
 		__('Single Page Content', 'kidazzle-theme'),
-		'kidazzle_program_single_page_meta_box_render',
+		'Kidazzle_program_single_page_meta_box_render',
 		'program',
 		'normal',
 		'default'
 	);
 }
-add_action('add_meta_boxes', 'kidazzle_program_locations_meta_box');
+add_action('add_meta_boxes', 'Kidazzle_program_locations_meta_box');
 
 /**
  * Render program locations meta box
  */
-function kidazzle_program_locations_meta_box_render($post)
+function Kidazzle_program_locations_meta_box_render($post)
 {
-	wp_nonce_field('kidazzle_program_locations_nonce', 'kidazzle_program_locations_nonce_field');
+	wp_nonce_field('Kidazzle_program_locations_nonce', 'Kidazzle_program_locations_nonce_field');
 
 	// Get all locations
 	$all_locations = get_posts(array(
@@ -377,16 +377,16 @@ function kidazzle_program_locations_meta_box_render($post)
 	?>
 	<p><?php _e('Select the locations where this program is available:', 'kidazzle-theme'); ?></p>
 	<p style="margin-bottom: 10px;">
-		<button type="button" id="kidazzle-toggle-all-locations" class="button button-secondary" style="margin-bottom: 5px;">
+		<button type="button" id="Kidazzle-toggle-all-locations" class="button button-secondary" style="margin-bottom: 5px;">
 			<?php _e('Select All / Deselect All', 'kidazzle-theme'); ?>
 		</button>
 	</p>
-	<div id="kidazzle-locations-list"
+	<div id="Kidazzle-locations-list"
 		style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background: #f9f9f9;">
 		<?php if (!empty($all_locations)): ?>
 			<?php foreach ($all_locations as $location): ?>
 				<label style="display: block; margin-bottom: 8px;">
-					<input type="checkbox" class="kidazzle-location-checkbox" name="program_locations[]"
+					<input type="checkbox" class="Kidazzle-location-checkbox" name="program_locations[]"
 						value="<?php echo esc_attr($location->ID); ?>" <?php checked(in_array($location->ID, $selected_locations)); ?> />
 					<?php echo esc_html($location->post_title); ?>
 				</label>
@@ -400,10 +400,10 @@ function kidazzle_program_locations_meta_box_render($post)
 	<script>
 		(function ($) {
 			$(document).ready(function () {
-				$('#kidazzle-toggle-all-locations').on('click', function (e) {
+				$('#Kidazzle-toggle-all-locations').on('click', function (e) {
 					e.preventDefault();
 
-					var checkboxes = $('.kidazzle-location-checkbox');
+					var checkboxes = $('.Kidazzle-location-checkbox');
 					var allChecked = checkboxes.length === checkboxes.filter(':checked').length;
 
 					// If all are checked, uncheck all. Otherwise, check all.
@@ -418,10 +418,10 @@ function kidazzle_program_locations_meta_box_render($post)
 /**
  * Save program locations
  */
-function kidazzle_program_locations_meta_box_save($post_id)
+function Kidazzle_program_locations_meta_box_save($post_id)
 {
 	// Verify nonce
-	if (!isset($_POST['kidazzle_program_locations_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_program_locations_nonce_field']), 'kidazzle_program_locations_nonce')) {
+	if (!isset($_POST['Kidazzle_program_locations_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['Kidazzle_program_locations_nonce_field']), 'Kidazzle_program_locations_nonce')) {
 		return;
 	}
 
@@ -444,14 +444,14 @@ function kidazzle_program_locations_meta_box_save($post_id)
 
 	update_post_meta($post_id, 'program_locations', $selected_locations);
 }
-add_action('save_post_program', 'kidazzle_program_locations_meta_box_save');
+add_action('save_post_program', 'Kidazzle_program_locations_meta_box_save');
 
 /**
  * Render program details meta box
  */
-function kidazzle_program_details_meta_box_render($post)
+function Kidazzle_program_details_meta_box_render($post)
 {
-	wp_nonce_field('kidazzle_program_details_nonce', 'kidazzle_program_details_nonce_field');
+	wp_nonce_field('Kidazzle_program_details_nonce', 'Kidazzle_program_details_nonce_field');
 
 	$age_range = get_post_meta($post->ID, 'program_age_range', true);
 	$features = get_post_meta($post->ID, 'program_features', true);
@@ -460,38 +460,38 @@ function kidazzle_program_details_meta_box_render($post)
 	$color_scheme = get_post_meta($post->ID, 'program_color_scheme', true);
 	?>
 	<style>
-		.kidazzle-program-field {
+		.Kidazzle-program-field {
 			margin-bottom: 20px;
 		}
 
-		.kidazzle-program-field label {
+		.Kidazzle-program-field label {
 			display: block;
 			font-weight: 600;
 			margin-bottom: 5px;
 		}
 
-		.kidazzle-program-field input[type="text"],
-		.kidazzle-program-field textarea,
-		.kidazzle-program-field select {
+		.Kidazzle-program-field input[type="text"],
+		.Kidazzle-program-field textarea,
+		.Kidazzle-program-field select {
 			width: 100%;
 			max-width: 600px;
 		}
 
-		.kidazzle-program-field small {
+		.Kidazzle-program-field small {
 			display: block;
 			margin-top: 5px;
 			color: #666;
 			font-style: italic;
 		}
 
-		.kidazzle-color-preview {
+		.Kidazzle-color-preview {
 			display: inline-flex;
 			align-items: center;
 			gap: 15px;
 			margin-top: 10px;
 		}
 
-		.kidazzle-color-preview .color-swatch {
+		.Kidazzle-color-preview .color-swatch {
 			width: 40px;
 			height: 40px;
 			border-radius: 8px;
@@ -499,14 +499,14 @@ function kidazzle_program_details_meta_box_render($post)
 		}
 	</style>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_icon"><?php _e('Program Icon/Emoji', 'kidazzle-theme'); ?></label>
 		<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
 			<input type="text" id="program_icon" name="program_icon"
 				value="<?php echo esc_attr(get_post_meta($post->ID, 'program_icon', true)); ?>" placeholder="e.g., 👶"
 				style="width: 80px; text-align: center; font-size: 24px;" />
 
-			<div class="kidazzle-emoji-presets" style="display: flex; gap: 5px; flex-wrap: wrap;">
+			<div class="Kidazzle-emoji-presets" style="display: flex; gap: 5px; flex-wrap: wrap;">
 				<?php
 				$presets = array(
 					'👶' => 'Infant',
@@ -520,7 +520,7 @@ function kidazzle_program_details_meta_box_render($post)
 				);
 				foreach ($presets as $emoji => $label) {
 					echo sprintf(
-						'<button type="button" class="button kidazzle-emoji-btn" data-emoji="%s" title="%s" style="font-size: 18px; padding: 0 10px;">%s</button>',
+						'<button type="button" class="button Kidazzle-emoji-btn" data-emoji="%s" title="%s" style="font-size: 18px; padding: 0 10px;">%s</button>',
 						esc_attr($emoji),
 						esc_attr($label),
 						esc_html($emoji)
@@ -533,42 +533,42 @@ function kidazzle_program_details_meta_box_render($post)
 
 		<script>
 			jQuery(document).ready(function ($) {
-				$('.kidazzle-emoji-btn').on('click', function () {
+				$('.Kidazzle-emoji-btn').on('click', function () {
 					$('#program_icon').val($(this).data('emoji'));
 				});
 			});
 		</script>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_age_range"><?php _e('Age Range', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_age_range" name="program_age_range" value="<?php echo esc_attr($age_range); ?>"
 			placeholder="e.g., 6w - 12mo, 1 Year, 2-3 Years" />
 		<small><?php _e('Age range badge shown on program card (e.g., "6w - 12mo", "1 Year", "4yr - 5yr")', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_features"><?php _e('Program Features', 'kidazzle-theme'); ?></label>
 		<textarea id="program_features" name="program_features" rows="4"
 			placeholder="Enter one feature per line, e.g.:&#10;Individualized Schedules&#10;Sign Language Intro&#10;Daily Circle Time"><?php echo esc_textarea($features); ?></textarea>
 		<small><?php _e('Enter one feature per line. These will display with checkmarks on the program card.', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_cta_text"><?php _e('CTA Button Text', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_cta_text" name="program_cta_text" value="<?php echo esc_attr($cta_text); ?>"
 			placeholder="e.g., Schedule Tour, Join Waitlist, Learn More" />
 		<small><?php _e('Text for the call-to-action button (default: "Schedule Tour")', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_cta_link"><?php _e('CTA Button Link', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_cta_link" name="program_cta_link" value="<?php echo esc_attr($cta_link); ?>"
 			placeholder="#tour" />
 		<small><?php _e('URL or anchor link for the CTA button (default: "#tour")', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_lesson_plan_file"><?php _e('Lesson Plan File (URL)', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_lesson_plan_file" name="program_lesson_plan_file"
 			value="<?php echo esc_attr(get_post_meta($post->ID, 'program_lesson_plan_file', true)); ?>"
@@ -576,7 +576,7 @@ function kidazzle_program_details_meta_box_render($post)
 		<small><?php _e('Paste the full URL to the PDF lesson plan. If set, a button will appear on the program page.', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_color_scheme"><?php _e('Color Scheme', 'kidazzle-theme'); ?></label>
 		<select id="program_color_scheme" name="program_color_scheme">
 			<option value="red" <?php selected($color_scheme, 'red'); ?>>Red - Infant Care</option>
@@ -585,7 +585,7 @@ function kidazzle_program_details_meta_box_render($post)
 			<option value="blueDark" <?php selected($color_scheme, 'blueDark'); ?>>Dark Blue - Pre-K Prep</option>
 			<option value="green" <?php selected($color_scheme, 'green'); ?>>Green - GA Pre-K</option>
 		</select>
-		<div class="kidazzle-color-preview">
+		<div class="Kidazzle-color-preview">
 			<div class="color-swatch" style="background-color: #D67D6B;" title="Red"></div>
 			<div class="color-swatch" style="background-color: #4A6C7C;" title="Blue"></div>
 			<div class="color-swatch" style="background-color: #E6BE75;" title="Yellow"></div>
@@ -604,10 +604,10 @@ function kidazzle_program_details_meta_box_render($post)
 /**
  * Save program details
  */
-function kidazzle_program_details_meta_box_save($post_id)
+function Kidazzle_program_details_meta_box_save($post_id)
 {
 	// Verify nonce
-	if (!isset($_POST['kidazzle_program_details_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_program_details_nonce_field']), 'kidazzle_program_details_nonce')) {
+	if (!isset($_POST['Kidazzle_program_details_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['Kidazzle_program_details_nonce_field']), 'Kidazzle_program_details_nonce')) {
 		return;
 	}
 
@@ -641,14 +641,14 @@ function kidazzle_program_details_meta_box_save($post_id)
 		}
 	}
 }
-add_action('save_post_program', 'kidazzle_program_details_meta_box_save');
+add_action('save_post_program', 'Kidazzle_program_details_meta_box_save');
 
 /**
  * Render single page content meta box
  */
-function kidazzle_program_single_page_meta_box_render($post)
+function Kidazzle_program_single_page_meta_box_render($post)
 {
-	wp_nonce_field('kidazzle_program_single_page_nonce', 'kidazzle_program_single_page_nonce_field');
+	wp_nonce_field('Kidazzle_program_single_page_nonce', 'Kidazzle_program_single_page_nonce_field');
 
 	// Hero section
 	$hero_title = get_post_meta($post->ID, 'program_hero_title', true);
@@ -671,126 +671,126 @@ function kidazzle_program_single_page_meta_box_render($post)
 	$schedule_items = get_post_meta($post->ID, 'program_schedule_items', true);
 	?>
 	<style>
-		.kidazzle-single-field {
+		.Kidazzle-single-field {
 			margin-bottom: 20px;
 		}
 
-		.kidazzle-single-field label {
+		.Kidazzle-single-field label {
 			display: block;
 			font-weight: 600;
 			margin-bottom: 5px;
 		}
 
-		.kidazzle-single-field input[type="text"],
-		.kidazzle-single-field input[type="number"],
-		.kidazzle-single-field textarea {
+		.Kidazzle-single-field input[type="text"],
+		.Kidazzle-single-field input[type="number"],
+		.Kidazzle-single-field textarea {
 			width: 100%;
 			max-width: 800px;
 		}
 
-		.kidazzle-single-field small {
+		.Kidazzle-single-field small {
 			display: block;
 			margin-top: 5px;
 			color: #666;
 			font-style: italic;
 		}
 
-		.kidazzle-section-divider {
+		.Kidazzle-section-divider {
 			border-top: 2px solid #0073aa;
 			margin: 30px 0 20px 0;
 			padding-top: 20px;
 		}
 
-		.kidazzle-chart-inputs {
+		.Kidazzle-chart-inputs {
 			display: grid;
 			grid-template-columns: repeat(5, 1fr);
 			gap: 15px;
 			max-width: 800px;
 		}
 
-		.kidazzle-chart-input {
+		.Kidazzle-chart-input {
 			text-align: center;
 		}
 
-		.kidazzle-chart-input input {
+		.Kidazzle-chart-input input {
 			text-align: center;
 			font-weight: bold;
 		}
 	</style>
 
-	<div class="kidazzle-section-divider">
+	<div class="Kidazzle-section-divider">
 		<h3 style="margin-top: 0; color: #0073aa;">Hero Section</h3>
 	</div>
 
-	<div class="kidazzle-single-field">
+	<div class="Kidazzle-single-field">
 		<label for="program_hero_title"><?php _e('Hero Title', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_hero_title" name="program_hero_title" value="<?php echo esc_attr($hero_title); ?>"
 			placeholder="e.g., The Foundation Phase." />
 		<small><?php _e('Main heading on single program page (defaults to program title if empty)', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-single-field">
+	<div class="Kidazzle-single-field">
 		<label for="program_hero_description"><?php _e('Hero Description', 'kidazzle-theme'); ?></label>
 		<textarea id="program_hero_description" name="program_hero_description" rows="3"
 			placeholder="A peaceful, 'shoeless' environment..."><?php echo esc_textarea($hero_description); ?></textarea>
 		<small><?php _e('Description paragraph in hero section', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-section-divider">
+	<div class="Kidazzle-section-divider">
 		<h3 style="margin-top: 0; color: #0073aa;">Prismpath™ Focus Section</h3>
 	</div>
 
-	<div class="kidazzle-single-field">
+	<div class="Kidazzle-single-field">
 		<label for="program_prism_title"><?php _e('Prism Section Title', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_prism_title" name="program_prism_title" value="<?php echo esc_attr($prism_title); ?>"
 			placeholder="e.g., Building Trust & Body." />
 		<small><?php _e('Title for the Prismpath focus section', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-single-field">
+	<div class="Kidazzle-single-field">
 		<label for="program_prism_description"><?php _e('Prism Description', 'kidazzle-theme'); ?></label>
 		<textarea id="program_prism_description" name="program_prism_description" rows="4"
 			placeholder="In the first year, the brain grows faster than at any other time..."><?php echo esc_textarea($prism_description); ?></textarea>
 		<small><?php _e('Description explaining the program\'s Prismpath focus', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-single-field">
+	<div class="Kidazzle-single-field">
 		<label><?php _e('Prismpath Chart Values (0-100)', 'kidazzle-theme'); ?></label>
 		<div style="margin-bottom: 15px;">
 			<span style="font-size: 12px; font-weight: bold; margin-right: 10px;">Quick Fill:</span>
-			<button type="button" class="button kidazzle-chart-preset" data-values="[90,90,40,15,40]">Infant</button>
-			<button type="button" class="button kidazzle-chart-preset" data-values="[85,75,65,30,70]">Toddler</button>
-			<button type="button" class="button kidazzle-chart-preset" data-values="[75,65,70,55,80]">Preschool</button>
-			<button type="button" class="button kidazzle-chart-preset" data-values="[65,60,75,75,70]">Pre-K Prep</button>
-			<button type="button" class="button kidazzle-chart-preset" data-values="[60,60,80,90,70]">GA Pre-K</button>
-			<button type="button" class="button kidazzle-chart-preset" data-values="[50,70,85,75,80]">After School</button>
+			<button type="button" class="button Kidazzle-chart-preset" data-values="[90,90,40,15,40]">Infant</button>
+			<button type="button" class="button Kidazzle-chart-preset" data-values="[85,75,65,30,70]">Toddler</button>
+			<button type="button" class="button Kidazzle-chart-preset" data-values="[75,65,70,55,80]">Preschool</button>
+			<button type="button" class="button Kidazzle-chart-preset" data-values="[65,60,75,75,70]">Pre-K Prep</button>
+			<button type="button" class="button Kidazzle-chart-preset" data-values="[60,60,80,90,70]">GA Pre-K</button>
+			<button type="button" class="button Kidazzle-chart-preset" data-values="[50,70,85,75,80]">After School</button>
 		</div>
-		<div class="kidazzle-chart-inputs">
-			<div class="kidazzle-chart-input">
+		<div class="Kidazzle-chart-inputs">
+			<div class="Kidazzle-chart-input">
 				<label for="program_prism_physical"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Physical</label>
 				<input type="number" id="program_prism_physical" name="program_prism_physical"
 					value="<?php echo esc_attr($prism_physical); ?>" min="0" max="100" style="background: #F4E5E2;" />
 			</div>
-			<div class="kidazzle-chart-input">
+			<div class="Kidazzle-chart-input">
 				<label for="program_prism_emotional"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Emotional</label>
 				<input type="number" id="program_prism_emotional" name="program_prism_emotional"
 					value="<?php echo esc_attr($prism_emotional); ?>" min="0" max="100" style="background: #FDF6E3;" />
 			</div>
-			<div class="kidazzle-chart-input">
+			<div class="Kidazzle-chart-input">
 				<label for="program_prism_social"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Social</label>
 				<input type="number" id="program_prism_social" name="program_prism_social"
 					value="<?php echo esc_attr($prism_social); ?>" min="0" max="100" style="background: #E3EBE8;" />
 			</div>
-			<div class="kidazzle-chart-input">
+			<div class="Kidazzle-chart-input">
 				<label for="program_prism_academic"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Academic</label>
 				<input type="number" id="program_prism_academic" name="program_prism_academic"
 					value="<?php echo esc_attr($prism_academic); ?>" min="0" max="100" style="background: #E3E9EC;" />
 			</div>
-			<div class="kidazzle-chart-input">
+			<div class="Kidazzle-chart-input">
 				<label for="program_prism_creative"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Creative</label>
 				<input type="number" id="program_prism_creative" name="program_prism_creative"
@@ -801,7 +801,7 @@ function kidazzle_program_single_page_meta_box_render($post)
 
 		<script>
 			jQuery(document).ready(function ($) {
-				$('.kidazzle-chart-preset').on('click', function () {
+				$('.Kidazzle-chart-preset').on('click', function () {
 					var values = $(this).data('values'); // Array [Phy, Emo, Soc, Aca, Cre]
 					$('#program_prism_physical').val(values[0]);
 					$('#program_prism_emotional').val(values[1]);
@@ -813,25 +813,25 @@ function kidazzle_program_single_page_meta_box_render($post)
 		</script>
 	</div>
 
-	<div class="kidazzle-single-field">
+	<div class="Kidazzle-single-field">
 		<label for="program_prism_focus_items"><?php _e('Focus Items', 'kidazzle-theme'); ?></label>
 		<textarea id="program_prism_focus_items" name="program_prism_focus_items" rows="4"
 			placeholder="Enter one item per line, e.g.:&#10;High Physical: Tummy time, rolling, reaching.&#10;High Emotional: Responsive feeding, cuddling."><?php echo esc_textarea($prism_focus_items); ?></textarea>
 		<small><?php _e('Bullet points explaining the focus. One per line.', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-section-divider">
+	<div class="Kidazzle-section-divider">
 		<h3 style="margin-top: 0; color: #0073aa;">Daily Schedule/Rhythm Section</h3>
 	</div>
 
-	<div class="kidazzle-single-field">
+	<div class="Kidazzle-single-field">
 		<label for="program_schedule_title"><?php _e('Schedule Section Title', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_schedule_title" name="program_schedule_title"
 			value="<?php echo esc_attr($schedule_title); ?>" placeholder="e.g., A Rhythm, Not a Routine" />
 		<small><?php _e('Title for the schedule section', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-single-field">
+	<div class="Kidazzle-single-field">
 		<label for="program_schedule_items"><?php _e('Schedule Items', 'kidazzle-theme'); ?></label>
 		<textarea id="program_schedule_items" name="program_schedule_items" rows="8"
 			placeholder="Format: Badge|Title|Description (one per line)&#10;Example:&#10;AM|Warm Welcome & Bottles|Transition from parent arms to teacher arms...&#10;Mid|Sensory Discovery|Tummy time on textured mats...&#10;PM|Stroller Walks & Nap|Fresh air in our buggy carts..."><?php echo esc_textarea($schedule_items); ?></textarea>
@@ -846,10 +846,10 @@ function kidazzle_program_single_page_meta_box_render($post)
 /**
  * Save single page content
  */
-function kidazzle_program_single_page_meta_box_save($post_id)
+function Kidazzle_program_single_page_meta_box_save($post_id)
 {
 	// Verify nonce
-	if (!isset($_POST['kidazzle_program_single_page_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_program_single_page_nonce_field']), 'kidazzle_program_single_page_nonce')) {
+	if (!isset($_POST['Kidazzle_program_single_page_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['Kidazzle_program_single_page_nonce_field']), 'Kidazzle_program_single_page_nonce')) {
 		return;
 	}
 
@@ -888,4 +888,4 @@ function kidazzle_program_single_page_meta_box_save($post_id)
 		}
 	}
 }
-add_action('save_post_program', 'kidazzle_program_single_page_meta_box_save');
+add_action('save_post_program', 'Kidazzle_program_single_page_meta_box_save');

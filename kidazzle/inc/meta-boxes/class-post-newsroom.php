@@ -3,7 +3,7 @@
  * Meta Box: Show in Newsroom
  * Adds a checkbox to posts to toggle visibility in the Newsroom.
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Post_Newsroom
+class Kidazzle_Post_Newsroom
 {
     public function register()
     {
@@ -22,7 +22,7 @@ class kidazzle_Post_Newsroom
     public function add_meta_box()
     {
         add_meta_box(
-            'kidazzle_post_newsroom',
+            'Kidazzle_post_newsroom',
             'Newsroom Settings',
             [$this, 'render_meta_box'],
             'post',
@@ -33,12 +33,12 @@ class kidazzle_Post_Newsroom
 
     public function render_meta_box($post)
     {
-        wp_nonce_field('kidazzle_post_newsroom_nonce', 'kidazzle_post_newsroom_nonce');
-        $show_in_newsroom = get_post_meta($post->ID, '_kidazzle_show_in_newsroom', true);
+        wp_nonce_field('Kidazzle_post_newsroom_nonce', 'Kidazzle_post_newsroom_nonce');
+        $show_in_newsroom = get_post_meta($post->ID, '_Kidazzle_show_in_newsroom', true);
         ?>
-        <div class="kidazzle-meta-box">
-            <label for="kidazzle_show_in_newsroom">
-                <input type="checkbox" id="kidazzle_show_in_newsroom" name="kidazzle_show_in_newsroom" value="1" <?php checked($show_in_newsroom, '1'); ?>>
+        <div class="Kidazzle-meta-box">
+            <label for="Kidazzle_show_in_newsroom">
+                <input type="checkbox" id="Kidazzle_show_in_newsroom" name="Kidazzle_show_in_newsroom" value="1" <?php checked($show_in_newsroom, '1'); ?>>
                 Show in Newsroom
             </label>
             <p class="description">Check this box to display this post on the Newsroom page.</p>
@@ -48,7 +48,7 @@ class kidazzle_Post_Newsroom
 
     public function save_meta_box($post_id)
     {
-        if (!isset($_POST['kidazzle_post_newsroom_nonce']) || !wp_verify_nonce($_POST['kidazzle_post_newsroom_nonce'], 'kidazzle_post_newsroom_nonce')) {
+        if (!isset($_POST['Kidazzle_post_newsroom_nonce']) || !wp_verify_nonce($_POST['Kidazzle_post_newsroom_nonce'], 'Kidazzle_post_newsroom_nonce')) {
             return;
         }
 
@@ -60,7 +60,7 @@ class kidazzle_Post_Newsroom
             return;
         }
 
-        $val = isset($_POST['kidazzle_show_in_newsroom']) ? '1' : '0';
-        update_post_meta($post_id, '_kidazzle_show_in_newsroom', $val);
+        $val = isset($_POST['Kidazzle_show_in_newsroom']) ? '1' : '0';
+        update_post_meta($post_id, '_Kidazzle_show_in_newsroom', $val);
     }
 }

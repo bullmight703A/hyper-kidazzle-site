@@ -2,7 +2,7 @@
 /**
  * Curriculum Page Meta Boxes
  *
- * @package kidazzle_Excellence
+ * @package Kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -14,68 +14,68 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register Curriculum Page Meta Boxes
  */
-function kidazzle_curriculum_page_meta_boxes() {
+function Kidazzle_curriculum_page_meta_boxes() {
 	add_meta_box(
-		'kidazzle-curriculum-hero',
+		'Kidazzle-curriculum-hero',
 		__( 'Hero Section', 'kidazzle-theme' ),
-		'kidazzle_curriculum_hero_meta_box_render',
+		'Kidazzle_curriculum_hero_meta_box_render',
 		'page',
 		'normal',
 		'high'
 	);
 
 	add_meta_box(
-		'kidazzle-curriculum-framework',
+		'Kidazzle-curriculum-framework',
 		__( 'Prismpath Framework (5 Pillars)', 'kidazzle-theme' ),
-		'kidazzle_curriculum_framework_meta_box_render',
+		'Kidazzle_curriculum_framework_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-curriculum-timeline',
+		'Kidazzle-curriculum-timeline',
 		__( 'Developmental Timeline', 'kidazzle-theme' ),
-		'kidazzle_curriculum_timeline_meta_box_render',
+		'Kidazzle_curriculum_timeline_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-curriculum-environment',
+		'Kidazzle-curriculum-environment',
 		__( 'Environment (Third Teacher)', 'kidazzle-theme' ),
-		'kidazzle_curriculum_environment_meta_box_render',
+		'Kidazzle_curriculum_environment_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-curriculum-milestones',
+		'Kidazzle-curriculum-milestones',
 		__( 'Measuring Milestones', 'kidazzle-theme' ),
-		'kidazzle_curriculum_milestones_meta_box_render',
+		'Kidazzle_curriculum_milestones_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 
 	add_meta_box(
-		'kidazzle-curriculum-cta',
+		'Kidazzle-curriculum-cta',
 		__( 'CTA Section', 'kidazzle-theme' ),
-		'kidazzle_curriculum_cta_meta_box_render',
+		'Kidazzle_curriculum_cta_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 }
-add_action( 'add_meta_boxes', 'kidazzle_curriculum_page_meta_boxes' );
+add_action( 'add_meta_boxes', 'Kidazzle_curriculum_page_meta_boxes' );
 
 /**
  * Hero Section Meta Box
  */
-function kidazzle_curriculum_hero_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_curriculum_hero_meta', 'kidazzle_curriculum_hero_nonce' );
+function Kidazzle_curriculum_hero_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_curriculum_hero_meta', 'Kidazzle_curriculum_hero_nonce' );
 
 	$hero_badge = get_post_meta( $post->ID, 'curriculum_hero_badge', true );
 	$hero_title = get_post_meta( $post->ID, 'curriculum_hero_title', true );
@@ -96,7 +96,7 @@ function kidazzle_curriculum_hero_meta_box_render( $post ) {
 				<input type="text" id="curriculum_hero_title" name="curriculum_hero_title"
 					   value="<?php echo esc_attr( $hero_title ); ?>"
 					   class="large-text" placeholder="e.g., Scientific rigor. Joyful delivery." />
-				<p class="description">Use &lt;br&gt; for line breaks and &lt;span class='italic text-kidazzle-green'&gt;text&lt;/span&gt; for green italic text</p>
+				<p class="description">Use &lt;br&gt; for line breaks and &lt;span class='italic text-Kidazzle-green'&gt;text&lt;/span&gt; for green italic text</p>
 			</td>
 		</tr>
 		<tr>
@@ -113,8 +113,8 @@ function kidazzle_curriculum_hero_meta_box_render( $post ) {
 /**
  * Framework Section Meta Box (5 Pillars)
  */
-function kidazzle_curriculum_framework_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_curriculum_framework_meta', 'kidazzle_curriculum_framework_nonce' );
+function Kidazzle_curriculum_framework_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_curriculum_framework_meta', 'Kidazzle_curriculum_framework_nonce' );
 
 	$framework_title = get_post_meta( $post->ID, 'curriculum_framework_title', true );
 	$framework_description = get_post_meta( $post->ID, 'curriculum_framework_description', true );
@@ -185,8 +185,8 @@ function kidazzle_curriculum_framework_meta_box_render( $post ) {
 /**
  * Timeline Section Meta Box
  */
-function kidazzle_curriculum_timeline_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_curriculum_timeline_meta', 'kidazzle_curriculum_timeline_nonce' );
+function Kidazzle_curriculum_timeline_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_curriculum_timeline_meta', 'Kidazzle_curriculum_timeline_nonce' );
 
 	$timeline_badge = get_post_meta( $post->ID, 'curriculum_timeline_badge', true );
 	$timeline_title = get_post_meta( $post->ID, 'curriculum_timeline_title', true );
@@ -228,9 +228,9 @@ function kidazzle_curriculum_timeline_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="curriculum_timeline_image" name="curriculum_timeline_image"
 					   value="<?php echo esc_attr( $timeline_image ); ?>"
-					   class="large-text kidazzle-image-field" />
-				<button type="button" class="button kidazzle-upload-button" data-field="curriculum_timeline_image">Select Image</button>
-				<button type="button" class="button kidazzle-clear-button" data-field="curriculum_timeline_image">Clear</button>
+					   class="large-text Kidazzle-image-field" />
+				<button type="button" class="button Kidazzle-upload-button" data-field="curriculum_timeline_image">Select Image</button>
+				<button type="button" class="button Kidazzle-clear-button" data-field="curriculum_timeline_image">Clear</button>
 			</td>
 		</tr>
 		<?php foreach ( $stages as $stage ) :
@@ -265,8 +265,8 @@ function kidazzle_curriculum_timeline_meta_box_render( $post ) {
 /**
  * Environment Section Meta Box
  */
-function kidazzle_curriculum_environment_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_curriculum_environment_meta', 'kidazzle_curriculum_environment_nonce' );
+function Kidazzle_curriculum_environment_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_curriculum_environment_meta', 'Kidazzle_curriculum_environment_nonce' );
 
 	$env_badge = get_post_meta( $post->ID, 'curriculum_env_badge', true );
 	$env_title = get_post_meta( $post->ID, 'curriculum_env_title', true );
@@ -344,8 +344,8 @@ function kidazzle_curriculum_environment_meta_box_render( $post ) {
 /**
  * Milestones Section Meta Box
  */
-function kidazzle_curriculum_milestones_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_curriculum_milestones_meta', 'kidazzle_curriculum_milestones_nonce' );
+function Kidazzle_curriculum_milestones_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_curriculum_milestones_meta', 'Kidazzle_curriculum_milestones_nonce' );
 
 	$milestones_title = get_post_meta( $post->ID, 'curriculum_milestones_title', true );
 	$milestones_subtitle = get_post_meta( $post->ID, 'curriculum_milestones_subtitle', true );
@@ -436,8 +436,8 @@ function kidazzle_curriculum_milestones_meta_box_render( $post ) {
 /**
  * CTA Section Meta Box
  */
-function kidazzle_curriculum_cta_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_curriculum_cta_meta', 'kidazzle_curriculum_cta_nonce' );
+function Kidazzle_curriculum_cta_meta_box_render( $post ) {
+	wp_nonce_field( 'Kidazzle_curriculum_cta_meta', 'Kidazzle_curriculum_cta_nonce' );
 
 	$cta_title = get_post_meta( $post->ID, 'curriculum_cta_title', true );
 	$cta_description = get_post_meta( $post->ID, 'curriculum_cta_description', true );
@@ -465,19 +465,19 @@ function kidazzle_curriculum_cta_meta_box_render( $post ) {
 /**
  * Save Curriculum Page Meta
  */
-function kidazzle_save_curriculum_page_meta( $post_id ) {
+function Kidazzle_save_curriculum_page_meta( $post_id ) {
 	if ( get_post_type( $post_id ) !== 'page' ) {
 		return;
 	}
 
 	// Define all meta fields
 	$meta_boxes = array(
-		'kidazzle_curriculum_hero_nonce' => array(
+		'Kidazzle_curriculum_hero_nonce' => array(
 			'curriculum_hero_badge'       => 'sanitize_text_field',
 			'curriculum_hero_title'       => 'sanitize_text_field',
 			'curriculum_hero_description' => 'sanitize_textarea_field',
 		),
-		'kidazzle_curriculum_framework_nonce' => array(
+		'Kidazzle_curriculum_framework_nonce' => array(
 			'curriculum_framework_title'       => 'sanitize_text_field',
 			'curriculum_framework_description' => 'sanitize_textarea_field',
 			'curriculum_pillar_physical_icon'  => 'sanitize_text_field',
@@ -496,7 +496,7 @@ function kidazzle_save_curriculum_page_meta( $post_id ) {
 			'curriculum_pillar_creative_title' => 'sanitize_text_field',
 			'curriculum_pillar_creative_desc'  => 'sanitize_textarea_field',
 		),
-		'kidazzle_curriculum_timeline_nonce' => array(
+		'Kidazzle_curriculum_timeline_nonce' => array(
 			'curriculum_timeline_badge'       => 'sanitize_text_field',
 			'curriculum_timeline_title'       => 'sanitize_text_field',
 			'curriculum_timeline_description' => 'sanitize_textarea_field',
@@ -508,7 +508,7 @@ function kidazzle_save_curriculum_page_meta( $post_id ) {
 			'curriculum_stage_readiness_title'  => 'sanitize_text_field',
 			'curriculum_stage_readiness_desc'   => 'sanitize_textarea_field',
 		),
-		'kidazzle_curriculum_environment_nonce' => array(
+		'Kidazzle_curriculum_environment_nonce' => array(
 			'curriculum_env_badge'             => 'sanitize_text_field',
 			'curriculum_env_title'             => 'sanitize_text_field',
 			'curriculum_env_description'       => 'sanitize_textarea_field',
@@ -522,7 +522,7 @@ function kidazzle_save_curriculum_page_meta( $post_id ) {
 			'curriculum_zone_literacy_title'     => 'sanitize_text_field',
 			'curriculum_zone_literacy_desc'      => 'sanitize_textarea_field',
 		),
-		'kidazzle_curriculum_milestones_nonce' => array(
+		'Kidazzle_curriculum_milestones_nonce' => array(
 			'curriculum_milestones_title'           => 'sanitize_text_field',
 			'curriculum_milestones_subtitle'        => 'sanitize_text_field',
 			'curriculum_milestone_tracking_icon'    => 'sanitize_text_field',
@@ -541,7 +541,7 @@ function kidazzle_save_curriculum_page_meta( $post_id ) {
 			'curriculum_milestone_assessments_bullet1' => 'sanitize_text_field',
 			'curriculum_milestone_assessments_bullet2' => 'sanitize_text_field',
 		),
-		'kidazzle_curriculum_cta_nonce' => array(
+		'Kidazzle_curriculum_cta_nonce' => array(
 			'curriculum_cta_title'       => 'sanitize_text_field',
 			'curriculum_cta_description' => 'sanitize_textarea_field',
 		),
@@ -567,12 +567,12 @@ function kidazzle_save_curriculum_page_meta( $post_id ) {
 		}
 	}
 }
-add_action( 'save_post', 'kidazzle_save_curriculum_page_meta' );
+add_action( 'save_post', 'Kidazzle_save_curriculum_page_meta' );
 
 /**
  * Seed default values for Curriculum page
  */
-function kidazzle_seed_curriculum_page_defaults( $post_id ) {
+function Kidazzle_seed_curriculum_page_defaults( $post_id ) {
 	if ( get_post_type( $post_id ) !== 'page' ) {
 		return;
 	}
@@ -589,7 +589,7 @@ function kidazzle_seed_curriculum_page_defaults( $post_id ) {
 
 	$defaults = array(
 		'curriculum_hero_badge'       => 'The Kidazzle Difference',
-		'curriculum_hero_title'       => 'Scientific rigor. <br><span class="italic text-kidazzle-green">Joyful delivery.</span>',
+		'curriculum_hero_title'       => 'Scientific rigor. <br><span class="italic text-Kidazzle-green">Joyful delivery.</span>',
 		'curriculum_hero_description' => 'Our proprietary Prismpath™ curriculum isn\'t just about ABCs. It\'s a comprehensive framework designed to build the critical thinking, emotional intelligence, and social skills needed for the 21st century.',
 
 		'curriculum_framework_title'       => 'The Prismpath™ Framework',
@@ -676,4 +676,4 @@ function kidazzle_seed_curriculum_page_defaults( $post_id ) {
 
 	update_post_meta( $post_id, '_curriculum_defaults_seeded', '1' );
 }
-add_action( 'save_post', 'kidazzle_seed_curriculum_page_defaults', 5 );
+add_action( 'save_post', 'Kidazzle_seed_curriculum_page_defaults', 5 );
