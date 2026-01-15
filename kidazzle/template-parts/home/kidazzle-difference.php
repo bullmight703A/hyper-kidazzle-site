@@ -14,60 +14,66 @@ $pillars = array(
     array(
         'icon' => 'fa-solid fa-bowl-food',
         'title' => __('Chef-Prepared Nutrition', 'kidazzle'),
-        'description' => __('Our commercial-grade kitchens serve fresh, hot meals prepared daily by professional chefs. We accommodate all dietary needs.', 'kidazzle'),
+        'description' => __('Our commercial-grade kitchens serve fresh, hot meals prepared daily by professional chefs.', 'kidazzle'),
         'url' => home_url('/resources/'),
-        'border_color' => 'border-orange-100 hover:border-orange-400',
-        'icon_bg' => 'bg-orange-50',
-        'icon_color' => 'text-orange-600',
+        'accent' => 'kidazzle-orange',
     ),
     array(
         'icon' => 'fa-solid fa-brain',
         'title' => __('Creative Curriculum®', 'kidazzle'),
-        'description' => __('Research-based learning tailored to each developmental stage. Every activity has a learning purpose.', 'kidazzle'),
+        'description' => __('Research-based learning tailored to each developmental stage. Every activity has a purpose.', 'kidazzle'),
         'url' => home_url('/curriculum/'),
-        'border_color' => 'border-cyan-100 hover:border-cyan-400',
-        'icon_bg' => 'bg-cyan-50',
-        'icon_color' => 'text-cyan-600',
+        'accent' => 'kidazzle-blue',
     ),
     array(
         'icon' => 'fa-solid fa-shield-heart',
         'title' => __('Safety & Security', 'kidazzle'),
-        'description' => __('Your peace of mind is our priority with secure keypad entry and monitored surveillance. We maintain rigorous safety protocols.', 'kidazzle'),
+        'description' => __('Peace of mind with secure keypad entry, monitored surveillance, and rigorous protocols.', 'kidazzle'),
         'url' => home_url('/about/'),
-        'border_color' => 'border-green-100 hover:border-green-400',
-        'icon_bg' => 'bg-green-50',
-        'icon_color' => 'text-green-600',
+        'accent' => 'kidazzle-green',
     ),
     array(
         'icon' => 'fa-solid fa-heart-pulse',
         'title' => __('Dedicated Staff', 'kidazzle'),
-        'description' => __('We pride ourselves on low turnover and a team of tenured educators who truly know your child. Our staff receives ongoing training to provide the highest quality care.', 'kidazzle'),
-        'url' => home_url('/about/'),
-        'border_color' => 'border-red-100 hover:border-red-400',
-        'icon_bg' => 'bg-red-50',
-        'icon_color' => 'text-red-600',
+        'description' => __('Low turnover and a team of tenured educators who truly know and love your child.', 'kidazzle'),
+        'url' => home_url('/careers/'),
+        'accent' => 'kidazzle-red',
     ),
 );
 ?>
 
-<section class="py-24 bg-slate-50">
-    <div class="container mx-auto px-4">
-        <div class="text-center max-w-4xl mx-auto mb-16">
-            <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6"><?php esc_html_e('The KIDazzle Difference', 'kidazzle'); ?></h2>
-            <p class="text-slate-500 text-xl leading-relaxed"><?php esc_html_e('We are not a franchise. We are a family of independent schools connected by a shared mission.', 'kidazzle'); ?></p>
+<section class="py-24 bg-brand-cream relative overflow-hidden">
+    <!-- Abstract Brand Pattern -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/circle-knot.png')]"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center max-w-4xl mx-auto mb-20">
+            <span class="text-kidazzle-blue font-bold tracking-[0.3em] text-[10px] uppercase mb-4 block italic">Excellence by Design</span>
+            <h2 class="text-3xl md:text-6xl font-serif font-bold text-brand-ink mb-6"><?php esc_html_e('The KIDazzle Difference', 'kidazzle'); ?></h2>
+            <p class="text-brand-ink/60 text-xl leading-relaxed max-w-2xl mx-auto"><?php esc_html_e('We are an independent family of schools connected by a singular mission: providing elite care and education.', 'kidazzle'); ?></p>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-            <?php foreach ($pillars as $pillar) : ?>
-                <a href="<?php echo esc_url($pillar['url']); ?>" class="p-8 rounded-[2rem] border-2 <?php echo esc_attr($pillar['border_color']); ?> transition bg-white shadow-sm hover:shadow-xl text-center group block">
-                    <div class="w-14 h-14 rounded-2xl <?php echo esc_attr($pillar['icon_bg']); ?> <?php echo esc_attr($pillar['icon_color']); ?> flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-                        <i class="<?php echo esc_attr($pillar['icon']); ?> text-2xl"></i>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <?php foreach ($pillars as $index => $pillar) : 
+                $accent = $pillar['accent'];
+                $is_even = ($index % 2 !== 0);
+            ?>
+                <a href="<?php echo esc_url($pillar['url']); ?>" class="relative group <?php echo $is_even ? 'md:translate-y-8' : ''; ?> transition-transform duration-500">
+                    <div class="relative bg-white p-10 rounded-[3rem] shadow-soft border border-brand-ink/5 group-hover:-translate-y-2 group-hover:shadow-2xl transition-all duration-300 h-full flex flex-col items-center text-center">
+                        <!-- Decorative Blob -->
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-<?php echo esc_attr($accent); ?>/5 rounded-bl-full group-hover:scale-125 transition-transform duration-500"></div>
+                        
+                        <div class="w-20 h-20 rounded-3xl bg-white shadow-lg flex items-center justify-center mb-8 border-2 border-<?php echo esc_attr($accent); ?>/10 text-<?php echo esc_attr($accent); ?> relative overflow-hidden group-hover:bg-<?php echo esc_attr($accent); ?> group-hover:text-white transition-all duration-300">
+                             <i class="<?php echo esc_attr($pillar['icon']); ?> text-3xl relative z-10"></i>
+                        </div>
+                        
+                        <h3 class="font-serif font-bold text-2xl text-brand-ink mb-4"><?php echo esc_html($pillar['title']); ?></h3>
+                        <p class="text-brand-ink/70 text-sm leading-relaxed mb-6 flex-grow"><?php echo esc_html($pillar['description']); ?></p>
+                        
+                        <div class="w-10 h-10 rounded-full border border-brand-ink/10 flex items-center justify-center text-<?php echo esc_attr($accent); ?> group-hover:bg-<?php echo esc_attr($accent); ?> group-hover:text-white group-hover:border-<?php echo esc_attr($accent); ?> transition-all duration-300">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-xl text-slate-900 mb-2"><?php echo esc_html($pillar['title']); ?></h3>
-                    <p class="text-sm text-slate-600 mb-4 leading-relaxed"><?php echo esc_html($pillar['description']); ?></p>
-                    <span class="<?php echo esc_attr($pillar['icon_color']); ?> font-bold text-xs flex items-center justify-center gap-1 uppercase tracking-wide mt-2">
-                        <?php esc_html_e('Learn More', 'kidazzle'); ?> <i class="fa-solid fa-arrow-right"></i>
-                    </span>
                 </a>
             <?php endforeach; ?>
         </div>

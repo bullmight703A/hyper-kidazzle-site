@@ -52,18 +52,30 @@ $zones = array(
 ?>
 
 <main id="view-curriculum" class="view-section active block">
-    <!-- Hero Section -->
-    <section class="relative pt-24 pb-20 bg-white text-center overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4 relative z-10">
-            <span class="text-kidazzle-green font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
-                <?php echo esc_html($hero_badge); ?>
-            </span>
-            <h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">
+    <!-- Hero Section (Premium Full-Bleed) -->
+    <section class="relative py-32 md:py-48 text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+             <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=3840&q=100" alt="Teacher reading to children" class="w-full h-full object-cover">
+             <div class="absolute inset-0 bg-kidazzle-blueDark/60 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-white">
+            <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-white mb-6 backdrop-blur-md">
+                <i class="fa-solid fa-brain text-kidazzle-yellow"></i> <?php echo esc_html($hero_badge); ?>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 drop-shadow-xl text-white">
                 <?php echo wp_kses_post($hero_title); ?>
             </h1>
-            <p class="text-lg text-brand-ink/80 max-w-2xl mx-auto mb-10">
+            <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto drop-shadow-md leading-relaxed">
                 <?php echo esc_html($hero_description); ?>
             </p>
+        </div>
+        
+        <!-- Bottom Wave/Curve Decor -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] transform rotate-180">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[50px] fill-brand-cream" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
         </div>
     </section>
 
@@ -109,28 +121,43 @@ $zones = array(
         </div>
     </section>
 
-    <!-- KIDazzle Creative Curriculum™ Framework (5 Pillars) -->
-    <section class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+    <!-- KIDazzle Creative Curriculum™ Framework (Refractive Prism Design) -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <!-- Refractive Background Elements -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-kidazzle-blue/5 to-transparent skew-x-12 transform translate-x-20"></div>
+        <div class="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-tr from-kidazzle-red/5 to-transparent -skew-x-12 transform -translate-x-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
             <div class="text-center mb-16">
-                <span class="text-kidazzle-green font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Refractive Learning</span>
+                <div class="inline-block p-3 bg-brand-cream rounded-2xl mb-4 border border-brand-ink/5">
+                    <i class="fa-solid fa-gem text-kidazzle-blue text-2xl animate-pulse"></i>
+                </div>
+                <span class="text-kidazzle-green font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block italic">The Refractive Power of Play</span>
                 <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6"><?php echo esc_html($framework_title); ?></h2>
                 <div class="text-brand-ink/70 max-w-3xl mx-auto text-lg leading-relaxed"><?php echo wp_kses_post(wpautop($framework_description)); ?></div>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="flex flex-wrap justify-center gap-8 lg:gap-12">
                 <?php foreach ($framework_pillars as $key => $meta): 
                     $p_title = get_post_meta($page_id, "curriculum_pillar_{$key}_title", true);
                     $p_desc = get_post_meta($page_id, "curriculum_pillar_{$key}_desc", true);
                     $p_icon = get_post_meta($page_id, "curriculum_pillar_{$key}_icon", true) ?: $meta['icon'];
                     $color = $meta['color'];
                 ?>
-                    <div class="bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center">
-                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-sm text-<?php echo esc_attr($color); ?> text-2xl group-hover:scale-110 transition-transform">
-                            <i class="<?php echo esc_attr($p_icon); ?>"></i>
+                    <div class="w-full md:w-[calc(50%-2rem)] lg:w-[calc(20%-2.5rem)] group relative">
+                        <!-- Connecting Line (Desktop Only) -->
+                        <div class="hidden lg:block absolute top-12 left-full w-full h-[2px] bg-gradient-to-r from-brand-ink/10 to-transparent z-0 -translate-x-4 last:hidden"></div>
+                        
+                        <div class="relative bg-white p-8 rounded-[3rem] shadow-soft border border-brand-ink/5 group-hover:-translate-y-3 transition-all duration-500 z-10 text-center">
+                            <!-- Refractive Glow -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-<?php echo esc_attr($color); ?>/0 to-<?php echo esc_attr($color); ?>/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[3rem]"></div>
+                            
+                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-lg text-<?php echo esc_attr($color); ?> text-2xl group-hover:bg-<?php echo esc_attr($color); ?> group-hover:text-white transition-all duration-300">
+                                <i class="<?php echo esc_attr($p_icon); ?>"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl text-brand-ink mb-3"><?php echo esc_html($p_title); ?></h3>
+                            <p class="text-xs text-brand-ink/60 leading-relaxed"><?php echo esc_html($p_desc); ?></p>
                         </div>
-                        <h3 class="font-bold text-lg text-brand-ink mb-2"><?php echo esc_html($p_title); ?></h3>
-                        <p class="text-xs text-brand-ink/60 leading-relaxed"><?php echo esc_html($p_desc); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>

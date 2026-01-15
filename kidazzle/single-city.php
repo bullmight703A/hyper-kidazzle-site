@@ -29,35 +29,41 @@ $location_count = is_array($location_ids) ? count($location_ids) : 0;
 $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecropped_140x140.webp';
 ?>
 
-<!-- SEO Hero: High Intent Keywords -->
-<section class="relative pt-12 pb-16 bg-white overflow-hidden">
-    <div
-        class="absolute top-0 right-0 w-96 h-96 bg-kidazzle-blue/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2">
-    </div>
+<!-- SEO Hero (Premium High-Contrast) -->
+<section class="relative py-24 md:py-32 bg-white overflow-hidden text-center md:text-left">
+    <!-- Refractive Decor -->
+    <div class="absolute right-0 top-0 w-1/3 h-full bg-kidazzle-blue/5 skew-x-12 transform translate-x-20"></div>
+    <div class="absolute -left-20 bottom-0 w-96 h-96 bg-kidazzle-yellow/5 rounded-full blur-[100px]"></div>
 
-    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <span
-            class="inline-block py-1 px-4 rounded-full bg-kidazzle-blue/10 text-kidazzle-blue text-xs font-bold uppercase tracking-widest mb-6">
-            Serving <?php echo esc_html($city); ?> & <?php echo esc_html($county); ?> County
-        </span>
+    <div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        <div>
+            <span class="inline-flex items-center gap-2 bg-brand-cream border border-kidazzle-blue/20 px-5 py-2 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold text-kidazzle-blue shadow-sm mb-8 italic">
+                Serving <?php echo esc_html($city); ?> & <?php echo esc_html($county); ?> County
+            </span>
 
-        <h1 class="font-serif text-4xl md:text-6xl text-brand-ink mb-6 leading-tight">
-            The Best Daycare in <span class="italic text-kidazzle-blue"><?php echo esc_html($city); ?>, <?php echo esc_html($state_upper); ?>.</span>
-        </h1>
+            <h1 class="font-serif text-5xl md:text-7xl text-brand-ink mb-8 leading-[1.1]">
+                The Best Daycare in <br><span class="italic text-kidazzle-blue"><?php echo esc_html($city); ?>, <?php echo esc_html($state_upper); ?>.</span>
+            </h1>
 
-        <p class="text-lg md:text-xl text-brand-ink/80 max-w-2xl mx-auto mb-10">
-            Are you looking for "daycare near me"? Discover the highest-rated early learning centers in the
-            <?php echo esc_html($city); ?> area, featuring the KIDazzle Creative Curriculum™ curriculum and GA Pre-K.
-        </p>
+            <p class="text-xl text-brand-ink/60 max-w-xl mb-12 leading-relaxed">
+                Discover the highest-rated early learning centers in <?php echo esc_html($city); ?>, featuring the KIDazzle Creative Curriculum™ framework and premium safety standards.
+            </p>
 
-        <a href="#locations"
-            class="inline-flex items-center gap-2 text-kidazzle-red font-bold border-b-2 border-kidazzle-red pb-1 hover:text-brand-ink hover:border-brand-ink transition-all">
-            See Locations in <?php echo esc_html($city); ?>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
-                </path>
-            </svg>
-        </a>
+            <a href="#locations" class="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-kidazzle-red hover:text-brand-ink transition-all group">
+                Find Your Campus
+                <div class="w-12 h-12 rounded-full border border-kidazzle-red/20 flex items-center justify-center group-hover:bg-kidazzle-red group-hover:text-white transition-all">
+                    <i class="fa-solid fa-arrow-down text-[10px]"></i>
+                </div>
+            </a>
+        </div>
+        
+        <div class="relative hidden lg:block">
+            <!-- Brand Frame -->
+            <div class="absolute inset-0 bg-kidazzle-blue/10 rounded-[4rem] rotate-3 scale-100 transform translate-x-4 translate-y-4"></div>
+            <div class="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white aspect-square">
+                <img src="https://images.unsplash.com/photo-1544367353-93620f9c5144?q=80&w=1024&auto=format&fit=crop" class="w-full h-full object-cover" alt="<?php echo esc_attr($city); ?> Childcare">
+            </div>
+        </div>
     </div>
 </section>
 
@@ -132,41 +138,41 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                             $image = $local_fallback;
                         }
                         ?>
-                        <!-- Location Card -->
-                        <div
-                            class="group p-6 rounded-3xl bg-brand-cream border border-brand-ink/5 hover:border-kidazzle-blue/30 transition-all hover:-translate-y-1 flex flex-col shadow-card">
-                            <div class="h-48 rounded-2xl bg-kidazzle-blue/5 mb-6 overflow-hidden relative">
+                        <!-- Location Card (Premium) -->
+                        <div class="group relative bg-brand-cream p-10 rounded-[3rem] border border-brand-ink/5 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col">
+                            <!-- Brand Accent Bar -->
+                            <div class="absolute top-0 left-0 w-full h-1.5 bg-kidazzle-blue/10 overflow-hidden rounded-t-[3rem]">
+                                <div class="h-full bg-kidazzle-blue w-0 group-hover:w-full transition-all duration-700"></div>
+                            </div>
+
+                            <div class="h-56 rounded-[2.5rem] bg-white mb-8 overflow-hidden relative shadow-inner border border-brand-ink/5">
                                 <?php if ($image !== $local_fallback): ?>
-                                    <img src="<?php echo esc_url($image); ?>" class="w-full h-full object-cover"
-                                        alt="<?php the_title_attribute(); ?>" loading="lazy">
+                                    <img src="<?php echo esc_url($image); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="<?php the_title_attribute(); ?>" loading="lazy">
                                 <?php else: ?>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-br from-kidazzle-blue/20 to-kidazzle-green/20 flex items-center justify-center">
-                                        <img src="<?php echo esc_url($local_fallback); ?>" alt="kidazzle" class="w-16 h-16 opacity-30"
-                                            loading="lazy">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-kidazzle-blue/10 to-kidazzle-green/10 flex items-center justify-center">
+                                        <img src="<?php echo esc_url($local_fallback); ?>" alt="kidazzle" class="w-20 h-20 opacity-20" loading="lazy">
                                     </div>
                                 <?php endif; ?>
 
-                                <div
-                                    class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-sm">
-                                    <?php echo esc_html($rating); ?> ★
+                                <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl text-brand-ink border border-white/20">
+                                    <?php echo esc_html($rating); ?> <i class="fa-solid fa-star text-kidazzle-yellow ml-1"></i>
                                 </div>
                             </div>
 
-                            <h3 class="font-serif text-xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
+                            <h3 class="font-serif text-2xl font-bold text-brand-ink mb-3 group-hover:text-kidazzle-blue transition-colors"><?php the_title(); ?></h3>
 
                             <?php if ($address): ?>
-                                <p class="text-sm text-brand-ink/60 mb-1"><?php echo esc_html($address); ?></p>
+                                <p class="text-sm text-brand-ink/40 mb-2 font-medium"><i class="fa-solid fa-location-dot mr-2 text-kidazzle-blue/40"></i> <?php echo esc_html($address); ?></p>
                             <?php endif; ?>
 
-                            <p class="text-xs text-brand-ink font-bold uppercase tracking-widest mb-6">
-                                Serving <?php echo esc_html($city); ?> Families
-                            </p>
+                            <div class="inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-kidazzle-blue bg-kidazzle-blue/5 px-3 py-1 rounded-full w-fit mb-8 italic">
+                                Campus Serving <?php echo esc_html($city); ?>
+                            </div>
 
                             <div class="mt-auto">
                                 <a href="<?php the_permalink(); ?>" aria-label="View Campus: <?php the_title_attribute(); ?>"
-                                    class="block w-full py-3 bg-kidazzle-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-kidazzle-blue/90 transition-colors">
-                                    View Campus
+                                    class="block w-full py-5 bg-brand-ink text-white text-center rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-kidazzle-blue transition-all shadow-lg hover:shadow-xl group-hover:-translate-y-1">
+                                    View Campus Profile
                                 </a>
                             </div>
                         </div>
@@ -229,29 +235,38 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                     
                     $age_range = get_post_meta(get_the_ID(), 'program_age_range', true);
                     ?>
-                    <div class="group p-6 rounded-3xl bg-brand-cream border border-brand-ink/5 hover:border-kidazzle-blue/30 transition-all hover:-translate-y-1 flex flex-col shadow-card">
-                        <div class="h-48 rounded-2xl bg-kidazzle-blue/5 mb-6 overflow-hidden relative">
-                             <?php if (has_post_thumbnail()): ?>
-                                <?php the_post_thumbnail('medium_large', ['class' => 'w-full h-full object-cover']); ?>
-                            <?php else: ?>
-                                <div class="absolute inset-0 bg-gradient-to-br from-kidazzle-blue/20 to-kidazzle-green/20 flex items-center justify-center">
-                                    <span class="text-4xl">📚</span>
-                                </div>
-                            <?php endif; ?>
+                    <div class="group relative bg-white p-10 rounded-[3rem] shadow-soft border border-brand-ink/5 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col">
+                        <!-- Brand Accent Bar -->
+                        <div class="absolute top-0 left-0 w-full h-1.5 bg-kidazzle-green/10 overflow-hidden rounded-t-[3rem]">
+                            <div class="h-full bg-kidazzle-green w-0 group-hover:w-full transition-all duration-700"></div>
                         </div>
 
-                        <h3 class="font-serif text-xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
+                        <div class="h-48 rounded-[2.5rem] bg-brand-cream/30 mb-8 overflow-hidden relative shadow-inner">
+                             <?php if (has_post_thumbnail()): ?>
+                                <?php the_post_thumbnail('medium_large', ['class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-700']); ?>
+                            <?php else: ?>
+                                <div class="absolute inset-0 bg-gradient-to-br from-kidazzle-blue/10 to-kidazzle-green/10 flex items-center justify-center">
+                                    <span class="text-5xl opacity-30">📚</span>
+                                </div>
+                            <?php endif; ?>
+                            <!-- Glass Badge -->
+                            <div class="absolute bottom-6 left-6 right-6 bg-white/40 backdrop-blur-md px-4 py-2 rounded-2xl text-center border border-white/20">
+                                <span class="text-[9px] font-bold text-brand-ink uppercase tracking-widest italic">Kidazzle Specialty</span>
+                            </div>
+                        </div>
+
+                        <h3 class="font-serif text-2xl font-bold text-brand-ink mb-3 group-hover:text-kidazzle-green transition-colors"><?php the_title(); ?></h3>
                         
                         <?php if ($age_range): ?>
-                        <p class="text-xs text-brand-ink/60 font-bold uppercase tracking-widest mb-6">
+                        <div class="inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-kidazzle-green bg-kidazzle-green/5 px-3 py-1 rounded-full w-fit mb-8 italic">
                             Ages <?php echo esc_html($age_range); ?>
-                        </p>
+                        </div>
                         <?php endif; ?>
 
                         <div class="mt-auto">
                             <a href="<?php echo esc_url($combo_url); ?>" 
-                               class="block w-full py-3 bg-kidazzle-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-kidazzle-blue/90 transition-colors">
-                                View Program
+                               class="block w-full py-5 bg-white border border-brand-ink/10 text-brand-ink text-center rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-kidazzle-green hover:text-white hover:border-kidazzle-green transition-all shadow-sm group-hover:-translate-y-1">
+                                View Curriculum Path
                             </a>
                         </div>
                     </div>

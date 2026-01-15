@@ -259,36 +259,60 @@ $gallery_imgs = array(
 ?>
 
 <main id="view-parents" class="view-section active block">
-    <!-- Hero Section -->
-    <section class="py-24 bg-white text-center border-b border-brand-ink/5">
-        <div class="max-w-4xl mx-auto px-4">
-            <span class="text-kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+    <!-- Hero Section (Premium High-Contrast) -->
+    <section class="relative py-32 md:py-48 text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+             <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=3840&auto=format&fit=crop" alt="Parents and children" class="w-full h-full object-cover">
+             <div class="absolute inset-0 bg-brand-ink/70 backdrop-blur-[1px]"></div>
+             <!-- Refractive Prism Overlay -->
+             <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-kidazzle-blue/20 to-transparent skew-x-12 transform translate-x-20"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4">
+            <span class="text-kidazzle-yellow font-bold tracking-[0.3em] text-[10px] uppercase mb-4 block italic">
                 <?php echo esc_html($hero_badge); ?>
             </span>
-            <h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 drop-shadow-xl">
                 <?php echo esc_html($hero_title); ?>
             </h1>
-            <p class="text-lg text-brand-ink/80 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
                 <?php echo esc_html($hero_description); ?>
             </p>
         </div>
+        
+        <!-- Bottom Wave -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] transform rotate-180">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[60px] fill-brand-cream" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
     </section>
 
-    <!-- Resources Grid -->
+    <!-- Parent Essentials (Premium Cards) -->
     <section class="py-24 bg-brand-cream">
         <div class="max-w-7xl mx-auto px-4 lg:px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink">Parent Essentials</h2>
-                <div class="w-20 h-1 bg-kidazzle-blue mx-auto mt-4 rounded-full"></div>
+                <span class="text-kidazzle-blue font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block italic">Self-Service Portals</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink"><?php echo esc_html($essentials_title); ?></h2>
+                <div class="w-16 h-1.5 bg-kidazzle-blue mx-auto mt-6 rounded-full"></div>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach ($resources as $res): ?>
-                    <a href="<?php echo esc_url($res['url']); ?>" class="bg-white p-8 rounded-[2rem] shadow-soft border border-brand-ink/5 hover:-translate-y-1 hover:shadow-lg transition-all group flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-<?php echo esc_attr($res['color']); ?>/10 text-<?php echo esc_attr($res['color']); ?> rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-<?php echo esc_attr($res['color']); ?> group-hover:text-white transition-colors">
+                    <a href="<?php echo esc_url($res['url']); ?>" class="group relative bg-white p-10 rounded-[3rem] shadow-soft border border-brand-ink/5 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center">
+                        <!-- Brand Accent Bar -->
+                        <div class="absolute top-0 left-0 w-full h-1.5 bg-<?php echo esc_attr($res['color']); ?>/10">
+                            <div class="h-full bg-<?php echo esc_attr($res['color']); ?> w-0 group-hover:w-full transition-all duration-700"></div>
+                        </div>
+
+                        <div class="w-20 h-20 bg-white shadow-lg text-<?php echo esc_attr($res['color']); ?> rounded-3xl flex items-center justify-center text-3xl mb-8 border border-<?php echo esc_attr($res['color']); ?>/10 group-hover:bg-<?php echo esc_attr($res['color']); ?> group-hover:text-white transition-all duration-300">
                             <i class="<?php echo esc_attr($res['icon']); ?>"></i>
                         </div>
-                        <h3 class="font-bold text-xl text-brand-ink mb-2"><?php echo esc_html($res['title']); ?></h3>
-                        <p class="text-sm text-brand-ink/70 leading-relaxed"><?php echo esc_html($res['desc']); ?></p>
+                        <h3 class="font-serif font-bold text-2xl text-brand-ink mb-3"><?php echo esc_html($res['title']); ?></h3>
+                        <p class="text-brand-ink/60 text-sm leading-relaxed mb-8 flex-grow"><?php echo esc_html($res['desc']); ?></p>
+                        
+                        <div class="w-10 h-10 rounded-full border border-brand-ink/10 flex items-center justify-center text-<?php echo esc_attr($res['color']); ?> group-hover:bg-brand-ink group-hover:text-white group-hover:border-brand-ink transition-all duration-300">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
                     </a>
                 <?php endforeach; ?>
             </div>
@@ -332,19 +356,21 @@ $gallery_imgs = array(
         </div>
     </section>
 
-    <!-- Nutrition Banner -->
-    <section class="py-16 bg-brand-ink text-white">
-        <div class="max-w-7xl mx-auto px-4 lg:px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="flex items-center gap-6">
-                <div class="w-16 h-16 bg-kidazzle-green/20 text-kidazzle-green rounded-full flex items-center justify-center text-3xl">
-                    <i class="fa-solid fa-lemon"></i>
+    <!-- Nutrition Banner (High Contrast) -->
+    <section class="py-16 bg-brand-ink text-white relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-kidazzle-green/5 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-4 lg:px-6 flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+            <div class="flex items-center gap-8">
+                <div class="w-20 h-20 bg-kidazzle-green/20 text-kidazzle-green rounded-3xl flex items-center justify-center text-4xl shadow-inner border border-white/5">
+                    <i class="fa-solid fa-utensils"></i>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-serif font-bold">Fueling Minds Daily</h3>
-                    <p class="text-white/60">Balanaced, CACFP-compliant meals prepared by in-house chefs.</p>
+                    <span class="text-kidazzle-green font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Nutrition</span>
+                    <h3 class="text-3xl font-serif font-bold"><?php echo esc_html($nutrition_title); ?></h3>
+                    <p class="text-white/60 text-lg"><?php echo esc_html($nutrition_description); ?></p>
                 </div>
             </div>
-            <a href="#" class="px-8 py-4 bg-white text-brand-ink font-bold rounded-full uppercase tracking-widest text-xs hover:bg-kidazzle-green hover:text-white transition-all">Download This Month\'s Menu</a>
+            <a href="#" class="px-10 py-5 bg-white text-brand-ink font-bold rounded-full uppercase tracking-widest text-xs hover:bg-kidazzle-green hover:text-white hover:-translate-y-1 transition-all shadow-xl">Download This Month's Menu</a>
         </div>
     </section>
 

@@ -119,37 +119,39 @@ while (have_posts()):
 	?>
 
 	<main id="main-content" role="main" class="view-section active block">
-		<!-- Hero Section -->
-		<section class="relative pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden bg-white">
-			<!-- Decor -->
-			<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-kidazzle-yellowLight/50 to-transparent -z-10"></div>
-			<div class="absolute bottom-0 left-0 w-96 h-96 bg-kidazzle-blue/5 rounded-full blur-3xl -z-10"></div>
+		<!-- Hero Section (High-Contrast & Refractive) -->
+		<section class="relative pt-24 pb-32 lg:pt-32 lg:pb-48 overflow-hidden bg-white">
+			<!-- Organic Decor -->
+			<div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-kidazzle-yellow/5 rounded-full blur-[120px]"></div>
+			<div class="absolute -left-20 top-1/2 w-96 h-96 bg-kidazzle-blue/5 rounded-full blur-[100px]"></div>
 
-			<div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-16 items-center">
+			<div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10">
 				<div class="fade-in-up">
 					<?php if ($hero_badge_text): ?>
-						<div class="inline-flex items-center gap-2 bg-white border border-kidazzle-yellow/40 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-yellow shadow-sm mb-6">
-							<i class="fa-solid fa-heart"></i> <?php echo esc_html($hero_badge_text); ?>
+						<div class="inline-flex items-center gap-2 bg-brand-cream border border-kidazzle-yellow/20 px-5 py-2 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold text-kidazzle-yellow shadow-sm mb-8 italic">
+							<i class="fa-solid fa-star text-[8px]"></i> <?php echo esc_html($hero_badge_text); ?>
 						</div>
 					<?php endif; ?>
 
-					<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6">
+					<h1 class="font-serif text-5xl md:text-8xl text-brand-ink mb-8 leading-[1.1]">
 						<?php echo wp_kses_post($hero_title); ?>
 					</h1>
 
-					<p class="text-lg text-brand-ink/80 mb-8 leading-relaxed">
+					<p class="text-xl text-brand-ink/60 mb-10 leading-relaxed max-w-xl">
 						<?php echo esc_html($hero_description); ?>
 					</p>
 
-					<div class="flex flex-wrap gap-4">
-						<a href="#mission" class="px-8 py-4 bg-brand-ink text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-kidazzle-blueDark transition-colors shadow-lg">Our Mission</a>
-						<a href="<?php echo esc_url(home_url('/locations')); ?>" class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-kidazzle-yellow hover:text-kidazzle-yellow transition-colors">Find a Campus</a>
+					<div class="flex flex-wrap gap-6">
+						<a href="#story" class="px-10 py-5 bg-brand-ink text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-kidazzle-blueDark transition-all shadow-xl hover:-translate-y-1">Our Heritage</a>
+						<a href="<?php echo esc_url(home_url('/locations')); ?>" class="px-10 py-5 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-kidazzle-yellow hover:text-kidazzle-yellow transition-all">Find a Campus</a>
 					</div>
 				</div>
 
 				<div class="relative fade-in-up delay-200">
-					<div class="absolute inset-0 bg-kidazzle-yellow/10 rounded-[3rem] -rotate-3 transform translate-x-4 translate-y-4"></div>
-					<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
+                    <!-- Layered Brand Frame -->
+					<div class="absolute inset-0 bg-kidazzle-yellow/20 rounded-[4rem] -rotate-6 scale-95 transform"></div>
+                    <div class="absolute inset-0 bg-kidazzle-blue/10 rounded-[4rem] rotate-3 scale-100 transform translate-x-4"></div>
+					<div class="relative rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border-8 border-white aspect-[4/5] md:aspect-square">
 						<img src="<?php echo esc_url($hero_image); ?>" alt="<?php echo esc_attr(strip_tags($hero_title)); ?>" class="w-full h-full object-cover" />
 					</div>
 				</div>
@@ -226,25 +228,30 @@ while (have_posts()):
 					<p class="text-brand-ink/80"><?php echo esc_html($educators_description); ?></p>
 				</div>
 
-				<div class="grid md:grid-cols-3 gap-8">
+				<div class="grid md:grid-cols-3 gap-10">
 					<?php
 					$educators = array(
-						array('icon' => $educator1_icon, 'title' => $educator1_title, 'desc' => $educator1_desc, 'color' => 'kidazzle-redLight', 'icon_color' => 'kidazzle-red'),
-						array('icon' => $educator2_icon, 'title' => $educator2_title, 'desc' => $educator2_desc, 'color' => 'kidazzle-blueLight', 'icon_color' => 'kidazzle-blue'),
-						array('icon' => $educator3_icon, 'title' => $educator3_title, 'desc' => $educator3_desc, 'color' => 'kidazzle-greenLight', 'icon_color' => 'kidazzle-green'),
+						array('icon' => $educator1_icon, 'title' => $educator1_title, 'desc' => $educator1_desc, 'color' => 'kidazzle-red'),
+						array('icon' => $educator2_icon, 'title' => $educator2_title, 'desc' => $educator2_desc, 'color' => 'kidazzle-blue'),
+						array('icon' => $educator3_icon, 'title' => $educator3_title, 'desc' => $educator3_desc, 'color' => 'kidazzle-green'),
 					);
 
 					foreach ($educators as $educator):
 						if ($educator['title']):
 							?>
-							<div class="bg-white p-8 rounded-[2rem] shadow-soft border border-brand-ink/5 hover:border-<?php echo esc_attr($educator['icon_color']); ?>/30 transition-all">
-								<div class="w-14 h-14 bg-<?php echo esc_attr($educator['color']); ?> text-<?php echo esc_attr($educator['icon_color']); ?> rounded-2xl flex items-center justify-center text-2xl mb-6">
+							<div class="group relative bg-white p-10 rounded-[3rem] shadow-soft border border-brand-ink/5 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                                <!-- Brand Accent Bar -->
+                                <div class="absolute top-0 left-0 w-full h-1.5 bg-<?php echo esc_attr($educator['color']); ?>/10 overflow-hidden rounded-t-[3rem]">
+                                    <div class="h-full bg-<?php echo esc_attr($educator['color']); ?> w-0 group-hover:w-full transition-all duration-700"></div>
+                                </div>
+
+								<div class="w-16 h-16 bg-white shadow-lg text-<?php echo esc_attr($educator['color']); ?> rounded-2xl flex items-center justify-center text-2xl mb-8 border border-<?php echo esc_attr($educator['color']); ?>/10 group-hover:bg-<?php echo esc_attr($educator['color']); ?> group-hover:text-white transition-all duration-300">
 									<i class="<?php echo esc_attr($educator['icon']); ?>"></i>
 								</div>
-								<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">
+								<h3 class="font-serif text-2xl font-bold text-brand-ink mb-4">
 									<?php echo esc_html($educator['title']); ?>
 								</h3>
-								<p class="text-sm text-brand-ink/90 leading-relaxed">
+								<p class="text-brand-ink/60 leading-relaxed text-sm">
 									<?php echo esc_html($educator['desc']); ?>
 								</p>
 							</div>

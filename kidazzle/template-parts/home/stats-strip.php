@@ -11,37 +11,39 @@ if (!defined('ABSPATH')) {
         exit;
 }
 
-// Default stats - can be overridden via customizer
+// Stats are now standardized to Kidazzle refractive colors
 $stats = array(
-        array('value' => '31+', 'label' => 'Years of Excellence', 'color' => 'text-yellow-400'),
-        array('value' => '10k+', 'label' => 'Students Graduated', 'color' => 'text-red-500'),
-        array('value' => '3', 'label' => 'States Served', 'color' => 'text-cyan-400'),
-        array('value' => '100%', 'label' => 'Quality Rated', 'color' => 'text-green-500'),
+        array('value' => '33+', 'label' => 'Years of Excellence', 'color' => 'kidazzle-yellow'),
+        array('value' => '10k+', 'label' => 'Students Graduated', 'color' => 'kidazzle-red'),
+        array('value' => '15+', 'label' => 'Awarded Campuses', 'color' => 'kidazzle-blue'),
+        array('value' => '100%', 'label' => 'Quality Rated', 'color' => 'kidazzle-green'),
 );
 
-// Allow filtering/customization
 $stats = apply_filters('kidazzle_home_stats', $stats);
 ?>
 
-<!-- STATS STRIP -->
-<section class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
-        </div>
+<!-- STATS STRIP (High Fidelity Refractive) -->
+<section class="py-32 bg-brand-ink text-white relative overflow-hidden">
+        <!-- Brand Decor Blobs -->
+        <div class="absolute -right-40 -top-40 w-[800px] h-[800px] bg-kidazzle-blue/5 rounded-full blur-[120px]"></div>
+        <div class="absolute -left-40 -bottom-40 w-[800px] h-[800px] bg-kidazzle-red/5 rounded-full blur-[120px]"></div>
+        
+        <div class="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
 
         <div class="container mx-auto px-4 relative z-10 text-center">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-8">
+                <span class="text-kidazzle-yellow font-bold tracking-[0.3em] text-[10px] uppercase mb-6 block italic">Impact & Innovation</span>
+                <h2 class="text-4xl md:text-7xl font-serif font-bold mb-10 leading-[1.1]">
                         <?php esc_html_e('Vision for the Future', 'kidazzle'); ?></h2>
-                <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-12">
-                        <?php esc_html_e('As we look to the next 30 years, KIDazzle is committed to expanding our footprint while deepening our impact. We are constantly innovating—integrating technology like AI into our lesson planning while keeping the human connection at the center of everything we do.', 'kidazzle'); ?>
+                <p class="text-xl md:text-2xl text-white/60 max-w-4xl mx-auto leading-relaxed mb-24 italic px-4">
+                        <?php esc_html_e('As we look to the next 30 years, KIDazzle is committed to expanding our village while deepening our educational impact. We are constantly innovating—integrating proprietary AI for personalized learning while keeping the human connection at the heart of our mission.', 'kidazzle'); ?>
                 </p>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate-800 pt-12 max-w-5xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/10 pt-20 max-w-6xl mx-auto">
                         <?php foreach ($stats as $stat): ?>
-                                <div class="p-4">
-                                        <div class="text-4xl font-extrabold <?php echo esc_attr($stat['color']); ?> mb-2">
+                                <div class="group cursor-default">
+                                        <div class="text-5xl md:text-8xl font-serif font-bold text-<?php echo esc_attr($stat['color']); ?> mb-4 group-hover:scale-110 transition-transform duration-500 inline-block drop-shadow-lg">
                                                 <?php echo esc_html($stat['value']); ?></div>
-                                        <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                                        <div class="text-[10px] font-bold text-white/40 uppercase tracking-[0.4em] mt-2">
                                                 <?php echo esc_html($stat['label']); ?></div>
                                 </div>
                         <?php endforeach; ?>
