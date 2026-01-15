@@ -9,92 +9,175 @@ get_header();
 ?>
 
 <main id="view-teacher-portal" class="view-section active block">
-    <!-- Hero Section -->
-    <section class="py-20 bg-brand-ink text-white text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-kidazzle-blue/5 -z-10"></div>
-        <div class="max-w-4xl mx-auto px-4 relative z-10">
-            <div class="w-16 h-16 bg-kidazzle-yellow/20 text-kidazzle-yellow rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">
-                <i class="fa-solid fa-users"></i>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Teacher Portal</h1>
-            <p class="text-lg text-white/60">Classroom tools, resources, and daily workflows.</p>
-        </div>
-    </section>
-
-    <!-- Content Grid -->
+    <!-- Daily Tools Section -->
     <section class="py-16 bg-brand-cream">
         <div class="max-w-7xl mx-auto px-4 lg:px-6">
-            <div class="grid lg:grid-cols-3 gap-8 items-start">
-                
-                <!-- Sidebar: Quick Actions -->
-                <div class="lg:col-span-1 space-y-6">
-                    <div class="bg-white p-8 rounded-[2rem] shadow-soft border border-brand-ink/5">
-                        <h3 class="font-bold text-xl mb-6 text-brand-ink flex items-center gap-2">
-                            Quick Actions
-                        </h3>
-                        <ul class="space-y-4">
-                            <li>
-                                <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-cream text-brand-ink/80 hover:text-kidazzle-blue transition-all group">
-                                    <i class="fa-solid fa-check-double text-kidazzle-blue"></i>
-                                    <span class="font-bold text-sm">Daily Checklist</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-cream text-brand-ink/80 hover:text-kidazzle-red transition-all group">
-                                    <i class="fa-solid fa-file-circle-exclamation text-kidazzle-red"></i>
-                                    <span class="font-bold text-sm">Incident Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-cream text-brand-ink/80 hover:text-kidazzle-green transition-all group">
-                                    <i class="fa-solid fa-calendar-plus text-kidazzle-green"></i>
-                                    <span class="font-bold text-sm">Time Off Request</span>
-                                </a>
-                            </li>
-                        </ul>
+            <h2 class="text-2xl font-serif font-bold text-brand-ink mb-10 border-b border-brand-ink/10 pb-4">Daily Classroom Tools</h2>
+            <div class="grid md:grid-cols-4 gap-6 mb-20">
+                <!-- AI Lesson Planner -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-kidazzle-purple/10 text-kidazzle-purple rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-purple group-hover:text-white transition-all text-2xl">
+                        <i class="fa-solid fa-robot"></i>
                     </div>
+                    <h3 class="font-bold text-brand-ink mb-2">AI Lesson Planner</h3>
+                    <p class="text-brand-ink/60 text-xs mb-6">Create custom, standards-aligned activities instantly.</p>
+                    <a href="<?php echo esc_url(home_url('/resources')); ?>" class="text-kidazzle-purple font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Start Planning <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
 
-                    <div class="bg-kidazzle-blue p-8 rounded-[2rem] text-white shadow-lg">
-                        <h4 class="font-bold mb-4">Need Help?</h4>
-                        <p class="text-white/80 text-sm mb-6">If you\'re having trouble with the portal, contact IT Support or your Director directly.</p>
-                        <a href="mailto:support@kidazzlechildcare.com" class="block text-center py-3 bg-white text-kidazzle-blue font-bold rounded-full text-xs uppercase tracking-widest hover:bg-brand-ink hover:text-white transition-all">Contact Support</a>
+                <!-- Daily Checklist -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-kidazzle-green/10 text-kidazzle-green rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-green group-hover:text-white transition-all text-2xl">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-ink mb-2">Daily Checklists</h3>
+                    <p class="text-brand-ink/60 text-xs mb-6">Safety, hygiene, and classroom opening reports.</p>
+                    <a href="#" class="text-kidazzle-green font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Open List <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Staff Email -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-kidazzle-blue/10 text-kidazzle-blue rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-blue group-hover:text-white transition-all text-2xl">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-ink mb-2">Staff Email</h3>
+                    <p class="text-brand-ink/60 text-xs mb-6">Access your official @kidazzle.com inbox.</p>
+                    <a href="https://webmail.kidazzle.com" target="_blank" class="text-kidazzle-blue font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Login <i class="fa-solid fa-external-link text-[8px]"></i></a>
+                </div>
+
+                <!-- Weekly Tasks -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-kidazzle-orange/10 text-kidazzle-orange rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-orange group-hover:text-white transition-all text-2xl">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-ink mb-2">Weekly Workflow</h3>
+                    <p class="text-brand-ink/60 text-xs mb-6">Submit supply requests and upcoming weekly plans.</p>
+                    <a href="#" class="text-kidazzle-orange font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Submit Tasks <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Forms & Reporting -->
+            <h2 class="text-2xl font-serif font-bold text-brand-ink mb-10 border-b border-brand-ink/10 pb-4">Reporting & Compliance</h2>
+            <div class="grid md:grid-cols-4 gap-6 mb-20">
+                <div class="bg-white p-6 rounded-2xl border border-brand-ink/5 hover:border-kidazzle-red/30 transition-all flex items-center gap-4 group cursor-pointer">
+                    <div class="w-12 h-12 bg-kidazzle-red/10 text-kidazzle-red rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-user-slash"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brand-ink text-sm">Absentee</h4>
+                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest">Report Now &rarr;</p>
                     </div>
                 </div>
 
-                <!-- Main Content -->
-                <div class="lg:col-span-2 space-y-8">
-                    <!-- Daily Task Form -->
-                    <div class="bg-white p-10 rounded-[3rem] shadow-soft border border-brand-ink/5">
-                        <div class="flex items-center justify-between mb-10">
-                            <div>
-                                <h2 class="text-2xl font-serif font-bold text-brand-ink">Daily Classroom Tasks</h2>
-                                <p class="text-sm text-brand-ink/60 mt-1">Submit your classroom checklist by 9:00 AM.</p>
+                <div class="bg-white p-6 rounded-2xl border border-brand-ink/5 hover:border-kidazzle-blue/30 transition-all flex items-center gap-4 group cursor-pointer">
+                    <div class="w-12 h-12 bg-kidazzle-blue/10 text-kidazzle-blue rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brand-ink text-sm">Enrollment App</h4>
+                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest">Process &rarr;</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-brand-ink/5 hover:border-kidazzle-orange/30 transition-all flex items-center gap-4 group cursor-pointer">
+                    <div class="w-12 h-12 bg-kidazzle-orange/10 text-kidazzle-orange rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brand-ink text-sm">Food Survey</h4>
+                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest">Feedback &rarr;</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-brand-ink/5 hover:border-brand-ink/30 transition-all flex items-center gap-4 group cursor-pointer">
+                    <div class="w-12 h-12 bg-brand-ink/5 text-brand-ink/40 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brand-ink text-sm">Suspension</h4>
+                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest">File Report &rarr;</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Handbooks Section -->
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
+                <a href="#" class="flex items-center p-8 bg-brand-ink text-white rounded-[2.5rem] hover:bg-kidazzle-blueDark transition-all shadow-xl group">
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mr-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-book-open-reader"></i></div>
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-xl mb-1">Employee Handbook</h3>
+                        <p class="text-white/50 text-xs">Official policies, procedures, and vision.</p>
+                    </div>
+                    <i class="fa-solid fa-download text-white/20 group-hover:text-white transition-colors"></i>
+                </a>
+                <a href="#" class="flex items-center p-8 bg-white border border-brand-ink/10 rounded-[2.5rem] hover:border-kidazzle-blue transition-all shadow-soft group">
+                    <div class="w-16 h-16 bg-kidazzle-blue/5 text-kidazzle-blue rounded-2xl flex items-center justify-center text-3xl mr-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-users"></i></div>
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-xl mb-1 text-brand-ink">Parent Handbook</h3>
+                        <p class="text-brand-ink/40 text-xs">Essential guide for KIDazzle families.</p>
+                    </div>
+                    <i class="fa-solid fa-download text-brand-ink/10 group-hover:text-kidazzle-blue transition-colors"></i>
+                </a>
+            </div>
+
+            <!-- Health & Wellness Section -->
+            <div class="bg-white rounded-[4rem] border border-brand-ink/5 p-12 md:p-20 shadow-soft">
+                <div class="text-center mb-16">
+                    <span class="text-kidazzle-red font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Wellness First</span>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink">Health & Wellness Guide</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Illness Guide -->
+                    <div class="bg-brand-cream/50 rounded-[3rem] p-10 border border-brand-ink/5">
+                        <h3 class="font-bold text-xl text-brand-ink mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-virus-covid text-kidazzle-red"></i> Common Illnesses
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-ink/5">
+                                <h4 class="font-bold text-brand-ink text-sm mb-2">Hand, Foot, and Mouth (HFMD)</h4>
+                                <p class="text-xs text-brand-ink/60 leading-relaxed">
+                                    <strong>Watch for:</strong> Fever, sore throat, and small red spots/blisters on hands, feet, and inside the mouth.
+                                </p>
                             </div>
-                            <span class="px-4 py-1.5 bg-kidazzle-blue/10 text-kidazzle-blue text-[10px] font-bold uppercase tracking-widest rounded-full">Required Daily</span>
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-ink/5">
+                                <h4 class="font-bold text-brand-ink text-sm mb-2">Stomach Flu (Norovirus)</h4>
+                                <p class="text-xs text-brand-ink/60 leading-relaxed">
+                                    <strong>Watch for:</strong> Sudden onset of nausea, vomiting, and diarrhea. Requires immediate exclusion.
+                                </p>
+                            </div>
                         </div>
-                        
-                        <div class="bg-brand-cream border-2 border-dashed border-brand-ink/10 rounded-3xl p-16 text-center">
-                            <i class="fa-solid fa-clipboard-list text-5xl text-brand-ink/10 mb-6"></i>
-                            <p class="text-brand-ink/40 text-xs uppercase tracking-[0.2em] mb-4">Embed Code Placeholder</p>
-                            <div class="font-bold text-brand-ink/80 text-lg">Daily Checklist Form Integration</div>
-                        </div>
+                        <a href="#" class="inline-block mt-8 text-xs font-bold text-kidazzle-red uppercase tracking-widest hover:underline">Full Symptom Guide &rarr;</a>
                     </div>
 
-                    <!-- Weekly Task Form -->
-                    <div class="bg-white p-10 rounded-[3rem] shadow-soft border border-brand-ink/5">
-                        <div class="flex items-center justify-between mb-10">
-                            <div>
-                                <h2 class="text-2xl font-serif font-bold text-brand-ink">Weekly Task Automation</h2>
-                                <p class="text-sm text-brand-ink/60 mt-1">Planning and resource requests for the upcoming week.</p>
+                    <!-- Protocols -->
+                    <div class="bg-brand-cream/50 rounded-[3rem] p-10 border border-brand-ink/5">
+                        <h3 class="font-bold text-xl text-brand-ink mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-shield-virus text-kidazzle-green"></i> Medical Protocols
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <i class="fa-solid fa-circle-check text-kidazzle-green mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-sm text-brand-ink">Fever Policy</h4>
+                                    <p class="text-xs text-brand-ink/60">Fever over 100.4°F requires 24-hour exclusion without medication.</p>
+                                </div>
                             </div>
-                            <span class="px-4 py-1.5 bg-kidazzle-purple/10 text-kidazzle-purple text-[10px] font-bold uppercase tracking-widest rounded-full">Weekly</span>
+                            <div class="flex gap-4">
+                                <i class="fa-solid fa-circle-check text-kidazzle-green mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-sm text-brand-ink">Medication</h4>
+                                    <p class="text-xs text-brand-ink/60">Only prescription meds in original packaging with signed forms.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <i class="fa-solid fa-circle-check text-kidazzle-green mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-sm text-brand-ink">Hand Washing</h4>
+                                    <p class="text-xs text-brand-ink/60">Minimum 20 seconds before meals and after diaper transitions.</p>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="bg-brand-cream border-2 border-dashed border-brand-ink/10 rounded-3xl p-16 text-center">
-                            <i class="fa-solid fa-laptop-code text-5xl text-brand-ink/10 mb-6"></i>
-                            <p class="text-brand-ink/40 text-xs uppercase tracking-[0.2em] mb-4">Embed Code Placeholder</p>
-                            <div class="font-bold text-brand-ink/80 text-lg">Weekly Task Form Integration</div>
-                        </div>
+                        <a href="#" class="inline-block mt-8 text-xs font-bold text-kidazzle-green uppercase tracking-widest hover:underline">Access Protocol Manual &rarr;</a>
                     </div>
                 </div>
             </div>

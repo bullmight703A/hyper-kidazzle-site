@@ -45,14 +45,6 @@ function kidazzle_enqueue_assets()
                 'all'
         );
 
-        // Lucide Icons (from source)
-        wp_enqueue_script(
-                'lucide-icons',
-                'https://unpkg.com/lucide@latest',
-                array(),
-                null,
-                false // Load in head as per source, or footer if better. Source had it in head.
-        );
 
         if (is_front_page()) {
                 $chart_js_path = KIDAZZLE_THEME_DIR . '/assets/js/chart.min.js';

@@ -21,16 +21,16 @@ while (have_posts()):
 	$hero_description = get_post_meta($program_id, 'program_hero_description', true) ?: get_the_excerpt();
 
 	// KIDazzle Creative Curriculum section
-	$prism_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our KIDazzle Creative Curriculum™ Focus';
-	$prism_description = get_post_meta($program_id, 'program_prism_description', true);
-	$prism_focus_items = get_post_meta($program_id, 'program_prism_focus_items', true);
+	$curriculum_focus_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our KIDazzle Creative Curriculum™ Focus';
+	$curriculum_focus_description = get_post_meta($program_id, 'program_prism_description', true);
+	$curriculum_focus_items = get_post_meta($program_id, 'program_prism_focus_items', true);
 
 	// Chart data
-	$prism_physical = get_post_meta($program_id, 'program_prism_physical', true) ?: '50';
-	$prism_emotional = get_post_meta($program_id, 'program_prism_emotional', true) ?: '50';
-	$prism_social = get_post_meta($program_id, 'program_prism_social', true) ?: '50';
-	$prism_academic = get_post_meta($program_id, 'program_prism_academic', true) ?: '50';
-	$prism_creative = get_post_meta($program_id, 'program_prism_creative', true) ?: '50';
+	$curriculum_focus_physical = get_post_meta($program_id, 'program_prism_physical', true) ?: '50';
+	$curriculum_focus_emotional = get_post_meta($program_id, 'program_prism_emotional', true) ?: '50';
+	$curriculum_focus_social = get_post_meta($program_id, 'program_prism_social', true) ?: '50';
+	$curriculum_focus_academic = get_post_meta($program_id, 'program_prism_academic', true) ?: '50';
+	$curriculum_focus_creative = get_post_meta($program_id, 'program_prism_creative', true) ?: '50';
 
 	// Schedule
 	$schedule_title = get_post_meta($program_id, 'program_schedule_title', true) ?: 'A Rhythm, Not a Routine';
@@ -82,7 +82,7 @@ while (have_posts()):
 					<?php endif; ?>
 
 					<div class="flex gap-4 flex-wrap" style="margin-top: 3rem;">
-						<a href="#prism"
+						<a href="#curriculum-focus"
 							class="px-8 py-4 bg-<?php echo esc_attr($colors['main']); ?> text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:opacity-90 transition-colors shadow-lg">View
 							Curriculum</a>
 						<?php if ($lesson_plan_url): ?>
@@ -120,7 +120,7 @@ while (have_posts()):
 		</section>
 
 		<!-- The KIDazzle Creative Curriculum Focus (Chart) -->
-		<section id="prism" class="py-24 bg-brand-cream">
+		<section id="curriculum-focus" class="py-24 bg-brand-cream">
 			<div class="max-w-6xl mx-auto px-4 lg:px-6">
 				<div class="grid lg:grid-cols-2 gap-16 items-center">
 					<div class="bg-white rounded-[3rem] p-8 shadow-soft border border-brand-ink/5 order-2 lg:order-1">
@@ -131,17 +131,17 @@ while (have_posts()):
 							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">KIDazzle Creative Curriculum™
 							Focus</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
-							<?php echo esc_html($prism_title); ?>
+							<?php echo esc_html($curriculum_focus_title); ?>
 						</h2>
 
-						<?php if ($prism_description): ?>
+						<?php if ($curriculum_focus_description): ?>
 							<div class="text-brand-ink/80 text-lg mb-6">
-								<?php echo wp_kses_post(wpautop($prism_description)); ?>
+								<?php echo wp_kses_post(wpautop($curriculum_focus_description)); ?>
 							</div>
 						<?php endif; ?>
 
-						<?php if ($prism_focus_items):
-							$focus_items_array = array_filter(array_map('trim', explode("\n", $prism_focus_items)));
+						<?php if ($curriculum_focus_items):
+							$focus_items_array = array_filter(array_map('trim', explode("\n", $curriculum_focus_items)));
 							if (!empty($focus_items_array)):
 								?>
 								<ul class="space-y-3 text-sm text-brand-ink/90">
@@ -311,11 +311,11 @@ while (have_posts()):
 										datasets: [{
 											label: '<?php echo esc_js(get_the_title()); ?> Focus',
 											data: [
-												<?php echo absint($prism_physical); ?>,
-												<?php echo absint($prism_emotional); ?>,
-												<?php echo absint($prism_social); ?>,
-												<?php echo absint($prism_academic); ?>,
-												<?php echo absint($prism_creative); ?>
+												<?php echo absint($curriculum_focus_physical); ?>,
+												<?php echo absint($curriculum_focus_emotional); ?>,
+												<?php echo absint($curriculum_focus_social); ?>,
+												<?php echo absint($curriculum_focus_academic); ?>,
+												<?php echo absint($curriculum_focus_creative); ?>
 											],
 											backgroundColor: '<?php
 											$chart_colors = array(

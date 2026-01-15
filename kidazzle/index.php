@@ -24,7 +24,7 @@ get_header();
 						<?php the_excerpt(); ?>
 					</div>
 					<a href="<?php the_permalink(); ?>"
-						class="inline-flex items-center gap-2 mt-4 text-kidazzle-teal font-semibold hover:text-brand-navy">
+						class="inline-flex items-center gap-2 mt-4 text-kidazzle-teal font-semibold hover:text-kidazzle-blueDark">
 						Read more →
 					</a>
 				</article>

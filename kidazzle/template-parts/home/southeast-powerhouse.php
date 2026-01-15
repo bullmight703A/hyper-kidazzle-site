@@ -73,7 +73,7 @@ $locations = array(
                     <?php if ($location['is_hq']) : ?>
                         <div class="absolute top-6 right-6 z-30">
                             <span class="bg-white text-orange-600 px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                                <i data-lucide="star" class="w-3 h-3 fill-orange-600"></i> <?php esc_html_e('HQ', 'kidazzle'); ?>
+                                <i class="fa-solid fa-star text-orange-500"></i> <?php esc_html_e('HQ', 'kidazzle'); ?>
                             </span>
                         </div>
                     <?php endif; ?>
@@ -87,7 +87,7 @@ $locations = array(
                         <h3 class="text-<?php echo $location['is_hq'] ? '4xl' : '3xl'; ?> font-bold text-slate-900 mb-1"><?php echo esc_html($location['name']); ?></h3>
                         <p class="text-slate-500 text-sm font-medium"><?php echo esc_html($location['tagline']); ?></p>
                         <div class="mt-4 flex items-center <?php echo esc_attr($location['text_color']); ?> font-bold text-sm group-hover:gap-2 transition-all">
-                            <?php echo esc_html($location['link_text']); ?> <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            <?php echo esc_html($location['link_text']); ?> <i class="fa-solid fa-arrow-right ml-1"></i>
                         </div>
                     </div>
                 </a>

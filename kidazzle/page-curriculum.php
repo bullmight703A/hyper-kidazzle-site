@@ -94,6 +94,11 @@ $zones = array(
     <!-- Pillars Section -->
     <section class="py-24 bg-brand-cream border-t border-brand-ink/5">
         <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <div class="text-center mb-16">
+                <span class="text-kidazzle-blue font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Developmental Focus</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">Four Pillars of Growth</h2>
+                <p class="text-brand-ink/70 max-w-2xl mx-auto text-lg leading-relaxed">By balancing teacher-directed instruction with child-initiated exploration, we ensure every activity supports specific developmental goals.</p>
+            </div>
             <div class="grid md:grid-cols-4 gap-6">
                 <?php foreach ($pillars as $pillar): ?>
                     <div class="bg-white p-8 rounded-[2rem] shadow-soft border border-brand-ink/5 hover:<?php echo esc_attr($pillar['borderClass']); ?> transition-all group">
@@ -108,46 +113,144 @@ $zones = array(
         </div>
     </section>
 
-    <!-- Standards Section -->
-    <section class="py-24 bg-brand-ink text-white relative overflow-hidden">
-        <div class="max-w-5xl mx-auto px-4 lg:px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">State Standards </h2>
-                <p class="text-white/70 mb-8">Our curriculum aligns with state early learning standards to ensure every child is fully prepared for Kindergarten and beyond.</p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4 p-5 bg-white/10 rounded-2xl border border-white/10">
-                        <div class="font-serif text-2xl font-bold text-kidazzle-yellow">GELDS</div>
-                        <div class="text-sm text-white/80">Georgia Early Learning and Development Standards</div>
+    <!-- Learning Zones Section (The Third Teacher) -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-kidazzle-green font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Environment</span>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6"><?php echo esc_html($env_title); ?></h2>
+                    <p class="text-brand-ink/70 text-lg leading-relaxed mb-10">
+                        <?php echo esc_html($env_description); ?>
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <?php foreach ($zones as $zone): ?>
+                            <div class="flex gap-6 items-start group">
+                                <div class="text-4xl bg-brand-cream w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 border border-brand-ink/5 group-hover:scale-110 transition-transform">
+                                    <?php echo esc_html($zone['emoji']); ?>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl text-brand-ink mb-2"><?php echo esc_html($zone['title']); ?></h4>
+                                    <p class="text-sm text-brand-ink/70 leading-relaxed"><?php echo esc_html($zone['desc']); ?></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                    <div class="flex items-center gap-4 p-5 bg-white/10 rounded-2xl border border-white/10">
-                        <div class="font-serif text-2xl font-bold text-kidazzle-orange">TN-ELDS</div>
-                        <div class="text-sm text-white/80">Tennessee Early Learning Developmental Standards</div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-kidazzle-green/10 rounded-[3rem] rotate-3 transform translate-x-4 translate-y-4"></div>
+                    <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Learning Environment" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
-            <div class="relative bg-white/5 p-10 rounded-[3rem] border border-white/10">
-                <i class="fa-solid fa-shield-halved text-6xl text-kidazzle-green mb-6 block"></i>
-                <h3 class="text-2xl font-bold mb-4">Research-Based</h3>
-                <p class="text-white/70 leading-relaxed">By keeping our framework aligned with national and state standards, we ensure that "Play" always has a purpose and "Learning" always has a result.</p>
+        </div>
+    </section>
+
+    <!-- State Standards Section -->
+    <section class="py-24 bg-white border-t border-brand-ink/5">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <div class="text-center mb-16">
+                <span class="text-kidazzle-red font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Excellence is Standard</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink">State-Specific Preparation</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Georgia -->
+                <div class="bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">🍑</div>
+                    <h3 class="text-2xl font-bold text-brand-ink mb-3 group-hover:text-kidazzle-orange transition-colors">Georgia Pre-K</h3>
+                    <p class="text-xs font-bold text-kidazzle-orange mb-4 uppercase tracking-[0.2em]">Frog Street & GELDS</p>
+                    <p class="text-brand-ink/70 mb-6 leading-relaxed">Our Lottery Funded Pre-K program utilizes Frog Street, aligned with GELDS standards for joyful, rigorous kindergarten readiness.</p>
+                </div>
+
+                <!-- Tennessee -->
+                <div class="bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">🎸</div>
+                    <h3 class="text-2xl font-bold text-brand-ink mb-3 group-hover:text-kidazzle-blue transition-colors">Tennessee</h3>
+                    <p class="text-xs font-bold text-kidazzle-blue mb-4 uppercase tracking-[0.2em]">TN-ELDS Aligned</p>
+                    <p class="text-brand-ink/70 mb-6 leading-relaxed">In Memphis, our curriculum adheres strictly to the TN-ELDS, ensuring educational goals are met from birth to age 5.</p>
+                </div>
+
+                <!-- Florida -->
+                <div class="bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">☀️</div>
+                    <h3 class="text-2xl font-bold text-brand-ink mb-3 group-hover:text-kidazzle-red transition-colors">Florida VPK</h3>
+                    <p class="text-xs font-bold text-kidazzle-red mb-4 uppercase tracking-[0.2em]">OWL & ASQ</p>
+                    <p class="text-brand-ink/70 mb-6 leading-relaxed">Incorporating OWL and ASQ to meet Florida's VPK standards with a focus on literacy and bilingual support.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Environment Section -->
+    <section class="py-24 bg-brand-ink text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-kidazzle-green font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Environmental Rating Scales</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">The Environment as a Teacher</h2>
+                <p class="text-white/70 max-w-3xl mx-auto text-lg leading-relaxed">We adhere to rigorous environmental rating scales (ITERS/ECERS) to ensure our classrooms are optimally designed for learning. Every corner, toy, and routine is intentional.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <div class="flex items-center gap-6 p-8 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group">
+                    <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 border-2 border-white shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Infant Care" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-kidazzle-yellow text-xl mb-1">ITERS</h4>
+                        <p class="text-xs text-white/50 mb-3 uppercase tracking-widest leading-none">Infant/Toddler Rating Scale</p>
+                        <p class="text-sm text-white/70 leading-relaxed">Specific standards for safety and stimulation for children under 3.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-6 p-8 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group">
+                    <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 border-2 border-white shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Preschool Learning" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-kidazzle-green text-xl mb-1">ECERS</h4>
+                        <p class="text-xs text-white/50 mb-3 uppercase tracking-widest leading-none">Early Childhood Rating Scale</p>
+                        <p class="text-sm text-white/70 leading-relaxed">Optimizing classroom flow and materials for school readiness.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center text-white">
+                <a href="<?php echo esc_url(home_url('/ers/')); ?>" class="inline-flex items-center gap-2 font-bold border-b-2 border-kidazzle-yellow text-white hover:text-kidazzle-yellow transition-colors pb-1">
+                    Learn more about our quality standards <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Innovation Section -->
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 lg:px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4"><?php echo esc_html($env_title); ?></h2>
-                <p class="text-brand-ink/80 max-w-2xl mx-auto"><?php echo esc_html($env_description); ?></p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <?php foreach ($zones as $zone): ?>
-                    <div class="bg-brand-cream p-10 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-lg transition-all text-center">
-                        <div class="text-6xl mb-6"><?php echo esc_html($zone['emoji']); ?></div>
-                        <h3 class="text-2xl font-bold text-brand-ink mb-3"><?php echo esc_html($zone['title']); ?></h3>
-                        <p class="text-brand-ink/80 leading-relaxed"><?php echo esc_html($zone['desc']); ?></p>
+            <div class="bg-brand-cream rounded-[4rem] p-12 md:p-20 relative overflow-hidden border border-brand-ink/5 shadow-soft">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-kidazzle-blue/5 rounded-full blur-3xl"></div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-16">
+                    <div class="md:w-1/3">
+                        <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-brand-ink/5 text-center relative">
+                            <i class="fa-solid fa-microchip text-7xl text-kidazzle-blue mb-4"></i>
+                            <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-kidazzle-yellow rounded-2xl flex items-center justify-center text-white text-2xl rotate-12 shadow-lg">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                        </div>
                     </div>
-                <?php endforeach; ?>
+                    <div class="md:w-2/3 text-center md:text-left">
+                        <span class="text-kidazzle-blue font-bold uppercase tracking-[0.2em] text-[10px] mb-4 block">Innovation</span>
+                        <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">AI-Powered Lesson Planning</h2>
+                        <p class="text-brand-ink/70 text-lg md:text-xl leading-relaxed mb-10">
+                            Kidazzle is pioneering the future of early education by integrating a proprietary AI Lesson Plan Assistant. This tool enables our teachers to instantly tailor standard curricula to the specific interests and development levels of their current classroom, ensuring personalized learning for every child.
+                        </p>
+                        <a href="<?php echo esc_url(home_url('/ai-lesson-plan/')); ?>" class="inline-flex items-center gap-3 px-10 py-5 bg-brand-ink text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-kidazzle-blue hover:-translate-y-1 transition-all shadow-xl">
+                            Experience the Innovation <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

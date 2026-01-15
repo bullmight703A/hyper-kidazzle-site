@@ -15,36 +15,36 @@ $locations_url = get_post_type_archive_link('location') ?: home_url('/locations/
 $about_url = home_url('/about/');
 ?>
 
-<div class="rounded-[3rem] overflow-hidden relative h-[650px] md:h-[750px] shadow-lg group bg-slate-900">
+<div class="relative w-full h-[700px] flex items-center overflow-hidden rounded-[3rem] shadow-2xl">
     <div class="absolute inset-0 z-0">
-        <img src="<?php echo esc_url($hero_image); ?>" alt="<?php esc_attr_e('Happy Children', 'kidazzle'); ?>"
-            class="w-full h-full object-cover transition duration-[3000ms] group-hover:scale-105 opacity-80">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
+        <!-- Hero Image -->
+        <img src="<?php echo esc_url($hero_image); ?>" alt="<?php esc_attr_e('Happy Children', 'kidazzle'); ?>" class="w-full h-full object-cover">
     </div>
-    <div class="absolute inset-0 z-10 flex items-center p-8 md:p-16">
-        <div class="max-w-3xl">
-            <div
-                class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full mb-8">
-                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                <span
-                    class="font-bold text-xs uppercase tracking-widest"><?php esc_html_e('Enrolling Now for 2025', 'kidazzle'); ?></span>
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Main Content Box: 20% Opacity with Blur -->
+        <div class="max-w-3xl bg-white/20 backdrop-blur-md p-10 rounded-[2rem] shadow-2xl border-l-[12px] border-yellow-400">
+            <div class="flex items-center gap-3 mb-6 flex-wrap">
+                <span class="bg-yellow-400 text-slate-900 px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-wider shadow-sm">
+                    <?php esc_html_e('Now Enrolling', 'kidazzle'); ?>
+                </span>
+                <span class="text-slate-900 text-sm font-bold flex items-center gap-1 bg-white/60 px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-star text-yellow-500"></i> <?php esc_html_e('Since 1994', 'kidazzle'); ?>
+                </span>
             </div>
-            <h1
-                class="text-5xl md:text-8xl font-extrabold text-white leading-[1.05] mb-8 drop-shadow-xl tracking-tight">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-slate-900">
                 <?php esc_html_e('Where Learning', 'kidazzle'); ?> <br />
-                <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500"><?php esc_html_e('Is Fun!', 'kidazzle'); ?></span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-cyan-700">
+                    <?php esc_html_e('is Fun!', 'kidazzle'); ?>
+                </span>
             </h1>
-            <p class="text-lg md:text-2xl text-white/90 font-medium mb-10 leading-relaxed max-w-lg">
-                <?php esc_html_e('We are an independent, premier learning academy nurturing diverse bright minds for over 31 years.', 'kidazzle'); ?>
+            <p class="text-xl text-slate-900 mb-8 font-bold drop-shadow-sm">
+                <?php esc_html_e('From Memphis to Miami to Atlanta, we are an independent, premier learning academy nurturing diverse bright minds for over three decades.', 'kidazzle'); ?>
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="<?php echo esc_url($locations_url); ?>"
-                    class="bg-yellow-400 text-slate-900 px-10 py-5 rounded-full font-extrabold hover:bg-white transition hover:scale-105 shadow-xl flex items-center justify-center gap-2 text-lg">
-                    <?php esc_html_e('Find Your Center', 'kidazzle'); ?>
+                <a href="<?php echo esc_url($locations_url); ?>" class="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 transform hover:-translate-y-1 text-center">
+                    <?php esc_html_e('Find Your Center', 'kidazzle'); ?> <i class="fa-solid fa-chevron-right"></i>
                 </a>
-                <a href="<?php echo esc_url($about_url); ?>"
-                    class="bg-white/10 backdrop-blur-md border border-white/50 text-white px-10 py-5 rounded-full font-bold hover:bg-white hover:text-slate-900 transition flex items-center justify-center text-lg">
+                <a href="<?php echo esc_url($about_url); ?>" class="bg-white/80 text-slate-900 border-2 border-slate-900 hover:border-kidazzle-blue hover:text-kidazzle-blue font-bold py-4 px-10 rounded-2xl transition flex items-center justify-center text-center">
                     <?php esc_html_e('Our Legacy', 'kidazzle'); ?>
                 </a>
             </div>

@@ -31,6 +31,7 @@ module.exports = {
           cyanLight: '#ECFEFF',
           blue: '#3B82F6',
           blueLight: '#EFF6FF',
+          blueDark: '#2F4858',
           purple: '#A855F7',
           purpleLight: '#F3E8FF',
           teal: '#06B6D4',
@@ -62,12 +63,12 @@ module.exports = {
 
     // Kidazzle base colors (no opacity) - ALL prefixes
     {
-      pattern: /(bg|text|border|from|to)-kidazzle-(red|orange|yellow|green|cyan|blue|purple|slate)(Light)?$/,
+      pattern: /(bg|text|border|from|to)-kidazzle-(red|orange|yellow|green|cyan|blue|blueDark|purple|slate|teal)(Light)?$/,
       variants: ['hover', 'group-hover', 'focus'],
     },
     // Kidazzle opacity variants - limit to actually used values
     {
-      pattern: /(bg|text|border|from|to)-kidazzle-(red|orange|yellow|green|cyan|blue|purple|slate)(Light)?\/(5|10|15|20|30|40|50|80|90)$/,
+      pattern: /(bg|text|border|from|to)-kidazzle-(red|orange|yellow|green|cyan|blue|blueDark|purple|slate|teal)(Light)?\/(5|10|15|20|30|40|50|80|90)$/,
       variants: ['hover'],
     },
 

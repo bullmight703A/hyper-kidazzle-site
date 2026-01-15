@@ -6,235 +6,120 @@
  */
 
 get_header();
-
-// Get all programs
-$programs_query = new WP_Query(array(
-	'post_type' => 'program',
-	'posts_per_page' => -1,
-	'orderby' => 'menu_order',
-	'order' => 'ASC',
-));
 ?>
 
-<main>
-	<!-- Hero Section -->
-	<section class="relative pt-16 pb-12 lg:pt-24 lg:pb-20 bg-white overflow-hidden">
-		<div
-			class="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-kidazzle-redLight/40 via-transparent to-transparent">
-		</div>
+<main class="font-sans text-slate-800 bg-white selection:bg-yellow-200">
+	<!-- HERO SECTION -->
+    <div class="relative py-40 text-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+             	<img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Children engaged in focused learning activity" class="w-full h-full object-cover">
+             <!-- 50% Fade Overlay (Darker) -->
+             <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+       
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-4">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">Our Programs</h1>
+            <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto font-medium drop-shadow-md">Comprehensive, curriculum-driven care for every stage of childhood.</p>
+        </div>
+    </div>
 
-		<div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10 text-center">
-			<div
-				class="inline-flex items-center gap-2 bg-white border border-kidazzle-red/30 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-red shadow-sm mb-6 fade-in-up">
-				<i class="fa-solid fa-shapes"></i> Ages 6 weeks to 12 years
-			</div>
-			<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up delay-100">
-				Programs and Curriculum that grows <span class="text-kidazzle-red italic">with them.</span>
-			</h1>
-			<p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up delay-200">
-				From sensory discovery in our infant suites to the project-based learning of Pre-K, every program uses
-				our proprietary KIDazzle Creative Curriculum™ model to meet children exactly where they are.
-			</p>
-		</div>
-	</section>
+    <!-- INTRO CONTENT -->
+    <div class="container mx-auto px-4 py-20 space-y-24">
+       
+        <!-- Philosophy of Programs -->
+        <section class="text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">More Than Just Care</h2>
+            <div class="text-lg text-slate-600 leading-relaxed mb-8">
+                <p>At KIDazzle, we believe that early education is the foundation for lifelong success. Our programs are not one-size-fits-all; they are tailored to the specific developmental milestones of each age group.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+                <!-- Linked Lesson Plans Card -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-indigo-300 hover:shadow-lg transition group">
+                    <h3 class="text-xl font-bold text-indigo-900 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-indigo-500 group-hover:text-indigo-600"></i> Lesson Plans
+                    </h3>
+                    <p class="text-slate-600 mb-4">Every classroom follows a structured, weekly lesson plan derived from the Creative Curriculum®. Click specific programs to see details.</p>
+                    <a href="<?php echo esc_url(kidazzle_get_program_archive_url()); ?>" class="text-indigo-600 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">View Curriculum <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+               
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h3 class="text-xl font-bold text-indigo-900 mb-2 flex items-center gap-2"><i class="fa-solid fa-chalkboard-user text-indigo-500"></i> Classroom Management</h3>
+                    <p class="text-slate-600">Our environments are intentionally designed to promote independence and positive behavior. Consistent routines and clear expectations create a safe space for learning.</p>
+                </div>
+            </div>
+        </section>
 
-	<!-- Programs Grid -->
-	<section id="all-programs" class="py-20 bg-brand-cream">
-		<div class="max-w-7xl mx-auto px-4 lg:px-6">
-			<?php if ($programs_query->have_posts()): ?>
-				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<?php
-					$delay_class = '';
-					$delay_counter = 0;
-					while ($programs_query->have_posts()):
-						$programs_query->the_post();
-
-						// Get program meta
-						$age_range = get_post_meta(get_the_ID(), 'program_age_range', true);
-						$features = get_post_meta(get_the_ID(), 'program_features', true);
-						$cta_text = get_post_meta(get_the_ID(), 'program_cta_text', true) ?: 'Schedule Tour';
-						$cta_link = get_post_meta(get_the_ID(), 'program_cta_link', true) ?: '#tour';
-						$color_scheme = get_post_meta(get_the_ID(), 'program_color_scheme', true) ?: 'red';
-
-						// Parse features into array
-						$features_array = $features ? array_filter(array_map('trim', explode("\n", $features))) : array();
-
-						// Get featured image
-						$thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
-						if (!$thumbnail_url) {
-							$thumbnail_url = 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=600&auto=format&fit=crop';
+        <!-- PROGRAM CARDS GRID -->
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<?php 
+			if (have_posts()): 
+				$color_map = [
+					'infant' => ['bg' => 'bg-red-50', 'text' => 'text-red-900', 'badge' => 'bg-red-100 text-red-600', 'btn' => 'text-red-500', 'overlay' => 'bg-red-900/10'],
+					'toddler' => ['bg' => 'bg-orange-50', 'text' => 'text-orange-900', 'badge' => 'bg-orange-100 text-orange-600', 'btn' => 'text-orange-500', 'overlay' => 'bg-orange-900/10'],
+					'preschool' => ['bg' => 'bg-yellow-50', 'text' => 'text-yellow-900', 'badge' => 'bg-yellow-100 text-yellow-600', 'btn' => 'text-yellow-500', 'overlay' => 'bg-yellow-900/10'],
+					'prek' => ['bg' => 'bg-green-50', 'text' => 'text-green-900', 'badge' => 'bg-green-100 text-green-600', 'btn' => 'text-green-600', 'overlay' => 'bg-green-900/10'],
+					'vpk' => ['bg' => 'bg-cyan-50', 'text' => 'text-slate-900', 'badge' => 'bg-cyan-100 text-cyan-600', 'btn' => 'text-cyan-600', 'overlay' => 'bg-cyan-900/10'],
+					'schoolage' => ['bg' => 'bg-purple-50', 'text' => 'text-slate-900', 'badge' => 'bg-purple-100 text-purple-600', 'btn' => 'text-purple-600', 'overlay' => 'bg-purple-900/10'],
+				];
+				
+				while (have_posts()):
+					the_post();
+					$slug = get_post_field('post_name');
+					// Fallback to toddler colors if slug not found, or try fuzzy matching
+					$colors = $color_map[$slug] ?? null;
+					if (!$colors) {
+						foreach ($color_map as $key => $val) {
+							if (strpos($slug, $key) !== false) {
+								$colors = $val;
+								break;
+							}
 						}
+						if (!$colors) $colors = $color_map['toddler'];
+					}
 
-						// Set delay class for staggered animation
-						$delay_classes = array('', 'delay-100', 'delay-200');
-						$delay_class = $delay_classes[$delay_counter % 3];
-						$delay_counter++;
+					$age_range = get_post_meta(get_the_ID(), 'program_age_range', true);
+					$excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 15);
+					$prog_img = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+			?>
+            <!-- Program Card -->
+            <a href="<?php the_permalink(); ?>" class="group bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
+                <div class="h-48 <?php echo $colors['bg']; ?> relative overflow-hidden">
+                    <img src="<?php echo esc_url($prog_img); ?>" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="<?php the_title_attribute(); ?>">
+                    <div class="absolute inset-0 <?php echo $colors['overlay']; ?> group-hover:bg-transparent transition"></div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-2xl font-bold text-slate-900"><?php the_title(); ?></h3>
+                        <?php if ($age_range): ?>
+                        <span class="<?php echo $colors['badge']; ?> px-3 py-1 rounded-full text-xs font-bold"><?php echo esc_html($age_range); ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-6 flex-grow"><?php echo esc_html($excerpt); ?></p>
+                    <span class="<?php echo $colors['btn']; ?> font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+			<?php endwhile; endif; ?>
+        </section>
 
-						// Color mapping
-						$color_map = array(
-							'red' => array('main' => 'kidazzle-red', 'light' => 'kidazzle-red/10', 'border' => 'kidazzle-red/30'),
-							'blue' => array('main' => 'kidazzle-blue', 'light' => 'kidazzle-blue/10', 'border' => 'kidazzle-blue/30'),
-							'yellow' => array('main' => 'kidazzle-yellow', 'light' => 'kidazzle-yellow/10', 'border' => 'kidazzle-yellow/30'),
-							'blueDark' => array('main' => 'kidazzle-blueDark', 'light' => 'kidazzle-blueDark/10', 'border' => 'kidazzle-blueDark/30'),
-							'green' => array('main' => 'kidazzle-green', 'light' => 'kidazzle-green/10', 'border' => 'kidazzle-green/30'),
-						);
+        <!-- CTA STRIP -->
+        <section class="py-20 bg-white">
+            <div class="max-w-5xl mx-auto bg-slate-900 rounded-[3rem] p-12 text-center text-white shadow-2xl relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="text-left">
+                        <h3 class="text-3xl font-extrabold mb-2">Enrollment Open Year-Round</h3>
+                        <p class="text-indigo-200 text-lg">Secure your child's spot in a center where learning is fun and futures are bright.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 shrink-0">
+                        <a href="<?php echo esc_url(home_url('/locations')); ?>" class="bg-white text-slate-900 px-8 py-3 rounded-xl font-bold hover:bg-slate-100 transition shadow-lg whitespace-nowrap">Find a Location</a>
+                        <a href="<?php echo esc_url(home_url('/schedule-tour')); ?>" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition whitespace-nowrap">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-						$colors = $color_map[$color_scheme] ?? $color_map['red'];
-						?>
-
-						<!-- Program Card -->
-						<div
-							class="relative group bg-white rounded-[2.5rem] p-8 shadow-card border border-brand-ink/5 hover:border-<?php echo esc_attr($colors['border']); ?> transition-all hover:-translate-y-1 flex flex-col h-full fade-in-up <?php echo esc_attr($delay_class); ?>">
-							<a href="<?php the_permalink(); ?>" class="absolute inset-0 z-0" aria-label="View details for <?php the_title_attribute(); ?>"></a>
-							<a href="<?php the_permalink(); ?>" class="h-48 rounded-[2rem] overflow-hidden mb-6 relative block group-hover:opacity-90 transition-opacity">
-								<div
-									class="absolute inset-0 bg-<?php echo esc_attr($colors['light']); ?> group-hover:bg-transparent transition-colors duration-500 z-10">
-								</div>
-								<?php if (has_post_thumbnail()): ?>
-									<?php the_post_thumbnail('large', array(
-										'class' => 'w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700',
-										'alt' => get_the_title(),
-									)); ?>
-								<?php else: ?>
-									<img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
-										class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-								<?php endif; ?>
-
-								<?php if ($age_range): ?>
-									<div
-										class="absolute top-4 right-4 z-20 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide text-<?php echo esc_attr($colors['main']); ?>">
-										<?php echo esc_html($age_range); ?>
-									</div>
-								<?php endif; ?>
-							</a>
-
-							<h2 class="font-serif text-2xl font-bold text-brand-ink mb-2">
-								<a href="<?php the_permalink(); ?>" class="hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
-									<?php the_title(); ?>
-								</a>
-							</h2>
-
-							<p class="text-sm text-brand-ink/90 mb-6 flex-grow">
-								<?php echo has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 20); ?>
-							</p>
-
-							<?php if (!empty($features_array)): ?>
-								<ul class="text-xs text-brand-ink space-y-2 mb-6">
-									<?php foreach ($features_array as $feature): ?>
-										<li class="flex gap-2">
-											<i class="fa-solid fa-check text-kidazzle-green"></i>
-											<?php echo esc_html($feature); ?>
-										</li>
-									<?php endforeach; ?>
-								</ul>
-							<?php endif; ?>
-
-							<a href="<?php echo esc_url($cta_link); ?>"
-								aria-label="<?php echo esc_attr($cta_text . ' for ' . get_the_title()); ?>"
-								class="relative z-10 w-full py-3 rounded-xl border border-brand-ink/10 text-brand-ink text-xs font-bold uppercase tracking-wider text-center hover:bg-<?php echo esc_attr($colors['main']); ?> hover:text-white hover:border-<?php echo esc_attr($colors['main']); ?> transition-colors">
-								<?php echo esc_html($cta_text); ?>
-							</a>
-						</div>
-
-					<?php endwhile;
-					wp_reset_postdata(); ?>
-				</div>
-			<?php else: ?>
-				<div class="text-center py-20">
-					<p class="text-brand-ink/90 text-lg">No programs found. Please add programs from the WordPress admin.
-					</p>
-				</div>
-			<?php endif; ?>
-		</div>
-	</section>
-
-	<!-- Curriculum Highlight -->
-	<section id="curriculum" class="py-24 bg-white border-t border-brand-ink/5">
-		<div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-16 items-center">
-			<div class="order-2 lg:order-1 relative">
-				<div class="absolute -top-10 -left-10 w-72 h-72 bg-kidazzle-blue/10 rounded-full blur-3xl"></div>
-				<div
-					class="relative bg-kidazzle-blueDark text-white rounded-[3rem] p-10 lg:p-12 shadow-2xl overflow-hidden">
-					<div class="absolute top-0 right-0 p-12 opacity-10 text-9xl"><i
-							class="fa-brands fa-connectdevelop"></i></div>
-					<h2 class="font-serif text-3xl font-bold mb-6 relative z-10">The KIDazzle Creative Curriculum™ Model</h2>
-					<p class="text-white/80 text-lg leading-relaxed mb-8 relative z-10">
-						Just as a prism refracts light into a full spectrum of color, our proprietary curriculum
-						refracts play into five key pillars of development.
-					</p>
-					<ul class="space-y-4 relative z-10">
-						<li class="flex items-center gap-4">
-							<span
-								class="w-8 h-8 rounded-full bg-kidazzle-red flex items-center justify-center text-xs font-bold">1</span>
-							<span>Physical & Sensory Health</span>
-						</li>
-						<li class="flex items-center gap-4">
-							<span
-								class="w-8 h-8 rounded-full bg-kidazzle-yellow flex items-center justify-center text-xs font-bold text-brand-ink">2</span>
-							<span>Emotional Intelligence</span>
-						</li>
-						<li class="flex items-center gap-4">
-							<span
-								class="w-8 h-8 rounded-full bg-kidazzle-green flex items-center justify-center text-xs font-bold">3</span>
-							<span>Social Connection</span>
-						</li>
-						<li class="flex items-center gap-4">
-							<span
-								class="w-8 h-8 rounded-full bg-kidazzle-blue flex items-center justify-center text-xs font-bold">4</span>
-							<span>Academic Logic</span>
-						</li>
-						<li class="flex items-center gap-4">
-							<span
-								class="w-8 h-8 rounded-full bg-white text-brand-ink flex items-center justify-center text-xs font-bold">5</span>
-							<span>Creative Expression</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="order-1 lg:order-2">
-				<span class="text-kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our
-					Methodology</span>
-				<h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">More than just daycare.</h2>
-				<p class="text-brand-ink text-lg leading-relaxed mb-8">
-					We believe that education isn't just about filling a bucket, but lighting a fire. Our curriculum
-					ensures that by the time your child graduates from Kidazzle, they are not just "school ready"—they are
-					life ready.
-				</p>
-				<div class="grid grid-cols-2 gap-6">
-					<div class="bg-brand-cream p-6 rounded-2xl border border-brand-ink/5">
-						<div class="text-3xl mb-2">🧠</div>
-						<h3 class="font-bold text-brand-ink mb-1">Cognitive Growth</h3>
-						<p class="text-xs text-brand-ink/90">Critical thinking & problem solving.</p>
-					</div>
-					<div class="bg-brand-cream p-6 rounded-2xl border border-brand-ink/5">
-						<div class="text-3xl mb-2">❤️</div>
-						<h3 class="font-bold text-brand-ink mb-1">Emotional IQ</h3>
-						<p class="text-xs text-brand-ink/90">Empathy, regulation & kindness.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- CTA Section -->
-	<section class="py-20 bg-brand-cream">
-		<div class="max-w-4xl mx-auto px-4 lg:px-6 text-center">
-			<h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-ink mb-6">Ready to find your fit?</h2>
-			<p class="text-brand-ink mb-10">Every campus offers tours so you can meet the teachers, see the
-				classrooms, and experience the Kidazzle culture firsthand.</p>
-			<div class="flex flex-wrap justify-center gap-4">
-				<a href="<?php echo esc_url(home_url('/locations')); ?>"
-					class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-kidazzle-blue hover:text-kidazzle-blue transition-colors">Find
-					a Location</a>
-				<a href="#tour"
-					class="px-8 py-4 bg-kidazzle-red text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-kidazzle-red/90 transition-colors shadow-lg">Schedule
-					a Tour</a>
-			</div>
-		</div>
-	</section>
 </main>
-
-
 
 <?php
 get_footer();

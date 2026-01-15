@@ -12,16 +12,16 @@ if (!defined('ABSPATH')) {
 
 $pillars = array(
     array(
-        'icon' => 'utensils',
+        'icon' => 'fa-solid fa-bowl-food',
         'title' => __('Chef-Prepared Nutrition', 'kidazzle'),
         'description' => __('Our commercial-grade kitchens serve fresh, hot meals prepared daily by professional chefs. We accommodate all dietary needs.', 'kidazzle'),
-        'url' => home_url('/parents/#meals'),
+        'url' => home_url('/resources/'),
         'border_color' => 'border-orange-100 hover:border-orange-400',
         'icon_bg' => 'bg-orange-50',
         'icon_color' => 'text-orange-600',
     ),
     array(
-        'icon' => 'brain',
+        'icon' => 'fa-solid fa-brain',
         'title' => __('Creative Curriculum®', 'kidazzle'),
         'description' => __('Research-based learning tailored to each developmental stage. Every activity has a learning purpose.', 'kidazzle'),
         'url' => home_url('/curriculum/'),
@@ -30,19 +30,19 @@ $pillars = array(
         'icon_color' => 'text-cyan-600',
     ),
     array(
-        'icon' => 'shield-check',
+        'icon' => 'fa-solid fa-shield-heart',
         'title' => __('Safety & Security', 'kidazzle'),
         'description' => __('Your peace of mind is our priority with secure keypad entry and monitored surveillance. We maintain rigorous safety protocols.', 'kidazzle'),
-        'url' => home_url('/about/#safety'),
+        'url' => home_url('/about/'),
         'border_color' => 'border-green-100 hover:border-green-400',
         'icon_bg' => 'bg-green-50',
         'icon_color' => 'text-green-600',
     ),
     array(
-        'icon' => 'heart-handshake',
+        'icon' => 'fa-solid fa-heart-pulse',
         'title' => __('Dedicated Staff', 'kidazzle'),
         'description' => __('We pride ourselves on low turnover and a team of tenured educators who truly know your child. Our staff receives ongoing training to provide the highest quality care.', 'kidazzle'),
-        'url' => home_url('/about/#team'),
+        'url' => home_url('/about/'),
         'border_color' => 'border-red-100 hover:border-red-400',
         'icon_bg' => 'bg-red-50',
         'icon_color' => 'text-red-600',
@@ -61,12 +61,12 @@ $pillars = array(
             <?php foreach ($pillars as $pillar) : ?>
                 <a href="<?php echo esc_url($pillar['url']); ?>" class="p-8 rounded-[2rem] border-2 <?php echo esc_attr($pillar['border_color']); ?> transition bg-white shadow-sm hover:shadow-xl text-center group block">
                     <div class="w-14 h-14 rounded-2xl <?php echo esc_attr($pillar['icon_bg']); ?> <?php echo esc_attr($pillar['icon_color']); ?> flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-                        <i data-lucide="<?php echo esc_attr($pillar['icon']); ?>" class="w-7 h-7"></i>
+                        <i class="<?php echo esc_attr($pillar['icon']); ?> text-2xl"></i>
                     </div>
                     <h3 class="font-bold text-xl text-slate-900 mb-2"><?php echo esc_html($pillar['title']); ?></h3>
                     <p class="text-sm text-slate-600 mb-4 leading-relaxed"><?php echo esc_html($pillar['description']); ?></p>
                     <span class="<?php echo esc_attr($pillar['icon_color']); ?> font-bold text-xs flex items-center justify-center gap-1 uppercase tracking-wide mt-2">
-                        <?php esc_html_e('Learn More', 'kidazzle'); ?> <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        <?php esc_html_e('Learn More', 'kidazzle'); ?> <i class="fa-solid fa-arrow-right"></i>
                     </span>
                 </a>
             <?php endforeach; ?>

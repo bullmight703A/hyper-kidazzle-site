@@ -11,9 +11,7 @@
 <footer class="bg-slate-900 text-slate-300 py-16 relative mt-12">
 	<div
 		class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow-lg border border-slate-100">
-		<!-- Footer Logo Placeholder -->
-		<div class="h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-900">K
-		</div>
+		<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png" alt="KIDazzle Logo" class="h-10 w-auto">
 	</div>
 
 	<div class="container mx-auto px-4 md:px-6 pt-8">
@@ -106,25 +104,31 @@ if ($show_sticky_cta):
 	<div class="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl max-h-[90vh] overflow-y-auto p-8">
 		<button onclick="closeContactModal()"
 			class="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition">
-			<i data-lucide="x" class="w-6 h-6 text-slate-600"></i>
+			<i class="fa-solid fa-xmark text-slate-600"></i>
 		</button>
 		<div class="text-center mb-8">
 			<h3 class="text-2xl font-bold text-slate-900">How Can We Help?</h3>
 			<p class="text-slate-500">Select an option below.</p>
 		</div>
-		<!-- Embed Placeholder -->
-		<div
-			class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl p-12 text-center h-96 flex flex-col items-center justify-center">
-			<div class="text-slate-400 font-mono text-xs mb-4 w-full break-all">
-				<!-- PASTE 123 FORM EMBED CODE HERE -->
-				&lt;iframe src="https://www.123formbuilder.com/..." &gt;&lt;/iframe&gt;
-			</div>
-			<p class="font-bold text-slate-700">123 Form Placeholder</p>
-			<div class="flex justify-center gap-4 mt-4 text-sm text-slate-500">
-				<span class="bg-white px-2 py-1 rounded border">Enrollment</span>
-				<span class="bg-white px-2 py-1 rounded border">Hiring</span>
-				<span class="bg-white px-2 py-1 rounded border">Service</span>
-			</div>
+		<div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-[2rem] p-4 text-center h-[600px] overflow-hidden">
+			<iframe
+				src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
+				style="width:100%;height:100%;border:none;border-radius:20px"
+				id="inline-N8RYaUY1SuORexcyA6la"
+				data-layout="{'id':'INLINE'}"
+				data-trigger-type="alwaysShow"
+				data-trigger-value=""
+				data-activation-type="alwaysActivated"
+				data-activation-value=""
+				data-deactivation-type="neverDeactivate"
+				data-deactivation-value=""
+				data-form-name="2023 New KIDazzel website contact "
+				data-height="870"
+				data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la"
+				data-form-id="N8RYaUY1SuORexcyA6la"
+				title="2023 New KIDazzel website contact ">
+			</iframe>
+			<script src="https://link.msgsndr.com/js/form_embed.js" async></script>
 		</div>
 	</div>
 </div>
@@ -135,11 +139,6 @@ if ($show_sticky_cta):
 	const contactModal = document.getElementById('contact-modal');
 	function openContactModal() { if (contactModal) contactModal.classList.remove('hidden'); }
 	function closeContactModal() { if (contactModal) contactModal.classList.add('hidden'); }
-
-	// Lucide Init
-	if (typeof lucide !== 'undefined') {
-		lucide.createIcons();
-	}
 
     // Sticky CTA Scroll Logic
     window.addEventListener('scroll', function() {

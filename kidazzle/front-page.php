@@ -19,7 +19,6 @@ get_header(); ?>
     get_template_part('template-parts/home/kidazzle-difference');
     get_template_part('template-parts/home/curriculum');
     get_template_part('template-parts/home/growth-journey');
-    // Removed Chroma-specific sections: programs-wizard, locations-preview, schedule-tabs
     get_template_part('template-parts/home/legacy-origin');
     get_template_part('template-parts/home/tour-cta');
     get_template_part('template-parts/home/southeast-powerhouse');

@@ -36,7 +36,7 @@ $origin_image = get_theme_mod('kidazzle_origin_image', 'https://storage.googleap
                 </div>
                 <div class="mt-8">
                     <a href="<?php echo esc_url(home_url('/about/')); ?>" class="text-orange-600 font-bold hover:text-orange-700 flex items-center gap-2">
-                        <?php esc_html_e('Read Our Full Story', 'kidazzle'); ?> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        <?php esc_html_e('Read Our Full Story', 'kidazzle'); ?> <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>

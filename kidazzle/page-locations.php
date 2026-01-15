@@ -7,181 +7,106 @@
 
 get_header();
 
-// Locations Data (Converted from Source JS locationsData)
-$locations = [
-	'westend' => [
-		'id' => "westend",
-		'name' => "West End Center",
-		'city' => "Atlanta, GA",
-		'address' => "674 Joseph E Lowery Blvd, Atlanta, GA 30310",
-		'phone' => "(404) 753-8884",
-		'email' => "westend@kidazzle.com",
-		'desc' => "Rooted in culture, bursting with creativity — West End kids shine in every crayon stroke.",
-		'features' => ["Arts Focus", "Historic District", "Pre-K Program"]
-	],
-	'summit' => [
-		'id' => "summit",
-		'name' => "IRS Summit Building",
-		'city' => "Midtown Atlanta, GA",
-		'address' => "401 W Peachtree St NW, Atlanta, GA 30308",
-		'phone' => "(404) 555-0101",
-		'email' => "summit@kidazzle.com",
-		'desc' => "Bright minds meet big city energy. Convenient for federal employees.",
-		'features' => ["Bilingual Center", "Infant Care", "Federal Employee Priority"]
-	],
-	'memphis' => [
-		'id' => "memphis",
-		'name' => "Downtown Memphis",
-		'city' => "Memphis, TN",
-		'address' => "200 Main St, Memphis, TN 38103",
-		'phone' => "(901) 555-0105",
-		'email' => "memphis@kidazzle.com",
-		'desc' => "From blues to blocks, we've got Memphis rhythm and preschool brilliance.",
-		'features' => ["FedEx Hub Nearby", "Music Program", "Extended Hours"]
-	],
-	'afc' => [
-		'id' => "afc",
-		'name' => "Atlanta Federal Center",
-		'city' => "Downtown Atlanta, GA",
-		'address' => "61 Forsyth St SW, Atlanta, GA 30303",
-		'phone' => "(404) 555-0102",
-		'email' => "afc@kidazzle.com",
-		'desc' => "A hub for hugs, discovery, and Storytime superstars — your downtown oasis.",
-		'features' => ["Secure Federal Facility", "GA Pre-K", "Toddler Discovery"]
-	],
-	'collegepark' => [
-		'id' => "collegepark",
-		'name' => "College Park Center",
-		'city' => "College Park, GA",
-		'address' => "1701 Columbia Ave, College Park, GA 30337",
-		'phone' => "(404) 555-0103",
-		'email' => "collegepark@kidazzle.com",
-		'desc' => "Where little learners take flight — right in the heart of College Park.",
-		'features' => ["Near Airport", "STEAM Focus", "Transportation"]
-	],
-	'hampton' => [
-		'id' => "hampton",
-		'name' => "Hampton Center",
-		'city' => "Hampton, GA",
-		'address' => "Hampton, GA",
-		'phone' => "(770) 555-0199",
-		'email' => "hampton@kidazzle.com",
-		'desc' => "Where the kids sparkle brighter than the Georgia sunshine.",
-		'features' => ["School Readiness", "Large Playground", "Summer Camp"]
-	],
-	'miami' => [
-		'id' => "miami",
-		'name' => "Doral International",
-		'city' => "Doral, FL",
-		'address' => "8800 NW 36th St, Doral, FL 33178",
-		'phone' => "(305) 555-0106",
-		'email' => "miami@kidazzle.com",
-		'desc' => "Sunshine, smiles, and Spanish flair — Spanish immersion learning.",
-		'features' => ["Spanish Immersion", "STEM Lab", "Cultural Arts"]
-	]
-];
+// Get all locations
+$locations_query = new WP_Query(array(
+	'post_type' => 'location',
+	'posts_per_page' => -1,
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
+));
 ?>
 
-<!-- 4. LOCATIONS VIEW -->
-<main id="view-locations" class="view-section active block">
-    <!-- Hero Section -->
-    <section class="relative pt-16 pb-12 lg:pt-24 lg:pb-20 bg-white overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-kidazzle-cyanLight/40 via-transparent to-transparent"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-white border border-kidazzle-cyan/30 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-cyan shadow-sm mb-6 fade-in-up">
-                <i class="fa-solid fa-map-pin"></i> <?php echo count($locations); ?> Centers
-            </div>
+<main id="view-locations" class="block">
+	<!-- Hero Section -->
+	<section class="relative py-32 text-center overflow-hidden">
+		<div class="absolute inset-0 z-0">
+			<!-- Hero Image -->
+			<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/694486b75b256bd1ddbe6e9d.png"
+				alt="Map and community" class="w-full h-full object-cover">
+			<div class="absolute inset-0 bg-kidazzle-greenDark/60"></div>
+		</div>
+		<div class="relative z-10 container mx-auto px-4 text-white">
+			<span
+				class="bg-white/20 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 inline-block backdrop-blur-sm border border-white/10">
+				<?php echo $locations_query->found_posts; ?> Locations
+			</span>
+			<h1 class="text-5xl md:text-6xl font-extrabold mb-6">Our Locations</h1>
+			<p class="text-xl md:text-2xl max-w-2xl mx-auto text-green-100 drop-shadow-md">
+				Find a KIDazzle center near you in Georgia, Tennessee, or Florida.
+			</p>
+		</div>
+	</section>
 
-            <h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up" style="animation-delay: 0.1s;">
-                Our <span class="text-kidazzle-cyan italic">Locations</span>
-            </h1>
+	<div class="container mx-auto px-4 py-16">
+		<?php if ($locations_query->have_posts()): ?>
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<?php while ($locations_query->have_posts()):
+					$locations_query->the_post();
+					$location_id = get_the_ID();
+					$city = get_post_meta($location_id, 'location_city', true);
+					$address = get_post_meta($location_id, 'location_address', true);
+					$features = get_post_meta($location_id, 'location_features', true); // Assumed array or newline string
+					$hero_image = get_the_post_thumbnail_url($location_id, 'large') ?: 'https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=800&auto=format&fit=crop';
+					
+					// Parse features
+					$features_array = is_array($features) ? $features : array_filter(array_map('trim', explode("\n", (string)$features)));
+					?>
 
-            <p class="text-lg text-brand-ink/80 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
-                Find a KIDazzle center near you. Serving families across Georgia, Tennessee, and Florida with the same high standards of safety and care.
-            </p>
+					<div
+						class="border border-brand-ink/10 rounded-[2rem] overflow-hidden hover:shadow-2xl transition bg-white group flex flex-col">
+						<div class="h-48 relative overflow-hidden">
+							<img src="<?php echo esc_url($hero_image); ?>"
+								class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110"
+								alt="<?php echo esc_attr(get_the_title()); ?>">
+							<div class="absolute inset-0 bg-gradient-to-t from-brand-ink/80 to-transparent"></div>
+							<?php if ($city): ?>
+								<div class="absolute bottom-4 left-6 text-white font-bold text-lg"><?php echo esc_html($city); ?></div>
+							<?php endif; ?>
+						</div>
+						<div class="p-8 flex flex-col flex-grow">
+							<h3 class="text-2xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
+							
+							<?php if ($address): ?>
+							<p class="text-slate-500 mb-4 text-sm flex items-start gap-2">
+								<i class="fa-solid fa-location-dot w-4 h-4 mt-1 text-kidazzle-red"></i> 
+								<?php echo esc_html($address); ?>
+							</p>
+							<?php endif; ?>
 
-            <!-- Search Bar -->
-            <div class="max-w-2xl mx-auto bg-white p-2 rounded-full shadow-float border border-brand-ink/5 flex gap-2 fade-in-up" style="animation-delay: 0.3s;">
-                <div class="relative flex-grow">
-                    <i class="fa-solid fa-search absolute left-5 top-1/2 -translate-y-1/2 text-brand-ink/30"></i>
-                    <input type="text" id="location-search" placeholder="Search by city or zip..." 
-                        class="w-full pl-12 pr-6 py-4 rounded-full bg-brand-cream/50 focus:bg-white focus:ring-2 ring-kidazzle-cyan/20 outline-none text-brand-ink placeholder:text-brand-ink/60 transition-all" />
-                </div>
-            </div>
-        </div>
-    </section>
+							<div class="text-slate-600 mb-6 flex-grow text-sm leading-relaxed">
+								<?php the_excerpt(); ?>
+							</div>
 
-    <!-- Locations Grid -->
-    <section class="py-20 bg-brand-cream min-h-screen">
-        <div class="max-w-7xl mx-auto px-4 lg:px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="locations-grid">
-                <?php foreach ($locations as $loc): ?>
-                    <div class="location-card group" data-name="<?php echo esc_attr($loc['name'] . ' ' . $loc['city'] . ' ' . $loc['address']); ?>">
-                        <div class="bg-white rounded-[2rem] p-8 shadow-card border border-brand-ink/5 hover:border-kidazzle-cyan/30 transition-all hover:-translate-y-1 h-full flex flex-col relative overflow-hidden">
-                            
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="bg-kidazzle-cyanLight text-kidazzle-cyan px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
-                                    <?php echo esc_html($loc['city']); ?>
-                                </span>
-                                <div class="w-2 h-2 rounded-full bg-kidazzle-green animate-pulse"></div>
-                            </div>
+							<?php if (!empty($features_array)): ?>
+								<div class="flex flex-wrap gap-2 mb-8">
+									<?php 
+									$colors = ['bg-kidazzle-greenLight text-kidazzle-green', 'bg-kidazzle-blueLight text-kidazzle-blue', 'bg-kidazzle-yellowLight text-kidazzle-yellow'];
+									foreach (array_slice($features_array, 0, 3) as $i => $feature): 
+										$color_class = $colors[$i % count($colors)];
+									?>
+										<span class="<?php echo $color_class; ?> text-xs px-3 py-1 rounded-full font-bold uppercase">
+											<?php echo esc_html($feature); ?>
+										</span>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
 
-                            <h3 class="font-serif text-2xl font-bold text-brand-ink mb-2 group-hover:text-kidazzle-cyan transition-colors">
-                                <?php echo esc_html($loc['name']); ?>
-                            </h3>
+							<a href="<?php the_permalink(); ?>"
+								class="w-full block bg-brand-ink text-white text-center font-bold py-3 rounded-xl hover:bg-kidazzle-green transition shadow-md">
+								View Details
+							</a>
+						</div>
+					</div>
 
-                            <p class="text-sm text-brand-ink/80 mb-6 flex-grow">
-                                <?php echo esc_html($loc['address']); ?>
-                            </p>
-
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <?php foreach ($loc['features'] as $f): ?>
-                                    <span class="border border-brand-ink/10 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-brand-ink/70">
-                                        <?php echo esc_html($f); ?>
-                                    </span>
-                                <?php endforeach; ?>
-                            </div>
-
-                            <a href="mailto:<?php echo esc_attr($loc['email']); ?>" class="w-full bg-brand-ink text-white text-center font-bold py-4 rounded-xl hover:bg-kidazzle-cyan transition shadow-md">
-                                Contact Center
-                            </a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-
-            <!-- Empty State -->
-            <div id="no-results" class="hidden text-center py-20">
-                <div class="w-16 h-16 bg-brand-ink/5 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🤔</div>
-                <h3 class="font-serif text-xl font-bold text-brand-ink">No centers found</h3>
-                <p class="text-brand-ink/80 mt-2">Try adjusting your search terms.</p>
-            </div>
-        </div>
-    </section>
+				<?php endwhile; wp_reset_postdata(); ?>
+			</div>
+		<?php else: ?>
+			<div class="text-center py-20">
+				<p class="text-xl text-brand-ink/60">No locations found.</p>
+			</div>
+		<?php endif; ?>
+	</div>
 </main>
-
-<script>
-    // Search Filter Logic
-    document.getElementById('location-search').addEventListener('keyup', function(e) {
-        const term = e.target.value.toLowerCase();
-        const cards = document.querySelectorAll('.location-card');
-        const noResults = document.getElementById('no-results');
-        let visibleCount = 0;
-
-        cards.forEach(card => {
-            const text = card.dataset.name.toLowerCase();
-            if (text.includes(term)) {
-                card.style.display = 'block';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-    });
-</script>
 
 <?php
 get_footer();

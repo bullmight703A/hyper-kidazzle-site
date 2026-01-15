@@ -36,30 +36,26 @@
 
 	<!-- Skip Links for Accessibility -->
 	<a href="#main-content"
-		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-brand-ink p-4 z-[100] rounded-lg shadow-lg"><?php _e('Skip to content', 'kidazzle-theme'); ?></a>
+		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-kidazzle-blueDark p-4 z-[100] rounded-lg shadow-lg"><?php _e('Skip to content', 'kidazzle-theme'); ?></a>
 
 	<!-- TOP UTILITY BAR -->
 	<div
-		class="bg-slate-50 text-slate-600 text-xs py-2 px-4 hidden md:flex justify-between items-center border-b border-slate-200 fixed w-full top-0 z-50 h-10">
+		class="bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-widest py-2 px-4 hidden md:flex justify-between items-center border-b border-slate-200 fixed w-full top-0 z-50 h-10">
 		<div class="flex gap-4 items-center">
-			<div class="h-6 w-auto mr-2">
-				<!-- Logo Placeholder or Dynamic Logo if needed -->
-				<span class="font-bold text-slate-700">KIDazzle</span>
-			</div>
 			<a href="<?php echo home_url('/locations'); ?>"
-				class="flex items-center gap-1 cursor-pointer hover:text-cyan-600 transition">
-				<i data-lucide="map-pin" class="w-3 h-3 text-red-500"></i> Locations in GA, TN, & FL
+				class="flex items-center gap-1 cursor-pointer hover:text-kidazzle-blue transition">
+				<i class="fa-solid fa-location-dot text-kidazzle-red"></i> Locations in GA, TN, & FL
 			</a>
 			<span class="flex items-center gap-1">
-				<i data-lucide="phone" class="w-3 h-3 text-green-500"></i> 877-410-1002
+				<i class="fa-solid fa-phone text-kidazzle-green"></i> 877-410-1002
 			</span>
 		</div>
-		<div class="flex gap-6 font-medium">
+		<div class="flex gap-6">
 			<a href="<?php echo home_url('/careers'); ?>"
-				class="hover:text-cyan-600 transition flex items-center gap-1">Careers</a>
+				class="hover:text-kidazzle-blue transition flex items-center gap-1">Careers</a>
 			<a href="<?php echo home_url('/teacher-portal'); ?>"
-				class="hover:text-cyan-600 transition flex items-center gap-1 font-bold text-orange-500">
-				<i data-lucide="users" class="w-3 h-3"></i> Teacher Portal
+				class="hover:text-kidazzle-blue transition flex items-center gap-1 text-kidazzle-orange">
+				<i class="fa-solid fa-users-viewfinder"></i> Teacher Portal
 			</a>
 		</div>
 	</div>
@@ -69,12 +65,12 @@
 		<div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
 			<!-- Logo -->
 			<a href="<?php echo home_url(); ?>" class="flex items-center gap-2 cursor-pointer">
-				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper" style="max-width: 200px; max-height: 80px; overflow: hidden;">
+				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper" style="max-width: 250px; max-height: 80px; overflow: hidden;">
 					<?php
 					if (has_custom_logo()) {
 						the_custom_logo();
 					} else {
-						echo '<h1 class="text-3xl font-extrabold text-black pl-2 tracking-tighter hidden md:block">KID<span class="text-yellow-500">azzle</span></h1>';
+						echo '<h1 class="text-3xl font-extrabold text-black pl-2 tracking-tighter hidden md:block">KID<span class="text-kidazzle-yellow">azzle</span></h1>';
 					}
 					?>
 				</div>
@@ -84,50 +80,52 @@
                         width: auto !important;
                         height: auto !important;
                         object-fit: contain;
+                        display: block;
                     }
                     /* Extra safety for the img tag itself if WP outputs it without class */
                     .custom-logo-wrapper img {
                         max-height: 80px !important;
                         width: auto !important;
+                        display: block;
                     }
                 </style>
 			</a>
 
 			<!-- Desktop Links -->
-			<div class="hidden lg:flex items-center gap-6 font-bold text-slate-600 text-sm tracking-wide">
-				<a href="<?php echo home_url(); ?>" class="hover:text-indigo-600 transition uppercase">Home</a>
+			<div class="hidden lg:flex items-center gap-6 font-bold text-kidazzle-blueDark text-xs tracking-[0.15em] uppercase">
+				<a href="<?php echo home_url(); ?>" class="hover:text-kidazzle-blue transition">Home</a>
 				<a href="<?php echo home_url('/programs'); ?>"
-					class="hover:text-red-500 transition uppercase">Programs</a>
+					class="hover:text-kidazzle-red transition">Programs</a>
 				<a href="<?php echo home_url('/curriculum'); ?>"
-					class="hover:text-cyan-500 transition uppercase">Curriculum</a>
+					class="hover:text-kidazzle-blue transition">Curriculum</a>
 				<a href="<?php echo home_url('/locations'); ?>"
-					class="hover:text-green-500 transition uppercase">Locations</a>
+					class="hover:text-kidazzle-green transition">Locations</a>
 				<a href="<?php echo home_url('/resources'); ?>"
-					class="hover:text-purple-500 transition uppercase">Resources</a>
+					class="hover:text-kidazzle-purple transition">Resources</a>
 				<a href="<?php echo home_url('/contact'); ?>"
-					class="bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition ml-2">Contact
+					class="bg-kidazzle-blueDark text-white px-6 py-3 rounded-full hover:bg-kidazzle-blue transition ml-2">Contact
 					Us</a>
 			</div>
 
 			<!-- Mobile Toggle -->
-			<button class="lg:hidden text-slate-900" id="mobile-menu-btn">
-				<i data-lucide="menu" class="w-7 h-7"></i>
+			<button class="lg:hidden text-kidazzle-blueDark" id="mobile-menu-btn" aria-label="Open Menu">
+				<i class="fa-solid fa-bars text-2xl"></i>
 			</button>
 		</div>
 
 		<!-- Mobile Menu -->
 		<div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 pt-24 px-6 overflow-y-auto">
-			<button id="close-menu-btn" class="absolute top-4 right-4 text-slate-900">
-				<i data-lucide="x" class="w-8 h-8"></i>
+			<button id="close-menu-btn" class="absolute top-4 right-4 text-kidazzle-blueDark" aria-label="Close Menu">
+				<i class="fa-solid fa-xmark text-3xl"></i>
 			</button>
-			<div class="flex flex-col gap-6 font-bold text-xl text-slate-800 pt-4">
+			<div class="flex flex-col gap-8 font-bold text-2xl text-kidazzle-blueDark pt-4 uppercase tracking-widest">
 				<a href="<?php echo home_url(); ?>" class="text-left">Home</a>
-				<a href="<?php echo home_url('/programs'); ?>" class="text-left text-red-500">Programs</a>
-				<a href="<?php echo home_url('/curriculum'); ?>" class="text-left text-cyan-500">Curriculum</a>
-				<a href="<?php echo home_url('/locations'); ?>" class="text-left text-green-500">Locations</a>
-				<a href="<?php echo home_url('/resources'); ?>" class="text-left text-purple-500">Resources</a>
+				<a href="<?php echo home_url('/programs'); ?>" class="text-left text-kidazzle-red">Programs</a>
+				<a href="<?php echo home_url('/curriculum'); ?>" class="text-left text-kidazzle-blue">Curriculum</a>
+				<a href="<?php echo home_url('/locations'); ?>" class="text-left text-kidazzle-green">Locations</a>
+				<a href="<?php echo home_url('/resources'); ?>" class="text-left text-kidazzle-purple">Resources</a>
 				<a href="<?php echo home_url('/careers'); ?>" class="text-left">Careers</a>
-				<a href="<?php echo home_url('/teacher-portal'); ?>" class="text-left text-orange-500">Teacher
+				<a href="<?php echo home_url('/teacher-portal'); ?>" class="text-left text-kidazzle-orange">Teacher
 					Portal</a>
 				<a href="<?php echo home_url('/contact'); ?>" class="text-left">Contact Us</a>
 			</div>
