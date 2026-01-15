@@ -28,8 +28,22 @@
 	}
 	</script>
 
-	<?php wp_head(); ?>
+<?php
+// Get Customizer settings
+$header_phone = get_theme_mod('kidazzle_footer_phone', '877-410-1002'); // Reusing footer phone for consistency
+$header_cta_text = get_theme_mod('kidazzle_header_cta_text', 'Contact Us');
+$header_cta_url = get_theme_mod('kidazzle_book_tour_url', home_url('/contact'));
+$header_scripts = get_theme_mod('kidazzle_header_scripts', '');
+
+// Output header scripts if set
+if (!empty($header_scripts)) {
+	echo $header_scripts;
+}
+
+wp_head();
+?>
 </head>
+
 
 <body <?php body_class('font-sans text-brand-ink bg-white'); ?>>
 	<?php wp_body_open(); ?>
@@ -47,7 +61,7 @@
 				<i class="fa-solid fa-location-dot text-kidazzle-red"></i> Locations in GA, TN, & FL
 			</a>
 			<span class="flex items-center gap-1">
-				<i class="fa-solid fa-phone text-kidazzle-green"></i> 877-410-1002
+				<i class="fa-solid fa-phone text-kidazzle-green"></i> <?php echo esc_html($header_phone); ?>
 			</span>
 		</div>
 		<div class="flex gap-6">
@@ -59,6 +73,7 @@
 			</a>
 		</div>
 	</div>
+
 
 	<!-- MAIN NAVIGATION -->
 	<nav id="navbar" class="fixed top-10 w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md py-4 shadow-sm">
@@ -94,10 +109,10 @@
 			<!-- Desktop Links (Now dynamic) -->
 			<div class="hidden lg:flex items-center gap-6 font-bold text-brand-ink text-xs tracking-[0.15em] uppercase">
 				<?php kidazzle_primary_nav(); ?>
-				<a href="<?php echo home_url('/contact'); ?>"
-					class="bg-brand-ink text-white px-6 py-3 rounded-full hover:bg-kidazzle-blue transition-all shadow-md ml-2 hover:-translate-y-0.5">Contact
-					Us</a>
+				<a href="<?php echo esc_url($header_cta_url); ?>"
+					class="bg-brand-ink text-white px-6 py-3 rounded-full hover:bg-kidazzle-blue transition-all shadow-md ml-2 hover:-translate-y-0.5"><?php echo esc_html($header_cta_text); ?></a>
 			</div>
+
 
 			<!-- Mobile Toggle -->
 			<button class="lg:hidden text-brand-ink" id="mobile-menu-btn" aria-label="Open Menu">

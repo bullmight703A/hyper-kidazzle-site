@@ -49,6 +49,10 @@ $locations = array(
         'is_hq' => false,
     ),
 );
+<?php
+// Get Customizer settings for locations section
+$locations_heading = get_theme_mod('kidazzle_home_locations_heading', 'Defining Excellence Across the Southeast');
+$locations_subheading = get_theme_mod('kidazzle_home_locations_subheading', '');
 ?>
 
 <section class="py-20 bg-brand-cream relative overflow-hidden">
@@ -58,8 +62,12 @@ $locations = array(
     <div class="container mx-auto px-4 relative z-10">
         <div class="text-center mb-16">
             <span class="text-kidazzle-blue font-bold tracking-[0.3em] text-[10px] uppercase mb-4 block italic"><?php esc_html_e('A Southern Regional Powerhouse', 'kidazzle'); ?></span>
-            <h2 class="text-4xl md:text-6xl font-serif font-bold text-brand-ink"><?php esc_html_e('Defining Excellence Across the Southeast', 'kidazzle'); ?></h2>
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-brand-ink"><?php echo esc_html($locations_heading); ?></h2>
+            <?php if ($locations_subheading): ?>
+                <p class="text-brand-ink/60 mt-4 max-w-2xl mx-auto"><?php echo esc_html($locations_subheading); ?></p>
+            <?php endif; ?>
         </div>
+
         
         <div class="grid md:grid-cols-3 gap-6 lg:gap-10">
             <?php foreach ($locations as $location) : ?>

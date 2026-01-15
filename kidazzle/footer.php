@@ -4,6 +4,20 @@
  *
  * @package kidazzle_Excellence
  */
+
+// Get Footer Customizer Settings
+$footer_phone = get_theme_mod('kidazzle_footer_phone', '877-410-1002');
+$footer_email = get_theme_mod('kidazzle_footer_email', '');
+$footer_address = get_theme_mod('kidazzle_footer_address', '100 Alabama St SW, Atlanta, GA');
+
+// Social Links
+$footer_facebook = get_theme_mod('kidazzle_footer_facebook', '');
+$footer_instagram = get_theme_mod('kidazzle_footer_instagram', '');
+$footer_linkedin = get_theme_mod('kidazzle_footer_linkedin', '');
+$footer_twitter = get_theme_mod('kidazzle_footer_twitter', '');
+$footer_youtube = get_theme_mod('kidazzle_footer_youtube', '');
+
+$has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $footer_twitter || $footer_youtube;
 ?>
 </main>
 
@@ -22,6 +36,25 @@
 				</div>
 				<p class="text-sm leading-relaxed mb-6 text-white/60">Providing elite, independent child care and early
 					education.</p>
+				<?php if ($has_social): ?>
+				<div class="flex gap-4 mt-4">
+					<?php if ($footer_facebook): ?>
+						<a href="<?php echo esc_url($footer_facebook); ?>" class="text-white/40 hover:text-kidazzle-blue transition" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook text-xl"></i></a>
+					<?php endif; ?>
+					<?php if ($footer_instagram): ?>
+						<a href="<?php echo esc_url($footer_instagram); ?>" class="text-white/40 hover:text-kidazzle-red transition" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
+					<?php endif; ?>
+					<?php if ($footer_linkedin): ?>
+						<a href="<?php echo esc_url($footer_linkedin); ?>" class="text-white/40 hover:text-kidazzle-blue transition" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl"></i></a>
+					<?php endif; ?>
+					<?php if ($footer_twitter): ?>
+						<a href="<?php echo esc_url($footer_twitter); ?>" class="text-white/40 hover:text-white transition" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+					<?php endif; ?>
+					<?php if ($footer_youtube): ?>
+						<a href="<?php echo esc_url($footer_youtube); ?>" class="text-white/40 hover:text-kidazzle-red transition" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube text-xl"></i></a>
+					<?php endif; ?>
+				</div>
+				<?php endif; ?>
 			</div>
 			<div>
 				<h4 class="text-white font-bold mb-6 italic tracking-widest uppercase text-xs">Quick Links</h4>
@@ -40,15 +73,22 @@
 			<div>
 				<h4 class="text-white font-bold mb-6 italic tracking-widest uppercase text-xs">Contact</h4>
 				<ul class="space-y-3 text-sm">
-					<li>100 Alabama St SW, Atlanta, GA</li>
-					<li class="font-bold text-white text-lg">877-410-1002</li>
+					<?php if ($footer_address): ?>
+						<li><?php echo esc_html($footer_address); ?></li>
+					<?php endif; ?>
+					<?php if ($footer_phone): ?>
+						<li class="font-bold text-white text-lg"><?php echo esc_html($footer_phone); ?></li>
+					<?php endif; ?>
+					<?php if ($footer_email): ?>
+						<li><a href="mailto:<?php echo esc_attr($footer_email); ?>" class="hover:text-kidazzle-yellow transition"><?php echo esc_html($footer_email); ?></a></li>
+					<?php endif; ?>
 					<li><a href="<?php echo home_url('/contact'); ?>" class="text-kidazzle-yellow underline mt-2 block">Open Contact
 							Form</a></li>
 				</ul>
 			</div>
 		</div>
 
-		<div class="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
+		<div class="border-t border-white/10 pt-8 text-center text-xs text-white/40">
 			<span>&copy; <?php echo date('Y'); ?> KIDAZZLE Child Care Inc. All rights reserved.</span>
 		</div>
 
@@ -62,6 +102,7 @@
 		<?php endif; ?>
 	</div>
 </footer>
+
 
 <!-- Global Sticky CTA -->
 <?php

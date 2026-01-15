@@ -11,16 +11,38 @@ if (!defined('ABSPATH')) {
         exit;
 }
 
-// Stats are now standardized to Kidazzle refractive colors
-$stats = array(
+// Try to get stats from Customizer JSON, fallback to defaults
+$stats_json = get_theme_mod('kidazzle_home_stats_json', '');
+$stats = array();
+
+if (!empty($stats_json)) {
+    $decoded = json_decode($stats_json, true);
+    if (is_array($decoded) && !empty($decoded)) {
+        // Map Customizer JSON to template format with colors
+        $colors = array('kidazzle-yellow', 'kidazzle-red', 'kidazzle-blue', 'kidazzle-green');
+        foreach ($decoded as $index => $stat) {
+            $stats[] = array(
+                'value' => $stat['value'] ?? '',
+                'label' => $stat['label'] ?? '',
+                'color' => $colors[$index % count($colors)],
+            );
+        }
+    }
+}
+
+// Fallback to hardcoded defaults
+if (empty($stats)) {
+    $stats = array(
         array('value' => '33+', 'label' => 'Years of Excellence', 'color' => 'kidazzle-yellow'),
         array('value' => '10k+', 'label' => 'Students Graduated', 'color' => 'kidazzle-red'),
         array('value' => '15+', 'label' => 'Awarded Campuses', 'color' => 'kidazzle-blue'),
         array('value' => '100%', 'label' => 'Quality Rated', 'color' => 'kidazzle-green'),
-);
+    );
+}
 
 $stats = apply_filters('kidazzle_home_stats', $stats);
 ?>
+
 
 <!-- STATS STRIP (High Fidelity Refractive) -->
 <section class="py-32 bg-brand-ink text-white relative overflow-hidden">
