@@ -22,14 +22,15 @@ function kidazzle_get_home_page_id()
 function kidazzle_home_default_hero()
 {
         return array(
-                'heading' => 'The art of <span class="italic text-kidazzle-red">growing up.</span>',
-                'subheading' => 'Where accredited excellence meets the warmth of home. A modern sanctuary powered by our proprietary KIDazzle Creative Curriculum™ learning model for children 6 weeks to 12 years.',
-                'cta_label' => 'Schedule a Tour',
-                'cta_url' => '#tour',
-                'secondary_label' => 'View Programs',
-                'secondary_url' => kidazzle_get_program_archive_url(),
+                'heading' => 'Where Learning <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-cyan-700">is Fun!</span>',
+                'subheading' => 'From Memphis to Miami to Atlanta, we are an independent, premier learning academy nurturing diverse bright minds for over three decades.',
+                'cta_label' => 'Find Your Center',
+                'cta_url' => '/locations/',
+                'secondary_label' => 'Our Legacy',
+                'secondary_url' => '/about/',
         );
 }
+
 
 function kidazzle_home_default_stats()
 {

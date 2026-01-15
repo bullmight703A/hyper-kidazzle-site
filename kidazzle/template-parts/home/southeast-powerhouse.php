@@ -49,11 +49,12 @@ $locations = array(
         'is_hq' => false,
     ),
 );
-<?php
+
 // Get Customizer settings for locations section
 $locations_heading = get_theme_mod('kidazzle_home_locations_heading', 'Defining Excellence Across the Southeast');
 $locations_subheading = get_theme_mod('kidazzle_home_locations_subheading', '');
 ?>
+
 
 <section class="py-20 bg-brand-cream relative overflow-hidden">
     <!-- Background Pattern -->
