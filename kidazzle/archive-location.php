@@ -37,12 +37,13 @@ $locations_query = new WP_Query(array(
 		<div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10 text-center">
 			<div
 				class="inline-flex items-center gap-2 bg-white border border-kidazzle-green/30 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-green shadow-sm mb-6 fade-in-up">
-				<i class="fa-solid fa-map-pin"></i> <?php echo $locations_query->found_posts; ?>+ <?php _e('Campuses', 'kidazzle-theme'); ?>
+				<i class="fa-solid fa-map-pin"></i> <?php echo $locations_query->found_posts; ?>+
+				<?php _e('Campuses', 'kidazzle-theme'); ?>
 			</div>
 
 			<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up"
 				style="animation-delay: 0.1s;">
-				<?php echo wp_kses_post(get_theme_mod('kidazzle_locations_archive_title', __('Find your <span class="text-kidazzle-green italic">Kidazzle Community</span> - Our Locations', 'kidazzle-theme'))); ?>
+				<?php echo wp_kses_post(get_theme_mod('kidazzle_locations_archive_title', __('Find your <span class="text-kidazzle-green italic">KIDazzle Community</span> - Our Locations', 'kidazzle-theme'))); ?>
 			</h1>
 
 			<p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
@@ -54,7 +55,8 @@ $locations_query = new WP_Query(array(
 				style="animation-delay: 0.3s;">
 				<div class="relative flex-grow max-w-md">
 					<i class="fa-solid fa-search absolute left-5 top-1/2 -translate-y-1/2 text-brand-ink"></i>
-					<input type="text" id="location-search" placeholder="<?php esc_attr_e('Search by ZIP code or city name...', 'kidazzle-theme'); ?>"
+					<input type="text" id="location-search"
+						placeholder="<?php esc_attr_e('Search by ZIP code or city name...', 'kidazzle-theme'); ?>"
 						class="w-full pl-12 pr-4 py-3 rounded-full focus:outline-none text-brand-ink bg-white" />
 				</div>
 				<div class="flex gap-2 justify-start lg:justify-end flex-wrap flex-grow items-center">
@@ -108,10 +110,18 @@ $locations_query = new WP_Query(array(
 						$region_name = $region_term ? $region_term->name : __('Metro Atlanta', 'kidazzle-theme');
 						$region_slug = $region_term ? $region_term->slug : 'uncategorized';
 
-						// Get colors for this region from term meta
-						$colors = $region_term
-							? kidazzle_get_region_color_from_term($region_term->term_id)
-							: array('bg' => 'kidazzle-greenLight', 'text' => 'kidazzle-green', 'border' => 'kidazzle-green');
+						// Cycle Colors for variety
+						$brand_colors = [
+							['bg' => 'kidazzle-red', 'text' => 'kidazzle-red', 'border' => 'kidazzle-red'],
+							['bg' => 'kidazzle-orange', 'text' => 'kidazzle-orange', 'border' => 'kidazzle-orange'],
+							['bg' => 'kidazzle-yellow', 'text' => 'kidazzle-yellow', 'border' => 'kidazzle-yellow'],
+							['bg' => 'kidazzle-green', 'text' => 'kidazzle-green', 'border' => 'kidazzle-green'],
+							['bg' => 'kidazzle-blue', 'text' => 'kidazzle-blue', 'border' => 'kidazzle-blue'],
+						];
+						// Use global counter or static to rotate if not loop index available easily?
+						// WP_Query has current_post index.
+						$color_idx = $locations_query->current_post % count($brand_colors);
+						$colors = $brand_colors[$color_idx];
 
 						// Check for special badges
 						$is_featured = get_post_meta($location_id, 'location_featured', true);
@@ -148,9 +158,10 @@ $locations_query = new WP_Query(array(
 							data-name="<?php echo esc_attr($location_name . ' ' . $city . ' ' . $zip); ?>">
 							<div
 								class="bg-white rounded-[2rem] p-6 shadow-card border border-<?php echo esc_attr($is_featured ? $colors['border'] . ' border-opacity-50' : 'brand-ink/5'); ?> hover:border-<?php echo esc_attr($colors['border']); ?>/30 transition-all hover:-translate-y-1 h-full flex flex-col relative overflow-hidden">
-										
+
 								<!-- Overlay Link for entire card -->
-								<a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php printf( esc_attr__('View %s', 'kidazzle-theme'), esc_attr($location_name) ); ?>"></a>
+								<a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10"
+									aria-label="<?php printf(esc_attr__('View %s', 'kidazzle-theme'), esc_attr($location_name)); ?>"></a>
 
 								<div
 									class="absolute top-0 right-0 bg-<?php echo esc_attr($is_new ? $colors['text'] : $colors['border']); ?> text-<?php echo esc_attr($is_new ? 'brand-ink' : 'white'); ?> text-[10px] font-bold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
@@ -163,7 +174,8 @@ $locations_query = new WP_Query(array(
 										<?php echo esc_html($region_name); ?>
 									</span>
 									<?php if ($is_open): ?>
-										<div class="flex items-center gap-1.5" title="<?php esc_attr_e('Open Now', 'kidazzle-theme'); ?>">
+										<div class="flex items-center gap-1.5"
+											title="<?php esc_attr_e('Open Now', 'kidazzle-theme'); ?>">
 											<div class="w-2 h-2 rounded-full bg-kidazzle-green animate-pulse"></div>
 											<span
 												class="text-[10px] font-bold text-kidazzle-green uppercase tracking-wide"><?php echo esc_html(get_theme_mod('kidazzle_locations_open_text', __('Open Now', 'kidazzle-theme'))); ?></span>
@@ -192,27 +204,27 @@ $locations_query = new WP_Query(array(
 								</div>
 
 								<?php
-							$booking_link = get_post_meta($location_id, 'location_tour_booking_link', true);
-							?>
-							<div class="grid grid-cols-2 gap-3 mt-auto relative z-20">
-								<a href="<?php the_permalink(); ?>"
-									class="flex items-center justify-center py-3 rounded-xl bg-brand-ink/5 text-brand-ink text-xs font-bold uppercase tracking-wider hover:bg-brand-ink hover:text-white transition-colors">
-									<?php _e('View Campus', 'kidazzle-theme'); ?>
-								</a>
-								<?php if ($booking_link): ?>
-									<a href="<?php echo esc_url($booking_link); ?>"
-										class="booking-btn flex items-center justify-center py-3 rounded-xl border border-<?php echo esc_attr($colors['border']); ?> text-<?php echo esc_attr($colors['text']); ?> text-xs font-bold uppercase tracking-wider hover:bg-<?php echo esc_attr($colors['text']); ?> hover:text-white transition-colors">
-										<?php _e('Book Tour', 'kidazzle-theme'); ?>
+								$booking_link = get_post_meta($location_id, 'location_tour_booking_link', true);
+								?>
+								<div class="grid grid-cols-2 gap-3 mt-auto relative z-20">
+									<a href="<?php the_permalink(); ?>"
+										class="flex items-center justify-center py-3 rounded-xl bg-brand-ink/5 text-brand-ink text-xs font-bold uppercase tracking-wider hover:bg-brand-ink hover:text-white transition-colors">
+												<?php _e('View Campus', 'kidazzle-theme'); ?>
 									</a>
-								<?php else: ?>
-									<a href="<?php the_permalink(); ?>#contact"
-										class="flex items-center justify-center py-3 rounded-xl border border-<?php echo esc_attr($colors['border']); ?> text-<?php echo esc_attr($colors['text']); ?> text-xs font-bold uppercase tracking-wider hover:bg-<?php echo esc_attr($colors['text']); ?> hover:text-white transition-colors">
-										<?php _e('Contact Us', 'kidazzle-theme'); ?>
-									</a>
-								<?php endif; ?>
+											<?php if ($booking_link): ?>
+										<a href="<?php echo esc_url($booking_link); ?>"
+											class="booking-btn flex items-center justify-center py-3 rounded-xl border border-<?php echo esc_attr($colors['border']); ?> text-<?php echo esc_attr($colors['text']); ?> text-xs font-bold uppercase tracking-wider hover:bg-<?php echo esc_attr($colors['text']); ?> hover:text-white transition-colors">
+														<?php _e('Book Tour', 'kidazzle-theme'); ?>
+										</a>
+											<?php else: ?>
+										<a href="<?php the_permalink(); ?>#contact"
+											class="flex items-center justify-center py-3 rounded-xl border border-<?php echo esc_attr($colors['border']); ?> text-<?php echo esc_attr($colors['text']); ?> text-xs font-bold uppercase tracking-wider hover:bg-<?php echo esc_attr($colors['text']); ?> hover:text-white transition-colors">
+														<?php _e('Contact Us', 'kidazzle-theme'); ?>
+										</a>
+									<?php endif; ?>
+								</div>
 							</div>
 						</div>
-					</div>
 
 					<?php endwhile;
 					wp_reset_postdata();
@@ -234,7 +246,8 @@ $locations_query = new WP_Query(array(
 						class="bg-white/10 rounded-[2rem] p-2 aspect-video border border-white/20 flex items-center justify-center relative overflow-hidden">
 						<!-- Abstract map representation -->
 						<div class="relative z-10 flex flex-wrap justify-center gap-4 p-6">
-							<div class="bg-kidazzle-red w-4 h-4 rounded-full animate-bounce" style="animation-delay: 0s;">
+							<div class="bg-kidazzle-red w-4 h-4 rounded-full animate-bounce"
+								style="animation-delay: 0s;">
 							</div>
 							<div class="bg-kidazzle-yellow w-4 h-4 rounded-full animate-bounce"
 								style="animation-delay: 0.2s;"></div>
@@ -248,16 +261,19 @@ $locations_query = new WP_Query(array(
 								style="animation-delay: 0.5s;"></div>
 						</div>
 						<p class="absolute bottom-4 text-xs font-bold tracking-widest uppercase text-white/90">
-							<?php printf( esc_html__('%s+ Locations in Metro Atlanta', 'kidazzle-theme'), $locations_query->found_posts ); ?>
+							<?php printf(esc_html__('%s+ Locations in Metro Atlanta', 'kidazzle-theme'), $locations_query->found_posts); ?>
 						</p>
 					</div>
 				</div>
 
 				<!-- CTA Content -->
 				<div class="w-full lg:w-1/2 relative z-10">
-					<h2 class="font-serif text-3xl md:text-5xl font-bold mb-6"><?php _e('Not sure which campus is right for you?', 'kidazzle-theme'); ?>
+					<h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">
+						<?php _e('Not sure which campus is right for you?', 'kidazzle-theme'); ?>
 					</h2>
-					<p class="text-white/90 text-lg mb-8"><?php _e('Our enrollment specialists can help you find the nearest location with openings for your child\'s age group.', 'kidazzle-theme'); ?></p>
+					<p class="text-white/90 text-lg mb-8">
+						<?php _e('Our enrollment specialists can help you find the nearest location with openings for your child\'s age group.', 'kidazzle-theme'); ?>
+					</p>
 					<div class="flex flex-wrap gap-4">
 						<a href="<?php echo esc_url(home_url('/contact')); ?>"
 							class="px-8 py-4 bg-kidazzle-yellow text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-white transition-colors">
@@ -363,7 +379,7 @@ $locations_query = new WP_Query(array(
 		});
 
 
-	if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+		if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
 	});
 </script>
 
@@ -395,7 +411,8 @@ $locations_query = new WP_Query(array(
 		<!-- Iframe Container -->
 		<div class="flex-grow relative bg-white">
 			<div id="kidazzle-tour-loader" class="absolute inset-0 flex items-center justify-center bg-white z-10">
-				<div class="w-12 h-12 border-4 border-kidazzle-blue/20 border-t-kidazzle-blue rounded-full animate-spin">
+				<div
+					class="w-12 h-12 border-4 border-kidazzle-blue/20 border-t-kidazzle-blue rounded-full animate-spin">
 				</div>
 			</div>
 			<iframe id="kidazzle-tour-frame" src="" class="w-full h-full border-0"

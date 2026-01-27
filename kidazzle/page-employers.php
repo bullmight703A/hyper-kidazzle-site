@@ -13,7 +13,7 @@ $page_id = get_the_ID();
 // Hero Section
 $hero_badge = get_post_meta($page_id, 'employers_hero_badge', true) ?: 'Workforce Solutions';
 $hero_title = get_post_meta($page_id, 'employers_hero_title', true) ?: 'Childcare is critical infrastructure.';
-$hero_description = get_post_meta($page_id, 'employers_hero_description', true) ?: 'Retain top talent and reduce absenteeism by offering premium childcare benefits. Kidazzle partners with Metro Atlanta\'s leading employers to support working parents.';
+$hero_description = get_post_meta($page_id, 'employers_hero_description', true) ?: 'Retain top talent and reduce absenteeism by offering premium childcare benefits. KIDazzle partners with Metro Atlanta\'s leading employers to support working parents.';
 
 // Solutions Section (3 cards)
 $solutions = array(
@@ -115,7 +115,8 @@ $contact_title = get_post_meta($page_id, 'employers_contact_title', true) ?: 'Bu
 					<!-- Federal Credit -->
 					<div
 						class="bg-white p-10 rounded-[2.5rem] shadow-soft border border-brand-ink/5 relative overflow-hidden group">
-						<div class="absolute top-0 right-0 w-32 h-32 bg-kidazzle-blue/5 rounded-full -mr-10 -mt-10"></div>
+						<div class="absolute top-0 right-0 w-32 h-32 bg-kidazzle-blue/5 rounded-full -mr-10 -mt-10">
+						</div>
 						<div class="relative z-10">
 							<div
 								class="w-12 h-12 bg-kidazzle-blue text-white rounded-xl flex items-center justify-center text-xl mb-6 shadow-md">
