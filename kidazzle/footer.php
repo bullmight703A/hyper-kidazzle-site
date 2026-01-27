@@ -33,12 +33,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 	<div class="container mx-auto px-4 md:px-6 pt-8">
 		<div class="grid md:grid-cols-4 gap-12 mb-12">
 			<div>
-				<div class="flex items-center gap-2 mb-6">
-					<span class="text-2xl font-bold text-white">KID<span
-							class="text-kidazzle-yellow">azzle</span></span>
-				</div>
-				<p class="text-sm leading-relaxed mb-6 text-white/60">Providing elite, independent child care and early
-					education.</p>
+
 				<?php if ($has_social): ?>
 					<div class="flex gap-4 mt-4">
 						<?php if ($footer_facebook): ?>
