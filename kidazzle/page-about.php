@@ -80,7 +80,7 @@ while (have_posts()):
 	// Nutrition Section
 	$nutrition_title = get_post_meta($page_id, 'about_nutrition_title', true) ?: 'Fueling growing minds.';
 	$nutrition_description = get_post_meta($page_id, 'about_nutrition_description', true) ?: 'We believe nutrition is a key part of education. Our in-house chefs prepare balanced, nut-free meals daily using fresh ingredients.';
-	$nutrition_image = get_post_meta($page_id, 'about_nutrition_image', true) ?: 'https://images.unsplash.com/photo-1606914506133-2230d94922b5?q=80&w=800&auto=format&fit=crop';
+	$nutrition_image = get_post_meta($page_id, 'about_nutrition_image', true) ?: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=800&auto=format&fit=crop';
 
 	$nutrition_bullet1_icon = get_post_meta($page_id, 'about_nutrition_bullet1_icon', true) ?: '🍎';
 	$nutrition_bullet1_text = get_post_meta($page_id, 'about_nutrition_bullet1_text', true) ?: 'CACFP Certified Menus';
