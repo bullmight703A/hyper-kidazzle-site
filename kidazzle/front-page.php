@@ -13,7 +13,7 @@ get_header(); ?>
     <?php
     // Load home sections in sequence
     get_template_part('template-parts/home/hero');
-    get_template_part('template-parts/home/marquee');
+    get_template_part('template-parts/home/southeast-powerhouse');
     get_template_part('template-parts/home/programs-preview');
     get_template_part('template-parts/home/stats-strip');
     get_template_part('template-parts/home/kidazzle-difference');
@@ -21,7 +21,6 @@ get_header(); ?>
     get_template_part('template-parts/home/growth-journey');
     get_template_part('template-parts/home/legacy-origin');
     get_template_part('template-parts/home/tour-cta');
-    get_template_part('template-parts/home/southeast-powerhouse');
 
     ?>
 

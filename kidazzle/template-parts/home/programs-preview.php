@@ -44,21 +44,26 @@ $program_slug = kidazzle_get_program_base_slug();
                     <div class="p-8">
                         <?php
                         $title_lower = strtolower($program['title']);
-                        $emoji = '✨'; // Default
+                        // Unsplash Image IDs for placeholders
+                        $img_src = 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80'; // Default (kids playing)
+                    
                         if (strpos($title_lower, 'infant') !== false)
-                            $emoji = '🍼';
+                            $img_src = 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80'; // Infant
                         elseif (strpos($title_lower, 'toddler') !== false)
-                            $emoji = '🧸';
+                            $img_src = 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80'; // Toddler
                         elseif (strpos($title_lower, 'preschool') !== false)
-                            $emoji = '🎨';
+                            $img_src = 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80'; // Preschool
                         elseif (strpos($title_lower, 'pre-k') !== false)
-                            $emoji = '✏️';
+                            $img_src = 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80'; // Pre-K
                         elseif (strpos($title_lower, 'vpk') !== false)
-                            $emoji = '📚';
+                            $img_src = 'https://images.unsplash.com/photo-1560785496-0887143d2c11?auto=format&fit=crop&w=800&q=80'; // VPK
                         elseif (strpos($title_lower, 'school') !== false)
-                            $emoji = '🚌';
+                            $img_src = 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80'; // School Age
                         ?>
-                        <div class="text-4xl mb-4"><?php echo $emoji; ?></div>
+                        <div class="h-48 mb-6 rounded-xl overflow-hidden relative">
+                            <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($program['title']); ?>"
+                                class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                        </div>
 
                         <h3 class="text-2xl font-bold text-brand-ink mb-2">
                             <?php echo esc_html($program['title']); ?>

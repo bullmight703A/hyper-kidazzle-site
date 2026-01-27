@@ -19,7 +19,7 @@ $form_embed_url = get_theme_mod('kidazzle_form_embed_url', 'https://api.leadconn
 <!-- CTA & Embed -->
 <section class="py-16 bg-white">
     <div
-        class="max-w-6xl mx-auto px-6 bg-ombre-purple rounded-[3rem] p-12 text-center text-white shadow-2xl relative overflow-hidden">
+        class="max-w-6xl mx-auto px-6 bg-gradient-to-br from-[#4c1d95] via-[#7c3aed] to-[#c026d3] rounded-[3rem] p-12 text-center text-white shadow-2xl relative overflow-hidden">
         <div class="relative z-10">
             <h3 class="text-3xl font-extrabold mb-4"><?php echo esc_html($cta_headline); ?></h3>
             <p class="text-purple-100 text-lg mb-8"><?php echo esc_html($cta_subheadline); ?></p>
