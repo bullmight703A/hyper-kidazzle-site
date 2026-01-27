@@ -240,29 +240,38 @@ $locations_query = new WP_Query(array(
 			<div
 				class="bg-kidazzle-blueDark rounded-[3rem] p-10 lg:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row gap-12 items-center">
 
-				<!-- Map Placeholder -->
+				<!-- Locations Gallery Preview -->
 				<div class="w-full lg:w-1/2 relative z-10">
-					<div
-						class="bg-white/10 rounded-[2rem] p-2 aspect-video border border-white/20 flex items-center justify-center relative overflow-hidden">
-						<!-- Abstract map representation -->
-						<div class="relative z-10 flex flex-wrap justify-center gap-4 p-6">
-							<div class="bg-kidazzle-red w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0s;">
-							</div>
-							<div class="bg-kidazzle-yellow w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.2s;"></div>
-							<div class="bg-kidazzle-green w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.4s;"></div>
-							<div class="bg-kidazzle-blue w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.1s;"></div>
-							<div class="bg-kidazzle-red w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.3s;"></div>
-							<div class="bg-kidazzle-green w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.5s;"></div>
+					<div class="bg-white/10 rounded-[2rem] p-4 border border-white/20 relative overflow-hidden backdrop-blur-sm">
+						<div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+							<?php 
+							// Rewind loop or re-query for visual preview
+							$gallery_query = new WP_Query(array(
+								'post_type' => 'location',
+								'posts_per_page' => 6,
+								'orderby' => 'rand', // Randomize for variety
+							));
+
+							if ($gallery_query->have_posts()):
+								while ($gallery_query->have_posts()): $gallery_query->the_post();
+									$thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: 'https://images.unsplash.com/photo-1571210862729-78a52d3779a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';
+							?>
+							<a href="<?php the_permalink(); ?>" class="group relative aspect-square rounded-xl overflow-hidden block border border-white/10 hover:border-white/50 transition-all transform hover:scale-105" title="<?php the_title_attribute(); ?>">
+								<img src="<?php echo esc_url($thumb); ?>" alt="<?php the_title_attribute(); ?>" class="w-full h-full object-cover">
+								<div class="absolute inset-0 bg-brand-ink/20 group-hover:bg-transparent transition-colors"></div>
+							</a>
+							<?php 
+								endwhile; 
+								wp_reset_postdata();
+							endif; 
+							?>
 						</div>
-						<p class="absolute bottom-4 text-xs font-bold tracking-widest uppercase text-white/90">
-							<?php printf(esc_html__('%s+ Locations in Metro Atlanta', 'kidazzle-theme'), $locations_query->found_posts); ?>
+						
+						<?php if ($locations_query->found_posts > 6): ?>
+						<p class="mt-4 text-center text-[10px] font-bold tracking-widest uppercase text-white/80">
+							+ <?php echo ($locations_query->found_posts - 6); ?> <?php _e('More Locations', 'kidazzle-theme'); ?>
 						</p>
+						<?php endif; ?>
 					</div>
 				</div>
 
