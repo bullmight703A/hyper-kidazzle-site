@@ -32,8 +32,8 @@ get_header();
                         <!-- Corporate -->
                         <div class="flex gap-6 group">
                             <div
-                                class="w-14 h-14 bg-brand-cream text-brand-ink rounded-2xl flex items-center justify-center text-xl shrink-0 group-hover:bg-brand-ink group-hover:text-white transition-all">
-                                <i class="fa-solid fa-building"></i>
+                                class="w-14 h-14 bg-brand-cream text-brand-ink rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:bg-brand-ink transition-all">
+                                🏢
                             </div>
                             <div>
                                 <h3 class="font-bold text-lg text-brand-ink mb-2">Corporate Office</h3>
@@ -45,8 +45,8 @@ get_header();
                         <!-- Phone -->
                         <div class="flex gap-6 group">
                             <div
-                                class="w-14 h-14 bg-kidazzle-green/10 text-kidazzle-green rounded-2xl flex items-center justify-center text-xl shrink-0 group-hover:bg-kidazzle-green group-hover:text-white transition-all">
-                                <i class="fa-solid fa-phone"></i>
+                                class="w-14 h-14 bg-kidazzle-green/10 text-kidazzle-green rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:bg-kidazzle-green transition-all">
+                                📞
                             </div>
                             <div>
                                 <h3 class="font-bold text-lg text-brand-ink mb-2">Phone</h3>
@@ -62,8 +62,8 @@ get_header();
                         <!-- Email -->
                         <div class="flex gap-6 group">
                             <div
-                                class="w-14 h-14 bg-kidazzle-red/10 text-kidazzle-red rounded-2xl flex items-center justify-center text-xl shrink-0 group-hover:bg-kidazzle-red group-hover:text-white transition-all">
-                                <i class="fa-solid fa-envelope"></i>
+                                class="w-14 h-14 bg-kidazzle-red/10 text-kidazzle-red rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:bg-kidazzle-red transition-all">
+                                📧
                             </div>
                             <div>
                                 <h3 class="font-bold text-lg text-brand-ink mb-2">Email</h3>
