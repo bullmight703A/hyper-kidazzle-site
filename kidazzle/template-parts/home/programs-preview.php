@@ -42,6 +42,23 @@ $program_slug = kidazzle_get_program_base_slug();
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                     data-program="<?php echo esc_attr(sanitize_title($program['title'])); ?>">
                     <div class="p-8">
+                        <?php
+                        $title_lower = strtolower($program['title']);
+                        $emoji = '✨'; // Default
+                        if (strpos($title_lower, 'infant') !== false)
+                            $emoji = '🍼';
+                        elseif (strpos($title_lower, 'toddler') !== false)
+                            $emoji = '🧸';
+                        elseif (strpos($title_lower, 'preschool') !== false)
+                            $emoji = '🎨';
+                        elseif (strpos($title_lower, 'pre-k') !== false)
+                            $emoji = '✏️';
+                        elseif (strpos($title_lower, 'vpk') !== false)
+                            $emoji = '📚';
+                        elseif (strpos($title_lower, 'school') !== false)
+                            $emoji = '🚌';
+                        ?>
+                        <div class="text-4xl mb-4"><?php echo $emoji; ?></div>
 
                         <h3 class="text-2xl font-bold text-brand-ink mb-2">
                             <?php echo esc_html($program['title']); ?>
