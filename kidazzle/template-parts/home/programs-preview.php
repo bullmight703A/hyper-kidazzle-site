@@ -42,9 +42,7 @@ $program_slug = kidazzle_get_program_base_slug();
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                     data-program="<?php echo esc_attr(sanitize_title($program['title'])); ?>">
                     <div class="p-8">
-                        <div class="text-kidazzle-teal text-4xl mb-4">
-                            <i class="<?php echo esc_attr($icon); ?>"></i>
-                        </div>
+
                         <h3 class="text-2xl font-bold text-brand-ink mb-2">
                             <?php echo esc_html($program['title']); ?>
                         </h3>
@@ -78,5 +76,3 @@ $program_slug = kidazzle_get_program_base_slug();
 
     </div>
 </section>
-
-

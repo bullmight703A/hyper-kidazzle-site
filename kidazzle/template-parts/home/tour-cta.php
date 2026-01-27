@@ -26,8 +26,7 @@ $form_embed_url = get_theme_mod('kidazzle_form_embed_url', 'https://api.leadconn
 
             <!-- EMBEDDED FORM -->
             <?php if ($form_embed_url): ?>
-                <div
-                    class="bg-white/10 border-2 border-dashed border-white/30 rounded-2xl p-4 mb-8 max-w-4xl mx-auto h-[900px] overflow-hidden">
+                <div class="bg-white/10 rounded-2xl p-4 mb-8 max-w-4xl mx-auto h-[900px] overflow-hidden">
                     <iframe src="<?php echo esc_url($form_embed_url); ?>"
                         style="width:100%;height:100%;border:none;border-radius:20px" id="kidazzle-contact-form"
                         title="<?php esc_attr_e('KIDazzle Contact Form', 'kidazzle'); ?>" loading="lazy">
