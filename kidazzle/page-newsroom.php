@@ -10,156 +10,100 @@
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
-  exit;
+	exit;
 }
+
+get_header();
 
 // Query posts with "Show in Newsroom" checked
 $newsroom_args = array(
-  'post_type' => 'post',
-  'posts_per_page' => -1, // Show all newsroom posts
-  'post_status' => 'publish',
-  'orderby' => 'date',
-  'order' => 'DESC',
-  'meta_query' => array(
-    array(
-      'key' => '_kidazzle_show_in_newsroom',
-      'value' => '1',
-      'compare' => '='
-    )
-  )
+	'post_type' => 'post',
+	'posts_per_page' => -1, // Show all newsroom posts
+	'post_status' => 'publish',
+	'orderby' => 'date',
+	'order' => 'DESC',
+	'meta_query' => array(
+		array(
+			'key' => '_kidazzle_show_in_newsroom',
+			'value' => '1',
+			'compare' => '='
+		)
+	)
 );
 
 $newsroom_query = new WP_Query($newsroom_args);
 ?>
-<!DOCTYPE html>
-<html <?php language_attributes(); ?> class="scroll-smooth">
 
-<head>
-  <meta charset="<?php bloginfo('charset'); ?>" />
-  <title><?php echo esc_html('Newsroom | ' . get_bloginfo('name')); ?></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<main id="view-newsroom" class="view-section active block min-h-screen bg-white">
+	<section class="py-24 bg-brand-cream border-b border-brand-ink/5 relative overflow-hidden">
+		<div class="absolute inset-0 bg-kidazzle-blue/5 -z-10"></div>
+		<div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+			<span class="text-kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Press & Media</span>
+			<h1 class="font-serif text-4xl md:text-6xl text-brand-ink mb-6">Newsroom</h1>
+			<p class="text-brand-ink/70 text-lg md:text-xl max-w-2xl mx-auto">The latest updates, press releases, and announcements from <?php bloginfo('name'); ?>.</p>
+		</div>
+	</section>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Outfit'], serif: ['Playfair Display'] },
-          colors: {
-            brand: { ink: '#263238', cream: '#FFFCF8' },
-            Kidazzle: { blue: '#4A6C7C', yellow: '#E6BE75' }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      font-family: 'Outfit', sans-serif;
-    }
-  </style>
-  <?php wp_head(); ?>
-</head>
+	<section class="py-20 max-w-5xl mx-auto px-4 lg:px-6">
+		<?php if ($newsroom_query->have_posts()): ?>
+			<div class="space-y-16">
+				<?php
+				$post_count = 0;
+				while ($newsroom_query->have_posts()):
+					$newsroom_query->the_post();
+					if ($post_count > 0): ?>
+						<div class="h-px bg-brand-ink/5 w-full"></div>
+					<?php endif; ?>
 
-<body class="bg-white text-brand-ink antialiased">
+					<div class="group relative md:grid md:grid-cols-4 gap-12 items-start">
+						<div class="mb-4 md:mb-0">
+							<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-kidazzle-blue">
+								<?php echo esc_html(get_the_date('M j, Y')); ?>
+							</p>
+						</div>
+						<div class="md:col-span-3">
+							<h2 class="font-serif text-2xl md:text-3xl font-bold text-brand-ink mb-4 group-hover:text-kidazzle-blue transition-colors">
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+							</h2>
+							<p class="text-brand-ink/70 mb-6 leading-relaxed text-lg">
+								<?php echo esc_html(wp_trim_words(get_the_excerpt(), 40)); ?>
+							</p>
+							<a href="<?php the_permalink(); ?>"
+								class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-ink border-b-2 border-kidazzle-yellow pb-1 hover:text-kidazzle-blue hover:border-kidazzle-blue transition-all">
+								Read Release <i class="fa-solid fa-arrow-right text-[10px]"></i>
+							</a>
+						</div>
+					</div>
 
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-kidazzle-blue/10">
-    <div class="max-w-7xl mx-auto px-4 lg:px-6 h-[82px] flex items-center justify-between">
-      <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?>"
-          srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo.png'); ?> 1x,
-                     <?php echo esc_url(get_template_directory_uri() . '/assets/images/kidazzle-logo-highres.png'); ?> 2x" alt="Kidazzle Early Learning" class="h-10 w-auto" />
-        <span class="text-xs uppercase tracking-widest text-brand-ink/70">Newsroom</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/80">
-        <?php
-        $stories_page = get_page_by_path('stories');
-        if ($stories_page):
-          ?>
-          <a href="<?php echo esc_url(get_permalink($stories_page->ID)); ?>" class="hover:text-kidazzle-blue">Stories
-            (Blog)</a>
-        <?php endif; ?>
-        <?php
-        $contact_page = get_page_by_path('contact');
-        if ($contact_page):
-          ?>
-          <a href="<?php echo esc_url(get_permalink($contact_page->ID)); ?>" class="hover:text-kidazzle-blue">Media
-            Contact</a>
-        <?php endif; ?>
-      </nav>
-    </div>
-  </header>
+					<?php
+					$post_count++;
+				endwhile;
+				wp_reset_postdata();
+				?>
+			</div>
 
-  <main>
-    <section class="py-20 bg-brand-cream border-b border-brand-ink/5">
-      <div class="max-w-5xl mx-auto px-4">
-        <h1 class="font-serif text-4xl md:text-5xl text-brand-ink mb-4">Press & Announcements</h1>
-        <p class="text-brand-ink/80 text-lg">Latest updates from <?php bloginfo('name'); ?>.</p>
-      </div>
-    </section>
+		<?php else: ?>
+			<div class="text-center py-24 bg-brand-cream rounded-[3rem] border border-brand-ink/5">
+				<p class="text-brand-ink/60 text-lg">No newsroom posts found. Check back soon!</p>
+			</div>
+		<?php endif; ?>
+	</section>
 
-    <section class="py-16 max-w-5xl mx-auto px-4">
-      <?php if ($newsroom_query->have_posts()): ?>
-        <div class="space-y-12">
-          <?php
-          $post_count = 0;
-          while ($newsroom_query->have_posts()):
-            $newsroom_query->the_post();
-            if ($post_count > 0): ?>
-              <div class="h-px bg-brand-ink/10 w-full"></div>
-            <?php endif; ?>
+	<section class="py-24 bg-brand-ink text-white relative overflow-hidden">
+		<div class="absolute -right-20 -top-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+		<div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+			<h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">Media Inquiries</h2>
+			<p class="text-white/60 mb-10 text-lg max-w-2xl mx-auto">For interview requests, high-resolution brand assets, or filming permissions at any of our campuses.</p>
+			<?php
+			$contact_page = get_page_by_path('contact');
+			$contact_url = $contact_page ? get_permalink($contact_page->ID) : home_url('/contact/');
+			?>
+			<a href="<?php echo esc_url($contact_url); ?>"
+				class="inline-block px-10 py-5 bg-white text-brand-ink font-bold rounded-full text-xs uppercase tracking-widest hover:bg-kidazzle-yellow hover:scale-105 transition-all shadow-xl">
+				Contact Media Team
+			</a>
+		</div>
+	</section>
+</main>
 
-            <div class="group">
-              <p class="text-xs font-bold uppercase tracking-widest text-brand-ink/60 mb-2">
-                <?php echo esc_html(get_the_date('F j, Y')); ?>
-              </p>
-              <h2 class="font-serif text-2xl font-bold text-brand-ink mb-3 group-hover:text-kidazzle-blue transition-colors">
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-              </h2>
-              <p class="text-brand-ink/80 mb-4 max-w-3xl">
-                <?php echo esc_html(wp_trim_words(get_the_excerpt(), 30)); ?>
-              </p>
-              <a href="<?php the_permalink(); ?>"
-                class="text-sm font-bold border-b-2 border-kidazzle-yellow pb-0.5 hover:text-kidazzle-blue hover:border-kidazzle-blue transition-colors">
-                Read Release
-              </a>
-            </div>
-
-            <?php
-            $post_count++;
-          endwhile;
-          wp_reset_postdata();
-          ?>
-        </div>
-
-      <?php else: ?>
-        <div class="text-center py-16">
-          <p class="text-brand-ink/80 text-lg">No newsroom posts found. Check back soon!</p>
-        </div>
-      <?php endif; ?>
-    </section>
-
-    <section class="py-16 bg-brand-ink text-white text-center">
-      <div class="max-w-2xl mx-auto px-4">
-        <h2 class="font-serif text-2xl font-bold mb-4">Media Inquiries</h2>
-        <p class="text-white/60 mb-8">For interviews, high-res assets, or filming requests.</p>
-        <?php
-        $contact_page = get_page_by_path('contact');
-        $contact_url = $contact_page ? get_permalink($contact_page->ID) : home_url('/contact/');
-        ?>
-        <a href="<?php echo esc_url($contact_url); ?>"
-          class="inline-block px-8 py-3 bg-white text-brand-ink font-bold rounded-full text-xs uppercase tracking-widest hover:bg-kidazzle-yellow transition-colors">
-          Contact Media Team
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="bg-brand-ink text-white py-8 text-center text-xs opacity-50 border-t border-white/10">
-    &copy; <?php echo esc_html(date('Y')); ?> <?php bloginfo('name'); ?>.
-  </footer>
-
-  <?php wp_footer(); ?>
-</body>
-
-</html>
+<?php get_footer(); ?>

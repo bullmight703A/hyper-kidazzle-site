@@ -187,7 +187,7 @@ function kidazzle_seed_default_team_members()
     $defaults = array(
         array(
             'post_title' => __('Jordan Avery', 'kidazzle-theme'),
-            'post_content' => __('Jordan leads the Prismpath team with a passion for creating joyful, evidence-based learning experiences for every child.', 'kidazzle-theme'),
+            'post_content' => __('Jordan leads the KIDazzle Creative Curriculum team with a passion for creating joyful, evidence-based learning experiences for every child.', 'kidazzle-theme'),
             'role' => __('Executive Director', 'kidazzle-theme'),
         ),
         array(

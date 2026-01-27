@@ -12,7 +12,7 @@ get_header();
 <main id="primary" class="site-main">
 
     <!-- Page Header -->
-    <section class="bg-gradient-to-r from-brand-navy to-brand-ink py-16">
+    <section class="bg-gradient-to-r from-kidazzle-blueDark to-brand-ink py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
                 <?php the_title(); ?>

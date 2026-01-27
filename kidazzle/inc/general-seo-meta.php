@@ -63,6 +63,57 @@ function kidazzle_render_general_seo_meta_box($post)
             <?php _e('Comma-separated list. Leave empty to use auto-generated keywords.', 'kidazzle-theme'); ?>
         </p>
     </div>
+    </div>
+
+    <!-- AI Auto-Fill -->
+    <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+        <button type="button" id="kidazzle-seo-autofill" class="button">
+            <span class="dashicons dashicons-superhero"
+                style="font-size: 16px; width: 16px; height: 16px; vertical-align: middle; margin-right: 3px;"></span>
+            <?php _e('Auto-Fill with AI', 'kidazzle-theme'); ?>
+        </button>
+        <span class="spinner" id="kidazzle-seo-spinner" style="float: none; margin: 0 5px;"></span>
+        <p class="description" style="margin-top: 5px;">
+            <?php _e('Generates a description and keywords based on page content.', 'kidazzle-theme'); ?>
+        </p>
+    </div>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#kidazzle-seo-autofill').on('click', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var post_id = $('#post_ID').val();
+
+                if (!confirm('<?php _e('This will overwrite existing SEO fields with AI-generated content. Continue?', 'kidazzle-theme'); ?>')) {
+                    return;
+                }
+
+                btn.prop('disabled', true);
+                $('#kidazzle-seo-spinner').addClass('is-active');
+
+                $.post(ajaxurl, {
+                    action: 'kidazzle_generate_general_seo_meta',
+                    nonce: '<?php echo wp_create_nonce('kidazzle_seo_dashboard_nonce'); ?>', // Reusing dashboard nonce for simplicity
+                    post_id: post_id
+                }, function (response) {
+                    btn.prop('disabled', false);
+                    $('#kidazzle-seo-spinner').removeClass('is-active');
+
+                    if (response.success) {
+                        $('#meta_description').val(response.data.description).css('background-color', '#f0f6fc').animate({ backgroundColor: '#fff' }, 2000);
+                        $('#meta_keywords').val(response.data.keywords).css('background-color', '#f0f6fc').animate({ backgroundColor: '#fff' }, 2000);
+                    } else {
+                        alert('Error: ' + (response.data.message || 'Unknown error'));
+                    }
+                }).fail(function () {
+                    btn.prop('disabled', false);
+                    $('#kidazzle-seo-spinner').removeClass('is-active');
+                    alert('Network error.');
+                });
+            });
+        });
+    </script>
     <?php
 }
 

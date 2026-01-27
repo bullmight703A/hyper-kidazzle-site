@@ -95,52 +95,52 @@ array(
 )
 );
 
-// Prismpath copy + cards JSON.
+// KIDazzle Creative Curriculum copy + cards JSON.
 $wp_customize->add_section(
-'kidazzle_home_prismpath_section',
+'kidazzle_home_curriculum_section',
 array(
-'title' => __( 'Prismpath', 'kidazzle-theme' ),
+'title' => __( 'KIDazzle Creative Curriculum', 'kidazzle-theme' ),
 'panel' => 'kidazzle_home_panel',
 )
 );
 
-$prismpath = kidazzle_home_default_prismpath();
+$curriculum = kidazzle_home_default_curriculum();
 
-$wp_customize->add_setting( 'kidazzle_home_prismpath_eyebrow', array( 'default' => $prismpath['feature']['eyebrow'], 'sanitize_callback' => 'sanitize_text_field' ) );
-$wp_customize->add_control( 'kidazzle_home_prismpath_eyebrow', array( 'label' => __( 'Eyebrow', 'kidazzle-theme' ), 'section' => 'kidazzle_home_prismpath_section', 'type' => 'text' ) );
+$wp_customize->add_setting( 'kidazzle_home_curriculum_eyebrow', array( 'default' => $curriculum['feature']['eyebrow'], 'sanitize_callback' => 'sanitize_text_field' ) );
+$wp_customize->add_control( 'kidazzle_home_curriculum_eyebrow', array( 'label' => __( 'Eyebrow', 'kidazzle-theme' ), 'section' => 'kidazzle_home_curriculum_section', 'type' => 'text' ) );
 
-$wp_customize->add_setting( 'kidazzle_home_prismpath_heading', array( 'default' => $prismpath['feature']['heading'], 'sanitize_callback' => 'sanitize_text_field' ) );
-$wp_customize->add_control( 'kidazzle_home_prismpath_heading', array( 'label' => __( 'Heading', 'kidazzle-theme' ), 'section' => 'kidazzle_home_prismpath_section', 'type' => 'text' ) );
+$wp_customize->add_setting( 'kidazzle_home_curriculum_heading', array( 'default' => $curriculum['feature']['heading'], 'sanitize_callback' => 'sanitize_text_field' ) );
+$wp_customize->add_control( 'kidazzle_home_curriculum_heading', array( 'label' => __( 'Heading', 'kidazzle-theme' ), 'section' => 'kidazzle_home_curriculum_section', 'type' => 'text' ) );
 
-$wp_customize->add_setting( 'kidazzle_home_prismpath_cta_label', array( 'default' => $prismpath['feature']['cta_label'], 'sanitize_callback' => 'sanitize_text_field' ) );
-$wp_customize->add_control( 'kidazzle_home_prismpath_cta_label', array( 'label' => __( 'CTA label', 'kidazzle-theme' ), 'section' => 'kidazzle_home_prismpath_section', 'type' => 'text' ) );
+$wp_customize->add_setting( 'kidazzle_home_curriculum_cta_label', array( 'default' => $curriculum['feature']['cta_label'], 'sanitize_callback' => 'sanitize_text_field' ) );
+$wp_customize->add_control( 'kidazzle_home_curriculum_cta_label', array( 'label' => __( 'CTA label', 'kidazzle-theme' ), 'section' => 'kidazzle_home_curriculum_section', 'type' => 'text' ) );
 
-$wp_customize->add_setting( 'kidazzle_home_prismpath_cta_url', array( 'default' => $prismpath['feature']['cta_url'], 'sanitize_callback' => 'esc_url_raw' ) );
-$wp_customize->add_control( 'kidazzle_home_prismpath_cta_url', array( 'label' => __( 'CTA URL', 'kidazzle-theme' ), 'section' => 'kidazzle_home_prismpath_section', 'type' => 'url' ) );
+$wp_customize->add_setting( 'kidazzle_home_curriculum_cta_url', array( 'default' => $curriculum['feature']['cta_url'], 'sanitize_callback' => 'esc_url_raw' ) );
+$wp_customize->add_control( 'kidazzle_home_curriculum_cta_url', array( 'label' => __( 'CTA URL', 'kidazzle-theme' ), 'section' => 'kidazzle_home_curriculum_section', 'type' => 'url' ) );
 
 $wp_customize->add_setting(
-'kidazzle_home_prismpath_cards_json',
+'kidazzle_home_curriculum_cards_json',
 array(
-'default'           => wp_json_encode( $prismpath['cards'], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ),
+'default'           => wp_json_encode( $curriculum['cards'], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ),
 'sanitize_callback' => 'kidazzle_home_sanitize_json_setting',
 )
 );
 
 $wp_customize->add_control(
-'kidazzle_home_prismpath_cards_json',
+'kidazzle_home_curriculum_cards_json',
 array(
 'label'       => __( 'Cards JSON (badge, heading, text, button, url, icons)', 'kidazzle-theme' ),
 'description' => __( 'Icon fields: "icon" for simple cards, or "icon_bg"/"icon_badge"/"icon_check" for complex cards. Use Font Awesome 6 classes: fa-solid fa-heart, fa-brands fa-connectdevelop', 'kidazzle-theme' ),
-'section'     => 'kidazzle_home_prismpath_section',
+'section'     => 'kidazzle_home_curriculum_section',
 'type'        => 'textarea',
 )
 );
 
-$wp_customize->add_setting( 'kidazzle_home_prismpath_readiness_heading', array( 'default' => $prismpath['readiness']['heading'], 'sanitize_callback' => 'sanitize_text_field' ) );
-$wp_customize->add_control( 'kidazzle_home_prismpath_readiness_heading', array( 'label' => __( 'Readiness heading', 'kidazzle-theme' ), 'section' => 'kidazzle_home_prismpath_section', 'type' => 'text' ) );
+$wp_customize->add_setting( 'kidazzle_home_curriculum_readiness_heading', array( 'default' => $curriculum['readiness']['heading'], 'sanitize_callback' => 'sanitize_text_field' ) );
+$wp_customize->add_control( 'kidazzle_home_curriculum_readiness_heading', array( 'label' => __( 'Readiness heading', 'kidazzle-theme' ), 'section' => 'kidazzle_home_curriculum_section', 'type' => 'text' ) );
 
-$wp_customize->add_setting( 'kidazzle_home_prismpath_readiness_desc', array( 'default' => $prismpath['readiness']['description'], 'sanitize_callback' => 'sanitize_textarea_field' ) );
-$wp_customize->add_control( 'kidazzle_home_prismpath_readiness_desc', array( 'label' => __( 'Readiness description', 'kidazzle-theme' ), 'section' => 'kidazzle_home_prismpath_section', 'type' => 'textarea' ) );
+$wp_customize->add_setting( 'kidazzle_home_curriculum_readiness_desc', array( 'default' => $curriculum['readiness']['description'], 'sanitize_callback' => 'sanitize_textarea_field' ) );
+$wp_customize->add_control( 'kidazzle_home_curriculum_readiness_desc', array( 'label' => __( 'Readiness description', 'kidazzle-theme' ), 'section' => 'kidazzle_home_curriculum_section', 'type' => 'textarea' ) );
 
 // Program wizard JSON.
 $wp_customize->add_section(

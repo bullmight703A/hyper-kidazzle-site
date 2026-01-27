@@ -22,14 +22,15 @@ function kidazzle_get_home_page_id()
 function kidazzle_home_default_hero()
 {
         return array(
-                'heading' => 'The art of <span class="italic text-kidazzle-red">growing up.</span>',
-                'subheading' => 'Where accredited excellence meets the warmth of home. A modern sanctuary powered by our proprietary Prismpath™ learning model for children 6 weeks to 12 years.',
-                'cta_label' => 'Schedule a Tour',
-                'cta_url' => '#tour',
-                'secondary_label' => 'View Programs',
-                'secondary_url' => kidazzle_get_program_archive_url(),
+                'heading' => 'Where Learning <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-cyan-700">is Fun!</span>',
+                'subheading' => 'From Memphis to Miami to Atlanta, we are an independent, premier learning academy nurturing diverse bright minds for over three decades.',
+                'cta_label' => 'Find Your Center',
+                'cta_url' => '/locations/',
+                'secondary_label' => 'Our Legacy',
+                'secondary_url' => '/about/',
         );
 }
+
 
 function kidazzle_home_default_stats()
 {
@@ -41,7 +42,7 @@ function kidazzle_home_default_stats()
         );
 }
 
-function kidazzle_home_default_prismpath()
+function kidazzle_home_default_curriculum()
 {
         return array(
                 'feature' => array(
@@ -54,8 +55,8 @@ function kidazzle_home_default_prismpath()
                 'cards' => array(
                         array(
                                 'badge' => 'Proprietary Model',
-                                'heading' => 'The Prismpath™ Curriculum',
-                                'text' => 'Just as a prism refracts light into a full spectrum of color, Prismpath™ refracts play into a full spectrum of development.',
+                                'heading' => 'The KIDazzle Creative Curriculum™ Curriculum',
+                                'text' => 'Just as a prism refracts light into a full spectrum of color, KIDazzle Creative Curriculum™ refracts play into a full spectrum of development.',
                                 'icon_bg' => 'fa-solid fa-shapes',
                                 'icon_badge' => 'fa-brands fa-connectdevelop',
                                 'icon_check' => 'fa-solid fa-check-circle',
@@ -128,42 +129,83 @@ function kidazzle_home_hero()
  */
 function kidazzle_home_stats()
 {
-        $stats = kidazzle_home_get_theme_mod_json('kidazzle_home_stats_json', kidazzle_home_default_stats());
-        $cleaned = array();
+	$stats = kidazzle_home_get_theme_mod_json('kidazzle_home_stats_json', kidazzle_home_default_stats());
+	$cleaned = array();
 
-        // Define color cycle for stats (red, yellow, blue, green)
-        $colors = array('kidazzle-red', 'kidazzle-yellow', 'kidazzle-blue', 'kidazzle-green');
-        $index = 0;
+	// Define color cycle for stats (red, yellow, blue, green)
+	$colors = array('kidazzle-red', 'kidazzle-yellow', 'kidazzle-blue', 'kidazzle-green');
+	$index = 0;
 
-        foreach ($stats as $stat) {
-                $cleaned[] = array(
-                        'value' => sanitize_text_field($stat['value'] ?? ''),
-                        'label' => sanitize_text_field($stat['label'] ?? ''),
-                        'color' => $colors[$index % count($colors)],
-                );
-                $index++;
-        }
+	foreach ($stats as $stat) {
+		$cleaned[] = array(
+			'value' => sanitize_text_field($stat['value'] ?? ''),
+			'label' => sanitize_text_field($stat['label'] ?? ''),
+			'color' => $colors[$index % count($colors)],
+		);
+		$index++;
+	}
 
-        return $cleaned;
+	return $cleaned;
 }
 
 /**
- * Prismpath expertise panels
+ * Featured Programs Preview
  */
-function kidazzle_home_prismpath_panels()
+function kidazzle_home_programs_preview()
 {
-        $defaults = kidazzle_home_default_prismpath();
+	// Query all published programs
+	$programs_query = new WP_Query(array(
+		'post_type' => 'program',
+		'posts_per_page' => 3,
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+		'post_status' => 'publish',
+	));
+
+	$featured = array();
+
+	if ($programs_query->have_posts()) {
+		while ($programs_query->have_posts()) {
+			$programs_query->the_post();
+			$post_id = get_the_ID();
+
+			$featured[] = array(
+				'title' => get_the_title(),
+				'excerpt' => get_the_excerpt(),
+				'icon' => get_post_meta($post_id, 'program_icon', true) ?: 'fas fa-child',
+				'age_range' => get_post_meta($post_id, 'program_age_range', true),
+				'url' => get_permalink(),
+			);
+		}
+		wp_reset_postdata();
+	}
+
+	return array(
+		'heading' => get_theme_mod('kidazzle_home_programs_heading', 'Our Programs'),
+		'subheading' => get_theme_mod('kidazzle_home_programs_subheading', 'Nurturing diverse bright minds through expert care and proprietary curriculum.'),
+		'cta_label' => get_theme_mod('kidazzle_home_programs_cta_label', 'View All Programs'),
+		'cta_link' => get_theme_mod('kidazzle_home_programs_cta_link', get_post_type_archive_link('program')),
+		'featured' => $featured,
+	);
+}
+
+/**
+ * KIDazzle Creative Curriculum expertise panels
+ */
+function kidazzle_home_curriculum_panels()
+{
+        $defaults = kidazzle_home_default_curriculum();
 
         $feature = $defaults['feature'];
         $feature = array(
-                'eyebrow' => sanitize_text_field(get_theme_mod('kidazzle_home_prismpath_eyebrow', $feature['eyebrow'])),
-                'heading' => sanitize_text_field(get_theme_mod('kidazzle_home_prismpath_heading', $feature['heading'])),
-                'subheading' => sanitize_text_field(get_theme_mod('kidazzle_home_prismpath_subheading', $feature['subheading'])),
-                'cta_label' => sanitize_text_field(get_theme_mod('kidazzle_home_prismpath_cta_label', $feature['cta_label'])),
-                'cta_url' => esc_url_raw(get_theme_mod('kidazzle_home_prismpath_cta_url', $feature['cta_url'])),
+                'eyebrow' => sanitize_text_field(get_theme_mod('kidazzle_home_curriculum_eyebrow', $feature['eyebrow'])),
+                'heading' => sanitize_text_field(get_theme_mod('kidazzle_home_curriculum_heading', $feature['heading'])),
+                'subheading' => sanitize_text_field(get_theme_mod('kidazzle_home_curriculum_subheading', $feature['subheading'])),
+                'cta_label' => sanitize_text_field(get_theme_mod('kidazzle_home_curriculum_cta_label', $feature['cta_label'])),
+                'cta_url' => esc_url_raw(get_theme_mod('kidazzle_home_curriculum_cta_url', $feature['cta_url'])),
         );
 
-        $cards = kidazzle_home_get_theme_mod_json('kidazzle_home_prismpath_cards_json', $defaults['cards']);
+        $cards = kidazzle_home_get_theme_mod_json('kidazzle_home_curriculum_cards_json', $defaults['cards']);
         $cards = array_map(
                 function ($card, $index) use ($defaults) {
                         // Get default card for this index
@@ -190,8 +232,8 @@ function kidazzle_home_prismpath_panels()
 
         $readiness = $defaults['readiness'];
         $readiness = array(
-                'heading' => sanitize_text_field(get_theme_mod('kidazzle_home_prismpath_readiness_heading', $readiness['heading'])),
-                'description' => sanitize_textarea_field(get_theme_mod('kidazzle_home_prismpath_readiness_desc', $readiness['description'])),
+                'heading' => sanitize_text_field(get_theme_mod('kidazzle_home_curriculum_readiness_heading', $readiness['heading'])),
+                'description' => sanitize_textarea_field(get_theme_mod('kidazzle_home_curriculum_readiness_desc', $readiness['description'])),
         );
 
         return array(
@@ -397,7 +439,7 @@ function kidazzle_home_default_schedule_tracks()
                                 ),
                                 array(
                                         'time' => '10:30',
-                                        'title' => 'Prismpath Play',
+                                        'title' => 'KIDazzle Creative Curriculum Play',
                                         'copy' => 'Block building, art stations, and guided motor skills.',
                                 ),
                                 array(
@@ -944,9 +986,9 @@ function kidazzle_home_featured_stories()
 {
         return array(
                 array(
-                        'title' => 'Inside the Prismpath™ Classroom',
+                        'title' => 'Inside the KIDazzle Creative Curriculum™ Classroom',
                         'excerpt' => 'Take a peek at how our educators weave play and academics together each day.',
-                        'url' => '/stories/prismpath-classroom',
+                        'url' => '/stories/KIDazzle Creative Curriculum-classroom',
                 ),
                 array(
                         'title' => 'Family-Style Dining at Kidazzle',
@@ -971,7 +1013,7 @@ function kidazzle_home_default_parent_reviews()
                         'name' => 'Sarah M.',
                         'location' => 'Marietta Campus',
                         'rating' => '5',
-                        'review' => 'Our daughter has flourished at Kidazzle. The teachers genuinely care, and the Prismpath curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
+                        'review' => 'Our daughter has flourished at Kidazzle. The teachers genuinely care, and The KIDazzle Creative Curriculum has her excited to learn every day. We couldn\'t ask for a better early learning experience.',
                 ),
                 array(
                         'name' => 'James & Lisa T.',
@@ -1004,13 +1046,32 @@ function kidazzle_home_parent_reviews()
                 $reviews
         );
 }
+/**
+ * Curriculum Data
+ */
+function kidazzle_home_curriculum()
+{
+	return array(
+		'heading' => get_theme_mod('kidazzle_home_curriculum_heading', 'The KIDazzle Creative Curriculum'),
+		'subheading' => get_theme_mod('kidazzle_home_curriculum_subheading', 'Nurturing diverse bright minds through expert care and proprietary curriculum.'),
+		'description' => get_theme_mod('kidazzle_home_curriculum_description', ''),
+		'card_1_heading' => get_theme_mod('kidazzle_home_curriculum_card_1_heading', 'Philosophy'),
+		'card_1_text' => get_theme_mod('kidazzle_home_curriculum_card_1_text', 'We believe every child is unique and deserves a tailored approach to learning.'),
+		'card_2_heading' => get_theme_mod('kidazzle_home_curriculum_card_2_heading', 'Approach'),
+		'card_2_text' => get_theme_mod('kidazzle_home_curriculum_card_2_text', 'Our play-based methodology encourages exploration and critical thinking.'),
+		'card_3_heading' => get_theme_mod('kidazzle_home_curriculum_card_3_heading', 'Outcomes'),
+		'card_3_text' => get_theme_mod('kidazzle_home_curriculum_card_3_text', 'Graduates leave ready for kindergarten with confidence and social skills.'),
+		'cta_label' => get_theme_mod('kidazzle_home_curriculum_cta_label', 'Learn About KIDazzle Creative Curriculum'),
+		'cta_link' => get_theme_mod('kidazzle_home_curriculum_cta_link', home_url('/curriculum/')),
+	);
+}
 
 /**
  * Checkers for optional sections
  */
-function kidazzle_home_has_prismpath_panels()
+function kidazzle_home_has_curriculum_panels()
 {
-        return true;
+	return true;
 }
 
 function kidazzle_home_has_program_wizard()

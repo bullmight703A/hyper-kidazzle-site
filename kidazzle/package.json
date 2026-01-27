@@ -4,8 +4,8 @@
   "description": "Custom WordPress theme for Kidazzle Child Care with Creative Curriculum integration",
   "private": true,
   "scripts": {
-    "dev:css": "postcss assets/css/input.css -o assets/css/main.css --watch",
-    "build:css": "postcss assets/css/input.css -o assets/css/main.css",
+    "dev:css": "npx postcss assets/css/input.css -o assets/css/main.css --watch",
+    "build:css": "npx postcss assets/css/input.css -o assets/css/main.css",
     "dev": "npm run dev:css",
     "build": "npm run build:css"
   },

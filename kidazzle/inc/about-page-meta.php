@@ -2,7 +2,7 @@
 /**
  * About Page Meta Boxes
  *
- * @package kidazzle_Excellence
+ * @package kidazzle-theme
  * @since 1.0.0
  */
 
@@ -935,7 +935,7 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 		'about_educator2_desc'             => 'Every team member undergoes rigorous federal and state background checks. All staff are certified in CPR and First Aid, with regular refresher courses.',
 		'about_educator3_icon'             => 'fa-solid fa-chalkboard-user',
 		'about_educator3_title'            => 'Continuous Growth',
-		'about_educator3_desc'             => 'Our educators participate in 20+ hours of annual professional development, specializing in the Prismpath™ curriculum and social-emotional learning.',
+		'about_educator3_desc'             => 'Our educators participate in 20+ hours of annual professional development, specializing in the KIDazzle Creative Curriculum™ curriculum and social-emotional learning.',
 		'about_values_title'               => 'The Kidazzle Standard',
 		'about_values_description'         => 'Our culture is built on four non-negotiable pillars that guide every decision we make, from hiring teachers to designing playgrounds.',
 		'about_value1_icon'                => 'fa-solid fa-heart',
@@ -946,7 +946,7 @@ function kidazzle_seed_about_page_defaults( $post_id ) {
 		'about_value2_desc'                => 'Physical safety is our baseline; emotional safety is our goal. Kids learn best when they feel secure.',
 		'about_value3_icon'                => 'fa-solid fa-lightbulb',
 		'about_value3_title'               => 'Academic Excellence',
-		'about_value3_desc'                => 'Using our Prismpath™ model, we deliver rigorous, age-appropriate learning that feels like play.',
+		'about_value3_desc'                => 'Using our KIDazzle Creative Curriculum™ model, we deliver rigorous, age-appropriate learning that feels like play.',
 		'about_value4_icon'                => 'fa-solid fa-users',
 		'about_value4_title'               => 'Open Partnership',
 		'about_value4_desc'                => 'Parents are partners. We maintain open doors, transparent communication, and daily updates.',

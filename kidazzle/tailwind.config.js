@@ -31,29 +31,58 @@ module.exports = {
           cyanLight: '#ECFEFF',
           blue: '#3B82F6',
           blueLight: '#EFF6FF',
+          blueDark: '#2F4858',
           purple: '#A855F7',
           purpleLight: '#F3E8FF',
+          teal: '#06B6D4',
+          tealLight: '#ECFEFF',
           slate: '#475569',
         },
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 30s linear infinite',
       },
     },
   },
   safelist: [
-    // Pulse animation classes for status indicators
-    'animate-pulse',
-    'w-2',
-    'h-2',
-    'rounded-full',
-    // Dynamic Kidazzle Colors (bg, text, border, gradients)
+    // Animations & Delays
+    'animate-pulse', 'animate-bounce', 'animate-spin', 'animate-fade-in-up',
+    'fade-in-up', 'delay-100', 'delay-200', 'delay-300',
+
+    // Custom shadows
+    'shadow-card', 'shadow-cardHover', 'shadow-float', 'shadow-glow', 'shadow-soft',
+
+    // Static utilities
+    'w-2', 'h-2', 'rounded-full',
+
+    // Kidazzle base colors (no opacity) - ALL prefixes
     {
-      pattern: /(bg|text|border|from)-kidazzle-(red|orange|yellow|green|cyan|blue|purple|slate)(Light)?/,
-      variants: ['hover', 'group-hover'],
+      pattern: /(bg|text|border|from|to)-kidazzle-(red|orange|yellow|green|cyan|blue|blueDark|purple|slate|teal)(Light)?$/,
+      variants: ['hover', 'group-hover', 'focus'],
     },
-    // Opacity variants for backgrounds and borders
+    // Kidazzle opacity variants - limit to actually used values
     {
-      pattern: /(bg|border|from)-kidazzle-(red|orange|yellow|green|cyan|blue|purple|slate)(Light)?\/(5|10|15|30|50)/,
+      pattern: /(bg|text|border|from|to)-kidazzle-(red|orange|yellow|green|cyan|blue|blueDark|purple|slate|teal)(Light)?\/(5|10|15|20|30|40|50|80|90)$/,
+      variants: ['hover'],
+    },
+
+    // Brand base colors
+    {
+      pattern: /(bg|text|border)-brand-(ink|cream)$/,
+      variants: ['hover'],
+    },
+    // Brand opacity variants
+    {
+      pattern: /(bg|text|border)-brand-(ink|cream)\/(5|10|20|30|40|50|60|70|80|90)$/,
       variants: ['hover'],
     },
   ],
   plugins: [],
 };
+

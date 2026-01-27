@@ -2,7 +2,7 @@
  * Main JavaScript
  * Data-attribute based modular approach
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Theme
  */
 
 document.addEventListener('DOMContentLoaded', function () {

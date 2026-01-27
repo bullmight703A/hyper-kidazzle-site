@@ -1,14 +1,14 @@
 /**
  * Admin JavaScript for Media Uploader
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Theme
  */
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     'use strict';
 
     // Media uploader for location images
-    $('.kidazzle-upload-button').on('click', function(e) {
+    $('.kidazzle-upload-button').on('click', function (e) {
         e.preventDefault();
 
         const button = $(this);
@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
         });
 
         // When image is selected
-        mediaUploader.on('select', function() {
+        mediaUploader.on('select', function () {
             const attachment = mediaUploader.state().get('selection').first().toJSON();
             inputField.val(attachment.url);
 
@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
     });
 
     // Clear image button
-    $('.kidazzle-clear-button').on('click', function(e) {
+    $('.kidazzle-clear-button').on('click', function (e) {
         e.preventDefault();
 
         const button = $(this);
@@ -54,7 +54,7 @@ jQuery(document).ready(function($) {
     });
 
     // Show preview for existing images
-    $('.kidazzle-image-field').each(function() {
+    $('.kidazzle-image-field').each(function () {
         const inputField = $(this);
         const imageUrl = inputField.val();
         const previewContainer = inputField.siblings('.kidazzle-image-preview');

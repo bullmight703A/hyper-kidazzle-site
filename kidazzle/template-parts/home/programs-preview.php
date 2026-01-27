@@ -3,7 +3,7 @@
  * Template Part: Programs Preview
  * Featured programs grid with CTAs
  *
- * @package kidazzle_Excellence
+ * @package kidazzle
  */
 
 $programs = kidazzle_home_programs_preview();
@@ -70,7 +70,7 @@ $program_slug = kidazzle_get_program_base_slug();
         <?php if (!empty($programs['cta_link'])): ?>
             <div class="text-center">
                 <a href="<?php echo esc_url($programs['cta_link']); ?>"
-                    class="inline-block bg-brand-navy text-brand-cream px-8 py-4 rounded-lg font-bold text-lg hover:bg-brand-navy/90 transition-colors">
+                    class="inline-block bg-brand-ink text-brand-cream px-8 py-4 rounded-lg font-bold text-lg hover:bg-brand-ink/90 transition-colors">
                     <?php echo esc_html($programs['cta_label'] ?: 'View All Programs'); ?>
                 </a>
             </div>
@@ -78,3 +78,5 @@ $program_slug = kidazzle_get_program_base_slug();
 
     </div>
 </section>
+
+

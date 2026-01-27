@@ -187,276 +187,232 @@ $gallery_img4 = get_post_meta($page_id, 'about_gallery_image_4', true) ?: 'https
 $gallery_img5 = get_post_meta($page_id, 'about_gallery_image_5', true) ?: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop';
 ?>
 
-<main id="primary" class="site-main" role="main">
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php
+$page_id = get_the_ID();
 
-		<!-- Hero -->
-		<section class="py-20 bg-white text-center border-b border-brand-ink/5">
-			<div class="max-w-4xl mx-auto px-4">
-				<span class="text-kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
-					<?php echo esc_html($hero_badge); ?>
-				</span>
-				<h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">
-					<?php echo esc_html($hero_title); ?>
-				</h1>
-				<p class="text-lg text-brand-ink/80">
-					<?php echo esc_html($hero_description); ?>
-				</p>
-			</div>
-		</section>
+// Hero Section
+$hero_badge = get_post_meta($page_id, 'parents_hero_badge', true) ?: 'Parent Dashboard';
+$hero_title = get_post_meta($page_id, 'parents_hero_title', true) ?: 'Partners in your child\'s journey.';
+$hero_description = get_post_meta($page_id, 'parents_hero_description', true) ?: 'Everything you need to manage your enrollment, stay connected, and engage with the Kidazzle community.';
 
-		<!-- Resources Grid (Quick Links) -->
-		<section id="resources" class="py-24 bg-brand-cream">
-			<div class="max-w-7xl mx-auto px-4 lg:px-6">
-				<div class="text-center mb-16">
-					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink">
-						<?php echo esc_html($essentials_title); ?>
-					</h2>
-				</div>
+// Resources
+$resources = array(
+	array(
+		'icon' => 'fa-solid fa-cloud',
+		'title' => 'Procare Cloud',
+		'desc' => 'Daily reports, photos, and attendance tracking.',
+		'url' => get_post_meta($page_id, 'parents_resource_procare_url', true) ?: '#',
+		'color' => 'kidazzle-blue',
+	),
+	array(
+		'icon' => 'fa-solid fa-credit-card',
+		'title' => 'Tuition Portal',
+		'desc' => 'Securely view statements and make payments.',
+		'url' => get_post_meta($page_id, 'parents_resource_tuition_url', true) ?: '#',
+		'color' => 'kidazzle-green',
+	),
+	array(
+		'icon' => 'fa-solid fa-book-open',
+		'title' => 'Parent Handbook',
+		'desc' => 'Policies, procedures, and operational details.',
+		'url' => get_post_meta($page_id, 'parents_resource_handbook_url', true) ?: '#',
+		'color' => 'kidazzle-yellow',
+	),
+	array(
+		'icon' => 'fa-solid fa-file-signature',
+		'title' => 'Enrollment Agreement',
+		'desc' => 'Update your annual enrollment documents.',
+		'url' => get_post_meta($page_id, 'parents_resource_enrollment_url', true) ?: '#',
+		'color' => 'kidazzle-red',
+	),
+	array(
+		'icon' => 'fa-solid fa-graduation-cap',
+		'title' => 'GA Pre-K Enrollment',
+		'desc' => 'Lottery registration and required state forms.',
+		'url' => get_post_meta($page_id, 'parents_resource_prekga_url', true) ?: '#',
+		'color' => 'kidazzle-purple',
+	),
+	array(
+		'icon' => 'fa-solid fa-clock',
+		'title' => 'Join Waitlist',
+		'desc' => 'Reserve a spot for siblings or future terms.',
+		'url' => get_post_meta($page_id, 'parents_resource_waitlist_url', true) ?: '#',
+		'color' => 'brand-ink',
+	),
+);
 
-				<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-					<?php foreach ($resources as $resource): ?>
-						<a href="<?php echo esc_url($resource['url']); ?>" target="_blank"
-							class="bg-white p-8 rounded-[2rem] shadow-card hover:-translate-y-1 transition-transform group border border-brand-ink/5 flex flex-col items-center text-center">
-							<div
-								class="w-16 h-16 bg-<?php echo esc_attr($resource['colorClass']); ?>/10 rounded-2xl flex items-center justify-center text-3xl mb-4 text-<?php echo esc_attr($resource['colorClass']); ?> group-hover:bg-<?php echo esc_attr($resource['colorClass']); ?> group-hover:text-white transition-colors">
-								<i class="<?php echo esc_attr($resource['icon']); ?>"></i>
-							</div>
-							<h3 class="font-bold text-lg text-brand-ink mb-2">
-								<?php echo esc_html($resource['title']); ?>
-							</h3>
-							<p class="text-xs text-brand-ink/80">
-								<?php echo esc_html($resource['description']); ?>
-							</p>
-						</a>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</section>
+// Safety Highlights
+$safety_highlights = array(
+    array('icon' => 'fa-solid fa-video', 'title' => 'Monitored Cameras', 'color' => 'kidazzle-green'),
+    array('icon' => 'fa-solid fa-mobile-screen', 'title' => 'Real-Time Updates', 'color' => 'kidazzle-blue'),
+    array('icon' => 'fa-solid fa-lock', 'title' => 'Secure Access', 'color' => 'kidazzle-red'),
+);
 
-		<!-- Events Section -->
-		<section id="events" class="py-24 bg-white relative overflow-hidden">
-			<div
-				class="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-kidazzle-yellowLight/50 via-transparent to-transparent">
-			</div>
-			<div class="max-w-6xl mx-auto px-4 lg:px-6 relative z-10">
-				<div class="grid md:grid-cols-2 gap-16 items-center">
-					<div>
-						<span class="text-kidazzle-yellow font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
-							<?php echo esc_html($events_badge); ?>
-						</span>
-						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
-							<?php echo esc_html($events_title); ?>
-						</h2>
-						<p class="text-brand-ink/80 mb-8 text-lg">
-							<?php echo esc_html($events_description); ?>
-						</p>
+// Gallery Items
+$gallery_imgs = array(
+    get_post_meta($page_id, 'about_gallery_image_1', true) ?: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop',
+    get_post_meta($page_id, 'about_gallery_image_2', true) ?: 'https://images.unsplash.com/photo-1587654780291-39c940483713?q=80&w=800&auto=format&fit=crop',
+    get_post_meta($page_id, 'about_gallery_image_3', true) ?: 'https://images.unsplash.com/photo-1560785496-3c9d27877182?q=80&w=800&auto=format&fit=crop',
+    get_post_meta($page_id, 'about_gallery_image_4', true) ?: 'https://images.unsplash.com/photo-1596464716127-f9a82741cac8?q=80&w=800&auto=format&fit=crop',
+    get_post_meta($page_id, 'about_gallery_image_5', true) ?: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop',
+);
+?>
 
-						<div class="space-y-8">
-							<?php foreach ($events as $event): ?>
-								<div>
-									<h3 class="font-bold text-xl text-brand-ink mb-2 flex items-center gap-2">
-										<i
-											class="<?php echo esc_attr($event['icon']); ?> text-<?php echo esc_attr($event['color']); ?>"></i>
-										<?php echo esc_html($event['title']); ?>
-									</h3>
-									<p class="text-sm text-brand-ink/80 leading-relaxed">
-										<?php echo esc_html($event['desc']); ?>
-									</p>
-								</div>
-							<?php endforeach; ?>
-						</div>
-					</div>
-					<div
-						class="relative h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-brand-cream rotate-2">
-						<img src="<?php echo esc_url($events_image); ?>" class="w-full h-full object-cover"
-							alt="<?php echo esc_attr($events_title); ?>" />
-					</div>
-				</div>
-			</div>
-		</section>
+<main id="view-parents" class="view-section active block">
+    <!-- Hero Section (Premium High-Contrast) -->
+    <section class="relative py-32 md:py-48 text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+             <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=3840&auto=format&fit=crop" alt="Parents and children" class="w-full h-full object-cover">
+             <div class="absolute inset-0 bg-brand-ink/70 backdrop-blur-[1px]"></div>
+             <!-- Refractive Prism Overlay -->
+             <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-kidazzle-blue/20 to-transparent skew-x-12 transform translate-x-20"></div>
+        </div>
 
-		<!-- Life at Kidazzle Gallery -->
-		<section class="py-24 bg-white">
-			<div class="max-w-7xl mx-auto px-4 lg:px-6">
-				<div class="text-center mb-16">
-					<span class="text-kidazzle-orange font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Life at
-						Kidazzle</span>
-					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink">Moments of Joy</h2>
-				</div>
+        <div class="relative z-10 max-w-5xl mx-auto px-4">
+            <span class="text-kidazzle-yellow font-bold tracking-[0.3em] text-[10px] uppercase mb-4 block italic">
+                <?php echo esc_html($hero_badge); ?>
+            </span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 drop-shadow-xl">
+                <?php echo esc_html($hero_title); ?>
+            </h1>
+            <p class="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+                <?php echo esc_html($hero_description); ?>
+            </p>
+        </div>
+        
+        <!-- Bottom Wave -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] transform rotate-180">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[60px] fill-brand-cream" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+    </section>
 
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-					<!-- Gallery Item 1 (Large) -->
-					<div class="col-span-2 row-span-2 rounded-[2rem] overflow-hidden relative group shadow-soft">
-						<img src="<?php echo esc_url($gallery_img1); ?>" alt="Kidazzle Moment"
-							class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-						<div
-							class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-						</div>
-					</div>
-					<!-- Gallery Item 2 -->
-					<div class="rounded-[2rem] overflow-hidden relative group shadow-soft">
-						<img src="<?php echo esc_url($gallery_img2); ?>" alt="Kidazzle Moment"
-							class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-					</div>
-					<!-- Gallery Item 3 -->
-					<div class="rounded-[2rem] overflow-hidden relative group shadow-soft">
-						<img src="<?php echo esc_url($gallery_img3); ?>" alt="Kidazzle Moment"
-							class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-					</div>
-					<!-- Gallery Item 4 -->
-					<div class="rounded-[2rem] overflow-hidden relative group shadow-soft">
-						<img src="<?php echo esc_url($gallery_img4); ?>" alt="Kidazzle Moment"
-							class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-					</div>
-					<!-- Gallery Item 5 -->
-					<div class="rounded-[2rem] overflow-hidden relative group shadow-soft">
-						<img src="<?php echo esc_url($gallery_img5); ?>" alt="Kidazzle Moment"
-							class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- Parent Essentials (Premium Cards) -->
+    <section class="py-24 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <div class="text-center mb-16">
+                <span class="text-kidazzle-blue font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block italic">Self-Service Portals</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink"><?php echo esc_html($essentials_title); ?></h2>
+                <div class="w-16 h-1.5 bg-kidazzle-blue mx-auto mt-6 rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php foreach ($resources as $res): ?>
+                    <a href="<?php echo esc_url($res['url']); ?>" class="group relative bg-white p-10 rounded-[3rem] shadow-soft border border-brand-ink/5 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center">
+                        <!-- Brand Accent Bar -->
+                        <div class="absolute top-0 left-0 w-full h-1.5 bg-<?php echo esc_attr($res['color']); ?>/10">
+                            <div class="h-full bg-<?php echo esc_attr($res['color']); ?> w-0 group-hover:w-full transition-all duration-700"></div>
+                        </div>
 
-		<!-- Nutrition & Menus -->
-		<section id="nutrition" class="py-20 bg-brand-cream border-t border-brand-ink/5">
-			<div class="max-w-7xl mx-auto px-4 lg:px-6">
-				<div class="text-center mb-12">
-					<span class="text-kidazzle-green font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
-						<?php echo esc_html($nutrition_badge); ?>
-					</span>
-					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">
-						<?php echo esc_html($nutrition_title); ?>
-					</h2>
-					<p class="text-brand-ink/80 max-w-2xl mx-auto">
-						<?php echo esc_html($nutrition_description); ?>
-					</p>
-				</div>
+                        <div class="w-20 h-20 bg-white shadow-lg text-<?php echo esc_attr($res['color']); ?> rounded-3xl flex items-center justify-center text-3xl mb-8 border border-<?php echo esc_attr($res['color']); ?>/10 group-hover:bg-<?php echo esc_attr($res['color']); ?> group-hover:text-white transition-all duration-300">
+                            <i class="<?php echo esc_attr($res['icon']); ?>"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-2xl text-brand-ink mb-3"><?php echo esc_html($res['title']); ?></h3>
+                        <p class="text-brand-ink/60 text-sm leading-relaxed mb-8 flex-grow"><?php echo esc_html($res['desc']); ?></p>
+                        
+                        <div class="w-10 h-10 rounded-full border border-brand-ink/10 flex items-center justify-center text-<?php echo esc_attr($res['color']); ?> group-hover:bg-brand-ink group-hover:text-white group-hover:border-brand-ink transition-all duration-300">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 
-				<div class="grid md:grid-cols-2 gap-8 items-center">
-					<!-- Menu Downloads -->
-					<div class="bg-white p-8 rounded-[2rem] shadow-soft border border-brand-ink/5">
-						<h3 class="font-bold text-xl text-brand-ink mb-6 flex items-center gap-3">
-							<i class="fa-solid fa-utensils text-kidazzle-orange"></i> Monthly Menus
-						</h3>
-						<div class="space-y-4">
-							<?php foreach ($menus as $menu): ?>
-								<a href="<?php echo esc_url($menu['url']); ?>"
-									class="flex items-center justify-between p-4 rounded-xl bg-brand-cream hover:bg-<?php echo esc_attr($menu['bgClass']); ?> transition-colors group">
-									<div class="flex items-center gap-4">
-										<div
-											class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-<?php echo esc_attr($menu['color']); ?> shadow-sm">
-											<i class="<?php echo esc_attr($menu['icon']); ?>"></i>
-										</div>
-										<div>
-											<p class="font-bold text-brand-ink"><?php echo esc_html($menu['title']); ?>
-											</p>
-											<p class="text-xs text-brand-ink/70">
-												<?php echo esc_html($menu['subtitle']); ?>
-											</p>
-										</div>
-									</div>
-									<i
-										class="fa-solid fa-download text-brand-ink/20 group-hover:text-<?php echo esc_attr($menu['color']); ?>"></i>
-								</a>
-							<?php endforeach; ?>
-						</div>
-					</div>
+    <!-- Traditions & Safety Split -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <div class="absolute -left-10 -top-10 w-40 h-40 bg-kidazzle-yellow/10 rounded-full blur-3xl"></div>
+                    <span class="text-kidazzle-yellow font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Community</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">Traditions & Celebrations</h2>
+                    <p class="text-brand-ink/80 mb-8 leading-relaxed">We believe in building a village. Our calendar is peppered with events designed to bring families together and celebrate our students\' milestones.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4 p-6 bg-brand-cream rounded-[2rem] border border-brand-ink/5">
+                            <i class="fa-solid fa-cake-candles text-kidazzle-red text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-brand-ink">Quarterly Family Events</h4>
+                                <p class="text-sm text-brand-ink/70 mt-1">From Fall Festivals to Spring Art Shows, we create memories for the whole family.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-6 bg-brand-cream rounded-[2rem] border border-brand-ink/5">
+                            <i class="fa-solid fa-award text-kidazzle-green text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-brand-ink">Milestone Ceremonies</h4>
+                                <p class="text-sm text-brand-ink/70 mt-1">Celebrating transitions from Infant to Toddler, and our grand Pre-K Graduation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-kidazzle-blue/5 rounded-[3rem] rotate-2 transition-transform group-hover:rotate-0"></div>
+                    <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Parent Experience" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-					<!-- Image -->
-					<div class="relative h-[400px] rounded-[2rem] overflow-hidden shadow-card">
-						<img src="<?php echo esc_url($nutrition_image); ?>" class="w-full h-full object-cover"
-							alt="<?php echo esc_attr($nutrition_title); ?>" />
-						<div
-							class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-xl text-xs font-bold text-brand-ink shadow-sm">
-							<i class="fa-solid fa-check-circle text-kidazzle-green mr-1"></i> Fresh Fruit Daily
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- Nutrition Banner (High Contrast) -->
+    <section class="py-16 bg-brand-ink text-white relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-kidazzle-green/5 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-4 lg:px-6 flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+            <div class="flex items-center gap-8">
+                <div class="w-20 h-20 bg-kidazzle-green/20 text-kidazzle-green rounded-3xl flex items-center justify-center text-4xl shadow-inner border border-white/5">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div>
+                    <span class="text-kidazzle-green font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Nutrition</span>
+                    <h3 class="text-3xl font-serif font-bold"><?php echo esc_html($nutrition_title); ?></h3>
+                    <p class="text-white/60 text-lg"><?php echo esc_html($nutrition_description); ?></p>
+                </div>
+            </div>
+            <a href="#" class="px-10 py-5 bg-white text-brand-ink font-bold rounded-full uppercase tracking-widest text-xs hover:bg-kidazzle-green hover:text-white hover:-translate-y-1 transition-all shadow-xl">Download This Month's Menu</a>
+        </div>
+    </section>
 
-		<!-- Safety & Communication -->
-		<section id="safety" class="py-24 bg-kidazzle-blueDark text-white">
-			<div class="max-w-7xl mx-auto px-4 lg:px-6">
-				<div class="text-center mb-16">
-					<h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">
-						<?php echo esc_html($safety_title); ?>
-					</h2>
-					<p class="text-white/60 max-w-2xl mx-auto">
-						<?php echo esc_html($safety_description); ?>
-					</p>
-				</div>
+    <!-- Gallery Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+             <div class="text-center mb-16">
+                <span class="text-kidazzle-orange font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Life at KIDazzle</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink">Moments of Joy</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-[250px]">
+                <div class="col-span-2 row-span-2 rounded-[2.5rem] overflow-hidden shadow-soft">
+                    <img src="<?php echo esc_url($gallery_imgs[0]); ?>" class="w-full h-full object-cover" alt="Gallery" />
+                </div>
+                <div class="rounded-[2.5rem] overflow-hidden shadow-soft">
+                    <img src="<?php echo esc_url($gallery_imgs[1]); ?>" class="w-full h-full object-cover" alt="Gallery" />
+                </div>
+                <div class="rounded-[2.5rem] overflow-hidden shadow-soft">
+                    <img src="<?php echo esc_url($gallery_imgs[2]); ?>" class="w-full h-full object-cover" alt="Gallery" />
+                </div>
+                <div class="col-span-2 rounded-[2.5rem] overflow-hidden shadow-soft">
+                    <img src="<?php echo esc_url($gallery_imgs[3]); ?>" class="w-full h-full object-cover" alt="Gallery" />
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<div class="grid md:grid-cols-3 gap-8">
-					<?php foreach ($safety_items as $item): ?>
-						<div class="bg-white/5 p-8 rounded-3xl border border-white/10">
-							<div class="text-4xl mb-4 text-<?php echo esc_attr($item['color']); ?>">
-								<i class="<?php echo esc_attr($item['icon']); ?>"></i>
-							</div>
-							<h3 class="font-bold text-xl mb-3">
-								<?php echo esc_html($item['title']); ?>
-							</h3>
-							<p class="text-sm text-white/60 leading-relaxed">
-								<?php echo esc_html($item['desc']); ?>
-							</p>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</section>
-
-		<!-- Operational FAQ -->
-		<section class="py-20 bg-white">
-			<div class="max-w-4xl mx-auto px-4 lg:px-6">
-				<div class="text-center mb-12">
-					<h2 class="text-3xl font-serif font-bold text-brand-ink">
-						<?php echo esc_html($faq_title); ?>
-					</h2>
-					<p class="text-brand-ink/80 mt-2">
-						<?php echo esc_html($faq_description); ?>
-					</p>
-				</div>
-
-				<div class="space-y-4">
-					<?php foreach ($faqs as $faq): ?>
-						<details class="group bg-brand-cream rounded-2xl p-5 border border-brand-ink/5 cursor-pointer">
-							<summary class="flex items-center justify-between font-bold text-brand-ink list-none">
-								<span><?php echo esc_html($faq['question']); ?></span>
-								<span class="text-kidazzle-blue group-open:rotate-180 transition-transform">
-									<i class="fa-solid fa-chevron-down"></i>
-								</span>
-							</summary>
-							<p class="mt-3 text-sm text-brand-ink/80 leading-relaxed">
-								<?php echo esc_html($faq['answer']); ?>
-							</p>
-						</details>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</section>
-
-		<!-- Referral Banner -->
-		<section class="py-16 bg-brand-cream px-4">
-			<div
-				class="max-w-5xl mx-auto bg-gradient-to-r from-kidazzle-red to-kidazzle-yellow rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-lg text-white flex flex-col md:flex-row items-center justify-between gap-8">
-				<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
-				<div class="relative z-10">
-					<h2 class="text-3xl md:text-4xl font-serif font-bold mb-2">
-						<?php echo esc_html($referral_title); ?>
-					</h2>
-					<p class="text-white/90 text-lg">
-						<?php echo wp_kses_post($referral_description); ?>
-					</p>
-				</div>
-				<a href="<?php echo esc_url($referral_button_url); ?>"
-					class="relative z-10 bg-white text-brand-ink font-bold uppercase tracking-widest text-xs px-8 py-4 rounded-full hover:bg-brand-ink hover:text-white transition-colors shadow-md">
-					<?php echo esc_html($referral_button_text); ?>
-				</a>
-			</div>
-		</section>
-
-	</article>
+    <!-- Referral Banner -->
+    <section class="py-24 bg-brand-cream border-t border-brand-ink/5">
+        <div class="max-w-5xl mx-auto px-4 lg:px-6">
+            <div class="bg-gradient-to-br from-kidazzle-red to-kidazzle-orange rounded-[3rem] p-12 text-white relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center gap-10">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="flex-grow relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Love the KIDazzle family?</h2>
+                    <p class="text-white/80 text-lg">Refer a friend and receive a <strong>$100 tuition credit</strong> once they enroll. Help us grow our community!</p>
+                </div>
+                <div class="shrink-0 relative z-10">
+                    <a href="mailto:director@kidazzlechildcare.com?subject=Parent%20Referral" class="px-10 py-5 bg-white text-brand-ink font-bold rounded-full uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-lg inline-block">Refer a Friend</a>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 <?php

@@ -20,17 +20,17 @@ while (have_posts()):
 	$hero_title = get_post_meta($program_id, 'program_hero_title', true) ?: get_the_title();
 	$hero_description = get_post_meta($program_id, 'program_hero_description', true) ?: get_the_excerpt();
 
-	// Prismpath section
-	$prism_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our Prismpath™ Focus';
-	$prism_description = get_post_meta($program_id, 'program_prism_description', true);
-	$prism_focus_items = get_post_meta($program_id, 'program_prism_focus_items', true);
+	// KIDazzle Creative Curriculum section
+	$curriculum_focus_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our KIDazzle Creative Curriculum™ Focus';
+	$curriculum_focus_description = get_post_meta($program_id, 'program_prism_description', true);
+	$curriculum_focus_items = get_post_meta($program_id, 'program_prism_focus_items', true);
 
 	// Chart data
-	$prism_physical = get_post_meta($program_id, 'program_prism_physical', true) ?: '50';
-	$prism_emotional = get_post_meta($program_id, 'program_prism_emotional', true) ?: '50';
-	$prism_social = get_post_meta($program_id, 'program_prism_social', true) ?: '50';
-	$prism_academic = get_post_meta($program_id, 'program_prism_academic', true) ?: '50';
-	$prism_creative = get_post_meta($program_id, 'program_prism_creative', true) ?: '50';
+	$curriculum_focus_physical = get_post_meta($program_id, 'program_prism_physical', true) ?: '50';
+	$curriculum_focus_emotional = get_post_meta($program_id, 'program_prism_emotional', true) ?: '50';
+	$curriculum_focus_social = get_post_meta($program_id, 'program_prism_social', true) ?: '50';
+	$curriculum_focus_academic = get_post_meta($program_id, 'program_prism_academic', true) ?: '50';
+	$curriculum_focus_creative = get_post_meta($program_id, 'program_prism_creative', true) ?: '50';
 
 	// Schedule
 	$schedule_title = get_post_meta($program_id, 'program_schedule_title', true) ?: 'A Rhythm, Not a Routine';
@@ -82,16 +82,21 @@ while (have_posts()):
 					<?php endif; ?>
 
 					<div class="flex gap-4 flex-wrap" style="margin-top: 3rem;">
-						<a href="#prism"
+						<a href="#curriculum-focus"
 							class="px-8 py-4 bg-<?php echo esc_attr($colors['main']); ?> text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:opacity-90 transition-colors shadow-lg">View
 							Curriculum</a>
 						<?php if ($lesson_plan_url): ?>
-							<a href="<?php echo esc_url($lesson_plan_url); ?>" target="_blank"
-								class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							<button type="button" id="lesson-plan-trigger"
+								data-lesson-url="<?php echo esc_url($lesson_plan_url); ?>"
+								class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors cursor-pointer">
 								View Lesson Plan
-							</a>
+							</button>
 						<?php endif; ?>
-						<a href="<?php echo esc_url(home_url('/programs')); ?>"
+						<a href="<?php echo esc_url(get_post_type_archive_link('location')); ?>"
+							class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							View Locations
+						</a>
+						<a href="<?php echo esc_url(home_url('/programs/')); ?>"
 							class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							All Programs
 						</a>
@@ -114,8 +119,8 @@ while (have_posts()):
 			</div>
 		</section>
 
-		<!-- The Prismpath Focus (Chart) -->
-		<section id="prism" class="py-24 bg-brand-cream">
+		<!-- The KIDazzle Creative Curriculum Focus (Chart) -->
+		<section id="curriculum-focus" class="py-24 bg-brand-cream">
 			<div class="max-w-6xl mx-auto px-4 lg:px-6">
 				<div class="grid lg:grid-cols-2 gap-16 items-center">
 					<div class="bg-white rounded-[3rem] p-8 shadow-soft border border-brand-ink/5 order-2 lg:order-1">
@@ -123,20 +128,20 @@ while (have_posts()):
 					</div>
 					<div class="order-1 lg:order-2">
 						<span
-							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Prismpath™
+							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">KIDazzle Creative Curriculum™
 							Focus</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
-							<?php echo esc_html($prism_title); ?>
+							<?php echo esc_html($curriculum_focus_title); ?>
 						</h2>
 
-						<?php if ($prism_description): ?>
+						<?php if ($curriculum_focus_description): ?>
 							<div class="text-brand-ink/80 text-lg mb-6">
-								<?php echo wp_kses_post(wpautop($prism_description)); ?>
+								<?php echo wp_kses_post(wpautop($curriculum_focus_description)); ?>
 							</div>
 						<?php endif; ?>
 
-						<?php if ($prism_focus_items):
-							$focus_items_array = array_filter(array_map('trim', explode("\n", $prism_focus_items)));
+						<?php if ($curriculum_focus_items):
+							$focus_items_array = array_filter(array_map('trim', explode("\n", $curriculum_focus_items)));
 							if (!empty($focus_items_array)):
 								?>
 								<ul class="space-y-3 text-sm text-brand-ink/90">
@@ -250,6 +255,21 @@ while (have_posts()):
 		</div>
 		</div>
 		</section>
+
+		<?php 
+		// Age Calculator Widget
+		kidazzle_program_enhancements::render_age_calculator($program_id);
+		
+		// FAQ Section with Schema
+		kidazzle_program_enhancements::render_faq_section($program_id);
+		
+		// Photo Gallery
+		kidazzle_program_enhancements::render_gallery_section($program_id);
+		
+		// Parent Testimonials
+		kidazzle_program_enhancements::render_testimonials_section($program_id);
+		?>
+
 	</main>
 
 	<style>
@@ -268,7 +288,7 @@ while (have_posts()):
 	</style>
 
 	<script>
-		// Prismpath Chart Config - Lazy Loaded
+		// KIDazzle Creative Curriculum Chart Config - Lazy Loaded
 		document.addEventListener('DOMContentLoaded', function () {
 			const ctx = document.getElementById('programChart');
 			if (ctx) {
@@ -291,11 +311,11 @@ while (have_posts()):
 										datasets: [{
 											label: '<?php echo esc_js(get_the_title()); ?> Focus',
 											data: [
-												<?php echo absint($prism_physical); ?>,
-												<?php echo absint($prism_emotional); ?>,
-												<?php echo absint($prism_social); ?>,
-												<?php echo absint($prism_academic); ?>,
-												<?php echo absint($prism_creative); ?>
+												<?php echo absint($curriculum_focus_physical); ?>,
+												<?php echo absint($curriculum_focus_emotional); ?>,
+												<?php echo absint($curriculum_focus_social); ?>,
+												<?php echo absint($curriculum_focus_academic); ?>,
+												<?php echo absint($curriculum_focus_creative); ?>
 											],
 											backgroundColor: '<?php
 											$chart_colors = array(
@@ -329,16 +349,103 @@ while (have_posts()):
 			},
 			plugins: { legend: { display: false } }
 		}
-																});
-															};
+																		});
+																	};
 		document.body.appendChild(script);
-														}
-													});
-												}, { rootMargin: '200px' }); // Start loading 200px before view
+																}
+															});
+														}, { rootMargin: '200px' }); // Start loading 200px before view
 		observer.observe(ctx);
-											}
-										});
+													}
+												});
 	</script>
+
+	<?php if ($lesson_plan_url): ?>
+		<!-- Lesson Plan Modal -->
+		<div id="lesson-plan-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+			<!-- Backdrop -->
+			<div class="absolute inset-0 bg-brand-ink/80 backdrop-blur-sm transition-opacity" id="lesson-plan-backdrop"></div>
+
+			<!-- Modal Container -->
+			<div
+				class="absolute inset-4 md:inset-10 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fade-in-up">
+				<!-- Header -->
+				<div
+					class="bg-brand-cream border-b border-brand-ink/5 px-6 py-4 flex items-center justify-between flex-shrink-0">
+					<h3 class="font-serif text-xl font-bold text-brand-ink">
+						<i class="fa-solid fa-file-signature text-<?php echo esc_attr($colors['main']); ?> mr-2"></i>
+						<?php echo esc_html(get_the_title()); ?> Lesson Plan
+					</h3>
+					<div class="flex items-center gap-4">
+						<a href="<?php echo esc_url($lesson_plan_url); ?>" target="_blank" id="lesson-plan-external"
+							class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-kidazzle-blue transition-colors hidden md:flex items-center gap-1">
+							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							Open in new tab
+						</a>
+						<a href="<?php echo esc_url($lesson_plan_url); ?>" download
+							class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors hidden md:flex items-center gap-1">
+							<i class="fa-solid fa-download"></i>
+							Download
+						</a>
+						<button id="lesson-plan-close"
+							class="w-10 h-10 rounded-full bg-white border border-brand-ink/10 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
+							<i class="fa-solid fa-xmark text-lg"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- PDF Container -->
+				<div class="flex-grow relative bg-gray-100">
+					<div id="lesson-plan-loader" class="absolute inset-0 flex items-center justify-center bg-white z-10">
+						<div class="text-center">
+							<div
+								class="w-12 h-12 border-4 border-<?php echo esc_attr($colors['main']); ?>/20 border-t-<?php echo esc_attr($colors['main']); ?> rounded-full animate-spin mx-auto mb-4">
+							</div>
+							<p class="text-brand-ink/60 text-sm">Loading lesson plan...</p>
+						</div>
+					</div>
+					<iframe id="lesson-plan-frame" src="" class="w-full h-full border-0"></iframe>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const trigger = document.getElementById('lesson-plan-trigger');
+				const modal = document.getElementById('lesson-plan-modal');
+				const backdrop = document.getElementById('lesson-plan-backdrop');
+				const closeBtn = document.getElementById('lesson-plan-close');
+				const iframe = document.getElementById('lesson-plan-frame');
+				const loader = document.getElementById('lesson-plan-loader');
+
+				function openModal() {
+					const url = trigger.getAttribute('data-lesson-url');
+					modal.classList.remove('hidden');
+					document.body.style.overflow = 'hidden';
+					loader.classList.remove('hidden');
+					iframe.src = url;
+					iframe.onload = function () {
+						loader.classList.add('hidden');
+					};
+				}
+
+				function closeModal() {
+					modal.classList.add('hidden');
+					document.body.style.overflow = '';
+					iframe.src = '';
+				}
+
+				if (trigger) trigger.addEventListener('click', openModal);
+				if (closeBtn) closeBtn.addEventListener('click', closeModal);
+				if (backdrop) backdrop.addEventListener('click', closeModal);
+				document.addEventListener('keydown', function (e) {
+					if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+						closeModal();
+					}
+				});
+			});
+		</script>
+	<?php endif; ?>
 
 	<?php
 endwhile;

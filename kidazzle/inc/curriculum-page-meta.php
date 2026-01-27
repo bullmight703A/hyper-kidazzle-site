@@ -26,7 +26,7 @@ function kidazzle_curriculum_page_meta_boxes() {
 
 	add_meta_box(
 		'kidazzle-curriculum-framework',
-		__( 'Prismpath Framework (5 Pillars)', 'kidazzle-theme' ),
+		__( 'KIDazzle Creative Curriculum Framework (5 Pillars)', 'kidazzle-theme' ),
 		'kidazzle_curriculum_framework_meta_box_render',
 		'page',
 		'normal',
@@ -133,7 +133,7 @@ function kidazzle_curriculum_framework_meta_box_render( $post ) {
 			<td>
 				<input type="text" id="curriculum_framework_title" name="curriculum_framework_title"
 					   value="<?php echo esc_attr( $framework_title ); ?>"
-					   class="large-text" placeholder="e.g., The Prismpath™ Framework" />
+					   class="large-text" placeholder="e.g., The KIDazzle Creative Curriculum™ Framework" />
 			</td>
 		</tr>
 		<tr>
@@ -590,9 +590,9 @@ function kidazzle_seed_curriculum_page_defaults( $post_id ) {
 	$defaults = array(
 		'curriculum_hero_badge'       => 'The Kidazzle Difference',
 		'curriculum_hero_title'       => 'Scientific rigor. <br><span class="italic text-kidazzle-green">Joyful delivery.</span>',
-		'curriculum_hero_description' => 'Our proprietary Prismpath™ curriculum isn\'t just about ABCs. It\'s a comprehensive framework designed to build the critical thinking, emotional intelligence, and social skills needed for the 21st century.',
+		'curriculum_hero_description' => 'Our proprietary KIDazzle Creative Curriculum™ curriculum isn\'t just about ABCs. It\'s a comprehensive framework designed to build the critical thinking, emotional intelligence, and social skills needed for the 21st century.',
 
-		'curriculum_framework_title'       => 'The Prismpath™ Framework',
+		'curriculum_framework_title'       => 'The KIDazzle Creative Curriculum™ Framework',
 		'curriculum_framework_description' => 'Just as a prism refracts light into a spectrum, our curriculum refracts "play" into five distinct pillars of development. Every activity in our classrooms targets one or more of these areas.',
 
 		'curriculum_pillar_physical_icon'  => 'fa-solid fa-person-running',
@@ -667,7 +667,7 @@ function kidazzle_seed_curriculum_page_defaults( $post_id ) {
 		'curriculum_milestone_assessments_bullet2' => 'Individualized Lesson Planning',
 
 		'curriculum_cta_title'       => 'See the curriculum in action.',
-		'curriculum_cta_description' => 'Schedule a tour to see our "Third Teacher" classrooms and meet the educators bringing Prismpath™ to life.',
+		'curriculum_cta_description' => 'Schedule a tour to see our "Third Teacher" classrooms and meet the educators bringing KIDazzle Creative Curriculum™ to life.',
 	);
 
 	foreach ( $defaults as $meta_key => $default_value ) {

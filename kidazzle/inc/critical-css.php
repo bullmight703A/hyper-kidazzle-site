@@ -3,13 +3,71 @@
  * Critical CSS Injection
  * Inlines essential above-the-fold styles to prevent render-blocking
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Excellence
  */
 
 function kidazzle_print_critical_css()
 {
     ?>
     <style id="kidazzle-critical-css">
+        /* Critical Fonts */
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Light.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Regular.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Medium.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-SemiBold.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Bold.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/PlayfairDisplay-SemiBold.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/PlayfairDisplay-Bold.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 800;
+            font-display: swap;
+            src: url('<?php echo get_template_directory_uri(); ?>/assets/webfonts/PlayfairDisplay-ExtraBold.woff2') format('woff2');
+        }
+
         /* Critical Reset & Base */
         *,
         ::before,
@@ -27,7 +85,31 @@ function kidazzle_print_critical_css()
         body {
             margin: 0;
             line-height: inherit;
-            font-family: Outfit, system-ui, sans-serif;
+           	/* Font Metric Overrides to prevent CLS */
+	@font-face {
+		font-family: 'Outfit-Fallback';
+		src: local('Arial');
+		ascent-override: 98%;
+		descent-override: 24%;
+		line-gap-override: 0%;
+		size-adjust: 100%;
+	}
+	@font-face {
+		font-family: 'Playfair-Fallback';
+		src: local('Georgia');
+		ascent-override: 95%;
+		descent-override: 20%;
+		line-gap-override: 0%;
+		size-adjust: 100%;
+	}
+
+	body {
+		font-family: Outfit, "Outfit-Fallback", system-ui, sans-serif;
+	}
+
+	h1, h2, h3, h4, h5, h6, .font-serif {
+		font-family: "Playfair Display", "Playfair-Fallback", serif;
+	}
             overflow-x: hidden
         }
 
@@ -98,20 +180,20 @@ function kidazzle_print_critical_css()
             color: rgb(255 255 255)
         }
 
-        .text-kidazzle-green {
-            color: #4D5C54
+        .text-kidazzle-blue {
+            color: rgb(74 108 124)
+        }
+
+        .bg-kidazzle-blue {
+            background-color: rgb(74 108 124)
         }
 
         .bg-kidazzle-green {
-            background-color: #4D5C54
+            background-color: rgb(141 163 153)
         }
 
-        .bg-kidazzle-orange {
-            background-color: #A8551E
-        }
-
-        .border-kidazzle-green\/10 {
-            border-color: rgba(77, 92, 84, .1)
+        .border-kidazzle-blue\/10 {
+            border-color: rgba(74, 108, 124, .1)
         }
 
         /* Critical Header */
@@ -164,6 +246,24 @@ function kidazzle_print_critical_css()
             height: 82px
         }
 
+        /* Critical Hero Heights */
+        .h-\[400px\] {
+            height: 400px
+        }
+
+        @media(min-width:640px) {
+            .sm\:h-\[420px\] {
+                height: 420px
+            }
+        }
+
+        @media(min-width:1024px) {
+            .lg\:h-\[500px\] {
+                /* Kidazzle Logo Fix */
+                .custom-logo-link img { max-height: 80px; width: auto; }
+            }
+        }
+
         .w-auto {
             width: auto
         }
@@ -213,9 +313,23 @@ function kidazzle_print_critical_css()
                 padding-left: 1.5rem;
                 padding-right: 1.5rem
             }
-        }
 
-        /* Critical Typography */
+            .lg\:pt-24 {
+                padding-top: 6rem
+            }
+        
+            .lg\:block {
+                display: block
+            }
+
+            .lg\:flex {
+                display: flex
+            }
+
+            .lg\:hidden {
+                display: none
+            }
+        }
         .font-bold {
             font-weight: 700
         }
@@ -243,6 +357,31 @@ function kidazzle_print_critical_css()
             font-size: 10px
         }
 
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1
+        }
+
+        .text-6xl {
+            font-size: 3.75rem;
+            line-height: 1
+        }
+
         .uppercase {
             text-transform: uppercase
         }
@@ -256,12 +395,149 @@ function kidazzle_print_critical_css()
         }
 
         /* Critical Layout Utilities */
+        .block {
+            display: block
+        }
+
+        .w-full {
+            width: 100%
+        }
+
+        .text-center {
+            text-align: center
+        }
+
+        .mt-6 {
+            margin-top: 1.5rem
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem
+        }
+
+        .pt-20 {
+            padding-top: 5rem
+        }
+
+        @media(min-width:1024px) {
+            .lg\:pt-24 {
+                padding-top: 6rem
+            }
+        
+            .lg\:block {
+                display: block
+            }
+        }
+
+        /* Critical Grid System (Bento Grid) */
+        .grid {
+            display: grid
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+        }
+
+        .gap-6 {
+            gap: 1.5rem
+        }
+
+        @media(min-width:768px) {
+            .md\:grid-cols-12 {
+                grid-template-columns: repeat(12, minmax(0, 1fr))
+            }
+
+            .md\:grid-rows-2 {
+                grid-template-rows: repeat(2, minmax(0, 1fr))
+            }
+
+            .md\:col-span-3 {
+                grid-column: span 3 / span 3
+            }
+
+            .md\:col-span-4 {
+                grid-column: span 4 / span 4
+            }
+
+            .md\:col-span-5 {
+                grid-column: span 5 / span 5
+            }
+
+            .md\:col-span-7 {
+                grid-column: span 7 / span 7
+            }
+
+            .md\:row-span-1 {
+                grid-row: span 1 / span 1
+            }
+
+            .md\:row-span-2 {
+                grid-row: span 2 / span 2
+            }
+        }
+
+        /* Critical Hero Grid & Layout */
+        .gap-14 {
+            gap: 3.5rem
+        }
+
+        .mt-8 {
+            margin-top: 2rem
+        }
+
+        @media(min-width:640px) {
+            .sm\:mt-0 {
+                margin-top: 0
+            }
+            .sm\:inset-y-0 {
+                top: 0;
+                bottom: 0
+            }
+            .sm\:left-12 {
+                left: 3rem
+            }
+            .sm\:right-0 {
+                right: 0
+            }
+        }
+
+        @media(min-width:1024px) {
+            .lg\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+            .lg\:left-16 {
+                left: 4rem
+            }
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem
+        }
+
+        .rounded-\[3rem\] {
+            border-radius: 3rem
+        }
+
+        .p-10 {
+            padding: 2.5rem
+        }
+
+        .right-0 {
+            right: 0
+        }
+        
         .rounded-full {
             border-radius: 9999px
         }
 
         .shadow-soft {
-            box-shadow: 0 20px 40px -10px rgba(77, 92, 84, .08)
+            box-shadow: 0 20px 40px -10px rgba(74, 108, 124, .08)
         }
 
         .transition {
@@ -277,8 +553,7 @@ function kidazzle_print_critical_css()
 
         /* Text Selection */
         ::selection {
-            background-color: #A8551E;
-            /* Orange */
+            background-color: rgb(214 125 107);
             color: rgb(255 255 255)
         }
 
@@ -306,6 +581,47 @@ function kidazzle_print_critical_css()
             transform: translateY(24px)
         }
 
+        /* Critical Mobile Menu */
+        .fixed {
+            position: fixed
+        }
+
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0
+        }
+
+        .relative {
+            position: relative
+        }
+
+        .translate-x-full {
+            transform: translateX(100%)
+        }
+
+        .flex-col {
+            flex-direction: column
+        }
+
+        .h-full {
+            height: 100%
+        }
+
+        .overflow-y-auto {
+            overflow-y: auto
+        }
+
+        /* Critical Icons (Prevent CLS) */
+        .fa-solid, .fas {
+            display: inline-block;
+            width: 1.25em; /* Default width for standard icons */
+            height: 1em;
+            overflow: visible;
+            vertical-align: -0.125em;
+        }
+
         /* Skip link accessibility */
         .sr-only {
             position: absolute;
@@ -321,5 +637,6 @@ function kidazzle_print_critical_css()
     </style>
     <?php
 }
-// DISABLED - Critical CSS causes FOUC, keep disabled
-// add_action('wp_head', 'kidazzle_print_critical_css', 1);
+// Critical CSS enabled to support main.css deferral
+add_action('wp_head', 'kidazzle_print_critical_css', 1);
+

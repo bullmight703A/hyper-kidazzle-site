@@ -2,7 +2,7 @@
 /**
  * Program settings and helpers.
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Theme
  */
 
 if (!defined('ABSPATH')) {

@@ -2,7 +2,7 @@
 /**
  * Navigation Menus with Tailwind Support
  *
- * @package Kidazzle_Theme
+ * @package kidazzle-theme
  * @since 1.0.0
  */
 
@@ -36,7 +36,7 @@ function kidazzle_primary_nav()
 		'fallback_cb' => 'kidazzle_primary_nav_fallback',
 		'items_wrap' => '%3$s',
 		'depth' => 1,
-		'walker' => new Kidazzle_Primary_Nav_Walker(),
+		'walker' => new kidazzle_primary_nav_walker(),
 	));
 }
 
@@ -49,11 +49,11 @@ function kidazzle_primary_nav_fallback()
 		'programs' => 'Programs',
 		'locations' => 'Locations',
 		'about' => 'About Us',
-		'contact' => 'Contact'
+		'contact-us' => 'Contact'
 	);
 
 	foreach ($pages as $slug => $title) {
-		$url = home_url('/' . $slug);
+		$url = kidazzle_get_page_link($slug);
 		echo '<a href="' . esc_url($url) . '" class="hover:text-kidazzle-blue transition">' . esc_html($title) . '</a>';
 	}
 }
@@ -70,7 +70,7 @@ function kidazzle_footer_nav()
 		'fallback_cb' => 'kidazzle_footer_nav_fallback',
 		'items_wrap' => '%3$s',
 		'depth' => 1,
-		'walker' => new Kidazzle_Footer_Nav_Walker(),
+		'walker' => new kidazzle_footer_nav_walker(),
 	));
 }
 
@@ -81,12 +81,13 @@ function kidazzle_footer_nav_fallback()
 {
 	$pages = array(
 		'home' => 'Home',
+		'KIDazzle Creative Curriculum' => 'KIDazzle Creative Curriculum',
 		'programs' => 'All Programs',
-		'locations' => 'Locations'
+		'parents' => 'Parents'
 	);
 
 	foreach ($pages as $slug => $title) {
-		$url = ($slug === 'home') ? home_url('/') : home_url('/' . $slug);
+		$url = ($slug === 'home') ? home_url('/') : home_url('/' . $slug . '/');
 		echo '<a href="' . esc_url($url) . '" class="block hover:text-white transition">' . esc_html($title) . '</a>';
 	}
 }
@@ -104,7 +105,7 @@ function kidazzle_footer_contact_nav()
 			'fallback_cb' => false,
 			'items_wrap' => '<div class="%2$s">%3$s</div>',
 			'depth' => 1,
-			'walker' => new Kidazzle_Footer_Nav_Walker(),
+			'walker' => new kidazzle_footer_nav_walker(),
 		));
 	} else {
 		$program_slug = kidazzle_get_program_base_slug();
@@ -112,11 +113,11 @@ function kidazzle_footer_contact_nav()
 			$program_slug => 'Programs',
 			'locations' => 'Locations',
 			'about' => 'About Us',
-			'contact' => 'Contact',
+			'contact-us' => 'Contact',
 		);
 
 		foreach ($pages as $slug => $title) {
-			$url = home_url('/' . $slug);
+			$url = home_url('/' . $slug . '/');
 			echo '<a href="' . esc_url($url) . '" class="block hover:text-white transition">' . esc_html($title) . '</a>';
 		}
 	}
@@ -125,7 +126,7 @@ function kidazzle_footer_contact_nav()
 /**
  * Custom Walker for Primary Navigation
  */
-class Kidazzle_Primary_Nav_Walker extends Walker_Nav_Menu
+class kidazzle_primary_nav_walker extends Walker_Nav_Menu
 {
 	function start_lvl(&$output, $depth = 0, $args = null)
 	{
@@ -145,7 +146,15 @@ class Kidazzle_Primary_Nav_Walker extends Walker_Nav_Menu
 			$classes .= ' text-kidazzle-red';
 		}
 
-		$output .= '<a href="' . esc_url($item->url) . '" class="' . esc_attr($classes) . '">';
+		$url = $item->url;
+		// Enforce trailing slash for internal links
+		if (strpos($url, home_url()) !== false) {
+			$parts = explode('#', $url, 2);
+			$path = user_trailingslashit($parts[0]);
+			$url = $path . (isset($parts[1]) ? '#' . $parts[1] : '');
+		}
+
+		$output .= '<a href="' . esc_url($url) . '" class="' . esc_attr($classes) . '">';
 		$output .= esc_html($item->title);
 		$output .= '</a>';
 	}
@@ -159,7 +168,7 @@ class Kidazzle_Primary_Nav_Walker extends Walker_Nav_Menu
 /**
  * Custom Walker for Footer Navigation
  */
-class Kidazzle_Footer_Nav_Walker extends Walker_Nav_Menu
+class kidazzle_footer_nav_walker extends Walker_Nav_Menu
 {
 	function start_lvl(&$output, $depth = 0, $args = null)
 	{
@@ -173,7 +182,15 @@ class Kidazzle_Footer_Nav_Walker extends Walker_Nav_Menu
 
 	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 	{
-		$output .= '<a href="' . esc_url($item->url) . '" class="block hover:text-white transition">';
+		$url = $item->url;
+		// Enforce trailing slash for internal links
+		if (strpos($url, home_url()) !== false) {
+			$parts = explode('#', $url, 2);
+			$path = user_trailingslashit($parts[0]);
+			$url = $path . (isset($parts[1]) ? '#' . $parts[1] : '');
+		}
+
+		$output .= '<a href="' . esc_url($url) . '" class="block hover:text-white transition">';
 		$output .= esc_html($item->title);
 		$output .= '</a>';
 	}
@@ -196,7 +213,7 @@ function kidazzle_mobile_nav()
 		'fallback_cb' => 'kidazzle_mobile_nav_fallback',
 		'items_wrap' => '%3$s',
 		'depth' => 1,
-		'walker' => new Kidazzle_Mobile_Nav_Walker(),
+		'walker' => new kidazzle_mobile_nav_walker(),
 	));
 }
 
@@ -206,8 +223,7 @@ function kidazzle_mobile_nav()
 function kidazzle_mobile_nav_fallback()
 {
 	$program_slug = kidazzle_get_program_base_slug();
-	// Updated fallback pages to match new structure
-	$pages = array($program_slug, "curriculum", "locations");
+	$pages = array($program_slug, "KIDazzle Creative Curriculum", "curriculum", "schedule", "locations", "faq");
 	foreach ($pages as $slug) {
 		echo '<a href="#' . esc_attr($slug) . '" class="block py-3 border-b border-brand-ink/5 text-lg font-semibold text-brand-ink hover:text-kidazzle-blue transition">' . esc_html(ucwords(str_replace('-', ' ', $slug))) . '</a>';
 	}
@@ -216,7 +232,7 @@ function kidazzle_mobile_nav_fallback()
 /**
  * Custom Walker for Mobile Navigation
  */
-class Kidazzle_Mobile_Nav_Walker extends Walker_Nav_Menu
+class kidazzle_mobile_nav_walker extends Walker_Nav_Menu
 {
 	function start_lvl(&$output, $depth = 0, $args = null)
 	{
@@ -236,7 +252,15 @@ class Kidazzle_Mobile_Nav_Walker extends Walker_Nav_Menu
 			$classes .= ' text-kidazzle-blue';
 		}
 
-		$output .= '<a href="' . esc_url($item->url) . '" class="' . esc_attr($classes) . '">';
+		$url = $item->url;
+		// Enforce trailing slash for internal links
+		if (strpos($url, home_url()) !== false) {
+			$parts = explode('#', $url, 2);
+			$path = user_trailingslashit($parts[0]);
+			$url = $path . (isset($parts[1]) ? '#' . $parts[1] : '');
+		}
+
+		$output .= '<a href="' . esc_url($url) . '" class="' . esc_attr($classes) . '">';
 		$output .= esc_html($item->title);
 		$output .= '</a>';
 	}

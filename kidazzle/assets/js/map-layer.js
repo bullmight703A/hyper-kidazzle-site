@@ -1,7 +1,7 @@
 /**
  * Leaflet Map Layer
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Theme
  */
 
 (function () {

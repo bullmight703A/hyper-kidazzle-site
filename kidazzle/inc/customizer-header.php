@@ -2,7 +2,7 @@
 /**
  * Header Customizer Settings
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Theme
  * @since 1.0.0
  */
 

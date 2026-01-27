@@ -3,122 +3,135 @@
 
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?php wp_title('|', true, 'right'); ?></title>
-	<!-- Tailwind CSS (CDN for immediate design fidelity) -->
-	<script src="https://cdn.tailwindcss.com"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php // Canonical URL is handled by Yoast SEO or framework canonical enforcer ?>
+	<!-- Google Fonts: Outfit and Playfair Display -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
-	<?php wp_head(); ?>
-	<style>
-		.graph-bar {
-			transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
-		}
-
-		.fade-in {
-			animation: fadeIn 0.5s ease-in;
-		}
-
-		@keyframes fadeIn {
-			from {
-				opacity: 0;
+	<!-- Tier 3: Instant Navigation (Speculation Rules API) -->
+	<script type="speculationrules">
+	{
+		"prerender": [
+			{
+				"source": "document",
+				"where": {
+					"and": [
+						{ "href_matches": "/*" },
+						{ "not": { "href_matches": "/wp-admin/*" } }
+					]
+				},
+				"eagerness": "moderate"
 			}
+		]
+	}
+	</script>
 
-			to {
-				opacity: 1;
-			}
-		}
+<?php
+// Get Customizer settings
+$header_phone = get_theme_mod('kidazzle_footer_phone', '877-410-1002'); // Reusing footer phone for consistency
+$header_cta_text = get_theme_mod('kidazzle_header_cta_text', 'Contact Us');
+$header_cta_url = get_theme_mod('kidazzle_book_tour_url', home_url('/contact'));
+$header_scripts = get_theme_mod('kidazzle_header_scripts', '');
 
-		html {
-			scroll-behavior: smooth;
-		}
-	</style>
+// Output header scripts if set
+if (!empty($header_scripts)) {
+	echo $header_scripts;
+}
+
+wp_head();
+?>
 </head>
 
-<body <?php body_class('font-sans text-slate-800 bg-white'); ?>>
+
+<body <?php body_class('font-sans text-brand-ink bg-white'); ?>>
 	<?php wp_body_open(); ?>
+
+	<!-- Skip Links for Accessibility -->
+	<a href="#main-content"
+		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-kidazzle-blueDark p-4 z-[100] rounded-lg shadow-lg"><?php _e('Skip to content', 'kidazzle-theme'); ?></a>
 
 	<!-- TOP UTILITY BAR -->
 	<div
-		class="bg-slate-50 text-slate-600 text-xs py-2 px-4 hidden md:flex justify-between items-center border-b border-slate-200 fixed w-full top-0 z-50 h-10">
+		class="bg-brand-cream text-brand-ink/60 text-[10px] font-bold uppercase tracking-widest py-2 px-4 hidden md:flex justify-between items-center border-b border-brand-ink/5 fixed w-full top-0 z-50 h-10">
 		<div class="flex gap-4 items-center">
-			<div class="h-6 w-auto mr-2">
-				<!-- Logo Placeholder or Dynamic Logo if needed -->
-				<span class="font-bold text-slate-700">KIDazzle</span>
-			</div>
 			<a href="<?php echo home_url('/locations'); ?>"
-				class="flex items-center gap-1 cursor-pointer hover:text-cyan-600 transition">
-				<i data-lucide="map-pin" class="w-3 h-3 text-red-500"></i> Locations in GA, TN, & FL
+				class="flex items-center gap-1 cursor-pointer hover:text-kidazzle-blue transition">
+				<i class="fa-solid fa-location-dot text-kidazzle-red"></i> Locations in GA, TN, & FL
 			</a>
 			<span class="flex items-center gap-1">
-				<i data-lucide="phone" class="w-3 h-3 text-green-500"></i> 877-410-1002
+				<i class="fa-solid fa-phone text-kidazzle-green"></i> <?php echo esc_html($header_phone); ?>
 			</span>
 		</div>
-		<div class="flex gap-6 font-medium">
+		<div class="flex gap-6">
 			<a href="<?php echo home_url('/careers'); ?>"
-				class="hover:text-cyan-600 transition flex items-center gap-1">Careers</a>
+				class="hover:text-kidazzle-blue transition flex items-center gap-1">Careers</a>
 			<a href="<?php echo home_url('/teacher-portal'); ?>"
-				class="hover:text-cyan-600 transition flex items-center gap-1 font-bold text-orange-500">
-				<i data-lucide="users" class="w-3 h-3"></i> Teacher Portal
+				class="hover:text-kidazzle-blue transition flex items-center gap-1 text-kidazzle-orange">
+				<i class="fa-solid fa-users-viewfinder"></i> Teacher Portal
 			</a>
 		</div>
 	</div>
 
+
 	<!-- MAIN NAVIGATION -->
-	<nav id="navbar" class="fixed top-10 w-full z-40 transition-all duration-300 bg-white py-4 shadow-sm">
+	<nav id="navbar" class="fixed top-10 w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md py-4 shadow-sm">
 		<div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
 			<!-- Logo -->
 			<a href="<?php echo home_url(); ?>" class="flex items-center gap-2 cursor-pointer">
-				<div class="h-12 md:h-16 flex items-center relative">
+				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper" style="max-width: 250px; max-height: 80px; overflow: hidden;">
 					<?php
 					if (has_custom_logo()) {
 						the_custom_logo();
 					} else {
-						echo '<h1 class="text-3xl font-extrabold text-black pl-2 tracking-tighter hidden md:block">KID<span class="text-yellow-500">azzle</span></h1>';
+						echo '<h1 class="text-3xl font-extrabold text-black pl-2 tracking-tighter hidden md:block">KID<span class="text-kidazzle-yellow">azzle</span></h1>';
 					}
 					?>
 				</div>
+				<style>
+					.custom-logo-wrapper .custom-logo {
+						max-height: 100% !important;
+						width: auto !important;
+						height: auto !important;
+						object-fit: contain;
+						display: block;
+					}
+					/* Extra safety for the img tag itself if WP outputs it without class */
+					.custom-logo-wrapper img {
+						max-height: 80px !important;
+						width: auto !important;
+						display: block;
+					}
+				</style>
 			</a>
 
-			<!-- Desktop Links -->
-			<div class="hidden lg:flex items-center gap-6 font-bold text-slate-600 text-sm tracking-wide">
-				<a href="<?php echo home_url(); ?>" class="hover:text-indigo-600 transition uppercase">Home</a>
-				<a href="<?php echo home_url('/programs'); ?>"
-					class="hover:text-red-500 transition uppercase">Programs</a>
-				<a href="<?php echo home_url('/curriculum'); ?>"
-					class="hover:text-cyan-500 transition uppercase">Curriculum</a>
-				<a href="<?php echo home_url('/locations'); ?>"
-					class="hover:text-green-500 transition uppercase">Locations</a>
-				<a href="<?php echo home_url('/resources'); ?>"
-					class="hover:text-purple-500 transition uppercase">Resources</a>
-				<a href="<?php echo home_url('/contact'); ?>"
-					class="bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition ml-2">Contact
-					Us</a>
+			<!-- Desktop Links (Now dynamic) -->
+			<div class="hidden lg:flex items-center gap-6 font-bold text-brand-ink text-xs tracking-[0.15em] uppercase">
+				<?php kidazzle_primary_nav(); ?>
+				<a href="<?php echo esc_url($header_cta_url); ?>"
+					class="bg-brand-ink text-white px-6 py-3 rounded-full hover:bg-kidazzle-blue transition-all shadow-md ml-2 hover:-translate-y-0.5"><?php echo esc_html($header_cta_text); ?></a>
 			</div>
 
+
 			<!-- Mobile Toggle -->
-			<button class="lg:hidden text-slate-900" id="mobile-menu-btn">
-				<i data-lucide="menu" class="w-7 h-7"></i>
+			<button class="lg:hidden text-brand-ink" id="mobile-menu-btn" aria-label="Open Menu">
+				<i class="fa-solid fa-bars text-2xl"></i>
 			</button>
 		</div>
 
-		<!-- Mobile Menu -->
+		<!-- Mobile Menu (Now dynamic) -->
 		<div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 pt-24 px-6 overflow-y-auto">
-			<button id="close-menu-btn" class="absolute top-4 right-4 text-slate-900">
-				<i data-lucide="x" class="w-8 h-8"></i>
+			<button id="close-menu-btn" class="absolute top-4 right-4 text-brand-ink" aria-label="Close Menu">
+				<i class="fa-solid fa-xmark text-3xl"></i>
 			</button>
-			<div class="flex flex-col gap-6 font-bold text-xl text-slate-800 pt-4">
-				<a href="<?php echo home_url(); ?>" class="text-left">Home</a>
-				<a href="<?php echo home_url('/programs'); ?>" class="text-left text-red-500">Programs</a>
-				<a href="<?php echo home_url('/curriculum'); ?>" class="text-left text-cyan-500">Curriculum</a>
-				<a href="<?php echo home_url('/locations'); ?>" class="text-left text-green-500">Locations</a>
-				<a href="<?php echo home_url('/resources'); ?>" class="text-left text-purple-500">Resources</a>
-				<a href="<?php echo home_url('/careers'); ?>" class="text-left">Careers</a>
-				<a href="<?php echo home_url('/teacher-portal'); ?>" class="text-left text-orange-500">Teacher
-					Portal</a>
-				<a href="<?php echo home_url('/contact'); ?>" class="text-left">Contact Us</a>
+			<div class="flex flex-col gap-6 font-bold text-2xl text-brand-ink pt-4 uppercase tracking-widest">
+				<?php kidazzle_mobile_nav(); ?>
+				<a href="<?php echo home_url('/contact'); ?>" class="text-left py-4 border-t border-brand-ink/5 mt-4">Contact Us</a>
 			</div>
 		</div>
 	</nav>
+
 
 	<!-- MAIN CONTENT WRAPPER -->
 	<main class="mt-20 min-h-screen">

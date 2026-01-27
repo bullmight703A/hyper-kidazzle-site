@@ -2,7 +2,7 @@
 /**
  * Custom Post Type: Programs
  *
- * @package kidazzle_Excellence
+ * @package kidazzle-theme
  * @since 1.0.0
  */
 
@@ -499,14 +499,14 @@ function kidazzle_program_details_meta_box_render($post)
 		}
 	</style>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_icon"><?php _e('Program Icon/Emoji', 'kidazzle-theme'); ?></label>
 		<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
 			<input type="text" id="program_icon" name="program_icon"
 				value="<?php echo esc_attr(get_post_meta($post->ID, 'program_icon', true)); ?>" placeholder="e.g., 👶"
 				style="width: 80px; text-align: center; font-size: 24px;" />
 
-			<div class="kidazzle-emoji-presets" style="display: flex; gap: 5px; flex-wrap: wrap;">
+			<div class="Kidazzle-emoji-presets" style="display: flex; gap: 5px; flex-wrap: wrap;">
 				<?php
 				$presets = array(
 					'👶' => 'Infant',
@@ -520,7 +520,7 @@ function kidazzle_program_details_meta_box_render($post)
 				);
 				foreach ($presets as $emoji => $label) {
 					echo sprintf(
-						'<button type="button" class="button kidazzle-emoji-btn" data-emoji="%s" title="%s" style="font-size: 18px; padding: 0 10px;">%s</button>',
+						'<button type="button" class="button Kidazzle-emoji-btn" data-emoji="%s" title="%s" style="font-size: 18px; padding: 0 10px;">%s</button>',
 						esc_attr($emoji),
 						esc_attr($label),
 						esc_html($emoji)
@@ -533,42 +533,42 @@ function kidazzle_program_details_meta_box_render($post)
 
 		<script>
 			jQuery(document).ready(function ($) {
-				$('.kidazzle-emoji-btn').on('click', function () {
+				$('.Kidazzle-emoji-btn').on('click', function () {
 					$('#program_icon').val($(this).data('emoji'));
 				});
 			});
 		</script>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_age_range"><?php _e('Age Range', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_age_range" name="program_age_range" value="<?php echo esc_attr($age_range); ?>"
 			placeholder="e.g., 6w - 12mo, 1 Year, 2-3 Years" />
 		<small><?php _e('Age range badge shown on program card (e.g., "6w - 12mo", "1 Year", "4yr - 5yr")', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_features"><?php _e('Program Features', 'kidazzle-theme'); ?></label>
 		<textarea id="program_features" name="program_features" rows="4"
 			placeholder="Enter one feature per line, e.g.:&#10;Individualized Schedules&#10;Sign Language Intro&#10;Daily Circle Time"><?php echo esc_textarea($features); ?></textarea>
 		<small><?php _e('Enter one feature per line. These will display with checkmarks on the program card.', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_cta_text"><?php _e('CTA Button Text', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_cta_text" name="program_cta_text" value="<?php echo esc_attr($cta_text); ?>"
 			placeholder="e.g., Schedule Tour, Join Waitlist, Learn More" />
 		<small><?php _e('Text for the call-to-action button (default: "Schedule Tour")', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_cta_link"><?php _e('CTA Button Link', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_cta_link" name="program_cta_link" value="<?php echo esc_attr($cta_link); ?>"
 			placeholder="#tour" />
 		<small><?php _e('URL or anchor link for the CTA button (default: "#tour")', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_lesson_plan_file"><?php _e('Lesson Plan File (URL)', 'kidazzle-theme'); ?></label>
 		<input type="text" id="program_lesson_plan_file" name="program_lesson_plan_file"
 			value="<?php echo esc_attr(get_post_meta($post->ID, 'program_lesson_plan_file', true)); ?>"
@@ -576,7 +576,7 @@ function kidazzle_program_details_meta_box_render($post)
 		<small><?php _e('Paste the full URL to the PDF lesson plan. If set, a button will appear on the program page.', 'kidazzle-theme'); ?></small>
 	</div>
 
-	<div class="kidazzle-program-field">
+	<div class="Kidazzle-program-field">
 		<label for="program_color_scheme"><?php _e('Color Scheme', 'kidazzle-theme'); ?></label>
 		<select id="program_color_scheme" name="program_color_scheme">
 			<option value="red" <?php selected($color_scheme, 'red'); ?>>Red - Infant Care</option>
@@ -585,7 +585,7 @@ function kidazzle_program_details_meta_box_render($post)
 			<option value="blueDark" <?php selected($color_scheme, 'blueDark'); ?>>Dark Blue - Pre-K Prep</option>
 			<option value="green" <?php selected($color_scheme, 'green'); ?>>Green - GA Pre-K</option>
 		</select>
-		<div class="kidazzle-color-preview">
+		<div class="Kidazzle-color-preview">
 			<div class="color-swatch" style="background-color: #D67D6B;" title="Red"></div>
 			<div class="color-swatch" style="background-color: #4A6C7C;" title="Blue"></div>
 			<div class="color-swatch" style="background-color: #E6BE75;" title="Yellow"></div>
@@ -654,17 +654,17 @@ function kidazzle_program_single_page_meta_box_render($post)
 	$hero_title = get_post_meta($post->ID, 'program_hero_title', true);
 	$hero_description = get_post_meta($post->ID, 'program_hero_description', true);
 
-	// Prismpath section
-	$prism_title = get_post_meta($post->ID, 'program_prism_title', true);
-	$prism_description = get_post_meta($post->ID, 'program_prism_description', true);
-	$prism_focus_items = get_post_meta($post->ID, 'program_prism_focus_items', true);
+	// KIDazzle Creative Curriculum section
+	$curriculum_focus_title = get_post_meta($post->ID, 'program_prism_title', true);
+	$curriculum_focus_description = get_post_meta($post->ID, 'program_prism_description', true);
+	$curriculum_focus_items = get_post_meta($post->ID, 'program_prism_focus_items', true);
 
 	// Chart data
-	$prism_physical = get_post_meta($post->ID, 'program_prism_physical', true) ?: '50';
-	$prism_emotional = get_post_meta($post->ID, 'program_prism_emotional', true) ?: '50';
-	$prism_social = get_post_meta($post->ID, 'program_prism_social', true) ?: '50';
-	$prism_academic = get_post_meta($post->ID, 'program_prism_academic', true) ?: '50';
-	$prism_creative = get_post_meta($post->ID, 'program_prism_creative', true) ?: '50';
+	$curriculum_focus_physical = get_post_meta($post->ID, 'program_prism_physical', true) ?: '50';
+	$curriculum_focus_emotional = get_post_meta($post->ID, 'program_prism_emotional', true) ?: '50';
+	$curriculum_focus_social = get_post_meta($post->ID, 'program_prism_social', true) ?: '50';
+	$curriculum_focus_academic = get_post_meta($post->ID, 'program_prism_academic', true) ?: '50';
+	$curriculum_focus_creative = get_post_meta($post->ID, 'program_prism_creative', true) ?: '50';
 
 	// Schedule
 	$schedule_title = get_post_meta($post->ID, 'program_schedule_title', true);
@@ -737,25 +737,25 @@ function kidazzle_program_single_page_meta_box_render($post)
 	</div>
 
 	<div class="kidazzle-section-divider">
-		<h3 style="margin-top: 0; color: #0073aa;">Prismpath™ Focus Section</h3>
+		<h3 style="margin-top: 0; color: #0073aa;">KIDazzle Creative Curriculum™ Focus Section</h3>
 	</div>
 
 	<div class="kidazzle-single-field">
-		<label for="program_prism_title"><?php _e('Prism Section Title', 'kidazzle-theme'); ?></label>
-		<input type="text" id="program_prism_title" name="program_prism_title" value="<?php echo esc_attr($prism_title); ?>"
+		<label for="program_prism_title"><?php _e('Curriculum Focus Title', 'kidazzle-theme'); ?></label>
+		<input type="text" id="program_prism_title" name="program_prism_title" value="<?php echo esc_attr($curriculum_focus_title); ?>"
 			placeholder="e.g., Building Trust & Body." />
-		<small><?php _e('Title for the Prismpath focus section', 'kidazzle-theme'); ?></small>
+		<small><?php _e('Title for the KIDazzle Creative Curriculum focus section', 'kidazzle-theme'); ?></small>
 	</div>
 
 	<div class="kidazzle-single-field">
-		<label for="program_prism_description"><?php _e('Prism Description', 'kidazzle-theme'); ?></label>
+		<label for="program_prism_description"><?php _e('Curriculum Focus Description', 'kidazzle-theme'); ?></label>
 		<textarea id="program_prism_description" name="program_prism_description" rows="4"
-			placeholder="In the first year, the brain grows faster than at any other time..."><?php echo esc_textarea($prism_description); ?></textarea>
-		<small><?php _e('Description explaining the program\'s Prismpath focus', 'kidazzle-theme'); ?></small>
+			placeholder="In the first year, the brain grows faster than at any other time..."><?php echo esc_textarea($curriculum_focus_description); ?></textarea>
+		<small><?php _e('Description explaining the program\'s KIDazzle Creative Curriculum focus', 'kidazzle-theme'); ?></small>
 	</div>
 
 	<div class="kidazzle-single-field">
-		<label><?php _e('Prismpath Chart Values (0-100)', 'kidazzle-theme'); ?></label>
+		<label><?php _e('KIDazzle Creative Curriculum Chart Values (0-100)', 'kidazzle-theme'); ?></label>
 		<div style="margin-bottom: 15px;">
 			<span style="font-size: 12px; font-weight: bold; margin-right: 10px;">Quick Fill:</span>
 			<button type="button" class="button kidazzle-chart-preset" data-values="[90,90,40,15,40]">Infant</button>
@@ -770,31 +770,31 @@ function kidazzle_program_single_page_meta_box_render($post)
 				<label for="program_prism_physical"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Physical</label>
 				<input type="number" id="program_prism_physical" name="program_prism_physical"
-					value="<?php echo esc_attr($prism_physical); ?>" min="0" max="100" style="background: #F4E5E2;" />
+					value="<?php echo esc_attr($curriculum_focus_physical); ?>" min="0" max="100" style="background: #F4E5E2;" />
 			</div>
 			<div class="kidazzle-chart-input">
 				<label for="program_prism_emotional"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Emotional</label>
 				<input type="number" id="program_prism_emotional" name="program_prism_emotional"
-					value="<?php echo esc_attr($prism_emotional); ?>" min="0" max="100" style="background: #FDF6E3;" />
+					value="<?php echo esc_attr($curriculum_focus_emotional); ?>" min="0" max="100" style="background: #FDF6E3;" />
 			</div>
 			<div class="kidazzle-chart-input">
 				<label for="program_prism_social"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Social</label>
 				<input type="number" id="program_prism_social" name="program_prism_social"
-					value="<?php echo esc_attr($prism_social); ?>" min="0" max="100" style="background: #E3EBE8;" />
+					value="<?php echo esc_attr($curriculum_focus_social); ?>" min="0" max="100" style="background: #E3EBE8;" />
 			</div>
 			<div class="kidazzle-chart-input">
 				<label for="program_prism_academic"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Academic</label>
 				<input type="number" id="program_prism_academic" name="program_prism_academic"
-					value="<?php echo esc_attr($prism_academic); ?>" min="0" max="100" style="background: #E3E9EC;" />
+					value="<?php echo esc_attr($curriculum_focus_academic); ?>" min="0" max="100" style="background: #E3E9EC;" />
 			</div>
 			<div class="kidazzle-chart-input">
 				<label for="program_prism_creative"
 					style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Creative</label>
 				<input type="number" id="program_prism_creative" name="program_prism_creative"
-					value="<?php echo esc_attr($prism_creative); ?>" min="0" max="100" style="background: #FDF6E3;" />
+					value="<?php echo esc_attr($curriculum_focus_creative); ?>" min="0" max="100" style="background: #FDF6E3;" />
 			</div>
 		</div>
 		<small><?php _e('Set values 0-100 for each pillar. These create the radar chart.', 'kidazzle-theme'); ?></small>
@@ -816,7 +816,7 @@ function kidazzle_program_single_page_meta_box_render($post)
 	<div class="kidazzle-single-field">
 		<label for="program_prism_focus_items"><?php _e('Focus Items', 'kidazzle-theme'); ?></label>
 		<textarea id="program_prism_focus_items" name="program_prism_focus_items" rows="4"
-			placeholder="Enter one item per line, e.g.:&#10;High Physical: Tummy time, rolling, reaching.&#10;High Emotional: Responsive feeding, cuddling."><?php echo esc_textarea($prism_focus_items); ?></textarea>
+			placeholder="Enter one item per line, e.g.:&#10;High Physical: Tummy time, rolling, reaching.&#10;High Emotional: Responsive feeding, cuddling."><?php echo esc_textarea($curriculum_focus_items); ?></textarea>
 		<small><?php _e('Bullet points explaining the focus. One per line.', 'kidazzle-theme'); ?></small>
 	</div>
 
