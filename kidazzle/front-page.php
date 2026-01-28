@@ -1,29 +1,21 @@
 <?php
 /**
- * The front page template.
+ * Front Page Template - WIMPER
  *
- * @package kidazzle-theme
+ * @package wimper
  */
 
-get_header(); ?>
+get_header();
+?>
 
-<!-- Main Home Content View -->
-<div id="view-home" class="view-section active block">
-
+<main>
     <?php
-    // Load home sections in sequence
-    get_template_part('template-parts/home/hero');
-    get_template_part('template-parts/home/southeast-powerhouse');
-    get_template_part('template-parts/home/programs-preview');
-    get_template_part('template-parts/home/stats-strip');
-    get_template_part('template-parts/home/kidazzle-difference');
-    get_template_part('template-parts/home/curriculum');
-    get_template_part('template-parts/home/growth-journey');
-    get_template_part('template-parts/home/legacy-origin');
-    get_template_part('template-parts/home/tour-cta');
-
+    // WIMPER Home Page Sections
+    get_template_part('template-parts/wimper/hero');
+    get_template_part('template-parts/wimper/paradigm-shift');
+    get_template_part('template-parts/wimper/financial-calculator');
     ?>
+</main>
 
-</div>
-
-<?php get_footer(); ?>
+<?php
+get_footer();

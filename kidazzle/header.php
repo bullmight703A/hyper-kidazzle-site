@@ -5,10 +5,15 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php // Canonical URL is handled by Yoast SEO or framework canonical enforcer ?>
-	<!-- Google Fonts: Outfit and Playfair Display -->
+	<!-- Google Fonts: Inter and Playfair Display for WIMPER -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+		rel="stylesheet">
+
+	<!-- FontAwesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 	<!-- Tier 3: Instant Navigation (Speculation Rules API) -->
 	<script type="speculationrules">
@@ -28,20 +33,20 @@
 	}
 	</script>
 
-<?php
-// Get Customizer settings
-$header_phone = get_theme_mod('kidazzle_footer_phone', '877-410-1002'); // Reusing footer phone for consistency
-$header_cta_text = get_theme_mod('kidazzle_header_cta_text', 'Contact Us');
-$header_cta_url = get_theme_mod('kidazzle_book_tour_url', home_url('/contact'));
-$header_scripts = get_theme_mod('kidazzle_header_scripts', '');
+	<?php
+	// Get Customizer settings
+	$header_phone = get_theme_mod('kidazzle_footer_phone', '877-410-1002'); // Reusing footer phone for consistency
+	$header_cta_text = get_theme_mod('kidazzle_header_cta_text', 'Contact Us');
+	$header_cta_url = get_theme_mod('kidazzle_book_tour_url', home_url('/contact'));
+	$header_scripts = get_theme_mod('kidazzle_header_scripts', '');
 
-// Output header scripts if set
-if (!empty($header_scripts)) {
-	echo $header_scripts;
-}
+	// Output header scripts if set
+	if (!empty($header_scripts)) {
+		echo $header_scripts;
+	}
 
-wp_head();
-?>
+	wp_head();
+	?>
 </head>
 
 
@@ -76,11 +81,13 @@ wp_head();
 
 
 	<!-- MAIN NAVIGATION -->
-	<nav id="navbar" class="fixed top-10 w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md py-4 shadow-sm">
+	<nav id="navbar"
+		class="fixed top-10 w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md py-4 shadow-sm">
 		<div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
 			<!-- Logo -->
 			<a href="<?php echo home_url(); ?>" class="flex items-center gap-2 cursor-pointer">
-				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper" style="max-width: 250px; max-height: 80px; overflow: hidden;">
+				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper"
+					style="max-width: 250px; max-height: 80px; overflow: hidden;">
 					<?php
 					if (has_custom_logo()) {
 						the_custom_logo();
@@ -97,6 +104,7 @@ wp_head();
 						object-fit: contain;
 						display: block;
 					}
+
 					/* Extra safety for the img tag itself if WP outputs it without class */
 					.custom-logo-wrapper img {
 						max-height: 80px !important;
@@ -127,7 +135,8 @@ wp_head();
 			</button>
 			<div class="flex flex-col gap-6 font-bold text-2xl text-brand-ink pt-4 uppercase tracking-widest">
 				<?php kidazzle_mobile_nav(); ?>
-				<a href="<?php echo home_url('/contact'); ?>" class="text-left py-4 border-t border-brand-ink/5 mt-4">Contact Us</a>
+				<a href="<?php echo home_url('/contact'); ?>"
+					class="text-left py-4 border-t border-brand-ink/5 mt-4">Contact Us</a>
 			</div>
 		</div>
 	</nav>
