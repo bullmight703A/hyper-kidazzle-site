@@ -132,15 +132,16 @@ add_action('init', 'kidazzle_remove_legacy_assets');
  * Remove Gutenberg Block Library CSS on Frontend
  * This theme doesn't use Gutenberg blocks, so we can remove these render-blocking styles
  */
-function kidazzle_remove_block_library_css() {
+function kidazzle_remove_block_library_css()
+{
     if (!is_admin()) {
         // Remove core block library CSS
         wp_dequeue_style('wp-block-library');
         wp_dequeue_style('wp-block-library-theme');
-        
+
         // Remove WooCommerce block CSS (if any)
         wp_dequeue_style('wc-blocks-style');
-        
+
         // Remove global styles (theme.json generated)
         wp_dequeue_style('global-styles');
         wp_dequeue_style('wp-block-navigation');
@@ -153,7 +154,7 @@ add_action('wp_enqueue_scripts', 'kidazzle_remove_block_library_css', 100);
 add_filter('should_load_separate_core_block_assets', '__return_false');
 
 // Remove inline block styles for specific blocks
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function () {
     // Get all registered block styles and remove them
     $blocks_to_remove = ['heading', 'paragraph', 'list', 'list-item', 'quote', 'image', 'separator'];
     foreach ($blocks_to_remove as $block) {
@@ -166,14 +167,14 @@ add_action('wp_enqueue_scripts', function() {
  * Exclude images with 'no-lazy' class from LiteSpeed lazy loading
  * This prevents CLS on hero images and other critical above-the-fold images
  */
-add_filter('litespeed_media_lazy_img_excludes', function($excludes) {
+add_filter('litespeed_media_lazy_img_excludes', function ($excludes) {
     $excludes[] = 'no-lazy';
     $excludes[] = 'fetchpriority';
     return $excludes;
 });
 
 // Also exclude from native WordPress lazy loading
-add_filter('wp_img_tag_add_loading_attr', function($value, $image, $context) {
+add_filter('wp_img_tag_add_loading_attr', function ($value, $image, $context) {
     if (strpos($image, 'no-lazy') !== false || strpos($image, 'fetchpriority') !== false) {
         return false; // Don't add loading="lazy"
     }
@@ -467,4 +468,41 @@ remove_action('wp_footer', 'wp_speculation_rules');
 add_filter('wp_speculation_rules_configuration', '__return_empty_array', PHP_INT_MAX);
 add_filter('pl_speculation_rules_configuration', '__return_empty_array', PHP_INT_MAX);
 
+/**
+ * OpenClaw API Auth Fallback
+ * Host (FastCGI) strips Authorization headers, deleting standard App Passwords in transit.
+ * This filter looks for X-OpenClaw-Auth and explicitly logs the API user in.
+ */
+add_filter('determine_current_user', function ($user_id) {
+    if (!empty($user_id)) {
+        return $user_id;
+    }
+
+    // 1. Look for our custom fallback header
+    $auth = isset($_SERVER['HTTP_X_OPENCLAW_AUTH']) ? $_SERVER['HTTP_X_OPENCLAW_AUTH'] : '';
+
+    // 2. Fallback to REDIRECT_HTTP_AUTHORIZATION (CGI environments sometimes move it here)
+    if (empty($auth) && isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+        $auth = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+    }
+
+    if (!empty($auth) && strpos(strtolower($auth), 'basic ') === 0) {
+        $credentials = base64_decode(substr($auth, 6));
+        if (strpos($credentials, ':') !== false) {
+            list($username, $password) = explode(':', $credentials, 2);
+
+            // Trick WordPress core into thinking CGI auth happened natively
+            $_SERVER['PHP_AUTH_USER'] = $username;
+            $_SERVER['PHP_AUTH_PW'] = $password;
+
+            // Explicitly verify password and return User ID so rest_cannot_create is solved
+            $user = wp_authenticate($username, $password);
+            if (!is_wp_error($user) && $user instanceof WP_User) {
+                return $user->ID;
+            }
+        }
+    }
+
+    return $user_id;
+}, 15);
 
