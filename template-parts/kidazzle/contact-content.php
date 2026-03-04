@@ -30,7 +30,8 @@
                         <div class="flex items-start gap-4">
                             <div
                                 class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-indigo-600 shrink-0">
-                                <i data-lucide="map-pin"></i></div>
+                                <i data-lucide="map-pin"></i>
+                            </div>
                             <div>
                                 <p class="font-bold text-slate-900">Main Office Address</p>
                                 <p class="text-slate-600">674 Joseph E Lowery Boulevard Southwest,<br>Atlanta, Georgia
@@ -40,7 +41,8 @@
                         <div class="flex items-start gap-4">
                             <div
                                 class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-green-600 shrink-0">
-                                <i data-lucide="phone"></i></div>
+                                <i data-lucide="phone"></i>
+                            </div>
                             <div>
                                 <p class="font-bold text-slate-900">Call Us Toll-Free</p>
                                 <p class="text-slate-600 text-xl font-extrabold">877-410-1002</p>
@@ -49,7 +51,8 @@
                         <div class="flex items-start gap-4">
                             <div
                                 class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-purple-600 shrink-0">
-                                <i data-lucide="mail"></i></div>
+                                <i data-lucide="mail"></i>
+                            </div>
                             <div>
                                 <p class="font-bold text-slate-900">Email Inquiries</p>
                                 <p class="text-slate-600">info@kidazzle.com</p>
@@ -94,10 +97,11 @@
                 <div
                     class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
                 </div>
-                <div class="relative z-10 bg-white/95 backdrop-blur-sm rounded-[3.3rem] p-8 h-[1100px] overflow-hidden">
+                <div class="relative z-10 rounded-[3.3rem] p-8 h-[1100px] overflow-hidden">
                     <div class="text-center mb-8">
-                        <h3 class="text-3xl font-bold text-slate-900 uppercase tracking-tight">Send Us a Message</h3>
-                        <p class="text-slate-500 font-medium">Have a question? Fill out the form below and our team will
+                        <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Send Us a Message</h3>
+                        <p class="text-purple-100 font-medium">Have a question? Fill out the form below and our team
+                            will
                             get back to you shortly.</p>
                     </div>
                     <iframe src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
