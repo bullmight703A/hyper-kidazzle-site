@@ -1,0 +1,12 @@
+Testing Wimper (n13jwn1zon.wpdns.site) with user: iro-wp
+--- Result for Wimper (n13jwn1zon.wpdns.site | User: iro-wp) ---
+Status Code: 200
+✅ SUCCESS! Found pages. First page ID: 293
+-------------------------------------------------
+
+Testing Kidazzle (wdi1ba00h7.wpdns.site) with user: roberthill@kidazzle.com
+--- Result for Kidazzle (wdi1ba00h7.wpdns.site | User: roberthill@kidazzle.com) ---
+Status Code: 200
+✅ SUCCESS! Found pages. First page ID: 215
+-------------------------------------------------
+

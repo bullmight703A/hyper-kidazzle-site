@@ -1,0 +1,10 @@
+Starting WordPress Post Creation Tests...
+
+[Wimper] Connecting to n13jwn1zon.wpdns.site...
+❌ [Wimper] FAILED! Status: 401
+Response: {"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}
+[Kidazzle] Connecting to wdi1ba00h7.wpdns.site...
+❌ [Kidazzle] FAILED! Status: 404
+Response: {"code":"rest_no_route","message":"No route was found matching the URL and request method.","data":{"status":404}}
+
+Tests completed.
