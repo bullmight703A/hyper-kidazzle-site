@@ -48,6 +48,44 @@
 
 	wp_head();
 	?>
+	<style>
+		/* Ensure header/footer hover colors work even if Tailwind JIT omitted them */
+		.hover\:text-indigo-600:hover {
+			color: #4f46e5 !important;
+		}
+
+		.hover\:text-orange-500:hover {
+			color: #f97316 !important;
+		}
+
+		.hover\:text-red-500:hover {
+			color: #ef4444 !important;
+		}
+
+		.hover\:text-cyan-500:hover {
+			color: #06b6d4 !important;
+		}
+
+		.hover\:text-green-500:hover {
+			color: #22c55e !important;
+		}
+
+		.hover\:text-purple-500:hover {
+			color: #a855f7 !important;
+		}
+
+		.hover\:text-yellow-400:hover {
+			color: #facc15 !important;
+		}
+
+		.hover\:text-cyan-600:hover {
+			color: #0891b2 !important;
+		}
+
+		.hover\:text-orange-600:hover {
+			color: #ea580c !important;
+		}
+	</style>
 </head>
 
 

@@ -20,6 +20,11 @@ while (have_posts()):
 	$hero_title = get_post_meta($program_id, 'program_hero_title', true) ?: get_the_title();
 	$hero_description = get_post_meta($program_id, 'program_hero_description', true) ?: get_the_excerpt();
 
+	// Summer Camp Content Override
+	if (stripos($hero_title, 'Summer Camp') !== false) {
+		$hero_description = "<strong>Find Summer Camp Near You:</strong><br/>Adair Park &bull; Pittsburgh (Atlanta) &bull; East Point Historic District &bull; Camp Creek Area &bull; Southwest Atlanta &bull; South Fulton, GA &bull; Red Oak, GA &bull; Lake City, GA<br/><br/><strong>Locations Offering This Program:</strong><br/>&bull; KIDazzle Midtown Atlanta: (877) 410-1002<br/>&bull; KIDazzle West End of Atlanta: (404) 882-8215<br/>&bull; KIDazzle Hampton, GA: (404) 383-7570";
+	}
+
 	// KIDazzle Creative Curriculum section
 	$curriculum_focus_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our KIDazzle Creative Curriculum™ Focus';
 	$curriculum_focus_description = get_post_meta($program_id, 'program_prism_description', true);
@@ -71,12 +76,12 @@ while (have_posts()):
 						</div>
 					<?php endif; ?>
 
-					<h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-10">
+					<h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-10">
 						<?php echo esc_html($hero_title); ?>
 					</h1>
 
 					<?php if ($hero_description): ?>
-						<p class="text-lg text-brand-ink/80 max-w-2xl">
+						<p class="text-lg text-slate-600 font-medium max-w-2xl">
 							<?php echo wp_kses_post(wpautop($hero_description)); ?>
 						</p>
 					<?php endif; ?>
@@ -88,16 +93,16 @@ while (have_posts()):
 						<?php if ($lesson_plan_url): ?>
 							<button type="button" id="lesson-plan-trigger"
 								data-lesson-url="<?php echo esc_url($lesson_plan_url); ?>"
-								class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors cursor-pointer">
+								class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors cursor-pointer">
 								View Lesson Plan
 							</button>
 						<?php endif; ?>
 						<a href="<?php echo esc_url(get_post_type_archive_link('location')); ?>"
-							class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							View Locations
 						</a>
 						<a href="<?php echo esc_url(home_url('/programs/')); ?>"
-							class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							All Programs
 						</a>
 					</div>
@@ -120,22 +125,23 @@ while (have_posts()):
 		</section>
 
 		<!-- The KIDazzle Creative Curriculum Focus (Chart) -->
-		<section id="curriculum-focus" class="py-24 bg-brand-cream">
+		<section id="curriculum-focus" class="py-24 bg-slate-50">
 			<div class="max-w-6xl mx-auto px-4 lg:px-6">
 				<div class="grid lg:grid-cols-2 gap-16 items-center">
-					<div class="bg-white rounded-[3rem] p-8 shadow-soft border border-brand-ink/5 order-2 lg:order-1">
+					<div class="bg-white rounded-[3rem] p-8 shadow-soft border border-slate-200 order-2 lg:order-1">
 						<canvas id="programChart"></canvas>
 					</div>
 					<div class="order-1 lg:order-2">
 						<span
-							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">KIDazzle Creative Curriculum™
+							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">KIDazzle
+							Creative Curriculum™
 							Focus</span>
-						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
+						<h2 class="text-3xl md:text-4xl  font-bold text-slate-900 mb-6">
 							<?php echo esc_html($curriculum_focus_title); ?>
 						</h2>
 
 						<?php if ($curriculum_focus_description): ?>
-							<div class="text-brand-ink/80 text-lg mb-6">
+							<div class="text-slate-600 font-medium text-lg mb-6">
 								<?php echo wp_kses_post(wpautop($curriculum_focus_description)); ?>
 							</div>
 						<?php endif; ?>
@@ -144,7 +150,7 @@ while (have_posts()):
 							$focus_items_array = array_filter(array_map('trim', explode("\n", $curriculum_focus_items)));
 							if (!empty($focus_items_array)):
 								?>
-								<ul class="space-y-3 text-sm text-brand-ink/90">
+								<ul class="space-y-3 text-sm text-slate-700 font-medium">
 									<?php
 									$item_colors = array('kidazzle-red', 'kidazzle-yellow', 'kidazzle-green', 'kidazzle-blue', 'brand-ink/20');
 									foreach ($focus_items_array as $index => $item):
@@ -186,12 +192,12 @@ while (have_posts()):
 					?>
 					<section id="schedule" class="py-24 bg-white">
 						<div class="max-w-6xl mx-auto px-4 lg:px-6" data-schedule>
-							<h2 class="text-3xl font-serif font-bold text-center mb-12 text-brand-ink">
+							<h2 class="text-3xl  font-bold text-center mb-12 text-slate-900">
 								<?php echo esc_html($schedule_title); ?>
 							</h2>
 
 							<div class="tab-content active" data-schedule-panel="program">
-								<div class="rounded-[3rem] p-8 md:p-12 bg-brand-cream text-center">
+								<div class="rounded-[3rem] p-8 md:p-12 bg-slate-50 text-center">
 
 									<!-- Time Bubbles -->
 									<div class="relative max-w-5xl mx-auto mb-10">
@@ -201,8 +207,8 @@ while (have_posts()):
 												<?php
 												$is_first = 0 === $i;
 												$btn_classes = $is_first
-													? 'bg-brand-ink text-white shadow-md transform scale-105'
-													: 'bg-white text-brand-ink/80 hover:text-brand-ink hover:bg-white/80';
+													? 'bg-slate-900 text-white shadow-md transform scale-105'
+													: 'bg-white text-slate-600 font-medium hover:text-slate-900 hover:bg-white/80';
 												?>
 												<button
 													class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
@@ -218,7 +224,7 @@ while (have_posts()):
 										<div class="flex flex-wrap justify-center gap-2 md:gap-4 relative z-10 max-w-full">
 											<?php foreach ($bottom_steps as $i => $step): ?>
 												<?php
-												$btn_classes = 'bg-white text-brand-ink/80 hover:text-brand-ink hover:bg-white/80';
+												$btn_classes = 'bg-white text-slate-600 font-medium hover:text-slate-900 hover:bg-white/80';
 												?>
 												<button
 													class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
@@ -234,11 +240,12 @@ while (have_posts()):
 									<!-- Dynamic Content -->
 									<div class="max-w-2xl mx-auto min-h-[120px]" data-schedule-content>
 										<?php if (!empty($steps[0])): ?>
-											<h4 class="text-xl font-bold text-brand-ink mb-3 transition-colors duration-300"
+											<h4 class="text-xl font-bold text-slate-900 mb-3 transition-colors duration-300"
 												data-content-title>
 												<?php echo esc_html($steps[0]['title']); ?>
 											</h4>
-											<p class="text-brand-ink/90 leading-relaxed transition-opacity duration-300" data-content-copy>
+											<p class="text-slate-700 font-medium leading-relaxed transition-opacity duration-300"
+												data-content-copy>
 												<?php echo esc_html($steps[0]['copy']); ?>
 											</p>
 										<?php endif; ?>
@@ -256,16 +263,16 @@ while (have_posts()):
 		</div>
 		</section>
 
-		<?php 
+		<?php
 		// Age Calculator Widget
 		kidazzle_program_enhancements::render_age_calculator($program_id);
-		
+
 		// FAQ Section with Schema
 		kidazzle_program_enhancements::render_faq_section($program_id);
-		
+
 		// Photo Gallery
 		kidazzle_program_enhancements::render_gallery_section($program_id);
-		
+
 		// Parent Testimonials
 		kidazzle_program_enhancements::render_testimonials_section($program_id);
 		?>
@@ -349,46 +356,45 @@ while (have_posts()):
 			},
 			plugins: { legend: { display: false } }
 		}
-																		});
-																	};
+																			});
+																		};
 		document.body.appendChild(script);
-																}
-															});
-														}, { rootMargin: '200px' }); // Start loading 200px before view
+																	}
+																});
+															}, { rootMargin: '200px' }); // Start loading 200px before view
 		observer.observe(ctx);
-													}
-												});
+														}
+													});
 	</script>
 
 	<?php if ($lesson_plan_url): ?>
 		<!-- Lesson Plan Modal -->
 		<div id="lesson-plan-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
 			<!-- Backdrop -->
-			<div class="absolute inset-0 bg-brand-ink/80 backdrop-blur-sm transition-opacity" id="lesson-plan-backdrop"></div>
+			<div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity" id="lesson-plan-backdrop"></div>
 
 			<!-- Modal Container -->
 			<div
 				class="absolute inset-4 md:inset-10 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fade-in-up">
 				<!-- Header -->
-				<div
-					class="bg-brand-cream border-b border-brand-ink/5 px-6 py-4 flex items-center justify-between flex-shrink-0">
-					<h3 class="font-serif text-xl font-bold text-brand-ink">
+				<div class="bg-slate-50 border-b border-slate-200 px-6 py-4 flex items-center justify-between flex-shrink-0">
+					<h3 class="text-xl font-extrabold tracking-tight text-slate-900">
 						<i class="fa-solid fa-file-signature text-<?php echo esc_attr($colors['main']); ?> mr-2"></i>
 						<?php echo esc_html(get_the_title()); ?> Lesson Plan
 					</h3>
 					<div class="flex items-center gap-4">
 						<a href="<?php echo esc_url($lesson_plan_url); ?>" target="_blank" id="lesson-plan-external"
-							class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-kidazzle-blue transition-colors hidden md:flex items-center gap-1">
+							class="text-xs font-bold uppercase tracking-wider text-slate-900/70 hover:text-kidazzle-blue transition-colors hidden md:flex items-center gap-1">
 							<i class="fa-solid fa-arrow-up-right-from-square"></i>
 							Open in new tab
 						</a>
 						<a href="<?php echo esc_url($lesson_plan_url); ?>" download
-							class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors hidden md:flex items-center gap-1">
+							class="text-xs font-bold uppercase tracking-wider text-slate-900/70 hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors hidden md:flex items-center gap-1">
 							<i class="fa-solid fa-download"></i>
 							Download
 						</a>
 						<button id="lesson-plan-close"
-							class="w-10 h-10 rounded-full bg-white border border-brand-ink/10 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
+							class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-900 hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
 							<i class="fa-solid fa-xmark text-lg"></i>
 						</button>
 					</div>
@@ -401,7 +407,7 @@ while (have_posts()):
 							<div
 								class="w-12 h-12 border-4 border-<?php echo esc_attr($colors['main']); ?>/20 border-t-<?php echo esc_attr($colors['main']); ?> rounded-full animate-spin mx-auto mb-4">
 							</div>
-							<p class="text-brand-ink/60 text-sm">Loading lesson plan...</p>
+							<p class="text-slate-900/60 text-sm">Loading lesson plan...</p>
 						</div>
 					</div>
 					<iframe id="lesson-plan-frame" src="" class="w-full h-full border-0"></iframe>
@@ -450,3 +456,4 @@ while (have_posts()):
 	<?php
 endwhile;
 get_footer();
+
