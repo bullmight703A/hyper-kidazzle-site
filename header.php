@@ -12,8 +12,9 @@
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
 		rel="stylesheet">
 
-	<!-- FontAwesome -->
+	<!-- FontAwesome & Lucide -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<script src="https://unpkg.com/lucide@latest"></script>
 
 	<!-- Tier 3: Instant Navigation (Speculation Rules API) -->
 	<script type="speculationrules">
@@ -59,85 +60,55 @@
 
 	<!-- TOP UTILITY BAR -->
 	<div
-		class="bg-brand-cream text-brand-ink/60 text-[10px] font-bold uppercase tracking-widest py-2 px-4 hidden md:flex justify-between items-center border-b border-brand-ink/5 fixed w-full top-0 z-50 h-10">
+		class="bg-slate-50 text-slate-600 text-xs py-2 px-4 hidden md:flex justify-between items-center border-b border-slate-200">
 		<div class="flex gap-4 items-center">
-			<a href="<?php echo home_url('/locations'); ?>"
-				class="flex items-center gap-1 cursor-pointer hover:text-kidazzle-blue transition">
-				<i class="fa-solid fa-location-dot text-kidazzle-red"></i> Locations in GA, TN, & FL
-			</a>
-			<span class="flex items-center gap-1">
-				<i class="fa-solid fa-phone text-kidazzle-green"></i> <?php echo esc_html($header_phone); ?>
-			</span>
+			<a href="/locations/" class="flex items-center gap-1 hover:text-cyan-600 transition"><i
+					data-lucide="map-pin" class="w-3 h-3 text-red-500"></i> Serving GA, TN, & FL</a>
+			<span class="flex items-center gap-1"><i data-lucide="phone" class="w-3 h-3 text-green-500"></i>
+				877-410-1002</span>
+			<a href="/acquisitions/"
+				class="flex items-center gap-1 font-bold text-indigo-600 hover:underline transition"><i
+					data-lucide="briefcase" class="w-3 h-3"></i> Acquisitions</a>
 		</div>
-		<div class="flex gap-6">
-			<a href="<?php echo home_url('/careers'); ?>"
-				class="hover:text-kidazzle-blue transition flex items-center gap-1">Careers</a>
-			<a href="<?php echo home_url('/teacher-portal'); ?>"
-				class="hover:text-kidazzle-blue transition flex items-center gap-1 text-kidazzle-orange">
-				<i class="fa-solid fa-users-viewfinder"></i> Teacher Portal
-			</a>
+		<div class="flex gap-6 font-medium">
+			<a href="/careers/" class="hover:text-cyan-600 transition flex items-center gap-1">Careers</a>
+			<a href="/teacher-portal/"
+				class="hover:text-orange-600 transition flex items-center gap-1 font-bold text-orange-500"><i
+					data-lucide="users" class="w-3 h-3"></i> Teacher Portal</a>
 		</div>
 	</div>
 
-
 	<!-- MAIN NAVIGATION -->
-	<nav id="navbar"
-		class="fixed top-10 w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md py-4 shadow-sm">
-		<div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
-			<!-- Logo -->
-			<a href="<?php echo home_url(); ?>" class="flex items-center gap-2 cursor-pointer">
-				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper"
-					style="max-width: 250px; max-height: 80px; overflow: hidden;">
-					<?php
-					if (has_custom_logo()) {
-						the_custom_logo();
-					} else {
-						echo '<h1 class="text-3xl font-extrabold text-black pl-2 tracking-tighter hidden md:block">KID<span class="text-kidazzle-yellow">azzle</span></h1>';
-					}
-					?>
-				</div>
-				<style>
-					.custom-logo-wrapper .custom-logo {
-						max-height: 100% !important;
-						width: auto !important;
-						height: auto !important;
-						object-fit: contain;
-						display: block;
-					}
-
-					/* Extra safety for the img tag itself if WP outputs it without class */
-					.custom-logo-wrapper img {
-						max-height: 80px !important;
-						width: auto !important;
-						display: block;
-					}
-				</style>
+	<nav class="sticky top-0 w-full z-40 bg-white py-4 shadow-sm border-b border-slate-100">
+		<div class="container mx-auto px-4 flex justify-between items-center">
+			<a href="/" class="flex items-center gap-2">
+				<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png"
+					alt="KIDazzle Logo" class="h-12 w-auto object-contain">
 			</a>
 
-			<!-- Desktop Links (Now dynamic) -->
-			<div class="hidden lg:flex items-center gap-6 font-bold text-brand-ink text-xs tracking-[0.15em] uppercase">
-				<?php kidazzle_primary_nav(); ?>
-				<a href="<?php echo esc_url($header_cta_url); ?>"
-					class="bg-brand-ink text-white px-6 py-3 rounded-full hover:bg-kidazzle-blue transition-all shadow-md ml-2 hover:-translate-y-0.5"><?php echo esc_html($header_cta_text); ?></a>
+			<button id="mobile-menu-btn" class="lg:hidden text-slate-900"><i data-lucide="menu"
+					class="w-8 h-8"></i></button>
+
+			<div class="hidden lg:flex items-center gap-6 font-bold text-slate-600 text-sm tracking-wide">
+				<a href="/" class="hover:text-indigo-600 transition pb-1">HOME</a>
+				<a href="/about/" class="hover:text-orange-500 transition pb-1">ABOUT US</a>
+				<a href="/programs/" class="hover:text-red-500 transition pb-1">PROGRAMS</a>
+				<a href="/curriculum/" class="hover:text-cyan-500 transition pb-1">CURRICULUM</a>
+				<a href="/locations/" class="hover:text-green-500 transition pb-1">LOCATIONS</a>
+				<a href="/resources/" class="hover:text-purple-500 transition pb-1">RESOURCES</a>
+				<a href="/contact/" class="hover:text-indigo-600 transition pb-1">CONTACT US</a>
 			</div>
-
-
-			<!-- Mobile Toggle -->
-			<button class="lg:hidden text-brand-ink" id="mobile-menu-btn" aria-label="Open Menu">
-				<i class="fa-solid fa-bars text-2xl"></i>
-			</button>
 		</div>
-
-		<!-- Mobile Menu (Now dynamic) -->
-		<div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 pt-24 px-6 overflow-y-auto">
-			<button id="close-menu-btn" class="absolute top-4 right-4 text-brand-ink" aria-label="Close Menu">
-				<i class="fa-solid fa-xmark text-3xl"></i>
-			</button>
-			<div class="flex flex-col gap-6 font-bold text-2xl text-brand-ink pt-4 uppercase tracking-widest">
-				<?php kidazzle_mobile_nav(); ?>
-				<a href="<?php echo home_url('/contact'); ?>"
-					class="text-left py-4 border-t border-brand-ink/5 mt-4">Contact Us</a>
-			</div>
+		<!-- Mobile Menu Panel -->
+		<div id="mobile-menu"
+			class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 flex flex-col p-4 gap-4 font-bold text-slate-700">
+			<a href="/" class="hover:text-indigo-600">HOME</a>
+			<a href="/about/" class="hover:text-orange-500">ABOUT US</a>
+			<a href="/programs/" class="hover:text-red-500">PROGRAMS</a>
+			<a href="/curriculum/" class="hover:text-cyan-500">CURRICULUM</a>
+			<a href="/locations/" class="hover:text-green-500">LOCATIONS</a>
+			<a href="/resources/" class="hover:text-purple-500">RESOURCES</a>
+			<a href="/contact/" class="hover:text-indigo-600">CONTACT US</a>
 		</div>
 	</nav>
 
