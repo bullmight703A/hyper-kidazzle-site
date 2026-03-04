@@ -209,17 +209,17 @@ $locations_query = new WP_Query(array(
 								<div class="grid grid-cols-2 gap-3 mt-auto relative z-20">
 									<a href="<?php the_permalink(); ?>"
 										class="flex items-center justify-center py-3 rounded-xl bg-brand-ink/5 text-brand-ink text-xs font-bold uppercase tracking-wider hover:bg-brand-ink hover:text-white transition-colors">
-												<?php _e('View Campus', 'kidazzle-theme'); ?>
+										<?php _e('View Campus', 'kidazzle-theme'); ?>
 									</a>
-											<?php if ($booking_link): ?>
+									<?php if ($booking_link): ?>
 										<a href="<?php echo esc_url($booking_link); ?>"
 											class="booking-btn flex items-center justify-center py-3 rounded-xl border border-<?php echo esc_attr($colors['border']); ?> text-<?php echo esc_attr($colors['text']); ?> text-xs font-bold uppercase tracking-wider hover:bg-<?php echo esc_attr($colors['text']); ?> hover:text-white transition-colors">
-														<?php _e('Book Tour', 'kidazzle-theme'); ?>
+											<?php _e('Book Tour', 'kidazzle-theme'); ?>
 										</a>
-											<?php else: ?>
+									<?php else: ?>
 										<a href="<?php the_permalink(); ?>#contact"
 											class="flex items-center justify-center py-3 rounded-xl border border-<?php echo esc_attr($colors['border']); ?> text-<?php echo esc_attr($colors['text']); ?> text-xs font-bold uppercase tracking-wider hover:bg-<?php echo esc_attr($colors['text']); ?> hover:text-white transition-colors">
-														<?php _e('Contact Us', 'kidazzle-theme'); ?>
+											<?php _e('Contact Us', 'kidazzle-theme'); ?>
 										</a>
 									<?php endif; ?>
 								</div>
@@ -242,36 +242,42 @@ $locations_query = new WP_Query(array(
 
 				<!-- Locations Gallery Preview -->
 				<div class="w-full lg:w-1/2 relative z-10">
-					<div class="bg-white/10 rounded-[2rem] p-4 border border-white/20 relative overflow-hidden backdrop-blur-sm">
-						<div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-							<?php 
-							// Rewind loop or re-query for visual preview
+					<div
+						class="bg-white/10 rounded-[2rem] p-4 border border-white/20 relative overflow-hidden backdrop-blur-sm">
+						<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+							<?php
+							// Show all locations instead of just 6
 							$gallery_query = new WP_Query(array(
 								'post_type' => 'location',
-								'posts_per_page' => 6,
-								'orderby' => 'rand', // Randomize for variety
+								'posts_per_page' => 8, // Up to 8 to fit nicely in 4-column grid
+								'orderby' => 'title',
+								'order' => 'ASC'
 							));
 
 							if ($gallery_query->have_posts()):
-								while ($gallery_query->have_posts()): $gallery_query->the_post();
+								while ($gallery_query->have_posts()):
+									$gallery_query->the_post();
 									$thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: 'https://images.unsplash.com/photo-1571210862729-78a52d3779a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';
-							?>
-							<a href="<?php the_permalink(); ?>" class="group relative aspect-square rounded-xl overflow-hidden block border border-white/10 hover:border-white/50 transition-all transform hover:scale-105" title="<?php the_title_attribute(); ?>">
-								<img src="<?php echo esc_url($thumb); ?>" alt="<?php the_title_attribute(); ?>" class="w-full h-full object-cover">
-								<div class="absolute inset-0 bg-brand-ink/20 group-hover:bg-transparent transition-colors"></div>
-							</a>
-							<?php 
-								endwhile; 
+									?>
+									<a href="<?php the_permalink(); ?>"
+										class="group relative aspect-square rounded-xl overflow-hidden block border border-white/10 hover:border-white/50 transition-all transform hover:scale-105"
+										title="<?php the_title_attribute(); ?>">
+										<img src="<?php echo esc_url($thumb); ?>" alt="<?php the_title_attribute(); ?>"
+											class="w-full h-full object-cover">
+										<div
+											class="absolute inset-0 bg-brand-ink/40 group-hover:bg-brand-ink/10 transition-colors flex flex-col justify-end p-2 md:p-3">
+											<h4
+												class="text-white font-bold text-[10px] md:text-[11px] leading-tight text-center uppercase tracking-wider drop-shadow-md">
+												<?php echo wp_trim_words(str_replace('KIDazzle Childcare | ', '', get_the_title()), 4, ''); ?>
+											</h4>
+										</div>
+									</a>
+								<?php
+								endwhile;
 								wp_reset_postdata();
-							endif; 
+							endif;
 							?>
 						</div>
-						
-						<?php if ($locations_query->found_posts > 6): ?>
-						<p class="mt-4 text-center text-[10px] font-bold tracking-widest uppercase text-white/80">
-							+ <?php echo ($locations_query->found_posts - 6); ?> <?php _e('More Locations', 'kidazzle-theme'); ?>
-						</p>
-						<?php endif; ?>
 					</div>
 				</div>
 

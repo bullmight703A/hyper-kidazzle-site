@@ -30,57 +30,23 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 			<p class="text-sm leading-relaxed text-slate-400">Providing elite, independent child care for over 31 years.
 				A legacy of excellence across the Southeast.</p>
 		</div>
-		<div class="kidazzle-footer-menu-container">
+		<div>
 			<h4 class="text-white font-bold mb-6 text-xs tracking-widest uppercase">Quick Links</h4>
-			<?php if (function_exists('kidazzle_footer_nav')) {
-				kidazzle_footer_nav();
-			} else { ?>
-				<ul class="space-y-4 text-sm font-medium">
-					<li><a href="/about/" class="hover:text-yellow-400 transition">About Us</a></li>
-					<li><a href="/programs/" class="hover:text-yellow-400 transition">Our Programs</a></li>
-					<li><a href="/locations/" class="hover:text-yellow-400 transition">Find a Location</a></li>
-					<li><a href="/careers/" class="hover:text-yellow-400 transition">Careers</a></li>
-				</ul>
-			<?php } ?>
-			<style>
-				.kidazzle-footer-menu-container ul {
-					list-style: none;
-					padding: 0;
-					margin: 0;
-					display: flex;
-					flex-direction: column;
-					gap: 0.75rem;
-					font-size: 0.875rem;
-					font-weight: 500;
-				}
-
-				.kidazzle-footer-menu-container a {
-					transition: color 0.15s ease-in-out;
-				}
-
-				.kidazzle-footer-menu-container a:hover {
-					color: #facc15;
-				}
-
-				.kidazzle-footer-menu-container li:nth-child(n+5) a {
-					font-size: 0.70rem;
-					line-height: 1.3;
-					color: #94a3b8;
-					display: block;
-					padding-top: 0.25rem;
-				}
-
-				.kidazzle-footer-menu-container li:nth-child(n+5) a:hover {
-					color: #cbd5e1;
-					text-decoration: underline;
-				}
-			</style>
+			<ul class="space-y-3 text-sm font-medium text-slate-300">
+				<li><a href="/about/" class="hover:text-white transition">About Us</a></li>
+				<li><a href="/programs/" class="hover:text-white transition">Our Programs</a></li>
+				<li><a href="/locations/" class="hover:text-white transition">Find a Location</a></li>
+				<li><a href="/careers/" class="hover:text-white transition">Careers</a></li>
+			</ul>
 		</div>
 		<div>
 			<h4 class="text-white font-bold mb-6 text-xs tracking-widest uppercase">Resources</h4>
-			<ul class="space-y-4 text-sm font-medium">
-				<li><a href="/teacher-portal/" class="hover:text-orange-400 transition">Teacher Portal</a></li>
-				<li><a href="/resources/" class="hover:text-purple-400 transition">Parent Resources</a></li>
+			<ul class="space-y-3 text-sm font-medium text-slate-300">
+				<li><a href="/teacher-portal/" class="hover:text-white transition">Teacher Portal</a></li>
+				<li><a href="/resources/" class="hover:text-white transition">Parent Resources</a></li>
+				<li><a href="/blog/"
+						class="hover:text-yellow-400 hover:underline transition font-bold uppercase text-[10px] tracking-widest mt-6 block"><i
+							class="fa-solid fa-book-open mr-1"></i> View More Posts</a></li>
 			</ul>
 		</div>
 		<div>
@@ -203,6 +169,17 @@ if ($footer_scripts) {
 	}
 }
 ?>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		setTimeout(() => {
+			document.querySelectorAll('body > div, body > footer ~ div, body > p').forEach(el => {
+				if (el.innerText && el.innerText.toUpperCase().includes('SERVING GA')) {
+					el.style.display = 'none';
+				}
+			});
+		}, 500); // 500ms delay to ensure Customizer scripts injected fully
+	});
+</script>
 </body>
 
 </html>
