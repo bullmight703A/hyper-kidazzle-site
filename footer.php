@@ -30,14 +30,51 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 			<p class="text-sm leading-relaxed text-slate-400">Providing elite, independent child care for over 31 years.
 				A legacy of excellence across the Southeast.</p>
 		</div>
-		<div>
+		<div class="kidazzle-footer-menu-container">
 			<h4 class="text-white font-bold mb-6 text-xs tracking-widest uppercase">Quick Links</h4>
-			<ul class="space-y-4 text-sm font-medium">
-				<li><a href="/about/" class="hover:text-yellow-400 transition">About Us</a></li>
-				<li><a href="/programs/" class="hover:text-yellow-400 transition">Our Programs</a></li>
-				<li><a href="/locations/" class="hover:text-yellow-400 transition">Find a Location</a></li>
-				<li><a href="/careers/" class="hover:text-yellow-400 transition">Careers</a></li>
-			</ul>
+			<?php if (function_exists('kidazzle_footer_nav')) {
+				kidazzle_footer_nav();
+			} else { ?>
+				<ul class="space-y-4 text-sm font-medium">
+					<li><a href="/about/" class="hover:text-yellow-400 transition">About Us</a></li>
+					<li><a href="/programs/" class="hover:text-yellow-400 transition">Our Programs</a></li>
+					<li><a href="/locations/" class="hover:text-yellow-400 transition">Find a Location</a></li>
+					<li><a href="/careers/" class="hover:text-yellow-400 transition">Careers</a></li>
+				</ul>
+			<?php } ?>
+			<style>
+				.kidazzle-footer-menu-container ul {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+					display: flex;
+					flex-direction: column;
+					gap: 0.75rem;
+					font-size: 0.875rem;
+					font-weight: 500;
+				}
+
+				.kidazzle-footer-menu-container a {
+					transition: color 0.15s ease-in-out;
+				}
+
+				.kidazzle-footer-menu-container a:hover {
+					color: #facc15;
+				}
+
+				.kidazzle-footer-menu-container li:nth-child(n+5) a {
+					font-size: 0.70rem;
+					line-height: 1.3;
+					color: #94a3b8;
+					display: block;
+					padding-top: 0.25rem;
+				}
+
+				.kidazzle-footer-menu-container li:nth-child(n+5) a:hover {
+					color: #cbd5e1;
+					text-decoration: underline;
+				}
+			</style>
 		</div>
 		<div>
 			<h4 class="text-white font-bold mb-6 text-xs tracking-widest uppercase">Resources</h4>
