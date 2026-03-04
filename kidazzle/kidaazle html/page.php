@@ -105,7 +105,27 @@
         <?php
         while (have_posts()):
             the_post();
-            the_content();
+            ?>
+            <!-- SEO Scenic Header -->
+            <section class="relative bg-cover bg-center py-20"
+                style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/kidazzle-scenic-header.png');">
+                <!-- Dark Overlay for text legibility -->
+                <div class="absolute inset-0 bg-slate-900/65 z-0"></div>
+
+                <div class="max-w-7xl relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">
+                        <?php the_title(); ?>
+                    </h1>
+                </div>
+            </section>
+
+            <!-- Post Content -->
+            <div class="kidazzle-content-wrapper mt-8">
+                <?php
+                the_content();
+                ?>
+            </div>
+            <?php
         endwhile;
         ?>
     </main>
@@ -157,8 +177,7 @@
         if (menuBtn && mobileMenu) {
             menuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
-            });
-        }
+        });  }
     </script>
 
     <?php wp_footer(); ?>
