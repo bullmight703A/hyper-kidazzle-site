@@ -110,18 +110,18 @@ get_header();
                     $age_range = get_post_meta(get_the_ID(), 'program_age_range', true);
                     $excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 15);
                     // Image Fallback Logic
-                    $placeholders = [
-                        'stem' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/stem_kids_1772748785832.png',
-                        'infant' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_infants_cover_1772749039948.png',
-                        'toddler' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/toddlers_playing_blocks_1772748809728.png',
-                        'preschool' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_preschool_cover_1772749052917.png',
-                        'prek' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/pre_k_kids_reading_1772748826409.png',
-                        'pre-k' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/ga_prek_kids_art_1772748838757.png',
-                        'vpk' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/vpk_kids_learning_1772748862019.png',
-                        'after-school' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/after_school_kids_1772748873988.png',
-                        'school' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/summer_camp_kids_1772748895785.png',
-                        'camp' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/summer_camp_kids_1772748895785.png'
-                    ];
+                    $placeholders = array(
+                        'stem' => get_template_directory_uri() . '/assets/images/stem_kids_1772748785832.png',
+                        'infant' => get_template_directory_uri() . '/assets/images/multicultural_infants_cover_1772749039948.png',
+                        'toddler' => get_template_directory_uri() . '/assets/images/toddlers_playing_blocks_1772748809728.png',
+                        'preschool' => get_template_directory_uri() . '/assets/images/multicultural_preschool_cover_1772749052917.png',
+                        'prek' => get_template_directory_uri() . '/assets/images/pre_k_kids_reading_1772748826409.png',
+                        'pre-k' => get_template_directory_uri() . '/assets/images/ga_prek_kids_art_1772748838757.png',
+                        'vpk' => get_template_directory_uri() . '/assets/images/vpk_kids_learning_1772748862019.png',
+                        'after-school' => get_template_directory_uri() . '/assets/images/after_school_kids_1772748873988.png',
+                        'school' => get_template_directory_uri() . '/assets/images/summer_camp_kids_1772748895785.png',
+                        'camp' => get_template_directory_uri() . '/assets/images/summer_camp_kids_1772748895785.png'
+                    );
 
                     $fallback_img = 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80'; // Default
             

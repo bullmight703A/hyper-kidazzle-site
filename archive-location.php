@@ -256,13 +256,13 @@ $locations_query = new WP_Query(array(
 
 							// Unique placeholders pool
 							$campus_placeholders = [
-								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_exterior_1772749484868.png',
-								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_indoor_play_1772749499195.png',
-								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_classroom_1772749511378.png',
-								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_reading_nook_1772749540264.png',
-								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_blocks_area_1772749554264.png',
-								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_art_studio_1772749582468.png',
-								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_outdoor_playground_1772749595504.png'
+								get_template_directory_uri() . '/assets/images/campus_exterior_1772749484868.png',
+								get_template_directory_uri() . '/assets/images/campus_indoor_play_1772749499195.png',
+								get_template_directory_uri() . '/assets/images/campus_classroom_1772749511378.png',
+								get_template_directory_uri() . '/assets/images/campus_reading_nook_1772749540264.png',
+								get_template_directory_uri() . '/assets/images/campus_blocks_area_1772749554264.png',
+								get_template_directory_uri() . '/assets/images/campus_art_studio_1772749582468.png',
+								get_template_directory_uri() . '/assets/images/campus_outdoor_playground_1772749595504.png'
 							];
 
 							if ($gallery_query->have_posts()):

@@ -1,7 +1,7 @@
 <!-- HERO SECTION -->
 <div class="relative py-40 text-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_child_playing_1772748642739.png"
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/multicultural_child_playing_1772748642739.png"
             alt="Legacy" class="w-full h-full object-cover object-center">
         <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
     </div>

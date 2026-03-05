@@ -123,7 +123,7 @@
             <!-- Blog 1 -->
             <div class="group cursor-pointer">
                 <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/blog_brain_development_1772749628254.png"
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog_brain_development_1772749628254.png"
                         class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
                         alt="Early Learning">
                 </div>
@@ -134,7 +134,7 @@
             <!-- Blog 2 -->
             <div class="group cursor-pointer">
                 <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/blog_nutrition_1772749641549.png"
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog_nutrition_1772749641549.png"
                         class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
                         alt="Nutrition">
                 </div>
@@ -145,7 +145,7 @@
             <!-- Blog 3 -->
             <div class="group cursor-pointer">
                 <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/blog_parenting_routine_1772749654300.png"
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog_parenting_routine_1772749654300.png"
                         class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
                         alt="Parenting">
                 </div>

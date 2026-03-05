@@ -54,10 +54,10 @@ $zones = array(
 <main id="view-curriculum" class="view-section active block">
     <!-- Hero Section (Premium Full-Bleed) -->
     <section class="relative py-32 md:py-48 text-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_teacher_1772749026928.png"
-                alt="Teacher reading to children" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-kidazzle-blueDark/60 backdrop-blur-[2px]"></div>
+        <div class="absolute inset-0">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/multicultural_teacher_1772749026928.png"
+                alt="The classroom is the Third Teacher" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 bg-kidazzle-red/20 mix-blend-multiply"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 text-white">
@@ -313,9 +313,10 @@ $zones = array(
             <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
                 <div
                     class="flex items-center gap-6 p-8 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group">
-                    <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 border-2 border-white shadow-lg">
-                        <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_infants_cover_1772749039948.png"
-                            alt="Infant Care" class="w-full h-full object-cover">
+                    <div
+                        class="w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl md:rounded-3xl flex items-center justify-center text-kidazzle-purple shadow-xl shadow-kidazzle-purple/20 mb-6 shrink-0 relative z-10 mx-auto overflow-hidden">
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/multicultural_infants_cover_1772749039948.png"
+                            alt="ITERS Assessment" class="w-full h-full object-cover opacity-90">
                     </div>
                     <div>
                         <h4 class="font-bold text-kidazzle-yellow text-xl mb-1">ITERS</h4>
@@ -328,9 +329,10 @@ $zones = array(
 
                 <div
                     class="flex items-center gap-6 p-8 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group">
-                    <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 border-2 border-white shadow-lg">
-                        <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_preschool_cover_1772749052917.png"
-                            alt="Preschool Learning" class="w-full h-full object-cover">
+                    <div
+                        class="w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl md:rounded-3xl flex items-center justify-center text-kidazzle-orange shadow-xl shadow-kidazzle-orange/20 mb-6 shrink-0 relative z-10 mx-auto overflow-hidden">
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/multicultural_preschool_cover_1772749052917.png"
+                            alt="ECERS Assessment" class="w-full h-full object-cover opacity-90">
                     </div>
                     <div>
                         <h4 class="font-bold text-kidazzle-green text-xl mb-1">ECERS</h4>

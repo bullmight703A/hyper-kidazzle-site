@@ -2,7 +2,7 @@
 <header class="relative w-full h-[350px] flex items-center justify-center overflow-hidden bg-slate-900">
     <div class="absolute inset-0 z-0">
         <!-- Image of group of children playing (no adults) -->
-        <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/contact_children_playing_1772749755414.png"
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/contact_children_playing_1772749755414.png"
             alt="Multicultural children playing outside" class="w-full h-full object-cover opacity-60">
         <div class="absolute inset-0 bg-indigo-950/40"></div>
     </div>
