@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template Name: WIMPER SPA Home
  * Front Page Template - WIMPER SPA
  *
  * @package wimper
@@ -108,7 +109,8 @@ get_header();
                                 <div class="flex items-center space-x-4">
                                     <div
                                         class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">
-                                        <i class="fas fa-check"></i></div>
+                                        <i class="fas fa-check"></i>
+                                    </div>
                                     <div class="flex-grow">
                                         <h4 class="text-sm font-bold text-slate-900">Corporate FICA Recapture</h4>
                                         <p class="text-xs text-slate-500">Savings flow back to the business. Net-zero
@@ -243,19 +245,22 @@ get_header();
                     <li class="flex items-center space-x-4">
                         <div
                             class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
-                            <i class="fas fa-video"></i></div>
+                            <i class="fas fa-video"></i>
+                        </div>
                         <span class="font-semibold text-slate-700">24/7 Virtual Urgent Care</span>
                     </li>
                     <li class="flex items-center space-x-4">
                         <div
                             class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
-                            <i class="fas fa-user-md"></i></div>
+                            <i class="fas fa-user-md"></i>
+                        </div>
                         <span class="font-semibold text-slate-700">Virtual Primary Care</span>
                     </li>
                     <li class="flex items-center space-x-4">
                         <div
                             class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
-                            <i class="fas fa-pills"></i></div>
+                            <i class="fas fa-pills"></i>
+                        </div>
                         <span class="font-semibold text-slate-700">Pharmacy Savings Benefit</span>
                     </li>
                 </ul>
@@ -370,7 +375,8 @@ get_header();
         <div class="flex items-start relative">
             <div
                 class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center font-bold z-10 shrink-0">
-                <i class="fas fa-check"></i></div>
+                <i class="fas fa-check"></i>
+            </div>
             <div class="ml-8">
                 <h3 class="text-2xl font-bold text-slate-900 mb-2">Activation & Recapture</h3>
                 <p class="text-slate-600">Go live. Employees access virtual care instantly. The business receives FICA
