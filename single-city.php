@@ -77,26 +77,64 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
 
 <!-- SEO Content Block -->
 <section class="py-20 bg-brand-cream border-y border-brand-ink/5">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="font-serif text-3xl md:text-5xl text-brand-ink mb-8 leading-tight">
-            Early Education and <br>
-            Care in <span class="text-kidazzle-blue"><?php echo esc_html($city); ?>, GA</span>
-        </h2>
+    <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="font-serif text-3xl md:text-5xl text-brand-ink mb-8 leading-tight">
+                    Early Education and <br>
+                    Care in <span class="text-kidazzle-blue"><?php echo esc_html($city); ?>, GA</span>
+                </h2>
 
-        <?php if ($intro_text): ?>
-            <div class="text-lg md:text-xl text-brand-ink/80 leading-relaxed max-w-3xl mx-auto">
-                <?php echo wp_kses_post($intro_text); ?>
+                <?php if ($intro_text):
+                    $paragraphs = array_filter(array_map('trim', explode("\n", strip_tags($intro_text))));
+                    $short_intro = '';
+                    $count = 0;
+                    foreach ($paragraphs as $p) {
+                        // Skip all headings/metadata from LLM
+                        if (empty($p) || strpos($p, 'Entity Overview') !== false || strpos($p, 'Primary SEO') !== false || strpos($p, 'Programs & Services') !== false || strpos($p, 'Local SEO') !== false || strpos($p, 'Call-to-Action') !== false) {
+                            continue;
+                        }
+                        $short_intro .= '<p class="text-lg md:text-xl text-brand-ink/80 leading-relaxed mb-6">' . esc_html($p) . '</p>';
+                        $count++;
+                        if ($count >= 3)
+                            break; // Limit to 3 paragraphs!
+                    }
+                    ?>
+                    <div class="prose prose-lg prose-slate h-auto max-w-none">
+                        <?php echo $short_intro; ?>
+                    </div>
+                <?php else: ?>
+                    <p class="text-lg md:text-xl text-brand-ink/80 leading-relaxed mb-6">
+                        Our school is more than a daycare. Through purposeful play and nurturing guidance, we help lay the
+                        foundation for a lifelong love of learning.
+                    </p>
+                    <p class="text-lg md:text-xl text-brand-ink/80 leading-relaxed mb-6">
+                        Conveniently located near major highways and down the road from local landmarks and top-rated
+                        elementary schools, we are the convenient choice for <?php echo esc_html($city); ?> working parents.
+                        Come by and see KIDazzle Creative Curriculum™ in action at one of our nearby campuses.
+                    </p>
+                <?php endif; ?>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <a href="#locations"
+                        class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-kidazzle-blue hover:text-brand-ink transition-colors"><i
+                            class="fa-solid fa-map-location-dot"></i> View Campuses</a>
+                    <a href="#programs"
+                        class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-kidazzle-green hover:text-brand-ink transition-colors"><i
+                            class="fa-solid fa-graduation-cap"></i> Explore Programs</a>
+                    <a href="<?php echo esc_url(home_url('/contact-us/')); ?>"
+                        class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-kidazzle-red hover:text-brand-ink transition-colors"><i
+                            class="fa-solid fa-envelope"></i> Contact Us</a>
+                </div>
             </div>
-        <?php else: ?>
-            <p class="text-lg md:text-xl text-brand-ink/80 leading-relaxed max-w-3xl mx-auto">
-                Our school is more than a daycare. Through purposeful play and nurturing guidance, we help lay the
-                foundation for a lifelong love of learning.
-                <br><br>
-                Conveniently located near major highways and down the road from local landmarks and top-rated
-                elementary schools, we are the convenient choice for <?php echo esc_html($city); ?> working parents.
-                Come by and see KIDazzle Creative Curriculum™ in action at one of our nearby campuses.
-            </p>
-        <?php endif; ?>
+
+            <div
+                class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white lg:order-last order-first mb-8 lg:mb-0">
+                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=800&auto=format&fit=crop"
+                    alt="Quality Childcare in <?php echo esc_attr($city); ?>"
+                    class="w-full h-full object-cover aspect-video hover:scale-105 transition-transform duration-700">
+            </div>
+        </div>
     </div>
 </section>
 
@@ -176,7 +214,8 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
 
                             <h3
                                 class="font-serif text-2xl font-bold text-brand-ink mb-3 group-hover:text-kidazzle-blue transition-colors">
-                                <?php the_title(); ?></h3>
+                                <?php the_title(); ?>
+                            </h3>
 
                             <?php if ($address): ?>
                                 <p class="text-sm text-brand-ink/40 mb-2 font-medium"><i
@@ -266,10 +305,9 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                             <?php if (has_post_thumbnail()): ?>
                                 <?php the_post_thumbnail('medium_large', ['class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-700']); ?>
                             <?php else: ?>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-br from-kidazzle-blue/10 to-kidazzle-green/10 flex items-center justify-center">
-                                    <span class="text-5xl opacity-30">📚</span>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    alt="Program at KIDazzle" loading="lazy">
                             <?php endif; ?>
                             <!-- Glass Badge -->
                             <div
@@ -281,7 +319,8 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
 
                         <h3
                             class="font-serif text-2xl font-bold text-brand-ink mb-3 group-hover:text-kidazzle-green transition-colors">
-                            <?php the_title(); ?></h3>
+                            <?php the_title(); ?>
+                        </h3>
 
                         <?php if ($age_range): ?>
                             <div

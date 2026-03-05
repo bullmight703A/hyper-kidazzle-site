@@ -1,7 +1,7 @@
 <!-- HERO SECTION -->
 <div class="relative py-40 text-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1571210862729-78a52d3779a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+        <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_child_playing_1772748642739.png"
             alt="Legacy" class="w-full h-full object-cover object-center">
         <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
     </div>
@@ -96,7 +96,8 @@
                 class="bg-slate-50 rounded-[2rem] p-8 border border-slate-100 hover:shadow-xl transition group text-center">
                 <div
                     class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mx-auto mb-6 text-cyan-500 group-hover:scale-110 transition">
-                    <i data-lucide="brain" class="w-7 h-7"></i></div>
+                    <i data-lucide="brain" class="w-7 h-7"></i>
+                </div>
                 <h3 class="text-xl font-bold text-slate-900 mb-3">Academic Rigor</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">Our Creative Curriculum® aligns with state standards,
                     ensuring your child enters Kindergarten ahead of the curve.</p>
@@ -106,7 +107,8 @@
                 class="bg-slate-50 rounded-[2rem] p-8 border border-slate-100 hover:shadow-xl transition group text-center">
                 <div
                     class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mx-auto mb-6 text-green-500 group-hover:scale-110 transition">
-                    <i data-lucide="shield-check" class="w-7 h-7"></i></div>
+                    <i data-lucide="shield-check" class="w-7 h-7"></i>
+                </div>
                 <h3 class="text-xl font-bold text-slate-900 mb-3">Safety Baseline</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">From secure keypad entry to staff background checks,
                     we provide the security professional families demand.</p>
@@ -116,7 +118,8 @@
                 class="bg-slate-50 rounded-[2rem] p-8 border border-slate-100 hover:shadow-xl transition group text-center">
                 <div
                     class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mx-auto mb-6 text-orange-500 group-hover:scale-110 transition">
-                    <i data-lucide="heart" class="w-7 h-7"></i></div>
+                    <i data-lucide="heart" class="w-7 h-7"></i>
+                </div>
                 <h3 class="text-xl font-bold text-slate-900 mb-3">Compassionate Care</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">We treat every child with dignity and love, fostering
                     a sense of belonging for every family we serve.</p>

@@ -32,10 +32,10 @@
                     students' unique needs.
                 </p>
                 <div class="flex gap-4">
-                    <a href="/teacher-portal/"
+                    <button id="ai-lesson-btn"
                         class="bg-purple-600 text-white font-bold py-4 px-8 rounded-2xl hover:bg-purple-700 transition shadow-lg flex items-center gap-2">
-                        Access Teacher Portal <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </a>
+                        Create Lesson Plan <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
                 </div>
             </div>
             <div class="md:w-1/2 bg-ombre-purple flex items-center justify-center p-12 relative">
@@ -64,7 +64,8 @@
             <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 hover:shadow-2xl transition group">
                 <div
                     class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition shadow-sm">
-                    <i data-lucide="clipboard-check" class="w-8 h-8"></i></div>
+                    <i data-lucide="clipboard-check" class="w-8 h-8"></i>
+                </div>
                 <h3 class="text-2xl font-bold text-slate-900 mb-3">Enrollment App</h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-6">Apply online to secure your child's spot in our
                     academy. Fast, secure, and mobile-friendly.</p>
@@ -77,7 +78,8 @@
             <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 hover:shadow-2xl transition group">
                 <div
                     class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition shadow-sm">
-                    <i data-lucide="zap" class="w-8 h-8"></i></div>
+                    <i data-lucide="zap" class="w-8 h-8"></i>
+                </div>
                 <h3 class="text-2xl font-bold text-slate-900 mb-3">Task Automation</h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-6">Staff can sign up for daily task notifications
                     and classroom checklists to ensure elite standards.</p>
@@ -90,7 +92,8 @@
             <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 hover:shadow-2xl transition group">
                 <div
                     class="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition shadow-sm">
-                    <i data-lucide="user-minus" class="w-8 h-8"></i></div>
+                    <i data-lucide="user-minus" class="w-8 h-8"></i>
+                </div>
                 <h3 class="text-2xl font-bold text-slate-900 mb-3">Report Absence</h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-6">Quickly notify your center director of a student
                     absence to maintain safety and compliance.</p>
@@ -120,7 +123,7 @@
             <!-- Blog 1 -->
             <div class="group cursor-pointer">
                 <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/blog_brain_development_1772749628254.png"
                         class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
                         alt="Early Learning">
                 </div>
@@ -131,7 +134,7 @@
             <!-- Blog 2 -->
             <div class="group cursor-pointer">
                 <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/blog_nutrition_1772749641549.png"
                         class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
                         alt="Nutrition">
                 </div>
@@ -142,7 +145,7 @@
             <!-- Blog 3 -->
             <div class="group cursor-pointer">
                 <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/blog_parenting_routine_1772749654300.png"
                         class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
                         alt="Parenting">
                 </div>
@@ -156,4 +159,68 @@
 
 <script>
     lucide.createIcons();
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const aiModal = document.getElementById('ai-lesson-modal');
+        const aiBackdrop = document.getElementById('ai-lesson-backdrop');
+        const aiCloseBtn = document.getElementById('ai-lesson-close');
+        const aiIframe = document.getElementById('ai-lesson-frame');
+        const aiLoader = document.getElementById('ai-lesson-loader');
+        const aiBtn = document.getElementById('ai-lesson-btn');
+
+        // Placeholder Form URL (User will replace this with the actual Jotform/GHL link)
+        // Since we don't have the real form URL yet, we use a placeholder that will load a visually distinct page
+        const formUrl = 'https://link.wimper.com/widget/form/placeholder';
+
+        function openAiModal(e) {
+            e.preventDefault();
+            aiModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            if (aiIframe.src === 'about:blank' || aiIframe.src === window.location.href) {
+                aiLoader.classList.remove('hidden');
+                aiIframe.src = formUrl;
+                aiIframe.onload = function () {
+                    aiLoader.classList.add('hidden');
+                };
+            }
+        }
+
+        function closeAiModal() {
+            aiModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        if (aiBtn) aiBtn.addEventListener('click', openAiModal);
+        if (aiCloseBtn) aiCloseBtn.addEventListener('click', closeAiModal);
+        if (aiBackdrop) aiBackdrop.addEventListener('click', closeAiModal);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && aiModal && !aiModal.classList.contains('hidden')) {
+                closeAiModal();
+            }
+        });
+    });
 </script>
+
+<!-- AI Lesson Plan Modal -->
+<div id="ai-lesson-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity" id="ai-lesson-backdrop"></div>
+    <div
+        class="absolute inset-4 md:inset-10 lg:inset-y-10 lg:inset-x-[20%] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+        <div class="bg-slate-50 border-b border-slate-100 px-6 py-4 flex items-center justify-between flex-shrink-0">
+            <h3 class="font-extrabold text-xl text-slate-900">Weekend Activities Lesson Plan</h3>
+            <button id="ai-lesson-close"
+                class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-all">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <div class="flex-grow relative bg-slate-50 p-6">
+            <div id="ai-lesson-loader" class="absolute inset-0 flex items-center justify-center bg-slate-50 z-10">
+                <div class="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+            </div>
+            <!-- The source will be injected dynamically via JS -->
+            <iframe id="ai-lesson-frame" src="about:blank" class="w-full h-full border-0 rounded-2xl bg-white shadow-sm"
+                allow="camera; microphone; autoplay; encrypted-media;"></iframe>
+        </div>
+    </div>
+</div>

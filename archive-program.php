@@ -111,13 +111,16 @@ get_header();
                     $excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 15);
                     // Image Fallback Logic
                     $placeholders = [
-                        'infant' => 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80',
-                        'toddler' => 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80',
-                        'preschool' => 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80',
-                        'prek' => 'https://images.unsplash.com/photo-1596464716127-f9a0859606d6?auto=format&fit=crop&w=800&q=80',
-                        'pre-k' => 'https://images.unsplash.com/photo-1596464716127-f9a0859606d6?auto=format&fit=crop&w=800&q=80',
-                        'vpk' => 'https://images.unsplash.com/photo-1560785496-0887143d2c11?auto=format&fit=crop&w=800&q=80',
-                        'school' => 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80'
+                        'stem' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/stem_kids_1772748785832.png',
+                        'infant' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_infants_cover_1772749039948.png',
+                        'toddler' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/toddlers_playing_blocks_1772748809728.png',
+                        'preschool' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_preschool_cover_1772749052917.png',
+                        'prek' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/pre_k_kids_reading_1772748826409.png',
+                        'pre-k' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/ga_prek_kids_art_1772748838757.png',
+                        'vpk' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/vpk_kids_learning_1772748862019.png',
+                        'after-school' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/after_school_kids_1772748873988.png',
+                        'school' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/summer_camp_kids_1772748895785.png',
+                        'camp' => 'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/summer_camp_kids_1772748895785.png'
                     ];
 
                     $fallback_img = 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80'; // Default
@@ -161,9 +164,11 @@ get_header();
 
                             <h3
                                 class="text-2xl font-serif font-bold text-brand-ink mb-4 group-hover:<?php echo esc_attr($colors['accent']); ?> transition-colors">
-                                <?php the_title(); ?></h3>
+                                <?php the_title(); ?>
+                            </h3>
                             <p class="text-brand-ink/60 text-sm leading-relaxed mb-8 flex-grow">
-                                <?php echo esc_html($excerpt); ?></p>
+                                <?php echo esc_html($excerpt); ?>
+                            </p>
 
                             <div class="flex items-center justify-between">
                                 <span

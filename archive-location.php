@@ -254,10 +254,26 @@ $locations_query = new WP_Query(array(
 								'order' => 'ASC'
 							));
 
+							// Unique placeholders pool
+							$campus_placeholders = [
+								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_exterior_1772749484868.png',
+								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_indoor_play_1772749499195.png',
+								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_classroom_1772749511378.png',
+								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_reading_nook_1772749540264.png',
+								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_blocks_area_1772749554264.png',
+								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_art_studio_1772749582468.png',
+								'file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/campus_outdoor_playground_1772749595504.png'
+							];
+
 							if ($gallery_query->have_posts()):
 								while ($gallery_query->have_posts()):
 									$gallery_query->the_post();
-									$thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: 'https://images.unsplash.com/photo-1571210862729-78a52d3779a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';
+
+									// Cycle through placeholders based on the current post index
+									$placeholder_idx = $gallery_query->current_post % count($campus_placeholders);
+									$fallback_img = $campus_placeholders[$placeholder_idx];
+
+									$thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: $fallback_img;
 									?>
 									<a href="<?php the_permalink(); ?>"
 										class="group relative aspect-square rounded-xl overflow-hidden block border border-white/10 hover:border-white/50 transition-all transform hover:scale-105"
@@ -267,12 +283,12 @@ $locations_query = new WP_Query(array(
 										<div
 											class="absolute inset-0 bg-brand-ink/40 group-hover:bg-brand-ink/10 transition-colors flex flex-col justify-end p-2 md:p-3">
 											<h4
-												class="text-white font-bold text-[10px] md:text-[11px] leading-tight text-center uppercase tracking-wider drop-shadow-md">
+												class="text-white font-bold text-xs md:text-sm leading-tight text-center uppercase tracking-wider drop-shadow-md">
 												<?php echo wp_trim_words(str_replace('KIDazzle Childcare | ', '', get_the_title()), 4, ''); ?>
 											</h4>
 										</div>
 									</a>
-								<?php
+									<?php
 								endwhile;
 								wp_reset_postdata();
 							endif;

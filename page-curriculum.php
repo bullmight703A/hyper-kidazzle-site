@@ -55,7 +55,7 @@ $zones = array(
     <!-- Hero Section (Premium Full-Bleed) -->
     <section class="relative py-32 md:py-48 text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=3840&q=100"
+            <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_teacher_1772749026928.png"
                 alt="Teacher reading to children" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-kidazzle-blueDark/60 backdrop-blur-[2px]"></div>
         </div>
@@ -154,9 +154,11 @@ $zones = array(
                 <span class="text-kidazzle-green font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block italic">The
                     Refractive Power of Play</span>
                 <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">
-                    <?php echo esc_html($framework_title); ?></h2>
+                    <?php echo esc_html($framework_title); ?>
+                </h2>
                 <div class="text-brand-ink/70 max-w-3xl mx-auto text-lg leading-relaxed">
-                    <?php echo wp_kses_post(wpautop($framework_description)); ?></div>
+                    <?php echo wp_kses_post(wpautop($framework_description)); ?>
+                </div>
             </div>
 
             <div class="flex flex-wrap justify-center gap-8 lg:gap-12">
@@ -201,7 +203,8 @@ $zones = array(
                     <span
                         class="text-kidazzle-green font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Environment</span>
                     <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">
-                        <?php echo esc_html($env_title); ?></h2>
+                        <?php echo esc_html($env_title); ?>
+                    </h2>
                     <p class="text-brand-ink/70 text-lg leading-relaxed mb-10">
                         <?php echo esc_html($env_description); ?>
                     </p>
@@ -215,9 +218,11 @@ $zones = array(
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-xl text-brand-ink mb-2">
-                                        <?php echo esc_html($zone['title']); ?></h4>
+                                        <?php echo esc_html($zone['title']); ?>
+                                    </h4>
                                     <p class="text-sm text-brand-ink/70 leading-relaxed">
-                                        <?php echo esc_html($zone['desc']); ?></p>
+                                        <?php echo esc_html($zone['desc']); ?>
+                                    </p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -309,7 +314,7 @@ $zones = array(
                 <div
                     class="flex items-center gap-6 p-8 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group">
                     <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 border-2 border-white shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_infants_cover_1772749039948.png"
                             alt="Infant Care" class="w-full h-full object-cover">
                     </div>
                     <div>
@@ -324,7 +329,7 @@ $zones = array(
                 <div
                     class="flex items-center gap-6 p-8 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group">
                     <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 border-2 border-white shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/multicultural_preschool_cover_1772749052917.png"
                             alt="Preschool Learning" class="w-full h-full object-cover">
                     </div>
                     <div>

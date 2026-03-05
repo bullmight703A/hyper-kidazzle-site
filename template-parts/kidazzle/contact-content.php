@@ -2,14 +2,14 @@
 <header class="relative w-full h-[350px] flex items-center justify-center overflow-hidden bg-slate-900">
     <div class="absolute inset-0 z-0">
         <!-- Image of group of children playing (no adults) -->
-        <img src="https://images.unsplash.com/photo-1472162072142-d544e73e7fc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            alt="Group of happy children playing" class="w-full h-full object-cover opacity-60">
+        <img src="file:///C:/Users/kidaz/.gemini/antigravity/brain/2105a7ca-cea2-4b3b-80c2-da22403182f4/contact_children_playing_1772749755414.png"
+            alt="Multicultural children playing outside" class="w-full h-full object-cover opacity-60">
         <div class="absolute inset-0 bg-indigo-950/40"></div>
     </div>
     <div class="relative z-10 container mx-auto px-4 text-center">
         <h1
-            class="text-5xl md:text-7xl font-extrabold text-white mb-4 uppercase tracking-tighter drop-shadow-2xl animate-fade-in">
-            Get In Touch</h1>
+            class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tighter drop-shadow-2xl animate-fade-in">
+            Contact KIDazzle Child Care</h1>
         <p class="text-xl text-indigo-50 max-w-2xl mx-auto font-bold drop-shadow-lg">We’re here to answer your questions
             and welcome your family to our community.</p>
     </div>
@@ -67,19 +67,24 @@
                     <div class="grid sm:grid-cols-2 gap-8">
                         <div>
                             <p class="font-extrabold text-xs uppercase tracking-widest text-orange-600 mb-2">Georgia</p>
-                            <ul class="text-sm space-y-2 text-slate-600 font-medium">
+                            <ul class="text-sm space-y-2 text-slate-600 font-medium mb-6">
                                 <li>Atlanta Federal Center</li>
                                 <li>IRS Summit Building</li>
-                                <li>College Park</li>
-                                <li>Hampton / McDonough</li>
+                                <li>College Park FAA Regional Office</li>
+                                <li>Hampton - Atlanta FAA Office</li>
+                                <li>Historical West End of Atlanta</li>
                             </ul>
                         </div>
                         <div>
-                            <p class="font-extrabold text-xs uppercase tracking-widest text-indigo-600 mb-2">Tennessee &
-                                Florida</p>
+                            <p class="font-extrabold text-xs uppercase tracking-widest text-indigo-600 mb-2">Tennessee
+                            </p>
+                            <ul class="text-sm space-y-2 text-slate-600 font-medium mb-6">
+                                <li>Downtown Memphis by FedEx Hub</li>
+                            </ul>
+
+                            <p class="font-extrabold text-xs uppercase tracking-widest text-indigo-600 mb-2">Florida</p>
                             <ul class="text-sm space-y-2 text-slate-600 font-medium">
-                                <li>Downtown Memphis</li>
-                                <li>Doral International</li>
+                                <li>Doral by Florida International Airport</li>
                             </ul>
                         </div>
                     </div>

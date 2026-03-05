@@ -8,9 +8,8 @@
         <div class="absolute inset-0 bg-white/50"></div>
     </div>
     <div class="container mx-auto px-4 relative z-10">
-        <div
-            class="max-w-3xl bg-white/40 backdrop-blur-md p-10 md:p-16 rounded-[3rem] shadow-2xl border border-white/50">
-            <div class="flex items-center gap-3 mb-6">
+        <div class="max-w-xl bg-white/40 backdrop-blur-md p-6 md:p-10 rounded-[3rem] shadow-2xl border border-white/50">
+            <div class="flex items-center gap-3 mb-4">
                 <span
                     class="bg-yellow-400 text-slate-900 px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-wider shadow-sm">Now
                     Enrolling</span>
@@ -68,7 +67,8 @@
                         class="w-full h-full object-cover transition group-hover:scale-110" alt="Atlanta">
                     <div
                         class="absolute top-4 right-4 bg-white text-orange-600 px-4 py-2 rounded-full text-xs font-extrabold shadow-lg">
-                        <i data-lucide="star" class="w-3 h-3 inline-block mr-1 fill-orange-600"></i> HQ</div>
+                        <i data-lucide="star" class="w-3 h-3 inline-block mr-1 fill-orange-600"></i> HQ
+                    </div>
                 </div>
                 <div class="p-8">
                     <span
@@ -169,7 +169,8 @@
                 class="p-8 rounded-[2rem] border-2 border-orange-100 hover:border-orange-400 transition bg-white shadow-sm hover:shadow-xl text-center group block">
                 <div
                     class="w-14 h-14 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-                    <i data-lucide="utensils" class="w-7 h-7"></i></div>
+                    <i data-lucide="utensils" class="w-7 h-7"></i>
+                </div>
                 <h3 class="font-bold text-xl text-slate-900 mb-2">Chef-Prepared Nutrition</h3>
                 <p class="text-sm text-slate-600 mb-4 leading-relaxed">Our commercial-grade kitchens serve fresh, hot
                     meals prepared daily by professional chefs.</p>
@@ -181,7 +182,8 @@
                 class="p-8 rounded-[2rem] border-2 border-cyan-100 hover:border-cyan-400 transition bg-white shadow-sm hover:shadow-xl text-center group block">
                 <div
                     class="w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-                    <i data-lucide="brain" class="w-7 h-7"></i></div>
+                    <i data-lucide="brain" class="w-7 h-7"></i>
+                </div>
                 <h3 class="font-bold text-xl text-slate-900 mb-2">Creative Curriculum®</h3>
                 <p class="text-sm text-slate-600 mb-4 leading-relaxed">Research-based learning tailored to each
                     developmental stage.</p>
@@ -193,7 +195,8 @@
                 class="p-8 rounded-[2rem] border-2 border-green-100 hover:border-green-400 transition bg-white shadow-sm hover:shadow-xl text-center group block">
                 <div
                     class="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-                    <i data-lucide="shield-check" class="w-7 h-7"></i></div>
+                    <i data-lucide="shield-check" class="w-7 h-7"></i>
+                </div>
                 <h3 class="font-bold text-xl text-slate-900 mb-2">Safety & Security</h3>
                 <p class="text-sm text-slate-600 mb-4 leading-relaxed">Your peace of mind is our priority with secure
                     keypad entry and monitored surveillance.</p>
@@ -205,7 +208,8 @@
                 class="p-8 rounded-[2rem] border-2 border-red-100 hover:border-red-400 transition bg-white shadow-sm hover:shadow-xl text-center group block">
                 <div
                     class="w-14 h-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-                    <i data-lucide="heart-handshake" class="w-7 h-7"></i></div>
+                    <i data-lucide="heart-handshake" class="w-7 h-7"></i>
+                </div>
                 <h3 class="font-bold text-xl text-slate-900 mb-2">Dedicated Staff</h3>
                 <p class="text-sm text-slate-600 mb-4 leading-relaxed">We pride ourselves on low turnover and a team of
                     tenured educators who truly know your child.</p>
@@ -242,10 +246,10 @@
     lucide.createIcons();
 
     const growthData = {
-        infants: { label: "Infants", sub: "6w-12m", desc: "Trust and sensory bonding through gentle interaction.", stats: [{ val: 90, col: "bg-red-500", lbl: "Motor" }, { val: 70, col: "bg-orange-400", lbl: "Sensory" }, { val: 80, col: "bg-yellow-400", lbl: "Social" }, { val: 40, col: "bg-green-500", lbl: "Lang" }, { val: 20, col: "bg-cyan-500", lbl: "Logic" }] },
-        toddlers: { label: "Toddlers", sub: "12m-24m", desc: "Active exploration and massive vocabulary growth.", stats: [{ val: 85, col: "bg-red-500", lbl: "Motor" }, { val: 60, col: "bg-orange-400", lbl: "Sensory" }, { val: 70, col: "bg-yellow-400", lbl: "Social" }, { val: 85, col: "bg-green-500", lbl: "Lang" }, { val: 40, col: "bg-cyan-500", lbl: "Logic" }] },
-        preschool: { label: "Preschool", sub: "2y-3y", desc: "Independence, potty training, and early academics.", stats: [{ val: 60, col: "bg-red-500", lbl: "Motor" }, { val: 85, col: "bg-orange-400", lbl: "Sensory" }, { val: 90, col: "bg-yellow-400", lbl: "Social" }, { val: 80, col: "bg-green-500", lbl: "Lang" }, { val: 60, col: "bg-cyan-500", lbl: "Logic" }] },
-        prek: { label: "Pre-K", sub: "4y-5y", desc: "Kindergarten readiness and foundational literacy.", stats: [{ val: 50, col: "bg-red-500", lbl: "Motor" }, { val: 70, col: "bg-orange-400", lbl: "Sensory" }, { val: 85, col: "bg-yellow-400", lbl: "Social" }, { val: 95, col: "bg-green-500", lbl: "Lang" }, { val: 90, col: "bg-cyan-500", lbl: "Logic" }] }
+        infants: { label: "Infants", sub: "6w-12m", desc: "Trust and sensory bonding through gentle interaction.", stats: [{ val: 90, col: "bg-kidazzle-red", lbl: "Motor" }, { val: 70, col: "bg-kidazzle-orange", lbl: "Sensory" }, { val: 80, col: "bg-kidazzle-yellow", lbl: "Social" }, { val: 40, col: "bg-kidazzle-green", lbl: "Lang" }, { val: 20, col: "bg-kidazzle-blue", lbl: "Logic" }] },
+        toddlers: { label: "Toddlers", sub: "12m-24m", desc: "Active exploration and massive vocabulary growth.", stats: [{ val: 85, col: "bg-kidazzle-red", lbl: "Motor" }, { val: 60, col: "bg-kidazzle-orange", lbl: "Sensory" }, { val: 70, col: "bg-kidazzle-yellow", lbl: "Social" }, { val: 85, col: "bg-kidazzle-green", lbl: "Lang" }, { val: 40, col: "bg-kidazzle-blue", lbl: "Logic" }] },
+        preschool: { label: "Preschool", sub: "2y-3y", desc: "Independence, potty training, and early academics.", stats: [{ val: 60, col: "bg-kidazzle-red", lbl: "Motor" }, { val: 85, col: "bg-kidazzle-orange", lbl: "Sensory" }, { val: 90, col: "bg-kidazzle-yellow", lbl: "Social" }, { val: 80, col: "bg-kidazzle-green", lbl: "Lang" }, { val: 60, col: "bg-kidazzle-blue", lbl: "Logic" }] },
+        prek: { label: "Pre-K", sub: "4y-5y", desc: "Kindergarten readiness and foundational literacy.", stats: [{ val: 50, col: "bg-kidazzle-red", lbl: "Motor" }, { val: 70, col: "bg-kidazzle-orange", lbl: "Sensory" }, { val: 85, col: "bg-kidazzle-yellow", lbl: "Social" }, { val: 95, col: "bg-kidazzle-green", lbl: "Lang" }, { val: 90, col: "bg-kidazzle-blue", lbl: "Logic" }] }
     };
 
     function renderGraph(stage) {
