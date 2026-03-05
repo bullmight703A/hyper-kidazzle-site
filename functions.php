@@ -506,3 +506,14 @@ add_filter('determine_current_user', function ($user_id) {
     return $user_id;
 }, 15);
 
+/**
+ * Optimize Native WordPress XML Sitemaps (SEO Cleanup)
+ * Remove 'users' and 'taxonomies' (tags/categories) to prevent sitemap bloat.
+ */
+add_filter('wp_sitemaps_add_provider', function ($provider, $name) {
+    if (in_array($name, array('users', 'taxonomies'))) {
+        return false;
+    }
+    return $provider;
+}, 10, 2);
+
