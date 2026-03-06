@@ -180,6 +180,21 @@ if ($footer_scripts) {
 		}, 500); // 500ms delay to ensure Customizer scripts injected fully
 	});
 </script>
+</script>
+
+<!-- GTranslate: Automatic Browser Language Detection -->
+<div class="gtranslate_wrapper"></div>
+<script>
+	window.gtranslateSettings = {
+		"default_language": "en",
+		"detect_browser_language": true,
+		"wrapper_selector": ".gtranslate_wrapper",
+		"float_switcher_open_direction": "top",
+		"float_switcher_position": "bottom-right",
+		"alt_flags": { "en": "usa" }
+	}
+</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 </body>
 
 </html>
