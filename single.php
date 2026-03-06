@@ -60,7 +60,8 @@ $related_query = new WP_Query($related_args);
 				<div class="text-left">
 					<p class="text-sm font-bold text-brand-ink"><?php echo esc_html($author_name); ?></p>
 					<p class="text-[10px] uppercase tracking-widest text-brand-ink/60">
-						<?php echo esc_html($author_title); ?></p>
+						<?php echo esc_html($author_title); ?>
+					</p>
 				</div>
 			</div>
 		</header>
@@ -136,9 +137,10 @@ $related_query = new WP_Query($related_args);
 								<?php if (has_post_thumbnail()): ?>
 									<?php the_post_thumbnail('medium_large', array('class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500')); ?>
 								<?php else: ?>
-									<img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop"
+									<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/694489509b0de40cdd3adafb.png"
+										alt="West End Center Background"
 										class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-										alt="Kidazzle Story" loading="lazy">
+										loading="lazy">
 								<?php endif; ?>
 							</div>
 							<p class="text-kidazzle-blue font-bold text-[10px] uppercase tracking-widest mb-2">
@@ -149,7 +151,8 @@ $related_query = new WP_Query($related_args);
 							</p>
 							<h4
 								class="font-serif text-xl font-bold leading-tight group-hover:text-kidazzle-blue transition-colors">
-								<?php the_title(); ?></h4>
+								<?php the_title(); ?>
+							</h4>
 						</a>
 					<?php endwhile;
 					wp_reset_postdata(); ?>
