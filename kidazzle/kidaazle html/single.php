@@ -60,7 +60,8 @@ $related_query = new WP_Query($related_args);
 				<div class="text-left">
 					<p class="text-sm font-bold text-brand-ink"><?php echo esc_html($author_name); ?></p>
 					<p class="text-[10px] uppercase tracking-widest text-brand-ink/60">
-						<?php echo esc_html($author_title); ?></p>
+						<?php echo esc_html($author_title); ?>
+					</p>
 				</div>
 			</div>
 		</header>
@@ -129,16 +130,26 @@ $related_query = new WP_Query($related_args);
 				</div>
 
 				<div class="grid md:grid-cols-3 gap-10">
-					<?php while ($related_query->have_posts()):
-						$related_query->the_post(); ?>
+					<?php
+					$fallback_images = array(
+						'https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/693c7cb5dbed99e0b07c8310.png',
+						'https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/693c7ddeb4f42080d1d6f342.png',
+						'https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/694489509b0de40cdd3adafb.png'
+					);
+					$fallback_index = 0;
+					while ($related_query->have_posts()):
+						$related_query->the_post();
+						$current_fallback = $fallback_images[$fallback_index % count($fallback_images)];
+						$fallback_index++;
+						?>
 						<a href="<?php the_permalink(); ?>" class="group">
 							<div class="rounded-3xl overflow-hidden mb-6 h-56 shadow-soft border border-brand-ink/5">
 								<?php if (has_post_thumbnail()): ?>
 									<?php the_post_thumbnail('medium_large', array('class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500')); ?>
 								<?php else: ?>
-									<img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop"
+									<img src="<?php echo esc_url($current_fallback); ?>" alt="Kidazzle Center Background"
 										class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-										alt="Kidazzle Story" loading="lazy">
+										loading="lazy">
 								<?php endif; ?>
 							</div>
 							<p class="text-kidazzle-blue font-bold text-[10px] uppercase tracking-widest mb-2">
@@ -149,7 +160,8 @@ $related_query = new WP_Query($related_args);
 							</p>
 							<h4
 								class="font-serif text-xl font-bold leading-tight group-hover:text-kidazzle-blue transition-colors">
-								<?php the_title(); ?></h4>
+								<?php the_title(); ?>
+							</h4>
 						</a>
 					<?php endwhile;
 					wp_reset_postdata(); ?>
