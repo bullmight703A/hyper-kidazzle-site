@@ -1,18 +1,42 @@
 <?php
 /**
- * The main template file
+ * Main Template File (Fallback)
  *
- * @package Kidazzle
+ * @package kidazzle_Excellence
+ * @since 1.0.0
  */
 
-// If there's an index.html file, let's include it for the homepage.
-if (is_front_page() || is_home()) {
-    $html_file = get_stylesheet_directory() . '/index.html';
-    if (file_exists($html_file)) {
-        include $html_file;
-        exit;
-    }
-}
+get_header();
+?>
 
-// Otherwise, fallback to the page template layout.
-include get_stylesheet_directory() . '/page.php';
+<div class="max-w-7xl mx-auto px-4 lg:px-6 py-20">
+	<?php if (have_posts()): ?>
+		<div class="space-y-12">
+			<?php while (have_posts()):
+				the_post(); ?>
+				<article id="post-<?php the_ID(); ?>" <?php post_class('bg-white rounded-3xl p-8 shadow-card'); ?>>
+					<h2 class="text-2xl font-serif font-bold text-brand-ink mb-4">
+						<a href="<?php the_permalink(); ?>" class="hover:text-kidazzle-teal">
+							<?php the_title(); ?>
+						</a>
+					</h2>
+					<div class="text-brand-ink/80 prose max-w-none">
+						<?php the_excerpt(); ?>
+					</div>
+					<a href="<?php the_permalink(); ?>"
+						class="inline-flex items-center gap-2 mt-4 text-kidazzle-teal font-semibold hover:text-kidazzle-blueDark">
+						Read more →
+					</a>
+				</article>
+			<?php endwhile; ?>
+		</div>
+		<?php kidazzle_archive_pagination(); ?>
+	<?php else: ?>
+		<div class="text-center py-20">
+			<h1 class="text-3xl font-serif text-brand-ink mb-4">Nothing Found</h1>
+			<p class="text-brand-ink/80">Sorry, no content matched your criteria.</p>
+		</div>
+	<?php endif; ?>
+</div>
+
+<?php get_footer(); ?>

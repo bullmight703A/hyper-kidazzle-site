@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileNav.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener('click', () => {
         mobileNav.classList.add('translate-x-full');
+        document.body.style.overflow = '';
       });
     });
   }

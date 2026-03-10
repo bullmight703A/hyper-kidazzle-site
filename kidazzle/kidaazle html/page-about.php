@@ -1,0 +1,45 @@
+<?php
+/**
+ * Template Name: About Page
+ *
+ * About Us page template matching exact HTML design with proper SEO structure
+ *
+ * @package kidazzle
+ */
+
+get_header();
+
+// Include necessary styles for specific animations
+?>
+<style>
+	.bg-ombre-purple {
+		background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #c026d3 100%);
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	.animate-fade-in {
+		animation: fadeIn 0.5s ease-in forwards;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
+
+<main id="main-content" role="main" class="view-section active block">
+	<?php get_template_part('template-parts/kidazzle/about-content'); ?>
+</main>
+
+<?php
+get_footer();
