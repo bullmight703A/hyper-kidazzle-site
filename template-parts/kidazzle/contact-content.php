@@ -10,7 +10,7 @@
         <h1
             class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tighter drop-shadow-2xl animate-fade-in">
             Contact KIDazzle Child Care</h1>
-        <p class="text-xl text-indigo-50 max-w-2xl mx-auto font-bold drop-shadow-lg">We’re here to answer your questions
+        <p class="text-xl text-white max-w-2xl mx-auto font-bold drop-shadow-lg">We’re here to answer your questions
             and welcome your family to our community.</p>
     </div>
 </header>

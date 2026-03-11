@@ -12,6 +12,9 @@
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
 		rel="stylesheet">
 
+	<!-- Favicon -->
+	<link rel="icon" type="image/webp" href="<?php echo get_template_directory_uri(); ?>/assets/images/logo_icon_80x80.webp">
+
 	<!-- FontAwesome & Lucide -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 	<script src="https://unpkg.com/lucide@latest"></script>
@@ -121,7 +124,7 @@
 		<div class="container mx-auto px-4 flex justify-between items-center">
 			<a href="/" class="flex items-center gap-2">
 				<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png"
-					alt="KIDazzle Logo" class="h-12 w-auto object-contain">
+					alt="KIDazzle Logo" class="h-20 md:h-24 w-auto object-contain py-1">
 			</a>
 
 			<button id="mobile-menu-btn" class="lg:hidden text-slate-900"><i data-lucide="menu"
@@ -133,7 +136,7 @@
 				<a href="/programs/" class="hover:text-red-500 transition pb-1">PROGRAMS</a>
 				<a href="/curriculum/" class="hover:text-cyan-500 transition pb-1">CURRICULUM</a>
 				<a href="/locations/" class="hover:text-green-500 transition pb-1">LOCATIONS</a>
-				<a href="/resources/" class="hover:text-purple-500 transition pb-1">RESOURCES</a>
+				<a href="/blog/" class="hover:text-purple-500 transition pb-1">BLOG</a>
 				<a href="/contact/" class="hover:text-indigo-600 transition pb-1">CONTACT US</a>
 			</div>
 		</div>
@@ -146,7 +149,7 @@
 			<a href="/programs/" class="hover:text-red-500">PROGRAMS</a>
 			<a href="/curriculum/" class="hover:text-cyan-500">CURRICULUM</a>
 			<a href="/locations/" class="hover:text-green-500">LOCATIONS</a>
-			<a href="/resources/" class="hover:text-purple-500">RESOURCES</a>
+			<a href="/blog/" class="hover:text-purple-500">BLOG</a>
 			<a href="/contact/" class="hover:text-indigo-600">CONTACT US</a>
 		</div>
 	</nav>
