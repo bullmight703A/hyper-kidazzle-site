@@ -41,7 +41,7 @@
             <span class="text-cyan-600 font-extrabold tracking-widest uppercase text-sm block mb-2">Footprint</span>
             <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900">Regional Excellence</h2>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-16">
             <!-- Card 1: Memphis -->
             <a href="/locations/memphis/"
                 class="group bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-slate-200">
@@ -164,7 +164,7 @@
             <p class="text-slate-500 text-xl leading-relaxed">We are not a franchise. We are a family of independent
                 schools connected by a shared mission.</p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16">
             <a href="/programs/"
                 class="p-8 rounded-[2rem] border-2 border-orange-100 hover:border-orange-400 transition bg-white shadow-sm hover:shadow-xl text-center group block">
                 <div
@@ -230,7 +230,7 @@
     </div>
     <div class="max-w-5xl mx-auto bg-slate-50 rounded-[3rem] p-10 shadow-xl border border-slate-200">
         <div class="flex justify-center gap-3 mb-12 flex-wrap" id="stage-buttons"></div>
-        <div class="grid md:grid-cols-3 gap-12 items-center text-left">
+        <div class="grid md:grid-cols-3 gap-16 items-center text-left">
             <div id="stage-content" class="md:col-span-1"></div>
             <div class="md:col-span-2 h-64 flex items-end justify-between gap-4 px-4 border-b border-slate-300 relative"
                 id="graph-bars"></div>
@@ -255,7 +255,7 @@
     function renderGraph(stage) {
         const data = growthData[stage];
         document.getElementById('stage-buttons').innerHTML = Object.keys(growthData).map(k =>
-            `<button onclick="renderGraph('${k}')" class="px-6 py-2 rounded-full border border-slate-200 transition-all font-bold ${k === stage ? 'bg-slate-900 text-white scale-105 shadow-lg' : 'bg-white text-slate-500 hover:bg-slate-50'}">${growthData[k].label}</button>`
+            `<button onclick="renderGraph('${k}')" class="px-6 py-2 rounded-full border border-slate-200 transition-all font-bold ${k === stage ? 'bg-white text-slate-900 border-t border-b border-slate-100 scale-105 shadow-lg' : 'bg-white text-slate-500 hover:bg-slate-50'}">${growthData[k].label}</button>`
         ).join('');
 
         document.getElementById('stage-content').innerHTML = `
@@ -268,13 +268,13 @@
         document.getElementById('graph-bars').innerHTML = data.stats.map(s =>
             `<div class="w-full mx-1 relative group h-full flex items-end">
                     <div class="w-full rounded-t-xl ${s.col} graph-bar relative opacity-90 group-hover:opacity-100 shadow-md" style="height:${s.val}%">
-                        <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition shadow-lg">${s.val}%</div>
+                        <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-slate-900 border-t border-b border-slate-100 text-xs font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition shadow-lg">${s.val}%</div>
                     </div>
                 </div>`
         ).join('');
 
         document.getElementById('graph-labels').innerHTML = data.stats.map(s =>
-            `<div class="text-center text-[10px] font-extrabold text-slate-400 uppercase tracking-widest w-full">${s.lbl}</div>`
+            `<div class="text-center text-[10px] font-extrabold text-slate-500 uppercase tracking-widest w-full">${s.lbl}</div>`
         ).join('');
     }
     renderGraph('infants');

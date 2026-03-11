@@ -22,17 +22,17 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 </main>
 
 <!-- FOOTER -->
-<footer class="bg-slate-900 text-slate-300 py-16 text-center md:text-left mt-12 relative">
-	<div class="container mx-auto px-4 grid md:grid-cols-4 gap-12 relative z-10">
+<footer class="bg-slate-900 text-slate-600 py-24 text-center md:text-left mt-12 relative">
+	<div class="container mx-auto px-4 grid md:grid-cols-4 gap-16 relative z-10">
 		<div>
 			<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png"
 				class="h-12 w-auto mb-6 mx-auto md:mx-0 bg-white p-1 rounded-lg object-contain" alt="KIDazzle Logo" width="200" height="48">
-			<p class="text-sm leading-relaxed text-slate-400">Providing elite, independent child care for over 31 years.
+			<p class="text-sm leading-relaxed text-slate-500">Providing elite, independent child care for over 31 years.
 				A legacy of excellence across the Southeast.</p>
 		</div>
 		<div>
 			<h4 class="text-white font-bold mb-6 text-xs tracking-widest uppercase">Quick Links</h4>
-			<ul class="space-y-3 text-sm font-medium text-slate-300">
+			<ul class="space-y-3 text-sm font-medium text-slate-600">
 				<li><a href="/about/" class="hover:text-white transition">About Us</a></li>
 				<li><a href="/programs/" class="hover:text-white transition">Our Programs</a></li>
 				<li><a href="/locations/" class="hover:text-white transition">Find a Location</a></li>
@@ -41,7 +41,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 		</div>
 		<div>
 			<h4 class="text-white font-bold mb-6 text-xs tracking-widest uppercase">Resources</h4>
-			<ul class="space-y-3 text-sm font-medium text-slate-300">
+			<ul class="space-y-3 text-sm font-medium text-slate-600">
 				<li><a href="/teacher-portal/" class="hover:text-white transition">Teacher Portal</a></li>
 				<li><a href="/resources/" class="hover:text-white transition">Parent Resources</a></li>
 				<li><a href="/blog/"
@@ -51,11 +51,11 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 		</div>
 		<div>
 			<h4 class="text-white font-bold mb-6 text-xs tracking-widest uppercase">Contact</h4>
-			<p class="text-sm mb-4 text-slate-400">674 Joseph E Lowery Boulevard Southwest,<br>Atlanta, Georgia 30310
+			<p class="text-sm mb-4 text-slate-500">674 Joseph E Lowery Boulevard Southwest,<br>Atlanta, Georgia 30310
 			</p>
 			<p class="text-white font-bold text-lg">877-410-1002</p>
 			<a href="/contact/"
-				class="text-cyan-500 underline mt-4 block uppercase font-extrabold text-xs tracking-widest transition hover:text-white">Open
+				class="text-blue-600 underline mt-4 block uppercase font-extrabold text-xs tracking-widest transition hover:text-white">Open
 				Contact Form</a>
 		</div>
 	</div>
@@ -90,7 +90,7 @@ if ($show_sticky_cta):
 				<?php echo $sticky_text; ?>
 			</span>
 			<a href="<?php echo esc_url($sticky_url); ?>"
-				class="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-full hover:bg-white hover:text-orange-500 transition-all shadow-md">
+				class="inline-block bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-full hover:bg-white hover:text-red-600 transition-all shadow-md">
 				<?php echo esc_html($sticky_btn_text); ?>
 			</a>
 		</div>

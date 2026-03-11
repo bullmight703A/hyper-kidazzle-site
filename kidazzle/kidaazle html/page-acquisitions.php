@@ -91,7 +91,7 @@ get_header();
                     ?>
                     <div class="text-center text-brand-ink/90 py-8">
                         <p class="mb-4">Acquisitions form plugin not activated.</p>
-                        <p class="text-sm">Please activate the "Kidazzle Acquisitions Form" plugin to display the
+                        <p class="text-sm">Please activate the "KIDazzle Acquisitions Form" plugin to display the
                             acquisition
                             form.</p>
                         <p class="mt-6">In the meantime, reach out to:</p>

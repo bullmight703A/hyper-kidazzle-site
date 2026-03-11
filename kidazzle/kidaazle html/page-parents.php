@@ -174,12 +174,12 @@ $faqs = array(
 );
 
 // Referral Banner
-$referral_title = get_post_meta($page_id, 'parents_referral_title', true) ?: 'Love the Kidazzle family?';
+$referral_title = get_post_meta($page_id, 'parents_referral_title', true) ?: 'Love the KIDazzle family?';
 $referral_description = get_post_meta($page_id, 'parents_referral_description', true) ?: 'Refer a friend and receive a <strong>$100 tuition credit</strong> when they enroll.';
 $referral_button_text = get_post_meta($page_id, 'parents_referral_button_text', true) ?: 'Refer a Friend';
 $referral_button_url = get_post_meta($page_id, 'parents_referral_button_url', true) ?: 'mailto:director@Kidazzleela.com?subject=Parent%20Referral';
 
-// Life at Kidazzle Gallery
+// Life at KIDazzle Gallery
 $gallery_img1 = get_post_meta($page_id, 'about_gallery_image_1', true) ?: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop';
 $gallery_img2 = get_post_meta($page_id, 'about_gallery_image_2', true) ?: 'https://images.unsplash.com/photo-1587654780291-39c940483713?q=80&w=800&auto=format&fit=crop';
 $gallery_img3 = get_post_meta($page_id, 'about_gallery_image_3', true) ?: 'https://images.unsplash.com/photo-1560785496-3c9d27877182?q=80&w=800&auto=format&fit=crop';

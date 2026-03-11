@@ -147,7 +147,7 @@ $related_query = new WP_Query($related_args);
 								<?php if (has_post_thumbnail()): ?>
 									<?php the_post_thumbnail('medium_large', array('class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500')); ?>
 								<?php else: ?>
-									<img src="<?php echo esc_url($current_fallback); ?>" alt="Kidazzle Center Background"
+									<img src="<?php echo esc_url($current_fallback); ?>" alt="KIDazzle Center Background"
 										class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
 										loading="lazy">
 								<?php endif; ?>

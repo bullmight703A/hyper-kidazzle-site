@@ -6,6 +6,42 @@
  */
 
 get_header();
+
+if (post_password_required()) {
+    ?>
+    <main id="view-teacher-portal" class="view-section active block py-32 bg-brand-cream min-h-screen">
+        <div class="max-w-md mx-auto px-4 text-center">
+            <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-brand-ink/5">
+                <div class="w-20 h-20 bg-kidazzle-red/10 text-kidazzle-red rounded-3xl flex items-center justify-center mx-auto mb-6 text-3xl">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h2 class="text-3xl font-serif font-bold text-brand-ink mb-4">Secured Portal</h2>
+                <p class="text-brand-ink/70 mb-8 text-sm">Please enter the staff passcode to access classroom tools and protocols.</p>
+                <div class="password-form-wrapper">
+                    <?php echo get_the_password_form(); ?>
+                </div>
+            </div>
+        </div>
+    </main>
+    <style>
+        /* Style the default WP password form */
+        .password-form-wrapper form { display: flex; flex-direction: column; gap: 1rem; }
+        .password-form-wrapper label { font-size: 0; }
+        .password-form-wrapper input[type="password"] { 
+            width: 100%; padding: 1rem 1.5rem; border-radius: 9999px; border: 2px solid #e2e8f0; 
+            font-size: 1rem; text-align: center; outline: none; transition: all 0.3s;
+        }
+        .password-form-wrapper input[type="password"]:focus { border-color: #5B21B6; /* kidazzle-purple */ }
+        .password-form-wrapper input[type="submit"] {
+            width: 100%; padding: 1rem 2rem; border-radius: 9999px; background-color: #5B21B6; 
+            color: white; font-weight: bold; cursor: pointer; transition: all 0.3s;
+        }
+        .password-form-wrapper input[type="submit"]:hover { background-color: #4C1D95; transform: translateY(-2px); }
+    </style>
+    <?php
+    get_footer();
+    exit;
+}
 ?>
 
 <main id="view-teacher-portal" class="view-section active block">

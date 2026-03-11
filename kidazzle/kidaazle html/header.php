@@ -54,7 +54,7 @@
 			color: #4f46e5 !important;
 		}
 
-		.hover\:text-orange-500:hover {
+		.hover\:text-red-600:hover {
 			color: #f97316 !important;
 		}
 
@@ -62,7 +62,7 @@
 			color: #ef4444 !important;
 		}
 
-		.hover\:text-cyan-500:hover {
+		.hover\:text-blue-600:hover {
 			color: #06b6d4 !important;
 		}
 
@@ -70,7 +70,7 @@
 			color: #22c55e !important;
 		}
 
-		.hover\:text-purple-500:hover {
+		.hover\:text-yellow-600:hover {
 			color: #a855f7 !important;
 		}
 
@@ -111,7 +111,7 @@
 		<div class="flex gap-6 font-medium">
 			<a href="/careers/" class="hover:text-cyan-600 transition flex items-center gap-1">Careers</a>
 			<a href="/teacher-portal/"
-				class="hover:text-orange-600 transition flex items-center gap-1 font-bold text-orange-500"><i
+				class="hover:text-orange-600 transition flex items-center gap-1 font-bold text-red-600"><i
 					data-lucide="users" class="w-3 h-3"></i> Teacher Portal</a>
 		</div>
 	</div>
@@ -129,27 +129,27 @@
 
 			<div class="hidden lg:flex items-center gap-6 font-bold text-slate-600 text-sm tracking-wide">
 				<a href="/" class="hover:text-indigo-600 transition pb-1">HOME</a>
-				<a href="/about/" class="hover:text-orange-500 transition pb-1">ABOUT US</a>
+				<a href="/about/" class="hover:text-red-600 transition pb-1">ABOUT US</a>
 				<a href="/programs/" class="hover:text-red-500 transition pb-1">PROGRAMS</a>
-				<a href="/curriculum/" class="hover:text-cyan-500 transition pb-1">CURRICULUM</a>
+				<a href="/curriculum/" class="hover:text-blue-600 transition pb-1">CURRICULUM</a>
 				<a href="/locations/" class="hover:text-green-500 transition pb-1">LOCATIONS</a>
-				<a href="/resources/" class="hover:text-purple-500 transition pb-1">RESOURCES</a>
+				<a href="/resources/" class="hover:text-yellow-600 transition pb-1">RESOURCES</a>
 				<a href="/contact/" class="hover:text-indigo-600 transition pb-1">CONTACT US</a>
 			</div>
 		</div>
 		<!-- Mobile Menu Panel -->
 		<div id="mobile-menu"
-			class="hidden fixed top-0 left-0 w-full h-screen bg-white shadow-xl z-50 flex flex-col p-8 gap-6 font-bold text-slate-700 overflow-y-auto">
+			class="hidden fixed inset-0 w-full min-h-[100dvh] bg-white shadow-xl z-[9999] flex flex-col p-8 gap-6 font-bold text-slate-700 overflow-y-auto">
 			<div class="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
 				<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png" alt="KIDazzle Logo" class="h-10 w-auto">
 				<button id="close-menu-btn" aria-label="Close mobile menu" class="text-slate-500 hover:text-slate-900"><i data-lucide="x" class="w-8 h-8"></i></button>
 			</div>
 			<a href="/" class="hover:text-indigo-600">HOME</a>
-			<a href="/about/" class="hover:text-orange-500">ABOUT US</a>
+			<a href="/about/" class="hover:text-red-600">ABOUT US</a>
 			<a href="/programs/" class="hover:text-red-500">PROGRAMS</a>
-			<a href="/curriculum/" class="hover:text-cyan-500">CURRICULUM</a>
+			<a href="/curriculum/" class="hover:text-blue-600">CURRICULUM</a>
 			<a href="/locations/" class="hover:text-green-500">LOCATIONS</a>
-			<a href="/resources/" class="hover:text-purple-500">RESOURCES</a>
+			<a href="/resources/" class="hover:text-yellow-600">RESOURCES</a>
 			<a href="/contact/" class="hover:text-indigo-600">CONTACT US</a>
 		</div>
 	</nav>

@@ -91,7 +91,7 @@ while (have_posts()):
 
 	<main class="bg-slate-50">
 		<!-- HERO SECTION -->
-		<div class="bg-slate-900 py-24 text-white relative overflow-hidden">
+		<div class="bg-indigo-900 py-24 text-white relative overflow-hidden">
 			<div class="absolute inset-0 z-0">
 				<!-- Hero Image -->
 				<?php if (has_post_thumbnail()): ?>
@@ -106,13 +106,13 @@ while (have_posts()):
 				<?php endif; ?>
 				<h1 class="text-5xl md:text-6xl font-extrabold mb-4"><?php the_title(); ?></h1>
 				<?php if ($tagline): ?>
-					<p class="text-xl max-w-2xl mx-auto text-slate-300"><?php echo esc_html($tagline); ?></p>
+					<p class="text-xl max-w-2xl mx-auto text-slate-600"><?php echo esc_html($tagline); ?></p>
 				<?php endif; ?>
 			</div>
 		</div>
 
-		<div class="container mx-auto px-4 py-16">
-			<div class="grid lg:grid-cols-3 gap-12">
+		<div class="container mx-auto px-4 py-24">
+			<div class="grid lg:grid-cols-3 gap-16">
 				<div class="lg:col-span-2 space-y-12">
 				   
 					<!-- About / Content (Top) -->
@@ -131,7 +131,7 @@ while (have_posts()):
 						<div class="grid md:grid-cols-3 gap-4 mb-8">
 							<?php 
 							$icons = ['fa-solid fa-palette', 'fa-solid fa-landmark', 'fa-solid fa-graduation-cap'];
-							$colors = ['text-purple-500', 'text-orange-500', 'text-green-500'];
+							$colors = ['text-yellow-600', 'text-red-600', 'text-green-500'];
 							
 							foreach (array_slice($features_array, 0, 3) as $i => $feature): 
 								$icon = $icons[$i % count($icons)];
@@ -165,7 +165,7 @@ while (have_posts()):
 					</div>
 
 					<!-- Map (Bottom) -->
-					<section class="bg-slate-100 rounded-[2rem] h-96 flex items-center justify-center text-slate-400 border-2 border-slate-200 overflow-hidden relative">
+					<section class="bg-slate-100 rounded-[2rem] h-96 flex items-center justify-center text-slate-500 border-2 border-slate-200 overflow-hidden relative">
 						<?php if ($maps_embed): ?>
 							<?php echo $maps_embed; ?>
 						<?php elseif ($lat && $lng): ?>
@@ -179,9 +179,9 @@ while (have_posts()):
 
 					<?php if ($virtual_tour_embed): ?>
 						<!-- Virtual Tour Section -->
-						<div class="bg-white p-8 rounded-[2rem] shadow-xl border-t-8 border-kidazzle-blue">
+						<div class="bg-white p-8 rounded-[2rem] shadow-xl border-t-8 border-indigo-600">
 							<h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-								<i class="fa-solid fa-vr-cardboard text-kidazzle-blue"></i> Virtual Tour
+								<i class="fa-solid fa-vr-cardboard text-indigo-600"></i> Virtual Tour
 							</h3>
 							<div class="relative aspect-video rounded-3xl overflow-hidden border-2 border-slate-100 shadow-inner">
 								<?php 
@@ -214,7 +214,7 @@ while (have_posts()):
 			   
 				<!-- Sidebar -->
 				<div class="space-y-8">
-				<div class="bg-slate-900 p-8 rounded-[2rem] text-white shadow-xl">
+				<div class="bg-indigo-900 p-8 rounded-[2rem] text-white shadow-xl">
 						<h3 class="text-xl font-bold mb-6">Contact Info</h3>
 						<div class="space-y-6 text-base">
 							<?php if ($address): ?>
@@ -227,14 +227,14 @@ while (have_posts()):
 							<?php if ($phone): ?>
 							<div class="flex items-center gap-4">
 								<i class="fa-solid fa-phone text-green-400 shrink-0"></i> 
-								<a href="tel:<?php echo esc_attr(preg_replace('/[^0-9]/', '', $phone)); ?>" class="font-bold hover:text-green-300 transition"><?php echo esc_html($phone); ?></a>
+								<a href="tel:<?php echo esc_attr(preg_replace('/[^0-9]/', '', $phone)); ?>" class="font-bold hover:text-green-300 transition" aria-label="Call <?php echo esc_attr(preg_replace('/[^0-9]/', '', $phone)); ?>"><?php echo esc_html($phone); ?></a>
 							</div>
 							<?php endif; ?>
 							
 							<?php if ($email): ?>
 							<div class="flex items-center gap-4">
 								<i class="fa-solid fa-envelope text-cyan-400 shrink-0"></i> 
-								<a href="mailto:<?php echo esc_attr($email); ?>" class="hover:text-cyan-300 transition break-all"><?php echo esc_html($email); ?></a>
+								<a href="mailto:<?php echo esc_attr($email); ?>" class="hover:text-cyan-300 transition break-all" aria-label="Email <?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a>
 							</div>
 							<?php endif; ?>
 
@@ -250,9 +250,9 @@ while (have_posts()):
 					<!-- 123 Form / Questions for this location -->
 					<div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
 						<h3 class="text-xl font-bold text-slate-900 mb-4">Have Questions?</h3>
-						<div class="bg-slate-50 border-dashed border-2 border-slate-300 rounded-xl p-4 text-center text-xs text-slate-400">
+						<div class="bg-slate-50 border-dashed border-2 border-slate-300 rounded-xl p-4 text-center text-xs text-slate-500">
 							<p class="mb-2">Contact our team directly.</p>
-							<a href="mailto:<?php echo esc_attr($email); ?>" class="inline-block bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg font-bold transition">Email Directors</a>
+							<a href="mailto:<?php echo esc_attr($email); ?>" class="inline-block bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg font-bold transition" aria-label="Email <?php echo esc_attr($email); ?>">Email Directors</a>
 						</div>
 					</div>
 				</div>
@@ -263,21 +263,21 @@ while (have_posts()):
 				<section class="mt-24 bg-white rounded-[3rem] p-12 shadow-soft border border-brand-ink/5">
 					<div class="grid md:grid-cols-2 gap-16 items-center">
 						<div class="relative">
-							<div class="absolute inset-0 bg-kidazzle-yellow/10 rounded-[3rem] -rotate-3 transform translate-x-4 translate-y-4"></div>
+							<div class="absolute inset-0 bg-yellow-500/10 rounded-[3rem] -rotate-3 transform translate-x-4 translate-y-4"></div>
 							<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5]">
 								<?php if ($director_photo): ?>
 									<img src="<?php echo esc_url($director_photo); ?>" alt="<?php echo esc_attr($director_name); ?>" class="w-full h-full object-cover">
 								<?php else: ?>
 									<div class="w-full h-full bg-slate-100 flex items-center justify-center">
-										<i class="fa-solid fa-user-tie text-6xl text-slate-300"></i>
+										<i class="fa-solid fa-user-tie text-6xl text-slate-600"></i>
 									</div>
 								<?php endif; ?>
 							</div>
 						</div>
 						<div>
-							<span class="text-kidazzle-yellow font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Campus Leadership</span>
-							<h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">A Welcome from Our Director</h2>
-							<div class="prose prose-slate text-brand-ink/80 text-lg leading-relaxed mb-8">
+							<span class="text-yellow-500 font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Campus Leadership</span>
+							<h2 class="text-3xl md:text-5xl font-extrabold tracking-tight font-bold text-slate-900 mb-6">A Welcome from Our Director</h2>
+							<div class="prose prose-slate text-slate-900/80 text-lg leading-relaxed mb-8">
 								<?php echo wp_kses_post(wpautop($director_bio)); ?>
 							</div>
 							<div class="flex items-center gap-6">
@@ -285,8 +285,8 @@ while (have_posts()):
 									<img src="<?php echo esc_url($director_signature); ?>" alt="Director Signature" class="h-16 w-auto opacity-70">
 								<?php endif; ?>
 								<div>
-									<p class="font-bold text-brand-ink"><?php echo esc_html($director_name); ?></p>
-									<p class="text-xs text-brand-ink/60 uppercase tracking-widest leading-none">Center Director</p>
+									<p class="font-bold text-slate-900"><?php echo esc_html($director_name); ?></p>
+									<p class="text-xs text-slate-900/60 uppercase tracking-widest leading-none">Center Director</p>
 								</div>
 							</div>
 						</div>
@@ -298,18 +298,18 @@ while (have_posts()):
 				<!-- Programs at this location -->
 				<section class="mt-24">
 					<div class="text-center mb-16">
-						<span class="text-kidazzle-red font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Our Programs</span>
-						<h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink">Programs at this Center</h2>
+						<span class="text-red-600 font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Our Programs</span>
+						<h2 class="text-3xl md:text-5xl font-extrabold tracking-tight font-bold text-slate-900">Programs at this Center</h2>
 					</div>
-					<div class="grid md:grid-cols-3 gap-8">
+					<div class="grid md:grid-cols-3 gap-16">
 						<?php while ($programs_query->have_posts()): $programs_query->the_post(); ?>
-							<a href="<?php the_permalink(); ?>" class="bg-white p-8 rounded-[2rem] border border-brand-ink/5 hover:border-kidazzle-red/30 transition-all group shadow-sm hover:shadow-xl">
-								<div class="w-14 h-14 bg-kidazzle-red/10 text-kidazzle-red rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+							<a href="<?php the_permalink(); ?>" class="bg-white p-8 rounded-[2rem] border border-brand-ink/5 hover:border-orange-500/30 transition-all group shadow-sm hover:shadow-xl">
+								<div class="w-14 h-14 bg-red-600/10 text-red-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
 									<i class="fa-solid fa-graduation-cap"></i>
 								</div>
-								<h3 class="font-bold text-xl text-brand-ink mb-3 group-hover:text-kidazzle-red transition-colors"><?php the_title(); ?></h3>
-								<p class="text-sm text-brand-ink/70 leading-relaxed mb-6"><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
-								<span class="text-xs font-bold text-kidazzle-red uppercase tracking-widest flex items-center gap-2">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+								<h3 class="font-bold text-xl text-slate-900 mb-3 group-hover:text-red-600 transition-colors"><?php the_title(); ?></h3>
+								<p class="text-sm text-slate-900/70 leading-relaxed mb-6"><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
+								<span class="text-xs font-bold text-red-600 uppercase tracking-widest flex items-center gap-2">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
 							</a>
 						<?php endwhile; wp_reset_postdata(); ?>
 					</div>
@@ -319,16 +319,16 @@ while (have_posts()):
 
 		<?php if ($seo_content_title || $seo_content_text): ?>
 			<!-- Location SEO Content Section -->
-			<section class="py-24 bg-brand-cream relative">
+			<section class="py-24 bg-slate-50 relative">
 				<div class="max-w-4xl mx-auto px-4 lg:px-6 text-center">
 					<?php if ($seo_content_title): ?>
-						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
+						<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight font-bold text-slate-900 mb-6">
 							<?php echo esc_html($seo_content_title); ?>
 						</h2>
 					<?php endif; ?>
 
 					<?php if ($seo_content_text): ?>
-						<div class="text-lg text-brand-ink/90 leading-relaxed max-w-3xl mx-auto">
+						<div class="text-lg text-slate-900/90 leading-relaxed max-w-3xl mx-auto">
 							<?php echo wp_kses_post(wpautop($seo_content_text)); ?>
 						</div>
 					<?php endif; ?>
@@ -338,6 +338,24 @@ while (have_posts()):
 
 	</main>
 
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "ChildCare",
+	  "name": "<?php echo esc_js(get_bloginfo('name') . ' - ' . $location_name); ?>",
+	  "image": "<?php echo has_post_thumbnail() ? esc_url(get_the_post_thumbnail_url($location_id, 'full')) : 'https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png'; ?>",
+	  "url": "<?php echo esc_url(get_permalink()); ?>",
+	  "telephone": "<?php echo esc_js($phone); ?>",
+	  "address": {
+	    "@type": "PostalAddress",
+	    "streetAddress": "<?php echo esc_js($address); ?>",
+	    "addressLocality": "<?php echo esc_js($city); ?>",
+	    "addressRegion": "<?php echo esc_js($state); ?>",
+	    "postalCode": "<?php echo esc_js($zip); ?>",
+	    "addressCountry": "US"
+	  }
+	}
+	</script>
 	<?php
 endwhile;
 get_footer();

@@ -312,7 +312,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                             <!-- Glass Badge -->
                             <div
                                 class="absolute bottom-6 left-6 right-6 bg-white/40 backdrop-blur-md px-4 py-2 rounded-2xl text-center border border-white/20">
-                                <span class="text-[9px] font-bold text-brand-ink uppercase tracking-widest italic">Kidazzle
+                                <span class="text-[9px] font-bold text-brand-ink uppercase tracking-widest italic">KIDazzle
                                     Specialty</span>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Front Page Template - Kidazzle
+ * Front Page Template - KIDazzle
  *
  * @package kidazzle
  */
@@ -10,7 +10,7 @@ get_header();
 
 <main>
     <?php
-    // Load the custom Kidazzle HTML design
+    // Load the custom KIDazzle HTML design
     get_template_part('template-parts/kidazzle/home-content');
     ?>
 </main>

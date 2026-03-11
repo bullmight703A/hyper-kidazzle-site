@@ -284,7 +284,7 @@ $locations_query = new WP_Query(array(
 											class="absolute inset-0 bg-brand-ink/40 group-hover:bg-brand-ink/10 transition-colors flex flex-col justify-end p-2 md:p-3">
 											<h4
 												class="text-white font-bold text-xs md:text-sm leading-tight text-center uppercase tracking-wider drop-shadow-md">
-												<?php echo wp_trim_words(str_replace('KIDazzle Childcare | ', '', get_the_title()), 4, ''); ?>
+												<?php echo wp_trim_words(str_replace('KIDazzle Child Care | ', '', get_the_title()), 4, ''); ?>
 											</h4>
 										</div>
 									</a>

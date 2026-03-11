@@ -1,6 +1,6 @@
 <?php
 /**
- * Kidazzle Theme Functions
+ * KIDazzle Theme Functions
  *
  * Homepage Template: front-page.php (WordPress default)
  *
@@ -442,7 +442,7 @@ function kidazzle_optimize_title_length($title_parts)
 
     // Use shorter site name suffix on blog posts
     if (is_single() && isset($title_parts['site'])) {
-        $title_parts['site'] = 'Kidazzle';
+        $title_parts['site'] = 'KIDazzle';
     }
 
     return $title_parts;

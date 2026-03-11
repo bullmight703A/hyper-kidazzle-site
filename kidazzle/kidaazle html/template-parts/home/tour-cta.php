@@ -4,7 +4,7 @@
  * 
  * KIDazzle Child Care Theme
  * 
- * @package Kidazzle
+ * @package KIDazzle
  */
 
 if (!defined('ABSPATH')) {

@@ -39,7 +39,7 @@ for ($i = 1; $i <= 5; $i++) {
       theme: {
         extend: {
           fontFamily: { sans: ['Outfit'], serif: ['Playfair Display'] },
-          colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, Kidazzle: { blue: '#4A6C7C' } }
+          colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, KIDazzle: { blue: '#4A6C7C' } }
         }
       }
     }

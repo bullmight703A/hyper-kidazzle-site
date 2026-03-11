@@ -517,3 +517,34 @@ add_filter('wp_sitemaps_add_provider', function ($provider, $name) {
     return $provider;
 }, 10, 2);
 
+/**
+ * One-Time Bulk Reset for 104 Combo Pages Sitemap Bug
+ */
+add_action('admin_init', function() {
+    if (!get_option('kidazzle_combos_bulk_reset_done_1')) {
+        if (class_exists('kidazzle_Combo_Page_Generator') && class_exists('kidazzle_Combo_Page_Data')) {
+            $combos = kidazzle_Combo_Page_Generator::get_all_combos();
+            foreach ($combos as $combo) {
+                if(isset($combo['program']) && isset($combo['city']) && isset($combo['state'])) {
+                    $p = $combo['program']->post_name;
+                    $c = sanitize_title($combo['city']);
+                    $s = $combo['state'];
+                    // Reset to auto so they drop out of the sitemap
+                    kidazzle_Combo_Page_Data::save($p, $c, $s, ['status' => 'auto']);
+                }
+            }
+            update_option('kidazzle_combos_bulk_reset_done_1', 1);
+        }
+    }
+});
+
+/**
+ * Force Flush Rewrite Rules for 404 Blog Fix
+ */
+add_action('init', function() {
+    if (!get_option('kidazzle_blog_rewrite_flush_done_1')) {
+        flush_rewrite_rules();
+        update_option('kidazzle_blog_rewrite_flush_done_1', 1);
+    }
+}, 9999);
+

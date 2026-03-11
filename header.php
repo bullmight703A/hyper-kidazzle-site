@@ -139,7 +139,8 @@
 		</div>
 		<!-- Mobile Menu Panel -->
 		<div id="mobile-menu"
-			class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 flex flex-col p-4 gap-4 font-bold text-slate-700">
+			class="hidden fixed inset-0 z-50 bg-white/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 font-extrabold text-2xl text-slate-800 transition-all">
+			<button id="close-menu-btn" class="absolute top-6 right-6 text-slate-900 border-2 border-slate-200 rounded-full p-2 hover:bg-slate-100"><i data-lucide="x" class="w-8 h-8"></i></button>
 			<a href="/" class="hover:text-indigo-600">HOME</a>
 			<a href="/about/" class="hover:text-orange-500">ABOUT US</a>
 			<a href="/programs/" class="hover:text-red-500">PROGRAMS</a>

@@ -34,13 +34,13 @@ $solutions = array(
 // Tax Incentives Section
 $tax_badge = get_post_meta($page_id, 'employers_tax_badge', true) ?: 'Financial Incentives';
 $tax_title = get_post_meta($page_id, 'employers_tax_title', true) ?: 'Maximize Your ROI with Tax Credits';
-$tax_description = get_post_meta($page_id, 'employers_tax_description', true) ?: 'Partnering with Kidazzle isn\'t just an investment in your company culture—it\'s a smart financial move. State and Federal programs significantly offset the cost of providing childcare benefits.';
+$tax_description = get_post_meta($page_id, 'employers_tax_description', true) ?: 'Partnering with KIDazzle isn\'t just an investment in your company culture—it\'s a smart financial move. State and Federal programs significantly offset the cost of providing childcare benefits.';
 
 // Federal Credit Card
 $federal_icon = get_post_meta($page_id, 'employers_federal_icon', true) ?: 'fa-solid fa-landmark';
 $federal_title = get_post_meta($page_id, 'employers_federal_title', true) ?: 'Federal 45F Credit';
 $federal_subtitle = get_post_meta($page_id, 'employers_federal_subtitle', true) ?: 'Employer-Provided Child Care Credit';
-$federal_desc = get_post_meta($page_id, 'employers_federal_desc', true) ?: 'The IRS allows businesses to claim a tax credit of up to <strong>$150,000 annually</strong>. This covers 25% of qualified childcare facility expenditures (such as contracting with Kidazzle for reserved spots) and 10% of resource and referral expenditures.';
+$federal_desc = get_post_meta($page_id, 'employers_federal_desc', true) ?: 'The IRS allows businesses to claim a tax credit of up to <strong>$150,000 annually</strong>. This covers 25% of qualified childcare facility expenditures (such as contracting with KIDazzle for reserved spots) and 10% of resource and referral expenditures.';
 $federal_link_text = get_post_meta($page_id, 'employers_federal_link_text', true) ?: 'View IRS Form 8882';
 $federal_link_url = get_post_meta($page_id, 'employers_federal_link_url', true) ?: 'https://www.irs.gov/forms-pubs/about-form-8882';
 
