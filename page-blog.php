@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Name: Resources Page
+ * Template Name: Blog Page
  *
- * Resources page template matching exact HTML design with proper SEO structure
+ * Blog page template matching exact HTML design with proper SEO structure
  *
  * @package kidazzle
  */
@@ -37,7 +37,7 @@ get_header();
 </style>
 
 <main id="main-content" role="main" class="view-section active block">
-    <?php get_template_part('template-parts/kidazzle/resources-content'); ?>
+    <?php get_template_part('template-parts/kidazzle/blog-content'); ?>
 </main>
 
 <?php
