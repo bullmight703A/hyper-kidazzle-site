@@ -26,7 +26,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 	<div class="container mx-auto px-4 grid md:grid-cols-4 gap-12 relative z-10">
 		<div>
 			<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png"
-				class="h-12 w-auto mb-6 mx-auto md:mx-0 bg-white p-1 rounded-lg object-contain" alt="KIDazzle">
+				class="h-12 w-auto mb-6 mx-auto md:mx-0 bg-white p-1 rounded-lg object-contain" alt="KIDazzle Logo" width="200" height="48">
 			<p class="text-sm leading-relaxed text-slate-400">Providing elite, independent child care for over 31 years.
 				A legacy of excellence across the Southeast.</p>
 		</div>
@@ -55,7 +55,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 			</p>
 			<p class="text-white font-bold text-lg">877-410-1002</p>
 			<a href="/contact/"
-				class="text-cyan-400 underline mt-4 block uppercase font-extrabold text-xs tracking-widest transition hover:text-white">Open
+				class="text-cyan-500 underline mt-4 block uppercase font-extrabold text-xs tracking-widest transition hover:text-white">Open
 				Contact Form</a>
 		</div>
 	</div>
