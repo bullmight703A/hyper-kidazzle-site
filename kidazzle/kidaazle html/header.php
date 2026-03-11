@@ -139,7 +139,11 @@
 		</div>
 		<!-- Mobile Menu Panel -->
 		<div id="mobile-menu"
-			class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 flex flex-col p-4 gap-4 font-bold text-slate-700">
+			class="hidden fixed top-0 left-0 w-full h-screen bg-white shadow-xl z-50 flex flex-col p-8 gap-6 font-bold text-slate-700 overflow-y-auto">
+			<div class="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
+				<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png" alt="KIDazzle Logo" class="h-10 w-auto">
+				<button id="close-menu-btn" aria-label="Close mobile menu" class="text-slate-500 hover:text-slate-900"><i data-lucide="x" class="w-8 h-8"></i></button>
+			</div>
 			<a href="/" class="hover:text-indigo-600">HOME</a>
 			<a href="/about/" class="hover:text-orange-500">ABOUT US</a>
 			<a href="/programs/" class="hover:text-red-500">PROGRAMS</a>

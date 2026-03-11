@@ -55,44 +55,35 @@
                 <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Georgia</h2>
             </div>
             <div class="space-y-4">
-                <a href="/locations/west-end/"
+                <a href="/locations/atlanta-federal-center/"
                     class="group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Atlanta (West
-                        End)</h3>
-                    <p class="text-sm text-slate-600 mt-2">The Historic District, Beltline adjacent, and home to our
-                        core mission.</p>
-                    <span
-                        class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View
-                        Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Atlanta Federal Center</h3>
+                    <p class="text-sm text-slate-600 mt-2">Serving professionals in the heart of downtown Atlanta.</p>
+                    <span class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
                 </a>
-                <a href="/locations/summit/"
+                <a href="/locations/irs-summit/"
                     class="group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Midtown Atlanta
-                    </h3>
-                    <p class="text-sm text-slate-600 mt-2">Serving IRS Summit professionals and downtown commuters.</p>
-                    <span
-                        class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View
-                        Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">IRS Summit Building</h3>
+                    <p class="text-sm text-slate-600 mt-2">Conveniently located for IRS Summit professionals and downtown commuters.</p>
+                    <span class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
                 </a>
                 <a href="/locations/college-park/"
                     class="group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">College Park
-                    </h3>
-                    <p class="text-sm text-slate-600 mt-2">Tri-cities area, conveniently located near
-                        Hartsfield-Jackson.</p>
-                    <span
-                        class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View
-                        Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">College Park FAA Regional Office</h3>
+                    <p class="text-sm text-slate-600 mt-2">Tri-cities area, conveniently located near Hartsfield-Jackson.</p>
+                    <span class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
                 </a>
                 <a href="/locations/hampton/"
                     class="group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Hampton /
-                        McDonough</h3>
-                    <p class="text-sm text-slate-600 mt-2">Serving families in the South Metro area with Quality Rated
-                        care.</p>
-                    <span
-                        class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View
-                        Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Hampton - Atlanta FAA Office</h3>
+                    <p class="text-sm text-slate-600 mt-2">Serving families in the South Metro area with Quality Rated care.</p>
+                    <span class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                </a>
+                <a href="/locations/west-end/"
+                    class="group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Historical West End of Atlanta</h3>
+                    <p class="text-sm text-slate-600 mt-2">The Historic District, Beltline adjacent, and home to our core mission.</p>
+                    <span class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Location <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
                 </a>
             </div>
         </div>
