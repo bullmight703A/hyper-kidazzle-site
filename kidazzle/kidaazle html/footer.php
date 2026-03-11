@@ -71,9 +71,9 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 $show_sticky_cta = true;
 $sticky_text = __('Ready to experience the KIDAZZLE difference?', 'kidazzle-theme');
 $sticky_btn_text = __('Schedule a Tour', 'kidazzle-theme');
-$sticky_url = home_url('/contact');
+$sticky_url = home_url('/schedule-a-tour');
 
-if (is_page('contact') || is_page('careers')) {
+if (is_page('contact') || is_page('careers') || is_page('schedule-a-tour')) {
 	$show_sticky_cta = false;
 } elseif (is_singular('program')) {
 	$sticky_text = sprintf(__('Ready to enroll in <strong>%s</strong>?', 'kidazzle-theme'), get_the_title());
@@ -84,7 +84,7 @@ if (is_page('contact') || is_page('careers')) {
 if ($show_sticky_cta):
 	?>
 	<div id="sticky-cta"
-		class="md:hidden will-change-transform transform translate-y-full fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md text-white py-4 px-6 z-50 shadow-[0_-5px_20px_rgba(0,0,0,0.1)] border-t border-white/10 transition-transform duration-500 ease-out">
+		class="md:hidden will-change-transform transform translate-y-full fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md text-white py-4 px-6 z-[100] shadow-[0_-5px_20px_rgba(0,0,0,0.1)] border-t border-white/10 transition-transform duration-500 ease-out">
 		<div class="max-w-7xl mx-auto flex flex-col items-center justify-between gap-4 text-center">
 			<span class="text-sm font-medium tracking-wide">
 				<?php echo $sticky_text; ?>
@@ -97,40 +97,8 @@ if ($show_sticky_cta):
 	</div>
 <?php endif; ?>
 
-<!-- Contact Modal (Global) - Hidden by default -->
-<div id="contact-modal"
-	class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-fade-in">
-	<div class="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl max-h-[90vh] overflow-y-auto p-8">
-		<button onclick="closeContactModal()"
-			class="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition">
-			<i class="fa-solid fa-xmark text-slate-600"></i>
-		</button>
-		<div class="text-center mb-8">
-			<h3 class="text-2xl font-bold text-slate-900">How Can We Help?</h3>
-			<p class="text-slate-500">Select an option below.</p>
-		</div>
-		<div
-			class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-[2rem] p-4 text-center h-[600px] overflow-hidden">
-			<iframe src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
-				style="width:100%;height:100%;border:none;border-radius:20px" id="inline-N8RYaUY1SuORexcyA6la"
-				data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
-				data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate"
-				data-deactivation-value="" data-form-name="2023 New KIDazzel website contact " data-height="870"
-				data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la" data-form-id="N8RYaUY1SuORexcyA6la"
-				title="2023 New KIDazzel website contact ">
-			</iframe>
-			<script src="https://link.msgsndr.com/js/form_embed.js" async></script>
-		</div>
-	</div>
-</div>
-
 <!-- Scripts -->
 <script>
-	// Modal Logic
-	const contactModal = document.getElementById('contact-modal');
-	function openContactModal() { if (contactModal) contactModal.classList.remove('hidden'); }
-	function closeContactModal() { if (contactModal) contactModal.classList.add('hidden'); }
-
 	// Sticky CTA Scroll Logic
 	window.addEventListener('scroll', function () {
 		const cta = document.getElementById('sticky-cta');
