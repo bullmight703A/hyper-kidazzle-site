@@ -554,7 +554,7 @@ add_action('init', function() {
 add_action('init', function() {
     if (!get_transient('kidazzle_night_flush_2026')) {
         flush_rewrite_rules(false);
-        set_transient('kidazzle_night_flush_2026', true, DAY_IN_SECONDS);
+        set_transient('kidazzle_night_flush_2026', true, 86400);
         error_log('KIDAZZLE RULE FLUSH: Theme forced SEO flush.');
     }
 }, 9999);
