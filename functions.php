@@ -558,3 +558,52 @@ add_action('init', function() {
         error_log('KIDAZZLE RULE FLUSH: Theme forced SEO flush.');
     }
 }, 9999);
+
+/**
+ * Temporary Diagnostic Endpoint for Combo Pages
+ */
+add_action('rest_api_init', function () {
+    register_rest_route('kidazzle/v1', '/combo-diag', array(
+        'methods' => 'GET',
+        'callback' => function () {
+            if (!class_exists('kidazzle_Combo_Page_Generator')) {
+                return new WP_REST_Response(['error' => 'Class missing'], 404);
+            }
+            \ = kidazzle_Combo_Page_Generator::get_all_combos();
+            \ = 0;
+            \ = 0;
+            \ = [];
+            
+            foreach (\ as \) {
+                if(!isset(\['program']) || !isset(\['city']) || !isset(\['state'])) {
+                    continue;
+                }
+                
+                \ = \['program']->post_name;
+                \ = sanitize_title(\['city']);
+                \ = strtolower(\['state']);
+                
+                \ = kidazzle_Combo_Page_Data::get(\, \, \);
+                \ = \['status'] ?? 'auto';
+                
+                if (\ === 'auto' || \ === 'override') {
+                    \++;
+                    if (count(\) < 5) {
+                        \[] = home_url(\
+/\-in-\-\/\);
+                    }
+                } else {
+                    \++;
+                }
+            }
+            
+            return new WP_REST_Response([
+                'total' => count(\),
+                'active' => \,
+                'hidden' => \,
+                'samples' => \
+            ], 200);
+        },
+        'permission_callback' => '__return_true'
+    ));
+});
