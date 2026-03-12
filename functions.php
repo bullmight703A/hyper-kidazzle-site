@@ -548,3 +548,13 @@ add_action('init', function() {
     }
 }, 9999);
 
+/**
+ * Temporary Drop-in to Force Flush 404s (Combo Pages)
+ */
+add_action('init', function() {
+    if (!get_transient('kidazzle_night_flush_2026')) {
+        flush_rewrite_rules(false);
+        set_transient('kidazzle_night_flush_2026', true, DAY_IN_SECONDS);
+        error_log('KIDAZZLE RULE FLUSH: Theme forced SEO flush.');
+    }
+}, 9999);
