@@ -14,6 +14,19 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * EXTREME EMERGENCY RECOVERY ROUTE
+ * Triggers a switch to a default theme (twentytwentyfour or twentytwentythree)
+ * If Robert visits /wp-admin/?recovery_mode_12345=1
+ */
+if (isset($_GET['recovery_mode_12345'])) {
+    if (function_exists('switch_theme')) {
+        switch_theme('twentytwentyfour');
+        error_log('KIDAZZLE RECOVERY: Successfully bypassed broken theme to twentytwentyfour.');
+        die('EMERGENCY RECOVERY ACTIVATED. The broken theme has been disabled. <a href="/wp-admin/">Click here to enter your WP Admin dashboard</a> and reinstall the theme via WP Pusher.');
+    }
+}
+
+/**
  * Increase Memory Limit for SEO Engine
  */
 @ini_set('memory_limit', '256M');
