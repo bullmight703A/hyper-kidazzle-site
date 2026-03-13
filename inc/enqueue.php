@@ -34,6 +34,17 @@ function kidazzle_enqueue_assets()
 
         $script_dependencies = array('jquery');
 
+        // Google Fonts (Inter)
+        wp_enqueue_style(
+            'kidazzle-fonts',
+            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
+            array(),
+            null
+        );
+
+        // Core Block Styles (required for WP editor content formatting)
+        wp_enqueue_style('wp-block-library');
+
         // Font Awesome (Subset)
         $fa_path = KIDAZZLE_THEME_DIR . '/assets/css/font-awesome-subset.css';
         $fa_version = file_exists($fa_path) ? filemtime($fa_path) : '6.4.0';

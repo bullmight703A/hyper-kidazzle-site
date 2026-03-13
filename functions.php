@@ -569,39 +569,38 @@ add_action('rest_api_init', function () {
             if (!class_exists('kidazzle_Combo_Page_Generator')) {
                 return new WP_REST_Response(['error' => 'Class missing'], 404);
             }
-            \ = kidazzle_Combo_Page_Generator::get_all_combos();
-            \ = 0;
-            \ = 0;
-            \ = [];
+            $combos = kidazzle_Combo_Page_Generator::get_all_combos();
+            $active = 0;
+            $hidden = 0;
+            $samples = [];
             
-            foreach (\ as \) {
-                if(!isset(\['program']) || !isset(\['city']) || !isset(\['state'])) {
+            foreach ($combos as $combo) {
+                if(!isset($combo['program']) || !isset($combo['city']) || !isset($combo['state'])) {
                     continue;
                 }
                 
-                \ = \['program']->post_name;
-                \ = sanitize_title(\['city']);
-                \ = strtolower(\['state']);
+                $p = $combo['program']->post_name;
+                $c = sanitize_title($combo['city']);
+                $s = strtolower($combo['state']);
                 
-                \ = kidazzle_Combo_Page_Data::get(\, \, \);
-                \ = \['status'] ?? 'auto';
+                $data = kidazzle_Combo_Page_Data::get($p, $c, $s);
+                $status = $data['status'] ?? 'auto';
                 
-                if (\ === 'auto' || \ === 'override') {
-                    \++;
-                    if (count(\) < 5) {
-                        \[] = home_url(\
-/\-in-\-\/\);
+                if ($status === 'auto' || $status === 'override') {
+                    $active++;
+                    if (count($samples) < 5) {
+                        $samples[] = home_url("/$p-in-$c-$s/");
                     }
                 } else {
-                    \++;
+                    $hidden++;
                 }
             }
             
             return new WP_REST_Response([
-                'total' => count(\),
-                'active' => \,
-                'hidden' => \,
-                'samples' => \
+                'total' => count($combos),
+                'active' => $active,
+                'hidden' => $hidden,
+                'samples' => $samples
             ], 200);
         },
         'permission_callback' => '__return_true'
