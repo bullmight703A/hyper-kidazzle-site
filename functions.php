@@ -31,8 +31,8 @@ if (!is_admin()) {
  * Define theme constants
  */
 define('KIDAZZLE_VERSION', '1.0.0');
-define('KIDAZZLE_THEME_DIR', get_template_directory());
-define('KIDAZZLE_THEME_URI', get_template_directory_uri());
+define('KIDAZZLE_THEME_DIR', untrailingslashit(get_template_directory()));
+define('KIDAZZLE_THEME_URI', untrailingslashit(get_template_directory_uri()));
 
 /**
  * Load core theme functionality
