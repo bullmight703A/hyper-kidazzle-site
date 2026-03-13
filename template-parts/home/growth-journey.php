@@ -11,16 +11,16 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<section class="py-24 bg-white border-t border-slate-100">
+<section class="py-24 bg-kidazzle-yellow border-t border-yellow-200">
     <div class="container mx-auto px-4 text-center mb-12">
-        <h2 class="text-4xl font-extrabold text-slate-900">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-kidazzle-blue uppercase tracking-tight font-display drop-shadow-sm">
             <?php esc_html_e('The KIDazzle Growth Journey', 'kidazzle'); ?>
         </h2>
-        <p class="text-slate-600 mt-4 max-w-2xl mx-auto">
+        <p class="text-kidazzle-blue/80 mt-4 max-w-2xl mx-auto font-medium text-lg">
             <?php esc_html_e('See how our curriculum adapts to your child\'s developing mind at every stage.', 'kidazzle'); ?>
         </p>
     </div>
-    <div class="max-w-5xl mx-auto bg-slate-50 rounded-[3rem] p-10 shadow-xl border border-slate-200">
+    <div class="max-w-5xl mx-auto bg-white rounded-[3rem] p-10 shadow-2xl border-4 border-white/50 backdrop-blur-sm">
         <!-- Stage Buttons -->
         <div class="flex justify-center gap-4 mb-10 flex-wrap" id="stage-buttons">
             <!-- Injected via JS -->
@@ -31,7 +31,7 @@ if (!defined('ABSPATH')) {
                 <!-- Text Injected via JS -->
             </div>
             <!-- Bar Graph -->
-            <div class="md:col-span-2 h-64 flex items-end justify-between px-4 border-b border-slate-300 relative"
+            <div class="md:col-span-2 h-64 flex items-end justify-between px-4 border-b-2 border-slate-200 relative"
                 id="graph-bars">
                 <!-- Bars Injected via JS -->
             </div>
