@@ -130,7 +130,7 @@
 		<div class="container mx-auto px-4 flex justify-between items-center">
 			<a href="/" class="flex items-center gap-2">
 				<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png"
-					alt="KIDazzle Logo" class="h-20 md:h-24 w-auto object-contain py-1">
+					alt="KIDazzle Logo" class="h-20 md:h-24 w-auto object-contain py-1" style="max-height: 96px; width: auto;">
 			</a>
 
 			<button id="mobile-menu-btn" class="lg:hidden text-slate-900"><i data-lucide="menu"

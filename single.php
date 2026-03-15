@@ -70,7 +70,7 @@ $related_query = new WP_Query($related_args);
 			<div class="max-w-6xl mx-auto px-4 lg:px-6 mb-16 relative">
 				<div class="absolute -inset-4 bg-kidazzle-blue/5 rounded-[4rem] blur-2xl -z-10"></div>
 				<img src="<?php echo esc_url($featured_image); ?>" alt="<?php the_title_attribute(); ?>"
-					class="w-full h-[600px] object-cover rounded-[3.5rem] shadow-2xl border-8 border-white">
+					class="w-full h-[600px] object-cover rounded-[3.5rem] shadow-2xl border-8 border-white" style="max-height: 600px; width: 100%; object-fit: cover; border-radius: 3.5rem;">
 			</div>
 		<?php endif; ?>
 
@@ -133,7 +133,7 @@ $related_query = new WP_Query($related_args);
 					<?php while ($related_query->have_posts()):
 						$related_query->the_post(); ?>
 						<a href="<?php the_permalink(); ?>" class="group">
-							<div class="rounded-3xl overflow-hidden mb-6 h-56 shadow-soft border border-brand-ink/5">
+							<div class="rounded-3xl overflow-hidden mb-6 h-56 shadow-soft border border-brand-ink/5" style="height: 224px;">
 								<?php if (has_post_thumbnail()): ?>
 									<?php the_post_thumbnail('medium_large', array('class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500')); ?>
 								<?php else: ?>
