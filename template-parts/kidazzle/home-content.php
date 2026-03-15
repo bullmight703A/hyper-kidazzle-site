@@ -246,10 +246,10 @@
     lucide.createIcons();
 
     const growthData = {
-        infants: { label: "Infants", sub: "6w-12m", desc: "Trust and sensory bonding through gentle interaction.", stats: [{ val: 90, col: "bg-rose-500", lbl: "Motor" }, { val: 70, col: "bg-amber-400", lbl: "Sensory" }, { val: 80, col: "bg-emerald-400", lbl: "Social" }, { val: 40, col: "bg-sky-400", lbl: "Lang" }, { val: 20, col: "bg-violet-500", lbl: "Logic" }] },
-        toddlers: { label: "Toddlers", sub: "12m-24m", desc: "Active exploration and massive vocabulary growth.", stats: [{ val: 85, col: "bg-rose-500", lbl: "Motor" }, { val: 60, col: "bg-amber-400", lbl: "Sensory" }, { val: 70, col: "bg-emerald-400", lbl: "Social" }, { val: 85, col: "bg-sky-400", lbl: "Lang" }, { val: 40, col: "bg-violet-500", lbl: "Logic" }] },
-        preschool: { label: "Preschool", sub: "2y-3y", desc: "Independence, potty training, and early academics.", stats: [{ val: 60, col: "bg-rose-500", lbl: "Motor" }, { val: 85, col: "bg-amber-400", lbl: "Sensory" }, { val: 90, col: "bg-emerald-400", lbl: "Social" }, { val: 80, col: "bg-sky-400", lbl: "Lang" }, { val: 60, col: "bg-violet-500", lbl: "Logic" }] },
-        prek: { label: "Pre-K", sub: "4y-5y", desc: "Kindergarten readiness and foundational literacy.", stats: [{ val: 50, col: "bg-rose-500", lbl: "Motor" }, { val: 70, col: "bg-amber-400", lbl: "Sensory" }, { val: 85, col: "bg-emerald-400", lbl: "Social" }, { val: 95, col: "bg-sky-400", lbl: "Lang" }, { val: 90, col: "bg-violet-500", lbl: "Logic" }] }
+        infants: { label: "Infants", sub: "6w-12m", desc: "Trust and sensory bonding through gentle interaction.", stats: [{ val: 90, col: "#f43f5e", lbl: "Motor" }, { val: 70, col: "#fbbf24", lbl: "Sensory" }, { val: 80, col: "#34d399", lbl: "Social" }, { val: 40, col: "#38bdf8", lbl: "Lang" }, { val: 20, col: "#8b5cf6", lbl: "Logic" }] },
+        toddlers: { label: "Toddlers", sub: "12m-24m", desc: "Active exploration and massive vocabulary growth.", stats: [{ val: 85, col: "#f43f5e", lbl: "Motor" }, { val: 60, col: "#fbbf24", lbl: "Sensory" }, { val: 70, col: "#34d399", lbl: "Social" }, { val: 85, col: "#38bdf8", lbl: "Lang" }, { val: 40, col: "#8b5cf6", lbl: "Logic" }] },
+        preschool: { label: "Preschool", sub: "2y-3y", desc: "Independence, potty training, and early academics.", stats: [{ val: 60, col: "#f43f5e", lbl: "Motor" }, { val: 85, col: "#fbbf24", lbl: "Sensory" }, { val: 90, col: "#34d399", lbl: "Social" }, { val: 80, col: "#38bdf8", lbl: "Lang" }, { val: 60, col: "#8b5cf6", lbl: "Logic" }] },
+        prek: { label: "Pre-K", sub: "4y-5y", desc: "Kindergarten readiness and foundational literacy.", stats: [{ val: 50, col: "#f43f5e", lbl: "Motor" }, { val: 70, col: "#fbbf24", lbl: "Sensory" }, { val: 85, col: "#34d399", lbl: "Social" }, { val: 95, col: "#38bdf8", lbl: "Lang" }, { val: 90, col: "#8b5cf6", lbl: "Logic" }] }
     };
 
     function renderGraph(stage) {
@@ -267,7 +267,7 @@
 
         document.getElementById('graph-bars').innerHTML = data.stats.map(s =>
             `<div class="w-full mx-1 relative group h-full flex items-end">
-                    <div class="w-full rounded-t-xl ${s.col} graph-bar relative opacity-90 group-hover:opacity-100 shadow-md" style="height:${s.val}%">
+                    <div class="w-full rounded-t-xl graph-bar relative opacity-90 group-hover:opacity-100 shadow-md" style="height:${s.val}%; background-color:${s.col};">
                         <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition shadow-lg">${s.val}%</div>
                     </div>
                 </div>`

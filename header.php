@@ -13,7 +13,7 @@
 		rel="stylesheet">
 
 	<!-- Favicon -->
-	<link rel="icon" type="image/webp" href="<?php echo get_template_directory_uri(); ?>/assets/images/logo_icon_80x80.webp">
+	<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/assets/images/logo_icon_80x80.png">
 
 	<!-- FontAwesome & Lucide -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -117,6 +117,12 @@
 				class="hover:text-orange-600 transition flex items-center gap-1 font-bold text-orange-500"><i
 					data-lucide="users" class="w-3 h-3"></i> Teacher Portal</a>
 		</div>
+	</div>
+
+	<!-- TOURING ACTION BAR -->
+	<div class="bg-kidazzle-red text-white py-3 px-4 shadow-md font-bold text-center text-sm tracking-wide hidden md:block">
+		<span class="mr-3">🎉 Enrollment is open for the upcoming season!</span>
+		<a href="/contact/" class="bg-white text-kidazzle-red px-4 py-1.5 rounded-full text-xs font-extrabold shadow-sm hover:bg-slate-100 transition whitespace-nowrap">Schedule A Tour</a>
 	</div>
 
 	<!-- MAIN NAVIGATION -->
