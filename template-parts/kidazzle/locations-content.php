@@ -23,7 +23,7 @@
     <div class="container mx-auto px-4 text-center">
         <div class="flex flex-wrap justify-center gap-8 md:gap-20">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600"><i
+                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600"><i
                         data-lucide="map" class="w-5 h-5"></i></div>
                 <span class="font-extrabold text-slate-900 uppercase tracking-widest text-sm">7 Locations in
                     Georgia</span>
@@ -35,7 +35,7 @@
                     Center</span>
             </div>
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600"><i
+                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600"><i
                         data-lucide="sun" class="w-5 h-5"></i></div>
                 <span class="font-extrabold text-slate-900 uppercase tracking-widest text-sm">International Doral
                     Academy</span>
@@ -50,38 +50,38 @@
 
         <!-- Georgia Section -->
         <div class="space-y-6">
-            <div class="flex items-center gap-3 border-b-4 border-orange-500 pb-2">
-                <i data-lucide="map" class="text-orange-500 w-8 h-8"></i>
+            <div class="flex items-center gap-3 border-b-4 border-indigo-600 pb-2">
+                <i data-lucide="map" class="text-indigo-600 w-8 h-8"></i>
                 <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Georgia</h2>
             </div>
             <div class="space-y-4">
                 <button type="button" onclick="openMapModal('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3317.9042701223984!2d-84.41758462449754!3d33.737291473277224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f503152c16c0cd%3A0xb38668fb068fc4de!2sKIDazzle%20Childcare%20Inc%20%7C%20West%20End!5e0!3m2!1sen!2sus!4v1764706171838!5m2!1sen!2sus', 'https://goo.gl/maps/WEST_END_PROFILE')"
-                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Atlanta (West End)</h3>
+                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all">
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-indigo-600 transition">Atlanta (West End)</h3>
                     <p class="text-sm text-slate-600 mt-2">The Historic District, Beltline adjacent, and home to our core mission.</p>
                     <span
-                        class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
+                        class="text-indigo-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
                 </button>
                 <button type="button" onclick="openMapModal('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.824600416082!2d-84.38717799999999!3d33.7651981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5047a3b061fb3%3A0xabb7f660053ffd7d!2sKIDazzle%20Childcare%20Inc%3A%20Peachtree%20Summit%20Building!5e0!3m2!1sen!2sus!4v1764706094255!5m2!1sen!2sus', 'https://goo.gl/maps/PEACHTREE_PROFILE')"
-                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Midtown Atlanta</h3>
+                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all">
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-indigo-600 transition">Midtown Atlanta</h3>
                     <p class="text-sm text-slate-600 mt-2">Serving IRS Summit professionals and downtown commuters.</p>
                     <span
-                        class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
+                        class="text-indigo-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
                 </button>
                 <button type="button" onclick="openMapModal('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3321.1589085139653!2d-84.44864012450137!3d33.65304417330991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4e2b65fa0569b%3A0xd8e28edb0911e956!2sKIDazzle%20Childcare%20Inc%3A%20Little%20Flyers%20College%20Park!5e0!3m2!1sen!2sus!4v1764706220357!5m2!1sen!2sus', 'https://goo.gl/maps/COLLEGE_PARK_PROFILE')"
-                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">College Park</h3>
+                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all">
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-indigo-600 transition">College Park</h3>
                     <p class="text-sm text-slate-600 mt-2">Tri-cities area, conveniently located near Hartsfield-Jackson.</p>
                     <span
-                        class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
+                        class="text-indigo-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
                 </button>
                 <button type="button" onclick="openMapModal('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.636815414267!2d-84.30074322451348!3d33.38054657341737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4f5c3c595069d%3A0x66cf60bb1b78594a!2sKIDazzle%20Child%20Care%20Inc%3A%20Hampton!5e0!3m2!1sen!2sus!4v1764706257946!5m2!1sen!2sus', 'https://goo.gl/maps/HAMPTON_PROFILE')"
-                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Hampton / McDonough</h3>
+                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all">
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-indigo-600 transition">Hampton / McDonough</h3>
                     <p class="text-sm text-slate-600 mt-2">Serving families in the South Metro area with Quality Rated care.</p>
                     <span
-                        class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
+                        class="text-indigo-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
                 </button>
             </div>
         </div>
@@ -105,17 +105,17 @@
 
         <!-- Florida Section -->
         <div class="space-y-6">
-            <div class="flex items-center gap-3 border-b-4 border-yellow-500 pb-2">
-                <i data-lucide="sun" class="text-yellow-500 w-8 h-8"></i>
+            <div class="flex items-center gap-3 border-b-4 border-indigo-600 pb-2">
+                <i data-lucide="sun" class="text-indigo-600 w-8 h-8"></i>
                 <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Florida</h2>
             </div>
             <div class="space-y-4">
                 <button type="button" onclick="openMapModal('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.349395065274!2d-80.32185912481461!3d25.825029777312196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9ba324548b6a5%3A0x260687cfcf36d761!2sKIDazzle%20Child%20Care%20Inc%3A%20Tailwinds%20Development%20Center!5e0!3m2!1sen!2sus!4v1764706295520!5m2!1sen!2sus', 'https://goo.gl/maps/DORAL_PROFILE')"
-                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-yellow-500 hover:shadow-xl transition-all">
-                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-yellow-600 transition">Doral / Miami</h3>
+                    class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all">
+                    <h3 class="font-bold text-xl text-slate-900 group-hover:text-indigo-600 transition">Doral / Miami</h3>
                     <p class="text-sm text-slate-600 mt-2">Serving Miami-Dade professionals with bilingual STEM education.</p>
                     <span
-                        class="text-yellow-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
+                        class="text-indigo-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
                 </button>
             </div>
         </div>
