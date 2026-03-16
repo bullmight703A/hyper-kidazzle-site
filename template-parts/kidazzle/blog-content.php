@@ -120,39 +120,34 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-            <!-- Blog 1 -->
-            <div class="group cursor-pointer">
+            <?php
+            $kidazzle_blog_args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 6,
+                'post_status' => 'publish'
+            );
+            $kidazzle_blog_query = new WP_Query($kidazzle_blog_args);
+            
+            if ($kidazzle_blog_query->have_posts()) :
+                while ($kidazzle_blog_query->have_posts()) : $kidazzle_blog_query->the_post();
+                    $thumbnail_url = has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/assets/images/blog_brain_development_1772749628254.png';
+            ?>
+            <div class="group cursor-pointer" onclick="window.location.href='<?php the_permalink(); ?>';">
                 <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog_brain_development_1772749628254.png"
+                    <img src="<?php echo esc_url($thumbnail_url); ?>"
                         class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
-                        alt="Early Learning">
+                        alt="<?php the_title_attribute(); ?>">
                 </div>
-                <span class="text-purple-600 font-bold text-xs uppercase tracking-widest">Development</span>
-                <h3 class="text-xl font-bold text-slate-900 mt-2 group-hover:text-purple-600 transition">The Power of
-                    Play in Brain Development</h3>
+                <span class="text-purple-600 font-bold text-xs uppercase tracking-widest">Article</span>
+                <h3 class="text-xl font-bold text-slate-900 mt-2 group-hover:text-purple-600 transition"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
             </div>
-            <!-- Blog 2 -->
-            <div class="group cursor-pointer">
-                <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog_nutrition_1772749641549.png"
-                        class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
-                        alt="Nutrition">
-                </div>
-                <span class="text-orange-600 font-bold text-xs uppercase tracking-widest">Nutrition</span>
-                <h3 class="text-xl font-bold text-slate-900 mt-2 group-hover:text-orange-600 transition">Feeding Bright
-                    Minds: Nutrients for Focus</h3>
-            </div>
-            <!-- Blog 3 -->
-            <div class="group cursor-pointer">
-                <div class="rounded-3xl overflow-hidden mb-6 h-64 shadow-lg border border-slate-100">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog_parenting_routine_1772749654300.png"
-                        class="w-full h-full object-cover transition group-hover:scale-110 duration-500"
-                        alt="Parenting">
-                </div>
-                <span class="text-cyan-600 font-bold text-xs uppercase tracking-widest">Parenting</span>
-                <h3 class="text-xl font-bold text-slate-900 mt-2 group-hover:text-cyan-600 transition">Routine &
-                    Transition: Navigating the Morning Drop-off</h3>
-            </div>
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+            ?>
+                <p class="text-slate-500 font-medium col-span-3">More articles coming soon!</p>
+            <?php endif; ?>
         </div>
     </div>
 </section>

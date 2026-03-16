@@ -128,6 +128,15 @@
     </div>
 </section>
 
+<!-- ENROLLMENT CTA -->
+<section class="py-20 bg-kidazzle-red text-white text-center">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-4xl font-extrabold mb-6">Ready to Join the KIDazzle Family?</h2>
+        <p class="text-xl mb-10 font-medium opacity-90">Schedule a tour at one of our 7 locations today and see why parents have trusted us for 31 years.</p>
+        <a href="/contact/" class="bg-white text-kidazzle-red font-bold py-4 px-10 rounded-full shadow-xl hover:scale-105 transition-transform inline-block text-lg">Schedule A Tour</a>
+    </div>
+</section>
+
 <script>
     lucide.createIcons();
 </script>
