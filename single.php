@@ -77,7 +77,7 @@ $related_query = new WP_Query($related_args);
 		<!-- Content -->
 		<div class="max-w-3xl mx-auto px-4 lg:px-6 pb-24">
 			<div
-				class="post-content prose prose-lg prose-headings:font-serif prose-headings:font-bold prose-p:text-brand-ink/80 prose-a:text-kidazzle-blue hover:prose-a:text-kidazzle-blue/80 prose-blockquote:border-kidazzle-yellow prose-blockquote:bg-brand-cream prose-blockquote:p-8 prose-blockquote:rounded-3xl prose-img:rounded-3xl transition-all">
+				class="post-content prose prose-lg prose-headings:font-serif prose-headings:font-bold prose-p:text-brand-ink/80 prose-p:mb-6 prose-a:text-kidazzle-blue hover:prose-a:text-kidazzle-blue/80 prose-blockquote:border-kidazzle-yellow prose-blockquote:bg-brand-cream prose-blockquote:p-8 prose-blockquote:rounded-3xl prose-img:rounded-3xl transition-all">
 				<?php
 				while (have_posts()):
 					the_post();
