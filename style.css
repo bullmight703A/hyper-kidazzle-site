@@ -50,3 +50,5 @@ All rights reserved. This theme is proprietary software.
         height: 4rem;
     }
 }
+
+.post-content p { margin-bottom: 2rem !important; }
