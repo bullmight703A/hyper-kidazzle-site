@@ -160,7 +160,6 @@ function kidazzle_enqueue_assets()
                         header .container > a[href*='contact'] {
                                 display: flex !important;
                         }
-                }
 
                 /* Accessibility: Increase contrast for muted text */
                 .text-brand-ink\/60 { color: rgba(38, 50, 56, 0.9) !important; }
