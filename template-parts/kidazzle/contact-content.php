@@ -109,16 +109,12 @@
                             will
                             get back to you shortly.</p>
                     </div>
-                    <iframe src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
-                        style="width:100%;height:1000px;border:none;border-radius:20px" id="inline-N8RYaUY1SuORexcyA6la"
-                        data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
-                        data-activation-type="alwaysActivated" data-activation-value=""
-                        data-deactivation-type="neverDeactivate" data-deactivation-value=""
-                        data-form-name="2023 New KIDazzel website contact " data-height="1000"
-                        data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la" data-form-id="N8RYaUY1SuORexcyA6la"
-                        title="2023 New KIDazzel website contact ">
-                    </iframe>
-                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    <!-- DYNAMIC FORM MODAL TRIGGER -->
+                    <div class="text-center py-32">
+                        <button class="ghl-trigger bg-white text-purple-700 px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-purple-50 transition shadow-2xl hover:scale-105 transform duration-300" data-ghl-url="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la">
+                            Contact Us Now
+                        </button>
+                    </div>
                 </div>
             </div>
 

@@ -86,6 +86,15 @@ function kidazzle_enqueue_assets()
                 'all' // Load normally to prevent FOUC
         );
 
+        // GHL Modal Styles
+        wp_enqueue_style(
+                'ghl-modal-style',
+                KIDAZZLE_THEME_URI . '/assets/css/ghl-modal.css',
+                array(),
+                $css_version,
+                'all'
+        );
+
         // CRITICAL ACCESSIBILITY FIXES (Injected Inline to bypass cache/build)
         $custom_css = "
                 /* Darkened Brand Colors for WCAG AA Compliance (Enhanced) */
@@ -178,6 +187,16 @@ function kidazzle_enqueue_assets()
                 $js_version,
                 true
         );
+
+        // GHL Modal Script
+        wp_enqueue_script(
+                'ghl-modal-js',
+                KIDAZZLE_THEME_URI . '/assets/js/ghl-modal.js',
+                array(),
+                $js_version,
+                true
+        );
+        wp_script_add_data('ghl-modal-js', 'defer', true);
 
         // DEBUG: Confirm script was enqueued
         echo '<!-- DEBUG: Enqueued kidazzle-main-js with URL: ' . KIDAZZLE_THEME_URI . '/assets/js/main.js and version: ' . $js_version . ' -->';

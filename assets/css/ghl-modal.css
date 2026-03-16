@@ -1,0 +1,117 @@
+/* GoHighLevel On-Demand Modal Styles */
+.ghl-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.85); /* Tailwind slate-900 with opacity */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.ghl-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ghl-modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    height: 90vh; /* Accommodate typical GHL forms */
+    max-height: 900px;
+    background: #ffffff;
+    border-radius: 1.5rem; /* Large rounded corners */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ghl-modal-overlay.active .ghl-modal-container {
+    transform: scale(1) translateY(0);
+}
+
+.ghl-modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f1f5f9; /* slate-100 */
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.ghl-modal-close-btn:hover {
+    background: #e2e8f0; /* slate-200 */
+    transform: scale(1.05);
+}
+
+.ghl-modal-close-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #475569; /* slate-600 */
+}
+
+/* iframe needs to fill the container and account for rounding */
+.ghl-modal-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 1.5rem;
+}
+
+/* Loading spinner */
+.ghl-modal-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border: 5px solid #e2e8f0;
+    border-bottom-color: #3b82f6; /* blue-500 */
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    z-index: -1; /* Behind iframe so it hides when iframe loads */
+}
+
+@keyframes rotation {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+    .ghl-modal-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        max-height: 100vh;
+    }
+    .ghl-modal-iframe {
+        border-radius: 0;
+    }
+    .ghl-modal-close-btn {
+        top: 10px;
+        right: 10px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+}

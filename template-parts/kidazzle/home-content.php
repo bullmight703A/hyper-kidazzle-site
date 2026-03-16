@@ -140,16 +140,12 @@
                         <h3 class="text-3xl font-bold text-white tracking-tight">Start Your Journey</h3>
                         <p class="text-purple-100 font-medium mt-2">Schedule a tour at your location today.</p>
                     </div>
-                    <iframe src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
-                        style="width:100%;height:100%;border:none;border-radius:20px" id="inline-N8RYaUY1SuORexcyA6la"
-                        data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
-                        data-activation-type="alwaysActivated" data-activation-value=""
-                        data-deactivation-type="neverDeactivate" data-deactivation-value=""
-                        data-form-name="2023 New KIDazzel website contact " data-height="950"
-                        data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la" data-form-id="N8RYaUY1SuORexcyA6la"
-                        title="2023 New KIDazzel website contact ">
-                    </iframe>
-                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    <!-- DYNAMIC FORM MODAL TRIGGER -->
+                    <div class="text-center py-24">
+                        <button class="ghl-trigger bg-white text-purple-700 px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-purple-50 transition shadow-2xl hover:scale-105 transform duration-300" data-ghl-url="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la">
+                            Start Enrollment Process
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

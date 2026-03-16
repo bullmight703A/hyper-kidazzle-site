@@ -97,40 +97,10 @@ if ($show_sticky_cta):
 	</div>
 <?php endif; ?>
 
-<!-- Contact Modal (Global) - Hidden by default -->
-<div id="contact-modal"
-	class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-fade-in">
-	<div class="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl max-h-[90vh] overflow-y-auto p-8">
-		<button onclick="closeContactModal()"
-			class="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition">
-			<i class="fa-solid fa-xmark text-slate-600"></i>
-		</button>
-		<div class="text-center mb-8">
-			<h3 class="text-2xl font-bold text-slate-900">How Can We Help?</h3>
-			<p class="text-slate-500">Select an option below.</p>
-		</div>
-		<div
-			class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-[2rem] p-4 text-center h-[600px] overflow-hidden">
-			<iframe src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
-				style="width:100%;height:100%;border:none;border-radius:20px" id="inline-N8RYaUY1SuORexcyA6la"
-				data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
-				data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate"
-				data-deactivation-value="" data-form-name="2023 New KIDazzel website contact " data-height="870"
-				data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la" data-form-id="N8RYaUY1SuORexcyA6la"
-				title="2023 New KIDazzel website contact ">
-			</iframe>
-			<script src="https://link.msgsndr.com/js/form_embed.js" async></script>
-		</div>
-	</div>
-</div>
+<!-- Global Contact Modal functionality is now handled entirely by assets/js/ghl-modal.js which automatically loads forms on-demand using .ghl-trigger buttons, saving significant page load size. -->
 
 <!-- Scripts -->
 <script>
-	// Modal Logic
-	const contactModal = document.getElementById('contact-modal');
-	function openContactModal() { if (contactModal) contactModal.classList.remove('hidden'); }
-	function closeContactModal() { if (contactModal) contactModal.classList.add('hidden'); }
-
 	// Sticky CTA Scroll Logic
 	window.addEventListener('scroll', function () {
 		const cta = document.getElementById('sticky-cta');
