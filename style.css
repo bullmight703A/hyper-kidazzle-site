@@ -104,23 +104,31 @@ All rights reserved. This theme is proprietary software.
 
 
 /* =========================================================================
-   WIMPER QA - QUOTE BUTTON HOVER FIX
+   WIMPER QA - QUOTE BUTTON FIX
    ========================================================================= */
 
-/* Ensure the text becomes blue when the background turns white on hover */
+/* Default State: White Background, Blue Text */
+.elementor-button,
+a.elementor-button,
+.elementor-widget-button .elementor-button,
+.elementor-button-link {
+    color: #1a4da1 !important; /* Force Wimper Blue text on white bg */
+    transition: all 0.3s ease-in-out;
+}
+
+.elementor-button-text {
+    color: #1a4da1 !important;
+}
+
+/* Hover State: Blue Background, White Text */
 .elementor-button:hover,
 a.elementor-button:hover,
 .elementor-widget-button .elementor-button:hover,
 .elementor-button-link:hover {
-    color: #1a4da1 !important; /* Force Wimper Blue text on hover */
-}
-
-/* Specifically target the 'Get Your Custom Savings Quote' button if it has a unique class id or generic white bg hover */
-.elementor-widget-button .elementor-button {
-    transition: all 0.3s ease-in-out;
+    color: #ffffff !important; /* Force White text on blue hover bg */
 }
 
 .elementor-button-link:hover .elementor-button-text {
-    color: #1a4da1 !important; 
+    color: #ffffff !important; 
 }
 
