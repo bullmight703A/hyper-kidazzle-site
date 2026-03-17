@@ -637,28 +637,3 @@ add_action('wp_footer', 'kidazzle_locations_dark_theme_script', 9999);
 
 
 
-/**
- * Inject the 'elementor-location-card' class into the Location Archive Cards
- * This allows our custom CSS in style.css to target the cards for the dark theme layout
- */
-function kidazzle_locations_dark_theme_script() {
-    if (is_page('locations')) {
-        echo '<script>
-            document.addEventListener(\'DOMContentLoaded\', function() {
-                // Find all the grey/white cards on the locations page
-                const cards = document.querySelectorAll(\'.elementor-widget-container .elementor-cta\');
-                if (cards.length > 0) {
-                    cards.forEach(card => {
-                        // Add our custom targeting class to each top-level card wrapper
-                        const container = card.closest(\'.elementor-element\');
-                        if (container) {
-                            container.classList.add(\'elementor-location-card\');
-                        }
-                    });
-                }
-            });
-        </script>';
-    }
-}
-add_action('wp_footer', 'kidazzle_locations_dark_theme_script', 9999);
-
