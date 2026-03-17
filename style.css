@@ -52,3 +52,52 @@ All rights reserved. This theme is proprietary software.
 }
 
 .post-content p { margin-bottom: 2rem !important; }
+
+
+/* =========================================================================
+   LOCATIONS PAGE CARDS - DARK THEME OVERRIDE
+   ========================================================================= */
+
+/* Make the cards black with white typography */
+.elementor-location-card,
+.elementor-widget-container .elementor-cta__bg-wrapper,
+.elementor-widget-container .elementor-element-populated {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
+}
+
+.elementor-location-card h1, .elementor-location-card h2, .elementor-location-card h3, .elementor-location-card p, .elementor-location-card span {
+    color: #ffffff !important;
+}
+
+/* Base Top Accent Borders (Red, Teal, Orange, Green, Purple) for the cards */
+/* We target the nth-child to give each card a distinct vibrant color like the journey section */
+.elementor-location-card:nth-child(1) { border-top: 5px solid #E63946 !important; } /* Vibrant Red */
+.elementor-location-card:nth-child(2) { border-top: 5px solid #2A9D8F !important; } /* Teal */
+.elementor-location-card:nth-child(3) { border-top: 5px solid #F4A261 !important; } /* Orange */
+.elementor-location-card:nth-child(4) { border-top: 5px solid #E9C46A !important; } /* Yellow */
+.elementor-location-card:nth-child(5) { border-top: 5px solid #457B9D !important; } /* Blue */
+.elementor-location-card:nth-child(6) { border-top: 5px solid #8338EC !important; } /* Violet/Purple */
+.elementor-location-card:nth-child(7) { border-top: 5px solid #1D3557 !important; } /* Dark Blue */
+
+/* Hover States to match the top border color */
+.elementor-location-card:nth-child(1):hover { box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3) !important; background-color: #111111 !important; transform: translateY(-5px); transition: all 0.3s ease; }
+.elementor-location-card:nth-child(2):hover { box-shadow: 0 10px 30px rgba(42, 157, 143, 0.3) !important; background-color: #111111 !important; transform: translateY(-5px); transition: all 0.3s ease; }
+.elementor-location-card:nth-child(3):hover { box-shadow: 0 10px 30px rgba(244, 162, 97, 0.3) !important; background-color: #111111 !important; transform: translateY(-5px); transition: all 0.3s ease; }
+.elementor-location-card:nth-child(4):hover { box-shadow: 0 10px 30px rgba(233, 196, 106, 0.3) !important; background-color: #111111 !important; transform: translateY(-5px); transition: all 0.3s ease; }
+.elementor-location-card:nth-child(5):hover { box-shadow: 0 10px 30px rgba(69, 123, 157, 0.3) !important; background-color: #111111 !important; transform: translateY(-5px); transition: all 0.3s ease; }
+.elementor-location-card:nth-child(6):hover { box-shadow: 0 10px 30px rgba(131, 56, 236, 0.3) !important; background-color: #111111 !important; transform: translateY(-5px); transition: all 0.3s ease; }
+.elementor-location-card:nth-child(7):hover { box-shadow: 0 10px 30px rgba(29, 53, 87, 0.3) !important; background-color: #111111 !important; transform: translateY(-5px); transition: all 0.3s ease; }
+
+/* Keep 'Book Tour' Buttons Visible against the dark background */
+.elementor-location-card .book-tour-btn {
+    background-color: transparent !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+.elementor-location-card:hover .book-tour-btn {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
