@@ -636,4 +636,3 @@ function kidazzle_locations_dark_theme_script() {
 add_action('wp_footer', 'kidazzle_locations_dark_theme_script', 9999);
 
 
-
