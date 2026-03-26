@@ -22,6 +22,9 @@
 </head>
 <body>
     <div id="root"></div>
+    <script>
+        window.WP_THEME_URL = "<?php echo get_template_directory_uri(); ?>";
+    </script>
     <script type="text/babel">
         
 
@@ -36,9 +39,10 @@ const App = () => {
   ]);
   
   const tools = [
-    { id: 'tool1', name: 'Infant Assessment (0-12m)', url: 'about:blank?placeholder=infant_tool' },
-    { id: 'tool2', name: 'Toddler Milestone Tracker', url: 'about:blank?placeholder=toddler_tool' },
-    { id: 'tool3', name: 'Pre-K Readiness Screen', url: 'about:blank?placeholder=prek_tool' }
+    { id: 'tool1', name: 'Kid 2026', url: window.WP_THEME_URL + '/assets/brigance-pdfs/Kid%202026.pdf' },
+    { id: 'tool2', name: 'Brigance Assessment', url: window.WP_THEME_URL + '/assets/brigance-pdfs/brigance.pdf' },
+    { id: 'tool3', name: 'Transition Skills', url: window.WP_THEME_URL + '/assets/brigance-pdfs/brigance-transition-skills-inventory.pdf' },
+    { id: 'tool4', name: 'Screens III Manual', url: window.WP_THEME_URL + '/assets/brigance-pdfs/ScreensIII-Tech-Manual-04.pdf' }
   ];
 
   return (
