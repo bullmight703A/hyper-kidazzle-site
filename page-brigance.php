@@ -91,7 +91,67 @@ const App = () => {
   ];
 
   // Data mapped directly from Brigance Screens III Technical Manual
-  const briganceData = {
+    const briganceData = {
+    'Infant': {
+      theme: 'Sensory Motor Core Node',
+      domains: [
+        { name: 'Language Development', icon: <MessageSquare size={14} />, items: [
+          { id: '0_1', label: 'Responds to voices & faces', weight: 3 },
+          { id: '0_2', label: 'Babbles and coos contextually', weight: 4 },
+          { id: '0_3', label: 'Uses basic gestures (waving/pointing)', weight: 3 }
+        ]},
+        { name: 'Academic / Cognitive', icon: <Brain size={14} />, items: [
+          { id: '0_4', label: 'Tracks moving objects', weight: 2 },
+          { id: '0_5', label: 'Explores objects (mouthing/shaking)', weight: 3 },
+          { id: '0_6', label: 'Shows object permanence awareness', weight: 5 }
+        ]},
+        { name: 'Physical Development', icon: <Trophy size={14} />, items: [
+          { id: '0_7', label: 'Rolls over in both directions', weight: 3 },
+          { id: '0_8', label: 'Sits without support', weight: 4 },
+          { id: '0_9', label: 'Crawls or uses pincer grasp', weight: 3 }
+        ]}
+      ]
+    },
+    'Toddler': {
+      theme: 'Exploration Core Node',
+      domains: [
+        { name: 'Language Development', icon: <MessageSquare size={14} />, items: [
+          { id: '1_1', label: 'Uses 10+ words functionally', weight: 4 },
+          { id: '1_2', label: 'Points to named body parts', weight: 3 },
+          { id: '1_3', label: 'Follows 1-step directions', weight: 3 }
+        ]},
+        { name: 'Academic / Cognitive', icon: <Brain size={14} />, items: [
+          { id: '1_4', label: 'Nests objects & simple puzzles', weight: 2 },
+          { id: '1_5', label: 'Imitates pretend play', weight: 4 },
+          { id: '1_6', label: 'Points to pictures in books', weight: 4 }
+        ]},
+        { name: 'Physical Development', icon: <Trophy size={14} />, items: [
+          { id: '1_7', label: 'Walks independently', weight: 5 },
+          { id: '1_8', label: 'Eats with spoon/drinks from cup', weight: 2 },
+          { id: '1_9', label: 'Stacks 3-4 blocks', weight: 3 }
+        ]}
+      ]
+    },
+    '2 Years': {
+      theme: 'Pre-Foundational Node',
+      domains: [
+        { name: 'Language Development', icon: <MessageSquare size={14} />, items: [
+          { id: '2_1', label: 'Uses 2-3 word phrases', weight: 3 },
+          { id: '2_2', label: 'Follows 2-step directions', weight: 4 },
+          { id: '2_3', label: 'Identifies common objects by name', weight: 3 }
+        ]},
+        { name: 'Academic / Cognitive', icon: <Brain size={14} />, items: [
+          { id: '2_4', label: 'Sorts shapes & colors', weight: 3 },
+          { id: '2_5', label: 'Engages in rich pretend play', weight: 4 },
+          { id: '2_6', label: 'Points to fine details in pictures', weight: 3 }
+        ]},
+        { name: 'Physical Development', icon: <Trophy size={14} />, items: [
+          { id: '2_7', label: 'Runs smoothly & climbs', weight: 4 },
+          { id: '2_8', label: 'Kicks a ball forward', weight: 3 },
+          { id: '2_9', label: 'Turns book pages one at a time', weight: 3 }
+        ]}
+      ]
+    },
     '2.5 Years': {
       theme: 'Early Preschool Core Node',
       domains: [
@@ -110,6 +170,26 @@ const App = () => {
           { id: '25_8', label: 'Walks Tiptoe (3 steps)', weight: 3 },
           { id: '25_9', label: 'Walks Heel-and-Toe', weight: 3 },
           { id: '25_10', label: 'Builds 8-block tower', weight: 2 }
+        ]}
+      ]
+    },
+    '3 Years': {
+      theme: 'Preschool Active Node',
+      domains: [
+        { name: 'Language Development', icon: <MessageSquare size={14} />, items: [
+          { id: '3_1', label: 'Understands prepositions (in/on/under)', weight: 3 },
+          { id: '3_2', label: 'Uses pronouns (I, You, Me, We)', weight: 4 },
+          { id: '3_3', label: 'Can say first and last name', weight: 3 }
+        ]},
+        { name: 'Academic / Cognitive', icon: <Brain size={14} />, items: [
+          { id: '3_4', label: 'Completes 3-4 piece puzzles', weight: 3 },
+          { id: '3_5', label: 'Understands concept of "two"', weight: 4 },
+          { id: '3_6', label: 'Turns mechanical knobs/switches', weight: 3 }
+        ]},
+        { name: 'Physical Development', icon: <Trophy size={14} />, items: [
+          { id: '3_7', label: 'Pedals a tricycle', weight: 4 },
+          { id: '3_8', label: 'Walks up/down stairs alternate feet', weight: 4 },
+          { id: '3_9', label: 'Screws/unscrews jar lids', weight: 2 }
         ]}
       ]
     },
@@ -132,12 +212,29 @@ const App = () => {
           { id: '4_9', label: 'Builds 10-block tower', weight: 2 },
           { id: '4_10', label: 'Hops 5 times on preferred foot', weight: 3 }
         ]}
-      ],
-      resources: ['4Y Assessment Manual', 'Parent Knowledge Sheet B']
+      ]
+    },
+    'Summer Camp': {
+      theme: 'Enrichment & Social Node',
+      domains: [
+        { name: 'Language & Social', icon: <MessageSquare size={14} />, items: [
+          { id: 'sc_1', label: 'Collaborative play & sharing', weight: 4 },
+          { id: 'sc_2', label: 'Follows complex group instructions', weight: 4 },
+          { id: 'sc_3', label: 'Narrates detailed stories/events', weight: 2 }
+        ]},
+        { name: 'Academic / Cognitive', icon: <Brain size={14} />, items: [
+          { id: 'sc_4', label: 'Engages in STEM / Science experiments', weight: 5 },
+          { id: 'sc_5', label: 'Understands rules to organized games', weight: 3 },
+          { id: 'sc_6', label: 'Demonstrates prolonged focus', weight: 2 }
+        ]},
+        { name: 'Physical Development', icon: <Trophy size={14} />, items: [
+          { id: 'sc_7', label: 'Advanced motor (skipping / jumping jacks)', weight: 3 },
+          { id: 'sc_8', label: 'Independent self-care (dressing / bathroom)', weight: 4 },
+          { id: 'sc_9', label: 'Controlled fine-motor art techniques', weight: 3 }
+        ]}
+      ]
     }
-  };
-
-  const currentAgeData = briganceData[selectedAge] || briganceData['4 Years'];
+  };\n\n  const currentAgeData = briganceData[selectedAge] || briganceData['4 Years'];
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
