@@ -251,8 +251,8 @@ $zones = array(
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Georgia -->
-                <a href="#"
-                    class="block bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                <button type="button" onclick="openSurveyModal('hhHyrviF5TjxB0aIXeXG')"
+                    class="block text-left w-full bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
                     <div
                         class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">
                         🍑</div>
@@ -263,11 +263,11 @@ $zones = array(
                         GELDS</p>
                     <p class="text-brand-ink/70 mb-6 leading-relaxed">Our Lottery Funded Pre-K program utilizes Frog
                         Street, aligned with GELDS standards for joyful, rigorous kindergarten readiness.</p>
-                </a>
+                </button>
 
                 <!-- Tennessee -->
-                <a href="#"
-                    class="block bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                <button type="button" onclick="openSurveyModal('XyV7YsgDKn2P2Xp4HFRL')"
+                    class="block text-left w-full bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
                     <div
                         class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">
                         🎸</div>
@@ -276,11 +276,11 @@ $zones = array(
                     <p class="text-xs font-bold text-kidazzle-blue mb-4 uppercase tracking-[0.2em]">TN-ELDS Aligned</p>
                     <p class="text-brand-ink/70 mb-6 leading-relaxed">In Memphis, our curriculum adheres strictly to the
                         TN-ELDS, ensuring educational goals are met from birth to age 5.</p>
-                </a>
+                </button>
 
                 <!-- Florida -->
-                <a href="#"
-                    class="block bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                <button type="button" onclick="openSurveyModal('hhHyrviF5TjxB0aIXeXG')"
+                    class="block text-left w-full bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
                     <div
                         class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">
                         ☀️</div>
@@ -289,8 +289,36 @@ $zones = array(
                     <p class="text-xs font-bold text-kidazzle-red mb-4 uppercase tracking-[0.2em]">OWL & ASQ</p>
                     <p class="text-brand-ink/70 mb-6 leading-relaxed">Incorporating OWL and ASQ to meet Florida's VPK
                         standards with a focus on literacy and bilingual support.</p>
-                </a>
+                </button>
             </div>
+            
+            <!-- Survey Modal -->
+            <div id="survey-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm text-left">
+                <div class="bg-white w-full max-w-2xl h-[85vh] rounded-[3rem] shadow-2xl flex flex-col relative overflow-hidden">
+                    <div class="px-8 py-5 border-b border-slate-200 flex justify-between items-center bg-brand-cream shrink-0">
+                        <h3 class="text-xl font-bold text-brand-ink">State Program Registration</h3>
+                        <button type="button" onclick="document.getElementById('survey-modal').classList.add('hidden'); document.getElementById('survey-modal').classList.remove('flex');" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="flex-grow bg-slate-50 relative overflow-y-auto w-full">
+                        <iframe id="survey-iframe" src="" style="border:none;width:100%;height:100%;min-height:700px;" scrolling="yes" title="survey"></iframe>
+                        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+            function openSurveyModal(surveyId) {
+                const iframe = document.getElementById('survey-iframe');
+                iframe.src = 'https://api.leadconnectorhq.com/widget/survey/' + surveyId;
+                iframe.id = surveyId;
+                
+                const modal = document.getElementById('survey-modal');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+            </script>
         </div>
     </section>
 
