@@ -20,15 +20,29 @@ while (have_posts()):
 	$hero_title = get_post_meta($program_id, 'program_hero_title', true) ?: get_the_title();
 	$hero_description = get_post_meta($program_id, 'program_hero_description', true) ?: get_the_excerpt();
 
-	// Summer Camp Content Override
-	if (stripos($hero_title, 'Summer Camp') !== false) {
+	// Dynamic SEO Telemetry & Formatting Matrix
+	// Transforms raw backend SEO keyword dumps cleanly into structured bulleted HTML for the frontend
+	if ($hero_description && stripos($hero_description, 'Near You') !== false && stripos($hero_description, 'Locations Offering') !== false) {
+		// Clean up fused headers without spaces (e.g. "Near YouCanton" -> "Near You: Canton")
+		$hero_description = preg_replace('/(Near You)([A-Z])/i', "$1:<br/>&bull; $2", $hero_description);
+		
+		// Bold the primary Location phrase header
+		$hero_description = preg_replace('/(Find (.*?) Near You:?)/i', "<strong>$1</strong>", $hero_description);
+		
+		// Convert text bullet circles into HTML line breaks and list items
+		$hero_description = str_replace(' • ', '<br/>&bull; ', $hero_description);
+		
+		// Map the secondary locations header cleanly
+		$hero_description = preg_replace('/(Locations Offering This Program)/i', "<br/><br/><strong class='text-brand-ink/70'>$1:</strong><br/>", $hero_description);
+		
+		// Structure and clean messy phone number dumps (e.g., "KIDazzle Midtown Atlanta Atlanta 18774101002")
+		$hero_description = preg_replace('/(KIDazzle.*?)(\d{10,11}|\d{3}[\s\-\.]\d{3}[\s\-\.]\d{4})/i', '&bull; $1 <span class="font-bold text-kidazzle-red">$2</span><br/>', $hero_description);
+        
+        // Remove rogue trailing characters like '[...]'
+        $hero_description = str_replace('[...]', '', $hero_description);
+	} else if (stripos($hero_title, 'Summer Camp') !== false) {
 		$hero_description = "<strong>Find Summer Camp Near You:</strong><br/>Adair Park &bull; Pittsburgh (Atlanta) &bull; East Point Historic District &bull; Camp Creek Area &bull; Southwest Atlanta &bull; South Fulton, GA &bull; Red Oak, GA &bull; Lake City, GA<br/><br/><strong>Locations Offering This Program:</strong><br/>&bull; KIDazzle Midtown Atlanta: (877) 410-1002<br/>&bull; KIDazzle West End of Atlanta: (404) 882-8215<br/>&bull; KIDazzle Hampton, GA: (404) 383-7570";
 	}
-
-	// KIDazzle Creative Curriculum section
-	$curriculum_focus_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our KIDazzle Creative Curriculum™ Focus';
-	$curriculum_focus_description = get_post_meta($program_id, 'program_prism_description', true);
-	$curriculum_focus_items = get_post_meta($program_id, 'program_prism_focus_items', true);
 
 	// Chart data
 	$curriculum_focus_physical = get_post_meta($program_id, 'program_prism_physical', true) ?: '50';
@@ -81,28 +95,29 @@ while (have_posts()):
 					</h1>
 
 					<?php if ($hero_description): ?>
-						<p class="text-lg text-slate-600 font-medium max-w-2xl">
+						<div class="text-xs md:text-sm text-slate-600 font-medium max-w-2xl leading-relaxed mb-6">
 							<?php echo wp_kses_post(wpautop($hero_description)); ?>
-						</p>
+						</div>
 					<?php endif; ?>
 
 					<div class="flex gap-4 flex-wrap" style="margin-top: 3rem;">
-						<a href="#curriculum-focus"
-							class="px-8 py-4 bg-<?php echo esc_attr($colors['main']); ?> text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:opacity-90 transition-colors shadow-lg">View
-							Curriculum</a>
 						<?php if ($lesson_plan_url): ?>
 							<button type="button" id="lesson-plan-trigger"
 								data-lesson-url="<?php echo esc_url($lesson_plan_url); ?>"
-								class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors cursor-pointer">
+								class="px-8 py-4 bg-<?php echo esc_attr($colors['main']); ?> text-white font-bold rounded-full uppercase tracking-[0.2em] text-[10px] hover:opacity-90 shadow-lg transition-colors cursor-pointer">
 								View Lesson Plan
 							</button>
 						<?php endif; ?>
+						<a href="#growth-journey"
+							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-[10px] hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							Growth Journey
+						</a>
 						<a href="<?php echo esc_url(get_post_type_archive_link('location')); ?>"
-							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-[10px] hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							View Locations
 						</a>
 						<a href="<?php echo esc_url(home_url('/programs/')); ?>"
-							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-[10px] hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							All Programs
 						</a>
 					</div>
@@ -124,49 +139,7 @@ while (have_posts()):
 			</div>
 		</section>
 
-		<!-- The KIDazzle Creative Curriculum Focus (Chart) -->
-		<section id="curriculum-focus" class="py-24 bg-slate-50">
-			<div class="max-w-6xl mx-auto px-4 lg:px-6">
-				<div class="grid lg:grid-cols-2 gap-16 items-center">
-					<div class="bg-white rounded-[3rem] p-8 shadow-soft border border-slate-200 order-2 lg:order-1">
-						<canvas id="programChart"></canvas>
-					</div>
-					<div class="order-1 lg:order-2">
-						<span
-							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">KIDazzle
-							Creative Curriculum™
-							Focus</span>
-						<h2 class="text-3xl md:text-4xl  font-bold text-slate-900 mb-6">
-							<?php echo esc_html($curriculum_focus_title); ?>
-						</h2>
-
-						<?php if ($curriculum_focus_description): ?>
-							<div class="text-slate-600 font-medium text-lg mb-6">
-								<?php echo wp_kses_post(wpautop($curriculum_focus_description)); ?>
-							</div>
-						<?php endif; ?>
-
-						<?php if ($curriculum_focus_items):
-							$focus_items_array = array_filter(array_map('trim', explode("\n", $curriculum_focus_items)));
-							if (!empty($focus_items_array)):
-								?>
-								<ul class="space-y-3 text-sm text-slate-700 font-medium">
-									<?php
-									$item_colors = array('kidazzle-red', 'kidazzle-yellow', 'kidazzle-green', 'kidazzle-blue', 'brand-ink/20');
-									foreach ($focus_items_array as $index => $item):
-										$item_color = $item_colors[$index % count($item_colors)];
-										?>
-										<li class="flex gap-3 items-center">
-											<span class="w-3 h-3 rounded-full bg-<?php echo esc_attr($item_color); ?>"></span>
-											<?php echo esc_html($item); ?>
-										</li>
-									<?php endforeach; ?>
-								</ul>
-							<?php endif; endif; ?>
-					</div>
-				</div>
-			</div>
-		</section>
+		<!-- (Hexagon Curriculum Focus Canvas Permanently Removed by OpenClaw Agent per specification) -->
 
 		<!-- Schedule -->
 		<?php if ($schedule_items):
@@ -306,78 +279,6 @@ while (have_posts()):
 		}
 	</style>
 
-	<script>
-		// KIDazzle Creative Curriculum Chart Config - Lazy Loaded
-		document.addEventListener('DOMContentLoaded', function () {
-			const ctx = document.getElementById('programChart');
-			if (ctx) {
-				const observer = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting) {
-							// Disconnect observer immediately
-							observer.disconnect();
-
-							// Dynamically load Chart.js library
-							const script = document.createElement('script');
-							script.src = '<?php echo esc_url(get_template_directory_uri() . '/assets/js/chart.min.js'); ?>';
-							script.async = true;
-							script.onload = function () {
-								// Initialize Chart after library loads
-								new Chart(ctx, {
-									type: 'radar',
-									data: {
-										labels: ['Physical', 'Emotional', 'Social', 'Academic', 'Creative'],
-										datasets: [{
-											label: '<?php echo esc_js(get_the_title()); ?> Focus',
-											data: [
-												<?php echo absint($curriculum_focus_physical); ?>,
-												<?php echo absint($curriculum_focus_emotional); ?>,
-												<?php echo absint($curriculum_focus_social); ?>,
-												<?php echo absint($curriculum_focus_academic); ?>,
-												<?php echo absint($curriculum_focus_creative); ?>
-											],
-											backgroundColor: '<?php
-											$chart_colors = array(
-												'red' => '#D67D6B',
-												'blue' => '#4A6C7C',
-												'yellow' => '#E6BE75',
-												'blueDark' => '#2F4858',
-												'green' => '#8DA399',
-												'orange' => '#C26524',
-												'teal' => '#4A6C7C',
-											);
-											$hex_color = $chart_colors[$color_scheme] ?? '#D67D6B';
-											echo $hex_color . '33'; // Add 20% opacity
-											?>',
-				borderColor: '<?php echo $hex_color; ?>',
-					pointBackgroundColor: '#fff',
-						pointBorderColor: '<?php echo $hex_color; ?>',
-							borderWidth: 2
-			}]
-		},
-			options: {
-			scales: {
-				r: {
-					angleLines: { color: '#e5e5e5' },
-					grid: { color: '#e5e5e5' },
-					pointLabels: { font: { family: 'Outfit', size: 14 }, color: '#263238' },
-					suggestedMin: 0,
-					suggestedMax: 100,
-					ticks: { display: false }
-				}
-			},
-			plugins: { legend: { display: false } }
-		}
-																			});
-																		};
-		document.body.appendChild(script);
-																	}
-																});
-															}, { rootMargin: '200px' }); // Start loading 200px before view
-		observer.observe(ctx);
-														}
-													});
-	</script>
 
 	<?php if ($lesson_plan_url): ?>
 		<!-- Lesson Plan Modal -->
