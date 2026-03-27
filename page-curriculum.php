@@ -122,12 +122,11 @@ $zones = array(
                         </li>
                         <li class="flex items-start gap-5">
                             <div class="bg-kidazzle-blue/10 p-3 rounded-xl text-kidazzle-blue">
-                                <i class="fa-solid fa-child-reaching"></i>
+                                <i class="fa-solid fa-puzzle-piece"></i>
                             </div>
                             <div>
                                 <strong class="block text-brand-ink text-lg">Active Learning</strong>
-                                <span class="text-brand-ink/60">Children learn by doing—touching, moving, and
-                                    interacting with their world.</span>
+                                <span class="text-brand-ink/60">Children learn by doing—touching, moving, and interacting with their world.</span>
                             </div>
                         </li>
                     </ul>
@@ -233,8 +232,8 @@ $zones = array(
                         class="absolute inset-0 bg-kidazzle-green/10 rounded-[3rem] rotate-3 transform translate-x-4 translate-y-4">
                     </div>
                     <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5]">
-                        <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                            alt="Learning Environment" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Diverse Early Childhood Educator" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -252,8 +251,8 @@ $zones = array(
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Georgia -->
-                <div
-                    class="bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                <a href="#"
+                    class="block bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
                     <div
                         class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">
                         🍑</div>
@@ -264,11 +263,11 @@ $zones = array(
                         GELDS</p>
                     <p class="text-brand-ink/70 mb-6 leading-relaxed">Our Lottery Funded Pre-K program utilizes Frog
                         Street, aligned with GELDS standards for joyful, rigorous kindergarten readiness.</p>
-                </div>
+                </a>
 
                 <!-- Tennessee -->
-                <div
-                    class="bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                <a href="#"
+                    class="block bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
                     <div
                         class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">
                         🎸</div>
@@ -277,11 +276,11 @@ $zones = array(
                     <p class="text-xs font-bold text-kidazzle-blue mb-4 uppercase tracking-[0.2em]">TN-ELDS Aligned</p>
                     <p class="text-brand-ink/70 mb-6 leading-relaxed">In Memphis, our curriculum adheres strictly to the
                         TN-ELDS, ensuring educational goals are met from birth to age 5.</p>
-                </div>
+                </a>
 
                 <!-- Florida -->
-                <div
-                    class="bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
+                <a href="#"
+                    class="block bg-brand-cream p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group">
                     <div
                         class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-4xl shadow-sm group-hover:scale-110 transition-transform">
                         ☀️</div>
@@ -290,7 +289,7 @@ $zones = array(
                     <p class="text-xs font-bold text-kidazzle-red mb-4 uppercase tracking-[0.2em]">OWL & ASQ</p>
                     <p class="text-brand-ink/70 mb-6 leading-relaxed">Incorporating OWL and ASQ to meet Florida's VPK
                         standards with a focus on literacy and bilingual support.</p>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -311,8 +310,8 @@ $zones = array(
             </div>
 
             <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                <div
-                    class="flex items-center gap-6 p-8 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group">
+                <button onclick="openErsModal('ITERS')"
+                    class="flex items-center gap-6 p-8 w-full text-left rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group cursor-pointer focus:outline-none">
                     <div
                         class="w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl md:rounded-3xl flex items-center justify-center text-kidazzle-purple shadow-xl shadow-kidazzle-purple/20 mb-6 shrink-0 relative z-10 mx-auto overflow-hidden">
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/multicultural_infants_cover_1772749039948.png"
@@ -325,10 +324,10 @@ $zones = array(
                         <p class="text-sm text-white/70 leading-relaxed">Specific standards for safety and stimulation
                             for children under 3.</p>
                     </div>
-                </div>
+                </button>
 
-                <div
-                    class="flex items-center gap-6 p-8 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group">
+                <button onclick="openErsModal('ECERS')"
+                    class="flex items-center gap-6 p-8 w-full text-left rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/10 transition-all group cursor-pointer focus:outline-none">
                     <div
                         class="w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl md:rounded-3xl flex items-center justify-center text-kidazzle-orange shadow-xl shadow-kidazzle-orange/20 mb-6 shrink-0 relative z-10 mx-auto overflow-hidden">
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/multicultural_preschool_cover_1772749052917.png"
@@ -341,15 +340,33 @@ $zones = array(
                         <p class="text-sm text-white/70 leading-relaxed">Optimizing classroom flow and materials for
                             school readiness.</p>
                     </div>
-                </div>
+                </button>
             </div>
 
-            <div class="mt-12 text-center text-white">
-                <a href="<?php echo esc_url(home_url('/ers/')); ?>"
-                    class="inline-flex items-center gap-2 font-bold border-b-2 border-kidazzle-yellow text-white hover:text-kidazzle-yellow transition-colors pb-1">
-                    Learn more about our quality standards <i class="fa-solid fa-arrow-right text-xs"></i>
-                </a>
+            <!-- ERS Modal -->
+            <div id="ers-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm text-left">
+                <div class="bg-white w-full max-w-5xl h-[85vh] rounded-[3rem] shadow-2xl flex flex-col relative overflow-hidden">
+                    <div class="px-8 py-5 border-b border-slate-200 flex justify-between items-center bg-brand-cream">
+                        <h3 class="text-xl font-bold text-brand-ink">Environmental Rating Scales (<span id="ers-title"></span>)</h3>
+                        <button type="button" onclick="document.getElementById('ers-modal').classList.add('hidden'); document.getElementById('ers-modal').classList.remove('flex');" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="flex-grow bg-slate-50 relative">
+                        <iframe id="ers-iframe" src="" class="w-full h-full border-0"></iframe>
+                    </div>
+                </div>
             </div>
+            
+            <script>
+            function openErsModal(type) {
+                document.getElementById('ers-title').innerText = type;
+                document.getElementById('ers-iframe').src = '<?php echo esc_url(home_url('/ers/')); ?>';
+                const modal = document.getElementById('ers-modal');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+            </script>
         </div>
     </section>
 
