@@ -259,18 +259,18 @@ const App = () => {
               <button 
                 key={i} 
                 onClick={() => setSelectedAge(age.label)}
-                className={\`w-full group p-4 rounded-[28px] border transition-all text-left relative overflow-hidden \${
+                className={`w-full group p-4 rounded-[28px] border transition-all text-left relative overflow-hidden ${
                   selectedAge === age.label 
                   ? 'bg-white border-[#D4A373]/40 shadow-md scale-[1.02]' 
                   : 'bg-[#FDFBF7]/40 border-transparent hover:bg-white hover:border-[#EAE0D5]'
-                }\`}
+                }`}
               >
-                <div className={\`absolute left-0 top-0 bottom-0 w-1.5 \${selectedAge === age.label ? 'bg-[#FB8500]' : 'bg-transparent'}\`} />
-                <div className={\`text-xs font-black tracking-tight \${selectedAge === age.label ? 'text-[#023047]' : 'text-[#8B7E74]'}\`}>{age.label}</div>
+                <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${selectedAge === age.label ? 'bg-[#FB8500]' : 'bg-transparent'}`} />
+                <div className={`text-xs font-black tracking-tight ${selectedAge === age.label ? 'text-[#023047]' : 'text-[#8B7E74]'}`}>{age.label}</div>
                 <div className="flex items-center justify-between mt-2">
-                  <span className={\`text-[8px] uppercase font-black tracking-tighter \${
+                  <span className={`text-[8px] uppercase font-black tracking-tighter ${
                     age.status.includes('Active') ? 'text-[#FB8500]' : 'text-slate-400'
-                  }\`}>
+                  }`}>
                     {age.status}
                   </span>
                   <ChevronRight size={12} className={selectedAge === age.label ? 'text-[#FB8500]' : 'text-[#EAE0D5]'} />
@@ -338,17 +338,17 @@ const App = () => {
                     <div 
                       key={item.id} 
                       onClick={() => toggleItem(item.id)}
-                      className={\`flex items-start gap-5 p-5 rounded-[28px] border transition-all cursor-pointer group \${
+                      className={`flex items-start gap-5 p-5 rounded-[28px] border transition-all cursor-pointer group ${
                         checkedItems[item.id] ? 'bg-[#FDFBF7] border-[#D4A373]/50 shadow-inner' : 'bg-white border-[#F4EFE9] hover:border-[#D4A373]/30'
-                      }\`}
+                      }`}
                     >
-                      <div className={\`mt-0.5 w-7 h-7 rounded-2xl border-2 flex items-center justify-center transition-all \${
+                      <div className={`mt-0.5 w-7 h-7 rounded-2xl border-2 flex items-center justify-center transition-all ${
                         checkedItems[item.id] ? 'bg-[#023047] border-[#023047] text-white shadow-lg' : 'bg-white border-[#EAE0D5]'
-                      }\`}>
+                      }`}>
                         {checkedItems[item.id] && <CheckCircle2 size={16} strokeWidth={4} />}
                       </div>
                       <div className="flex-1">
-                        <div className={\`text-xs font-black leading-tight \${checkedItems[item.id] ? 'text-[#023047]' : 'text-[#8B7E74]'}\`}>
+                        <div className={`text-xs font-black leading-tight ${checkedItems[item.id] ? 'text-[#023047]' : 'text-[#8B7E74]'}`}>
                           {item.label}
                         </div>
                         <div className="flex justify-between items-center mt-2.5">
