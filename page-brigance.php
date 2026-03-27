@@ -30,13 +30,21 @@
             const ref = useRef(null);
             useEffect(() => {
                 if (ref.current && window.lucide) {
+                    ref.current.innerHTML = `<i data-lucide="${name}"></i>`;
                     window.lucide.createIcons({
-                        root: ref.current.parentNode,
-                        nameAttr: 'data-lucide'
+                        root: ref.current,
+                        nameAttr: 'data-lucide',
+                        attrs: {
+                           class: className,
+                           width: size,
+                           height: size,
+                           'stroke-width': strokeWidth,
+                           stroke: color
+                        }
                     });
                 }
             }, [name, size, className, color, strokeWidth]);
-            return <i ref={ref} data-lucide={name} className={className} style={{ width: size, height: size, strokeWidth: strokeWidth, stroke: color }}></i>;
+            return <span ref={ref} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}></span>;
         };
 
         const Baby = props => <LucideIcon name="baby" {...props} />;
@@ -232,6 +240,15 @@
           };
 
           const currentAgeData = briganceData[selectedAge] || briganceData['4 Years'];
+          const themeUrl = '<?php echo esc_js(get_template_directory_uri()); ?>';
+          const sampleImages = {
+              'Infant (0-11m)': themeUrl + '/assets/img/brigance/infant.png',
+              'Toddler (12-23m)': themeUrl + '/assets/img/brigance/toddler.png',
+              '2 Years': themeUrl + '/assets/img/brigance/2-years.png',
+              '2.5 Years': themeUrl + '/assets/img/brigance/2-5-years.png',
+              '3 Years': themeUrl + '/assets/img/brigance/2-5-years.png',
+              '4 Years': themeUrl + '/assets/img/brigance/2-5-years.png'
+          };
 
           useEffect(() => {
             const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -294,8 +311,7 @@
                     </div>
                     <div className="p-10 space-y-6">
                        <div className="border border-[#EAE0D5] rounded-[32px] bg-[#FAF9F6] p-2 flex justify-center shadow-inner">
-                          {/* Placeholder image instead of raw data sheet text */}
-                          <img src="https://i.imgur.com/vHq8E2P.png" alt="Brigance Data Sample" className="max-h-[500px] object-contain rounded-[24px] opacity-90 mix-blend-multiply" />
+                          <img src={sampleImages[selectedAge]} alt="Brigance Data Sample" className="max-h-[500px] object-contain rounded-[24px] opacity-95" />
                        </div>
                     </div>
                   </div>
@@ -332,7 +348,7 @@
 
               <div className="flex-1 grid grid-cols-12 gap-6 overflow-hidden">
                 <aside className="col-span-2 flex flex-col gap-4">
-                  <h3 className="text-[10px] uppercase tracking-[0.25em] font-black text-[#B4A7A0] px-1">Curriculum Nodes</h3>
+                  <h3 className="text-[10px] uppercase tracking-[0.25em] font-black text-[#B4A7A0] px-1">Curriculum Stages</h3>
                   <div className="space-y-2 overflow-y-auto pr-1 scrollbar-hide">
                     {ages.map((age, i) => (
                       <button 
@@ -359,16 +375,18 @@
                   </div>
 
                   <div className="mt-auto space-y-3">
-                    <button 
-                       onClick={() => setShowSample(true)}
-                       className="w-full p-4 bg-[#023047] text-white border border-[#EAE0D5] rounded-[30px] flex items-center justify-between group hover:bg-[#023047]/90 transition-all shadow-xl"
-                    >
-                       <div className="text-left leading-tight">
-                          <div className="text-[9px] font-black uppercase opacity-60">Visual Aid</div>
-                          <div className="text-xs font-black">Data Sheet Sample</div>
-                       </div>
-                       <FileText size={18} className="text-[#FB8500]" />
-                    </button>
+                    {sampleImages[selectedAge] && (
+                        <button 
+                           onClick={() => setShowSample(true)}
+                           className="w-full p-4 bg-[#023047] text-white border border-[#EAE0D5] rounded-[30px] flex items-center justify-between group hover:bg-[#023047]/90 transition-all shadow-xl"
+                        >
+                           <div className="text-left leading-tight">
+                              <div className="text-[9px] font-black uppercase opacity-60">Visual Aid</div>
+                              <div className="text-xs font-black">Data Sheet Sample</div>
+                           </div>
+                           <FileText size={18} className="text-[#FB8500]" />
+                        </button>
+                    )}
                   </div>
                 </aside>
 
