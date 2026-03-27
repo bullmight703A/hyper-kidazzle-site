@@ -346,15 +346,15 @@
                 </div>
               </header>
 
-              <div className="flex-1 grid grid-cols-12 gap-6 overflow-hidden">
-                <aside className="col-span-2 flex flex-col gap-4">
-                  <h3 className="text-[10px] uppercase tracking-[0.25em] font-black text-[#B4A7A0] px-1">Curriculum Stages</h3>
-                  <div className="space-y-2 overflow-y-auto pr-1 scrollbar-hide">
+              <div className="flex-1 flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-6 lg:overflow-hidden overflow-y-auto">
+                <aside className="lg:col-span-2 flex flex-col gap-4 shrink-0">
+                  <h3 className="text-[10px] uppercase tracking-[0.25em] font-black text-[#B4A7A0] px-1 hidden lg:block">Curriculum Stages</h3>
+                  <div className="flex lg:flex-col lg:space-y-2 gap-3 overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-0 pr-1 scrollbar-hide snap-x">
                     {ages.map((age, i) => (
                       <div 
                         key={i} 
                         onClick={() => setSelectedAge(age.label)}
-                        className={`w-full group p-4 rounded-[32px] border transition-all text-left relative overflow-hidden cursor-pointer flex flex-col gap-[2px] ${
+                        className={`w-[160px] shrink-0 snap-start lg:w-full group p-4 lg:rounded-[32px] rounded-[24px] border transition-all text-left relative overflow-hidden cursor-pointer flex flex-col gap-[2px] ${
                           selectedAge === age.label 
                           ? 'bg-white border-[#D4A373]/40 shadow-sm scale-[1.02] ring-2 ring-offset-1 ring-[#023047]' 
                           : 'bg-[#FDFBF7]/40 border-transparent hover:bg-white hover:border-[#EAE0D5]'
@@ -368,7 +368,7 @@
                           }`}>
                             {age.status}
                           </span>
-                          <ChevronRight size={12} className={selectedAge === age.label ? 'text-[#FB8500]' : 'text-[#EAE0D5]'} />
+                          <ChevronRight size={12} className={selectedAge === age.label ? 'text-[#FB8500]' : 'text-[#EAE0D5] block lg:hidden'} />
                         </div>
 
                         {/* Inline Data Sheet Toggle Tab */}
@@ -393,34 +393,34 @@
                     ))}
                   </div>
 
-                  <div className="mt-auto"></div>
+                  <div className="mt-auto hidden lg:block"></div>
                 </aside>
 
-                <main className="col-span-7 flex flex-col gap-6 overflow-hidden">
-                  <div className="bg-[#023047] border border-[#EAE0D5] p-8 rounded-[48px] flex items-center justify-between shadow-xl relative overflow-hidden">
-                     <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                <main className="lg:col-span-7 flex flex-col gap-6 lg:overflow-hidden">
+                  <div className="bg-[#023047] border border-[#EAE0D5] p-6 lg:p-8 rounded-[32px] lg:rounded-[48px] flex items-center justify-between shadow-xl relative overflow-hidden">
+                     <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none hidden lg:block">
                         <Sparkles size={120} className="text-white" />
                      </div>
-                     <div className="relative z-10 flex items-center gap-6">
-                        <div className="bg-white/10 p-5 rounded-[24px] shadow-inner border border-white/5">
-                          <Quote className="text-[#FB8500] w-6 h-6" />
+                     <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-6">
+                        <div className="bg-white/10 p-4 lg:p-5 rounded-[20px] lg:rounded-[24px] shadow-inner border border-white/5 shrink-0">
+                          <Quote className="text-[#FB8500] w-5 h-5 lg:w-6 lg:h-6" />
                         </div>
                         <div>
-                           <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4A373]">Active Cohort Diagnostics</h2>
-                           <p className="text-2xl font-black text-white tracking-tighter uppercase">{selectedAge}</p>
+                           <h2 className="text-[9px] lg:text-[10px] font-black uppercase tracking-[0.4em] text-[#D4A373]">Active Cohort Diagnostics</h2>
+                           <p className="text-xl lg:text-2xl font-black text-white tracking-tighter uppercase leading-tight">{selectedAge}</p>
                         </div>
                      </div>
-                     <div className="relative z-10 text-right">
+                     <div className="relative z-10 text-right hidden md:block">
                         <span className="text-[9px] font-black text-white/50 uppercase tracking-widest block mb-1">Standard Alignment</span>
                         <span className="text-xs font-bold text-[#023047] bg-[#FB8500] px-3 py-1 rounded-full shadow-lg">Target Milestones</span>
                      </div>
                   </div>
 
-                  <div className="flex-1 grid grid-cols-2 gap-6 overflow-y-auto pr-2 pb-6 scrollbar-hide">
+                  <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 overflow-y-visible lg:overflow-y-auto pr-0 lg:pr-2 pb-6 scrollbar-hide">
                     {currentAgeData.domains.map((domain, i) => (
-                      <div key={i} className="bg-white border border-[#EAE0D5] rounded-[40px] p-8 shadow-sm flex flex-col border-b-[6px] border-b-[#EAE0D5]">
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-[#B4A7A0] mb-8 flex items-center gap-3">
-                          <div className="p-2 bg-[#FDFBF7] rounded-lg border border-[#EAE0D5] text-[#FB8500]">{domain.icon || <Brain size={14}/>}</div> {domain.name}
+                      <div key={i} className="bg-white border border-[#EAE0D5] rounded-[32px] lg:rounded-[40px] p-6 lg:p-8 shadow-sm flex flex-col border-b-[6px] border-b-[#EAE0D5]">
+                        <h3 className="text-[9px] lg:text-[10px] font-black uppercase tracking-[0.25em] text-[#B4A7A0] mb-6 flex items-center gap-3">
+                          <div className="p-2 bg-[#FDFBF7] rounded-lg border border-[#EAE0D5] text-[#FB8500]">{domain.icon || <Brain size={14}/>}</div> <span className="leading-tight">{domain.name}</span>
                         </h3>
                         <div className="space-y-4 flex-1">
                           {domain.items.map((item) => (
@@ -432,18 +432,18 @@
                             >
                               <div 
                                 onClick={() => toggleItem(item.id)}
-                                className={`mt-0.5 w-7 h-7 rounded-2xl border-2 flex items-center justify-center transition-all cursor-pointer ${
+                                className={`mt-0.5 w-7 h-7 shrink-0 rounded-2xl border-2 flex items-center justify-center transition-all cursor-pointer ${
                                 checkedItems[item.id] ? 'bg-[#023047] border-[#023047] text-white shadow-lg scale-110' : 'bg-white border-[#EAE0D5] hover:border-[#D4A373]'
                               }`}>
                                 {checkedItems[item.id] && <CheckCircle2 size={16} strokeWidth={4} />}
                               </div>
-                              <div className="flex-1 mt-1">
-                                <div className={`text-xs font-black leading-tight ${checkedItems[item.id] ? 'text-[#023047]' : 'text-[#8B7E74]'}`}>
+                              <div className="flex-1 mt-0.5">
+                                <div className={`text-[11px] lg:text-xs font-black leading-tight ${checkedItems[item.id] ? 'text-[#023047]' : 'text-[#8B7E74]'}`}>
                                   {item.label}
                                 </div>
-                                <div className="flex justify-between items-center mt-3">
+                                <div className="flex justify-between items-center mt-3 border-t border-[#F4EFE9] pt-3">
                                   <span className="text-[9px] text-slate-400 font-bold uppercase tracking-tighter">Pt: {item.weight}</span>
-                                  <button onClick={() => setActiveItemDetail(item)} className="text-[9px] bg-[#FAF9F6] text-[#D4A373] hover:bg-[#D4A373] hover:text-white border border-[#EAE0D5] px-2 py-1 rounded-full font-black uppercase tracking-widest transition-colors flex items-center gap-1 shadow-sm">
+                                  <button onClick={() => setActiveItemDetail(item)} className="text-[8px] bg-[#FAF9F6] text-[#D4A373] hover:bg-[#D4A373] hover:text-white border border-[#EAE0D5] px-2 py-1 rounded-full font-black uppercase tracking-widest transition-colors flex items-center gap-1 shadow-sm shrink-0">
                                       <Info size={10} /> Research
                                   </button>
                                 </div>
@@ -456,7 +456,7 @@
                   </div>
                 </main>
 
-                <aside className="col-span-3 flex flex-col gap-6 overflow-hidden">
+                <aside className="lg:col-span-3 flex flex-col gap-6 lg:overflow-hidden">
                   <div className="bg-white border border-[#EAE0D5] rounded-[48px] p-8 flex-1 flex flex-col overflow-hidden shadow-sm border-l-4 border-l-[#D4A373]">
                      <div className="flex justify-between items-center mb-8">
                         <h3 className="text-[10px] font-black tracking-[0.4em] uppercase text-[#B4A7A0] flex items-center gap-3">
