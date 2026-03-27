@@ -85,7 +85,8 @@ if (!defined('ABSPATH')) {
             ).join('');
         }
 
-        // Initialize
-        renderGraph('infants');
+        // Initialize dynamically based on passed arguments or default to infants
+        const defaultStage = '<?php echo isset($args["default_stage"]) ? esc_js($args["default_stage"]) : "infants"; ?>';
+        renderGraph(defaultStage);
     });
 </script>

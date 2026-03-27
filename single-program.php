@@ -264,6 +264,18 @@ while (have_posts()):
 		</section>
 
 		<?php
+        $prog_title_lower = strtolower(get_the_title());
+        $gs_default = 'infants';
+        if (strpos($prog_title_lower, 'toddler') !== false || strpos($prog_title_lower, 'two') !== false) {
+            $gs_default = 'toddlers';
+        } elseif (strpos($prog_title_lower, 'preschool') !== false || strpos($prog_title_lower, 'three') !== false || strpos($prog_title_lower, '3') !== false) {
+            $gs_default = 'preschool';
+        } elseif (strpos($prog_title_lower, 'pre-k') !== false || strpos($prog_title_lower, 'four') !== false || strpos($prog_title_lower, 'k') !== false) {
+            $gs_default = 'prek';
+        }
+
+        get_template_part('template-parts/home/growth-journey', null, array('default_stage' => $gs_default));
+
 		// Age Calculator Widget
 		kidazzle_program_enhancements::render_age_calculator($program_id);
 
