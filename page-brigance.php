@@ -26,8 +26,7 @@
         window.WP_THEME_URL = "<?php echo get_template_directory_uri(); ?>";
     </script>
     <script type="text/babel">
-        
-
+        const { useState, useEffect, useRef } = React;
 
 const App = () => {
   const [activeIframe, setActiveIframe] = useState('');
