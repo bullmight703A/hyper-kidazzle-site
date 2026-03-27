@@ -261,32 +261,87 @@
 
           // Render a detailed popup for an item
           const ItemDetailModal = ({ item, close }) => (
-            <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm animate-in fade-in duration-200">
-              <div className="bg-white w-full max-w-lg rounded-[32px] overflow-hidden shadow-2xl flex flex-col border border-[#EAE0D5] transform scale-100">
-                 <div className="p-6 bg-[#023047] flex justify-between items-center">
+            <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 lg:p-10 bg-slate-900/70 backdrop-blur-sm animate-in fade-in duration-200">
+              <div className="bg-white w-full max-w-5xl h-full max-h-[90vh] rounded-[32px] overflow-hidden shadow-2xl flex flex-col border border-[#EAE0D5] transform scale-100">
+                 <div className="p-6 bg-[#023047] flex justify-between items-center shrink-0">
                     <h3 className="font-black text-white uppercase tracking-tighter flex items-center gap-3">
-                       <Quote size={18} className="text-[#FB8500]" /> Research Advisory
+                       <Quote size={18} className="text-[#FB8500]" /> Research & Activities Advisory
                     </h3>
                     <button onClick={close} className="p-1 hover:bg-white/10 rounded-full transition-all text-white">
-                       <X size={20} />
+                       <LucideIcon name="x" size={20} />
                     </button>
                  </div>
-                 <div className="p-8 space-y-6 bg-[#FDFBF7]">
-                    <div>
+                 <div className="p-8 pb-10 bg-[#FDFBF7] flex-1 overflow-y-auto">
+                    <div className="mb-8">
                        <span className="text-[10px] font-black uppercase tracking-widest text-[#D4A373] block mb-2">Curriculum Milestone</span>
-                       <h4 className="text-xl font-black text-[#023047] leading-tight">{item.label}</h4>
+                       <h4 className="text-3xl font-black text-[#023047] leading-tight">{item.label}</h4>
                     </div>
-                    <div className="bg-white border border-[#EAE0D5] p-6 rounded-2xl shadow-sm relative">
-                       <div className="absolute -top-3 -right-3 bg-[#FB8500] text-white text-[10px] font-black uppercase px-3 py-1 rounded-full">
-                          Weight: {item.weight}
-                       </div>
-                       <p className="text-sm font-medium text-[#5C524F] leading-relaxed italic">
-                         "{item.detail}"
-                       </p>
+                    
+                    <div className="grid lg:grid-cols-2 gap-8">
+                        <div className="space-y-6">
+                            <div className="bg-white border border-[#EAE0D5] p-6 rounded-2xl shadow-sm relative">
+                                <h5 className="text-[10px] font-black uppercase tracking-widest text-[#023047] block mb-3 border-b border-[#EAE0D5] pb-2">Cognitive Research Baseline</h5>
+                                <div className="absolute -top-3 -right-3 bg-[#FB8500] text-white text-[10px] font-black uppercase px-3 py-1 rounded-full">
+                                    Weight: {item.weight}
+                                </div>
+                                <p className="text-sm font-medium text-[#5C524F] leading-relaxed italic">
+                                    "{item.detail}"
+                                </p>
+                            </div>
+
+                            <div className="bg-[#023047] border border-[#023047] p-6 rounded-2xl shadow-sm relative">
+                                <h5 className="text-[10px] font-black uppercase tracking-widest text-[#D4A373] block mb-3 border-b border-white/10 pb-2">Active Interventions</h5>
+                                <ul className="text-sm font-medium text-white/90 leading-relaxed space-y-3">
+                                    <li className="flex items-start gap-2"><LucideIcon name="chevron-right" size={14} className="text-[#FB8500] mt-0.5 shrink-0" /> 
+                                       <div><span className="font-bold text-[#D4A373]">How to advance it:</span> Design engaging play-based activities targeting this exact sensory curve.</div>
+                                    </li>
+                                    <li className="flex items-start gap-2"><LucideIcon name="chevron-right" size={14} className="text-[#FB8500] mt-0.5 shrink-0" /> 
+                                       <div><span className="font-bold text-[#D4A373]">How to maintain it:</span> Ensure consistent, repetitive behavioral modeling combined with positive reinforcement.</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="space-y-6 flex flex-col">
+                            <div className="bg-white border border-[#D4A373] p-6 rounded-2xl shadow-sm relative flex-1 flex flex-col min-h-[300px]">
+                                <h5 className="text-[10px] font-black uppercase tracking-widest text-[#023047] block mb-3 border-b border-[#EAE0D5] pb-2 flex justify-between items-center">
+                                    <span>GELDS Alignment Hub</span>
+                                    <LucideIcon name="external-link" size={12} className="text-[#D4A373]" />
+                                </h5>
+                                <p className="text-[11px] font-medium text-[#8B7E74] leading-relaxed mb-4">
+                                    This milestone aligns strategically with the <strong className="text-[#023047]">Georgia Early Learning and Development Standards (GELDS)</strong>. Access the official state frameworks mapping this curriculum node below:
+                                </p>
+                                <div className="flex-1 flex items-center justify-center p-4">
+                                    <div className="w-full space-y-4">
+                                        <a href="https://gelds.decal.ga.gov/GELDS" target="_blank" className="flex items-center justify-between bg-[#FAF9F6] border border-[#EAE0D5] hover:border-[#FB8500] p-4 rounded-2xl shadow-sm transition-all group w-full">
+                                            <div className="flex items-center gap-3">
+                                                <div className="bg-[#023047] p-2 rounded-xl"><LucideIcon name="book-open" size={16} className="text-white" /></div>
+                                                <div className="text-left">
+                                                    <span className="text-[10px] font-black text-[#023047] uppercase tracking-widest block mb-0.5">GELDS Standards & Indicators</span>
+                                                    <span className="text-[9px] text-slate-500 font-medium">gelds.decal.ga.gov/GELDS</span>
+                                                </div>
+                                            </div>
+                                            <LucideIcon name="chevron-right" size={16} className="text-[#D4A373] group-hover:text-[#FB8500] group-hover:translate-x-1 transition-all" />
+                                        </a>
+                                        
+                                        <a href="https://development.decal.ga.gov/#/" target="_blank" className="flex items-center justify-between bg-[#FAF9F6] border border-[#EAE0D5] hover:border-[#FB8500] p-4 rounded-2xl shadow-sm transition-all group w-full">
+                                            <div className="flex items-center gap-3">
+                                                <div className="bg-[#FB8500] p-2 rounded-xl"><LucideIcon name="activity" size={16} className="text-white" /></div>
+                                                <div className="text-left">
+                                                    <span className="text-[10px] font-black text-[#023047] uppercase tracking-widest block mb-0.5">State Developmental Milestones</span>
+                                                    <span className="text-[9px] text-slate-500 font-medium">development.decal.ga.gov</span>
+                                                </div>
+                                            </div>
+                                            <LucideIcon name="chevron-right" size={16} className="text-[#D4A373] group-hover:text-[#FB8500] group-hover:translate-x-1 transition-all" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="flex gap-4 pt-4 border-t border-[#EAE0D5]">
-                       <button onClick={close} className="flex-1 py-3 bg-[#023047] text-white rounded-xl font-bold uppercase tracking-wide text-xs hover:bg-[#023047]/90 transition-all">Close Advisory</button>
-                    </div>
+                 </div>
+                 <div className="p-6 bg-white border-t border-[#EAE0D5] flex gap-4 shrink-0">
+                    <button onClick={close} className="flex-1 py-4 bg-[#023047] text-white rounded-xl font-bold uppercase tracking-wide text-xs hover:bg-[#023047]/90 transition-all shadow-md">Acknowledge & Close Advisory</button>
                  </div>
               </div>
             </div>
@@ -298,21 +353,34 @@
               {activeItemDetail && <ItemDetailModal item={activeItemDetail} close={() => setActiveItemDetail(null)} />}
 
               {showSample && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center p-8 bg-black/40 backdrop-blur-sm">
-                  <div className="bg-white w-full max-w-2xl rounded-[40px] shadow-2xl flex flex-col border border-[#EAE0D5] overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
-                    <div className="p-6 bg-[#FDFBF7] flex justify-between items-center border-b border-[#EAE0D5]">
+                <div className="fixed inset-0 z-[60] flex items-center justify-center lg:p-10 p-4 bg-slate-900/80 backdrop-blur-sm">
+                  <div className="bg-white w-[95vw] h-[95vh] rounded-[40px] shadow-2xl flex flex-col border-4 border-[#EAE0D5] overflow-hidden animate-in zoom-in-95 duration-300 relative">
+                    <div className="absolute inset-3 border-2 border-dashed border-[#B4A7A0]/30 rounded-[30px] pointer-events-none z-0" />
+                    <div className="px-6 lg:px-10 py-5 bg-[#FDFBF7]/90 backdrop-blur-md flex justify-between items-center border-b border-[#EAE0D5] shrink-0 relative z-10">
                        <div className="flex items-center gap-3">
-                          <ClipboardList className="text-[#D4A373]" />
-                          <h3 className="font-black text-[#023047] uppercase tracking-tighter">Brigance Visual Baseline</h3>
+                          <LucideIcon name="clipboard-list" className="text-[#D4A373]" />
+                          <div>
+                            <h3 className="font-black text-[#023047] text-sm md:text-lg uppercase tracking-tighter leading-tight">Brigance Visual Baseline</h3>
+                            <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Official Diagnostic Reference Framework</span>
+                          </div>
                        </div>
-                       <button onClick={() => setShowSample(false)} className="p-2 hover:bg-white rounded-full transition-all text-slate-400">
-                          <X size={24} />
-                       </button>
+                       <div className="flex items-center gap-3 md:gap-6">
+                          <a href={sampleImages[selectedAge]} download={`Brigance_Sample_${selectedAge.replace(/\s+/g, '_')}.png`} className="hidden md:flex items-center gap-2 bg-[#FB8500] hover:bg-[#023047] transition-all text-white py-2.5 px-6 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest shadow-md hover:scale-105 active:scale-95">
+                              <LucideIcon name="download" size={16} /> Download Sheet
+                          </a>
+                          <button onClick={() => setShowSample(false)} className="p-2 md:p-3 bg-white hover:bg-[#EAE0D5] border border-[#EAE0D5] rounded-full transition-all text-[#023047] shadow-sm hover:scale-110 active:scale-95">
+                              <LucideIcon name="x" size={20} />
+                          </button>
+                       </div>
                     </div>
-                    <div className="p-10 space-y-6">
-                       <div className="border border-[#EAE0D5] rounded-[32px] bg-[#FAF9F6] p-2 flex justify-center shadow-inner">
-                          <img src={sampleImages[selectedAge]} alt="Brigance Data Sample" className="max-h-[500px] object-contain rounded-[24px] opacity-95" />
-                       </div>
+                    <div className="p-4 md:p-8 flex-1 bg-[#FAF9F6] overflow-hidden flex items-center justify-center relative z-10">
+                       <img src={sampleImages[selectedAge]} alt="Brigance Data Sheet" className="max-w-full max-h-full object-contain rounded-2xl md:rounded-3xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-[#EAE0D5] bg-white transition-opacity duration-500 hover:opacity-100 opacity-95" />
+                    </div>
+                    {/* Mobile Download button fixed to bottom */}
+                    <div className="md:hidden flex justify-center pb-6 pt-2 bg-[#FAF9F6] relative z-10 w-full shrink-0">
+                        <a href={sampleImages[selectedAge]} download={`Brigance_Sample_${selectedAge.replace(/\s+/g, '_')}.png`} className="flex items-center gap-2 bg-[#FB8500] active:bg-[#023047] transition-colors text-white py-4 px-8 rounded-full text-xs font-black uppercase tracking-widest shadow-xl">
+                            <LucideIcon name="download" size={18} /> Download Screen
+                        </a>
                     </div>
                   </div>
                 </div>
@@ -362,13 +430,8 @@
                       >
                         <div className={`absolute left-0 top-0 bottom-0 w-[6px] ${selectedAge === age.label ? 'bg-[#FB8500]' : 'bg-transparent'}`} />
                         <div className={`text-xs ml-1 font-black tracking-tight ${selectedAge === age.label ? 'text-[#023047]' : 'text-[#8B7E74]'}`}>{age.label}</div>
-                        <div className="flex items-center ml-1 justify-between mb-1">
-                          <span className={`text-[8px] uppercase font-black tracking-tighter ${
-                            selectedAge === age.label ? 'text-[#D4A373]' : 'text-slate-400' 
-                          }`}>
-                            {age.status}
-                          </span>
-                          <ChevronRight size={12} className={selectedAge === age.label ? 'text-[#FB8500]' : 'text-[#EAE0D5] block lg:hidden'} />
+                        <div className="flex items-center ml-1 justify-end mb-1">
+                          <LucideIcon name="chevron-right" size={12} className={selectedAge === age.label ? 'text-[#FB8500]' : 'text-[#EAE0D5] block lg:hidden'} />
                         </div>
 
                         {/* Inline Data Sheet Toggle Tab */}
@@ -443,8 +506,8 @@
                                 </div>
                                 <div className="flex justify-between items-center mt-3 border-t border-[#F4EFE9] pt-3">
                                   <span className="text-[9px] text-slate-400 font-bold uppercase tracking-tighter">Pt: {item.weight}</span>
-                                  <button onClick={() => setActiveItemDetail(item)} className="text-[8px] bg-[#FAF9F6] text-[#D4A373] hover:bg-[#D4A373] hover:text-white border border-[#EAE0D5] px-2 py-1 rounded-full font-black uppercase tracking-widest transition-colors flex items-center gap-1 shadow-sm shrink-0">
-                                      <Info size={10} /> Research
+                                  <button onClick={() => setActiveItemDetail(item)} className="text-[8px] bg-[#FAF9F6] text-[#D4A373] hover:bg-[#D4A373] hover:text-white border border-[#EAE0D5] px-3 py-1.5 rounded-full font-black uppercase tracking-widest transition-colors flex items-center gap-1.5 shadow-sm shrink-0">
+                                      <LucideIcon name="info" size={10} /> Research / Activities
                                   </button>
                                 </div>
                               </div>
@@ -460,7 +523,7 @@
                   <div className="bg-white border border-[#EAE0D5] rounded-[48px] p-8 flex-1 flex flex-col overflow-hidden shadow-sm border-l-4 border-l-[#D4A373]">
                      <div className="flex justify-between items-center mb-8">
                         <h3 className="text-[10px] font-black tracking-[0.4em] uppercase text-[#B4A7A0] flex items-center gap-3">
-                          <MessageSquare size={16} className="text-[#FB8500]" /> Intelligence Link
+                          <LucideIcon name="message-square" size={16} className="text-[#FB8500]" /> Intelligence Link
                         </h3>
                         <div className="flex gap-1.5">
                            <div className="w-1.5 h-1.5 bg-[#D4A373] rounded-full animate-pulse" />
@@ -471,10 +534,10 @@
                      <div className="flex-1 overflow-y-auto space-y-6 mb-4 pr-1 scrollbar-hide">
                         <div className="space-y-3">
                            <div className="flex justify-between px-1">
-                              <span className="text-[9px] font-black uppercase text-[#D4A373] tracking-widest">Ollama Secure</span>
+                              <span className="text-[9px] font-black uppercase text-[#D4A373] tracking-widest">Ollama API Hook</span>
                            </div>
                            <div className="bg-[#FAF9F6] p-5 rounded-[32px] text-[11px] text-[#5C524F] leading-relaxed border border-[#EAE0D5] shadow-sm font-bold">
-                              Core parameters updated for **{selectedAge}**. Awaiting DeepSeek curriculum validation for local execution. All records are securely routed to OpenClaw.
+                              Ready to connect. Awaiting Ollama proxy authorization to access specialized curriculum data on **{selectedAge}** parameters. All logic runs natively on OpenClaw.
                            </div>
                         </div>
 
@@ -482,33 +545,22 @@
                            <div className="flex justify-between w-full px-1">
                               <span className="text-[9px] font-black uppercase text-slate-400 tracking-widest">Active Insight</span>
                            </div>
-                           <div className="bg-[#023047] p-5 rounded-[32px] rounded-tr-none text-xs text-[#FDFBF7]/90 leading-relaxed shadow-lg max-w-[95%] italic font-medium border border-[#023047]">
-                              "For {selectedAge}, prioritize assessing the physical readiness and language syntax. Use the research popups to guide your specific grading."
+                           <div className="bg-[#023047] p-5 rounded-[32px] rounded-tr-none text-[11px] text-[#FDFBF7]/90 leading-relaxed shadow-lg max-w-[95%] italic font-medium border border-[#023047]">
+                              "For {selectedAge}, ensure physical readiness is prioritized. Use the Research / Activities terminal on specific milestones to hook into GELS!"
                            </div>
                         </div>
                      </div>
 
                      <div className="relative mt-auto pt-6 border-t border-[#EAE0D5]">
                         <textarea 
-                          className="w-full bg-[#FAF9F6] border border-[#EAE0D5] rounded-[24px] p-5 text-sm text-[#023047] outline-none focus:border-[#D4A373] transition-all placeholder:text-[#B4A7A0] resize-none min-h-[120px] shadow-inner font-medium"
-                          placeholder="Query specialized educational agent..."
+                          className="w-full bg-[#FAF9F6] border border-[#EAE0D5] rounded-[24px] p-5 text-sm text-[#023047] outline-none focus:border-[#FB8500] transition-all placeholder:text-[#B4A7A0] resize-none min-h-[120px] shadow-inner font-medium"
+                          placeholder="Query local Ollama logic engine..."
                         />
-                        <button className="absolute bottom-5 right-5 p-4 bg-[#FB8500] text-white rounded-2xl hover:bg-[#023047] transition-all shadow-xl hover:scale-110 active:scale-95">
-                           <Send size={18} strokeWidth={3} />
+                        <button className="absolute bottom-5 right-5 p-4 bg-[#FB8500] text-white rounded-2xl hover:bg-[#023047] transition-all shadow-xl hover:scale-105 active:scale-95">
+                           <LucideIcon name="send" size={18} strokeWidth={3} />
                         </button>
                      </div>
                   </div>
-
-                  <div className="bg-white border border-[#EAE0D5] p-6 rounded-[32px] shadow-lg flex items-center gap-5">
-                     <div className="w-12 h-12 rounded-2xl bg-[#023047] flex items-center justify-center shadow-inner">
-                        <Search size={24} className="text-[#FB8500]" />
-                     </div>
-                     <div>
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-[#023047] mb-1">Status: OpenClaw Ready</h4>
-                        <p className="text-[9px] font-bold text-[#8B7E74] uppercase tracking-tighter">Ollama / DeepSeek Initialized</p>
-                     </div>
-                  </div>
-
                 </aside>
               </div>
             </div>
