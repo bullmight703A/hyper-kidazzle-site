@@ -90,8 +90,7 @@
             { label: '2 Years', id: '2 Years', status: 'Complete' },
             { label: '2.5 Years', id: '2.5 Years', status: 'Active' },
             { label: '3 Years', id: '3 Years', status: 'Complete' },
-            { label: '4 Years', id: '4 Years', status: 'Active' },
-            { label: 'Summer Camp', id: 'Summer Camp', status: 'Open' }
+            { label: '4 Years', id: '4 Years', status: 'Active' }
           ];
 
           const briganceData = {
@@ -216,26 +215,6 @@
                   { id: '4_10', label: 'Hops 5 times on preferred foot', weight: 3, detail: 'Supreme unilateral vestibular balance and dynamic athletic load bearing.' }
                 ]}
               ]
-            },
-            'Summer Camp': {
-              theme: 'Enrichment & Social Node',
-              domains: [
-                { name: 'Language & Social', icon: <MessageSquare size={14} />, items: [
-                  { id: 'sc_1', label: 'Collaborative play & sharing', weight: 4, detail: 'Tests advanced socio-emotional intelligence, negotiation, and conflict resolution.' },
-                  { id: 'sc_2', label: 'Follows complex group instructions', weight: 4, detail: 'Evaluates selective auditory focus amidst heavy group distraction.' },
-                  { id: 'sc_3', label: 'Narrates detailed stories/events', weight: 2, detail: 'Demonstrates complex temporal sequencing and long-form narrative structure.' }
-                ]},
-                { name: 'Academic / Cognitive', icon: <Brain size={14} />, items: [
-                  { id: 'sc_4', label: 'Engages in STEM/Science experiments', weight: 5, detail: 'Assesses hypothesis generation, observation skills, and scientific deduction.' },
-                  { id: 'sc_5', label: 'Understands rules to organized games', weight: 3, detail: 'Tests abstract operational logic and adherence to systematic boundaries.' },
-                  { id: 'sc_6', label: 'Demonstrates prolonged focus', weight: 2, detail: 'Evaluates executive function and attention span threshold on singular tasks.' }
-                ]},
-                { name: 'Physical Development', icon: <Trophy size={14} />, items: [
-                  { id: 'sc_7', label: 'Advanced motor (skipping/jumping jacks)', weight: 3, detail: 'Asynchronous bilateral nervous system integration.' },
-                  { id: 'sc_8', label: 'Independent self-care (dressing/bathroom)', weight: 4, detail: 'Evaluates overarching autonomy and bodily awareness routines.' },
-                  { id: 'sc_9', label: 'Controlled fine-motor art techniques', weight: 3, detail: 'Demonstrates precision grip variations used in advanced writing and tool usage.' }
-                ]}
-              ]
             }
           };
 
@@ -303,37 +282,57 @@
                         </div>
 
                         <div className="space-y-6 flex flex-col">
-                            <div className="bg-white border border-[#D4A373] p-6 rounded-2xl shadow-sm relative flex-1 flex flex-col min-h-[300px]">
-                                <h5 className="text-[10px] font-black uppercase tracking-widest text-[#023047] block mb-3 border-b border-[#EAE0D5] pb-2 flex justify-between items-center">
-                                    <span>GELDS Alignment Hub</span>
-                                    <LucideIcon name="external-link" size={12} className="text-[#D4A373]" />
-                                </h5>
-                                <p className="text-[11px] font-medium text-[#8B7E74] leading-relaxed mb-4">
-                                    This milestone aligns strategically with the <strong className="text-[#023047]">Georgia Early Learning and Development Standards (GELDS)</strong>. Access the official state frameworks mapping this curriculum node below:
-                                </p>
-                                <div className="flex-1 flex items-center justify-center p-4">
-                                    <div className="w-full space-y-4">
-                                        <a href="https://gelds.decal.ga.gov/GELDS" target="_blank" className="flex items-center justify-between bg-[#FAF9F6] border border-[#EAE0D5] hover:border-[#FB8500] p-4 rounded-2xl shadow-sm transition-all group w-full">
-                                            <div className="flex items-center gap-3">
-                                                <div className="bg-[#023047] p-2 rounded-xl"><LucideIcon name="book-open" size={16} className="text-white" /></div>
-                                                <div className="text-left">
-                                                    <span className="text-[10px] font-black text-[#023047] uppercase tracking-widest block mb-0.5">GELDS Standards & Indicators</span>
-                                                    <span className="text-[9px] text-slate-500 font-medium">gelds.decal.ga.gov/GELDS</span>
-                                                </div>
+                            <div className="bg-white border border-[#D4A373] rounded-2xl shadow-sm relative overflow-hidden flex-1 flex flex-col">
+                                <div className="p-6 border-b border-[#EAE0D5] bg-[#FDFBF7]">
+                                    <h5 className="text-[10px] font-black uppercase tracking-widest text-[#023047] flex justify-between items-center mb-1">
+                                        <span>GELDS Alignment Hub</span>
+                                        <div className="flex gap-2">
+                                            <a href="https://gelds.decal.ga.gov/GELDS" target="_blank" className="p-1.5 bg-[#023047] text-white rounded-md hover:bg-[#D4A373] transition-colors"><LucideIcon name="book-open" size={12} /></a>
+                                            <a href="https://development.decal.ga.gov/#/" target="_blank" className="p-1.5 bg-[#FB8500] text-white rounded-md hover:bg-[#023047] transition-colors"><LucideIcon name="activity" size={12} /></a>
+                                        </div>
+                                    </h5>
+                                    <p className="text-[10px] font-bold text-[#8B7E74] leading-relaxed">
+                                        Data mapped directly from <strong className="text-[#023047]">Georgia Early Learning and Development Standards</strong> & Milestones.
+                                    </p>
+                                </div>
+                                <div className="flex-1 flex flex-col p-4 gap-4 bg-[#FAF9F6]">
+                                    <div className="bg-white border border-[#EAE0D5] p-5 rounded-2xl shadow-sm flex-1">
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <div className="bg-[#023047] p-2 rounded-lg"><LucideIcon name="book-open" size={14} className="text-white" /></div>
+                                            <div>
+                                                <span className="text-[9px] font-black text-[#023047] uppercase tracking-widest block leading-tight">Georgia Learning Standards</span>
                                             </div>
-                                            <LucideIcon name="chevron-right" size={16} className="text-[#D4A373] group-hover:text-[#FB8500] group-hover:translate-x-1 transition-all" />
-                                        </a>
-                                        
-                                        <a href="https://development.decal.ga.gov/#/" target="_blank" className="flex items-center justify-between bg-[#FAF9F6] border border-[#EAE0D5] hover:border-[#FB8500] p-4 rounded-2xl shadow-sm transition-all group w-full">
-                                            <div className="flex items-center gap-3">
-                                                <div className="bg-[#FB8500] p-2 rounded-xl"><LucideIcon name="activity" size={16} className="text-white" /></div>
-                                                <div className="text-left">
-                                                    <span className="text-[10px] font-black text-[#023047] uppercase tracking-widest block mb-0.5">State Developmental Milestones</span>
-                                                    <span className="text-[9px] text-slate-500 font-medium">development.decal.ga.gov</span>
-                                                </div>
+                                        </div>
+                                        <ul className="text-[11px] font-medium text-[#5C524F] leading-relaxed space-y-2">
+                                            <li className="flex items-start gap-2 p-2 bg-[#FDFBF7] rounded border border-[#EAE0D5] border-l-2 border-l-[#FB8500]">
+                                                <div><strong className="text-[#023047]">CD-1 Indicator:</strong> Children will explore, investigate, and seek knowledge about their environment.</div>
+                                            </li>
+                                            <li className="flex items-start gap-2 p-2 bg-[#FDFBF7] rounded border border-[#EAE0D5] border-l-2 border-l-[#FB8500]">
+                                                <div><strong className="text-[#023047]">CLL-2 Indicator:</strong> Children will acquire vocabulary introduced through conversations and activities.</div>
+                                            </li>
+                                            <li className="flex items-start gap-2 p-2 bg-[#FDFBF7] rounded border border-[#EAE0D5] border-l-2 border-l-[#FB8500]">
+                                                <div><strong className="text-[#023047]">PDM-4 Indicator:</strong> Children will demonstrate advanced gross motor processing skills.</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div className="bg-white border border-[#EAE0D5] p-5 rounded-2xl shadow-sm">
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <div className="bg-[#FB8500] p-2 rounded-lg"><LucideIcon name="activity" size={14} className="text-white" /></div>
+                                            <div>
+                                                <span className="text-[9px] font-black text-[#023047] uppercase tracking-widest block leading-tight">Developmental Milestones</span>
                                             </div>
-                                            <LucideIcon name="chevron-right" size={16} className="text-[#D4A373] group-hover:text-[#FB8500] group-hover:translate-x-1 transition-all" />
-                                        </a>
+                                        </div>
+                                        <ul className="text-[11px] font-medium text-[#5C524F] leading-relaxed space-y-2">
+                                            <li className="flex items-start gap-2">
+                                                <LucideIcon name="circle" size={6} className="text-[#FB8500] mt-1 shrink-0" />
+                                                <div><strong>Milestone Diagnostic 1:</strong> Exhibits consistent active participation during guided physical interactions mapping.</div>
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <LucideIcon name="circle" size={6} className="text-[#FB8500] mt-1 shrink-0" />
+                                                <div><strong>Milestone Diagnostic 2:</strong> Recognizes standard verbal prompts immediately and executes reliable behavioral responses.</div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -504,8 +503,7 @@
                                 <div className={`text-[11px] lg:text-xs font-black leading-tight ${checkedItems[item.id] ? 'text-[#023047]' : 'text-[#8B7E74]'}`}>
                                   {item.label}
                                 </div>
-                                <div className="flex justify-between items-center mt-3 border-t border-[#F4EFE9] pt-3">
-                                  <span className="text-[9px] text-slate-400 font-bold uppercase tracking-tighter">Pt: {item.weight}</span>
+                                <div className="flex justify-end items-center mt-3 border-t border-[#F4EFE9] pt-3">
                                   <button onClick={() => setActiveItemDetail(item)} className="text-[8px] bg-[#FAF9F6] text-[#D4A373] hover:bg-[#D4A373] hover:text-white border border-[#EAE0D5] px-3 py-1.5 rounded-full font-black uppercase tracking-widest transition-colors flex items-center gap-1.5 shadow-sm shrink-0">
                                       <LucideIcon name="info" size={10} /> Research / Activities
                                   </button>
@@ -551,15 +549,6 @@
                         </div>
                      </div>
 
-                     <div className="relative mt-auto pt-6 border-t border-[#EAE0D5]">
-                        <textarea 
-                          className="w-full bg-[#FAF9F6] border border-[#EAE0D5] rounded-[24px] p-5 text-sm text-[#023047] outline-none focus:border-[#FB8500] transition-all placeholder:text-[#B4A7A0] resize-none min-h-[120px] shadow-inner font-medium"
-                          placeholder="Query local Ollama logic engine..."
-                        />
-                        <button className="absolute bottom-5 right-5 p-4 bg-[#FB8500] text-white rounded-2xl hover:bg-[#023047] transition-all shadow-xl hover:scale-105 active:scale-95">
-                           <LucideIcon name="send" size={18} strokeWidth={3} />
-                        </button>
-                     </div>
                   </div>
                 </aside>
               </div>
