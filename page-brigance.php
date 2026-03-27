@@ -351,18 +351,18 @@
                   <h3 className="text-[10px] uppercase tracking-[0.25em] font-black text-[#B4A7A0] px-1">Curriculum Stages</h3>
                   <div className="space-y-2 overflow-y-auto pr-1 scrollbar-hide">
                     {ages.map((age, i) => (
-                      <button 
+                      <div 
                         key={i} 
                         onClick={() => setSelectedAge(age.label)}
-                        className={`w-full group p-4 rounded-[28px] border transition-all text-left relative overflow-hidden ${
+                        className={`w-full group p-4 rounded-[32px] border transition-all text-left relative overflow-hidden cursor-pointer flex flex-col gap-[2px] ${
                           selectedAge === age.label 
-                          ? 'bg-white border-[#D4A373]/40 shadow-md scale-[1.02] ring-2 ring-offset-1 ring-[#023047]' 
+                          ? 'bg-white border-[#D4A373]/40 shadow-sm scale-[1.02] ring-2 ring-offset-1 ring-[#023047]' 
                           : 'bg-[#FDFBF7]/40 border-transparent hover:bg-white hover:border-[#EAE0D5]'
                         }`}
                       >
-                        <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${selectedAge === age.label ? 'bg-[#FB8500]' : 'bg-transparent'}`} />
-                        <div className={`text-xs font-black tracking-tight ${selectedAge === age.label ? 'text-[#023047]' : 'text-[#8B7E74]'}`}>{age.label}</div>
-                        <div className="flex items-center justify-between mt-2">
+                        <div className={`absolute left-0 top-0 bottom-0 w-[6px] ${selectedAge === age.label ? 'bg-[#FB8500]' : 'bg-transparent'}`} />
+                        <div className={`text-xs ml-1 font-black tracking-tight ${selectedAge === age.label ? 'text-[#023047]' : 'text-[#8B7E74]'}`}>{age.label}</div>
+                        <div className="flex items-center ml-1 justify-between mb-1">
                           <span className={`text-[8px] uppercase font-black tracking-tighter ${
                             selectedAge === age.label ? 'text-[#D4A373]' : 'text-slate-400' 
                           }`}>
@@ -370,24 +370,30 @@
                           </span>
                           <ChevronRight size={12} className={selectedAge === age.label ? 'text-[#FB8500]' : 'text-[#EAE0D5]'} />
                         </div>
-                      </button>
+
+                        {/* Inline Data Sheet Toggle Tab */}
+                        {sampleImages[age.label] && (
+                           <div 
+                              onClick={(e) => {
+                                 e.stopPropagation();
+                                 setSelectedAge(age.label);
+                                 setTimeout(() => setShowSample(true), 150);
+                              }}
+                              className={`mt-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-[20px] text-[9px] font-black uppercase tracking-wider transition-all duration-300
+                              ${selectedAge === age.label 
+                                 ? 'bg-[#023047] text-white shadow hover:bg-[#023047]/85 opacity-100 translate-y-0' 
+                                 : 'bg-[#EAE0D5]/40 text-[#8B7E74] opacity-0 h-0 p-0 translate-y-[10px] scale-95 pointer-events-none group-hover:opacity-100 group-hover:h-auto group-hover:py-2.5 group-hover:scale-100 group-hover:pointer-events-auto group-hover:translate-y-0'
+                              }`}
+                           >
+                              <FileText size={10} className={selectedAge === age.label ? "text-[#FB8500]" : "text-[#8B7E74]"} />
+                              Data Sheet Sample
+                           </div>
+                        )}
+                      </div>
                     ))}
                   </div>
 
-                  <div className="mt-auto space-y-3">
-                    {sampleImages[selectedAge] && (
-                        <button 
-                           onClick={() => setShowSample(true)}
-                           className="w-full p-4 bg-[#023047] text-white border border-[#EAE0D5] rounded-[30px] flex items-center justify-between group hover:bg-[#023047]/90 transition-all shadow-xl"
-                        >
-                           <div className="text-left leading-tight">
-                              <div className="text-[9px] font-black uppercase opacity-60">Visual Aid</div>
-                              <div className="text-xs font-black">Data Sheet Sample</div>
-                           </div>
-                           <FileText size={18} className="text-[#FB8500]" />
-                        </button>
-                    )}
-                  </div>
+                  <div className="mt-auto"></div>
                 </aside>
 
                 <main className="col-span-7 flex flex-col gap-6 overflow-hidden">
