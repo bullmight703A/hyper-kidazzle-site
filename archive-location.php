@@ -65,17 +65,7 @@ $locations_query = new WP_Query(array(
 						class="filter-btn px-6 py-3 rounded-full font-semibold bg-kidazzle-green text-white hover:shadow-glow transition-all duration-300 whitespace-nowrap">
 						<?php echo esc_html(get_theme_mod('kidazzle_locations_label', __('All Locations', 'kidazzle-theme'))); ?>
 					</button>
-					<?php foreach ($all_regions as $region):
-						$colors = kidazzle_get_region_color_from_term($region->term_id);
-						$btn_bg = $colors['text'];
-						?>
-						<button onclick="filterLocations('<?php echo esc_attr($region->slug); ?>')"
-							data-region="<?php echo esc_attr($region->slug); ?>"
-							data-color-bg="<?php echo esc_attr($btn_bg); ?>" data-color-text="white"
-							class="filter-btn px-6 py-3 rounded-full font-semibold bg-white text-brand-ink border border-brand-ink/10 hover:bg-brand-ink/5 transition-all duration-300 whitespace-nowrap">
-							<?php echo esc_html($region->name); ?>
-						</button>
-					<?php endforeach; ?>
+					<!-- Taxonomy Region Buttons Removed Per User Request -->
 				</div>
 			</div>
 		</div>
@@ -164,13 +154,13 @@ $locations_query = new WP_Query(array(
 									aria-label="<?php printf(esc_attr__('View %s', 'kidazzle-theme'), esc_attr($location_name)); ?>"></a>
 
 								<div
-									class="absolute top-0 right-0 bg-<?php echo esc_attr($is_new ? $colors['text'] : $colors['border']); ?> text-<?php echo esc_attr($is_new ? 'brand-ink' : 'white'); ?> text-[10px] font-bold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
+									class="absolute top-0 right-0 bg-brand-ink text-white text-[10px] font-bold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
 									<?php echo esc_html($badge_text); ?>
 								</div>
 
 								<div class="flex justify-between items-start mb-4 mt-2">
 									<span
-										class="bg-<?php echo esc_attr($colors['bg']); ?> text-<?php echo esc_attr($colors['text']); ?> px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
+										class="bg-brand-ink text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
 										<?php echo esc_html($region_name); ?>
 									</span>
 									<?php if ($is_open): ?>

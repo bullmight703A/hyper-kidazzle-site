@@ -88,7 +88,7 @@ $locations_query = new WP_Query(array(
 						<div class="bg-white rounded-[2rem] p-6 shadow-card border border-brand-ink/5 hover:border-<?php echo esc_attr($colors['border']); ?>/30 transition-all hover:-translate-y-1 h-full flex flex-col relative overflow-hidden">
 
 							<div class="flex justify-between items-start mb-4 mt-2">
-								<span class="bg-<?php echo esc_attr($colors['bg']); ?> text-<?php echo esc_attr($colors['text']); ?> px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
+								<span class="bg-brand-ink text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
 									Campus Directory
 								</span>
 							</div>
