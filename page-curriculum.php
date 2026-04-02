@@ -373,15 +373,51 @@ $zones = array(
 
             <!-- ERS Modal -->
             <div id="ers-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm text-left">
-                <div class="bg-white w-full max-w-5xl h-[85vh] rounded-[3rem] shadow-2xl flex flex-col relative overflow-hidden">
-                    <div class="px-8 py-5 border-b border-slate-200 flex justify-between items-center bg-brand-cream">
+                <div class="bg-white w-full max-w-4xl max-h-[85vh] rounded-[3rem] shadow-2xl flex flex-col relative overflow-hidden">
+                    <div class="px-8 py-5 border-b border-slate-200 flex justify-between items-center bg-brand-cream shrink-0">
                         <h3 class="text-xl font-bold text-brand-ink">Environmental Rating Scales (<span id="ers-title"></span>)</h3>
                         <button type="button" onclick="document.getElementById('ers-modal').classList.add('hidden'); document.getElementById('ers-modal').classList.remove('flex');" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
                             <i class="fa-solid fa-xmark text-lg"></i>
                         </button>
                     </div>
-                    <div class="flex-grow bg-slate-50 relative">
-                        <iframe id="ers-iframe" src="" class="w-full h-full border-0"></iframe>
+                    <div class="flex-grow bg-slate-50 relative overflow-y-auto w-full p-8 md:p-12">
+                        
+                        <!-- ITERS Content -->
+                        <div id="ers-content-iters" class="hidden">
+                            <h2 class="text-3xl font-serif font-bold text-brand-ink mb-6">Infant Toddler Environment Rating Scale (ITERS)</h2>
+                            <p class="text-lg text-brand-ink/80 leading-relaxed mb-6">The ITERS is a comprehensive assessment tool designed specifically for birth to 3 years. At KIDazzle, we strictly follow ITERS guidelines because early brain development hinges on safe, responsive, and stimulating environments.</p>
+                            
+                            <h3 class="text-xl font-bold text-kidazzle-blue mb-4 mt-8">Core Assessment Areas:</h3>
+                            <ul class="space-y-4 mb-8 text-brand-ink/80 text-lg">
+                                <li class="flex gap-4 items-start"><i class="fa-solid fa-check text-kidazzle-green mt-1"></i> <span><strong>Space and Furnishings:</strong> Ensuring safe, clean, and developmentally appropriate room layouts.</span></li>
+                                <li class="flex gap-4 items-start"><i class="fa-solid fa-check text-kidazzle-green mt-1"></i> <span><strong>Personal Care Routines:</strong> Maintaining the highest standards for diapering, feeding, and sleeping.</span></li>
+                                <li class="flex gap-4 items-start"><i class="fa-solid fa-check text-kidazzle-green mt-1"></i> <span><strong>Listening and Talking:</strong> Encouraging active verbal interactions to promote cognitive growth.</span></li>
+                                <li class="flex gap-4 items-start"><i class="fa-solid fa-check text-kidazzle-green mt-1"></i> <span><strong>Activities:</strong> Tracking exposure to fine motor, art, music, blocks, and active physical play.</span></li>
+                            </ul>
+                            
+                            <div class="bg-brand-cream border border-kidazzle-blue/20 rounded-2xl p-6 text-brand-ink text-sm">
+                                <strong>Why it matters:</strong> State-level and national quality ratings heavily weigh ITERS scores. Our high performance ensures your child receives elite-level care when they need it most.
+                            </div>
+                        </div>
+
+                        <!-- ECERS Content -->
+                        <div id="ers-content-ecers" class="hidden">
+                            <h2 class="text-3xl font-serif font-bold text-brand-ink mb-6">Early Childhood Environment Rating Scale (ECERS)</h2>
+                            <p class="text-lg text-brand-ink/80 leading-relaxed mb-6">The ECERS focuses on children ages 3 to 5 (Preschool and Pre-K). This scale measures the effectiveness of our classroom "zones" to prepare children for the rigors of formal Kindergarten.</p>
+                            
+                            <h3 class="text-xl font-bold text-kidazzle-orange mb-4 mt-8">Core Assessment Areas:</h3>
+                            <ul class="space-y-4 mb-8 text-brand-ink/80 text-lg">
+                                <li class="flex gap-4 items-start"><i class="fa-solid fa-check text-kidazzle-green mt-1"></i> <span><strong>Learning Centers:</strong> Assessing the quality and accessibility of art, blocks, dramatic play, and reading zones.</span></li>
+                                <li class="flex gap-4 items-start"><i class="fa-solid fa-check text-kidazzle-green mt-1"></i> <span><strong>Language-Reasoning:</strong> Evaluating how teachers encourage logical thinking and complex communication.</span></li>
+                                <li class="flex gap-4 items-start"><i class="fa-solid fa-check text-kidazzle-green mt-1"></i> <span><strong>Program Structure:</strong> Monitoring the balance of free play versus group time and daily transitions.</span></li>
+                                <li class="flex gap-4 items-start"><i class="fa-solid fa-check text-kidazzle-green mt-1"></i> <span><strong>Interactions:</strong> Quantifying positive staff-child and peer-to-peer relationship building.</span></li>
+                            </ul>
+                            
+                            <div class="bg-brand-cream border border-kidazzle-orange/20 rounded-2xl p-6 text-brand-ink text-sm">
+                                <strong>Why it matters:</strong> A high ECERS score proves that our classroom environment actively contributes to your child's learning rather than just acting as a holding space.
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -389,7 +425,18 @@ $zones = array(
             <script>
             function openErsModal(type) {
                 document.getElementById('ers-title').innerText = type;
-                document.getElementById('ers-iframe').src = '<?php echo esc_url(home_url('/ers/')); ?>';
+                
+                // Hide all contents first
+                document.getElementById('ers-content-iters').classList.add('hidden');
+                document.getElementById('ers-content-ecers').classList.add('hidden');
+                
+                // Show requested one
+                if(type === 'ITERS') {
+                    document.getElementById('ers-content-iters').classList.remove('hidden');
+                } else {
+                    document.getElementById('ers-content-ecers').classList.remove('hidden');
+                }
+
                 const modal = document.getElementById('ers-modal');
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');

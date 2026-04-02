@@ -43,7 +43,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 			<h4 class="text-white font-bold mb-6 text-xs tracking-widest uppercase">Resources</h4>
 			<ul class="space-y-3 text-sm font-medium text-slate-300">
 				<li><a href="/teacher-portal/" class="hover:text-white transition">Teacher Portal</a></li>
-				<li><a href="/resources/" class="hover:text-white transition">Parent Resources</a></li>
+				<li><a href="/parents/" class="hover:text-white transition">Parent Resources</a></li>
 				<li><a href="/blog/"
 						class="hover:text-yellow-400 hover:underline transition font-bold uppercase text-[10px] tracking-widest mt-6 block"><i
 							class="fa-solid fa-book-open mr-1"></i> View More Posts</a></li>

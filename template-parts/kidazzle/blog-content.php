@@ -23,18 +23,15 @@
         <div
             class="bg-slate-50 rounded-[3.5rem] shadow-xl overflow-hidden border border-slate-200 flex flex-col md:flex-row items-stretch">
             <div class="md:w-1/2 p-12 md:p-20 flex flex-col justify-center">
-                <span class="text-purple-600 font-bold uppercase tracking-widest text-sm mb-4 block">Educational
-                    Technology</span>
-                <h2 class="text-4xl font-extrabold text-slate-900 mb-6 leading-tight">AI Lesson Plan Bot</h2>
+                <span class="text-purple-600 font-bold uppercase tracking-widest text-sm mb-4 block">Parent Resources</span>
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-6 leading-tight">Weekend Lesson Plan Generator</h2>
                 <p class="text-lg text-slate-600 mb-8 leading-relaxed font-medium">
-                    KIDazzle is leading the way in early education technology. Our proprietary AI Lesson Plan Bot
-                    assists our teachers in creating dynamic, state-aligned curriculum tailored specifically to their
-                    students' unique needs.
+                    Looking for weekend activities? Using our AI generator, input your zip code and receive a customized 2-day lesson plan (Saturday & Sunday) full of art, reading, and sensory activities right in your area!
                 </p>
                 <div class="flex gap-4">
                     <button id="ai-lesson-btn"
                         class="bg-purple-600 text-white font-bold py-4 px-8 rounded-2xl hover:bg-purple-700 transition shadow-lg flex items-center gap-2">
-                        Create Lesson Plan <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        Generate Weekend Plan <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </button>
                 </div>
             </div>
@@ -43,7 +40,7 @@
                     class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
                 </div>
                 <div class="bg-white/10 backdrop-blur-md rounded-full p-12 border border-white/20 animate-pulse">
-                    <i data-lucide="bot" class="w-32 h-32 text-white"></i>
+                    <i data-lucide="calendar" class="w-32 h-32 text-white"></i>
                 </div>
             </div>
         </div>
