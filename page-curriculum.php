@@ -310,11 +310,11 @@ $zones = array(
 
             <script>
             function openSurveyModal(surveyId) {
-                const iframe = document.getElementById('survey-iframe');
+                const modal = document.getElementById('survey-modal');
+                const iframe = modal.querySelector('iframe');
                 iframe.src = 'https://api.leadconnectorhq.com/widget/survey/' + surveyId;
                 iframe.id = surveyId;
                 
-                const modal = document.getElementById('survey-modal');
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
             }
