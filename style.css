@@ -127,3 +127,26 @@ a.elementor-button:hover,
     color: #ffffff !important; 
 }
 
+
+/* ========================================================
+   KIDAZZLE LOCATIONS GRID - DYNAMIC HOVER EFFECTS
+======================================================== */
+
+.location-card .absolute.top-0.right-0,
+.location-card span.rounded-full.uppercase {
+    transition: background-color 0.35s ease, color 0.35s ease !important;
+}
+
+.location-card:not(:hover) .absolute.top-0.right-0 {
+    background-color: #111827 !important;
+    color: #ffffff !important;
+}
+
+.location-card:not(:hover) span.rounded-full.uppercase {
+    background-color: #111827 !important;
+    color: #ffffff !important;
+}
+
+.location-card:hover span.rounded-full.uppercase {
+    color: #ffffff !important;
+}
