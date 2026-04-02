@@ -73,6 +73,7 @@
                     class="w-full text-left group block bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all">
                     <h3 class="font-bold text-xl text-slate-900 group-hover:text-indigo-600 transition">College Park</h3>
                     <p class="text-sm text-slate-600 mt-2">Tri-cities area, conveniently located near Hartsfield-Jackson.</p>
+                    <a href="tel:4045281553" onclick="event.stopPropagation();" class="text-slate-800 text-sm font-bold mt-2 flex items-center gap-2 hover:text-indigo-600"><i data-lucide="phone" class="w-4 h-4 text-green-500"></i> (404) 528-1553</a>
                     <span
                         class="text-indigo-600 text-xs font-extrabold uppercase tracking-widest mt-4 flex items-center gap-1">View Map <i data-lucide="map-pin" class="w-3 h-3"></i></span>
                 </button>
