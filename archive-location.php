@@ -43,7 +43,7 @@ $locations_query = new WP_Query(array(
 
 			<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up"
 				style="animation-delay: 0.1s;">
-				<?php echo wp_kses_post(get_theme_mod('kidazzle_locations_archive_title', __('Find your <span class="text-kidazzle-green italic">KIDazzle Community</span> - Our Locations', 'kidazzle-theme'))); ?>
+				<?php echo wp_kses_post(get_theme_mod('kidazzle_locations_archive_title', __('Find your <span class="text-kidazzle-green" style="font-family: \'Times New Roman\', Times, serif;">KIDazzle Community</span> - Our Locations', 'kidazzle-theme'))); ?>
 			</h1>
 
 			<p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
