@@ -426,7 +426,7 @@ $zones = array(
                             specific interests and development levels of their current classroom, ensuring personalized
                             learning for every child.
                         </p>
-                        <a href="<?php echo esc_url(home_url('/ai-lesson-plan/')); ?>"
+                        <a href="<?php echo esc_url(home_url('/resources/')); ?>"
                             class="inline-flex items-center gap-3 px-10 py-5 bg-brand-ink text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-kidazzle-blue hover:-translate-y-1 transition-all shadow-xl">
                             Experience the Innovation <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i>
                         </a>

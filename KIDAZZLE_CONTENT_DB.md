@@ -10,7 +10,7 @@ Kidazzle is a premier, family-owned early learning academy. It must NEVER refere
 
 ## SEO GEO-TARGETING
 - **Strictly Localized.** 
-- Primary Geolocation Hubs: **Atlanta (Georgia), Miami (Florida), Memphis (Tennessee).** 
+- Primary Geolocation Hubs: **Atlanta (Georgia) - Locations include College Park (404-305-6950), East Point, Pittsburgh, Hampton., Miami (Florida), Memphis (Tennessee).** 
 - Specific geo-combo targets (e.g., "Daycare in Hampton", "Pre-K near Memphis").
 
 ## PRIMARY TOPICS & ARCHITECTURE (What the main pages should talk through)

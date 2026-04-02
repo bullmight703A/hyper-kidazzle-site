@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<section class="py-24 bg-kidazzle-yellow border-t border-yellow-200">
+<section class="py-24 bg-[#FDFBF7] border-t border-[#EAE0D5]">
     <div class="container mx-auto px-4 text-center mb-12">
         <h2 class="text-4xl md:text-5xl font-extrabold text-kidazzle-blue uppercase tracking-tight font-display drop-shadow-sm">
             <?php esc_html_e('The KIDazzle Growth Journey', 'kidazzle'); ?>

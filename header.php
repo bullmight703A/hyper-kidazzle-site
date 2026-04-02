@@ -92,9 +92,20 @@
 </head>
 
 
-<body <?php body_class('font-sans text-brand-ink bg-white'); ?>>
+<body <?php body_class('font-sans text-brand-ink bg-[#FDFBF7]'); ?>>
 	<?php wp_body_open(); ?>
 
+	
+	<!-- STICKY MOBILE TOUR / CALL BAR -->
+	<div class="fixed bottom-0 left-0 w-full z-[100] bg-[#023047] text-white py-3 px-4 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] flex md:hidden justify-between items-center border-t border-[#EAE0D5] rounded-t-2xl">
+		<a href="tel:4043056950" class="flex-1 text-center font-bold text-sm border-r border-[#EAE0D5]/20 flex items-center justify-center gap-2 hover:opacity-80 transition-opacity">
+			<i class="fa-solid fa-phone"></i> Call Now
+		</a>
+		<a href="/contact/" class="flex-1 text-center font-bold text-sm flex items-center justify-center gap-2 text-[#FB8500] hover:opacity-80 transition-opacity">
+			<i class="fa-solid fa-calendar-check"></i> Book Tour
+		</a>
+	</div>
+	
 	<!-- Skip Links for Accessibility -->
 	<a href="#main-content"
 		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-kidazzle-blueDark p-4 z-[100] rounded-lg shadow-lg"><?php _e('Skip to content', 'kidazzle-theme'); ?></a>
@@ -121,7 +132,7 @@
 
 	<!-- TOURING ACTION BAR -->
 	<div class="bg-kidazzle-red text-white py-3 px-4 shadow-md font-bold text-center text-sm tracking-wide hidden md:block">
-		<span class="mr-3">🎉 Enrollment is open for the upcoming season!</span>
+		<span class="mr-3">🎉 Enrolling now!</span>
 		<a href="/contact/" class="bg-white text-kidazzle-red px-4 py-1.5 rounded-full text-xs font-extrabold shadow-sm hover:bg-slate-100 transition whitespace-nowrap">Schedule A Tour</a>
 	</div>
 
