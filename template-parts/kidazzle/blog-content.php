@@ -18,7 +18,7 @@
 </header>
 
 <!-- INNOVATION FEATURE: AI BOT -->
-<section class="py-24 bg-white">
+<section class="py-24 bg-[#FDFBF7]">
     <div class="container mx-auto px-4">
         <div
             class="bg-slate-50 rounded-[3.5rem] shadow-xl overflow-hidden border border-slate-200 flex flex-col md:flex-row items-stretch">
@@ -48,7 +48,7 @@
 </section>
 
 <!-- QUICK ACCESS FORMS -->
-<section class="py-24 bg-slate-50 border-y border-slate-100">
+<section class="py-24 bg-[#FDFBF7] border-y border-[#EAE0D5]">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Quick Access Forms</h2>
@@ -103,7 +103,7 @@
 </section>
 
 <!-- BLOG PREVIEW -->
-<section class="py-24 bg-white">
+<section class="py-24 bg-[#FDFBF7]">
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div class="max-w-xl">

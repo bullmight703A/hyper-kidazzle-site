@@ -16,7 +16,7 @@
 </header>
 
 <!-- CONTACT CONTENT SECTION -->
-<section class="py-24 bg-white">
+<section class="py-24 bg-[#FDFBF7]">
     <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-20 items-start">
 
@@ -62,7 +62,7 @@
                 </div>
 
                 <!-- REGIONAL CENTERS LIST -->
-                <div class="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-200">
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm">
                     <h3 class="text-2xl font-bold text-slate-900 mb-6">Regional Hubs</h3>
                     <div class="grid sm:grid-cols-2 gap-8">
                         <div>

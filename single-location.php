@@ -169,7 +169,7 @@ while (have_posts()):
 						<!-- Map (Right) -->
 						<div class="bg-white p-8 rounded-[2rem] shadow-xl border-t-8 border-indigo-500 flex flex-col h-full">
 							<h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2 shrink-0">
-								<i class="fa-solid fa-map-location-dot text-indigo-500"></i> Google Business Location
+								<i class="fa-solid fa-map-location-dot text-indigo-500"></i> Business Location
 							</h3>
 							<section class="bg-slate-100 rounded-[2rem] h-full min-h-[500px] flex items-center justify-center text-slate-400 border-2 border-slate-200 overflow-hidden relative grow">
 								<?php if ($maps_embed): ?>
