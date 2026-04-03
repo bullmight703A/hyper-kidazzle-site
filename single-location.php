@@ -266,41 +266,7 @@ while (have_posts()):
 				</div>
 			</div>
 
-			<?php if ($director_name || $director_bio): ?>
-				<!-- Director's Welcome -->
-				<section class="mt-24 bg-white rounded-[3rem] p-12 shadow-soft border border-brand-ink/5">
-					<div class="grid md:grid-cols-2 gap-16 items-center">
-						<div class="relative">
-							<div class="absolute inset-0 bg-kidazzle-yellow/10 rounded-[3rem] -rotate-3 transform translate-x-4 translate-y-4"></div>
-							<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5]">
-								<?php if ($director_photo): ?>
-									<img src="<?php echo esc_url($director_photo); ?>" alt="<?php echo esc_attr($director_name); ?>" class="w-full h-full object-cover">
-								<?php else: ?>
-									<div class="w-full h-full bg-slate-100 flex items-center justify-center">
-										<i class="fa-solid fa-user-tie text-6xl text-slate-300"></i>
-									</div>
-								<?php endif; ?>
-							</div>
-						</div>
-						<div>
-							<span class="text-kidazzle-yellow font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Campus Leadership</span>
-							<h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">A Welcome from Our Director</h2>
-							<div class="prose prose-slate text-brand-ink/80 text-lg leading-relaxed mb-8">
-								<?php echo wp_kses_post(wpautop($director_bio)); ?>
-							</div>
-							<div class="flex items-center gap-6">
-								<?php if ($director_signature): ?>
-									<img src="<?php echo esc_url($director_signature); ?>" alt="Director Signature" class="h-16 w-auto opacity-70">
-								<?php endif; ?>
-								<div>
-									<p class="font-bold text-brand-ink"><?php echo esc_html($director_name); ?></p>
-									<p class="text-xs text-brand-ink/60 uppercase tracking-widest leading-none">Center Director</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-			<?php endif; ?>
+
 
 			<?php if ($programs_query->have_posts()): ?>
 				<!-- Programs at this location -->
