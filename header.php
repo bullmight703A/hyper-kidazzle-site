@@ -131,9 +131,9 @@
 	</div>
 
 	<!-- TOURING ACTION BAR -->
-	<div class="bg-kidazzle-red text-white py-3 px-4 shadow-md font-bold text-center text-sm tracking-wide hidden md:block">
+	<div class="bg-purple-700 text-white py-3 px-4 shadow-md font-bold text-center text-sm tracking-wide hidden md:block">
 		<span class="mr-3">🎉 Enrolling now!</span>
-		<a href="/contact/" class="bg-white text-kidazzle-red px-4 py-1.5 rounded-full text-xs font-extrabold shadow-sm hover:bg-slate-100 transition whitespace-nowrap">Schedule A Tour</a>
+		<a href="/contact/" class="bg-white text-purple-700 px-4 py-1.5 rounded-full text-xs font-extrabold shadow-sm hover:bg-slate-100 transition whitespace-nowrap">Schedule A Tour / Contact Us</a>
 	</div>
 
 	<!-- MAIN NAVIGATION -->

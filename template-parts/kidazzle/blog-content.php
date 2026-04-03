@@ -160,9 +160,8 @@
         const aiLoader = document.getElementById('ai-lesson-loader');
         const aiBtn = document.getElementById('ai-lesson-btn');
 
-        // Placeholder Form URL (User will replace this with the actual Jotform/GHL link)
-        // Since we don't have the real form URL yet, we use a placeholder that will load a visually distinct page
-        const formUrl = 'https://link.wimper.com/widget/form/placeholder';
+        // N8N Webhook Form URL provided by user
+        const formUrl = 'https://bullmight-n8n-u46728.vm.elestio.app/webhook/36ee9822-47cb-47ef-be78-2a1031cd0744';
 
         function openAiModal(e) {
             e.preventDefault();

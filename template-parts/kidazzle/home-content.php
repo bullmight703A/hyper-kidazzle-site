@@ -18,7 +18,7 @@
                         data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-600"></i> Since 1994</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-slate-900">Where Learning <br /><span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-cyan-700">Is
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-700">Is
                     Fun!</span></h1>
             <p class="text-xl text-slate-900 mb-10 font-bold leading-relaxed max-w-lg">From Memphis to Miami to Atlanta,
                 we are an independent academy nurturing bright minds for over 31 years.</p>

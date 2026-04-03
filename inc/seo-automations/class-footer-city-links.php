@@ -22,47 +22,22 @@ class kidazzle_Footer_City_Links
      * Get all cities from locations
      */
     public static function get_cities() {
-        $locations = get_posts([
-            'post_type' => 'location',
-            'posts_per_page' => -1,
-            'post_status' => 'publish'
-        ]);
-        
-        $cities = [];
-        
-        foreach ($locations as $loc) {
-            $city = trim(get_post_meta($loc->ID, 'location_city', true));
-            $state = trim(get_post_meta($loc->ID, 'location_state', true));
-            
-            // Default to GA if state is missing (most locations are in GA)
-            if (empty($state)) {
-                $state = 'GA';
-            }
-            $state = strtoupper($state);
-            
-            if ($city) {
-                // Use state in key to distinguish same city in diff states (e.g. Springfield)
-                $key = sanitize_title($city . '-' . $state);
-                
-                if (!isset($cities[$key])) {
-                    $cities[$key] = [
-                        'city' => $city,
-                        'state' => $state,
-                        'url' => get_permalink($loc),
-                        'count' => 1
-                    ];
-                } else {
-                    $cities[$key]['count']++;
-                }
-            }
-        }
-        
-        // Sort alphabetically
-        uasort($cities, function($a, $b) {
-            return strcmp($a['city'], $b['city']);
-        });
-        
-        return $cities;
+        // Manually grouped by exact user specification to guarantee TN and FL rendering
+        return [
+            'TN' => [
+                ['city' => 'Memphis', 'url' => '/locations/memphis']
+            ],
+            'FL' => [
+                ['city' => 'Miami', 'url' => '/locations/miami']
+            ],
+            'GA' => [
+                ['city' => 'Atlanta', 'url' => '/locations/atlanta'],
+                ['city' => 'College Park', 'url' => '/locations/college-park'],
+                ['city' => 'Hampton', 'url' => '/locations/hampton'],
+                ['city' => 'Midtown Atlanta', 'url' => '/locations/midtown-atlanta'],
+                ['city' => 'West End', 'url' => '/locations/west-end']
+            ]
+        ];
     }
     
     /**
@@ -79,12 +54,7 @@ class kidazzle_Footer_City_Links
             return;
         }
         
-        // Group by state
-        $by_state = [];
-        foreach ($cities as $c) {
-            $state = $c['state'] ?: 'Other';
-            $by_state[$state][] = $c;
-        }
+        $by_state = $cities;
         
         ?>
         <div class="kidazzle-footer-cities">

@@ -141,13 +141,7 @@ if ($footer_scripts) {
 ?>
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
-		setTimeout(() => {
-			document.querySelectorAll('body > div, body > footer ~ div, body > p').forEach(el => {
-				if (el.innerText && el.innerText.toUpperCase().includes('SERVING GA')) {
-					el.style.display = 'none';
-				}
-			});
-		}, 500); // 500ms delay to ensure Customizer scripts injected fully
+		// Custom footer scripts loaded
 	});
 </script>
 </script>

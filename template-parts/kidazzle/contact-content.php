@@ -68,23 +68,23 @@
                         <div>
                             <p class="font-extrabold text-xs uppercase tracking-widest text-orange-600 mb-2">Georgia</p>
                             <ul class="text-sm space-y-2 text-slate-600 font-medium mb-6">
-                                <li>Atlanta Federal Center</li>
-                                <li>IRS Summit Building</li>
-                                <li>College Park FAA Regional Office</li>
-                                <li>Hampton - Atlanta FAA Office</li>
-                                <li>Historical West End of Atlanta</li>
+                                <li><a href="/locations/atlanta" class="hover:text-indigo-600 transition">Atlanta Federal Center</a></li>
+                                <li><a href="/locations/atlanta" class="hover:text-indigo-600 transition">IRS Summit Building</a></li>
+                                <li><a href="/locations/college-park" class="hover:text-indigo-600 transition">College Park FAA Regional Office</a></li>
+                                <li><a href="/locations/hampton" class="hover:text-indigo-600 transition">Hampton - Atlanta FAA Office</a></li>
+                                <li><a href="/locations/west-end" class="hover:text-indigo-600 transition">Historical West End of Atlanta</a></li>
                             </ul>
                         </div>
                         <div>
                             <p class="font-extrabold text-xs uppercase tracking-widest text-indigo-600 mb-2">Tennessee
                             </p>
                             <ul class="text-sm space-y-2 text-slate-600 font-medium mb-6">
-                                <li>Downtown Memphis by FedEx Hub</li>
+                                <li><a href="/locations/memphis" class="hover:text-indigo-600 transition">Downtown Memphis by FedEx Hub</a></li>
                             </ul>
 
                             <p class="font-extrabold text-xs uppercase tracking-widest text-indigo-600 mb-2">Florida</p>
                             <ul class="text-sm space-y-2 text-slate-600 font-medium">
-                                <li>Doral by Florida International Airport</li>
+                                <li><a href="/locations/miami" class="hover:text-indigo-600 transition">Doral by Florida International Airport</a></li>
                             </ul>
                         </div>
                     </div>
@@ -109,11 +109,26 @@
                             will
                             get back to you shortly.</p>
                     </div>
-                    <!-- DYNAMIC FORM MODAL TRIGGER -->
-                    <div class="text-center py-32">
-                        <button class="ghl-trigger bg-white text-purple-700 px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-purple-50 transition shadow-2xl hover:scale-105 transform duration-300" data-ghl-url="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la">
-                            Contact Us Now
-                        </button>
+                    <!-- DYNAMIC FORM IFRAME -->
+                    <div class="h-full w-full bg-white rounded-3xl p-2">
+                        <iframe
+                            src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
+                            style="width:100%;height:100%;border:none;border-radius:12px"
+                            id="inline-N8RYaUY1SuORexcyA6la" 
+                            data-layout="{'id':'INLINE'}"
+                            data-trigger-type="alwaysShow"
+                            data-trigger-value=""
+                            data-activation-type="alwaysActivated"
+                            data-activation-value=""
+                            data-deactivation-type="neverDeactivate"
+                            data-deactivation-value=""
+                            data-form-name="Contact Form"
+                            data-height="850"
+                            data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la"
+                            data-form-id="N8RYaUY1SuORexcyA6la"
+                            title="Contact Form"
+                        ></iframe>
+                        <script src="https://api.leadconnectorhq.com/js/form_embed.js" defer></script>
                     </div>
                 </div>
             </div>

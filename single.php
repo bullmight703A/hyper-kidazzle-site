@@ -86,6 +86,13 @@ $related_query = new WP_Query($related_args);
 				?>
 			</div>
 
+			<!-- About KIDazzle Internal Linking -->
+			<div class="mt-12 p-8 bg-kidazzle-blue/5 rounded-3xl border border-kidazzle-blue/10 text-base">
+				<h3 class="font-serif text-2xl font-bold text-brand-ink mb-4">Who is KIDazzle?</h3>
+				<p class="text-brand-ink/80 mb-4 font-medium leading-relaxed">For over 31 years, <a href="/about/" class="font-bold text-kidazzle-blue hover:underline hover:text-kidazzle-blue/80 transition">KIDazzle Child Care</a> has set the standard of excellence in early childhood education. As an independent academy, we provide unparalleled care and education deeply rooted in the families we serve.</p>
+				<p class="text-brand-ink/90 font-medium text-sm leading-relaxed">Explore our <a href="/programs/" class="font-bold text-kidazzle-blue hover:underline">innovative programs</a>, discover our <a href="/curriculum/" class="font-bold text-kidazzle-blue hover:underline">Creative Curriculum®</a>, or <a href="/locations/" class="font-bold text-kidazzle-blue hover:underline">find a campus near you across Georgia, Tennessee, and Florida</a>.</p>
+			</div>
+
 			<!-- Share / Tags -->
 			<div
 				class="mt-16 pt-10 border-t border-brand-ink/5 flex flex-col md:flex-row justify-between items-center gap-6">

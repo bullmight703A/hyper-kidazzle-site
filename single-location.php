@@ -146,36 +146,44 @@ while (have_posts()):
 					<?php endif; ?>
 					</section>
 
-					<!-- Calendar (Middle) -->
-					<div id="tour" class="bg-white p-8 rounded-[2rem] shadow-xl border-t-8 border-yellow-400">
-						<h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-							<i class="fa-solid fa-calendar-day text-yellow-500"></i> Book a Tour
-						</h3>
-						<div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] min-h-[600px] flex items-center justify-center relative p-2 overflow-hidden">
-							<?php if ($tour_booking_link): ?>
-								<!-- If explicitly a link/embed URL is provided -->
-								<iframe src="<?php echo esc_url($tour_booking_link); ?>" style="width: 100%; height: 100%; min-height: 800px; border:none;" id="msgsndr-calendar"></iframe>
-							<?php else: ?>
-								<!-- Fallback to Shortcode Form -->
-								<div class="w-full">
-									<?php echo do_shortcode('[kidazzle_tour_form location_id="' . $location_id . '"]'); ?>
-								</div>
-							<?php endif; ?>
+					<!-- Calendar & Map Side-by-Side (Desktop) -->
+					<div class="grid md:grid-cols-2 gap-8 mb-12">
+						<!-- Calendar (Left) -->
+						<div id="tour" class="bg-white p-8 rounded-[2rem] shadow-xl border-t-8 border-yellow-400 flex flex-col h-full">
+							<h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2 shrink-0">
+								<i class="fa-solid fa-calendar-day text-yellow-500"></i> Book a Tour
+							</h3>
+							<div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] h-full min-h-[500px] flex items-center justify-center relative p-2 overflow-hidden grow">
+								<?php if ($tour_booking_link): ?>
+									<!-- If explicitly a link/embed URL is provided -->
+									<iframe src="<?php echo esc_url($tour_booking_link); ?>" style="width: 100%; height: 100%; min-height: 500px; border:none;" id="msgsndr-calendar"></iframe>
+								<?php else: ?>
+									<!-- Fallback to Shortcode Form -->
+									<div class="w-full">
+										<?php echo do_shortcode('[kidazzle_tour_form location_id="' . $location_id . '"]'); ?>
+									</div>
+								<?php endif; ?>
+							</div>
+						</div>
+
+						<!-- Map (Right) -->
+						<div class="bg-white p-8 rounded-[2rem] shadow-xl border-t-8 border-indigo-500 flex flex-col h-full">
+							<h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2 shrink-0">
+								<i class="fa-solid fa-map-location-dot text-indigo-500"></i> Google Business Location
+							</h3>
+							<section class="bg-slate-100 rounded-[2rem] h-full min-h-[500px] flex items-center justify-center text-slate-400 border-2 border-slate-200 overflow-hidden relative grow">
+								<?php if ($maps_embed): ?>
+									<?php echo $maps_embed; ?>
+								<?php elseif ($lat && $lng): ?>
+									<div data-kidazzle-map
+										data-kidazzle-locations='[{"lat":<?php echo esc_attr($lat); ?>,"lng":<?php echo esc_attr($lng); ?>,"name":"<?php echo esc_js(get_the_title()); ?>","city":"<?php echo esc_js($city); ?>","url":"<?php echo esc_url(get_permalink()); ?>"}]'
+										class="w-full h-full"></div>
+								<?php else: ?>
+									<p class="font-mono text-sm">Map Unavailable</p>
+								<?php endif; ?>
+							</section>
 						</div>
 					</div>
-
-					<!-- Map (Bottom) -->
-					<section class="bg-slate-100 rounded-[2rem] h-96 flex items-center justify-center text-slate-400 border-2 border-slate-200 overflow-hidden relative">
-						<?php if ($maps_embed): ?>
-							<?php echo $maps_embed; ?>
-						<?php elseif ($lat && $lng): ?>
-							<div data-kidazzle-map
-								data-kidazzle-locations='[{"lat":<?php echo esc_attr($lat); ?>,"lng":<?php echo esc_attr($lng); ?>,"name":"<?php echo esc_js(get_the_title()); ?>","city":"<?php echo esc_js($city); ?>","url":"<?php echo esc_url(get_permalink()); ?>"}]'
-								class="w-full h-full"></div>
-						<?php else: ?>
-							<p class="font-mono text-sm">Map Unavailable</p>
-						<?php endif; ?>
-					</section>
 
 					<?php if ($virtual_tour_embed): ?>
 						<!-- Virtual Tour Section -->
