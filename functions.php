@@ -49,6 +49,7 @@ require_once KIDAZZLE_THEME_DIR . '/inc/cpt-programs.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/cpt-locations.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/cpt-cities.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/cpt-team-members.php';
+require_once KIDAZZLE_THEME_DIR . '/inc/cpt-vanity.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/class-program-enhancements.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/class-amp-blog.php';
 
