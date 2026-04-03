@@ -20,33 +20,106 @@ $locations_query = new WP_Query(array(
 
 <main class="bg-brand-cream pb-20">
 
-	<!-- Hero 404 Action Section -->
-	<section class="relative pt-20 pb-16 lg:pt-32 lg:pb-24 bg-white overflow-hidden text-center rounded-b-[4rem] border-b border-brand-ink/5 shadow-sm">
-		<div
-			class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-kidazzle-red/10 via-transparent to-transparent">
-		</div>
+	<!-- Minified 404 Warning -->
+	<div class="bg-kidazzle-red text-white py-4 text-center px-4 relative z-50 shadow-md">
+		<p class="font-bold text-sm md:text-base tracking-widest uppercase"><i class="fa-solid fa-triangle-exclamation mr-2"></i> 404 Error | Oops! This page is playing hide & seek. Let's get you back on track below!</p>
+	</div>
 
-		<div class="max-w-4xl mx-auto px-4 relative z-10">
-			<div class="text-[8rem] leading-none md:text-[12rem] font-serif font-black text-kidazzle-red/20 mb-[-2rem] md:mb-[-4rem] animate-pulse">
-				404
-			</div>
-			<div class="inline-flex items-center gap-2 bg-kidazzle-red text-white px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold shadow-md mb-6 relative z-20">
-				<i class="fa-solid fa-compass"></i> Let's Get You Back
-			</div>
-
-			<h1 class="font-serif text-4xl md:text-6xl text-brand-ink mb-6 relative z-20">
-				Oops! This page is playing <span class="text-kidazzle-red italic">hide & seek.</span>
-			</h1>
-
-			<p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 relative z-20">
-				We've checked the toy bins and looked under the rugs, but we can't find the page you're looking for. Instead of turning back, let's connect you directly with one of our campuses below!
-			</p>
-            
-            <div class="flex flex-wrap justify-center gap-4 relative z-20">
-                <a href="<?php echo esc_url(home_url('/')); ?>" class="px-8 py-4 bg-brand-ink text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-kidazzle-blue hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-float">Go Back Home</a>
+    <!-- HERO SECTION From Homepage -->
+    <header class="relative w-full h-[550px] md:h-[650px] flex items-center overflow-hidden pt-0 mt-0">
+        <div class="absolute inset-0 z-0">
+            <!-- Vibrant image of children playing -->
+            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                alt="Vibrant children playing together" class="w-full h-full object-cover">
+            <!-- 50% Faded Overlay -->
+            <div class="absolute inset-0 bg-white/60"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-xl bg-white/70 backdrop-blur-md p-6 md:p-10 rounded-[3rem] shadow-2xl border border-white/50">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-yellow-400 text-slate-900 px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider shadow-sm">Let's Connect</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-slate-900">Where Learning <br /><span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-700">Is
+                        Fun!</span></h1>
+                <p class="text-lg text-slate-900 mb-8 font-bold leading-relaxed max-w-lg">From Memphis to Miami to Atlanta,
+                    we are an independent academy nurturing bright minds for over 31 years. You may be lost, but you've found the right place.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="/locations/"
+                        class="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 transform hover:-translate-y-1 text-center">Find
+                        Your Center <i class="fa-solid fa-chevron-right ml-1"></i></a>
+                    <a href="<?php echo esc_url(home_url('/')); ?>"
+                        class="bg-white/90 text-slate-900 border-2 border-slate-900 hover:border-indigo-600 hover:text-indigo-700 font-bold py-4 px-10 rounded-2xl transition flex items-center justify-center text-center">Go To Home</a>
+                </div>
             </div>
-		</div>
-	</section>
+        </div>
+    </header>
+
+    <!-- REGIONAL POWERHOUSE From Homepage -->
+    <section class="py-24 bg-slate-50 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-cyan-600 font-extrabold tracking-widest uppercase text-sm block mb-2">Footprint</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900">Regional Excellence</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Memphis -->
+                <a href="/locations/memphis/"
+                    class="group bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-slate-200">
+                    <div class="h-56 relative overflow-hidden">
+                        <img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/693c7cb5dbed99e0b07c8310.png"
+                            class="w-full h-full object-cover transition group-hover:scale-110" alt="Memphis">
+                        <div class="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition"></div>
+                    </div>
+                    <div class="p-8">
+                        <span
+                            class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block tracking-wide">Tennessee</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Memphis</h3>
+                        <p class="text-slate-500 text-sm mb-4">Soul, Rhythm, & Rigor.</p>
+                        <span class="text-indigo-600 font-bold text-sm flex items-center gap-2">View Center <i
+                                class="fa-solid fa-arrow-right w-4 h-4"></i></span>
+                    </div>
+                </a>
+                <!-- Card 2: Atlanta -->
+                <a href="/locations/"
+                    class="group bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white -mt-4 relative z-10 transition-all">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/693c7ddeb4f42080d1d6f342.png"
+                            class="w-full h-full object-cover transition group-hover:scale-110" alt="Atlanta">
+                        <div
+                            class="absolute top-4 right-4 bg-white text-orange-600 px-4 py-2 rounded-full text-xs font-extrabold shadow-lg">
+                            <i class="fa-solid fa-star w-3 h-3 inline-block mr-1 text-orange-600"></i> HQ
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <span
+                            class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block tracking-wide">Georgia</span>
+                        <h3 class="text-3xl font-bold text-slate-900 mb-2">Atlanta</h3>
+                        <p class="text-slate-500 text-sm mb-4">5 Locations - Our Home Base.</p>
+                        <span class="text-orange-600 font-bold text-sm flex items-center gap-2">View All Locations <i
+                                class="fa-solid fa-arrow-right w-4 h-4"></i></span>
+                    </div>
+                </a>
+                <!-- Card 3: Doral -->
+                <a href="/locations/miami/"
+                    class="group bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-slate-200">
+                    <div class="h-56 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            class="w-full h-full object-cover transition group-hover:scale-110" alt="Doral">
+                        <div class="absolute inset-0 bg-cyan-900/10 group-hover:bg-transparent transition"></div>
+                    </div>
+                    <div class="p-8">
+                        <span
+                            class="bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block tracking-wide">Florida</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Doral</h3>
+                        <p class="text-slate-500 text-sm mb-4">Sunshine & STEM focus.</p>
+                        <span class="text-cyan-600 font-bold text-sm flex items-center gap-2">View Center <i
+                                class="fa-solid fa-arrow-right w-4 h-4"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
 	<!-- Call To Action Grid: All Campuses -->
 	<section class="pt-16 lg:pt-24 px-4 max-w-7xl mx-auto">
