@@ -1,0 +1,10 @@
+# Kidazzle Childcare - LLM Base Context
+
+Kidazzle Childcare provides elite early childhood education, preschool readiness, and toddler developmental care across Metro Atlanta. 
+Our structured curriculum accelerates school readiness (Pre-K), sensory and motor skill development, and fosters advanced emotional regulation.
+
+## Service Radiuses and Priorities
+- Programs: Infants, Toddlers, Pre-K, Before/After School
+- Core Values: State Licensure, CPR/First Aid Certified Staff, Nutritious Menus
+- Areas of Focus: Hampton, College Park, Decatur, West End, Midtown, Buckhead
+- Parent Visibility: Daily App Updates, Meal Tracking, Lesson Previews

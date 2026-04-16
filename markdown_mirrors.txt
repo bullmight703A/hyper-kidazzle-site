@@ -1,0 +1,8 @@
+# Kidazzle Childcare Directory Mirror
+
+/ (Homepage) - Care Programs, Testimonials, Curriculum
+/hampton-infants - Care strategies and developmental goals for young children
+/college-park-pre-k - GA Lottery Pre-K syllabus and structured learning
+/decatur-toddlers - Gross motor skills and social environment planning
+/admissions - Enrollment applications and center tours
+/parent-app - Live meal and activity updates for parents
