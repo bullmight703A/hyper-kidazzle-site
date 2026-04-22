@@ -40,7 +40,7 @@ $resources = array(
 		'icon' => get_post_meta($page_id, 'parents_resource_handbook_icon', true) ?: 'fa-solid fa-book-open',
 		'title' => get_post_meta($page_id, 'parents_resource_handbook_title', true) ?: 'Parent Handbook',
 		'description' => get_post_meta($page_id, 'parents_resource_handbook_desc', true) ?: 'Policies, procedures, and operational details.',
-		'url' => get_post_meta($page_id, 'parents_resource_handbook_url', true) ?: '#',
+		'url' => get_post_meta($page_id, 'parents_resource_handbook_url', true) ?: get_stylesheet_directory_uri() . '/assets/docs/parent-handbook.pdf',
 		'colorClass' => 'kidazzle-yellow',
 	),
 	array(
@@ -215,7 +215,7 @@ $resources = array(
 		'icon' => 'fa-solid fa-book-open',
 		'title' => 'Parent Handbook',
 		'desc' => 'Policies, procedures, and operational details.',
-		'url' => get_post_meta($page_id, 'parents_resource_handbook_url', true) ?: '#',
+		'url' => get_post_meta($page_id, 'parents_resource_handbook_url', true) ?: get_stylesheet_directory_uri() . '/assets/docs/parent-handbook.pdf',
 		'color' => 'kidazzle-yellow',
 	),
 	array(

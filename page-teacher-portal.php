@@ -77,7 +77,7 @@ if (post_password_required()) {
                     </div>
                     <h3 class="font-bold text-brand-ink mb-2">Staff Email</h3>
                     <p class="text-brand-ink/60 text-xs mb-6">Access your official @kidazzle.com inbox.</p>
-                    <a href="https://webmail.kidazzle.com" target="_blank" class="text-kidazzle-blue font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Login <i class="fa-solid fa-external-link text-[8px]"></i></a>
+                    <a href="https://box2215.bluehost.com:2083/cpsess7249441792/frontend/jupiter/mail/webmailform.html?user=listing%40kidazzle.com&return_request_uri=%2Fcpsess7249441792%2Ffrontend%2Fjupiter%2Femail_accounts%2Findex.html" target="_blank" class="text-kidazzle-blue font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Login <i class="fa-solid fa-external-link text-[8px]"></i></a>
                 </div>
 
                 <!-- Weekly Tasks -->
@@ -137,7 +137,7 @@ if (post_password_required()) {
 
             <!-- Handbooks Section -->
             <div class="grid md:grid-cols-2 gap-8 mb-20">
-                <a href="#" class="flex items-center p-8 bg-brand-ink text-white rounded-[2.5rem] hover:bg-kidazzle-blueDark transition-all shadow-xl group">
+                <a href="<?php echo get_stylesheet_directory_uri(); ?>/assets/docs/employee-handbook.pdf" target="_blank" class="flex items-center p-8 bg-brand-ink text-white rounded-[2.5rem] hover:bg-kidazzle-blueDark transition-all shadow-xl group">
                     <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mr-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-book-open-reader"></i></div>
                     <div class="flex-grow">
                         <h3 class="font-bold text-xl mb-1">Employee Handbook</h3>
@@ -145,7 +145,7 @@ if (post_password_required()) {
                     </div>
                     <i class="fa-solid fa-download text-white/20 group-hover:text-white transition-colors"></i>
                 </a>
-                <a href="#" class="flex items-center p-8 bg-white border border-brand-ink/10 rounded-[2.5rem] hover:border-kidazzle-blue transition-all shadow-soft group">
+                <a href="<?php echo get_stylesheet_directory_uri(); ?>/assets/docs/parent-handbook.pdf" target="_blank" class="flex items-center p-8 bg-white border border-brand-ink/10 rounded-[2.5rem] hover:border-kidazzle-blue transition-all shadow-soft group">
                     <div class="w-16 h-16 bg-kidazzle-blue/5 text-kidazzle-blue rounded-2xl flex items-center justify-center text-3xl mr-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-users"></i></div>
                     <div class="flex-grow">
                         <h3 class="font-bold text-xl mb-1 text-brand-ink">Parent Handbook</h3>
