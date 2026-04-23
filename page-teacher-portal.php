@@ -72,13 +72,13 @@ if (post_password_required() || $is_locked) {
             <h2 class="text-2xl font-serif font-bold text-brand-ink mb-10 border-b border-brand-ink/10 pb-4">Daily Classroom Tools</h2>
             <div class="grid md:grid-cols-4 gap-6 mb-20">
                 <!-- AI Lesson Planner -->
-                <div class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
+                <div onclick="showForm('form-lesson-plan')" class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
                     <div class="w-16 h-16 bg-kidazzle-purple/10 text-kidazzle-purple rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-purple group-hover:text-white transition-all text-2xl">
                         <i class="fa-solid fa-robot"></i>
                     </div>
                     <h3 class="font-bold text-brand-ink mb-2">AI Lesson Planner</h3>
                     <p class="text-brand-ink/60 text-xs mb-6">Create custom, standards-aligned activities instantly.</p>
-                    <a href="<?php echo esc_url(home_url('/resources')); ?>" class="text-kidazzle-purple font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Start Planning <i class="fa-solid fa-arrow-right"></i></a>
+                    <span class="text-kidazzle-purple font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 group-hover:underline">Start Planning <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
 
                 <!-- Daily Checklist -->
@@ -98,7 +98,7 @@ if (post_password_required() || $is_locked) {
                     </div>
                     <h3 class="font-bold text-brand-ink mb-2">Staff Email</h3>
                     <p class="text-brand-ink/60 text-xs mb-6">Access your official @kidazzle.com inbox.</p>
-                    <a href="https://box2215.bluehost.com:2083/cpsess7249441792/frontend/jupiter/mail/webmailform.html?user=listing%40kidazzle.com&return_request_uri=%2Fcpsess7249441792%2Ffrontend%2Fjupiter%2Femail_accounts%2Findex.html" target="_blank" class="text-kidazzle-blue font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Login <i class="fa-solid fa-external-link text-[8px]"></i></a>
+                    <a href="https://box2215.bluehost.com:2096/" target="_blank" class="text-kidazzle-blue font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Login <i class="fa-solid fa-external-link text-[8px]"></i></a>
                 </div>
 
                 <!-- Weekly Tasks -->
