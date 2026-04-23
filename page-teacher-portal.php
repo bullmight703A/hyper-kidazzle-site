@@ -102,13 +102,13 @@ if (post_password_required() || $is_locked) {
                 </div>
 
                 <!-- Weekly Tasks -->
-                <div class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
+                <div onclick="showForm('form-lesson-plan')" class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
                     <div class="w-16 h-16 bg-kidazzle-orange/10 text-kidazzle-orange rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-orange group-hover:text-white transition-all text-2xl">
                         <i class="fa-solid fa-layer-group"></i>
                     </div>
                     <h3 class="font-bold text-brand-ink mb-2">Weekly Workflow</h3>
                     <p class="text-brand-ink/60 text-xs mb-6">Submit supply requests and upcoming weekly plans.</p>
-                    <a href="#" class="text-kidazzle-orange font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:underline">Submit Tasks <i class="fa-solid fa-arrow-right"></i></a>
+                    <span class="text-kidazzle-orange font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 group-hover:underline">Submit Tasks <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
@@ -125,13 +125,13 @@ if (post_password_required() || $is_locked) {
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-brand-ink/5 hover:border-kidazzle-blue/30 transition-all flex items-center gap-4 group cursor-pointer">
+                <div onclick="showForm('form-enrollment')" class="bg-white p-6 rounded-2xl border border-brand-ink/5 hover:border-kidazzle-blue/30 transition-all flex items-center gap-4 group cursor-pointer">
                     <div class="w-12 h-12 bg-kidazzle-blue/10 text-kidazzle-blue rounded-xl flex items-center justify-center shrink-0">
                         <i class="fa-solid fa-file-signature"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-brand-ink text-sm">Enrollment App</h4>
-                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest">Process &rarr;</p>
+                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest group-hover:text-kidazzle-blue transition-colors">Process &rarr;</p>
                     </div>
                 </div>
 
@@ -155,6 +155,61 @@ if (post_password_required() || $is_locked) {
                     </div>
                 </div>
             </div>
+
+            <!-- GHL Forms Container -->
+            <div id="ghl-forms-area" class="mb-20">
+                <!-- Lesson Plan Form -->
+                <div id="form-lesson-plan" class="ghl-form-container hidden bg-white rounded-[3rem] p-8 shadow-xl border border-brand-ink/5">
+                    <div class="flex justify-between items-center mb-6 border-b border-brand-ink/10 pb-4">
+                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Weekly Workflow & Lesson Plan</h3>
+                        <button onclick="hideForms()" class="text-brand-ink/40 hover:text-kidazzle-red transition-colors text-xl"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <iframe src="https://api.leadconnectorhq.com/widget/survey/AttvnaSbqgMaJxTBXSdS" style="border:none;width:100%;height:800px;" scrolling="auto" id="AttvnaSbqgMaJxTBXSdS" title="survey"></iframe>
+                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                </div>
+
+                <!-- Enrollment Form -->
+                <div id="form-enrollment" class="ghl-form-container hidden bg-white rounded-[3rem] p-8 shadow-xl border border-brand-ink/5 mt-8">
+                    <div class="flex justify-between items-center mb-6 border-b border-brand-ink/10 pb-4">
+                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Master Enrollment Form</h3>
+                        <button onclick="hideForms()" class="text-brand-ink/40 hover:text-kidazzle-red transition-colors text-xl"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <iframe
+                        src="https://api.leadconnectorhq.com/widget/form/zv8cXPa0HaShOybmKli4"
+                        style="width:100%;height:731px;border:none;border-radius:4px"
+                        id="inline-zv8cXPa0HaShOybmKli4" 
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-trigger-value=""
+                        data-activation-type="alwaysActivated"
+                        data-activation-value=""
+                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-value=""
+                        data-form-name="aster Enrollment form "
+                        data-height="731"
+                        data-layout-iframe-id="inline-zv8cXPa0HaShOybmKli4"
+                        data-form-id="zv8cXPa0HaShOybmKli4"
+                        title="aster Enrollment form "
+                    ></iframe>
+                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                </div>
+            </div>
+
+            <script>
+            function showForm(formId) {
+                document.querySelectorAll('.ghl-form-container').forEach(el => {
+                    el.classList.add('hidden');
+                });
+                const formEl = document.getElementById(formId);
+                formEl.classList.remove('hidden');
+                formEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            function hideForms() {
+                document.querySelectorAll('.ghl-form-container').forEach(el => {
+                    el.classList.add('hidden');
+                });
+            }
+            </script>
 
             <!-- Handbooks Section -->
             <div class="grid md:grid-cols-2 gap-8 mb-20">
