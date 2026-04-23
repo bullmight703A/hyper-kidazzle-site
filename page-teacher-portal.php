@@ -7,7 +7,20 @@
 
 get_header();
 
-if (post_password_required()) {
+session_start();
+$custom_passcode = '1212';
+
+if (isset($_POST['custom_portal_pwd'])) {
+    if ($_POST['custom_portal_pwd'] === $custom_passcode) {
+        $_SESSION['teacher_unlocked'] = true;
+    } else {
+        $pwd_error = "Incorrect passcode.";
+    }
+}
+
+$is_locked = !isset($_SESSION['teacher_unlocked']) || $_SESSION['teacher_unlocked'] !== true;
+
+if (post_password_required() || $is_locked) {
     ?>
     <main id="view-teacher-portal" class="view-section active block py-32 bg-brand-cream min-h-screen">
         <div class="max-w-md mx-auto px-4 text-center">
@@ -18,7 +31,15 @@ if (post_password_required()) {
                 <h2 class="text-3xl font-serif font-bold text-brand-ink mb-4">Secured Portal</h2>
                 <p class="text-brand-ink/70 mb-8 text-sm">Please enter the staff passcode to access classroom tools and protocols.</p>
                 <div class="password-form-wrapper">
-                    <?php echo get_the_password_form(); ?>
+                    <?php if (post_password_required()): ?>
+                        <?php echo get_the_password_form(); ?>
+                    <?php else: ?>
+                        <form method="post" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <input type="password" name="custom_portal_pwd" placeholder="Enter Passcode" required>
+                            <?php if(isset($pwd_error)) echo "<p style='color:red; font-size:0.9rem; margin:0;'>$pwd_error</p>"; ?>
+                            <input type="submit" value="Enter">
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
