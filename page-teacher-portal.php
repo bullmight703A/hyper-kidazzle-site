@@ -156,58 +156,78 @@ if (post_password_required() || $is_locked) {
                 </div>
             </div>
 
-            <!-- GHL Forms Container -->
-            <div id="ghl-forms-area" class="mb-20">
-                <!-- Lesson Plan Form -->
-                <div id="form-lesson-plan" class="ghl-form-container hidden bg-white rounded-[3rem] p-8 shadow-xl border border-brand-ink/5">
-                    <div class="flex justify-between items-center mb-6 border-b border-brand-ink/10 pb-4">
+            <!-- GHL Forms Overlay (Modal) -->
+            <div id="ghl-modal-overlay" class="fixed inset-0 bg-brand-ink/80 backdrop-blur-sm z-[99999] hidden flex items-center justify-center p-4 md:p-10" onclick="if(event.target === this) hideForms()">
+                
+                <!-- Lesson Plan Modal -->
+                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
+                    <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Weekly Workflow & Lesson Plan</h3>
-                        <button onclick="hideForms()" class="text-brand-ink/40 hover:text-kidazzle-red transition-colors text-xl"><i class="fa-solid fa-xmark"></i></button>
+                        <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
                     </div>
-                    <iframe src="https://api.leadconnectorhq.com/widget/survey/AttvnaSbqgMaJxTBXSdS" style="border:none;width:100%;height:800px;" scrolling="auto" id="AttvnaSbqgMaJxTBXSdS" title="survey"></iframe>
-                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20">
+                        <iframe src="https://api.leadconnectorhq.com/widget/survey/AttvnaSbqgMaJxTBXSdS" style="border:none;width:100%;height:100%;" scrolling="auto" id="AttvnaSbqgMaJxTBXSdS" title="survey"></iframe>
+                        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    </div>
                 </div>
 
-                <!-- Enrollment Form -->
-                <div id="form-enrollment" class="ghl-form-container hidden bg-white rounded-[3rem] p-8 shadow-xl border border-brand-ink/5 mt-8">
-                    <div class="flex justify-between items-center mb-6 border-b border-brand-ink/10 pb-4">
+                <!-- Enrollment Form Modal -->
+                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
+                    <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Master Enrollment Form</h3>
-                        <button onclick="hideForms()" class="text-brand-ink/40 hover:text-kidazzle-red transition-colors text-xl"><i class="fa-solid fa-xmark"></i></button>
+                        <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
                     </div>
-                    <iframe
-                        src="https://api.leadconnectorhq.com/widget/form/zv8cXPa0HaShOybmKli4"
-                        style="width:100%;height:731px;border:none;border-radius:4px"
-                        id="inline-zv8cXPa0HaShOybmKli4" 
-                        data-layout="{'id':'INLINE'}"
-                        data-trigger-type="alwaysShow"
-                        data-trigger-value=""
-                        data-activation-type="alwaysActivated"
-                        data-activation-value=""
-                        data-deactivation-type="neverDeactivate"
-                        data-deactivation-value=""
-                        data-form-name="aster Enrollment form "
-                        data-height="731"
-                        data-layout-iframe-id="inline-zv8cXPa0HaShOybmKli4"
-                        data-form-id="zv8cXPa0HaShOybmKli4"
-                        title="aster Enrollment form "
-                    ></iframe>
-                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20">
+                        <iframe
+                            src="https://api.leadconnectorhq.com/widget/form/zv8cXPa0HaShOybmKli4"
+                            style="width:100%;height:100%;border:none;"
+                            id="inline-zv8cXPa0HaShOybmKli4" 
+                            data-layout="{'id':'INLINE'}"
+                            data-trigger-type="alwaysShow"
+                            data-trigger-value=""
+                            data-activation-type="alwaysActivated"
+                            data-activation-value=""
+                            data-deactivation-type="neverDeactivate"
+                            data-deactivation-value=""
+                            data-form-name="aster Enrollment form "
+                            data-height="100%"
+                            data-layout-iframe-id="inline-zv8cXPa0HaShOybmKli4"
+                            data-form-id="zv8cXPa0HaShOybmKli4"
+                            title="aster Enrollment form "
+                        ></iframe>
+                        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    </div>
                 </div>
+
             </div>
 
             <script>
             function showForm(formId) {
-                document.querySelectorAll('.ghl-form-container').forEach(el => {
-                    el.classList.add('hidden');
-                });
+                // Hide all modals
+                document.querySelectorAll('.ghl-form-modal').forEach(el => el.classList.add('hidden'));
+                
+                // Show overlay and targeted modal
+                const overlay = document.getElementById('ghl-modal-overlay');
                 const formEl = document.getElementById(formId);
-                formEl.classList.remove('hidden');
-                formEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                if(overlay && formEl) {
+                    overlay.classList.remove('hidden');
+                    formEl.classList.remove('hidden');
+                    // Prevent background scrolling
+                    document.body.style.overflow = 'hidden';
+                }
             }
+
             function hideForms() {
-                document.querySelectorAll('.ghl-form-container').forEach(el => {
-                    el.classList.add('hidden');
-                });
+                // Hide overlay
+                const overlay = document.getElementById('ghl-modal-overlay');
+                if(overlay) overlay.classList.add('hidden');
+                
+                // Hide all modals
+                document.querySelectorAll('.ghl-form-modal').forEach(el => el.classList.add('hidden'));
+                
+                // Restore background scrolling
+                document.body.style.overflow = '';
             }
             </script>
 
