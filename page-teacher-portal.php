@@ -28,7 +28,7 @@ if (post_password_required() || $is_locked) {
                 <div class="w-20 h-20 bg-kidazzle-red/10 text-kidazzle-red rounded-3xl flex items-center justify-center mx-auto mb-6 text-3xl">
                     <i class="fa-solid fa-lock"></i>
                 </div>
-                <h2 class="text-3xl font-serif font-bold text-brand-ink mb-4">Secured Portal</h2>
+                <h1 class="text-3xl font-serif font-bold text-brand-ink mb-4">Secured Portal</h1>
                 <p class="text-brand-ink/70 mb-8 text-sm">Please enter the staff passcode to access classroom tools and protocols.</p>
                 <div class="password-form-wrapper">
                     <?php if (post_password_required()): ?>
@@ -69,6 +69,7 @@ if (post_password_required() || $is_locked) {
     <!-- Daily Tools Section -->
     <section class="py-16 bg-brand-cream">
         <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <h1 class="sr-only">Teacher Portal: Classroom Tools and Resources</h1>
             <h2 class="text-2xl font-serif font-bold text-brand-ink mb-10 border-b border-brand-ink/10 pb-4">Daily Classroom Tools</h2>
             <div class="grid md:grid-cols-4 gap-6 mb-20">
                 <!-- AI Lesson Planner -->
