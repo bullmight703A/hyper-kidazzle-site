@@ -73,6 +73,13 @@
           const [showSample, setShowSample] = useState(false);
           const [checkedItems, setCheckedItems] = useState({});
           const [activeItemDetail, setActiveItemDetail] = useState(null); // Modal state for detailed info
+          const [chatInput, setChatInput] = useState('');
+          const [chatMessages, setChatMessages] = useState([
+            {
+              role: 'assistant',
+              text: 'Hi. I can help you understand curriculum, developmental milestones, screenings, classroom routines, and what to ask when choosing childcare. I only answer from parent-facing education resources.'
+            }
+          ]);
 
           const logoUrl = "https://assets.cdn.filesafe.space/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png";
 
@@ -233,6 +240,77 @@
 
           const currentAgeData = briganceData[selectedAge] || briganceData['4 Years'];
 
+          const ageResourceMap = {
+            'Infant (0-11m)': [
+              { title: 'Infant curriculum focus', desc: 'Bonding, sensory exploration, tummy time, language exposure, and safe routines.', links: ['Tummy time questions', 'Feeding and nap routines', 'What teachers observe'] },
+              { title: 'Developmental snapshot', desc: 'Parents can look for eye contact, tracking, cooing, rolling, sitting, and early gestures.', links: ['Motor milestones', 'Early communication', 'Caregiver attachment'] }
+            ],
+            'Toddler (12-23m)': [
+              { title: 'Toddler curriculum focus', desc: 'Language growth, movement, imitation, parallel play, self-help routines, and exploration.', links: ['Table toys', 'Early words', 'Safe climbing and movement'] },
+              { title: 'Developmental snapshot', desc: 'Toddlers show growth through walking, pointing, naming familiar people, simple directions, and pretend play.', links: ['Receptive language', 'Pretend play', 'Fine-motor play'] }
+            ],
+            '2 Years': [
+              { title: 'Two-year-old curriculum focus', desc: 'Two-year-olds learn through routines, sorting, art exploration, dramatic play, music, movement, and guided language.', links: ['Parallel play', 'Sorting and colors', 'Art as early thinking'] },
+              { title: 'Developmental snapshot', desc: 'Look for 2-3 word phrases, following two-step directions, early independence, running, climbing, and pretend play.', links: ['Language phrases', 'Behavior guidance', 'Toilet learning readiness'] }
+            ],
+            '2.5 Years': [
+              { title: 'Two-and-a-half curriculum focus', desc: 'Identity, body vocabulary, object use, color matching, block play, and stronger classroom routines.', links: ['Personal data', 'Object function', 'Block towers'] },
+              { title: 'Developmental snapshot', desc: 'Children begin combining language, movement, and problem solving in more intentional ways.', links: ['Following routines', 'Fine-motor control', 'Social-emotional coaching'] }
+            ],
+            '3 Years': [
+              { title: 'Three-year-old curriculum focus', desc: 'Dramatic play, art, block building, stories, classroom jobs, early math, and social problem solving.', links: ['Dramatic play area', 'Why art matters', 'Classroom routines'] },
+              { title: 'Developmental snapshot', desc: 'Parents can watch for pronouns, prepositions, first and last name, puzzles, tricycles, and cooperative play.', links: ['Language growth', 'Gross motor confidence', 'Play-based problem solving'] }
+            ],
+            '4 Years': [
+              { title: 'Four-year-old curriculum focus', desc: 'Kindergarten readiness through literacy, number concepts, writing readiness, science, cooperation, and independence.', links: ['Pre-K questions', 'Early writing', 'Number concepts'] },
+              { title: 'Developmental snapshot', desc: 'Look for stronger sentence memory, color knowledge, shape copying, hopping, counting, and classroom confidence.', links: ['Visual discrimination', 'Writing readiness', 'Executive function'] }
+            ],
+            'Summer Camp': [
+              { title: 'Summer enrichment focus', desc: 'Project work, STEM experiments, social confidence, outdoor play, creative arts, and longer attention spans.', links: ['STEM play', 'Group games', 'Creative projects'] },
+              { title: 'Developmental snapshot', desc: 'Camp gives children room to practice teamwork, rules, self-care, and confidence in a less formal rhythm.', links: ['Collaboration', 'Outdoor confidence', 'Storytelling'] }
+            ]
+          };
+
+          const externalResources = [
+            {
+              name: 'NAEYC',
+              url: 'https://www.naeyc.org/',
+              desc: 'National Association for the Education of Young Children. Useful for understanding high-quality early childhood practice and accreditation language.'
+            },
+            {
+              name: 'Georgia DECAL',
+              url: 'https://www.decal.ga.gov/',
+              desc: 'Georgia Department of Early Care and Learning. Parent-facing source for state childcare rules, licensing, and family resources.'
+            },
+            {
+              name: 'GELDS',
+              url: 'https://gelds.decal.ga.gov/',
+              desc: 'Georgia Early Learning and Development Standards. Helps parents see what children are practicing by age and development area.'
+            },
+            {
+              name: 'Teaching Strategies',
+              url: 'https://teachingstrategies.com/',
+              desc: 'Home of Creative Curriculum and early childhood assessment resources used by many education programs.'
+            },
+            {
+              name: 'ERS / ITERS',
+              url: 'https://www.ersi.info/scales',
+              desc: 'Environment Rating Scales. Helps explain how classroom arrangement, materials, routines, and interactions support learning.'
+            }
+          ];
+
+          const chatKnowledge = [
+            { keys: ['two', '2 year', '2-year', 'two-year'], answer: 'For two-year-olds, the rabbit hole should start with language, parallel play, table toys, dramatic play, art, sensory exploration, and routines. The deeper question is not just what they play with, but what skill the material is helping them practice.' },
+            { keys: ['curriculum', 'creative'], answer: 'KIDazzle uses a play-based curriculum direction connected to Creative Curriculum ideas: teachers plan intentional experiences, then use play, routines, books, art, movement, and classroom materials to support development.' },
+            { keys: ['brigance', 'screening', 'developmental'], answer: 'Developmental screening is a way to notice where a child is growing and where adults may need to watch more closely. It is not a diagnosis. Parents should use it to ask better questions about language, motor skills, social development, and classroom support.' },
+            { keys: ['naeyc', 'accreditation'], answer: 'NAEYC is a national early childhood organization. Parents can use it to understand what high-quality early childhood practice looks like: relationships, curriculum, teaching, assessment, health, staff, families, and leadership.' },
+            { keys: ['gelds', 'georgia'], answer: 'GELDS are Georgia early learning standards. They help parents connect everyday classroom activities to development areas like language, cognitive growth, physical development, social-emotional skills, and approaches to play and learning.' },
+            { keys: ['dramatic', 'pretend'], answer: 'Dramatic play is not just dress-up. Children practice language, memory, social roles, self-control, planning, negotiation, and early literacy when they act out real-life situations.' },
+            { keys: ['table toys', 'toys'], answer: 'Table toys help children practice structured play: sorting, matching, taking turns, fine-motor control, focus, early math, and problem solving. For toddlers, the toy choice matters because the material teaches the hand, the eye, and the brain to work together.' }
+          ];
+
+          const selectedResources = ageResourceMap[selectedAge] || ageResourceMap['4 Years'];
+
           useEffect(() => {
             const timer = setInterval(() => setCurrentTime(new Date()), 1000);
             return () => clearInterval(timer);
@@ -240,6 +318,20 @@
 
           const toggleItem = (id) => {
             setCheckedItems(prev => ({ ...prev, [id]: !prev[id] }));
+          };
+
+          const sendParentChat = () => {
+            const prompt = chatInput.trim();
+            if (!prompt) return;
+            const lower = prompt.toLowerCase();
+            const match = chatKnowledge.find(entry => entry.keys.some(key => lower.includes(key)));
+            const fallback = `Good question. For ${selectedAge}, I would start by asking what skill the child is practicing, how the teacher supports it, and how you can reinforce it at home. This helper is bounded to parent education, so it will not access private child records or internal operations.`;
+            setChatMessages(prev => [
+              ...prev,
+              { role: 'user', text: prompt },
+              { role: 'assistant', text: match ? match.answer : fallback }
+            ]);
+            setChatInput('');
           };
 
           // Render a detailed popup for an item
@@ -338,9 +430,9 @@
                       <button 
                         key={i} 
                         onClick={() => setSelectedAge(age.label)}
-                        className={`w-full group p-4 rounded-[28px] border transition-all text-left relative overflow-hidden ${
+                    className={`w-full group p-4 rounded-[28px] border transition-all text-left relative overflow-hidden opacity-70 hover:opacity-100 ${
                           selectedAge === age.label 
-                          ? 'bg-white border-[#D4A373]/40 shadow-md scale-[1.02] ring-2 ring-offset-1 ring-[#023047]' 
+                          ? 'bg-white border-[#D4A373]/40 shadow-md scale-[1.02] ring-2 ring-offset-1 ring-[#023047] opacity-100' 
                           : 'bg-[#FDFBF7]/40 border-transparent hover:bg-white hover:border-[#EAE0D5]'
                         }`}
                       >
@@ -400,6 +492,31 @@
                      </div>
                   </div>
 
+                  <section className="bg-white border border-[#EAE0D5] rounded-[40px] p-6 lg:p-8 shadow-sm">
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4A373]">Parent Rabbit Hole</p>
+                        <h2 className="text-2xl font-black text-[#023047] tracking-tight">What to learn next for {selectedAge}</h2>
+                      </div>
+                      <span className="text-[10px] font-black uppercase text-[#8B7E74] bg-[#FDFBF7] border border-[#EAE0D5] rounded-full px-3 py-2">Public education only</span>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {selectedResources.map((resource, index) => (
+                        <article key={index} className="rounded-[28px] border border-[#EAE0D5] bg-[#FAF9F6] p-5">
+                          <h3 className="font-black text-[#023047] mb-2">{resource.title}</h3>
+                          <p className="text-sm text-[#5C524F] leading-relaxed mb-4">{resource.desc}</p>
+                          <div className="flex flex-wrap gap-2">
+                            {resource.links.map((link, i) => (
+                              <button key={i} onClick={() => setChatInput(`Tell me about ${link} for ${selectedAge}`)} className="text-[10px] font-black uppercase tracking-wide rounded-full border border-[#D4A373]/40 bg-white px-3 py-2 text-[#023047] hover:bg-[#023047] hover:text-white transition-colors">
+                                {link}
+                              </button>
+                            ))}
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+
                   <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 lg:overflow-y-auto lg:pr-2 lg:pb-6 scrollbar-hide">
                     {currentAgeData.domains.map((domain, i) => (
                       <div key={i} className="bg-white border border-[#EAE0D5] rounded-[40px] p-6 lg:p-8 shadow-sm flex flex-col border-b-[6px] border-b-[#EAE0D5]">
@@ -441,10 +558,10 @@
                 </main>
 
                 <aside className="lg:col-span-3 flex flex-col gap-6 lg:overflow-hidden" id="chat-mobile-target">
-                  <div className="bg-white border border-[#EAE0D5] rounded-[48px] p-6 lg:p-8 flex flex-col shadow-sm border-l-4 border-l-[#D4A373] min-h-[480px] lg:max-h-[520px]">
+                  <div className="bg-white border border-[#EAE0D5] rounded-[48px] p-6 lg:p-8 flex flex-col shadow-sm border-l-4 border-l-[#D4A373] min-h-[520px] lg:max-h-[620px]">
                      <div className="flex justify-between items-center mb-6">
                         <h3 className="text-[10px] font-black tracking-[0.4em] uppercase text-[#B4A7A0] flex items-center gap-3">
-                          <MessageSquare size={16} className="text-[#FB8500]" /> Intelligence Link
+                          <MessageSquare size={16} className="text-[#FB8500]" /> Parent Resource Chat
                         </h3>
                         <div className="flex gap-1.5">
                            <div className="w-1.5 h-1.5 bg-[#D4A373] rounded-full animate-pulse" />
@@ -452,44 +569,59 @@
                         </div>
                      </div>
                      
-                     <div className="flex-1 overflow-y-auto space-y-6 mb-4 pr-1 scrollbar-hide max-h-[200px]">
-                        <div className="space-y-3">
-                           <div className="flex justify-between px-1">
-                              <span className="text-[9px] font-black uppercase text-[#D4A373] tracking-widest">Ollama Secure</span>
-                           </div>
-                           <div className="bg-[#FAF9F6] p-5 rounded-[32px] text-[11px] text-[#5C524F] leading-relaxed border border-[#EAE0D5] shadow-sm font-bold">
-                              Core parameters updated for **{selectedAge}**. Awaiting DeepSeek curriculum validation for local execution. All records are securely routed to OpenClaw.
-                           </div>
-                        </div>
-
-                        <div className="space-y-3 items-end flex flex-col">
-                           <div className="flex justify-between w-full px-1">
-                              <span className="text-[9px] font-black uppercase text-slate-400 tracking-widest">Active Insight</span>
-                           </div>
-                           <div className="bg-[#023047] p-5 rounded-[32px] rounded-tr-none text-xs text-[#FDFBF7]/90 leading-relaxed shadow-lg max-w-[95%] italic font-medium border border-[#023047]">
-                              "For {selectedAge}, prioritize assessing the physical readiness and language syntax. Use the research popups to guide your specific grading."
-                           </div>
-                        </div>
+                     <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-1 max-h-[300px]">
+                        {chatMessages.map((message, index) => (
+                          <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                            <div className={`max-w-[92%] p-4 rounded-[24px] text-xs leading-relaxed shadow-sm ${
+                              message.role === 'user'
+                                ? 'bg-[#023047] text-white rounded-tr-none'
+                                : 'bg-[#FAF9F6] text-[#5C524F] border border-[#EAE0D5] rounded-tl-none'
+                            }`}>
+                              {message.text}
+                            </div>
+                          </div>
+                        ))}
                      </div>
 
                      <div className="relative mt-auto pt-6 border-t border-[#EAE0D5]">
                         <textarea 
+                          value={chatInput}
+                          onChange={(e) => setChatInput(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !e.shiftKey) {
+                              e.preventDefault();
+                              sendParentChat();
+                            }
+                          }}
                           className="w-full bg-[#FAF9F6] border border-[#EAE0D5] rounded-[24px] p-5 text-sm text-[#023047] outline-none focus:border-[#D4A373] transition-all placeholder:text-[#B4A7A0] resize-none min-h-[100px] shadow-inner font-medium"
-                          placeholder="Query specialized educational agent..."
+                          placeholder="Ask about curriculum, milestones, screenings, dramatic play, table toys..."
                         />
-                        <button className="absolute bottom-5 right-5 p-3 lg:p-4 bg-[#FB8500] text-white rounded-2xl hover:bg-[#023047] transition-all shadow-xl hover:scale-110 active:scale-95">
+                        <button onClick={sendParentChat} className="absolute bottom-5 right-5 p-3 lg:p-4 bg-[#FB8500] text-white rounded-2xl hover:bg-[#023047] transition-all shadow-xl hover:scale-110 active:scale-95" aria-label="Send parent resource question">
                            <Send size={18} strokeWidth={3} />
                         </button>
                      </div>
                   </div>
 
-                  <div className="bg-white border border-[#EAE0D5] p-5 lg:p-6 rounded-[32px] shadow-lg flex items-center gap-5 hidden lg:flex">
-                     <div className="w-12 h-12 rounded-2xl bg-[#023047] flex items-center justify-center shadow-inner shrink-0">
-                        <Search size={24} className="text-[#FB8500]" />
+                  <div className="bg-white border border-[#EAE0D5] p-5 lg:p-6 rounded-[32px] shadow-lg hidden lg:block">
+                     <div className="flex items-center gap-4 mb-4">
+                       <div className="w-12 h-12 rounded-2xl bg-[#023047] flex items-center justify-center shadow-inner shrink-0">
+                          <ExternalLink size={22} className="text-[#FB8500]" />
+                       </div>
+                       <div>
+                          <h4 className="text-[10px] font-black uppercase tracking-widest text-[#023047] mb-1">Outside Resource Map</h4>
+                          <p className="text-[9px] font-bold text-[#8B7E74] uppercase tracking-tighter">Parent links with context</p>
+                       </div>
                      </div>
-                     <div>
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-[#023047] mb-1">Status: OpenClaw Ready</h4>
-                        <p className="text-[9px] font-bold text-[#8B7E74] uppercase tracking-tighter">Ollama / DeepSeek Initialized</p>
+                     <div className="space-y-3">
+                       {externalResources.map((resource, index) => (
+                         <a key={index} href={resource.url} target="_blank" rel="noopener noreferrer" className="block rounded-2xl border border-[#EAE0D5] bg-[#FAF9F6] p-4 hover:border-[#D4A373] transition-colors">
+                           <span className="flex items-center justify-between text-xs font-black text-[#023047]">
+                             {resource.name}
+                             <ExternalLink size={12} className="text-[#FB8500]" />
+                           </span>
+                           <span className="block text-[10px] leading-relaxed text-[#5C524F] mt-2">{resource.desc}</span>
+                         </a>
+                       ))}
                      </div>
                   </div>
 
