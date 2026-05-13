@@ -93,6 +93,30 @@ function kidazzle_template_include_essential_fallback($template)
 }
 add_filter('template_include', 'kidazzle_template_include_essential_fallback', 20);
 
+function kidazzle_force_digital_resources_page()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $path = kidazzle_get_current_request_path();
+
+    if ($path !== 'digital-resources') {
+        return;
+    }
+
+    $digital_resources_template = KIDAZZLE_THEME_DIR . '/page-digital-resources.php';
+
+    if (!file_exists($digital_resources_template)) {
+        return;
+    }
+
+    status_header(200);
+    include $digital_resources_template;
+    exit;
+}
+add_action('template_redirect', 'kidazzle_force_digital_resources_page', 0);
+
 function kidazzle_essential_fallback_document_title($title)
 {
     $fallback = kidazzle_get_active_essential_fallback();
