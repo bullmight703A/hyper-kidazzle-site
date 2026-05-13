@@ -63,6 +63,16 @@ function kidazzle_get_active_essential_fallback()
 
 function kidazzle_template_include_essential_fallback($template)
 {
+    $path = kidazzle_get_current_request_path();
+
+    if ($path === 'digital-resources') {
+        $digital_resources_template = KIDAZZLE_THEME_DIR . '/page-digital-resources.php';
+
+        if (file_exists($digital_resources_template)) {
+            return $digital_resources_template;
+        }
+    }
+
     $fallback = kidazzle_get_active_essential_fallback();
 
     if (!$fallback) {

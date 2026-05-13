@@ -152,6 +152,7 @@
 				<a href="/about/" class="hover:text-orange-500 transition pb-1">ABOUT US</a>
 				<a href="/programs/" class="hover:text-red-500 transition pb-1">PROGRAMS</a>
 				<a href="/curriculum/" class="hover:text-cyan-500 transition pb-1">CURRICULUM</a>
+				<a href="/digital-resources/" class="hover:text-yellow-400 transition pb-1">RESOURCES</a>
 				<a href="/locations/" class="hover:text-green-500 transition pb-1">LOCATIONS</a>
 				<a href="/blog/" class="hover:text-purple-500 transition pb-1">BLOG</a>
 				<a href="/contact/" class="hover:text-indigo-600 transition pb-1">CONTACT US</a>
@@ -165,6 +166,7 @@
 			<a href="/about/" class="hover:text-orange-500">ABOUT US</a>
 			<a href="/programs/" class="hover:text-red-500">PROGRAMS</a>
 			<a href="/curriculum/" class="hover:text-cyan-500">CURRICULUM</a>
+			<a href="/digital-resources/" class="hover:text-yellow-400">RESOURCES</a>
 			<a href="/locations/" class="hover:text-green-500">LOCATIONS</a>
 			<a href="/blog/" class="hover:text-purple-500">BLOG</a>
 			<a href="/contact/" class="hover:text-indigo-600">CONTACT US</a>
