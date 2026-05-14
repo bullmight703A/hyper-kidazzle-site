@@ -13,19 +13,19 @@ $asset = function ($path) use ($theme_uri) {
 };
 
 $resource_links = array(
-    array('label' => 'KIDazzle Curriculum', 'url' => home_url('/curriculum/'), 'type' => 'KIDazzle'),
-    array('label' => 'Programs by Age', 'url' => home_url('/programs/'), 'type' => 'KIDazzle'),
-    array('label' => 'Parent Resources', 'url' => home_url('/parents/'), 'type' => 'KIDazzle'),
-    array('label' => 'Find a Location', 'url' => home_url('/locations/'), 'type' => 'KIDazzle'),
-    array('label' => 'Schedule a Tour', 'url' => home_url('/contact/'), 'type' => 'KIDazzle'),
-    array('label' => 'Brigance Screenings', 'url' => home_url('/brigance/'), 'type' => 'KIDazzle'),
-    array('label' => 'Environmental Rating Scales', 'url' => home_url('/ers/'), 'type' => 'KIDazzle'),
-    array('label' => 'Parent Handbook', 'url' => $asset('assets/docs/parent-handbook.pdf'), 'type' => 'Download'),
-    array('label' => 'NAEYC', 'url' => 'https://www.naeyc.org/', 'type' => 'Outside resource'),
-    array('label' => 'Georgia DECAL', 'url' => 'https://www.decal.ga.gov/', 'type' => 'Outside resource'),
-    array('label' => 'Georgia GELDS', 'url' => 'https://gelds.decal.ga.gov/', 'type' => 'Outside resource'),
-    array('label' => 'Teaching Strategies', 'url' => 'https://teachingstrategies.com/', 'type' => 'Outside resource'),
-    array('label' => 'ERS Institute Scales', 'url' => 'https://www.ersi.info/scales', 'type' => 'Outside resource'),
+    array('label' => 'KIDazzle Curriculum', 'url' => home_url('/curriculum/'), 'type' => 'KIDazzle', 'summary' => 'See how classroom routines, play, observation, and weekly planning become intentional early learning.'),
+    array('label' => 'Programs by Age', 'url' => home_url('/programs/'), 'type' => 'KIDazzle', 'summary' => 'Compare infant, toddler, preschool, Pre-K, and school-age pathways before choosing the best fit.'),
+    array('label' => 'Parent Resources', 'url' => home_url('/parents/'), 'type' => 'KIDazzle', 'summary' => 'A family-facing resource area for policies, questions, updates, and parent support.'),
+    array('label' => 'Find a Location', 'url' => home_url('/locations/'), 'type' => 'KIDazzle', 'summary' => 'Choose the center that best fits your commute, family schedule, and tour preference.'),
+    array('label' => 'Schedule a Tour', 'url' => home_url('/contact/'), 'type' => 'KIDazzle', 'summary' => 'Connect with the KIDazzle team, ask questions, and request a visit with a center director.'),
+    array('label' => 'Brigance Screenings', 'url' => home_url('/brigance/'), 'type' => 'KIDazzle', 'summary' => 'Learn how developmental screening snapshots help teachers and families notice growth over time.'),
+    array('label' => 'Environmental Rating Scales', 'url' => home_url('/ers/'), 'type' => 'KIDazzle', 'summary' => 'Understand how classroom environment, routines, materials, interactions, and care practices shape quality.'),
+    array('label' => 'Parent Handbook', 'url' => $asset('assets/docs/parent-handbook.pdf'), 'type' => 'Download', 'summary' => 'Review center policies for family communication, health, feeding, safety, and daily expectations.'),
+    array('label' => 'NAEYC', 'url' => 'https://www.naeyc.org/resources/position-statements/dap/contents', 'type' => 'Outside resource', 'summary' => 'NAEYC explains developmentally appropriate practice: joyful, play-based, strengths-based learning for young children.'),
+    array('label' => 'Georgia DECAL', 'url' => 'https://www.decal.ga.gov/CCS/RulesAndRegulations.aspx', 'type' => 'Outside resource', 'summary' => 'Georgia DECAL licenses and regulates child care programs. Parents can review current Child Care Learning Center rules here.'),
+    array('label' => 'Georgia GELDS', 'url' => 'https://gelds.decal.ga.gov/', 'type' => 'Outside resource', 'summary' => 'GELDS gives Georgia early learning standards for birth through age five and connects classroom activities to development.'),
+    array('label' => 'Teaching Strategies', 'url' => 'https://teachingstrategies.com/', 'type' => 'Outside resource', 'summary' => 'Teaching Strategies supports early childhood curriculum, assessment, and classroom observation practices.'),
+    array('label' => 'ERS Institute Scales', 'url' => 'https://www.ersi.info/scales', 'type' => 'Outside resource', 'summary' => 'ERSI publishes the Environment Rating Scales, including ITERS-3 for infants/toddlers, ECERS-3 for preschool, and SACERS-U for school-age care.'),
 );
 
 $age_guides = array(
@@ -36,6 +36,10 @@ $age_guides = array(
         'image' => 'assets/images/multicultural_infants_cover_1772749039948.png',
         'focus' => 'Responsive care, safe routines, language exposure, tummy time, and early trust.',
         'questions' => array('How are feeding and naps tracked?', 'How do teachers talk and respond during care?', 'What does safe floor play look like?'),
+        'day' => array('Warm arrival and handoff', 'Parent feeding plan review', 'Labeled bottles, breast milk, or formula', 'Diapering and hygiene checks', 'Supervised tummy time and floor play', 'Books, songs, naming, and responsive talk', 'Safe sleep in an approved crib', 'Outdoor time when weather permits', 'Daily communication at pickup'),
+        'look_for' => array('Teachers hold young infants during feedings and never prop bottles.', 'The room has calm routines, clean surfaces, and active supervision.', 'Families understand safe sleep, feeding, illness, and what to bring each day.'),
+        'good_fit' => 'A strong fit for families who want warm infant care with structure, communication, safe sleep practices, developmental routines, and partnership with teachers.',
+        'not_fit' => 'May not fit families looking for drop-in babysitting, private nanny-style care, or care that does not follow licensed group-care routines.',
     ),
     array(
         'id' => 'toddlers',
@@ -44,6 +48,10 @@ $age_guides = array(
         'image' => 'assets/images/toddlers_playing_blocks_1772748809728.png',
         'focus' => 'Movement, naming objects, beginning routines, early independence, and parallel play.',
         'questions' => array('How do teachers support big feelings?', 'What table toys build focus?', 'How does play become language practice?'),
+        'day' => array('Arrival and predictable routines', 'Movement and climbing practice', 'Naming objects, songs, and simple books', 'Self-feeding and cup practice', 'Diapering or early toileting support', 'Parallel play and gentle social coaching', 'Outdoor play', 'Rest time and family updates'),
+        'look_for' => array('Teachers narrate the day and give children words for needs and feelings.', 'Activities invite movement without losing safety and supervision.', 'The classroom supports independence while keeping routines predictable.'),
+        'good_fit' => 'A strong fit for families who want active learning, language growth, and patient support as children begin doing more for themselves.',
+        'not_fit' => 'May not fit families expecting a quiet academic classroom or a program without messy, active toddler learning.',
     ),
     array(
         'id' => 'twos',
@@ -52,6 +60,10 @@ $age_guides = array(
         'image' => 'assets/images/campus_blocks_area_1772749554264.png',
         'focus' => 'Choices, social coaching, table toys, art, dramatic play, and safe classroom routines.',
         'questions' => array('What does structured play mean?', 'How do teachers handle transitions?', 'How are children encouraged to use words?'),
+        'day' => array('Greeting and classroom jobs', 'Table toys and fine-motor play', 'Art and sensory work', 'Dramatic play', 'Outdoor gross-motor time', 'Meals and self-help practice', 'Rest and quiet activities', 'Pickup notes'),
+        'look_for' => array('Teachers coach children through sharing, waiting, and transitions.', 'The room offers real choices without becoming unstructured.', 'Language, art, and movement are part of the daily plan.'),
+        'good_fit' => 'A strong fit for families who want their two-year-old to practice independence, words, routines, and safe peer play.',
+        'not_fit' => 'May not fit families expecting children to sit for long academic lessons or move through the day without transition support.',
     ),
     array(
         'id' => 'two-half',
@@ -60,6 +72,10 @@ $age_guides = array(
         'image' => 'assets/images/campus_indoor_play_1772749499195.png',
         'focus' => 'Longer attention, early problem solving, classroom jobs, and more independent routines.',
         'questions' => array('What does readiness look like before preschool?', 'How is toileting supported?', 'How do teachers document progress?'),
+        'day' => array('Arrival conversation', 'Problem-solving toys', 'Early preschool routines', 'Toileting partnership', 'Small-group work', 'Art, music, and movement', 'Outdoor play', 'Rest or quiet reset'),
+        'look_for' => array('Teachers understand that readiness can grow before a child changes classrooms.', 'Toileting support is respectful and coordinated with parents.', 'Children get more responsibility without losing warmth.'),
+        'good_fit' => 'A strong fit for families whose child is growing beyond toddler routines but still needs patience, repetition, and emotional support.',
+        'not_fit' => 'May not fit families expecting every child to advance on the same schedule regardless of development or classroom readiness.',
     ),
     array(
         'id' => 'threes',
@@ -68,6 +84,10 @@ $age_guides = array(
         'image' => 'assets/images/campus_art_studio_1772749582468.png',
         'focus' => 'Dramatic play, art, small-group learning, cooperative play, self-help skills, and curiosity.',
         'questions' => array('Why does dramatic play matter?', 'How does art support fine motor skills?', 'What should a parent ask at pickup?'),
+        'day' => array('Morning meeting', 'Centers and dramatic play', 'Small-group teacher activity', 'Art and fine-motor work', 'Story, music, and vocabulary', 'Outdoor play', 'Meals and self-help routines', 'Rest or quiet activities'),
+        'look_for' => array('Play has a purpose: language, friendship, problem solving, and imagination.', 'Teachers ask questions and extend children\'s ideas.', 'Families hear what their child practiced, not only whether the day was good.'),
+        'good_fit' => 'A strong fit for families who value curiosity, social confidence, creative work, and developmentally appropriate preschool learning.',
+        'not_fit' => 'May not fit families looking for worksheet-heavy preschool or a program that treats play as separate from learning.',
     ),
     array(
         'id' => 'fours',
@@ -76,6 +96,10 @@ $age_guides = array(
         'image' => 'assets/images/pre_k_kids_reading_1772748826409.png',
         'focus' => 'School readiness, early literacy, math language, social confidence, and classroom responsibility.',
         'questions' => array('What is kindergarten readiness?', 'How do teachers build confidence?', 'How are letters and numbers introduced?'),
+        'day' => array('Morning meeting and classroom leadership', 'Literacy-rich centers', 'Math language and sorting', 'Writing, drawing, and fine-motor work', 'Science and discovery', 'Outdoor play', 'Social problem solving', 'Georgia Pre-K readiness conversations'),
+        'look_for' => array('Readiness includes confidence, communication, self-help, and relationships.', 'Letters and numbers are introduced through meaningful activities.', 'Children practice responsibility without losing joy.'),
+        'good_fit' => 'A strong fit for families preparing for kindergarten, Georgia Lottery Pre-K, or a richer final preschool year.',
+        'not_fit' => 'May not fit families who want kindergarten pushed down into preschool instead of balanced readiness.',
     ),
     array(
         'id' => 'summer-camp',
@@ -84,6 +108,10 @@ $age_guides = array(
         'image' => 'assets/images/summer_camp_kids_1772748895785.png',
         'focus' => 'Projects, movement, friendship, field-style themes, creativity, and safe summer structure.',
         'questions' => array('How is summer different from the school year?', 'How much outdoor time is included?', 'How do projects build teamwork?'),
+        'day' => array('Group welcome', 'Theme-based projects', 'Outdoor and movement blocks', 'Creative challenges', 'Friendship and teamwork', 'Meals and hydration', 'Quiet reset', 'End-of-day recap'),
+        'look_for' => array('Summer has freedom, but still needs supervision, routines, and safe transitions.', 'Projects let children create, move, talk, and collaborate.', 'Families know what supplies, trips, or theme days are coming.'),
+        'good_fit' => 'A strong fit for families who want school-age care with structure, movement, creativity, and safe summer energy.',
+        'not_fit' => 'May not fit families looking for unstructured drop-off recreation with no planned activities or communication.',
     ),
 );
 
@@ -316,13 +344,88 @@ if (empty($lesson_snapshots)) {
     .brigance-grid a { text-decoration: none; }
     .back-link { display: inline-flex; margin-top: 14px; color: var(--teal); font-weight: 850; text-decoration: none; }
     .digital-note { background: var(--mint); border: 1px solid #b7e3d2; border-radius: 8px; padding: 16px; color: #173c36; line-height: 1.55; }
+    .deep-guide-grid { display: grid; gap: 18px; margin-top: 28px; }
+    .deep-guide {
+        display: grid;
+        grid-template-columns: .78fr 1.22fr;
+        gap: 22px;
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 18px 50px rgba(20,33,61,.06);
+    }
+    .deep-guide img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
+    .deep-guide-content { padding: 24px; }
+    .guide-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
+    .guide-mini {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: #fbfaf3;
+    }
+    .guide-mini h4, .survey-card h4 { margin: 0 0 10px; font-size: 17px; }
+    .guide-mini ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.55; }
+    .fit-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+    .fit-box { border-radius: 8px; padding: 14px; line-height: 1.5; background: #e9f8f2; border: 1px solid #b7e3d2; }
+    .fit-box.alt { background: #fff6e2; border-color: #f4d598; }
+    .survey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+    .survey-card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+    }
+    .survey-card label { display: block; font-weight: 800; margin: 14px 0 8px; }
+    .survey-card select, .survey-card input {
+        width: 100%;
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px 12px;
+        color: var(--ink);
+        background: #fff;
+    }
+    .survey-result { min-height: 180px; }
+    .resource-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: stretch; }
+    .resource-info {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfaf3;
+        color: var(--teal);
+        font-weight: 900;
+        width: 48px;
+        cursor: pointer;
+    }
+    .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(16,34,58,.68);
+        padding: 20px;
+    }
+    .modal-backdrop.is-open { display: flex; }
+    .resource-modal {
+        width: min(560px, 100%);
+        background: white;
+        color: var(--ink);
+        border-radius: 8px;
+        padding: 24px;
+        box-shadow: 0 24px 70px rgba(0,0,0,.25);
+    }
+    .resource-modal h3 { margin: 0 0 10px; font-size: 26px; }
+    .resource-modal p { color: var(--muted); line-height: 1.65; }
 
     @media (max-width: 900px) {
-        .digital-grid, .digital-two, .digital-resource-list, .brigance-grid { grid-template-columns: 1fr; }
+        .digital-grid, .digital-two, .digital-resource-list, .brigance-grid, .deep-guide, .guide-columns, .fit-row, .survey-grid { grid-template-columns: 1fr; }
         .digital-section-head { display: block; }
         .digital-hero { min-height: 620px; }
         .digital-chat { position: static; }
         .lesson-item { grid-template-columns: 1fr; }
+        .deep-guide img { height: 260px; min-height: 0; }
     }
 </style>
 
@@ -335,6 +438,7 @@ if (empty($lesson_snapshots)) {
             <p class="digital-copy">Start with one question, then follow the links into curriculum, classrooms, screenings, age guides, and lesson-plan snapshots. The goal is not pressure. The goal is helping parents understand what quality childcare can look like.</p>
             <div class="digital-actions">
                 <a class="digital-button" href="#resource-map">Explore the resource map</a>
+                <a class="digital-button secondary" href="#parent-fit">Take the parent fit survey</a>
                 <a class="digital-button secondary" href="#ask-kidazzle">Ask a childcare question</a>
             </div>
         </div>
@@ -440,7 +544,94 @@ if (empty($lesson_snapshots)) {
                     </article>
                 <?php endforeach; ?>
             </div>
+            <div class="deep-guide-grid" aria-label="Detailed age group parent guides">
+                <?php foreach ($age_guides as $guide): ?>
+                    <article class="deep-guide" id="guide-<?php echo esc_attr($guide['id']); ?>">
+                        <img src="<?php echo $asset($guide['image']); ?>" alt="<?php echo esc_attr($guide['label']); ?> detailed parent guide">
+                        <div class="deep-guide-content">
+                            <span class="digital-pill" style="background:#dff5ec;"><?php echo esc_html($guide['range']); ?></span>
+                            <h3 style="font-size:30px;margin:14px 0 8px;"><?php echo esc_html($guide['label']); ?> parent guide</h3>
+                            <p><?php echo esc_html($guide['focus']); ?></p>
+                            <div class="guide-columns">
+                                <div class="guide-mini">
+                                    <h4>What the day can include</h4>
+                                    <ul>
+                                        <?php foreach ($guide['day'] as $item): ?>
+                                            <li><?php echo esc_html($item); ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <div class="guide-mini">
+                                    <h4>What to look for on a tour</h4>
+                                    <ul>
+                                        <?php foreach ($guide['look_for'] as $item): ?>
+                                            <li><?php echo esc_html($item); ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="fit-row">
+                                <div class="fit-box"><strong>Likely a good fit:</strong> <?php echo esc_html($guide['good_fit']); ?></div>
+                                <div class="fit-box alt"><strong>May not be the right fit:</strong> <?php echo esc_html($guide['not_fit']); ?></div>
+                            </div>
+                            <div class="digital-actions">
+                                <a class="digital-button" href="#parent-fit">Find my next step</a>
+                                <a class="digital-button secondary" href="#ask-kidazzle">Ask about <?php echo esc_html($guide['label']); ?></a>
+                            </div>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+            </div>
             <a class="back-link" href="#resource-map">Back to resource map</a>
+        </div>
+    </section>
+
+    <section class="digital-band" id="parent-fit" style="background:#fff;">
+        <div class="digital-shell">
+            <div class="digital-section-head">
+                <div>
+                    <h2>Find your childcare fit.</h2>
+                    <p>This short survey helps parents decide whether to keep reading, ask a director, request tuition information, or schedule a tour. It also helps families self-select when a different care model may be better.</p>
+                </div>
+            </div>
+            <div class="survey-grid">
+                <form class="survey-card" id="kidazzle-fit-survey">
+                    <h4>Parent fit survey</h4>
+                    <label for="fit-language">Preferred language</label>
+                    <select id="fit-language" name="language">
+                        <option value="English">English</option>
+                        <option value="Spanish">Spanish</option>
+                    </select>
+                    <label for="fit-age">Child age</label>
+                    <select id="fit-age" name="age">
+                        <option value="infant">Infant / expecting</option>
+                        <option value="toddler">12-24 months</option>
+                        <option value="twos">2 years / 2.5 years</option>
+                        <option value="preschool">3-4 years / Pre-K</option>
+                        <option value="school-age">School age / summer camp</option>
+                    </select>
+                    <label for="fit-priority">Biggest question right now</label>
+                    <select id="fit-priority" name="priority">
+                        <option value="safety">Safety, licensing, and supervision</option>
+                        <option value="feeding">Feeding, naps, or infant routines</option>
+                        <option value="curriculum">Curriculum and lesson planning</option>
+                        <option value="location">Location, schedule, and availability</option>
+                        <option value="tuition">Tuition and enrollment steps</option>
+                    </select>
+                    <label for="fit-location">Preferred location</label>
+                    <select id="fit-location" name="location">
+                        <option value="not sure">Not sure yet</option>
+                        <option value="Summit">Summit / Atlanta</option>
+                        <option value="College Park">College Park</option>
+                        <option value="Miami">Miami</option>
+                    </select>
+                    <button class="digital-button" type="submit" style="margin-top:18px;width:100%;">Show my next step</button>
+                </form>
+                <div class="survey-card survey-result" id="fit-result">
+                    <h4>Your next step will appear here</h4>
+                    <p style="color:var(--muted);line-height:1.6;">Answer the quick questions and this page will recommend whether to read an age guide, talk with a director, or schedule a tour.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -456,10 +647,13 @@ if (empty($lesson_snapshots)) {
                 <div class="digital-resource-list">
                     <?php foreach ($resource_links as $link): ?>
                         <?php $is_external = strpos($link['url'], 'http') === 0 && strpos($link['url'], home_url()) !== 0; ?>
-                        <a href="<?php echo esc_url($link['url']); ?>" <?php echo $is_external ? 'target="_blank" rel="noopener"' : ''; ?>>
-                            <?php echo esc_html($link['label']); ?>
-                            <span><?php echo esc_html($link['type']); ?></span>
-                        </a>
+                        <div class="resource-row">
+                            <a href="<?php echo esc_url($link['url']); ?>" <?php echo $is_external ? 'target="_blank" rel="noopener"' : ''; ?>>
+                                <?php echo esc_html($link['label']); ?>
+                                <span><?php echo esc_html($link['type']); ?></span>
+                            </a>
+                            <button class="resource-info" type="button" data-resource-title="<?php echo esc_attr($link['label']); ?>" data-resource-summary="<?php echo esc_attr($link['summary']); ?>" data-resource-url="<?php echo esc_url($link['url']); ?>">?</button>
+                        </div>
                     <?php endforeach; ?>
                 </div>
                 <a class="back-link" href="#resource-map">Back to resource map</a>
@@ -499,7 +693,7 @@ if (empty($lesson_snapshots)) {
                 <div class="digital-section-head">
                     <div>
                         <h2>Ask KIDazzle.</h2>
-                        <p>This quick guide answers common parent questions from the page content. The next step is to connect this same panel to the approved Ripple/KIDazzle knowledge base when you provide the shareable source.</p>
+                        <p>This quick guide answers common parent questions from the page content, invites Spanish-speaking families to choose Spanish, and routes tour-ready parents toward the center team.</p>
                     </div>
                 </div>
                 <div class="digital-card pad">
@@ -510,14 +704,17 @@ if (empty($lesson_snapshots)) {
             </div>
             <aside class="digital-chat" aria-label="KIDazzle parent question helper">
                 <h3 style="margin:0;">KIDazzle Parent Guide</h3>
-                <p style="margin:8px 0 0;color:rgba(255,255,255,.76);">Pick a question and follow the next link.</p>
+                <p style="margin:8px 0 0;color:rgba(255,255,255,.76);">Pick a question, choose a language, or ask for the next tour step.</p>
                 <div class="chat-log" id="kidazzle-parent-chat">
-                    <div class="chat-msg">Hi. I can help you find the right KIDazzle resource. What do you want to learn first?</div>
+                    <div class="chat-msg">Hi. I can help you find the right KIDazzle resource. Would you like support in English or Spanish?</div>
                 </div>
                 <div class="chat-options">
+                    <button type="button" data-answer="spanish">Prefiero Espanol</button>
                     <button type="button" data-answer="curriculum">What curriculum do you use?</button>
                     <button type="button" data-answer="lesson">Can I see lesson plans?</button>
                     <button type="button" data-answer="quality">How do I measure quality?</button>
+                    <button type="button" data-answer="infants">What happens in the infant room?</button>
+                    <button type="button" data-answer="tour">I want to schedule a tour</button>
                     <button type="button" data-answer="sick">What if my child gets sick?</button>
                     <button type="button" data-answer="age">Which age guide should I read?</button>
                 </div>
@@ -526,15 +723,29 @@ if (empty($lesson_snapshots)) {
     </section>
 </div>
 
+<div class="modal-backdrop" id="resource-modal" role="dialog" aria-modal="true" aria-labelledby="resource-modal-title">
+    <div class="resource-modal">
+        <h3 id="resource-modal-title">Resource</h3>
+        <p id="resource-modal-summary"></p>
+        <div class="digital-actions">
+            <a class="digital-button" id="resource-modal-link" href="#">Open resource</a>
+            <button class="digital-button secondary" style="color:#14213d;border-color:#d9e4de;background:#fff;" type="button" id="resource-modal-close">Close</button>
+        </div>
+    </div>
+</div>
+
 <script>
     (function () {
         const log = document.getElementById('kidazzle-parent-chat');
         if (!log) return;
 
         const answers = {
+            spanish: 'Claro. Podemos orientar a su familia en espanol. Puede revisar esta pagina, tomar la encuesta de ajuste familiar, o pedir que un director se comunique con usted para hablar sobre ubicacion, horario, edad del nino y proximos pasos.',
             curriculum: 'KIDazzle uses a structured early learning approach connected to Teaching Strategies and classroom lesson planning. Start with the Curriculum page, then review the lesson-plan snapshots on this page.',
             lesson: 'Yes. This page pulls available lesson-plan files from program records when they are attached. Use the lesson-plan section to open the newest available snapshots.',
             quality: 'Look for routines, teacher communication, safe supervision, intentional classroom areas, observation notes, and clear developmental goals. The NAEYC, ERS, DECAL, and GELDS links are good places to keep learning.',
+            infants: 'A strong infant day includes warm handoff, labeled bottles or breast milk, a written feeding plan, diapering checks, supervised tummy time, safe sleep, responsive talk, and daily family updates. Open the Infants parent guide for the full path.',
+            tour: 'Good next step. Use the parent fit survey to choose language, age group, biggest concern, and preferred location. Then schedule a tour or ask a director to call you.',
             sick: 'Start with the Parent Handbook and ask the center how symptoms, return-to-care, communication, and documentation are handled for your child.',
             age: 'Pick the age closest to your child: infants, toddlers, twos, two-and-a-half, threes, fours, or summer camp. Each section gives questions you can ask a provider.'
         };
@@ -557,9 +768,65 @@ if (empty($lesson_snapshots)) {
         document.querySelectorAll('[data-chat-topic]').forEach((link) => {
             link.addEventListener('click', () => {
                 addMessage('Tell me about ' + link.dataset.chatTopic + '.', 'parent');
-                addMessage('Open that age section and look at the focus statement plus the parent questions. Those are the best starting points for a center visit or pickup conversation.', 'guide');
+                addMessage('Open that age section and the detailed parent guide below it. It explains the day, what to look for on a tour, and whether this type of care may be a fit for your family.', 'guide');
             });
         });
+
+        const survey = document.getElementById('kidazzle-fit-survey');
+        const result = document.getElementById('fit-result');
+        if (survey && result) {
+            survey.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const data = new FormData(survey);
+                const language = data.get('language');
+                const age = data.get('age');
+                const priority = data.get('priority');
+                const location = data.get('location');
+                const ageLinks = {
+                    infant: '#guide-infants',
+                    toddler: '#guide-toddlers',
+                    twos: '#guide-two-half',
+                    preschool: '#guide-fours',
+                    'school-age': '#guide-summer-camp'
+                };
+                const priorityText = {
+                    safety: 'Start with quality links and ask the center director about supervision, ratios, safe sleep or rest, illness policies, and parent communication.',
+                    feeding: 'Start with the infant or toddler guide, then ask the director about feeding plans, labeled bottles, breast milk or formula routines, naps, and daily updates.',
+                    curriculum: 'Start with lesson-plan snapshots and the curriculum page so you can see how play, standards, and teacher observation connect.',
+                    location: 'Start with location matching and a tour request so the team can confirm availability, schedule needs, and the best center contact.',
+                    tuition: 'Ask for a director or enrollment team follow-up. Tuition, subsidy, and start-date questions are best handled by a center team member.'
+                };
+                const languageLine = language === 'Spanish'
+                    ? 'Spanish support requested. A bilingual follow-up should be offered when the lead is routed.'
+                    : 'English selected. Continue with the guide or ask for a director follow-up.';
+                result.innerHTML = '<h4>Recommended next step</h4><p style="color:var(--muted);line-height:1.6;">' + languageLine + ' Preferred location: ' + location + '.</p><p style="color:var(--muted);line-height:1.6;">' + priorityText[priority] + '</p><div class="digital-actions"><a class="digital-button" href="' + ageLinks[age] + '">Open age guide</a><a class="digital-button secondary" style="color:#14213d;border-color:#d9e4de;background:#fff;" href="<?php echo esc_url(home_url('/contact/')); ?>">Schedule a tour</a></div>';
+                addMessage('I completed the parent fit survey.', 'parent');
+                addMessage('Based on your answers, review the recommended guide and schedule a tour if the location and care model fit your family.', 'guide');
+            });
+        }
+
+        const modal = document.getElementById('resource-modal');
+        const modalTitle = document.getElementById('resource-modal-title');
+        const modalSummary = document.getElementById('resource-modal-summary');
+        const modalLink = document.getElementById('resource-modal-link');
+        const modalClose = document.getElementById('resource-modal-close');
+        if (modal && modalTitle && modalSummary && modalLink && modalClose) {
+            document.querySelectorAll('[data-resource-title]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    modalTitle.textContent = button.dataset.resourceTitle;
+                    modalSummary.textContent = button.dataset.resourceSummary;
+                    modalLink.href = button.dataset.resourceUrl;
+                    modal.classList.add('is-open');
+                });
+            });
+            modalClose.addEventListener('click', () => modal.classList.remove('is-open'));
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) modal.classList.remove('is-open');
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') modal.classList.remove('is-open');
+            });
+        }
     })();
 </script>
 
