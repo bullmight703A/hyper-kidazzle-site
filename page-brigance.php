@@ -2,6 +2,11 @@
 /**
  * Template Name: Brigance Console V3
  */
+
+if (file_exists(get_template_directory() . '/page-digital-resources.php')) {
+    require get_template_directory() . '/page-digital-resources.php';
+    return;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
