@@ -265,6 +265,15 @@ if (empty($lesson_snapshots)) {
     .digital-card p { margin: 0; color: var(--muted); line-height: 1.55; }
     .digital-card-body { padding: 20px; }
     .digital-card-link { display: inline-flex; margin-top: 16px; font-weight: 850; color: var(--teal); text-decoration: none; }
+    button.digital-card-link {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+    }
     .digital-two { display: grid; grid-template-columns: 1.08fr .92fr; gap: 24px; align-items: start; }
     .digital-resource-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .digital-resource-list a {
@@ -418,14 +427,83 @@ if (empty($lesson_snapshots)) {
     }
     .resource-modal h3 { margin: 0 0 10px; font-size: 26px; }
     .resource-modal p { color: var(--muted); line-height: 1.65; }
+    .location-fit-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .location-chip {
+        min-height: 92px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 12px 28px rgba(20,33,61,.05);
+    }
+    .location-chip strong { display: block; line-height: 1.1; }
+    .location-chip span { color: var(--muted); font-size: 13px; line-height: 1.25; }
+    .age-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 22px;
+    }
+    .age-modal[aria-hidden="false"] { display: flex; }
+    .age-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(16,34,58,.72);
+        backdrop-filter: blur(8px);
+    }
+    .age-modal-panel {
+        position: relative;
+        width: min(980px, 100%);
+        height: min(740px, calc(100vh - 44px));
+        border-radius: 12px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 28px 80px rgba(0,0,0,.28);
+        border: 1px solid rgba(255,255,255,.4);
+    }
+    .age-modal-head {
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0 16px 0 20px;
+        background: #10223a;
+        color: white;
+    }
+    .age-modal-close {
+        border: 1px solid rgba(255,255,255,.35);
+        background: rgba(255,255,255,.12);
+        color: white;
+        border-radius: 999px;
+        min-width: 38px;
+        height: 38px;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+    }
+    .age-modal-frame {
+        width: 100%;
+        height: calc(100% - 58px);
+        border: 0;
+        background: #fbfaf3;
+    }
 
     @media (max-width: 900px) {
-        .digital-grid, .digital-two, .digital-resource-list, .brigance-grid, .deep-guide, .guide-columns, .fit-row, .survey-grid { grid-template-columns: 1fr; }
+        .digital-grid, .digital-two, .digital-resource-list, .brigance-grid, .deep-guide, .guide-columns, .fit-row, .survey-grid, .location-fit-grid { grid-template-columns: 1fr; }
         .digital-section-head { display: block; }
         .digital-hero { min-height: 620px; }
         .digital-chat { position: static; }
         .lesson-item { grid-template-columns: 1fr; }
         .deep-guide img { height: 260px; min-height: 0; }
+        .age-modal { padding: 10px; }
+        .age-modal-panel { height: calc(100vh - 20px); }
     }
 </style>
 
@@ -539,19 +617,28 @@ if (empty($lesson_snapshots)) {
                                     <li><?php echo esc_html($question); ?></li>
                                 <?php endforeach; ?>
                             </ul>
-                            <a class="digital-card-link" href="#ask-kidazzle" data-chat-topic="<?php echo esc_attr($guide['label']); ?>">Ask about <?php echo esc_html($guide['label']); ?></a>
+                            <button class="digital-card-link" type="button" data-resource-topic="<?php echo esc_attr($guide['id']); ?>">Ask about <?php echo esc_html($guide['label']); ?></button>
                         </div>
                     </article>
                 <?php endforeach; ?>
             </div>
-            <div class="deep-guide-grid" aria-label="Detailed age group parent guides">
+            <div class="age-modal" id="age-resource-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="age-resource-title">
+                <div class="age-modal-backdrop" data-close-age-modal></div>
+                <div class="age-modal-panel">
+                    <div class="age-modal-head">
+                        <strong id="age-resource-title">KIDazzle age guide</strong>
+                        <button class="age-modal-close" type="button" data-close-age-modal aria-label="Close age guide">&times;</button>
+                    </div>
+                    <iframe class="age-modal-frame" id="age-resource-frame" title="KIDazzle age guide details"></iframe>
+                </div>
+            </div>
+            <div hidden>
                 <?php foreach ($age_guides as $guide): ?>
-                    <article class="deep-guide" id="guide-<?php echo esc_attr($guide['id']); ?>">
-                        <img src="<?php echo $asset($guide['image']); ?>" alt="<?php echo esc_attr($guide['label']); ?> detailed parent guide">
-                        <div class="deep-guide-content">
+                    <template id="resource-template-<?php echo esc_attr($guide['id']); ?>">
+                        <article class="popup-guide">
                             <span class="digital-pill" style="background:#dff5ec;"><?php echo esc_html($guide['range']); ?></span>
-                            <h3 style="font-size:30px;margin:14px 0 8px;"><?php echo esc_html($guide['label']); ?> parent guide</h3>
-                            <p><?php echo esc_html($guide['focus']); ?></p>
+                            <h1><?php echo esc_html($guide['label']); ?> parent guide</h1>
+                            <p class="lead"><?php echo esc_html($guide['focus']); ?></p>
                             <div class="guide-columns">
                                 <div class="guide-mini">
                                     <h4>What the day can include</h4>
@@ -575,11 +662,11 @@ if (empty($lesson_snapshots)) {
                                 <div class="fit-box alt"><strong>May not be the right fit:</strong> <?php echo esc_html($guide['not_fit']); ?></div>
                             </div>
                             <div class="digital-actions">
-                                <a class="digital-button" href="#parent-fit">Find my next step</a>
-                                <a class="digital-button secondary" href="#ask-kidazzle">Ask about <?php echo esc_html($guide['label']); ?></a>
+                                <a class="digital-button" href="<?php echo esc_url(home_url('/contact/')); ?>" target="_parent">Schedule a tour</a>
+                                <a class="digital-button secondary" href="<?php echo esc_url(home_url('/curriculum/')); ?>" target="_parent">Read curriculum</a>
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                    </template>
                 <?php endforeach; ?>
             </div>
             <a class="back-link" href="#resource-map">Back to resource map</a>
@@ -621,9 +708,13 @@ if (empty($lesson_snapshots)) {
                     <label for="fit-location">Preferred location</label>
                     <select id="fit-location" name="location">
                         <option value="not sure">Not sure yet</option>
-                        <option value="Summit">Summit / Atlanta</option>
+                        <option value="Summit">Summit</option>
+                        <option value="Atlanta Federal Center">Atlanta Federal Center / Downtown Atlanta</option>
+                        <option value="West End Atlanta">West End Atlanta</option>
                         <option value="College Park">College Park</option>
-                        <option value="Miami">Miami</option>
+                        <option value="Hampton">Hampton, GA</option>
+                        <option value="Memphis">Memphis, TN</option>
+                        <option value="Miami">Miami, FL</option>
                     </select>
                     <button class="digital-button" type="submit" style="margin-top:18px;width:100%;">Show my next step</button>
                 </form>
@@ -631,6 +722,14 @@ if (empty($lesson_snapshots)) {
                     <h4>Your next step will appear here</h4>
                     <p style="color:var(--muted);line-height:1.6;">Answer the quick questions and this page will recommend whether to read an age guide, talk with a director, or schedule a tour.</p>
                 </div>
+            </div>
+            <div class="location-fit-grid" aria-label="KIDazzle locations">
+                <?php foreach ($kidazzle_locations as $location): ?>
+                    <article class="location-chip">
+                        <strong><?php echo esc_html($location['name']); ?></strong>
+                        <span><?php echo esc_html($location['market']); ?></span>
+                    </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -765,11 +864,59 @@ if (empty($lesson_snapshots)) {
             });
         });
 
-        document.querySelectorAll('[data-chat-topic]').forEach((link) => {
-            link.addEventListener('click', () => {
-                addMessage('Tell me about ' + link.dataset.chatTopic + '.', 'parent');
-                addMessage('Open that age section and the detailed parent guide below it. It explains the day, what to look for on a tour, and whether this type of care may be a fit for your family.', 'guide');
+        const ageModal = document.getElementById('age-resource-modal');
+        const ageFrame = document.getElementById('age-resource-frame');
+        const ageTitle = document.getElementById('age-resource-title');
+
+        function buildAgeFrame(content) {
+            return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>' +
+                'body{margin:0;background:#fbfaf3;color:#14213d;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}' +
+                '.popup-guide{padding:28px;max-width:860px;margin:0 auto}' +
+                '.digital-pill{display:inline-flex;align-items:center;border-radius:999px;padding:8px 12px;background:#dff5ec;color:#173c36;font-weight:850;font-size:12px;text-transform:uppercase;letter-spacing:.08em}' +
+                'h1{font-family:Georgia,serif;font-size:clamp(34px,6vw,58px);line-height:1;margin:16px 0 12px}' +
+                'h4{margin:0 0 10px;font-size:17px}' +
+                '.lead{font-size:19px;color:#496173}' +
+                '.guide-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px}' +
+                '.guide-mini{border:1px solid #d9e4de;border-radius:8px;padding:16px;background:white}' +
+                '.guide-mini ul{margin:0;padding-left:18px;color:#496173}' +
+                'li{margin:8px 0}' +
+                '.fit-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}' +
+                '.fit-box{border-radius:8px;padding:14px;line-height:1.5;background:#e9f8f2;border:1px solid #b7e3d2}' +
+                '.fit-box.alt{background:#fff6e2;border-color:#f4d598}' +
+                '.digital-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}' +
+                '.digital-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border-radius:12px;padding:12px 18px;font-weight:850;text-decoration:none;background:#0f8f87;color:white}' +
+                '.digital-button.secondary{background:white;color:#14213d;border:1px solid #d9e4de}' +
+                '@media(max-width:760px){.guide-columns,.fit-row{grid-template-columns:1fr}.popup-guide{padding:22px}}' +
+                '</style></head><body>' + content + '</body></html>';
+        }
+
+        function openAgeGuide(topicId, label) {
+            if (!ageModal || !ageFrame) return;
+            const template = document.getElementById('resource-template-' + topicId);
+            if (!template) return;
+            if (ageTitle) ageTitle.textContent = label || 'KIDazzle age guide';
+            ageFrame.srcdoc = buildAgeFrame(template.innerHTML);
+            ageModal.setAttribute('aria-hidden', 'false');
+            document.documentElement.style.overflow = 'hidden';
+            addMessage(label + ' opened in the parent guide pop-up.', 'parent');
+            addMessage('Good. Keep them on the page, answer the age-specific question, then offer a tour or curriculum link as the next step.', 'guide');
+        }
+
+        function closeAgeGuide() {
+            if (!ageModal || !ageFrame) return;
+            ageModal.setAttribute('aria-hidden', 'true');
+            ageFrame.removeAttribute('srcdoc');
+            document.documentElement.style.overflow = '';
+        }
+
+        document.querySelectorAll('[data-resource-topic]').forEach((button) => {
+            button.addEventListener('click', () => {
+                openAgeGuide(button.dataset.resourceTopic, button.textContent);
             });
+        });
+
+        document.querySelectorAll('[data-close-age-modal]').forEach((control) => {
+            control.addEventListener('click', closeAgeGuide);
         });
 
         const survey = document.getElementById('kidazzle-fit-survey');
@@ -783,11 +930,11 @@ if (empty($lesson_snapshots)) {
                 const priority = data.get('priority');
                 const location = data.get('location');
                 const ageLinks = {
-                    infant: '#guide-infants',
-                    toddler: '#guide-toddlers',
-                    twos: '#guide-two-half',
-                    preschool: '#guide-fours',
-                    'school-age': '#guide-summer-camp'
+                    infant: '#age-infants',
+                    toddler: '#age-toddlers',
+                    twos: '#age-two-half',
+                    preschool: '#age-fours',
+                    'school-age': '#age-summer-camp'
                 };
                 const priorityText = {
                     safety: 'Start with quality links and ask the center director about supervision, ratios, safe sleep or rest, illness policies, and parent communication.',
@@ -827,6 +974,9 @@ if (empty($lesson_snapshots)) {
                 if (event.key === 'Escape') modal.classList.remove('is-open');
             });
         }
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeAgeGuide();
+        });
     })();
 </script>
 
