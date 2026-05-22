@@ -176,6 +176,8 @@ get_header();
 
                             <?php if ($post['booking']): ?>
                                 <a href="<?php echo esc_url($post['booking']); ?>"
+                                    data-location-url="<?php echo esc_url($post['permalink']); ?>"
+                                    data-location-title="<?php echo esc_attr($post['title']); ?>"
                                     class="booking-btn relative z-10 block w-full py-3 bg-<?php echo esc_attr($data['color']); ?> <?php echo esc_attr($data['text']); ?> text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-kidazzle-blueDark hover:text-white transition-colors"><?php _e('Schedule Visit', 'kidazzle-theme'); ?></a>
                             <?php else: ?>
                                 <a href="<?php echo esc_url($post['permalink']); ?>#contact"
@@ -224,6 +226,18 @@ get_header();
             <iframe id="kidazzle-tour-frame" src="" class="w-full h-full border-0"
                 allow="camera; microphone; autoplay; encrypted-media;"></iframe>
         </div>
+
+        <!-- Always-available fallback CTA (booking widgets can show no slots) -->
+        <div class="bg-brand-cream border-t border-brand-ink/5 px-6 py-4 flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+            <div class="text-sm text-brand-ink/80">
+                <span class="font-bold text-brand-ink"><?php _e('No times available?', 'kidazzle-theme'); ?></span>
+                <?php _e('Request a tour and our team will follow up.', 'kidazzle-theme'); ?>
+            </div>
+            <div class="flex gap-3">
+                <a href="tel:8774101002" class="px-5 py-3 rounded-xl bg-white border border-brand-ink/10 text-brand-ink font-bold text-xs uppercase tracking-widest hover:bg-brand-ink hover:text-white transition-colors"><?php _e('Call Now', 'kidazzle-theme'); ?></a>
+                <a id="kidazzle-tour-contact" href="/contact/" class="px-5 py-3 rounded-xl bg-kidazzle-blue text-white font-bold text-xs uppercase tracking-widest hover:bg-kidazzle-blueDark transition-colors"><?php _e('Request Tour', 'kidazzle-theme'); ?></a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -235,8 +249,9 @@ get_header();
         const iframe = document.getElementById('kidazzle-tour-frame');
         const externalLink = document.getElementById('kidazzle-tour-external');
         const loader = document.getElementById('kidazzle-tour-loader');
+        const contactLink = document.getElementById('kidazzle-tour-contact');
 
-        function openModal(url) {
+        function openModal(url, locationUrl) {
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
 
@@ -246,6 +261,11 @@ get_header();
             // Load URL
             iframe.src = url;
             externalLink.href = url;
+            if (contactLink && locationUrl) {
+                contactLink.href = locationUrl + '#contact';
+            } else if (contactLink) {
+                contactLink.href = '/contact/';
+            }
 
             iframe.onload = function () {
                 loader.classList.add('hidden');
@@ -263,10 +283,11 @@ get_header();
         bookingBtns.forEach(btn => {
             btn.addEventListener('click', function (e) {
                 const url = this.getAttribute('href');
+                const locationUrl = this.getAttribute('data-location-url');
                 // Only intercept standard external URLs, ignore mailto/tel or hashes
                 if (url && url.startsWith('http')) {
                     e.preventDefault();
-                    openModal(url);
+                    openModal(url, locationUrl);
                 }
             });
         });

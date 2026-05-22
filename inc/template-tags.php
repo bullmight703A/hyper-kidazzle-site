@@ -49,7 +49,7 @@ function kidazzle_get_location_fields($post_id = null)
 {
     $post_id = $post_id ?: get_the_ID();
 
-    return array(
+    $fields = array(
         'address' => kidazzle_get_meta_value($post_id, 'location_address', ''),
         'city' => kidazzle_get_meta_value($post_id, 'location_city', ''),
         'state' => kidazzle_get_meta_value($post_id, 'location_state', 'GA'),
@@ -59,6 +59,34 @@ function kidazzle_get_location_fields($post_id = null)
         'latitude' => kidazzle_get_meta_value($post_id, 'location_latitude', ''),
         'longitude' => kidazzle_get_meta_value($post_id, 'location_longitude', ''),
     );
+
+    return kidazzle_normalize_location_fields($post_id, $fields);
+}
+
+/**
+ * Normalize known location data issues without requiring WP admin edits.
+ *
+ * Note: The canonical source should be WP post meta. This function only applies
+ * safe overrides to prevent trust-damaging public errors.
+ */
+function kidazzle_normalize_location_fields($post_id, array $fields)
+{
+    $slug = get_post_field('post_name', $post_id);
+    $slug = is_string($slug) ? $slug : '';
+
+    // Doral/Miami is in Florida (common trust issue when defaulting to GA).
+    if ($slug === 'doral') {
+        $fields['state'] = 'FL';
+    }
+
+    // Fix a known email domain typo that can break lead routing.
+    if ($slug === 'kidazzle-west-end-of-atlanta' && !empty($fields['email'])) {
+        $email = (string) $fields['email'];
+        $email = preg_replace('/@kdiazzle\\.com$/i', '@kidazzle.com', $email);
+        $fields['email'] = $email;
+    }
+
+    return $fields;
 }
 
 /**

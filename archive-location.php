@@ -140,7 +140,8 @@ $locations_query = new WP_Query(array(
 							// Explode comma-separated string
 							$special_programs = array_map('trim', explode(',', $special_programs_raw));
 						} else {
-							$special_programs = array('GA Pre-K'); // Default fallback
+							// Default fallback should respect state to avoid GA-specific claims on TN/FL pages.
+							$special_programs = ($state === 'GA') ? array('GA Pre-K') : array('Pre-K');
 						}
 						?>
 

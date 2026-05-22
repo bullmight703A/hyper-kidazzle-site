@@ -64,6 +64,26 @@ while (have_posts()):
 	$seo_content_title = get_post_meta($location_id, 'location_seo_content_title', true);
 	$seo_content_text = get_post_meta($location_id, 'location_seo_content_text', true);
 
+	// Guard against accidental internal prompt/LLM scaffolding leaking into public pages.
+	$seo_content_text = is_string($seo_content_text) ? $seo_content_text : '';
+	if ($seo_content_text) {
+		$looks_like_internal_prompt = false;
+		if (preg_match('/SEO\\s+Input\\s+Prompt\\s+for\\s+an\\s+LLM/i', $seo_content_text)) {
+			$looks_like_internal_prompt = true;
+		}
+		if (
+			preg_match('/Primary\\s+Keywords/i', $seo_content_text) &&
+			preg_match('/SEO\\s+Title\\s+Tag\\s+Suggestions/i', $seo_content_text) &&
+			preg_match('/Meta\\s+Description/i', $seo_content_text)
+		) {
+			$looks_like_internal_prompt = true;
+		}
+		if ($looks_like_internal_prompt) {
+			$seo_content_title = '';
+			$seo_content_text = '';
+		}
+	}
+
 	// Get programs at this location
 	$programs_query = new WP_Query(array(
 		'post_type' => 'program',
