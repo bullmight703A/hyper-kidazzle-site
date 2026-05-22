@@ -29,9 +29,6 @@ function kidazzle_should_load_maps()
  */
 function kidazzle_enqueue_assets()
 {
-        // DEBUG: Confirm this function is executing
-        echo '<!-- DEBUG: kidazzle_enqueue_assets is running -->';
-
         $script_dependencies = array('jquery');
 
         // Google Fonts (Inter)
@@ -198,9 +195,6 @@ function kidazzle_enqueue_assets()
         );
         wp_script_add_data('ghl-modal-js', 'defer', true);
 
-        // DEBUG: Confirm script was enqueued
-        echo '<!-- DEBUG: Enqueued kidazzle-main-js with URL: ' . KIDAZZLE_THEME_URI . '/assets/js/main.js and version: ' . $js_version . ' -->';
-
         // Defer re-enabled for FCP optimization
         wp_script_add_data('kidazzle-main-js', 'defer', true);
 
@@ -254,7 +248,15 @@ function kidazzle_resource_hints($urls, $relation_type)
                 $urls[] = 'https://services.leadconnectorhq.com';
                 $urls[] = 'https://images.leadconnectorhq.com';
                 $urls[] = 'https://stcdn.leadconnectorhq.com';
-                $urls[] = 'https://fonts.bunny.net';
+
+                // Fonts + common third-party CDNs used site-wide
+                $urls[] = 'https://fonts.googleapis.com';
+                $urls[] = 'https://fonts.gstatic.com';
+                $urls[] = 'https://cdnjs.cloudflare.com';
+                $urls[] = 'https://cdn.gtranslate.net';
+                $urls[] = 'https://storage.googleapis.com';
+                $urls[] = 'https://images.unsplash.com';
+                $urls[] = 'https://sa.searchatlas.com';
         }
 
         if ('dns-prefetch' === $relation_type) {
@@ -270,7 +272,13 @@ function kidazzle_resource_hints($urls, $relation_type)
                 $urls[] = '//services.leadconnectorhq.com';
                 $urls[] = '//images.leadconnectorhq.com';
                 $urls[] = '//stcdn.leadconnectorhq.com';
-                $urls[] = '//fonts.bunny.net';
+                $urls[] = '//fonts.googleapis.com';
+                $urls[] = '//fonts.gstatic.com';
+                $urls[] = '//cdnjs.cloudflare.com';
+                $urls[] = '//cdn.gtranslate.net';
+                $urls[] = '//storage.googleapis.com';
+                $urls[] = '//images.unsplash.com';
+                $urls[] = '//sa.searchatlas.com';
         }
 
         return array_unique($urls, SORT_REGULAR);
@@ -318,7 +326,7 @@ add_action('admin_enqueue_scripts', 'kidazzle_enqueue_admin_assets');
 function kidazzle_async_styles($html, $handle, $href, $media)
 {
         // Defer Font Awesome AND Main CSS (Critical CSS inlined in header)
-        if (in_array($handle, array('kidazzle-font-awesome'))) {
+        if (in_array($handle, array('kidazzle-font-awesome', 'kidazzle-fonts'))) {
                 // Add data-no-optimize to prevent LiteSpeed from combining/blocking this file
                 $html = str_replace('<link', '<link data-no-optimize="1"', $html);
 
