@@ -449,9 +449,9 @@ add_filter('user_trailingslashit', 'kidazzle_enforce_trailing_slash', 10, 2);
  */
 function kidazzle_optimize_title_length($title_parts)
 {
-    // Truncate very long titles
-    if (isset($title_parts['title']) && mb_strlen($title_parts['title']) > 50) {
-        $title_parts['title'] = mb_substr($title_parts['title'], 0, 47) . '...';
+    // Keep titles concise without cutting useful location/search-intent words.
+    if (isset($title_parts['title']) && mb_strlen($title_parts['title']) > 65) {
+        $title_parts['title'] = mb_substr($title_parts['title'], 0, 62) . '...';
     }
 
     // Use shorter site name suffix on blog posts

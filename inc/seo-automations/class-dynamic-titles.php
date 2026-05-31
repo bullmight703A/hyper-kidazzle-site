@@ -30,7 +30,29 @@ class kidazzle_Dynamic_Titles
             return $this->patterns;
         }
         
-        $this->patterns = get_option('kidazzle_seo_title_patterns', $this->get_default_patterns());
+        $defaults = $this->get_default_patterns();
+        $stored = get_option('kidazzle_seo_title_patterns', []);
+
+        if (!is_array($stored) || empty($stored)) {
+            $this->patterns = $defaults;
+            return $this->patterns;
+        }
+
+        $legacy_defaults = [
+            'location' => '{title} | Daycare in {city}, {state} | Kidazzle',
+            'program' => '{title} Program | Ages {age_range} | Kidazzle',
+            'archive_location' => 'Our Daycare Locations | Kidazzle Early Learning',
+            'archive_program' => 'Early Learning Programs | Kidazzle',
+            'home' => 'Kidazzle Early Learning | Quality Childcare & Preschool',
+        ];
+
+        foreach ($defaults as $key => $pattern) {
+            if (!isset($stored[$key]) || (isset($legacy_defaults[$key]) && $stored[$key] === $legacy_defaults[$key])) {
+                $stored[$key] = $pattern;
+            }
+        }
+
+        $this->patterns = $stored;
         
         return $this->patterns;
     }
@@ -63,7 +85,9 @@ class kidazzle_Dynamic_Titles
         $patterns = $this->get_patterns();
         $new_title = '';
         
-        if (is_singular('location')) {
+        if (is_front_page()) {
+            $new_title = $patterns['home'] ?? '';
+        } elseif (is_singular('location')) {
             $new_title = $this->apply_pattern($patterns['location'] ?? '', get_the_ID());
         } elseif (is_singular('program')) {
             $new_title = $this->apply_pattern($patterns['program'] ?? '', get_the_ID());
@@ -77,8 +101,6 @@ class kidazzle_Dynamic_Titles
             $new_title = $patterns['archive_location'] ?? '';
         } elseif (is_post_type_archive('program')) {
             $new_title = $patterns['archive_program'] ?? '';
-        } elseif (is_front_page()) {
-            $new_title = $patterns['home'] ?? '';
         } elseif (is_search()) {
             $new_title = str_replace('{query}', get_search_query(), $patterns['search'] ?? '');
         }
