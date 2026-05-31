@@ -222,7 +222,6 @@ function kidazzle_url_needs_update($url)
 {
     // List of known old URL patterns that redirect
     $redirect_patterns = array(
-        '/contact$' => true,       // /contact → /contact-us/
         '/preschool/' => true,     // /preschool/ → /programs/preschool/
         '/ga-pre-k/' => true,      // /ga-pre-k/ → /programs/ga-pre-k/
         '/infant-care/' => true,   // etc.

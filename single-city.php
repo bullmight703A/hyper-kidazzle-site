@@ -122,7 +122,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                     <a href="#programs"
                         class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-kidazzle-green hover:text-brand-ink transition-colors"><i
                             class="fa-solid fa-graduation-cap"></i> Explore Programs</a>
-                    <a href="<?php echo esc_url(home_url('/contact-us/')); ?>"
+                    <a href="<?php echo esc_url(home_url('/contact/')); ?>"
                         class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-kidazzle-red hover:text-brand-ink transition-colors"><i
                             class="fa-solid fa-envelope"></i> Contact Us</a>
                 </div>

@@ -40,14 +40,14 @@ class kidazzle_Dynamic_Titles
      */
     private function get_default_patterns() {
         return [
-            'location' => '{title} | Daycare in {city}, {state} | Kidazzle',
-            'program' => '{title} Program | Ages {age_range} | Kidazzle',
+            'location' => '{title} Child Care | Daycare & Preschool in {city}, {state}',
+            'program' => '{title} Program | Ages {age_range} | KIDazzle Child Care',
             'post' => '{title} | Parenting Tips | Kidazzle Blog',
             'page' => '{title} | Kidazzle Early Learning',
             'team_member' => '{title} | Meet Our Team | Kidazzle',
-            'archive_location' => 'Our Daycare Locations | Kidazzle Early Learning',
-            'archive_program' => 'Early Learning Programs | Kidazzle',
-            'home' => 'Kidazzle Early Learning | Quality Childcare & Preschool',
+            'archive_location' => 'KIDazzle Locations | Daycare, Preschool & GA Pre-K',
+            'archive_program' => 'KIDazzle Programs | Infant, Toddler, Preschool & Pre-K',
+            'home' => 'KIDazzle Child Care | Daycare, Preschool & Early Learning',
             'search' => 'Search Results for "{query}" | Kidazzle'
         ];
     }
