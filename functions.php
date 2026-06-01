@@ -115,6 +115,7 @@ require_once KIDAZZLE_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php';
 
 // SEO Automations (Internal Linking, Geo SEO, etc.)
 require_once KIDAZZLE_THEME_DIR . '/inc/seo-automations/bootstrap.php';
+require_once KIDAZZLE_THEME_DIR . '/inc/search-atlas-frontend-suppression.php';
 
 require_once KIDAZZLE_THEME_DIR . '/inc/security.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/force-trailing-slashes.php';
