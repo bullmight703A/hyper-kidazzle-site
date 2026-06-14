@@ -67,6 +67,7 @@ function kidazzle_register_city_cpt()
 }
 add_action('init', 'kidazzle_register_city_cpt', 0);
 
+/*
 function kidazzle_register_city_meta()
 {
     $meta_args = array(
@@ -117,3 +118,4 @@ function kidazzle_register_city_meta()
     ));
 }
 add_action('init', 'kidazzle_register_city_meta');
+*/
