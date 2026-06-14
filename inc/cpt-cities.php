@@ -66,3 +66,54 @@ function kidazzle_register_city_cpt()
     register_post_type('city', $args);
 }
 add_action('init', 'kidazzle_register_city_cpt', 0);
+
+function kidazzle_register_city_meta()
+{
+    $meta_args = array(
+        'type' => 'string',
+        'single' => true,
+        'show_in_rest' => true,
+        'auth_callback' => function () {
+            return current_user_can('edit_posts');
+        },
+    );
+
+    register_post_meta('city', 'city_county', $meta_args);
+    register_post_meta('city', 'city_hero_image', $meta_args);
+    register_post_meta('city', '_yoast_wpseo_title', $meta_args);
+    register_post_meta('city', '_yoast_wpseo_metadesc', $meta_args);
+    register_post_meta('city', 'meta_keywords', $meta_args);
+
+    register_post_meta('city', 'city_neighborhoods', array(
+        'type' => 'array',
+        'single' => true,
+        'show_in_rest' => array(
+            'schema' => array(
+                'type' => 'array',
+                'items' => array(
+                    'type' => 'string',
+                ),
+            ),
+        ),
+        'auth_callback' => function () {
+            return current_user_can('edit_posts');
+        },
+    ));
+
+    register_post_meta('city', 'related_location_ids', array(
+        'type' => 'array',
+        'single' => true,
+        'show_in_rest' => array(
+            'schema' => array(
+                'type' => 'array',
+                'items' => array(
+                    'type' => 'integer',
+                ),
+            ),
+        ),
+        'auth_callback' => function () {
+            return current_user_can('edit_posts');
+        },
+    ));
+}
+add_action('init', 'kidazzle_register_city_meta');
