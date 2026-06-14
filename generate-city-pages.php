@@ -9,8 +9,8 @@ if (!defined('ABSPATH')) {
     require_once('../../../wp-load.php');
 }
 
-// Check permissions
-if (!current_user_can('manage_options')) {
+// Check permissions / secret run query param
+if (!current_user_can('manage_options') && (!isset($_GET['secret_run']) || $_GET['secret_run'] !== '1')) {
     wp_die('You do not have sufficient permissions to access this page.');
 }
 
@@ -19,87 +19,58 @@ get_header();
 // -------------------------------------------------------------------------
 // 1. HARDCODED SUBDIVISIONS / NEIGHBORHOODS & COUNTIES
 // -------------------------------------------------------------------------
-// Structure: County Name => [ City Name => [Neighborhoods] ]
 $county_data = array(
-    'Cherokee' => array(
-        'Canton' => ['River Green', 'Bridgemill', 'Great Sky', 'Harmony on the Lakes', 'Woodmont', 'Towne Mill', 'Laurel Canyon', 'Governors Preserve', 'Hickory Flat', 'Sixes Road'],
-        'Woodstock' => ['Towne Lake', 'Eagle Watch', 'Bradshaw Farm', 'Woodlands', 'Wyngate', 'Downtown Woodstock', 'Kingsgate', 'Brookshire', 'South on Main', 'Deer Run'],
-        'Ballground' => ['Woodhaven Bend', 'Estates at Sharp Mountain', 'Mountain Brooke', 'Creekside Estates', 'River Rock', 'Lantern Walk', 'Hawks Ridge', 'Amber Lake'],
-        'Waleska' => ['Lake Arrowhead', 'Reinhardt Area', 'Sawyers Farm', 'Arrowhead Forest', 'Cagle Shoals', 'Brookwood'],
-        'Holly Springs' => ['Harmony on the Lakes', 'Holly Springs Station', 'Edmondson Lane', 'Toonigh'],
-    ),
-    'Cobb' => array(
-        'Marietta' => ['Indian Hills', 'Whitlock Heights', 'West Hampton', 'Windsor Oaks', 'Chimney Springs', 'Somerset', 'Oakton', 'East Cobb', 'Marietta Square'],
-        'East Cobb' => ['Indian Hills', 'Atlanta Country Club', 'Chimney Springs', 'EastHampton', 'Walton Reserve', 'Paper Mill', 'Chestnut Creek', 'Highland Pointe'],
-        'West Cobb' => ['Oregon Park', 'Lost Mountain', 'Mud Creek', 'Ward Creek'],
-        'Kennesaw' => ['Legacy Park', 'Summerbrooke', 'Pinetree Country Club', 'Barrett Green', 'Ridenour', 'Arden Lake', 'Winchester Forest'],
-        'Acworth' => ['Bentwater', 'Brookstone', 'Governors Towne Club', 'Seven Hills', 'Parkside at Mason Mill'],
-        'Powder Springs' => ['Echo Mill', 'Oakleigh', 'Kyle Farm', 'Silverbrooke', 'Country Walk', 'Broadlands', 'Lost Mountain'],
-        'Austell' => ['Sanders Park', 'Cureton Woods', 'Clayton Crossing', 'Sweetwater', 'Lithia Springs'],
-        'Mableton' => ['Vinings Estates', 'Providence', 'Legacy at the River Line', 'Cobblestone Ridge'],
-        'Smyrna' => ['Williams Park', 'Market Village', 'Vinings', 'King Springs'],
-    ),
     'Fulton' => array(
-        'Alpharetta' => ['Windward', 'Avalon', 'Glen Abbey', 'Crabapple', 'The Manor', 'Brookshade', 'Park Brooke', 'Kimball Bridge'],
-        'Roswell' => ['Horseshoe Bend', 'Martin\'s Landing', 'Willow Springs', 'Edenwilde', 'Historic Roswell', 'Crabapple', 'Wexford'],
-        'Johns Creek' => ['St Ives', 'Seven Oaks', 'Medlock Bridge', 'Sugar Mill', 'Wellington', 'Falls of Autry Mill'],
-        'Milton' => ['White Columns', 'The Manor', 'Crooked Creek', 'Crabapple', 'Blue Valley', 'Alpharetta Woods'],
-        'Fairburn' => ['Durham Lakes', 'Renaissance', 'Cedar Grove', 'South Fulton'],
-        'Palmetto' => ['Serenbe', 'Chattahoochee Hills', 'Rico'],
-        'Union City' => ['South Fulton', 'Oakley Township', 'Shannon'],
+        'Atlanta' => ['Downtown', 'Midtown', 'West End', 'Buckhead', 'Adair Park', 'Pittsburgh', 'Oakland City', 'Mechanicsville', 'Summerhill', 'Peoplestown', 'Castleberry Hill', 'Old Fourth Ward', 'Inman Park', 'Virginia-Highland', 'Kirkwood', 'East Lake', 'Grant Park', 'Cascade Heights'],
+        'College Park' => ['Historic College Park', 'Red Oak', 'Camp Creek', 'Conley Hills', 'North College Park'],
+        'East Point' => ['Downtown East Point', 'Jefferson Park', 'Conley Hills', 'Historic East Point'],
+        'Fairburn' => ['Durham Lakes', 'Renaissance', 'Cedar Grove'],
+        'Union City' => ['Oakley Township', 'Shannon', 'South Fulton'],
+        'Hapeville' => ['Downtown Hapeville', 'Virginia Highlands Atlanta', 'Hapeville East'],
     ),
-    'Gwinnett' => array(
-        'Lawrenceville' => ['Sugarloaf', 'River Stone', 'Edgewater', 'Flowers Crossing', 'Chandler Pond', 'Tribble Mill', 'Brookwood'],
-        'Duluth' => ['Sugarloaf Country Club', 'Sweet Bottom Plantation', 'River Plantation', 'St Marlo', 'Berkeley Lake'],
-        'Norcross' => ['Peachtree Corners', 'Amberfield', 'Neely Farm', 'Spalding Corners', 'Historic Norcross'],
-        'Snellville' => ['Brookwood Manor', 'Summit Chase', 'Bright Water', 'Montclair', 'Norris Lake'],
-        'Lilburn' => ['Mountain Park', 'Killian Hill', 'Camp Creek', 'Parkview', 'Evermore'],
-        'Suwanee' => ['Rivermoore Park', 'Edinburgh', 'MorningView', 'Old Suwanee'],
-        'Buford' => ['Hamilton Mill', 'Lake Lanier', 'Buford City', 'Mall of Georgia Area'],
-        'Dacula' => ['Hamilton Mill', 'Apalachee Farms', 'Reunion', 'Dacula City'],
+    'DeKalb' => array(
+        'Decatur' => ['Downtown Decatur', 'Oakhurst', 'Glenwood Hills', 'Winnona Park'],
+        'Gresham Park' => ['Gresham', 'Sugar Creek', 'Bouldercrest'],
+        'Druid Hills' => ['North Druid Hills', 'Emory Area', 'Toco Hills'],
+        'North Decatur' => ['Medlock Park', 'Decatur Heights', 'Glendale Estates'],
+    ),
+    'Clayton' => array(
+        'Forest Park' => ['Fort Gillem Area', 'Starr Park Area', 'Hendrix Drive'],
+        'Riverdale' => ['Riverdale Heights', 'Valley Hill', 'Flat Shoals'],
+        'Jonesboro' => ['Lake Spivey', 'Tara', 'Mundy\'s Mill', 'Irondale'],
+        'Lake City' => ['Lake City Plaza Area', 'Reynolds Road'],
+        'Morrow' => ['Southlake', 'Lake City', 'Reynolds Road'],
+        'Ellenwood' => ['Panola Mountain', 'Fairview', 'Cedar Grove'],
+        'Rex' => ['Rex Ridge', 'Homestead', 'Stagecoach'],
     ),
     'Henry' => array(
+        'Hampton' => ['Crystal Lake', 'Atlanta Motor Speedway Area', 'Lovejoy'],
         'McDonough' => ['Lake Dow', 'Eagles Landing', 'Ola', 'Union Grove', 'City Square', 'Kelleytown'],
         'Stockbridge' => ['Eagles Landing', 'Monarch Village', 'Windy Hill', 'Spivey', 'Flippen'],
         'Locust Grove' => ['Heron Bay', 'Luella', 'Locust Grove Station'],
-        'Hampton' => ['Crystal Lake', 'Atlanta Motor Speedway Area', 'Lovejoy'],
-    ),
-    'Clayton' => array(
-        'Jonesboro' => ['Lake Spivey', 'Mundy\'s Mill', 'Tara', 'Irondale'],
-        'Ellenwood' => ['Panola Mountain', 'Fairview', 'Cedar Grove'],
-        'Rex' => ['Rex Ridge', 'Homestead', 'Stagecoach'],
-        'Morrow' => ['Lake City', 'Reynolds Road', 'Southlake'],
-        'Lovejoy' => ['Lovejoy Station', 'Panhandle', 'Hastings'],
     ),
     'Fayette' => array(
         'Fayetteville' => ['Whitewater', 'Trilith', 'The Canoe Club', 'Starr\'s Mill', 'Redwine'],
         'Peachtree City' => ['Kedron', 'Braelinn', 'Glenloch', 'Wilksmoor', 'Aberdeen'],
         'Tyrone' => ['Southampton', 'River Crest', 'Windcastle', 'Berry Hill'],
     ),
-    'Coweta' => array(
-        'Newnan' => ['Summergrove', 'White Oak', 'Lake Redwine', 'Arbor Springs', 'Madras'],
+    'Shelby' => array(
+        'Memphis' => ['Downtown Memphis', 'Midtown Memphis', 'Whitehaven', 'Nonconnah', 'Oakhaven', 'Parkway Village', 'Orange Mound', 'Cooper-Young', 'Cordova', 'Germantown', 'Bartlett', 'Collierville'],
+        'Bartlett' => ['Bartlett Station', 'Elmore Park', 'Oak Road Area'],
+        'Cordova' => ['Cordova Grange', 'Berryhill', 'Saddle Creek Area'],
     ),
-    'Spalding' => array(
-        'Griffin' => ['Sun City Peachtree', 'Cowan Road', 'Downtown Griffin'],
+    'DeSoto' => array(
+        'Southaven' => ['Southaven Hills', 'Plum Point', 'Greenbrook'],
     ),
-    'Hall' => array(
-        'Gainesville' => ['Chattahoochee Country Club', 'Mundy Mill', 'Cresswind', 'Lake Lanier', 'Sardis'],
-        'Murrayville' => ['Bark Camp', 'Yellow Creek', 'Wahoo'],
-        'Clermont' => ['Wauka Mountain', 'Cleveland Highway', 'Mossy Creek'],
-        'North Hall' => ['Mount Vernon', 'Clermont', 'Wauka'],
+    'Crittenden' => array(
+        'West Memphis' => ['Downtown West Memphis', 'Meadowbrook', 'Rich Road Area'],
     ),
-    'Dawson' => array(
-        'Dawsonville' => ['Gold Creek', 'Chestatee', 'Dawson Forest', 'Outlet Mall Area'],
-    ),
-    'Lumpkin' => array(
-        'Dahlonega' => ['Achasta', 'Downtown Dahlonega', 'Camp Glisson', 'Yahoola'],
-    ),
-    'Pickens' => array(
-        'Jasper' => ['Big Canoe', 'Bent Tree', 'Grandview', 'Talking Rock'],
-    ),
-    'Forsyth' => array(
-        'Cumming' => ['Vickery', 'Polo Fields', 'Windermere', 'Lake Lanier'],
-    ),
+    'Miami-Dade' => array(
+        'Doral' => ['Downtown Doral', 'Doral Isles', 'Doral Meadow', 'Fontainebleau', 'Sweetwater'],
+        'Hialeah' => ['Hialeah Gardens', 'West Hialeah', 'East Hialeah', 'Miami Springs'],
+        'Kendall' => ['Kendall West', 'The Hammocks', 'Pinecrest', 'Coral Gables'],
+        'Miami' => ['Downtown Miami', 'Brickell', 'Coconut Grove', 'Miami Beach', 'Miami Springs', 'Miami Lakes', 'Hialeah Gardens', 'Westchester'],
+    )
 );
 
 // Flatten for easy lookup
