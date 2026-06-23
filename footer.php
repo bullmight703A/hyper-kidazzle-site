@@ -160,6 +160,8 @@ if ($footer_scripts) {
 	}
 </script>
 <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+<!-- GoHighLevel External Tracking Script -->
+<script src='https://link.msgsndr.com/js/external-tracking.js' data-tracking-id='tk_b5f35188691c4d668ce5ca462e39e455'></script>
 </body>
 
 </html>
