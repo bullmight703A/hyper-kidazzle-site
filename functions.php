@@ -730,20 +730,6 @@ function process_xray_lead($request) {
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
 
-// Temporary route to purge LiteSpeed Cache safely
-add_action('rest_api_init', function () {
-    register_rest_route('kidazzle/v1', '/purge-cache', array(
-        'methods' => 'GET',
-        'callback' => function () {
-            if (function_exists('do_action')) {
-                do_action('litespeed_purge_all');
-                return new WP_REST_Response(['status' => 'success', 'message' => 'do_action(litespeed_purge_all) executed successfully.'], 200);
-            }
-            return new WP_REST_Response(['status' => 'error', 'message' => 'do_action function not found.'], 500);
-        },
-        'permission_callback' => '__return_true'
-    ));
-});
 
 
 
