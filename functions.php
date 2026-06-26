@@ -730,11 +730,13 @@ function process_xray_lead($request) {
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
 
-// Temporary action hook to update Summit Preschool CPT database content with iframes allowed
-add_action('init', function() {
-    if (isset($_GET['update_summit_db']) && $_GET['update_summit_db'] === 'secret123') {
-        $post_id = 1568;
-        $post_content = '<p class="lead">Welcome to the dedicated page for the <strong>Summit Preschool Classroom</strong>! In our classroom, we focus on helping 3-year-olds discover their voice, build social-emotional skills, and learn through playful exploration.</p>
+// Temporary action hook to update Summit Preschool CPT database content with iframes allowed via REST API (bypassing caches)
+add_action('rest_api_init', function () {
+    register_rest_route('kidazzle/v1', '/update-summit-db', array(
+        'methods' => 'GET',
+        'callback' => function () {
+            $post_id = 1568;
+            $post_content = '<p class="lead">Welcome to the dedicated page for the <strong>Summit Preschool Classroom</strong>! In our classroom, we focus on helping 3-year-olds discover their voice, build social-emotional skills, and learn through playful exploration.</p>
 
 <div id="questionnaire-section" class="bg-slate-50 rounded-[2rem] p-6 md:p-10 border border-slate-200/60 my-10 shadow-sm">
     <h3 class="text-2xl font-extrabold text-slate-800 text-center mb-2 flex items-center justify-center gap-2">📝 Pre-School Parent Questionnaire</h3>
@@ -778,26 +780,33 @@ add_action('init', function() {
     </p>
 </div>';
 
-        // Disable KSES filtering to preserve iframe and script tags
-        kses_remove_filters();
+            // Disable KSES filtering to preserve iframe and script tags
+            kses_remove_filters();
 
-        $updated = wp_update_post(array(
-            'ID'           => $post_id,
-            'post_content' => $post_content,
-            'post_title'   => 'Summit Preschool Classroom & Questionnaire',
-        ), true);
+            $updated = wp_update_post(array(
+                'ID'           => $post_id,
+                'post_content' => $post_content,
+                'post_title'   => 'Summit Preschool Classroom & Questionnaire',
+            ), true);
 
-        // Re-enable KSES filtering
-        kses_init_filters();
+            // Re-enable KSES filtering
+            kses_init_filters();
 
-        if (is_wp_error($updated)) {
-            echo "DATABASE_UPDATE_FAILED: " . $updated->get_error_message();
-        } else {
-            echo "DATABASE_UPDATE_SUCCESSFUL: " . $updated;
-        }
-        exit;
-    }
+            // Clear Litespeed cache if active
+            if (class_exists('LiteSpeed_Cache_API')) {
+                LiteSpeed_Cache_API::purge_post($post_id);
+            }
+
+            if (is_wp_error($updated)) {
+                return new WP_REST_Response(['status' => 'error', 'message' => $updated->get_error_message()], 500);
+            } else {
+                return new WP_REST_Response(['status' => 'success', 'updated_id' => $updated], 200);
+            }
+        },
+        'permission_callback' => '__return_true'
+    ));
 });
+
 
 
 
