@@ -780,32 +780,39 @@ add_action('rest_api_init', function () {
     </p>
 </div>';
 
-            // Disable KSES filtering to preserve iframe and script tags
-            kses_remove_filters();
+            global $wpdb;
+            $updated = $wpdb->update(
+                $wpdb->posts,
+                array(
+                    'post_content' => $post_content,
+                    'post_modified' => current_time('mysql'),
+                    'post_modified_gmt' => current_time('mysql', 1)
+                ),
+                array('ID' => $post_id)
+            );
 
-            $updated = wp_update_post(array(
-                'ID'           => $post_id,
-                'post_content' => $post_content,
-                'post_title'   => 'Summit Preschool Classroom & Questionnaire',
-            ), true);
-
-            // Re-enable KSES filtering
-            kses_init_filters();
+            if ($updated === false) {
+                return new WP_REST_Response([
+                    'status' => 'error', 
+                    'message' => 'DB update failed',
+                    'last_error' => $wpdb->last_error
+                ], 500);
+            }
 
             // Clear Litespeed cache if active
             if (class_exists('LiteSpeed_Cache_API')) {
                 LiteSpeed_Cache_API::purge_post($post_id);
             }
 
-            if (is_wp_error($updated)) {
-                return new WP_REST_Response(['status' => 'error', 'message' => $updated->get_error_message()], 500);
-            } else {
-                return new WP_REST_Response(['status' => 'success', 'updated_id' => $updated], 200);
-            }
+            return new WP_REST_Response([
+                'status' => 'success', 
+                'rows_affected' => $updated
+            ], 200);
         },
         'permission_callback' => '__return_true'
     ));
 });
+
 
 
 
