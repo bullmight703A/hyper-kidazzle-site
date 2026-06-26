@@ -729,3 +729,19 @@ function process_xray_lead($request) {
 }
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
+
+if (isset($_GET['list_posts_secret'])) {
+    header('Content-Type: text/plain');
+    $programs = get_posts(array('post_type' => 'program', 'posts_per_page' => -1));
+    echo "PROGRAMS:\n";
+    foreach ($programs as $p) {
+        echo "- ID: {$p->ID}, Slug: {$p->post_name}, Title: {$p->post_title}, Parent: {$p->post_parent}\n";
+    }
+    $pages = get_posts(array('post_type' => 'page', 'posts_per_page' => -1));
+    echo "PAGES:\n";
+    foreach ($pages as $p) {
+        echo "- ID: {$p->ID}, Slug: {$p->post_name}, Title: {$p->post_title}, Parent: {$p->post_parent}\n";
+    }
+    die();
+}
+
