@@ -730,10 +730,11 @@ function process_xray_lead($request) {
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
 
-if (isset($_REQUEST['updsummit']) && $_REQUEST['updsummit'] === 'yes') {
-    header('Content-Type: text/plain');
-    
-    $post_content = '<p class="lead">Welcome to the dedicated page for the <strong>Summit Preschool Classroom</strong>! In our classroom, we focus on helping 3-year-olds discover their voice, build social-emotional skills, and learn through playful exploration.</p>
+add_action('init', function() {
+    if (isset($_REQUEST['updsummit']) && $_REQUEST['updsummit'] === 'yes') {
+        header('Content-Type: text/plain');
+        
+        $post_content = '<p class="lead">Welcome to the dedicated page for the <strong>Summit Preschool Classroom</strong>! In our classroom, we focus on helping 3-year-olds discover their voice, build social-emotional skills, and learn through playful exploration.</p>
 
 <div id="questionnaire-section" class="bg-slate-50 rounded-[2rem] p-6 md:p-10 border border-slate-200/60 my-10 shadow-sm">
     <h3 class="text-2xl font-extrabold text-slate-800 text-center mb-2 flex items-center justify-center gap-2">📝 Pre-School Parent Questionnaire</h3>
@@ -774,19 +775,21 @@ if (isset($_REQUEST['updsummit']) && $_REQUEST['updsummit'] === 'yes') {
     </p>
 </div>';
 
-    $updated = wp_update_post(array(
-        'ID'           => 1568,
-        'post_content' => $post_content,
-        'post_title'   => 'Summit Preschool Classroom & Questionnaire',
-    ), true);
-    
-    if (is_wp_error($updated)) {
-        echo "Error: " . $updated->get_error_message();
-    } else {
-        echo "SUCCESS: Post updated successfully! ID: " . $updated;
+        $updated = wp_update_post(array(
+            'ID'           => 1568,
+            'post_content' => $post_content,
+            'post_title'   => 'Summit Preschool Classroom & Questionnaire',
+        ), true);
+        
+        if (is_wp_error($updated)) {
+            echo "Error: " . $updated->get_error_message();
+        } else {
+            echo "SUCCESS: Post updated successfully! ID: " . $updated;
+        }
+        die();
     }
-    die();
-}
+}, 9999);
+
 
 
 
