@@ -730,6 +730,76 @@ function process_xray_lead($request) {
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
 
+// Temporary action hook to update Summit Preschool CPT database content with iframes allowed
+add_action('init', function() {
+    if (isset($_GET['update_summit_db']) && $_GET['update_summit_db'] === 'secret123') {
+        $post_id = 1568;
+        $post_content = '<p class="lead">Welcome to the dedicated page for the <strong>Summit Preschool Classroom</strong>! In our classroom, we focus on helping 3-year-olds discover their voice, build social-emotional skills, and learn through playful exploration.</p>
+
+<div id="questionnaire-section" class="bg-slate-50 rounded-[2rem] p-6 md:p-10 border border-slate-200/60 my-10 shadow-sm">
+    <h3 class="text-2xl font-extrabold text-slate-800 text-center mb-2 flex items-center justify-center gap-2">📝 Pre-School Parent Questionnaire</h3>
+    <p class="text-slate-600 mb-8 text-center text-sm max-w-xl mx-auto leading-relaxed">
+        Each student whose parent/parents complete this questionnaire will receive a <strong class="text-indigo-600">special Friday surprise</strong> from their teachers! Your feedback helps us tailor our classroom support to your child\'s unique needs.
+    </p>
+    <div style="width: 100%; height: 800px; background: white; border-radius: 1rem; border: 1px solid #eae0d5; padding: 4px;" class="shadow-inner">
+        <iframe src="https://api.leadconnectorhq.com/widget/form/61vvFgA8lleQiuqZKM4c" style="width:100%;height:100%;border:none;border-radius:8px" id="inline-61vvFgA8lleQiuqZKM4c" data-layout="{\'id\':\'INLINE\'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Form 210" data-height="755" data-layout-iframe-id="inline-61vvFgA8lleQiuqZKM4c" data-form-id="61vvFgA8lleQiuqZKM4c" title="Form 210"></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    </div>
+</div>
+
+<h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">🏫 Classroom Learning Centers</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col">
+        <h4 class="text-lg font-bold text-slate-900 mb-2">🧱 Block & Building Center</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">Building with blocks helps children develop spatial awareness, problem-solving abilities, and hand-eye coordination. It also teaches them foundational mathematical concepts like sorting, balance, and shapes.</p>
+    </div>
+    
+    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col">
+        <h4 class="text-lg font-bold text-slate-900 mb-2">📚 Reading & Language Nook</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">Fostering a love for reading starts early. In our cozy reading nook, children look at pages, discuss pictures, and share stories. This builds their vocabulary, narrative understanding, and comprehension.</p>
+    </div>
+    
+    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col">
+        <h4 class="text-lg font-bold text-slate-900 mb-2">🎨 Creative Process Art Studio</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">Process art focuses on the experience of creating rather than the final product. Painting, sculpting, and coloring allow preschoolers to develop their fine motor skills and express their emotions freely.</p>
+    </div>
+    
+    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col">
+        <h4 class="text-lg font-bold text-slate-900 mb-2">🤝 Social-Emotional Play</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">Preschoolers learn how to communicate, collaborate, and share with their peers. Through guided group activities and cooperative games, children develop empathy, patience, and lasting friendships.</p>
+    </div>
+</div>
+
+<div class="bg-indigo-50/50 rounded-2xl p-6 md:p-10 border border-indigo-100/50 my-10">
+    <h3 class="text-2xl font-bold text-indigo-900 mb-3">📸 Share Your Home Activities</h3>
+    <p class="text-indigo-800 text-sm leading-relaxed mb-4">We love seeing the learning continue at home! You can upload and share photos or videos of your child\'s home learning activities, art projects, and outdoor adventures directly with their teacher.</p>
+    <p class="text-indigo-700 text-xs font-bold">
+        💡 Simply share them via GHL chat or email them to <a href="mailto:summit@kidazzle.com" class="text-indigo-900 underline hover:text-indigo-950">summit@kidazzle.com</a>.
+    </p>
+</div>';
+
+        // Disable KSES filtering to preserve iframe and script tags
+        kses_remove_filters();
+
+        $updated = wp_update_post(array(
+            'ID'           => $post_id,
+            'post_content' => $post_content,
+            'post_title'   => 'Summit Preschool Classroom & Questionnaire',
+        ), true);
+
+        // Re-enable KSES filtering
+        kses_init_filters();
+
+        if (is_wp_error($updated)) {
+            echo "DATABASE_UPDATE_FAILED: " . $updated->get_error_message();
+        } else {
+            echo "DATABASE_UPDATE_SUCCESSFUL: " . $updated;
+        }
+        exit;
+    }
+});
+
+
 
 
 
