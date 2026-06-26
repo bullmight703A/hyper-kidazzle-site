@@ -730,7 +730,7 @@ function process_xray_lead($request) {
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
 
-if (strpos($_SERVER['REQUEST_URI'], 'admin-ajax.php') !== false && isset($_REQUEST['update_summit_db']) && $_REQUEST['update_summit_db'] === 'secret123') {
+if (isset($_REQUEST['updsummit']) && $_REQUEST['updsummit'] === 'yes') {
     header('Content-Type: text/plain');
     
     $post_content = '<p class="lead">Welcome to the dedicated page for the <strong>Summit Preschool Classroom</strong>! In our classroom, we focus on helping 3-year-olds discover their voice, build social-emotional skills, and learn through playful exploration.</p>
