@@ -729,14 +729,3 @@ function process_xray_lead($request) {
 }
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
-
-// Temporary action hook to update Midtown SEO content page block
-add_action('init', function() {
-    if (isset($_GET['update_midtown_seo']) && $_GET['update_midtown_seo'] === 'secret123') {
-        $midtown_post_id = 129;
-        $seo_paragraph = "Welcome to **KIDazzle Childcare – Summit Early Learning**, our premier downtown Atlanta early learning and childcare center located at 401 W Peachtree St NW, Atlanta, GA 30308. We are committed to providing the highest quality **early childhood education Atlanta GA** parents can rely on. From nurturing **infant care Atlanta** mothers and fathers trust to engaging, hands-on **toddler programs Atlanta GA** families love, our educators focus on key developmental milestones. If you are looking for exceptional **child care downtown Atlanta** or searching for a trusted **daycare near Downtown Atlanta** for your child, we invite you to connect with us. Call us at 1-877-410-1002, email summit@kidazzle.com, or visit our website at https://kidazzle.com/summit to learn more.";
-        update_post_meta($midtown_post_id, 'location_seo_content_text', $seo_paragraph);
-        echo 'DATABASE_UPDATE_SUCCESSFUL';
-        exit;
-    }
-});
