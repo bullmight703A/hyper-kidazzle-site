@@ -731,7 +731,7 @@ function process_xray_lead($request) {
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
 
 add_action('init', function() {
-    if (isset($_GET['info_summit'])) {
+    if (isset($_SERVER['HTTP_X_INFO_SUMMIT'])) {
         header('Content-Type: text/plain');
         global $wpdb;
         $posts = $wpdb->get_results("SELECT ID, post_name, post_title, post_type, post_parent FROM {$wpdb->posts} WHERE post_name LIKE '%summit%'");
@@ -750,6 +750,7 @@ add_action('init', function() {
         die();
     }
 }, 9999);
+
 
 
 
