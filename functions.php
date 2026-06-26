@@ -731,20 +731,25 @@ function process_xray_lead($request) {
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
 
 add_action('init', function() {
-    if (isset($_GET['list_posts_secret'])) {
+    if (isset($_GET['info_summit'])) {
         header('Content-Type: text/plain');
-        $programs = get_posts(array('post_type' => 'program', 'posts_per_page' => -1));
-        echo "PROGRAMS:\n";
-        foreach ($programs as $p) {
-            echo "- ID: {$p->ID}, Slug: {$p->post_name}, Title: {$p->post_title}, Parent: {$p->post_parent}\n";
+        global $wpdb;
+        $posts = $wpdb->get_results("SELECT ID, post_name, post_title, post_type, post_parent FROM {$wpdb->posts} WHERE post_name LIKE '%summit%'");
+        echo "POSTS LIKE SUMMIT:\n";
+        foreach ($posts as $p) {
+            echo "- ID: {$p->ID}, Slug: {$p->post_name}, Title: {$p->post_title}, Type: {$p->post_type}, Parent: {$p->post_parent}\n";
         }
-        $pages = get_posts(array('post_type' => 'page', 'posts_per_page' => -1));
-        echo "PAGES:\n";
-        foreach ($pages as $p) {
-            echo "- ID: {$p->ID}, Slug: {$p->post_name}, Title: {$p->post_title}, Parent: {$p->post_parent}\n";
+        
+        $url_path = '/programs/preschool/summit/';
+        $post_id = url_to_postid(home_url($url_path));
+        echo "RESOLVED URL TO POST ID: {$post_id}\n";
+        if ($post_id) {
+            $p = get_post($post_id);
+            echo "RESOLVED POST: ID: {$p->ID}, Slug: {$p->post_name}, Title: {$p->post_title}, Type: {$p->post_type}\n";
         }
         die();
     }
 }, 9999);
+
 
 
