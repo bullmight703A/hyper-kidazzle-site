@@ -181,7 +181,7 @@ if (post_password_required() || $is_locked) {
             <div id="ghl-modal-overlay" class="fixed inset-0 bg-brand-ink/80 backdrop-blur-sm z-[99999] hidden flex items-center justify-center p-4 md:p-10" onclick="if(event.target === this) hideForms()">
                 
                 <!-- Lesson Plan Modal -->
-                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
+                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Weekly Workflow & Lesson Plan</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -193,7 +193,7 @@ if (post_password_required() || $is_locked) {
                 </div>
 
                 <!-- Enrollment Form Modal -->
-                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
+                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Master Enrollment Form</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -220,16 +220,16 @@ if (post_password_required() || $is_locked) {
                     </div>
                 </div>
 
-                <!-- Secure Documents Modal (Loaded inside an Iframe with full sizing) -->
-                <div id="form-secure-docs" class="ghl-form-modal hidden bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
+                <!-- Secure Documents Modal (Fixed height style to bypass Tailwind compilation) -->
+                <div id="form-secure-docs" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Doc Secure Portal</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
                     </div>
-                    <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20">
+                    <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20" style="height: calc(100% - 80px) !important;">
                         <iframe
                             src="<?php echo (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) ? '/secure-pdf.html' : 'http://localhost:3117/secure-pdf.html'; ?>"
-                            style="width:100%;height:100%;border:none;"
+                            style="width:100% !important; height:100% !important; min-height:100% !important; border:none;"
                             id="inline-secure-pdf"
                             title="Doc Secure Ingress"
                         ></iframe>
