@@ -228,7 +228,7 @@ if (post_password_required() || $is_locked) {
                     </div>
                     <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20" style="height: calc(100% - 80px) !important;">
                         <iframe
-                            src="<?php echo (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) ? '/secure-pdf.html' : 'http://localhost:3117/secure-pdf.html'; ?>"
+                            src="<?php echo (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) ? '/secure-pdf.html' : 'https://iro.bullmight.com/crucix/secure-pdf.html'; ?>"
                             style="width:100% !important; height:100% !important; min-height:100% !important; border:none;"
                             id="inline-secure-pdf"
                             title="Doc Secure Ingress"
