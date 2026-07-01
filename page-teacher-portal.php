@@ -65,6 +65,16 @@ if (post_password_required() || $is_locked) {
 }
 ?>
 
+<style>
+@media (min-width: 768px) {
+  .reporting-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+}
+</style>
+
 <main id="view-teacher-portal" class="view-section active block">
     <!-- Daily Tools Section -->
     <section class="py-16 bg-brand-cream">
@@ -115,7 +125,7 @@ if (post_password_required() || $is_locked) {
 
             <!-- Forms & Reporting -->
             <h2 class="text-2xl font-serif font-bold text-brand-ink mb-10 border-b border-brand-ink/10 pb-4">Reporting & Compliance</h2>
-            <div class="grid md:grid-cols-4 gap-6 mb-20">
+            <div class="grid md:grid-cols-5 gap-4 mb-20 reporting-grid">
                 <div class="bg-white p-6 rounded-2xl border border-brand-ink/5 hover:border-kidazzle-red/30 transition-all flex items-center gap-4 group cursor-pointer">
                     <div class="w-12 h-12 bg-kidazzle-red/10 text-kidazzle-red rounded-xl flex items-center justify-center shrink-0">
                         <i class="fa-solid fa-user-slash"></i>
@@ -155,13 +165,23 @@ if (post_password_required() || $is_locked) {
                         <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest">File Report &rarr;</p>
                     </div>
                 </div>
+
+                <div onclick="showForm('form-secure-docs')" class="bg-white p-6 rounded-2xl border border-brand-ink/5 hover:border-kidazzle-purple/30 transition-all flex items-center gap-4 group cursor-pointer">
+                    <div class="w-12 h-12 bg-kidazzle-purple/10 text-kidazzle-purple rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brand-ink text-sm">Doc Secure</h4>
+                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest group-hover:text-kidazzle-purple transition-colors">Lock & Send &rarr;</p>
+                    </div>
+                </div>
             </div>
 
             <!-- GHL Forms Overlay (Modal) -->
             <div id="ghl-modal-overlay" class="fixed inset-0 bg-brand-ink/80 backdrop-blur-sm z-[99999] hidden flex items-center justify-center p-4 md:p-10" onclick="if(event.target === this) hideForms()">
                 
                 <!-- Lesson Plan Modal -->
-                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
+                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Weekly Workflow & Lesson Plan</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -173,7 +193,7 @@ if (post_password_required() || $is_locked) {
                 </div>
 
                 <!-- Enrollment Form Modal -->
-                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
+                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Master Enrollment Form</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -197,6 +217,22 @@ if (post_password_required() || $is_locked) {
                             title="aster Enrollment form "
                         ></iframe>
                         <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    </div>
+                </div>
+
+                <!-- Secure Documents Modal (Fixed height style to bypass Tailwind compilation) -->
+                <div id="form-secure-docs" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                    <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
+                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Doc Secure Portal</h3>
+                        <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20" style="height: calc(100% - 80px) !important;">
+                        <iframe
+                            src="<?php echo (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) ? '/secure-pdf.html' : 'https://iro.bullmight.com/crucix/secure-pdf.html'; ?>"
+                            style="width:100% !important; height:100% !important; min-height:100% !important; border:none;"
+                            id="inline-secure-pdf"
+                            title="Doc Secure Ingress"
+                        ></iframe>
                     </div>
                 </div>
 

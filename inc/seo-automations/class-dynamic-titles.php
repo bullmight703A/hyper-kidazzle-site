@@ -16,8 +16,8 @@ class kidazzle_Dynamic_Titles
     private $patterns = [];
     
     public function __construct() {
-        add_filter('document_title_parts', [$this, 'filter_title_parts'], 20);
-        add_filter('pre_get_document_title', [$this, 'filter_title'], 20);
+        add_filter('document_title_parts', [$this, 'filter_title_parts'], 9999);
+        add_filter('pre_get_document_title', [$this, 'filter_title'], 9999);
         add_action('admin_menu', [$this, 'add_settings_page'], 20);
         add_action('admin_init', [$this, 'register_settings']);
     }
@@ -30,7 +30,29 @@ class kidazzle_Dynamic_Titles
             return $this->patterns;
         }
         
-        $this->patterns = get_option('kidazzle_seo_title_patterns', $this->get_default_patterns());
+        $defaults = $this->get_default_patterns();
+        $stored = get_option('kidazzle_seo_title_patterns', []);
+
+        if (!is_array($stored) || empty($stored)) {
+            $this->patterns = $defaults;
+            return $this->patterns;
+        }
+
+        $legacy_defaults = [
+            'location' => '{title} | Daycare in {city}, {state} | Kidazzle',
+            'program' => '{title} Program | Ages {age_range} | Kidazzle',
+            'archive_location' => 'Our Daycare Locations | Kidazzle Early Learning',
+            'archive_program' => 'Early Learning Programs | Kidazzle',
+            'home' => 'Kidazzle Early Learning | Quality Childcare & Preschool',
+        ];
+
+        foreach ($defaults as $key => $pattern) {
+            if (!isset($stored[$key]) || (isset($legacy_defaults[$key]) && $stored[$key] === $legacy_defaults[$key])) {
+                $stored[$key] = $pattern;
+            }
+        }
+
+        $this->patterns = $stored;
         
         return $this->patterns;
     }
@@ -40,14 +62,14 @@ class kidazzle_Dynamic_Titles
      */
     private function get_default_patterns() {
         return [
-            'location' => '{title} | Daycare in {city}, {state} | Kidazzle',
-            'program' => '{title} Program | Ages {age_range} | Kidazzle',
+            'location' => '{title} Child Care | Daycare & Preschool in {city}, {state}',
+            'program' => '{title} Program | Ages {age_range} | KIDazzle Child Care',
             'post' => '{title} | Parenting Tips | Kidazzle Blog',
             'page' => '{title} | Kidazzle Early Learning',
             'team_member' => '{title} | Meet Our Team | Kidazzle',
-            'archive_location' => 'Our Daycare Locations | Kidazzle Early Learning',
-            'archive_program' => 'Early Learning Programs | Kidazzle',
-            'home' => 'Kidazzle Early Learning | Quality Childcare & Preschool',
+            'archive_location' => 'KIDazzle Locations | Daycare, Preschool & GA Pre-K',
+            'archive_program' => 'KIDazzle Programs | Infant, Toddler, Preschool & Pre-K',
+            'home' => 'KIDazzle Child Care | Daycare, Preschool & Early Learning',
             'search' => 'Search Results for "{query}" | Kidazzle'
         ];
     }
@@ -63,7 +85,9 @@ class kidazzle_Dynamic_Titles
         $patterns = $this->get_patterns();
         $new_title = '';
         
-        if (is_singular('location')) {
+        if (is_front_page()) {
+            $new_title = $patterns['home'] ?? '';
+        } elseif (is_singular('location')) {
             $new_title = $this->apply_pattern($patterns['location'] ?? '', get_the_ID());
         } elseif (is_singular('program')) {
             $new_title = $this->apply_pattern($patterns['program'] ?? '', get_the_ID());
@@ -77,8 +101,6 @@ class kidazzle_Dynamic_Titles
             $new_title = $patterns['archive_location'] ?? '';
         } elseif (is_post_type_archive('program')) {
             $new_title = $patterns['archive_program'] ?? '';
-        } elseif (is_front_page()) {
-            $new_title = $patterns['home'] ?? '';
         } elseif (is_search()) {
             $new_title = str_replace('{query}', get_search_query(), $patterns['search'] ?? '');
         }

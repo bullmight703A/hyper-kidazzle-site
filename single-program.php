@@ -112,6 +112,16 @@ while (have_posts()):
 							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-[10px] hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							Growth Journey
 						</a>
+						<?php if (is_single() && get_post_field('post_name') === 'preschool'): ?>
+							<a href="<?php echo esc_url(home_url('/programs/preschool/summit/')); ?>"
+								class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-[10px] hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+								Summit Preschool
+							</a>
+							<a href="<?php echo esc_url(home_url('/programs/preschool/summit/#questionnaire-section')); ?>"
+								class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-[10px] hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
+								Questionnaire
+							</a>
+						<?php endif; ?>
 						<a href="<?php echo esc_url(get_post_type_archive_link('location')); ?>"
 							class="px-8 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-full uppercase tracking-[0.2em] text-[10px] hover:border-<?php echo esc_attr($colors['main']); ?> hover:text-<?php echo esc_attr($colors['main']); ?> transition-colors">
 							View Locations

@@ -115,6 +115,7 @@ require_once KIDAZZLE_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php';
 
 // SEO Automations (Internal Linking, Geo SEO, etc.)
 require_once KIDAZZLE_THEME_DIR . '/inc/seo-automations/bootstrap.php';
+require_once KIDAZZLE_THEME_DIR . '/inc/search-atlas-frontend-suppression.php';
 
 require_once KIDAZZLE_THEME_DIR . '/inc/security.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/force-trailing-slashes.php';
@@ -449,9 +450,9 @@ add_filter('user_trailingslashit', 'kidazzle_enforce_trailing_slash', 10, 2);
  */
 function kidazzle_optimize_title_length($title_parts)
 {
-    // Truncate very long titles
-    if (isset($title_parts['title']) && mb_strlen($title_parts['title']) > 50) {
-        $title_parts['title'] = mb_substr($title_parts['title'], 0, 47) . '...';
+    // Keep titles concise without cutting useful location/search-intent words.
+    if (isset($title_parts['title']) && mb_strlen($title_parts['title']) > 65) {
+        $title_parts['title'] = mb_substr($title_parts['title'], 0, 62) . '...';
     }
 
     // Use shorter site name suffix on blog posts
@@ -728,4 +729,20 @@ function process_xray_lead($request) {
 }
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

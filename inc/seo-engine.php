@@ -895,7 +895,7 @@ function kidazzle_shared_meta_description()
         $description = '';
 
         if (is_singular('location')) {
-                // Location Template: "Visit our [Location Name] campus in [City], [State]. [Tagline]. Serving families in [Service Areas]. [Phone]."
+                // Location Template tuned for parent intent: tour, availability, age groups, and local trust.
                 $city = get_post_meta($post_id, 'location_city', true);
                 $state = get_post_meta($post_id, 'location_state', true);
                 $tagline = get_post_meta($post_id, 'location_tagline', true);
@@ -903,7 +903,7 @@ function kidazzle_shared_meta_description()
                 $phone = get_post_meta($post_id, 'location_phone', true);
 
                 $parts = array();
-                $parts[] = 'Visit our ' . get_the_title() . ' campus';
+                $parts[] = 'Tour ' . get_the_title() . ' for child care, daycare, preschool, infant care, toddler care, and Pre-K';
                 if ($city && $state) {
                         $parts[] = "in $city, $state";
                 }
@@ -922,12 +922,12 @@ function kidazzle_shared_meta_description()
         } elseif (is_singular('city')) {
                 // City Template: "Best Daycare & Preschool in [City], GA. [Excerpt]"
                 $excerpt = has_excerpt() ? get_the_excerpt() : kidazzle_trimmed_excerpt(30, $post_id);
-                $description = "Best Daycare & Preschool in " . get_the_title() . ", GA. " . $excerpt;
+                $description = "Looking for trusted daycare, preschool, infant care, toddler care, or Pre-K in " . get_the_title() . ", GA? Explore KIDazzle locations, programs, and tour options. " . $excerpt;
 
         } elseif (is_singular('program')) {
                 // Program Template: "[Program Name] at Kidazzle Early Learning Academy. [Excerpt]."
                 $excerpt = has_excerpt() ? get_the_excerpt() : kidazzle_trimmed_excerpt(20, $post_id);
-                $description = get_the_title() . ' at Kidazzle Early Learning Academy. ' . $excerpt;
+                $description = get_the_title() . ' at KIDazzle Child Care helps families understand age-appropriate learning, routines, and classroom support. ' . $excerpt;
 
         } elseif (is_singular('post')) {
                 // Blog Post Template: "[Title] - [Excerpt]"
@@ -941,7 +941,7 @@ function kidazzle_shared_meta_description()
                         $description = get_bloginfo('description');
                 }
                 if (empty($description)) {
-                        $description = get_bloginfo('name') . ' offers premier child care, daycare, and early childhood education in the Metro Atlanta area.';
+                        $description = 'KIDazzle Child Care offers daycare, preschool, GA Pre-K, infant care, toddler care, and early learning programs for families across Atlanta and nearby communities. Schedule a tour today.';
                 }
         }
 
