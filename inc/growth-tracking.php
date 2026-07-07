@@ -85,6 +85,21 @@ function kidazzle_output_growth_tracking()
     return match ? decodeURIComponent(match.pop()) : "";
   }
 
+  function detectLocation() {
+    var path = window.location.pathname.toLowerCase();
+    if (path.indexOf("west-end") !== -1 || path.indexOf("westend") !== -1) return "west_end";
+    if (path.indexOf("summit") !== -1 || path.indexOf("peachtree") !== -1) return "summit_building";
+    if (path.indexOf("memphis") !== -1) return "memphis";
+    if (path.indexOf("atlanta-federal") !== -1 || path.indexOf("federal-center") !== -1 || path.indexOf("downtown") !== -1) return "atlanta_federal_center";
+    if (path.indexOf("college-park") !== -1 || path.indexOf("collegepark") !== -1) return "college_park";
+    if (path.indexOf("hampton") !== -1) return "hampton";
+    if (path.indexOf("miami") !== -1 || path.indexOf("tailwinds") !== -1) return "miami";
+    return "headquarters";
+  }
+
+  window.customFields = window.customFields || {};
+  window.customFields.detectedLocation = detectLocation();
+
   captureParams.forEach(function (param) {
     var match = new RegExp("[?&]" + param + "=([^&#]*)").exec(window.location.href);
     if (match) {
@@ -108,6 +123,12 @@ function kidazzle_output_growth_tracking()
       }
     });
 
+    var locationValue = window.customFields && window.customFields.detectedLocation;
+    if (locationValue && ups.get("detectedLocation") !== locationValue) {
+      ups.set("detectedLocation", locationValue);
+      changed = true;
+    }
+
     if (changed) {
       var query = ups.toString();
       try { sessionStorage.setItem("UPS", query ? "?" + query : ""); } catch (e) {}
@@ -125,12 +146,17 @@ function kidazzle_output_growth_tracking()
       }
     });
 
+    var locationValue = window.customFields && window.customFields.detectedLocation;
+    if (locationValue) {
+      parts.push("detectedLocation=" + encodeURIComponent(locationValue));
+    }
+
     if (!parts.length) return;
 
     document.querySelectorAll('a[href*="leadconnectorhq.com"], a[href*="msgsndr.com"], iframe[src*="leadconnectorhq.com"]').forEach(function (el) {
       var attr = el.tagName.toLowerCase() === "iframe" ? "src" : "href";
       var url = el.getAttribute(attr);
-      if (!url || url.indexOf("utm_source") !== -1) return;
+      if (!url || url.indexOf("detectedLocation") !== -1) return;
       el.setAttribute(attr, url + (url.indexOf("?") === -1 ? "?" : "&") + parts.join("&"));
     });
   }
