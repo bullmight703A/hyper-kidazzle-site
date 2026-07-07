@@ -234,6 +234,7 @@ function kidazzle_location_schema()
         }
         
         $schema = array(
+                '@context' => 'https://schema.org',
                 '@type' => $types,
                 '@id' => get_permalink() . '#organization',
                 'name' => $name,
@@ -474,18 +475,73 @@ function kidazzle_location_schema()
                 );
         }
 
-        // Reviews (Aggregate Rating)
-        $rating_value = get_post_meta($location_id, 'seo_llm_rating_value', true) ?: get_post_meta($location_id, 'location_google_rating', true);
-        $rating_count = get_post_meta($location_id, 'seo_llm_rating_count', true);
+        // Reviews & Aggregate Rating from synced GMB reviews JSON
+        $slug = get_post_field('post_name', $location_id);
+        $slug_to_key = array(
+            'doral'                         => 'miami',
+            'kidazzle-midtown-atlanta'      => 'summit_building',
+            'kidazzle-west-end-of-atlanta'  => 'west_end',
+            'kidazzle-hampton-ga'           => 'hampton',
+            'kidazzle-college-park-ga'      => 'college_park',
+            'kidazzle-atlanta'              => 'atlanta_federal_center',
+            'kidazzle-memphis'              => 'memphis',
+        );
+        $loc_key = isset($slug_to_key[$slug]) ? $slug_to_key[$slug] : '';
+        $reviews_file = __DIR__ . '/seo-automations/gmb-reviews.json';
+        
+        $loc_reviews = array();
+        if ($loc_key && file_exists($reviews_file)) {
+            $reviews_data = json_decode(file_get_contents($reviews_file), true);
+            if (!empty($reviews_data[$loc_key])) {
+                $loc_reviews = $reviews_data[$loc_key];
+            }
+        }
 
-        if ($rating_value) {
-                $schema['aggregateRating'] = array(
-                        '@type' => 'AggregateRating',
-                        'ratingValue' => $rating_value,
-                        'reviewCount' => $rating_count ?: '1', // Fallback to 1 if count missing but rating exists
-                        'bestRating' => '5',
-                        'worstRating' => '1'
+        if (!empty($loc_reviews)) {
+            $schema_reviews = array();
+            $total_rating = 0;
+            $count = 0;
+            foreach ($loc_reviews as $r) {
+                $rating_val = ($r['starRating'] === 'FIVE') ? 5 : (($r['starRating'] === 'FOUR') ? 4 : 5);
+                $total_rating += $rating_val;
+                $count++;
+                $schema_reviews[] = array(
+                    '@type'        => 'Review',
+                    'author'       => array(
+                        '@type' => 'Person',
+                        'name'  => esc_html($r['reviewer']),
+                    ),
+                    'reviewRating' => array(
+                        '@type'       => 'Rating',
+                        'ratingValue' => $rating_val,
+                        'bestRating'  => 5,
+                    ),
+                    'reviewBody'   => esc_html($r['comment']),
                 );
+            }
+            if ($count > 0) {
+                $schema['review'] = $schema_reviews;
+                $schema['aggregateRating'] = array(
+                    '@type'       => 'AggregateRating',
+                    'ratingValue' => round($total_rating / $count, 1),
+                    'reviewCount' => $count,
+                    'bestRating'  => 5,
+                    'worstRating' => 1
+                );
+            }
+        } else {
+            // Fallback to manual custom fields if no GMB reviews file found
+            $rating_value = get_post_meta($location_id, 'seo_llm_rating_value', true) ?: get_post_meta($location_id, 'location_google_rating', true);
+            $rating_count = get_post_meta($location_id, 'seo_llm_rating_count', true);
+            if ($rating_value) {
+                $schema['aggregateRating'] = array(
+                    '@type' => 'AggregateRating',
+                    'ratingValue' => $rating_value,
+                    'reviewCount' => $rating_count ?: '1',
+                    'bestRating' => '5',
+                    'worstRating' => '1'
+                );
+            }
         }
 
         // Payment
