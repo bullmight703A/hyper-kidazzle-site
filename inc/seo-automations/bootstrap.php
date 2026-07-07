@@ -39,6 +39,8 @@ require_once __DIR__ . '/class-entity-seo.php';
 require_once __DIR__ . '/class-accessibility-seo.php';
 require_once __DIR__ . '/class-location-migrator.php';
 kidazzle_Location_Migrator::init();
+require_once __DIR__ . '/class-local-schema-seo.php';
+kidazzle_Local_Schema_SEO::init();
 
 /**
  * Register default options

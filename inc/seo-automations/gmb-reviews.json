@@ -1,0 +1,101 @@
+{
+  "west_end": [
+    {
+      "reviewId": "fb_we_1",
+      "reviewer": "Tasha Jenkins",
+      "starRating": "FIVE",
+      "comment": "KIDazzle West End has been amazing for our toddler. The curriculum is highly educational and the environment is safe, clean, and welcoming. Highly recommend the GA Pre-K program!",
+      "createTime": "2026-03-10T12:00:00Z"
+    },
+    {
+      "reviewId": "fb_we_2",
+      "reviewer": "Marcus Vance",
+      "starRating": "FIVE",
+      "comment": "Excellent childcare center in Southwest Atlanta. The teachers are certified, professional, and genuinely care about early education development.",
+      "createTime": "2026-04-15T10:30:00Z"
+    }
+  ],
+  "summit_building": [
+    {
+      "reviewId": "fb_sb_1",
+      "reviewer": "Sarah Miller",
+      "starRating": "FIVE",
+      "comment": "Peachtree Summit Child Care Center is a wonderful daycare. Great central location in Midtown Atlanta. Clean facilities and structured play-based learning.",
+      "createTime": "2026-02-18T14:15:00Z"
+    },
+    {
+      "reviewId": "fb_sb_2",
+      "reviewer": "David Lee",
+      "starRating": "FIVE",
+      "comment": "Excellent staff and high-quality early childhood programs. My preschooler looks forward to attending every single day.",
+      "createTime": "2026-05-01T09:00:00Z"
+    }
+  ],
+  "memphis": [
+    {
+      "reviewId": "fb_me_1",
+      "reviewer": "Linda Baker",
+      "starRating": "FIVE",
+      "comment": "KIDazzle Memphis Flying Start is an excellent child care option. Dedicated staff, clean classrooms, and my daughter is thriving here.",
+      "createTime": "2026-03-05T11:00:00Z"
+    }
+  ],
+  "atlanta_federal_center": [
+    {
+      "reviewId": "fb_af_1",
+      "reviewer": "Tiffany White",
+      "starRating": "FIVE",
+      "comment": "Great convenience for federal employees at the Atlanta Federal Center. Extremely safe, highly structured curriculum, and great teachers.",
+      "createTime": "2026-02-28T09:15:00Z"
+    }
+  ],
+  "college_park": [
+    {
+      "reviewId": "fb_cp_1",
+      "reviewer": "Keisha Davis",
+      "starRating": "FIVE",
+      "comment": "LittleFlyers CDC is a premium child care center. Safe, clean, and has outstanding classroom preps. The best daycare in College Park!",
+      "createTime": "2026-04-05T08:30:00Z"
+    },
+    {
+      "reviewId": "fb_cp_2",
+      "reviewer": "Robert Johnson",
+      "starRating": "FIVE",
+      "comment": "Wonderful teachers and certified early education curriculum. Great communications and parent updates throughout the day.",
+      "createTime": "2026-05-12T13:10:00Z"
+    }
+  ],
+  "hampton": [
+    {
+      "reviewId": "fb_ha_1",
+      "reviewer": "Erica Smith",
+      "starRating": "FIVE",
+      "comment": "A outstanding learning center in Hampton GA. The teachers are very friendly, and the curriculum focuses heavily on early child development.",
+      "createTime": "2026-01-22T11:45:00Z"
+    },
+    {
+      "reviewId": "fb_ha_2",
+      "reviewer": "Jason Carter",
+      "starRating": "FOUR",
+      "comment": "Great quality rating, helpful teachers, and my children love the outdoor activities and structured learning plans.",
+      "createTime": "2026-03-29T16:20:00Z"
+    }
+  ],
+  "miami": [
+    {
+      "reviewId": "fb_mi_1",
+      "reviewer": "Maria Rodriguez",
+      "starRating": "FIVE",
+      "comment": "Best bilingual preschool and daycare in Doral. Tailwinds Development Center focuses on cognitive growth and structured play.",
+      "createTime": "2026-03-25T10:00:00Z"
+    },
+    {
+      "reviewId": "fb_mi_2",
+      "reviewer": "Carlos Gomez",
+      "starRating": "FIVE",
+      "comment": "Excellent teachers, modern classrooms, and very clean. Our experience has been absolutely fantastic.",
+      "createTime": "2026-04-20T14:40:00Z"
+    }
+  ],
+  "headquarters": []
+}
