@@ -637,7 +637,7 @@ get_header();
         btnNext.disabled = true;
         
         try {
-          const res = await fetch('https://app.bullmight.com/api/kidazzle/intake', {
+          const res = await fetch('https://iro.bullmight.com/api/kidazzle/intake', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
