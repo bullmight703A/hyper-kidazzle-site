@@ -182,6 +182,8 @@ get_header();
     color: var(--text-main);
     font-size: 1rem;
     transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .intake-group input:focus, .intake-group select:focus, .intake-group textarea:focus {
