@@ -61,7 +61,7 @@ get_header();
   
   .intake-container {
     width: 100%;
-    max-width: 760px;
+    max-width: 780px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 24px;
@@ -196,6 +196,19 @@ get_header();
     color: #94a3b8;
   }
   
+  .intake-sub-section {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+    margin-top: 10px;
+  }
+
+  .intake-sub-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 15px;
+  }
+
   /* Buttons */
   .intake-buttons {
     display: flex;
@@ -354,12 +367,15 @@ get_header();
       <div class="intake-step" id="intakeStep2">2</div>
       <div class="intake-step" id="intakeStep3">3</div>
       <div class="intake-step" id="intakeStep4">4</div>
+      <div class="intake-step" id="intakeStep5">5</div>
     </div>
 
     <form id="intakePortalForm">
       <!-- Step 1: Parent Details -->
       <div class="intake-form-step active" id="intakeFormStep1">
         <h3 class="intake-step-title">Parent / Guardian Details</h3>
+        
+        <div class="intake-sub-title">Primary Parent / Guardian #1</div>
         <div class="intake-grid">
           <div class="intake-group">
             <label for="parent_first_name">First Name</label>
@@ -402,11 +418,37 @@ get_header();
             <input type="text" id="employer" placeholder="Summit Logistics" required/>
           </div>
         </div>
+
+        <div class="intake-sub-section">
+          <div class="intake-sub-title">Secondary Parent / Guardian #2 (Optional)</div>
+          <div class="intake-grid">
+            <div class="intake-group">
+              <label for="parent2_first_name">First Name</label>
+              <input type="text" id="parent2_first_name" placeholder="Jane"/>
+            </div>
+            <div class="intake-group">
+              <label for="parent2_last_name">Last Name</label>
+              <input type="text" id="parent2_last_name" placeholder="Doe"/>
+            </div>
+            <div class="intake-group">
+              <label for="parent2_email">Email Address</label>
+              <input type="email" id="parent2_email" placeholder="jane.doe@example.com"/>
+            </div>
+            <div class="intake-group">
+              <label for="parent2_phone">Phone Number</label>
+              <input type="tel" id="parent2_phone" placeholder="404-555-0200"/>
+            </div>
+            <div class="intake-group intake-full-width">
+              <label for="parent2_employer">Employer / Business</label>
+              <input type="text" id="parent2_employer" placeholder="Summit Logistics"/>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Step 2: Child Details -->
+      <!-- Step 2: Child & Program Details -->
       <div class="intake-form-step" id="intakeFormStep2">
-        <h3 class="intake-step-title">Child Enrollment Details</h3>
+        <h3 class="intake-step-title">Child &amp; Program Details</h3>
         <div class="intake-grid">
           <div class="intake-group">
             <label for="child_first_name">Child First Name</label>
@@ -424,7 +466,7 @@ get_header();
             <label for="entrance_date">Desired Entrance Date</label>
             <input type="date" id="entrance_date" required/>
           </div>
-          <div class="intake-group intake-full-width">
+          <div class="intake-group">
             <label for="location">Preferred Center Location</label>
             <select id="location" required>
               <option value="" disabled selected>Select location...</option>
@@ -436,11 +478,80 @@ get_header();
               <option value="Summit North GA">Summit North GA</option>
             </select>
           </div>
+          <div class="intake-group">
+            <label for="program_cost">Program Cost / Care Type</label>
+            <select id="program_cost" required>
+              <option value="" disabled selected>Select care option...</option>
+              <option value="280">Full Time ($280 / week)</option>
+              <option value="240">Part Time ($240 / week)</option>
+              <option value="100">After School ($100 / week)</option>
+            </select>
+          </div>
+
+          <!-- Conditional Infant Intake Section -->
+          <div class="intake-group intake-full-width" id="infantSection" style="display: none; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+            <label for="infant_schedule" style="color: var(--primary); font-size:0.9rem;">Infant Intake (Under 12 months)</label>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Please outline your child's current feeding, sleeping, and diapering schedule:</p>
+            <textarea id="infant_schedule" rows="3" placeholder="Examples: Requires formula every 3 hours; naps around 10am and 2pm; diaper changes every 2 hours..."></textarea>
+          </div>
         </div>
       </div>
 
-      <!-- Step 3: Income & Household -->
+      <!-- Step 3: Medical & Emergency Pickups -->
       <div class="intake-form-step" id="intakeFormStep3">
+        <h3 class="intake-step-title">Medical &amp; Emergency Pickups</h3>
+        
+        <div class="intake-sub-title">Point of Contact / Emergency Pickup Authorization</div>
+        <div class="intake-grid">
+          <div class="intake-group">
+            <label for="emergency_name">Authorized Person Name</label>
+            <input type="text" id="emergency_name" placeholder="Grandmother Mary" required/>
+          </div>
+          <div class="intake-group">
+            <div class="intake-grid" style="gap:10px;">
+              <div class="intake-group">
+                <label for="emergency_relation">Relationship</label>
+                <input type="text" id="emergency_relation" placeholder="Grandparent" required/>
+              </div>
+              <div class="intake-group">
+                <label for="emergency_phone">Phone Number</label>
+                <input type="tel" id="emergency_phone" placeholder="404-555-0211" required/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="intake-sub-section">
+          <div class="intake-sub-title">Primary Care Physician</div>
+          <div class="intake-grid">
+            <div class="intake-group">
+              <label for="physician_name">Physician / Clinic Name</label>
+              <input type="text" id="physician_name" placeholder="Dr. Sarah Johnson (Peach Pediatrics)" required/>
+            </div>
+            <div class="intake-group">
+              <label for="physician_phone">Physician Phone Number</label>
+              <input type="tel" id="physician_phone" placeholder="404-555-0299" required/>
+            </div>
+          </div>
+        </div>
+
+        <div class="intake-sub-section">
+          <div class="intake-sub-title">Medical Information &amp; Concerns</div>
+          <div class="intake-grid">
+            <div class="intake-group intake-full-width">
+              <label for="medical_allergies">Pre-existing Allergies, Illness, or Health Concerns</label>
+              <textarea id="medical_allergies" rows="3" placeholder="Enter any food/medication allergies, asthma details, or check 'None'..." required></textarea>
+              <div style="margin-top: 5px; font-size: 0.9rem; color: var(--text-muted);">
+                <input type="checkbox" id="no_allergies" style="width:16px; height:16px; display:inline-block; vertical-align:middle; margin-right:5px;"/>
+                <label for="no_allergies" style="display:inline; text-transform:none; font-weight:normal; cursor:pointer;">My child has no pre-existing allergies or health concerns.</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Household Income -->
+      <div class="intake-form-step" id="intakeFormStep4">
         <h3 class="intake-step-title">Household Income Eligibility</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
           The USDA Child and Adult Care Food Program (CACFP) requires income details to determine eligibility status. All information is secure and confidential.
@@ -461,8 +572,8 @@ get_header();
         </div>
       </div>
 
-      <!-- Step 4: Sign & Submit -->
-      <div class="intake-form-step" id="intakeFormStep4">
+      <!-- Step 5: Sign & Submit -->
+      <div class="intake-form-step" id="intakeFormStep5">
         <h3 class="intake-step-title">Sign &amp; Submit</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
           I certify that all of the above information is true and correct and that all income is reported. I understand that center officials may verify the information.
@@ -477,11 +588,19 @@ get_header();
           <input type="text" id="sigText" placeholder="Type your full name to sign" required style="width:100%;"/>
         </div>
 
-        <div class="intake-group intake-full-width" style="flex-direction:row; align-items:flex-start; gap:10px; margin-top:20px;">
-          <input type="checkbox" id="consent_text" required style="width:20px; height:20px; margin-top:3px;"/>
-          <label for="consent_text" style="text-transform:none; font-size:0.95rem; font-weight:normal; cursor:pointer; color: #475569;">
-            By signing above, I consent to complete the Enrollment Package and Income Eligibility Statement (IES) digitally.
-          </label>
+        <div class="intake-group intake-full-width" style="flex-direction:column; gap:10px; margin-top:20px;">
+          <div style="display:flex; align-items:flex-start; gap:10px;">
+            <input type="checkbox" id="consent_text" required style="width:20px; height:20px; margin-top:3px;"/>
+            <label for="consent_text" style="text-transform:none; font-size:0.95rem; font-weight:normal; cursor:pointer; color: #475569;">
+              By signing above, I consent to complete the Enrollment Package and Income Eligibility Statement (IES) digitally.
+            </label>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:10px; margin-top:5px;">
+            <input type="checkbox" id="consent_medical" required style="width:20px; height:20px; margin-top:3px;"/>
+            <label for="consent_medical" style="text-transform:none; font-size:0.95rem; font-weight:normal; cursor:pointer; color: #475569;">
+              <strong>Emergency Medical Authorization:</strong> I authorize KIDazzle Staff to contact my child's primary care physician and secure emergency medical treatment in case of a medical crisis.
+            </label>
+          </div>
         </div>
       </div>
 
@@ -563,8 +682,43 @@ get_header();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
     
+    // Infant Intake conditional display
+    const childDobInput = document.getElementById('child_dob');
+    const infantSection = document.getElementById('infantSection');
+    const infantScheduleInput = document.getElementById('infant_schedule');
+    
+    childDobInput.addEventListener('change', () => {
+      const dobVal = childDobInput.value;
+      if (!dobVal) return;
+      const dob = new Date(dobVal);
+      const today = new Date();
+      const ageInMonths = (today.getFullYear() - dob.getFullYear()) * 12 + (today.getMonth() - dob.getMonth());
+      if (ageInMonths >= 0 && ageInMonths < 12) {
+        infantSection.style.display = 'block';
+        infantScheduleInput.required = true;
+      } else {
+        infantSection.style.display = 'none';
+        infantScheduleInput.required = false;
+        infantScheduleInput.value = '';
+      }
+    });
+
+    // Medical Allergies none checkbox handler
+    const noAllergiesCheckbox = document.getElementById('no_allergies');
+    const medicalAllergiesInput = document.getElementById('medical_allergies');
+    
+    noAllergiesCheckbox.addEventListener('change', () => {
+      if (noAllergiesCheckbox.checked) {
+        medicalAllergiesInput.value = 'None';
+        medicalAllergiesInput.disabled = true;
+      } else {
+        medicalAllergiesInput.value = '';
+        medicalAllergiesInput.disabled = false;
+      }
+    });
+
     function updateProgress() {
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 1; i <= 5; i++) {
         const stepEl = document.getElementById('intakeStep' + i);
         if (i < currentStep) {
           stepEl.className = 'intake-step completed';
@@ -575,10 +729,10 @@ get_header();
         }
       }
       
-      const percent = ((currentStep - 1) / 3) * 100;
+      const percent = ((currentStep - 1) / 4) * 100;
       progressLine.style.width = percent + '%';
       
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 1; i <= 5; i++) {
         const section = document.getElementById('intakeFormStep' + i);
         if (section) {
           section.className = i === currentStep ? 'intake-form-step active' : 'intake-form-step';
@@ -586,19 +740,20 @@ get_header();
       }
       
       btnPrev.style.display = currentStep === 1 ? 'none' : 'block';
-      btnNext.innerText = currentStep === 4 ? 'Submit & Generate Packet' : 'Continue';
-      btnNext.style.background = currentStep === 4 ? 'var(--success)' : 'var(--primary)';
+      btnNext.innerText = currentStep === 5 ? 'Submit & Generate Packet' : 'Continue';
+      btnNext.style.background = currentStep === 5 ? 'var(--success)' : 'var(--primary)';
       
-      if (currentStep === 4) {
+      if (currentStep === 5) {
         setTimeout(resizeCanvas, 100);
       }
     }
     
     function validateStep(stepNum) {
-      const inputs = document.getElementById('intakeFormStep' + stepNum).querySelectorAll('input, select, textarea');
+      const stepEl = document.getElementById('intakeFormStep' + stepNum);
+      const inputs = stepEl.querySelectorAll('input, select, textarea');
       let valid = true;
       for (const input of inputs) {
-        if (!input.checkValidity()) {
+        if (!input.checkValidity() && !input.disabled) {
           input.reportValidity();
           valid = false;
           break;
@@ -610,7 +765,7 @@ get_header();
     btnNext.addEventListener('click', async () => {
       if (!validateStep(currentStep)) return;
       
-      if (currentStep < 4) {
+      if (currentStep < 5) {
         currentStep++;
         updateProgress();
       } else {
@@ -624,11 +779,29 @@ get_header();
           state: document.getElementById('state').value,
           zip: document.getElementById('zip').value,
           employer: document.getElementById('employer').value,
+          
+          parent2_first_name: document.getElementById('parent2_first_name').value,
+          parent2_last_name: document.getElementById('parent2_last_name').value,
+          parent2_email: document.getElementById('parent2_email').value,
+          parent2_phone: document.getElementById('parent2_phone').value,
+          parent2_employer: document.getElementById('parent2_employer').value,
+          
           child_first_name: document.getElementById('child_first_name').value,
           child_last_name: document.getElementById('child_last_name').value,
           child_dob: document.getElementById('child_dob').value,
           entrance_date: document.getElementById('entrance_date').value,
           location: document.getElementById('location').value,
+          program_cost: document.getElementById('program_cost').value,
+          infant_schedule: document.getElementById('infant_schedule').value,
+          
+          emergency_name: document.getElementById('emergency_name').value,
+          emergency_relation: document.getElementById('emergency_relation').value,
+          emergency_phone: document.getElementById('emergency_phone').value,
+          
+          physician_name: document.getElementById('physician_name').value,
+          physician_phone: document.getElementById('physician_phone').value,
+          medical_allergies: document.getElementById('medical_allergies').value,
+          
           household_size: document.getElementById('household_size').value,
           monthly_income: document.getElementById('monthly_income').value,
           ssn: document.getElementById('ssn').value,
