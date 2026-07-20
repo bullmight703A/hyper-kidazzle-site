@@ -6,6 +6,11 @@
  * @package kidazzle_Excellence
  */
 
+if ( is_page('parent-intake') ) {
+    include get_template_directory() . '/page-parent-intake.php';
+    return;
+}
+
 get_header();
 ?>
 
