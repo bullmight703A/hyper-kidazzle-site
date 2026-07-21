@@ -112,10 +112,11 @@ get_header();
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     z-index: 3;
     transition: all 0.3s ease;
     color: var(--text-muted);
+    position: relative;
   }
   
   .intake-step.active {
@@ -129,6 +130,23 @@ get_header();
     background: var(--success);
     border-color: var(--success);
     color: #ffffff;
+  }
+  
+  .intake-step.skipped {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+    color: #94a3b8;
+    text-decoration: line-through;
+  }
+
+  .intake-step-label {
+    position: absolute;
+    bottom: -22px;
+    font-size: 10px;
+    white-space: nowrap;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
   }
   
   /* Form Steps */
@@ -195,13 +213,34 @@ get_header();
   .intake-group input::placeholder {
     color: #94a3b8;
   }
+
+  /* Inline radio/checkbox group */
+  .intake-inline-choices {
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+  }
+
+  .intake-choice-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .intake-choice-item input[type="radio"], .intake-choice-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0;
+  }
   
   .intake-sub-section {
     border-top: 1px solid #e2e8f0;
     padding-top: 20px;
     margin-top: 10px;
   }
-
+ 
   .intake-sub-title {
     font-size: 1.1rem;
     font-weight: 700;
@@ -209,6 +248,17 @@ get_header();
     margin-bottom: 15px;
   }
 
+  /* Grid for permissions */
+  .intake-perm-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+  }
+  
   /* Buttons */
   .intake-buttons {
     display: flex;
@@ -346,10 +396,13 @@ get_header();
       grid-column: span 1;
     }
     .intake-container {
-      padding: 24px;
+      padding: 24px 16px;
     }
     .intake-header h1 {
       font-size: 2.2rem;
+    }
+    .intake-perm-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -363,11 +416,13 @@ get_header();
   <div class="intake-container">
     <div class="intake-progress">
       <div class="intake-progress-line" id="intakeProgressLine"></div>
-      <div class="intake-step active" id="intakeStep1">1</div>
-      <div class="intake-step" id="intakeStep2">2</div>
-      <div class="intake-step" id="intakeStep3">3</div>
-      <div class="intake-step" id="intakeStep4">4</div>
-      <div class="intake-step" id="intakeStep5">5</div>
+      <div class="intake-step active" id="intakeStep1">1<span class="intake-step-label">Parent</span></div>
+      <div class="intake-step" id="intakeStep2">2<span class="intake-step-label">Child</span></div>
+      <div class="intake-step" id="intakeStep3">3<span class="intake-step-label">Infant</span></div>
+      <div class="intake-step" id="intakeStep4">4<span class="intake-step-label">Medical</span></div>
+      <div class="intake-step" id="intakeStep5">5<span class="intake-step-label">Topical</span></div>
+      <div class="intake-step" id="intakeStep6">6<span class="intake-step-label">Income</span></div>
+      <div class="intake-step" id="intakeStep7">7<span class="intake-step-label">Submit</span></div>
     </div>
 
     <form id="intakePortalForm">
@@ -395,7 +450,7 @@ get_header();
           </div>
           <div class="intake-group intake-full-width">
             <label for="address">Street Address</label>
-            <input type="text" id="address" placeholder="123 Kidazzle Way" required/>
+            <input type="text" id="address" placeholder="123 Main St" required/>
           </div>
           <div class="intake-group">
             <label for="city">City</label>
@@ -409,7 +464,7 @@ get_header();
               </div>
               <div class="intake-group">
                 <label for="zip">Zip Code</label>
-                <input type="text" id="zip" placeholder="30303" required/>
+                <input type="text" id="zip" placeholder="30310" required/>
               </div>
             </div>
           </div>
@@ -487,21 +542,106 @@ get_header();
               <option value="100">After School ($100 / week)</option>
             </select>
           </div>
+        </div>
+      </div>
 
-          <!-- Conditional Infant Intake Section -->
-          <div class="intake-group intake-full-width" id="infantSection" style="display: none; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
-            <label for="infant_schedule" style="color: var(--primary); font-size:0.9rem;">Infant Intake (Under 12 months)</label>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Please outline your child's current feeding, sleeping, and diapering schedule:</p>
-            <textarea id="infant_schedule" rows="3" placeholder="Examples: Requires formula every 3 hours; naps around 10am and 2pm; diaper changes every 2 hours..."></textarea>
+      <!-- Step 3: Infant Feeding Plan (Only active/required if child is under 12 months) -->
+      <div class="intake-form-step" id="intakeFormStep3">
+        <h3 class="intake-step-title">Infant Feeding Plan</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
+          Since your child is under 1 year old, the state of Georgia requires a detailed infant feeding schedule.
+        </p>
+        
+        <div class="intake-grid">
+          <div class="intake-group">
+            <label>Does child take bottle?</label>
+            <div class="intake-inline-choices">
+              <label class="intake-choice-item"><input type="radio" name="feeding_takes_bottle" value="yes" required> Yes</label>
+              <label class="intake-choice-item"><input type="radio" name="feeding_takes_bottle" value="no"> No</label>
+            </div>
+          </div>
+          
+          <div class="intake-group">
+            <label>Should bottle be warmed?</label>
+            <div class="intake-inline-choices">
+              <label class="intake-choice-item"><input type="radio" name="feeding_bottle_warmed" value="yes" required> Yes</label>
+              <label class="intake-choice-item"><input type="radio" name="feeding_bottle_warmed" value="no"> No</label>
+            </div>
+          </div>
+          
+          <div class="intake-group">
+            <label>Does child hold own bottle?</label>
+            <div class="intake-inline-choices">
+              <label class="intake-choice-item"><input type="radio" name="feeding_holds_bottle" value="yes" required> Yes</label>
+              <label class="intake-choice-item"><input type="radio" name="feeding_holds_bottle" value="no"> No</label>
+            </div>
+          </div>
+
+          <div class="intake-group">
+            <label>Can child feed self?</label>
+            <div class="intake-inline-choices">
+              <label class="intake-choice-item"><input type="radio" name="feeding_feeds_self" value="yes" required> Yes</label>
+              <label class="intake-choice-item"><input type="radio" name="feeding_feeds_self" value="no"> No</label>
+            </div>
+          </div>
+
+          <div class="intake-group intake-full-width">
+            <label>What types of food does child eat?</label>
+            <div class="intake-inline-choices" style="flex-wrap: wrap;">
+              <label class="intake-choice-item"><input type="checkbox" name="feeding_food_type" value="formula"> Formula</label>
+              <label class="intake-choice-item"><input type="checkbox" name="feeding_food_type" value="baby_foods"> Baby Foods</label>
+              <label class="intake-choice-item"><input type="checkbox" name="feeding_food_type" value="whole_milk"> Whole Milk</label>
+              <label class="intake-choice-item"><input type="checkbox" name="feeding_food_type" value="table_foods"> Table Foods</label>
+              <label class="intake-choice-item"><input type="checkbox" name="feeding_food_type" value="strained_foods"> Strained Foods</label>
+              <label class="intake-choice-item"><input type="checkbox" name="feeding_food_type" value="other"> Other</label>
+            </div>
+          </div>
+
+          <div class="intake-group">
+            <label for="feeding_formula_type">Formula Type / Brand</label>
+            <input type="text" id="feeding_formula_type" placeholder="Similac Sensitive" />
+          </div>
+
+          <div class="intake-group">
+            <label for="feeding_formula_amount">Formula Amount (oz)</label>
+            <input type="text" id="feeding_formula_amount" placeholder="8 oz" />
+          </div>
+
+          <div class="intake-group">
+            <label>Does child take a pacifier?</label>
+            <div class="intake-inline-choices">
+              <label class="intake-choice-item"><input type="radio" name="feeding_pacifier" value="yes"> Yes</label>
+              <label class="intake-choice-item"><input type="radio" name="feeding_pacifier" value="no"> No</label>
+            </div>
+          </div>
+
+          <div class="intake-group">
+            <label for="feeding_pacifier_when">When is pacifier given?</label>
+            <input type="text" id="feeding_pacifier_when" placeholder="Nap time / Sleeping" />
+          </div>
+
+          <div class="intake-group">
+            <label for="feeding_food_likes">Food Likes</label>
+            <input type="text" id="feeding_food_likes" placeholder="Bananas, Applesauce" />
+          </div>
+
+          <div class="intake-group">
+            <label for="feeding_food_dislikes">Food Dislikes</label>
+            <input type="text" id="feeding_food_dislikes" placeholder="Peas" />
+          </div>
+
+          <div class="intake-group intake-full-width">
+            <label for="feeding_solid_food_instructions">Solid Food Introduction Instructions</label>
+            <textarea id="feeding_solid_food_instructions" rows="2" placeholder="E.g., Introduce soft foods slowly as requested by parent..."></textarea>
           </div>
         </div>
       </div>
 
-      <!-- Step 3: Medical & Emergency Pickups -->
-      <div class="intake-form-step" id="intakeFormStep3">
+      <!-- Step 4: Medical & Emergency Pickups -->
+      <div class="intake-form-step" id="intakeFormStep4">
         <h3 class="intake-step-title">Medical &amp; Emergency Pickups</h3>
         
-        <div class="intake-sub-title">Point of Contact / Emergency Pickup Authorization</div>
+        <div class="intake-sub-title">Emergency Pickup Authorization #1</div>
         <div class="intake-grid">
           <div class="intake-group">
             <label for="emergency_name">Authorized Person Name</label>
@@ -515,7 +655,7 @@ get_header();
               </div>
               <div class="intake-group">
                 <label for="emergency_phone">Phone Number</label>
-                <input type="tel" id="emergency_phone" placeholder="404-555-0211" required/>
+                <input type="tel" id="emergency_phone" placeholder="404-555-0177" required/>
               </div>
             </div>
           </div>
@@ -526,11 +666,11 @@ get_header();
           <div class="intake-grid">
             <div class="intake-group">
               <label for="physician_name">Physician / Clinic Name</label>
-              <input type="text" id="physician_name" placeholder="Dr. Sarah Johnson (Peach Pediatrics)" required/>
+              <input type="text" id="physician_name" placeholder="Dr. Smith Pediatric" required/>
             </div>
             <div class="intake-group">
               <label for="physician_phone">Physician Phone Number</label>
-              <input type="tel" id="physician_phone" placeholder="404-555-0299" required/>
+              <input type="tel" id="physician_phone" placeholder="404-555-0166" required/>
             </div>
           </div>
         </div>
@@ -550,20 +690,46 @@ get_header();
         </div>
       </div>
 
-      <!-- Step 4: Household Income -->
-      <div class="intake-form-step" id="intakeFormStep4">
-        <h3 class="intake-step-title">Household Income Eligibility</h3>
+      <!-- Step 5: Topical / External Preparations Permissions -->
+      <div class="intake-form-step" id="intakeFormStep5">
+        <h3 class="intake-step-title">Topical Preparations Authorization</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
+          Check the items below that center staff are authorized to apply to your child as needed:
+        </p>
+        
+        <div class="intake-perm-grid">
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="latex_gloves" checked> Latex Gloves</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="band_aids" checked> Band-Aids</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="medical_tape" checked> Medical Tape</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="baby_wipes" checked> Baby Wipes</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="diaper_ointment" checked> Diaper Ointment</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="baby_powder"> Baby Powder</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="baby_lotion"> Baby Lotion</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="aquaphor"> Aquaphor</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="vaseline"> Vaseline</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="sunscreen" checked> Sunscreen</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="insect_repellent"> Insect Repellent</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="antiseptic_solution"> Antiseptic Solution</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="anti_itch_cream"> Anti-Itch Cream</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="antibacterial_ointment"> Antibacterial Ointment</label>
+          <label class="intake-choice-item"><input type="checkbox" name="ext_perm" value="insect_sting_preparation"> Insect Sting Preparation</label>
+        </div>
+      </div>
+
+      <!-- Step 6: Household Income -->
+      <div class="intake-form-step" id="intakeFormStep6">
+        <h3 class="intake-step-title">Household Income Eligibility (IES)</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
           The USDA Child and Adult Care Food Program (CACFP) requires income details to determine eligibility status. All information is secure and confidential.
         </p>
         <div class="intake-grid">
           <div class="intake-group">
             <label for="household_size">Total Household Size</label>
-            <input type="number" id="household_size" min="1" max="20" placeholder="3" required/>
+            <input type="number" id="household_size" min="1" max="20" placeholder="4" required/>
           </div>
           <div class="intake-group">
             <label for="monthly_income">Total Monthly Income ($)</label>
-            <input type="number" id="monthly_income" min="0" placeholder="3500" required/>
+            <input type="number" id="monthly_income" min="0" placeholder="4500" required/>
           </div>
           <div class="intake-group intake-full-width">
             <label for="ssn">Last 4 Digits of Social Security Number (SSN)</label>
@@ -572,8 +738,8 @@ get_header();
         </div>
       </div>
 
-      <!-- Step 5: Sign & Submit -->
-      <div class="intake-form-step" id="intakeFormStep5">
+      <!-- Step 7: Sign & Submit -->
+      <div class="intake-form-step" id="intakeFormStep7">
         <h3 class="intake-step-title">Sign &amp; Submit</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
           I certify that all of the above information is true and correct and that all income is reported. I understand that center officials may verify the information.
@@ -625,6 +791,7 @@ get_header();
 <script>
   (function() {
     let currentStep = 1;
+    let isInfantMode = false;
     const form = document.getElementById('intakePortalForm');
     const btnNext = document.getElementById('intakeBtnNext');
     const btnPrev = document.getElementById('intakeBtnPrev');
@@ -636,6 +803,7 @@ get_header();
     let drawing = false;
     
     function resizeCanvas() {
+      if (currentStep !== 7) return;
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width;
       canvas.height = rect.height;
@@ -644,64 +812,28 @@ get_header();
       ctx.lineCap = 'round';
     }
     
-    setTimeout(resizeCanvas, 500);
-    window.addEventListener('resize', resizeCanvas);
-    
-    canvas.addEventListener('mousedown', (e) => {
-      drawing = true;
-      ctx.beginPath();
-      ctx.moveTo(e.offsetX, e.offsetY);
-    });
-    canvas.addEventListener('mousemove', (e) => {
-      if (!drawing) return;
-      ctx.lineTo(e.offsetX, e.offsetY);
-      ctx.stroke();
-    });
-    canvas.addEventListener('mouseup', () => drawing = false);
-    canvas.addEventListener('mouseleave', () => drawing = false);
-    
-    canvas.addEventListener('touchstart', (e) => {
-      drawing = true;
-      const touch = e.touches[0];
-      const rect = canvas.getBoundingClientRect();
-      ctx.beginPath();
-      ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
-      e.preventDefault();
-    });
-    canvas.addEventListener('touchmove', (e) => {
-      if (!drawing) return;
-      const touch = e.touches[0];
-      const rect = canvas.getBoundingClientRect();
-      ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
-      ctx.stroke();
-      e.preventDefault();
-    });
-    canvas.addEventListener('touchend', () => drawing = false);
-    
-    document.getElementById('intakeSigClear').addEventListener('click', () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    });
-    
-    // Infant Intake conditional display
+    // Infant Intake conditional display and step skip
     const childDobInput = document.getElementById('child_dob');
-    const infantSection = document.getElementById('infantSection');
-    const infantScheduleInput = document.getElementById('infant_schedule');
     
-    childDobInput.addEventListener('change', () => {
+    function checkInfantStatus() {
       const dobVal = childDobInput.value;
       if (!dobVal) return;
       const dob = new Date(dobVal);
       const today = new Date();
       const ageInMonths = (today.getFullYear() - dob.getFullYear()) * 12 + (today.getMonth() - dob.getMonth());
+      
+      const step3Dot = document.getElementById('intakeStep3');
       if (ageInMonths >= 0 && ageInMonths < 12) {
-        infantSection.style.display = 'block';
-        infantScheduleInput.required = true;
+        isInfantMode = true;
+        step3Dot.className = currentStep === 3 ? 'intake-step active' : (currentStep > 3 ? 'intake-step completed' : 'intake-step');
+        step3Dot.querySelector('.intake-step-label').style.textDecoration = 'none';
       } else {
-        infantSection.style.display = 'none';
-        infantScheduleInput.required = false;
-        infantScheduleInput.value = '';
+        isInfantMode = false;
+        step3Dot.className = 'intake-step skipped';
       }
-    });
+    }
+    
+    childDobInput.addEventListener('change', checkInfantStatus);
 
     // Medical Allergies none checkbox handler
     const noAllergiesCheckbox = document.getElementById('no_allergies');
@@ -718,8 +850,14 @@ get_header();
     });
 
     function updateProgress() {
-      for (let i = 1; i <= 5; i++) {
+      // Manage step dots active/completed classes
+      for (let i = 1; i <= 7; i++) {
         const stepEl = document.getElementById('intakeStep' + i);
+        if (i === 3 && !isInfantMode) {
+          stepEl.className = 'intake-step skipped';
+          continue;
+        }
+        
         if (i < currentStep) {
           stepEl.className = 'intake-step completed';
         } else if (i === currentStep) {
@@ -729,10 +867,10 @@ get_header();
         }
       }
       
-      const percent = ((currentStep - 1) / 4) * 100;
+      const percent = ((currentStep - 1) / 6) * 100;
       progressLine.style.width = percent + '%';
       
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 1; i <= 7; i++) {
         const section = document.getElementById('intakeFormStep' + i);
         if (section) {
           section.className = i === currentStep ? 'intake-form-step active' : 'intake-form-step';
@@ -740,16 +878,17 @@ get_header();
       }
       
       btnPrev.style.display = currentStep === 1 ? 'none' : 'block';
-      btnNext.innerText = currentStep === 5 ? 'Submit & Generate Packet' : 'Continue';
-      btnNext.style.background = currentStep === 5 ? 'var(--success)' : 'var(--primary)';
+      btnNext.innerText = currentStep === 7 ? 'Submit & Generate Packet' : 'Continue';
+      btnNext.style.background = currentStep === 7 ? 'var(--success)' : 'var(--primary)';
       
-      if (currentStep === 5) {
-        setTimeout(resizeCanvas, 100);
+      if (currentStep === 7) {
+        setTimeout(resizeCanvas, 150);
       }
     }
     
     function validateStep(stepNum) {
       const stepEl = document.getElementById('intakeFormStep' + stepNum);
+      if (!stepEl) return true;
       const inputs = stepEl.querySelectorAll('input, select, textarea');
       let valid = true;
       for (const input of inputs) {
@@ -765,10 +904,34 @@ get_header();
     btnNext.addEventListener('click', async () => {
       if (!validateStep(currentStep)) return;
       
-      if (currentStep < 5) {
-        currentStep++;
+      // Determine next step
+      let nextStep = currentStep + 1;
+      if (nextStep === 3 && !isInfantMode) {
+        // Skip step 3 (Infant Feeding Plan) if not an infant
+        nextStep = 4;
+      }
+      
+      if (currentStep < 7) {
+        currentStep = nextStep;
         updateProgress();
       } else {
+        // Collect checkbox lists
+        const ext_permissions = [];
+        document.querySelectorAll('input[name="ext_perm"]:checked').forEach(cb => {
+          ext_permissions.push(cb.value);
+        });
+
+        const feeding_food_types = [];
+        document.querySelectorAll('input[name="feeding_food_type"]:checked').forEach(cb => {
+          feeding_food_types.push(cb.value);
+        });
+
+        // Determine infant feeding radios
+        const getRadioValue = (name) => {
+          const el = document.querySelector(`input[name="${name}"]:checked`);
+          return el ? el.value : '';
+        };
+
         const payload = {
           parent_first_name: document.getElementById('parent_first_name').value,
           parent_last_name: document.getElementById('parent_last_name').value,
@@ -792,7 +955,20 @@ get_header();
           entrance_date: document.getElementById('entrance_date').value,
           location: document.getElementById('location').value,
           program_cost: document.getElementById('program_cost').value,
-          infant_schedule: document.getElementById('infant_schedule').value,
+          
+          // Infant details
+          feeding_takes_bottle: getRadioValue('feeding_takes_bottle'),
+          feeding_bottle_warmed: getRadioValue('feeding_bottle_warmed'),
+          feeding_holds_bottle: getRadioValue('feeding_holds_bottle'),
+          feeding_feeds_self: getRadioValue('feeding_feeds_self'),
+          feeding_food_types: JSON.stringify(feeding_food_types),
+          feeding_formula_type: document.getElementById('feeding_formula_type').value,
+          feeding_formula_amount: document.getElementById('feeding_formula_amount').value,
+          feeding_pacifier: getRadioValue('feeding_pacifier'),
+          feeding_pacifier_when: document.getElementById('feeding_pacifier_when').value,
+          feeding_food_likes: document.getElementById('feeding_food_likes').value,
+          feeding_food_dislikes: document.getElementById('feeding_food_dislikes').value,
+          feeding_solid_food_instructions: document.getElementById('feeding_solid_food_instructions').value,
           
           emergency_name: document.getElementById('emergency_name').value,
           emergency_relation: document.getElementById('emergency_relation').value,
@@ -801,6 +977,9 @@ get_header();
           physician_name: document.getElementById('physician_name').value,
           physician_phone: document.getElementById('physician_phone').value,
           medical_allergies: document.getElementById('medical_allergies').value,
+          
+          // Topical Prep
+          external_preparations_permissions: JSON.stringify(ext_permissions),
           
           household_size: document.getElementById('household_size').value,
           monthly_income: document.getElementById('monthly_income').value,
@@ -842,10 +1021,50 @@ get_header();
     });
     
     btnPrev.addEventListener('click', () => {
+      let prevStep = currentStep - 1;
+      if (prevStep === 3 && !isInfantMode) {
+        prevStep = 2;
+      }
       if (currentStep > 1) {
-        currentStep--;
+        currentStep = prevStep;
         updateProgress();
       }
+    });
+
+    // Signature drawing event handlers
+    canvas.addEventListener('mousedown', (e) => {
+      drawing = true;
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    });
+    canvas.addEventListener('mousemove', (e) => {
+      if (!drawing) return;
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+    });
+    canvas.addEventListener('mouseup', () => drawing = false);
+    canvas.addEventListener('mouseleave', () => drawing = false);
+    
+    canvas.addEventListener('touchstart', (e) => {
+      drawing = true;
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      ctx.beginPath();
+      ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
+      e.preventDefault();
+    });
+    canvas.addEventListener('touchmove', (e) => {
+      if (!drawing) return;
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+      ctx.stroke();
+      e.preventDefault();
+    });
+    canvas.addEventListener('touchend', () => drawing = false);
+    
+    document.getElementById('intakeSigClear').addEventListener('click', () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
   })();
 </script>
