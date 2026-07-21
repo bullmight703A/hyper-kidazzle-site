@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Parent Intake Page
+ * Template Name: Parent Intake Template
  *
  * Master Parent Intake form merging Enrollment and IES fields with GHL and PDF generation sync.
  *
