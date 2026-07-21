@@ -825,7 +825,7 @@ get_header();
             btnNext.style.display = 'none';
             btnPrev.style.display = 'none';
             
-            document.getElementById('intakeDownloadBtn').href = 'https://app.bullmight.com' + result.downloadUrl;
+            document.getElementById('intakeDownloadBtn').href = 'https://iro.bullmight.com' + result.downloadUrl;
             successScreen.style.display = 'block';
           } else {
             alert('Submission failed: ' + (result.error || 'Unknown error'));
