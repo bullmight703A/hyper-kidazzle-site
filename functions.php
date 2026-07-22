@@ -69,6 +69,7 @@ require_once KIDAZZLE_THEME_DIR . '/inc/class-amp-blog.php';
 // API Handlers
 require_once KIDAZZLE_THEME_DIR . '/inc/careers-api.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/kidazzle-ghl-submit.php';
+require_once KIDAZZLE_THEME_DIR . '/inc/kidazzle-brigance-pilot.php';
 
 // Page Meta Boxes
 require_once KIDAZZLE_THEME_DIR . '/inc/about-page-meta.php';
