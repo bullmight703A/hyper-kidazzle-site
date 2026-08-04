@@ -525,20 +525,21 @@ get_header();
             <label for="location">Preferred Center Location</label>
             <select id="location" required>
               <option value="" disabled selected>Select location...</option>
-              <option value="Summit Downtown ATL">Summit Downtown ATL</option>
               <option value="Summit Midtown">Summit Midtown</option>
-              <option value="Summit Peachtree">Summit Peachtree</option>
-              <option value="Hampton Center">Hampton Center</option>
-              <option value="Memphis Center">Memphis Center</option>
-              <option value="Summit North GA">Summit North GA</option>
+              <option value="West End">West End</option>
+              <option value="College Park">College Park</option>
+              <option value="AFC Downtown">AFC Downtown</option>
+              <option value="Hampton GA">Hampton GA</option>
+              <option value="Miami/Doral Fl">Miami/Doral Fl</option>
+              <option value="Memphis TN">Memphis TN</option>
             </select>
           </div>
           <div class="intake-group">
             <label for="program_cost">Program Cost / Care Type</label>
             <select id="program_cost" required>
               <option value="" disabled selected>Select care option...</option>
-              <option value="280">Full Time ($280 / week)</option>
-              <option value="240">Part Time ($240 / week)</option>
+              <option value="280">6 Weeks to 3 Years Old ($280 / week)</option>
+              <option value="240">3 Year Old Classroom ($240 / week)</option>
               <option value="100">After School ($100 / week)</option>
             </select>
           </div>

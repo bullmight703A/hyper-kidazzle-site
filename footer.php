@@ -45,6 +45,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 				<li><a href="/teacher-portal/" class="hover:text-white transition">Teacher Portal</a></li>
 				<li><a href="/parents/" class="hover:text-white transition">Parent Resources</a></li>
 				<li><a href="/digital-resources/" class="hover:text-white transition">Digital Resources</a></li>
+				<li><a href="/privacy-policy/" class="hover:text-white transition">Privacy Policy</a></li>
 				<li><a href="/blog/"
 						class="hover:text-yellow-400 hover:underline transition font-bold uppercase text-[10px] tracking-widest mt-6 block"><i
 							class="fa-solid fa-book-open mr-1"></i> View More Posts</a></li>
@@ -63,6 +64,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 	<div
 		class="border-t border-slate-800 mt-16 pt-8 text-center text-xs text-slate-500 uppercase tracking-widest relative z-10">
 		<span>© <?php echo date('Y'); ?> KIDazzle Child Care Inc. All Rights Reserved.</span>
+		<a href="/privacy-policy/" class="ml-0 md:ml-4 mt-3 md:mt-0 inline-block hover:text-white transition">Privacy Policy</a>
 	</div>
 </footer>
 

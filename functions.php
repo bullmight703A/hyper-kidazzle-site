@@ -123,6 +123,53 @@ require_once KIDAZZLE_THEME_DIR . '/inc/security.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/force-trailing-slashes.php';
 
 /**
+ * Privacy Policy Route
+ *
+ * Facebook/Meta lead ads require a stable public privacy policy URL.
+ * Serve /privacy-policy/ from the theme even if a matching WordPress page has
+ * not been created or assigned to the Privacy Policy template yet.
+ */
+function kidazzle_privacy_policy_rewrite()
+{
+    add_rewrite_rule('^privacy-policy/?$', 'index.php?kidazzle_privacy_policy=1', 'top');
+}
+add_action('init', 'kidazzle_privacy_policy_rewrite');
+
+function kidazzle_privacy_policy_query_vars($vars)
+{
+    $vars[] = 'kidazzle_privacy_policy';
+    return $vars;
+}
+add_filter('query_vars', 'kidazzle_privacy_policy_query_vars');
+
+function kidazzle_privacy_policy_template($template)
+{
+    $request_path = isset($_SERVER['REQUEST_URI']) ? (string) wp_parse_url(wp_unslash($_SERVER['REQUEST_URI']), PHP_URL_PATH) : '';
+    $is_privacy_path = trim($request_path, '/') === 'privacy-policy';
+
+    if (get_query_var('kidazzle_privacy_policy') || $is_privacy_path) {
+        status_header(200);
+        $privacy_template = locate_template('page-privacy.php');
+        if ($privacy_template) {
+            return $privacy_template;
+        }
+    }
+
+    return $template;
+}
+add_filter('template_include', 'kidazzle_privacy_policy_template', 20);
+
+function kidazzle_flush_privacy_policy_rewrite_once()
+{
+    if (!get_option('kidazzle_privacy_policy_rewrite_flushed_20260728')) {
+        kidazzle_privacy_policy_rewrite();
+        flush_rewrite_rules(false);
+        update_option('kidazzle_privacy_policy_rewrite_flushed_20260728', 1);
+    }
+}
+add_action('admin_init', 'kidazzle_flush_privacy_policy_rewrite_once');
+
+/**
  * Remove Legacy JavaScript & Styles
  * - WP Emoji
  * - WP Embeds
@@ -731,8 +778,6 @@ function process_xray_lead($request) {
 }
 
 require_once get_template_directory() . '/inc/openclaw-api-bridge.php';
-
-
 
 
 
