@@ -33,7 +33,7 @@ get_header();
                    download>
                    <i class="fa-solid fa-download"></i> Download Weekly Menu PDF
                 </a>
-                <a href="https://iro.bullmight.com/KIDazzle_August_2026_Menu_Cover_Page.pdf" 
+                <a href="https://iro.bullmight.com/KIDazzle_August_2026_Menu_Cover_Page_Landscape.pdf" 
                    class="inline-flex items-center gap-3 px-8 py-4 bg-white border border-brand-ink/20 text-brand-ink font-bold rounded-full uppercase tracking-widest text-xs hover:border-kidazzle-blue hover:text-kidazzle-blue transition-all"
                    download>
                    <i class="fa-solid fa-file-pdf"></i> Download Cover Flyer PDF
@@ -93,7 +93,7 @@ get_header();
                         <p class="text-xs text-brand-ink/60 leading-relaxed mb-4">
                             Hanging this flyer on your classroom board allows parents to scan and instantly pull up this page!
                         </p>
-                        <a href="https://iro.bullmight.com/KIDazzle_August_2026_Menu_Cover_Page.pdf" class="inline-block px-6 py-2.5 bg-kidazzle-green text-white font-bold rounded-full uppercase tracking-widest text-[10px] hover:bg-brand-ink transition-all shadow-md">
+                        <a href="https://iro.bullmight.com/KIDazzle_August_2026_Menu_Cover_Page_Landscape.pdf" class="inline-block px-6 py-2.5 bg-kidazzle-green text-white font-bold rounded-full uppercase tracking-widest text-[10px] hover:bg-brand-ink transition-all shadow-md">
                             Print Flyer PDF
                         </a>
                     </div>
