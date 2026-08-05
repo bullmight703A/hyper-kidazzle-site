@@ -33,6 +33,11 @@ function kidazzle_get_essential_page_fallbacks()
             'title' => 'Parent Resources - KIDazzle Child Care',
             'description' => 'Access parent resources, handbooks, safety guidance, family updates, and helpful tools for KIDazzle Child Care families.',
         ),
+        'menu/summit-west-end' => array(
+            'template' => 'page-menu.php',
+            'title' => 'August 2026 Meal Menu - KIDazzle Child Care',
+            'description' => 'View the August 2026 meal menu for Summit and West End classrooms at KIDazzle Child Care.',
+        ),
     );
 }
 
