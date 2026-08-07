@@ -6,7 +6,7 @@
  * @package kidazzle_Excellence
  */
 
-if ( is_page('parent-intake') ) {
+if ( is_page('parent-intake') || is_page(1645) || is_page('page-parent-intake') ) {
     include get_template_directory() . '/page-parent-intake.php';
     return;
 }
