@@ -11,6 +11,11 @@ if ( is_page('parent-intake') || is_page(1645) || is_page('page-parent-intake') 
     return;
 }
 
+if ( is_page('employee-intake') || is_page('page-employee-intake') ) {
+    include get_template_directory() . '/page-employee-intake.php';
+    return;
+}
+
 get_header();
 ?>
 
