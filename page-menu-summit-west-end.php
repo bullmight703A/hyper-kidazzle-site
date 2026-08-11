@@ -15,7 +15,7 @@ $pdf_menu_url = get_template_directory_uri() . '/assets/KIDazzle_August_2026_Mas
     <section class="relative py-24 md:py-32 text-center overflow-hidden bg-brand-cream border-b border-brand-ink/5">
         <div class="max-w-7xl mx-auto px-4 text-brand-ink">
             <div class="inline-flex items-center gap-2 bg-kidazzle-blue/10 border border-kidazzle-blue/20 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-blue mb-6">
-                <i class="fa-solid fa-utensils"></i> Monthly Meals & Snacks
+                <i class="fa-solid fa-utensils"></i> Monthly Meals & Heavy Snacks
             </div>
             <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4 text-brand-ink">
                 August 2026 Master Meal & Heavy Snack Menu
@@ -244,7 +244,7 @@ $pdf_menu_url = get_template_directory_uri() . '/assets/KIDazzle_August_2026_Mas
             }
         });
 
-        // Render Day Cards
+        // Render Day Cards with extra spacing
         const container = document.getElementById('menu-day-cards');
         container.innerHTML = '';
         
@@ -258,23 +258,28 @@ $pdf_menu_url = get_template_directory_uri() . '/assets/KIDazzle_August_2026_Mas
             if (!date && !bf && !lh) return; // Skip empty days in Week 5
             
             const card = document.createElement('div');
-            card.className = "bg-white p-6 rounded-2xl border border-brand-ink/5 shadow-md flex flex-col hover:shadow-lg transition-all";
+            card.className = "bg-white p-6 rounded-2xl border border-brand-ink/5 shadow-md flex flex-col justify-between hover:shadow-lg transition-all space-y-6";
             card.innerHTML = `
-                <div class="border-b border-brand-ink/5 pb-3 mb-4">
+                <div class="border-b border-brand-ink/10 pb-3 mb-2">
                     <h4 class="font-bold text-lg text-brand-ink">${day}</h4>
                     <span class="text-xs text-brand-ink/50">${date}</span>
                 </div>
-                <div class="mb-4">
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-kidazzle-blue block mb-1">🍳 Breakfast</span>
-                    <p class="text-xs text-brand-ink/80 leading-relaxed">${bf}</p>
-                </div>
-                <div class="mb-4">
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-kidazzle-green block mb-1">🍲 Lunch</span>
-                    <p class="text-xs text-brand-ink/80 leading-relaxed">${lh}</p>
-                </div>
-                <div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 block mb-1">🥣 Heavy PM Snack</span>
-                    <p class="text-xs text-amber-900 font-semibold leading-relaxed">${sn}</p>
+                
+                <div class="space-y-4">
+                    <div class="bg-brand-cream/50 p-3 rounded-xl border border-brand-ink/5">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-kidazzle-blue block mb-1">🍳 Breakfast</span>
+                        <p class="text-xs text-brand-ink/80 leading-relaxed">${bf}</p>
+                    </div>
+                    
+                    <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-kidazzle-green block mb-1">🍲 Lunch</span>
+                        <p class="text-xs text-brand-ink/80 leading-relaxed">${lh}</p>
+                    </div>
+                    
+                    <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-200">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 block mb-1">🥣 Heavy PM Snack</span>
+                        <p class="text-xs text-amber-900 font-semibold leading-relaxed">${sn}</p>
+                    </div>
                 </div>
             `;
             container.appendChild(card);
