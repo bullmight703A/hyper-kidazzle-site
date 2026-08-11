@@ -6,6 +6,8 @@
  */
 
 get_header();
+
+$pdf_menu_url = get_template_directory_uri() . '/assets/KIDazzle_August_2026_Master_Menu_With_Heavy_Snacks.pdf';
 ?>
 
 <main id="view-menu" class="view-section active block">
@@ -13,13 +15,13 @@ get_header();
     <section class="relative py-24 md:py-32 text-center overflow-hidden bg-brand-cream border-b border-brand-ink/5">
         <div class="max-w-7xl mx-auto px-4 text-brand-ink">
             <div class="inline-flex items-center gap-2 bg-kidazzle-blue/10 border border-kidazzle-blue/20 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-blue mb-6">
-                <i class="fa-solid fa-utensils"></i> Monthly Meals
+                <i class="fa-solid fa-utensils"></i> Monthly Meals & Snacks
             </div>
             <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4 text-brand-ink">
-                August 2026 Meal Menu
+                August 2026 Master Meal & Heavy Snack Menu
             </h1>
             <p class="text-lg md:text-xl text-brand-ink/70 max-w-2xl mx-auto leading-relaxed">
-                Healthy, nutritious breakfasts + fresh lunches prepared daily by ChefAdvantage for our Summit and West End classrooms.
+                Healthy breakfasts, fresh lunches by ChefAdvantage, and daily rotated Heavy PM Snacks (CACFP aligned, 0 lunch menu conflicts) for our Summit and West End classrooms.
             </p>
         </div>
     </section>
@@ -28,15 +30,10 @@ get_header();
     <section class="py-12 bg-white border-b border-brand-ink/5 text-center">
         <div class="max-w-4xl mx-auto px-4">
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://iro.bullmight.com/KIDazzle_August_2026_Breakfast_Lunch_Menu_Weekly_Pages.pdf" 
+                <a href="<?php echo esc_url($pdf_menu_url); ?>" 
                    class="inline-flex items-center gap-3 px-8 py-4 bg-kidazzle-blue text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-brand-ink transition-all shadow-lg"
-                   download>
-                   <i class="fa-solid fa-download"></i> Download Weekly Menu PDF
-                </a>
-                <a href="https://iro.bullmight.com/KIDazzle_August_2026_Menu_Cover_Page_Landscape.pdf" 
-                   class="inline-flex items-center gap-3 px-8 py-4 bg-white border border-brand-ink/20 text-brand-ink font-bold rounded-full uppercase tracking-widest text-xs hover:border-kidazzle-blue hover:text-kidazzle-blue transition-all"
-                   download>
-                   <i class="fa-solid fa-file-pdf"></i> Download Cover Flyer PDF
+                   download="KIDazzle_August_2026_Master_Menu_With_Heavy_Snacks.pdf">
+                   <i class="fa-solid fa-download"></i> Download Master Menu PDF (Breakfast, Lunch & Heavy Snacks)
                 </a>
             </div>
         </div>
@@ -63,38 +60,40 @@ get_header();
         </div>
     </section>
 
-    <!-- ChefAdvantage & Chef Bio Section -->
+    <!-- ChefAdvantage & Vendor Partnership Section -->
     <section class="py-20 bg-white">
         <div class="max-w-5xl mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- Chef Bio Column -->
+                <!-- Nutrition Info -->
                 <div>
-                    <span class="text-kidazzle-green font-bold uppercase tracking-widest text-xs mb-3 block">Meet our Chef</span>
+                    <span class="text-kidazzle-green font-bold uppercase tracking-widest text-xs mb-3 block">Meal & Snack Standards</span>
                     <h2 class="text-3xl font-serif font-bold text-brand-ink mb-6">Partnership & Nutrition</h2>
                     <p class="text-brand-ink/70 leading-relaxed mb-4">
-                        At KIDazzle, nutrition is the foundation of growth and learning. We partner with <strong><a href="https://www.chefadvantage.com" target="_blank" class="text-kidazzle-blue hover:underline">ChefAdvantage</a></strong> to provide healthy, well-balanced lunches that meet and exceed USDA guidelines.
+                        At KIDazzle, nutrition is the foundation of growth and learning. We partner with <strong><a href="https://www.chefadvantage.com" target="_blank" class="text-kidazzle-blue hover:underline">ChefAdvantage</a></strong> for fresh daily lunches and maintain an in-house rotated <strong>Heavy PM Snack</strong> menu.
                     </p>
                     <p class="text-brand-ink/70 leading-relaxed mb-6">
-                        <strong>Chef Marcus, Culinary Director:</strong> Marcus is passionate about early childhood nutrition, crafting recipes that expand young palates while providing essential vitamins and minerals. All meals are prepared fresh daily using local, natural ingredients, free of unnecessary additives.
+                        <strong>Fresh Deliveries & Prep:</strong> Heavy snacks are prepared fresh in our 7:00 AM – 12:00 PM kitchen window, with deliveries arriving every Tuesday and Thursday from PureFun / PFG. Every snack is rotated daily to prevent food fatigue and eliminate ingredient conflicts with lunch.
                     </p>
                     <div class="p-5 bg-brand-cream rounded-2xl border border-brand-ink/5">
                         <h4 class="font-bold text-brand-ink mb-2">💡 Dietary Accommodations</h4>
                         <p class="text-sm text-brand-ink/70 leading-relaxed">
-                            Vegetarian options and allergy-safe substitutions are prepared in a dedicated kitchen environment. Please coordinate with the center director to establish custom meal schedules.
+                            Vegetarian options and allergy-safe substitutions are prepared in a dedicated kitchen environment. Please coordinate with the center director for custom dietary needs.
                         </p>
                     </div>
                 </div>
                 
-                <!-- Graphic Image / QR code poster visual -->
+                <!-- Printable Download Card -->
                 <div class="flex justify-center">
                     <div class="relative bg-brand-cream p-8 rounded-3xl border border-brand-ink/5 shadow-xl max-w-sm text-center">
-                        <img src="https://iro.bullmight.com/august-2026-menu-qr.png" alt="Scan QR Code" class="w-48 h-48 mx-auto mb-4 rounded-xl border border-brand-ink/10" />
-                        <h4 class="font-bold text-brand-ink mb-2">QR Code Flyer</h4>
+                        <i class="fa-solid fa-file-pdf text-5xl text-kidazzle-green mb-4 block"></i>
+                        <h4 class="font-bold text-brand-ink mb-2">Full Printable Menu PDF</h4>
                         <p class="text-xs text-brand-ink/60 leading-relaxed mb-4">
-                            Hanging this flyer on your classroom board allows parents to scan and instantly pull up this page!
+                            Includes complete weekly spreads for Breakfast, Lunch, and rotated Heavy PM Snacks across all 5 weeks.
                         </p>
-                        <a href="https://iro.bullmight.com/KIDazzle_August_2026_Menu_Cover_Page_Landscape.pdf" class="inline-block px-6 py-2.5 bg-kidazzle-green text-white font-bold rounded-full uppercase tracking-widest text-[10px] hover:bg-brand-ink transition-all shadow-md">
-                            Print Flyer PDF
+                        <a href="<?php echo esc_url($pdf_menu_url); ?>" 
+                           download="KIDazzle_August_2026_Master_Menu_With_Heavy_Snacks.pdf"
+                           class="inline-block px-6 py-3 bg-kidazzle-green text-white font-bold rounded-full uppercase tracking-widest text-[10px] hover:bg-brand-ink transition-all shadow-md">
+                            Download Master Menu PDF
                         </a>
                     </div>
                 </div>
@@ -121,6 +120,13 @@ get_header();
           Wednesday: "Tuscan Chicken Pasta, Steamed Green Beans, Strawberry Applesauce, Fruit Yogurt Cup",
           Thursday: "BBQ Chicken Sandwich, Soft Bun, Baked Beans, Vegetable Medley",
           Friday: "Tex-Mex Turkey Soft Taco, Cheddar Cheese, Shredded Lettuce, Mandarin Oranges"
+        },
+        snack: {
+          Monday: "Sun Butter & Jelly Sandwich on Whole Wheat + Apple Slices & Juice",
+          Tuesday: "Turkey & Cheddar Sliders + Sun Chips & Oranges (PFG Delivery)",
+          Wednesday: "Turkey & Cheese Tortilla Roll-ups + Applesauce",
+          Thursday: "Baked Seasoned Chicken Legs + Whole Wheat Bread & Pears (PFG Delivery)",
+          Friday: "Homemade Baked Oatmeal Bars + Fresh Red Apple Slices"
         }
       },
       {
@@ -139,6 +145,13 @@ get_header();
           Wednesday: "Cheesy Tomato Pasta, Shredded Cheese, Steamed Green Beans, Diced Pears",
           Thursday: "Whole Grain Popcorn Chicken, Housemade Ranch, Steamed Peas, Diced Peaches",
           Friday: "Chicken Quesadilla, Steamed Green Beans, Cinnamon Applesauce"
+        },
+        snack: {
+          Monday: "Turkey Nachos & Tortilla Chips + Salsa",
+          Tuesday: "Greek Yogurt & Fresh Berries Parfait + Whole Grain Granola (PFG Delivery)",
+          Wednesday: "Turkey Pepperoni & Cheese Roll-ups + Warm Pizza Sauce",
+          Thursday: "Baked Mac & Cheese w/ Diced Chicken + Green Peas (PFG Delivery)",
+          Friday: "Fresh Warm Fruit Muffins + 100% Pure Apple Juice"
         }
       },
       {
@@ -157,6 +170,13 @@ get_header();
           Wednesday: "Fiesta Chicken Taco, Cheddar Cheese, Shredded Lettuce, Vegetable Medley, Diced Peaches",
           Thursday: "Italian Chicken Pasta, Steamed Green Beans, Strawberry Applesauce",
           Friday: "Personal Cheese Pizza, Steamed Carrots, Diced Pineapple"
+        },
+        snack: {
+          Monday: "Baked Beans & Fresh Corn Muffins + Sliced Peaches",
+          Tuesday: "Greek Yogurt Smoothie (Banana & Berries) + Graham Crackers (PFG Delivery)",
+          Wednesday: "Baked Spaghetti w/ Cheese + Whole Wheat Crackers",
+          Thursday: "Turkey & Cheddar Sliders + Sun Chips & Apple Slices (PFG Delivery)",
+          Friday: "Fresh Baked Banana Bread + 100% Pure Apple Juice"
         }
       },
       {
@@ -175,6 +195,13 @@ get_header();
           Wednesday: "Southwest Turkey and Rice, Steamed Green Beans, Mandarin Oranges",
           Thursday: "Parmesan Chicken Nuggets, Honey Mustard, Vegetable Medley, Diced Pineapple",
           Friday: "Topsy-Turvy Breakfast for Lunch (French Toast, Turkey Sausage, Applesauce, Yogurt Cup)"
+        },
+        snack: {
+          Monday: "Sun Butter & Jelly Sandwich on Whole Wheat + Orange Wedges",
+          Tuesday: "Baked Seasoned Chicken Legs + Whole Wheat Roll & Apple Slices (PFG Delivery)",
+          Wednesday: "Turkey & Cheese Tortilla Roll-ups + Applesauce",
+          Thursday: "Creamy Alfredo Noodles + Warm Dinner Roll & Pears (PFG Delivery)",
+          Friday: "Vanilla Yogurt & Sliced Bananas + Graham Crackers"
         }
       },
       {
@@ -189,6 +216,13 @@ get_header();
         },
         lunch: {
           Monday: "Turkey Cheeseburger Mac, Steamed Green Beans, Diced Peaches",
+          Tuesday: "",
+          Wednesday: "",
+          Thursday: "",
+          Friday: ""
+        },
+        snack: {
+          Monday: "Sun Butter & Jelly Sandwich on Whole Wheat + Apple Slices",
           Tuesday: "",
           Wednesday: "",
           Thursday: "",
@@ -219,6 +253,7 @@ get_header();
             const date = week.dates[dIdx];
             const bf = week.breakfast[day];
             const lh = week.lunch[day];
+            const sn = week.snack ? week.snack[day] : "";
             
             if (!date && !bf && !lh) return; // Skip empty days in Week 5
             
@@ -231,11 +266,15 @@ get_header();
                 </div>
                 <div class="mb-4">
                     <span class="text-[10px] font-extrabold uppercase tracking-wider text-kidazzle-blue block mb-1">🍳 Breakfast</span>
-                    <p class="text-sm text-brand-ink/80 leading-relaxed">${bf}</p>
+                    <p class="text-xs text-brand-ink/80 leading-relaxed">${bf}</p>
+                </div>
+                <div class="mb-4">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-kidazzle-green block mb-1">🍲 Lunch</span>
+                    <p class="text-xs text-brand-ink/80 leading-relaxed">${lh}</p>
                 </div>
                 <div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-kidazzle-green block mb-1">🍲 Lunch</span>
-                    <p class="text-sm text-brand-ink/80 leading-relaxed">${lh}</p>
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 block mb-1">🥣 Heavy PM Snack</span>
+                    <p class="text-xs text-amber-900 font-semibold leading-relaxed">${sn}</p>
                 </div>
             `;
             container.appendChild(card);
