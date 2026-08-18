@@ -27,12 +27,12 @@ class kidazzle_Location_Migrator
     public static function maybe_run_migration()
     {
         // Execute only once
-        if (get_option('kidazzle_location_migration_v4')) {
+        if (get_option('kidazzle_location_migration_v5')) {
             return;
         }
 
         self::execute_migration();
-        update_option('kidazzle_location_migration_v4', true);
+        update_option('kidazzle_location_migration_v5', true);
     }
 
     /**
@@ -79,7 +79,7 @@ class kidazzle_Location_Migrator
                     'location_city' => 'Memphis',
                     'location_state' => 'TN',
                     'location_zip' => '38118',
-                    'location_phone' => '(901) 362-9222',
+                    'location_phone' => '(901) 582-6661',
                     'location_maps_embed' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3265.584990000446!2d-89.9572704!3d35.0671136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f8649068f2b31%3A0x5732b905c7700a3c!2sKIDazzle%20Childcare%20Inc%3A%20Memphis%20Flying%20Start!5e0!3m2!1sen!2sus!4v1764706152852!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
                 ]
             ],
