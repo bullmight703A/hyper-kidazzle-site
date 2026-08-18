@@ -27,12 +27,12 @@ class kidazzle_Location_Migrator
     public static function maybe_run_migration()
     {
         // Execute only once
-        if (get_option('kidazzle_location_migration_v5')) {
+        if (get_option('kidazzle_location_migration_v6')) {
             return;
         }
 
         self::execute_migration();
-        update_option('kidazzle_location_migration_v5', true);
+        update_option('kidazzle_location_migration_v6', true);
     }
 
     /**
@@ -71,7 +71,7 @@ class kidazzle_Location_Migrator
             ],
             // 3. Memphis
             [
-                'original_slugs' => ['kidazzle-memphis', 'memphis'],
+                'original_slugs' => ['kidazzle-memphis', 'memphis', 'cordova'],
                 'original_titles' => ['KIDazzle Memphis'],
                 'new_title' => 'KIDazzle Childcare Inc: Memphis Flying Start',
                 'meta' => [
