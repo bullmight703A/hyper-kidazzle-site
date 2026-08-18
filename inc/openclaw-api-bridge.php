@@ -29,6 +29,12 @@ class OpenClaw_API_Bridge {
             'callback' => array($this, 'handle_telemetry'),
             'permission_callback' => array($this, 'verify_token')
         ));
+
+        register_rest_route('openclaw/v1', '/city-pages', array(
+            'methods' => 'GET, POST',
+            'callback' => array($this, 'handle_city_pages'),
+            'permission_callback' => array($this, 'verify_token')
+        ));
     }
 
     public function verify_token($request) {
@@ -84,6 +90,56 @@ class OpenClaw_API_Bridge {
             'theme_name' => wp_get_theme()->get('Name')
         );
         return new WP_REST_Response($stats, 200);
+    }
+
+    public function handle_city_pages($request) {
+        $method = $request->get_method();
+
+        if ($method === 'GET') {
+            $posts = get_posts(array(
+                'post_type' => 'city',
+                'posts_per_page' => -1,
+                'post_status' => 'any'
+            ));
+
+            $result = array();
+            foreach ($posts as $post) {
+                $result[] = array(
+                    'id' => $post->ID,
+                    'title' => $post->post_title,
+                    'slug' => $post->post_name,
+                    'city_county' => get_post_meta($post->ID, 'city_county', true),
+                    'city_neighborhoods' => get_post_meta($post->ID, 'city_neighborhoods', true),
+                    'related_location_ids' => get_post_meta($post->ID, 'related_location_ids', true) ?: get_post_meta($post->ID, 'city_nearby_locations', true),
+                    'city_intro_text' => get_post_meta($post->ID, 'city_intro_text', true)
+                );
+            }
+            return new WP_REST_Response($result, 200);
+        }
+
+        if ($method === 'POST') {
+            $params = $request->get_json_params();
+            $post_id = intval($params['id'] ?? 0);
+
+            if (!$post_id || get_post_type($post_id) !== 'city') {
+                return new WP_REST_Response(['error' => 'Valid City Post ID is required.'], 400);
+            }
+
+            if (isset($params['city_intro_text'])) {
+                update_post_meta($post_id, 'city_intro_text', $params['city_intro_text']);
+            }
+            if (isset($params['related_location_ids'])) {
+                update_post_meta($post_id, 'related_location_ids', $params['related_location_ids']);
+                update_post_meta($post_id, 'city_nearby_locations', $params['related_location_ids']);
+            }
+            if (isset($params['city_county'])) {
+                update_post_meta($post_id, 'city_county', sanitize_text_field($params['city_county']));
+            }
+
+            return new WP_REST_Response(['success' => true], 200);
+        }
+
+        return new WP_REST_Response(['error' => 'Method not allowed.'], 405);
     }
 
     private function attach_remote_image($post_id, $image_url) {
