@@ -35,6 +35,12 @@ class OpenClaw_API_Bridge {
             'callback' => array($this, 'handle_city_pages'),
             'permission_callback' => array($this, 'verify_token')
         ));
+
+        register_rest_route('openclaw/v1', '/update-page', array(
+            'methods' => 'POST',
+            'callback' => array($this, 'handle_update_page'),
+            'permission_callback' => array($this, 'verify_token')
+        ));
     }
 
     public function verify_token($request) {
@@ -140,6 +146,34 @@ class OpenClaw_API_Bridge {
         }
 
         return new WP_REST_Response(['error' => 'Method not allowed.'], 405);
+    }
+
+    public function handle_update_page($request) {
+        $params = $request->get_json_params();
+        $post_id = intval($params['id'] ?? 0);
+
+        if (!$post_id) {
+            return new WP_REST_Response(['error' => 'Post ID is required.'], 400);
+        }
+
+        $post_data = array(
+            'ID' => $post_id
+        );
+
+        if (isset($params['title'])) {
+            $post_data['post_title'] = sanitize_text_field($params['title']);
+        }
+        if (isset($params['content'])) {
+            $post_data['post_content'] = $params['content'];
+        }
+
+        $updated_id = wp_update_post($post_data);
+
+        if (is_wp_error($updated_id)) {
+            return new WP_REST_Response(['error' => $updated_id->get_error_message()], 500);
+        }
+
+        return new WP_REST_Response(['success' => true, 'post_id' => $updated_id], 200);
     }
 
     private function attach_remote_image($post_id, $image_url) {
