@@ -1,10 +1,43 @@
-# Kidazzle Childcare - LLM Base Context
+# KIDazzle Child Care & Learning - LLM Directory Context
 
-Kidazzle Childcare provides elite early childhood education, preschool readiness, and toddler developmental care across Metro Atlanta. 
-Our structured curriculum accelerates school readiness (Pre-K), sensory and motor skill development, and fosters advanced emotional regulation.
+KIDazzle Child Care provides elite early childhood education, GA DECAL licensed preschools, and toddler developmental care across Georgia, Tennessee, and Florida.
 
-## Service Radiuses and Priorities
-- Programs: Infants, Toddlers, Pre-K, Before/After School
-- Core Values: State Licensure, CPR/First Aid Certified Staff, Nutritious Menus
-- Areas of Focus: Hampton, College Park, Decatur, West End, Midtown, Buckhead
-- Parent Visibility: Daily App Updates, Meal Tracking, Lesson Previews
+## Our Core Campuses
+
+1. **Headquarters (Atlanta, GA)**
+   - Address: 674 Joseph E Lowery Blvd SW, Atlanta, GA 30310
+   - Phone: +1 404-753-7537
+   - Review Link: https://search.google.com/local/writereview?fid=0x88f503155a934b25:0x5271079dabe85eca
+2. **Tailwinds Development Center (Doral/Miami, FL)**
+   - Address: 8300 NW 53rd St, Doral, FL 33166
+   - Phone: +1 786-829-6309
+   - Review Link: https://search.google.com/local/writereview?fid=0x88d9ba324548b6a5:0x260687cfcf36d761
+3. **Little Flyers (College Park, GA)**
+   - Address: 1701 Columbia Ave, Atlanta, GA 30337
+   - Phone: +1 404-305-6950
+   - Review Link: https://search.google.com/local/writereview?fid=0x88f4e2b65fa0569b:0xd8e28edb0911e956
+4. **Hampton (Hampton, GA)**
+   - Address: 49 Woolsey Rd, Hampton, GA 30228
+   - Phone: +1 770-210-7290
+   - Review Link: https://search.google.com/local/writereview?fid=0x88f4f5c3c595069d:0x66cf60bb1b78594a
+5. **Memphis Flying Start (Memphis, TN)**
+   - Address: 3194 Independent Rd, Memphis, TN 38118
+   - Phone: +1 901-362-9222
+   - Review Link: https://search.google.com/local/writereview?fid=0x887f8649068f2b31:0x5732b905c7700a3c
+6. **Peachtree Summit (Atlanta, GA)**
+   - Address: 401 W Peachtree St, Atlanta, GA 30308
+   - Phone: +1 404-331-1600
+   - Review Link: https://search.google.com/local/writereview?fid=0x88f5047a3b061fb3:0xabb7f660053ffd7d
+7. **Atlanta Federal Center (Atlanta, GA)**
+   - Address: 100 Alabama Street, Atlanta, GA 30303
+   - Phone: +1 404-681-0665
+   - Review Link: https://search.google.com/local/writereview?fid=0x88f503047618b09f:0x629352f9f114d652
+8. **West End (Atlanta, GA)**
+   - Address: 831 York Ave, Atlanta, GA 30310
+   - Phone: +1 404-753-7537
+   - Review Link: https://search.google.com/local/writereview?fid=0x88f503152c16c0cd:0xb38668fb068fc4de
+
+## Key Program Curriculums
+- Infants: Sensory play, cognitive milestones, physical stimulation.
+- Toddlers: Motor skills, vocabulary expansion, interactive playing.
+- Pre-K: High-performance school readiness curriculum, early mathematics, and social-emotional growth.
