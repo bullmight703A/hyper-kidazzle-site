@@ -27,12 +27,13 @@ class kidazzle_Location_Migrator
     public static function maybe_run_migration()
     {
         // Execute only once
-        if (get_option('kidazzle_location_migration_v7')) {
+        if (get_option('kidazzle_location_migration_v8')) {
             return;
         }
 
         self::execute_migration();
-        update_option('kidazzle_location_migration_v7', true);
+        self::write_llms_txt_to_root();
+        update_option('kidazzle_location_migration_v8', true);
     }
 
     /**
@@ -197,5 +198,21 @@ class kidazzle_Location_Migrator
         }
 
         return null;
+    }
+
+    /**
+     * Write theme llms.txt directly to WordPress ABSPATH root
+     */
+    private static function write_llms_txt_to_root()
+    {
+        $theme_llms_path = get_stylesheet_directory() . '/llms.txt';
+        $root_llms_path = ABSPATH . 'llms.txt';
+
+        if (file_exists($theme_llms_path)) {
+            $content = file_get_contents($theme_llms_path);
+            if ($content) {
+                @file_put_contents($root_llms_path, $content);
+            }
+        }
     }
 }
