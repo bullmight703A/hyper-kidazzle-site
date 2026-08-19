@@ -9,6 +9,11 @@ get_header();
 
 session_start();
 $custom_passcode = '1212';
+$bypass_token = 'e98a3b2f81c9d4ef8d61b369c45a7b8e'; // Secure bypass token for classroom tablets
+
+if (isset($_GET['token']) && $_GET['token'] === $bypass_token) {
+    $_SESSION['teacher_unlocked'] = true;
+}
 
 if (isset($_POST['custom_portal_pwd'])) {
     if ($_POST['custom_portal_pwd'] === $custom_passcode) {
