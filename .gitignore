@@ -22,3 +22,4 @@ debug.log
 # Build
 dist/
 build/
+.repowise/
