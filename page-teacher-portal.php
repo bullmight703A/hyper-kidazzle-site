@@ -81,7 +81,7 @@ if (post_password_required() || $is_locked) {
         <div class="max-w-7xl mx-auto px-4 lg:px-6">
             <h1 class="sr-only">Teacher Portal: Classroom Tools and Resources</h1>
             <h2 class="text-2xl font-serif font-bold text-brand-ink mb-10 border-b border-brand-ink/10 pb-4">Daily Classroom Tools</h2>
-            <div class="grid md:grid-cols-4 gap-6 mb-20">
+            <div class="grid md:grid-cols-5 gap-6 mb-20">
                 <!-- AI Lesson Planner -->
                 <div onclick="showForm('form-lesson-plan')" class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
                     <div class="w-16 h-16 bg-kidazzle-purple/10 text-kidazzle-purple rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-purple group-hover:text-white transition-all text-2xl">
@@ -120,6 +120,16 @@ if (post_password_required() || $is_locked) {
                     <h3 class="font-bold text-brand-ink mb-2">Weekly Workflow</h3>
                     <p class="text-brand-ink/60 text-xs mb-6">Submit supply requests and upcoming weekly plans.</p>
                     <span class="text-kidazzle-orange font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 group-hover:underline">Submit Tasks <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+
+                <!-- Photo Upload -->
+                <div onclick="showForm('form-media-upload')" class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-kidazzle-red/10 text-kidazzle-red rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-red group-hover:text-white transition-all text-2xl">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-ink mb-2">Photo Upload</h3>
+                    <p class="text-brand-ink/60 text-xs mb-6">Upload daily or weekly classroom photos for parents.</p>
+                    <span class="text-kidazzle-red font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 group-hover:underline">Upload Media <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
@@ -233,6 +243,34 @@ if (post_password_required() || $is_locked) {
                             id="inline-secure-pdf"
                             title="Doc Secure Ingress"
                         ></iframe>
+                    </div>
+                </div>
+
+                <!-- Photo Upload Modal -->
+                <div id="form-media-upload" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                    <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
+                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Classroom Photo & Media Upload</h3>
+                        <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20" style="height: calc(100% - 80px) !important;">
+                        <iframe
+                            src="https://api.leadconnectorhq.com/widget/form/1VBix6u43xo8UaTOfoHK"
+                            style="width:100% !important; height:100% !important; min-height:100% !important; border:none;"
+                            id="inline-1VBix6u43xo8UaTOfoHK"
+                            data-layout="{'id':'INLINE'}"
+                            data-trigger-type="alwaysShow"
+                            data-trigger-value=""
+                            data-activation-type="alwaysActivated"
+                            data-activation-value=""
+                            data-deactivation-type="neverDeactivate"
+                            data-deactivation-value=""
+                            data-form-name="Ripple | teacher to Parent"
+                            data-height="100%"
+                            data-layout-iframe-id="inline-1VBix6u43xo8UaTOfoHK"
+                            data-form-id="1VBix6u43xo8UaTOfoHK"
+                            title="Ripple | teacher to Parent"
+                        ></iframe>
+                        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
                     </div>
                 </div>
 
