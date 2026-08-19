@@ -23,7 +23,8 @@ if (isset($_POST['custom_portal_pwd'])) {
     }
 }
 
-$is_locked = !isset($_SESSION['teacher_unlocked']) || $_SESSION['teacher_unlocked'] !== true;
+$is_unlocked_by_token = (isset($_GET['token']) && $_GET['token'] === $bypass_token);
+$is_locked = (!isset($_SESSION['teacher_unlocked']) || $_SESSION['teacher_unlocked'] !== true) && !$is_unlocked_by_token;
 
 if (post_password_required() || $is_locked) {
     ?>
