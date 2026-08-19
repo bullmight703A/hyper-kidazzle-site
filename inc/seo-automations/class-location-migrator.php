@@ -27,12 +27,12 @@ class kidazzle_Location_Migrator
     public static function maybe_run_migration()
     {
         // Execute only once
-        if (get_option('kidazzle_location_migration_v6')) {
+        if (get_option('kidazzle_location_migration_v7')) {
             return;
         }
 
         self::execute_migration();
-        update_option('kidazzle_location_migration_v6', true);
+        update_option('kidazzle_location_migration_v7', true);
     }
 
     /**
@@ -135,7 +135,7 @@ class kidazzle_Location_Migrator
                     'location_city' => 'Doral',
                     'location_state' => 'FL',
                     'location_zip' => '33166',
-                    'location_phone' => '(305) 592-3000',
+                    'location_phone' => '+1 786-829-6309',
                     'location_maps_embed' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.349395065274!2d-80.32185912481461!3d25.825029777312196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9ba324548b6a5%3A0x260687cfcf36d761!2sKIDazzle%20Child%20Care%20Inc%3A%20Tailwinds%20Development%20Center!5e0!3m2!1sen!2sus!4v1764706295520!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
                 ]
             ]
