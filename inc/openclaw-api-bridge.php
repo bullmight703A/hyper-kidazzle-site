@@ -41,6 +41,12 @@ class OpenClaw_API_Bridge {
             'callback' => array($this, 'handle_update_page'),
             'permission_callback' => array($this, 'verify_token')
         ));
+
+        register_rest_route('openclaw/v1', '/update-file', array(
+            'methods' => 'POST',
+            'callback' => array($this, 'handle_update_file'),
+            'permission_callback' => array($this, 'verify_token')
+        ));
     }
 
     public function verify_token($request) {
@@ -174,6 +180,40 @@ class OpenClaw_API_Bridge {
         }
 
         return new WP_REST_Response(['success' => true, 'post_id' => $updated_id], 200);
+    }
+
+    public function handle_update_file($request) {
+        $params = $request->get_json_params();
+        $file_name = sanitize_text_field($params['file'] ?? '');
+        $file_content = $params['content'] ?? '';
+
+        if (empty($file_name)) {
+            return new WP_REST_Response(['error' => 'File name is required.'], 400);
+        }
+
+        // Restrict directory traversal to keep it safe inside theme folder
+        $file_name = ltrim(str_replace(['..', '\\'], '', $file_name), '/');
+        
+        $theme_dir = get_stylesheet_directory();
+        $target_path = $theme_dir . '/' . $file_name;
+
+        // Ensure target directory exists
+        $dir = dirname($target_path);
+        if (!file_exists($dir)) {
+            wp_mkdir_p($dir);
+        }
+
+        $written = file_put_contents($target_path, $file_content);
+
+        if ($written === false) {
+            return new WP_REST_Response(['error' => 'Failed to write file on server.'], 500);
+        }
+
+        return new WP_REST_Response([
+            'success' => true,
+            'file' => $file_name,
+            'bytes' => $written
+        ], 200);
     }
 
     private function attach_remote_image($post_id, $image_url) {
