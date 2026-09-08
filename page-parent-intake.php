@@ -992,7 +992,7 @@ get_header();
         btnNext.disabled = true;
         
         try {
-          const res = await fetch('https://iro.bullmight.com/api/kidazzle/intake', {
+          const res = await fetch('https://kidazzle-webhook.bullmight.com/api/kidazzle/intake', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -1005,7 +1005,7 @@ get_header();
             btnNext.style.display = 'none';
             btnPrev.style.display = 'none';
             
-            document.getElementById('intakeDownloadBtn').href = 'https://iro.bullmight.com' + result.downloadUrl;
+            document.getElementById('intakeDownloadBtn').href = 'https://kidazzle-webhook.bullmight.com' + result.downloadUrl;
             successScreen.style.display = 'block';
           } else {
             alert('Submission failed: ' + (result.error || 'Unknown error'));
