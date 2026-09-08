@@ -5,9 +5,10 @@
  * @package kidazzle_Excellence
  */
 
-get_header();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-session_start();
 $custom_passcode = '1212';
 $bypass_token = 'e98a3b2f81c9d4ef8d61b369c45a7b8e'; // Secure bypass token for classroom tablets
 
@@ -25,6 +26,8 @@ if (isset($_POST['custom_portal_pwd'])) {
 
 $is_unlocked_by_token = (isset($_GET['token']) && $_GET['token'] === $bypass_token);
 $is_locked = (!isset($_SESSION['teacher_unlocked']) || $_SESSION['teacher_unlocked'] !== true) && !$is_unlocked_by_token;
+
+get_header();
 
 if (post_password_required() || $is_locked) {
     ?>
@@ -194,10 +197,10 @@ if (post_password_required() || $is_locked) {
             </div>
 
             <!-- GHL Forms Overlay (Modal) -->
-            <div id="ghl-modal-overlay" class="fixed inset-0 bg-brand-ink/80 backdrop-blur-sm z-[99999] hidden flex items-center justify-center p-4 md:p-10" onclick="if(event.target === this) hideForms()">
+            <div id="teacher-modal-overlay" class="fixed inset-0 bg-brand-ink/80 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4 md:p-10" onclick="if(event.target === this) hideForms()">
                 
                 <!-- Lesson Plan Modal -->
-                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Weekly Workflow & Lesson Plan</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -209,7 +212,7 @@ if (post_password_required() || $is_locked) {
                 </div>
 
                 <!-- Enrollment Form Modal -->
-                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Master Enrollment Form</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -237,7 +240,7 @@ if (post_password_required() || $is_locked) {
                 </div>
 
                 <!-- Secure Documents Modal (Fixed height style to bypass Tailwind compilation) -->
-                <div id="form-secure-docs" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                <div id="form-secure-docs" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Doc Secure Portal</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -285,15 +288,20 @@ if (post_password_required() || $is_locked) {
             <script>
             function showForm(formId) {
                 // Hide all modals
-                document.querySelectorAll('.ghl-form-modal').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.ghl-form-modal').forEach(el => {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                });
                 
                 // Show overlay and targeted modal
-                const overlay = document.getElementById('ghl-modal-overlay');
+                const overlay = document.getElementById('teacher-modal-overlay');
                 const formEl = document.getElementById(formId);
                 
                 if(overlay && formEl) {
                     overlay.classList.remove('hidden');
+                    overlay.classList.add('flex');
                     formEl.classList.remove('hidden');
+                    formEl.classList.add('flex');
                     // Prevent background scrolling
                     document.body.style.overflow = 'hidden';
                 }
@@ -301,11 +309,17 @@ if (post_password_required() || $is_locked) {
 
             function hideForms() {
                 // Hide overlay
-                const overlay = document.getElementById('ghl-modal-overlay');
-                if(overlay) overlay.classList.add('hidden');
+                const overlay = document.getElementById('teacher-modal-overlay');
+                if(overlay) {
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('flex');
+                }
                 
                 // Hide all modals
-                document.querySelectorAll('.ghl-form-modal').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.ghl-form-modal').forEach(el => {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                });
                 
                 // Restore background scrolling
                 document.body.style.overflow = '';
