@@ -10,14 +10,17 @@ $bypass_token = 'e98a3b2f81c9d4ef8d61b369c45a7b8e'; // Secure bypass token for c
 $cookie_name = 'wordpress_teacher_unlocked';
 
 if (isset($_GET['token']) && $_GET['token'] === $bypass_token) {
-    setcookie($cookie_name, '1', time() + (86400 * 30), '/'); // 30 days
+    if (!isset($_COOKIE[$cookie_name])) {
+        echo "<script>document.cookie = '{$cookie_name}=1; path=/; max-age=2592000'; window.location.href = window.location.pathname;</script>";
+        exit;
+    }
     $_COOKIE[$cookie_name] = '1';
 }
 
 if (isset($_POST['custom_portal_pwd'])) {
     if ($_POST['custom_portal_pwd'] === $custom_passcode) {
-        setcookie($cookie_name, '1', time() + (86400 * 30), '/');
-        $_COOKIE[$cookie_name] = '1';
+        echo "<script>document.cookie = '{$cookie_name}=1; path=/; max-age=2592000'; window.location.href = window.location.href;</script>";
+        exit;
     } else {
         $pwd_error = "Incorrect passcode.";
     }
