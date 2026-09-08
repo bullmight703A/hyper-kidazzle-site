@@ -5,27 +5,26 @@
  * @package kidazzle_Excellence
  */
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 $custom_passcode = '1212';
 $bypass_token = 'e98a3b2f81c9d4ef8d61b369c45a7b8e'; // Secure bypass token for classroom tablets
+$cookie_name = 'wordpress_teacher_unlocked';
 
 if (isset($_GET['token']) && $_GET['token'] === $bypass_token) {
-    $_SESSION['teacher_unlocked'] = true;
+    setcookie($cookie_name, '1', time() + (86400 * 30), '/'); // 30 days
+    $_COOKIE[$cookie_name] = '1';
 }
 
 if (isset($_POST['custom_portal_pwd'])) {
     if ($_POST['custom_portal_pwd'] === $custom_passcode) {
-        $_SESSION['teacher_unlocked'] = true;
+        setcookie($cookie_name, '1', time() + (86400 * 30), '/');
+        $_COOKIE[$cookie_name] = '1';
     } else {
         $pwd_error = "Incorrect passcode.";
     }
 }
 
 $is_unlocked_by_token = (isset($_GET['token']) && $_GET['token'] === $bypass_token);
-$is_locked = (!isset($_SESSION['teacher_unlocked']) || $_SESSION['teacher_unlocked'] !== true) && !$is_unlocked_by_token;
+$is_locked = (!isset($_COOKIE[$cookie_name]) || $_COOKIE[$cookie_name] !== '1') && !$is_unlocked_by_token;
 
 get_header();
 
