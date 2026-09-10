@@ -6,7 +6,72 @@
  */
 
 get_header();
+?>
 
+<style>
+/* Teacher Portal JS Auth Overlay */
+#teacher-js-auth {
+    position: fixed; inset: 0; background-color: #fcf9f2; z-index: 999999;
+    display: flex; align-items: center; justify-content: center;
+}
+#teacher-js-auth .auth-box {
+    background: white; padding: 2.5rem; border-radius: 3rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    max-width: 28rem; width: 100%; text-align: center; border: 1px solid rgba(15, 23, 42, 0.05);
+}
+#teacher-js-auth input {
+    width: 100%; padding: 1rem 1.5rem; border-radius: 9999px; border: 2px solid #e2e8f0;
+    font-size: 1rem; text-align: center; outline: none; margin-bottom: 1rem;
+}
+#teacher-js-auth button {
+    width: 100%; padding: 1rem 2rem; border-radius: 9999px; background-color: #5B21B6;
+    color: white; font-weight: bold; cursor: pointer; border: none;
+}
+#teacher-portal-content { display: none; }
+</style>
+
+<div id="teacher-js-auth">
+    <div class="auth-box">
+        <div style="width: 5rem; height: 5rem; background: #fee2e2; color: #ef4444; border-radius: 1.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto; font-size: 1.875rem;">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+        <h1 style="font-size: 1.875rem; font-family: serif; font-weight: bold; color: #0f172a; margin-bottom: 1rem;">Secured Portal</h1>
+        <p style="color: rgba(15, 23, 42, 0.7); margin-bottom: 2rem; font-size: 0.875rem;">Please enter the staff passcode to access classroom tools and protocols.</p>
+        <input type="password" id="auth-pwd-input" placeholder="Enter Passcode" onkeypress="if(event.key === 'Enter') checkTeacherAuth()">
+        <p id="auth-error" style="color: red; font-size: 0.875rem; margin-top: -0.5rem; margin-bottom: 1rem; display: none;">Incorrect passcode.</p>
+        <button onclick="checkTeacherAuth()">Enter</button>
+    </div>
+</div>
+
+<script>
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+function checkTeacherAuth() {
+    const pwd = document.getElementById('auth-pwd-input').value;
+    if (pwd === '1212') {
+        document.cookie = 'teacher_unlocked=1; path=/; max-age=2592000';
+        unlockPortal();
+    } else {
+        document.getElementById('auth-error').style.display = 'block';
+    }
+}
+function unlockPortal() {
+    document.getElementById('teacher-js-auth').style.display = 'none';
+    document.getElementById('teacher-portal-content').style.display = 'block';
+}
+
+// Check on load
+if (getCookie('teacher_unlocked') === '1' || window.location.search.includes('token=e98a3b2f81c9d4ef8d61b369c45a7b8e')) {
+    if (window.location.search.includes('token=')) {
+        document.cookie = 'teacher_unlocked=1; path=/; max-age=2592000';
+    }
+    unlockPortal();
+}
+</script>
+
+<div id="teacher-portal-content">
 
 <style>
 @media (min-width: 768px) {
@@ -348,3 +413,4 @@ get_header();
 
 <?php
 get_footer();
+</div>
