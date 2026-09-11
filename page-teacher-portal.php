@@ -410,7 +410,7 @@ if (getCookie('teacher_unlocked') === '1' || window.location.search.includes('to
         </div>
     </section>
 </main>
+</div>
 
 <?php
 get_footer();
-</div>
