@@ -16,6 +16,18 @@ class OpenClaw_API_Bridge {
     public function __construct() {
         add_action('rest_api_init', array($this, 'register_endpoints'));
         add_action('init', array($this, 'handle_sso_login'));
+        add_filter('option_siteurl', array($this, 'filter_url_for_current_host'));
+        add_filter('option_home', array($this, 'filter_url_for_current_host'));
+    }
+
+    public function filter_url_for_current_host($url) {
+        if (!empty($_SERVER['HTTP_HOST'])) {
+            $host = $_SERVER['HTTP_HOST'];
+            if (strpos($host, 'summer.kidazzle.com') !== false || strpos($host, 'wpdns.site') !== false) {
+                return 'https://' . $host;
+            }
+        }
+        return $url;
     }
 
     public function register_endpoints() {
@@ -52,6 +64,12 @@ class OpenClaw_API_Bridge {
         register_rest_route('openclaw/v1', '/update-page', array(
             'methods' => 'POST',
             'callback' => array($this, 'handle_update_page'),
+            'permission_callback' => array($this, 'verify_token')
+        ));
+
+        register_rest_route('openclaw/v1', '/update-siteurl', array(
+            'methods' => 'POST',
+            'callback' => array($this, 'handle_update_siteurl'),
             'permission_callback' => array($this, 'verify_token')
         ));
     }
@@ -180,7 +198,12 @@ class OpenClaw_API_Bridge {
         wp_set_current_user($user_id);
         wp_set_auth_cookie($user_id, true);
 
-        wp_safe_redirect(admin_url());
+        $admin_destination = admin_url();
+        if (!empty($_SERVER['HTTP_HOST']) && (strpos($_SERVER['HTTP_HOST'], 'summer.kidazzle.com') !== false || strpos($_SERVER['HTTP_HOST'], 'wpdns.site') !== false)) {
+            $admin_destination = 'https://' . $_SERVER['HTTP_HOST'] . '/wp-admin/';
+        }
+
+        wp_redirect($admin_destination);
         exit;
     }
 
@@ -260,6 +283,20 @@ class OpenClaw_API_Bridge {
         }
 
         return new WP_REST_Response(['success' => true, 'post_id' => $updated_id], 200);
+    }
+
+    public function handle_update_siteurl($request) {
+        $params = $request->get_json_params() ?: array();
+        $new_url = !empty($params['url']) ? esc_url_raw($params['url']) : 'https://summer.kidazzle.com';
+
+        update_option('siteurl', $new_url);
+        update_option('home', $new_url);
+
+        return new WP_REST_Response(array(
+            'success' => true,
+            'siteurl' => get_option('siteurl'),
+            'home' => get_option('home')
+        ), 200);
     }
 
     private function attach_remote_image($post_id, $image_url) {
