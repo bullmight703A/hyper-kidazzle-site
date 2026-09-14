@@ -169,10 +169,10 @@
 			<a href="/digital-resources/" class="hover:text-yellow-400">RESOURCES</a>
 			<a href="/locations/" class="hover:text-green-500">LOCATIONS</a>
 			<a href="/blog/" class="hover:text-purple-500">BLOG</a>
+			<a href="/teacher-portal/" class="hover:text-orange-500 text-orange-500">TEACHER PORTAL</a>
 			<a href="/contact/" class="hover:text-indigo-600">CONTACT US</a>
 		</div>
 	</nav>
-
 
 	<!-- MAIN CONTENT WRAPPER -->
 	<main class="mt-20 min-h-screen">
