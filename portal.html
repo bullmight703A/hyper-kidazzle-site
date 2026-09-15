@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIDazzle Georgia Pre-K | Parent Document Upload Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --success: #10b981;
+      --success-light: #ecfdf5;
+      --danger: #ef4444;
+      --danger-light: #fef2f2;
+      --warning: #f59e0b;
+      --warning-light: #fffbeb;
+      --bg: #0f172a;
+      --surface: #ffffff;
+      --surface-subtle: #f8fafc;
+      --border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --radius: 14px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f1f5f9;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Brand Navigation */
+    .navbar {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+      color: white;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      background: #ffffff;
+      color: #1e3a8a;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      letter-spacing: -0.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .brand-text h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .brand-text p {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+    .nav-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 20px;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* Card Container */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+
+    /* Verification Form Card */
+    #auth-section {
+      text-align: center;
+    }
+    .auth-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+    .auth-header p {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 580px;
+      margin: 0 auto 28px;
+      line-height: 1.5;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 20px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 15px;
+      background: #f8fafc;
+      transition: all 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
+    }
+    .btn-submit {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      max-width: 480px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    /* Student Profile & Portal Section */
+    #portal-section {
+      display: none;
+    }
+    .profile-banner {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow);
+    }
+    .profile-info h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .profile-meta {
+      font-size: 13px;
+      opacity: 0.9;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .profile-meta span {
+      background: rgba(255,255,255,0.15);
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+    .btn-logout {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-logout:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* Urgency Banner */
+    .urgency-card {
+      background: var(--warning-light);
+      border: 1px solid #fde68a;
+      border-left: 5px solid var(--warning);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .urgency-card svg {
+      color: var(--warning);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .urgency-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 4px;
+    }
+    .urgency-card p {
+      font-size: 13px;
+      color: #78350f;
+      line-height: 1.4;
+    }
+
+    /* Checklist Section */
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .doc-item {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+    .doc-item:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .doc-item.missing {
+      border-left: 5px solid var(--danger);
+    }
+    .doc-item.complete {
+      border-left: 5px solid var(--success);
+      background: #fafcfb;
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .doc-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .status-badge {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-missing { background: var(--danger-light); color: var(--danger); border: 1px solid #fecaca; }
+    .badge-complete { background: var(--success-light); color: var(--success); border: 1px solid #a7f3d0; }
+    .badge-uploaded { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+
+    .doc-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    /* Upload Drop Zone */
+    .upload-box {
+      border: 2px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 16px;
+      background: #f8fafc;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .upload-box:hover, .upload-box.dragover {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+    .upload-box input[type="file"] {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .upload-prompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .upload-prompt strong {
+      color: var(--primary);
+    }
+    .file-selected {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .btn-upload-action {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 8px;
+    }
+    .btn-upload-action:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .toast.success { background: #065f46; border-left: 5px solid #10b981; }
+    .toast.error { background: #881337; border-left: 5px solid #f43f5e; }
+
+    .help-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .help-card strong { color: var(--text-main); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="brand-logo">KIDAZZLE</div>
+      <div class="brand-text">
+        <h1>Georgia Lottery Pre-K Program</h1>
+        <p>Peachtree Summit Center &bull; Class ID: 35485</p>
+      </div>
+    </div>
+    <div class="nav-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      DECAL Secure Upload
+    </div>
+  </nav>
+
+  <div class="main-container">
+
+    <!-- STEP 1: PARENT VERIFICATION & SELECTION -->
+    <div id="auth-section" class="card">
+      <div class="auth-header">
+        <h2>Parent Document Submission Portal</h2>
+        <p>Quickly upload required state compliance records for your enrolled Pre-K student. Select your child and enter their date of birth to begin.</p>
+      </div>
+
+      <form id="verify-form" onsubmit="handleVerify(event)">
+        <div class="form-group">
+          <label for="child-select">Select Your Child's Name:</label>
+          <select id="child-select" class="form-control" required>
+            <option value="">-- Loading Enrolled Students... --</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="child-dob">Child's Date of Birth (Verification PIN):</label>
+          <input type="text" id="child-dob" class="form-control" placeholder="MM/DD/YYYY (e.g., 07/20/2022)" required>
+          <small style="font-size: 11px; color: #64748b; margin-top: 4px; display: block;">Matches the birth certificate on file.</small>
+        </div>
+
+        <button type="submit" id="btn-verify" class="btn-submit">
+          Access Child File &amp; Upload
+        </button>
+      </form>
+    </div>
+
+    <!-- STEP 2: PERSONALIZED UPLOAD DASHBOARD -->
+    <div id="portal-section">
+
+      <!-- Child Profile Banner -->
+      <div class="profile-banner">
+        <div class="profile-info">
+          <h2 id="disp-child-name">Loading...</h2>
+          <div class="profile-meta">
+            <span>State Student ID: <strong id="disp-crm-id">--</strong></span>
+            <span>Room: <strong id="disp-room">--</strong></span>
+            <span>Parent/Guardian: <strong id="disp-parent-name">--</strong></span>
+          </div>
+        </div>
+        <button class="btn-logout" onclick="logout()">Exit / Change Child</button>
+      </div>
+
+      <!-- Urgent Deadline Warning -->
+      <div class="urgency-card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <h4>State DECAL Compliance Deadline: Tuesday, September 29, 2026</h4>
+          <p>Georgia Pre-K regulations require all enrolled student files to be 100% complete within 30 days of entry. You may upload photos or scans directly below.</p>
+        </div>
+      </div>
+
+      <!-- Action Needed Checklist Cards -->
+      <div class="card">
+        <h3 class="section-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Outstanding Documentation Required
+        </h3>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">Please upload copies of the documents marked below. You can take a clear photo with your phone or upload a PDF.</p>
+
+        <div id="missing-docs-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Verified Documents Section -->
+      <div class="card" style="background: #fafcfb;">
+        <h3 class="section-title" style="color: #065f46;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Documents Verified &amp; On File
+        </h3>
+        <div id="verified-docs-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Support / Contact Card -->
+      <div class="help-card">
+        <div>
+          <strong>Need assistance or have questions?</strong><br/>
+          Contact Center Director <strong>Ms. Karen Harris</strong> &bull; Email: <a href="mailto:karenharris@kidazzle.com">karenharris@kidazzle.com</a> &bull; Phone: (404) 753-8884
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Toast Element -->
+  <div id="toast" class="toast">
+    <span id="toast-msg">Document uploaded successfully</span>
+  </div>
+
+  <script>
+    let currentStudent = null;
+
+    // Fetch student list on page load
+    async function loadStudents() {
+      try {
+        const res = await fetch('/api/students-list');
+        const list = await res.json();
+        const select = document.getElementById('child-select');
+        select.innerHTML = '<option value="">-- Choose Enrolled Child --</option>';
+        list.forEach(s => {
+          const opt = document.createElement('option');
+          opt.value = s.crm_id;
+          opt.textContent = `${s.child_name} (${s.room})`;
+          select.appendChild(opt);
+        });
+
+        // Check if child param is in URL (e.g., ?child=2609495 or ?id=2609495)
+        const params = new URLSearchParams(window.location.search);
+        const childParam = params.get('child') || params.get('id') || params.get('child_id');
+        if (childParam) {
+          select.value = childParam;
+        }
+      } catch (err) {
+        showToast('Error loading student roster. Please refresh.', 'error');
+      }
+    }
+
+    async function handleVerify(e) {
+      e.preventDefault();
+      const crm_id = document.getElementById('child-select').value;
+      const dob = document.getElementById('child-dob').value;
+      const btn = document.getElementById('btn-verify');
+
+      if (!crm_id) {
+        showToast('Please select your child from the dropdown.', 'error');
+        return;
+      }
+
+      btn.textContent = 'Verifying...';
+      btn.disabled = true;
+
+      const formData = new FormData();
+      formData.append('crm_id', crm_id);
+      formData.append('dob', dob);
+
+      try {
+        const res = await fetch('/api/verify-parent', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          currentStudent = data.student;
+          renderPortal(data.student, data.uploads);
+          document.getElementById('auth-section').style.display = 'none';
+          document.getElementById('portal-section').style.display = 'block';
+          showToast(`Welcome! Viewing file for ${data.student.child_name}`, 'success');
+        } else {
+          showToast(data.detail || 'Verification failed. Please check birth date.', 'error');
+        }
+      } catch (err) {
+        showToast('Network error during verification. Try again.', 'error');
+      } finally {
+        btn.textContent = 'Access Child File & Upload';
+        btn.disabled = false;
+      }
+    }
+
+    function renderPortal(student, uploads) {
+      document.getElementById('disp-child-name').textContent = student.child_name;
+      document.getElementById('disp-crm-id').textContent = student.crm_id;
+      document.getElementById('disp-room').textContent = student.room;
+      document.getElementById('disp-parent-name').textContent = student.parent_name || 'Parent / Guardian';
+
+      const missingContainer = document.getElementById('missing-docs-container');
+      const verifiedContainer = document.getElementById('verified-docs-container');
+      missingContainer.innerHTML = '';
+      verifiedContainer.innerHTML = '';
+
+      const docConfig = [
+        {
+          key: 'form_3300',
+          title: 'Form 3300 (Ear, Eye, Dental & Nutrition Screening)',
+          desc: 'Official DECAL screening certificate completed by your pediatrician or local health department (Section 3.12).'
+        },
+        {
+          key: 'form_3231',
+          title: 'Form 3231 (Georgia Certificate of Immunization)',
+          desc: 'Current state immunization certificate signed by physician, showing required 4-year-old boosters (Section 3.13).'
+        },
+        {
+          key: 'birth_cert',
+          title: 'Certified Birth Certificate',
+          desc: 'Clear photo or scan of official birth certificate verifying child was 4 years old on or before Sept 1 (Section 2.1).'
+        },
+        {
+          key: 'residency',
+          title: 'Proof of Georgia Residency',
+          desc: 'Current electric, gas, water bill, or signed residential lease agreement dated within 30 days (Section 2.2).'
+        },
+        {
+          key: 'ssn_card',
+          title: 'Child Social Security Card',
+          desc: 'Copy of child’s physical SSN card or signed state 30-day waiver agreement (Section 3.7).'
+        },
+        {
+          key: 'parent_id',
+          title: 'Parent / Guardian Photo ID',
+          desc: 'Valid government-issued Driver’s License, State ID Card, or Passport.'
+        },
+        {
+          key: 'appendix_d',
+          title: 'Georgia Pre-K Roster Information Form (Appendix D)',
+          desc: 'Mandatory state demographic & household verification form signed by parent (Section 3.6).'
+        },
+        {
+          key: 'income_ies',
+          title: 'CACFP Income Eligibility Statement (IES)',
+          desc: 'Food program verification for USDA meal subsidies (Section 2.5 / 3.9).'
+        }
+      ];
+
+      docConfig.forEach(cfg => {
+        const val = (student[cfg.key] || '').toLowerCase();
+        const isMissing = val.includes('missing') || val.includes('pending') || val.includes('partial') || val.includes('blank') || val.includes('update');
+        const existingUpload = uploads.find(u => u.doc_type === cfg.title);
+
+        if (isMissing && !existingUpload) {
+          // Render as Action Required Upload Dropzone
+          const item = document.createElement('div');
+          item.className = 'doc-item missing';
+          
+          let appxButton = '';
+          if (cfg.key === 'appendix_d' && student.appx_d_ready) {
+            appxButton = `<div style="margin-bottom: 12px;"><a href="${student.appx_d_download}" target="_blank" class="btn-upload-action" style="text-decoration:none; display:inline-block; background:#2563eb;">📥 Download Your Pre-Filled Appendix D Form</a></div>`;
+          }
+
+          item.innerHTML = `
+            <div class="doc-header">
+              <span class="doc-title">${cfg.title}</span>
+              <span class="status-badge badge-missing">Action Required</span>
+            </div>
+            <p class="doc-desc">${cfg.desc}</p>
+            ${appxButton}
+            <div class="upload-box" id="drop-${cfg.key}" onclick="triggerInput('${cfg.key}')">
+              <input type="file" id="file-${cfg.key}" accept=".pdf,.png,.jpg,.jpeg,.heic" onchange="fileChosen('${cfg.key}', '${cfg.title}')">
+              <div class="upload-prompt" id="prompt-${cfg.key}">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span><strong>Click to Upload</strong> or drag file / photo here</span>
+                <span style="font-size: 11px;">Supports PDF, JPG, PNG, phone camera photos</span>
+              </div>
+            </div>
+            <div class="file-selected" id="selected-${cfg.key}">
+              <span id="fname-${cfg.key}">--</span>
+              <div>
+                <button type="button" class="btn-upload-action" onclick="submitUpload('${cfg.key}', '${cfg.title}')">Submit File</button>
+              </div>
+            </div>
+          `;
+          missingContainer.appendChild(item);
+        } else {
+          // Render as Completed / Verified
+          const item = document.createElement('div');
+          item.className = 'doc-item complete';
+          item.innerHTML = `
+            <div class="doc-header">
+              <span class="doc-title">${cfg.title}</span>
+              <span class="status-badge ${existingUpload ? 'badge-uploaded' : 'badge-complete'}">
+                ${existingUpload ? '✓ Received Today' : '✓ Verified On File'}
+              </span>
+            </div>
+            <p class="doc-desc">${existingUpload ? `Uploaded: ${existingUpload.original_filename} (${existingUpload.timestamp})` : cfg.desc}</p>
+          `;
+          verifiedContainer.appendChild(item);
+        }
+      });
+    }
+
+    function triggerInput(key) {
+      document.getElementById(`file-${key}`).click();
+    }
+
+    function fileChosen(key, docTitle) {
+      const input = document.getElementById(`file-${key}`);
+      if (input.files.length > 0) {
+        const file = input.files[0];
+        document.getElementById(`fname-${key}`).textContent = `📄 ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
+        document.getElementById(`selected-${key}`).style.display = 'flex';
+      }
+    }
+
+    async function submitUpload(key, docTitle) {
+      const input = document.getElementById(`file-${key}`);
+      if (!input.files || input.files.length === 0) return;
+
+      const file = input.files[0];
+      const formData = new FormData();
+      formData.append('crm_id', currentStudent.crm_id);
+      formData.append('doc_type', docTitle);
+      formData.append('file', file);
+
+      showToast(`Uploading ${file.name}...`, 'info');
+
+      try {
+        const res = await fetch('/api/upload-document', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          showToast(data.message, 'success');
+          // Re-verify to refresh view
+          const verifyData = new FormData();
+          verifyData.append('crm_id', currentStudent.crm_id);
+          verifyData.append('dob', currentStudent.dob);
+          const rRes = await fetch('/api/verify-parent', { method: 'POST', body: verifyData });
+          const rData = await rRes.json();
+          renderPortal(rData.student, rData.uploads);
+        } else {
+          showToast(data.detail || 'Upload failed. Please try again.', 'error');
+        }
+      } catch (err) {
+        showToast('Network error during upload.', 'error');
+      }
+    }
+
+    function logout() {
+      currentStudent = null;
+      document.getElementById('portal-section').style.display = 'none';
+      document.getElementById('auth-section').style.display = 'block';
+      document.getElementById('child-dob').value = '';
+    }
+
+    function showToast(msg, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      toastMsg.textContent = msg;
+      toast.className = `toast show ${type}`;
+      setTimeout(() => {
+        toast.className = 'toast';
+      }, 4000);
+    }
+
+    window.onload = loadStudents;
+  </script>
+</body>
+</html>
