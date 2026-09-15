@@ -524,14 +524,22 @@ get_header();
           <div class="intake-group">
             <label for="location">Preferred Center Location</label>
             <select id="location" required>
-              <option value="" disabled selected>Select location...</option>
-              <option value="Summit Midtown">Summit Midtown</option>
-              <option value="West End">West End</option>
-              <option value="College Park">College Park</option>
-              <option value="AFC Downtown">AFC Downtown</option>
-              <option value="Hampton GA">Hampton GA</option>
-              <option value="Miami/Doral Fl">Miami/Doral Fl</option>
-              <option value="Memphis TN">Memphis TN</option>
+              <option value="" disabled selected>Select a KIDazzle Center...</option>
+              <optgroup label="Metro Atlanta, GA">
+                <option value="Peachtree Summit (Midtown Atlanta) - 401 W Peachtree St NW">Peachtree Summit (Midtown Atlanta) — 401 W Peachtree St NW, Atlanta, GA 30308</option>
+                <option value="West End Atlanta - 831 York Ave SW">West End Atlanta — 831 York Ave SW, Atlanta, GA 30310</option>
+                <option value="College Park (Little Flyers CDC) - 1701 Columbia Ave">College Park (Little Flyers CDC) — 1701 Columbia Ave, College Park, GA 30337</option>
+                <option value="Atlanta Federal Center (AFC Downtown) - 61 Forsyth St SW">Atlanta Federal Center (AFC Downtown) — 61 Forsyth St SW / 100 Alabama St, Atlanta, GA 30303</option>
+              </optgroup>
+              <optgroup label="South Metro, GA">
+                <option value="Hampton / Lovejoy (FAA Center) - 49 Woolsey Rd">Hampton / Lovejoy (FAA Center) — 49 Woolsey Rd, Hampton, GA 30228</option>
+              </optgroup>
+              <optgroup label="Florida">
+                <option value="Miami / Doral (Tailwinds CDC) - 7500 NW 58th St">Miami / Doral (Tailwinds CDC) — 7500 NW 58th St, Doral, FL 33166</option>
+              </optgroup>
+              <optgroup label="Tennessee">
+                <option value="Memphis (Flying Start CDC) - 3194 Independent Rd">Memphis (Flying Start CDC) — 3194 Independent Rd, Memphis, TN 38118</option>
+              </optgroup>
             </select>
           </div>
           <div class="intake-group">
@@ -717,24 +725,101 @@ get_header();
         </div>
       </div>
 
-      <!-- Step 6: Household Income -->
+      <!-- Step 6: Household Income & Benefits (IES) -->
       <div class="intake-form-step" id="intakeFormStep6">
-        <h3 class="intake-step-title">Household Income Eligibility (IES)</h3>
+        <h3 class="intake-step-title">Income Eligibility Statement (IES) &amp; Benefits</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
-          The USDA Child and Adult Care Food Program (CACFP) requires income details to determine eligibility status. All information is secure and confidential.
+          KIDazzle participates in the USDA Child and Adult Care Food Program (CACFP). Please indicate whether your household receives assistance benefits (e.g. SNAP, TANF, CAPS), or provide household income details. All information is confidential.
         </p>
-        <div class="intake-grid">
-          <div class="intake-group">
-            <label for="household_size">Total Household Size</label>
-            <input type="number" id="household_size" min="1" max="20" placeholder="4" required/>
+
+        <!-- Assistance Question -->
+        <div class="intake-group intake-full-width" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; margin-bottom: 20px;">
+          <label style="font-size: 0.95rem; color: #0f172a; margin-bottom: 8px; text-transform:none; font-weight:700;">
+            Does anyone in your household receive SNAP (Food Stamps), TANF, or CAPS Childcare Subsidy?
+          </label>
+          <div class="intake-inline-choices" style="margin-top: 8px;">
+            <label class="intake-choice-item">
+              <input type="radio" name="receives_assistance" value="yes" id="assistance_yes" required>
+              <span style="font-weight: 600; color: #023047;">Yes, we receive benefits</span>
+            </label>
+            <label class="intake-choice-item">
+              <input type="radio" name="receives_assistance" value="no" id="assistance_no" required>
+              <span style="font-weight: 600; color: #023047;">No, we do not receive these benefits</span>
+            </label>
           </div>
-          <div class="intake-group">
-            <label for="monthly_income">Total Monthly Income ($)</label>
-            <input type="number" id="monthly_income" min="0" placeholder="4500" required/>
+        </div>
+
+        <!-- Assistance Details Box (Shown when Yes is selected) -->
+        <div id="assistanceDetailsBox" style="display: none; background: #ecfeff; border: 1px solid #a5f3fc; border-radius: 16px; padding: 20px; margin-bottom: 20px;">
+          <div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px;">
+            <div style="background: #06b6d4; color: white; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; flex-shrink: 0;">✓</div>
+            <div>
+              <strong style="color: #0e7490; font-size: 0.98rem;">Automatic CACFP Tier 1 Free Meal Eligibility</strong>
+              <p style="color: #155e75; font-size: 0.88rem; margin-top: 3px; line-height: 1.5;">
+                Under USDA CACFP regulations, providing an active <strong>SNAP</strong> or <strong>TANF</strong> Case Number automatically qualifies your child for Free meals. You do not need to calculate or report monthly wages.
+              </p>
+            </div>
           </div>
-          <div class="intake-group intake-full-width">
-            <label for="ssn">Last 4 Digits of Social Security Number (SSN)</label>
-            <input type="text" id="ssn" placeholder="1234" maxlength="4" required/>
+
+          <div class="intake-group" style="margin-bottom: 15px;">
+            <label style="color: #0e7490;">Select all active programs received:</label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 8px;">
+              <label class="intake-choice-item">
+                <input type="checkbox" name="assistance_type" value="snap" id="check_snap">
+                <span>SNAP (Food Stamps / EBT)</span>
+              </label>
+              <label class="intake-choice-item">
+                <input type="checkbox" name="assistance_type" value="tanf" id="check_tanf">
+                <span>TANF (Cash Assistance)</span>
+              </label>
+              <label class="intake-choice-item">
+                <input type="checkbox" name="assistance_type" value="caps" id="check_caps">
+                <span>CAPS (Childcare Subsidy)</span>
+              </label>
+              <label class="intake-choice-item">
+                <input type="checkbox" name="assistance_type" value="medicaid_ssi" id="check_medicaid">
+                <span>Medicaid / PeachCare / SSI</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="intake-grid" style="margin-top: 15px;">
+            <div class="intake-group" id="snapCaseGroup" style="display: none;">
+              <label for="snap_case_number" style="color: #0e7490;">SNAP Case Number (Georgia Gateway ID)</label>
+              <input type="text" id="snap_case_number" placeholder="Enter SNAP Case # (e.g. 109876543)">
+            </div>
+            <div class="intake-group" id="tanfCaseGroup" style="display: none;">
+              <label for="tanf_case_number" style="color: #0e7490;">TANF Case Number</label>
+              <input type="text" id="tanf_case_number" placeholder="Enter TANF Case Number">
+            </div>
+            <div class="intake-group" id="capsCaseGroup" style="display: none;">
+              <label for="caps_case_number" style="color: #0e7490;">CAPS Certificate / Case ID</label>
+              <input type="text" id="caps_case_number" placeholder="Enter CAPS Certificate ID (if known)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Household Size & Income Box -->
+        <div id="incomeDetailsBox">
+          <div class="intake-grid">
+            <div class="intake-group">
+              <label for="household_size">Total Household Size</label>
+              <input type="number" id="household_size" min="1" max="20" placeholder="4" required/>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Include all adults &amp; children living in your home</span>
+            </div>
+            <div class="intake-group" id="monthlyIncomeGroup">
+              <label for="monthly_income">Total Monthly Household Gross Income ($)</label>
+              <input type="number" id="monthly_income" min="0" placeholder="4500" required/>
+              <span id="monthlyIncomeHint" style="font-size: 0.8rem; color: var(--text-muted);">Before taxes/deductions (wages, child support, etc.)</span>
+            </div>
+            <div class="intake-group intake-full-width" id="ssnGroup">
+              <label for="ssn">Last 4 Digits of Social Security Number (SSN)</label>
+              <input type="text" id="ssn" placeholder="1234" maxlength="4" required/>
+              <div style="margin-top: 6px; font-size: 0.9rem; color: var(--text-muted);">
+                <input type="checkbox" id="no_ssn" style="width:16px; height:16px; display:inline-block; vertical-align:middle; margin-right:5px;"/>
+                <label for="no_ssn" style="display:inline; text-transform:none; font-weight:normal; cursor:pointer;">I do not have a Social Security Number (SSN)</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -850,6 +935,84 @@ get_header();
       }
     });
 
+    // IES Assistance & SNAP/TANF handlers
+    const assistanceYesRadio = document.getElementById('assistance_yes');
+    const assistanceNoRadio = document.getElementById('assistance_no');
+    const assistanceDetailsBox = document.getElementById('assistanceDetailsBox');
+    const checkSnap = document.getElementById('check_snap');
+    const checkTanf = document.getElementById('check_tanf');
+    const checkCaps = document.getElementById('check_caps');
+    const snapCaseGroup = document.getElementById('snapCaseGroup');
+    const tanfCaseGroup = document.getElementById('tanfCaseGroup');
+    const capsCaseGroup = document.getElementById('capsCaseGroup');
+    const snapCaseInput = document.getElementById('snap_case_number');
+    const tanfCaseInput = document.getElementById('tanf_case_number');
+    const monthlyIncomeInput = document.getElementById('monthly_income');
+    const monthlyIncomeHint = document.getElementById('monthlyIncomeHint');
+    const ssnInput = document.getElementById('ssn');
+    const noSsnCheckbox = document.getElementById('no_ssn');
+
+    function updateAssistanceState() {
+      const isYes = assistanceYesRadio.checked;
+      assistanceDetailsBox.style.display = isYes ? 'block' : 'none';
+      
+      const hasSnap = checkSnap ? checkSnap.checked : false;
+      const hasTanf = checkTanf ? checkTanf.checked : false;
+      const hasCaps = checkCaps ? checkCaps.checked : false;
+      
+      if (snapCaseGroup) snapCaseGroup.style.display = (isYes && hasSnap) ? 'flex' : 'none';
+      if (tanfCaseGroup) tanfCaseGroup.style.display = (isYes && hasTanf) ? 'flex' : 'none';
+      if (capsCaseGroup) capsCaseGroup.style.display = (isYes && hasCaps) ? 'flex' : 'none';
+
+      if (isYes && (hasSnap || hasTanf)) {
+        // Automatic Free CACFP Tier 1 qualification
+        monthlyIncomeInput.required = false;
+        monthlyIncomeInput.disabled = true;
+        monthlyIncomeInput.value = '';
+        if (monthlyIncomeHint) {
+          monthlyIncomeHint.innerText = 'Income reporting waived — Categorically eligible via SNAP/TANF Case Number.';
+          monthlyIncomeHint.style.color = 'var(--success)';
+          monthlyIncomeHint.style.fontWeight = '600';
+        }
+        ssnInput.required = false;
+        ssnInput.disabled = true;
+      } else {
+        monthlyIncomeInput.disabled = false;
+        monthlyIncomeInput.required = true;
+        if (monthlyIncomeHint) {
+          monthlyIncomeHint.innerText = 'Before taxes/deductions (wages, child support, etc.)';
+          monthlyIncomeHint.style.color = 'var(--text-muted)';
+          monthlyIncomeHint.style.fontWeight = 'normal';
+        }
+        if (noSsnCheckbox && noSsnCheckbox.checked) {
+          ssnInput.disabled = true;
+          ssnInput.required = false;
+        } else {
+          ssnInput.disabled = false;
+          ssnInput.required = true;
+        }
+      }
+    }
+
+    [assistanceYesRadio, assistanceNoRadio, checkSnap, checkTanf, checkCaps].forEach(el => {
+      if (el) el.addEventListener('change', updateAssistanceState);
+    });
+
+    if (noSsnCheckbox) {
+      noSsnCheckbox.addEventListener('change', () => {
+        if (noSsnCheckbox.checked) {
+          ssnInput.value = '';
+          ssnInput.disabled = true;
+          ssnInput.required = false;
+        } else {
+          if (!assistanceYesRadio.checked || (!checkSnap.checked && !checkTanf.checked)) {
+            ssnInput.disabled = false;
+            ssnInput.required = true;
+          }
+        }
+      });
+    }
+
     function updateProgress() {
       // Manage step dots active/completed classes
       for (let i = 1; i <= 7; i++) {
@@ -890,6 +1053,32 @@ get_header();
     function validateStep(stepNum) {
       const stepEl = document.getElementById('intakeFormStep' + stepNum);
       if (!stepEl) return true;
+
+      // Custom validation for Step 6 (IES)
+      if (stepNum === 6) {
+        if (!assistanceYesRadio.checked && !assistanceNoRadio.checked) {
+          alert('Please select whether your household receives SNAP, TANF, CAPS, or other public assistance benefits.');
+          return false;
+        }
+        if (assistanceYesRadio.checked) {
+          const checkedTypes = document.querySelectorAll('input[name="assistance_type"]:checked');
+          if (checkedTypes.length === 0) {
+            alert('Please select at least one benefit program (e.g. SNAP, TANF, CAPS, or Medicaid/SSI).');
+            return false;
+          }
+          if (checkSnap && checkSnap.checked && !snapCaseInput.value.trim()) {
+            alert('Please enter your SNAP Case Number (Georgia Gateway ID) to verify Free meal eligibility.');
+            snapCaseInput.focus();
+            return false;
+          }
+          if (checkTanf && checkTanf.checked && !tanfCaseInput.value.trim()) {
+            alert('Please enter your TANF Case Number.');
+            tanfCaseInput.focus();
+            return false;
+          }
+        }
+      }
+
       const inputs = stepEl.querySelectorAll('input, select, textarea');
       let valid = true;
       for (const input of inputs) {
@@ -982,9 +1171,17 @@ get_header();
           // Topical Prep
           external_preparations_permissions: JSON.stringify(ext_permissions),
           
+          // IES & Public Benefits
+          receives_assistance: getRadioValue('receives_assistance'),
+          assistance_types: JSON.stringify(Array.from(document.querySelectorAll('input[name="assistance_type"]:checked')).map(cb => cb.value)),
+          snap_case_number: document.getElementById('snap_case_number') ? document.getElementById('snap_case_number').value : '',
+          tanf_case_number: document.getElementById('tanf_case_number') ? document.getElementById('tanf_case_number').value : '',
+          caps_case_number: document.getElementById('caps_case_number') ? document.getElementById('caps_case_number').value : '',
+          
           household_size: document.getElementById('household_size').value,
-          monthly_income: document.getElementById('monthly_income').value,
-          ssn: document.getElementById('ssn').value,
+          monthly_income: (document.getElementById('monthly_income').disabled || !document.getElementById('monthly_income').value) ? 'WAIVED_SNAP_TANF' : document.getElementById('monthly_income').value,
+          ssn: (document.getElementById('no_ssn') && document.getElementById('no_ssn').checked) ? 'NO_SSN' : (document.getElementById('ssn') ? document.getElementById('ssn').value : ''),
+          no_ssn: (document.getElementById('no_ssn') && document.getElementById('no_ssn').checked) ? true : false,
           signature: document.getElementById('sigText').value
         };
         
