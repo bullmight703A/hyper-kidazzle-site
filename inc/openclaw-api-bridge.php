@@ -102,10 +102,21 @@ class OpenClaw_API_Bridge {
             'post_author'   => 1 
         );
 
+        if (!empty($params['slug'])) {
+            $post_data['post_name'] = sanitize_title($params['slug']);
+        }
+        if (!empty($params['template'])) {
+            $post_data['page_template'] = sanitize_text_field($params['template']);
+        }
+
         $post_id = wp_insert_post($post_data);
 
         if (is_wp_error($post_id)) {
             return new WP_REST_Response(['error' => $post_id->get_error_message()], 500);
+        }
+
+        if (!empty($params['template'])) {
+            update_post_meta($post_id, '_wp_page_template', sanitize_text_field($params['template']));
         }
 
         if (!empty($params['image_url'])) {
