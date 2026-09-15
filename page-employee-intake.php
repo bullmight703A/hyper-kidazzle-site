@@ -867,7 +867,7 @@ get_header();
         btnNext.disabled = true;
         
         try {
-          const res = await fetch('/api/kidazzle/employee-intake', {
+          const res = await fetch('https://kidazzle-webhook.bullmight.com/api/kidazzle/employee-intake', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

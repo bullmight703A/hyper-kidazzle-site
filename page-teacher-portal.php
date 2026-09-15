@@ -6,63 +6,6 @@
  */
 
 get_header();
-
-session_start();
-$custom_passcode = '1212';
-
-if (isset($_POST['custom_portal_pwd'])) {
-    if ($_POST['custom_portal_pwd'] === $custom_passcode) {
-        $_SESSION['teacher_unlocked'] = true;
-    } else {
-        $pwd_error = "Incorrect passcode.";
-    }
-}
-
-$is_locked = !isset($_SESSION['teacher_unlocked']) || $_SESSION['teacher_unlocked'] !== true;
-
-if (post_password_required() || $is_locked) {
-    ?>
-    <main id="view-teacher-portal" class="view-section active block py-32 bg-brand-cream min-h-screen">
-        <div class="max-w-md mx-auto px-4 text-center">
-            <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-brand-ink/5">
-                <div class="w-20 h-20 bg-kidazzle-red/10 text-kidazzle-red rounded-3xl flex items-center justify-center mx-auto mb-6 text-3xl">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <h1 class="text-3xl font-serif font-bold text-brand-ink mb-4">Secured Portal</h1>
-                <p class="text-brand-ink/70 mb-8 text-sm">Please enter the staff passcode to access classroom tools and protocols.</p>
-                <div class="password-form-wrapper">
-                    <?php if (post_password_required()): ?>
-                        <?php echo get_the_password_form(); ?>
-                    <?php else: ?>
-                        <form method="post" style="display: flex; flex-direction: column; gap: 1rem;">
-                            <input type="password" name="custom_portal_pwd" placeholder="Enter Passcode" required>
-                            <?php if(isset($pwd_error)) echo "<p style='color:red; font-size:0.9rem; margin:0;'>$pwd_error</p>"; ?>
-                            <input type="submit" value="Enter">
-                        </form>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </main>
-    <style>
-        /* Style the default WP password form */
-        .password-form-wrapper form { display: flex; flex-direction: column; gap: 1rem; }
-        .password-form-wrapper label { font-size: 0; }
-        .password-form-wrapper input[type="password"] { 
-            width: 100%; padding: 1rem 1.5rem; border-radius: 9999px; border: 2px solid #e2e8f0; 
-            font-size: 1rem; text-align: center; outline: none; transition: all 0.3s;
-        }
-        .password-form-wrapper input[type="password"]:focus { border-color: #5B21B6; /* kidazzle-purple */ }
-        .password-form-wrapper input[type="submit"] {
-            width: 100%; padding: 1rem 2rem; border-radius: 9999px; background-color: #5B21B6; 
-            color: white; font-weight: bold; cursor: pointer; transition: all 0.3s;
-        }
-        .password-form-wrapper input[type="submit"]:hover { background-color: #4C1D95; transform: translateY(-2px); }
-    </style>
-    <?php
-    get_footer();
-    exit;
-}
 ?>
 
 <style>
@@ -81,7 +24,7 @@ if (post_password_required() || $is_locked) {
         <div class="max-w-7xl mx-auto px-4 lg:px-6">
             <h1 class="sr-only">Teacher Portal: Classroom Tools and Resources</h1>
             <h2 class="text-2xl font-serif font-bold text-brand-ink mb-10 border-b border-brand-ink/10 pb-4">Daily Classroom Tools</h2>
-            <div class="grid md:grid-cols-4 gap-6 mb-20">
+            <div class="grid md:grid-cols-5 gap-6 mb-20">
                 <!-- AI Lesson Planner -->
                 <div onclick="showForm('form-lesson-plan')" class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
                     <div class="w-16 h-16 bg-kidazzle-purple/10 text-kidazzle-purple rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-purple group-hover:text-white transition-all text-2xl">
@@ -120,6 +63,16 @@ if (post_password_required() || $is_locked) {
                     <h3 class="font-bold text-brand-ink mb-2">Weekly Workflow</h3>
                     <p class="text-brand-ink/60 text-xs mb-6">Submit supply requests and upcoming weekly plans.</p>
                     <span class="text-kidazzle-orange font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 group-hover:underline">Submit Tasks <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+
+                <!-- Photo Upload -->
+                <div onclick="showForm('form-media-upload')" class="bg-white p-8 rounded-[2.5rem] border border-brand-ink/5 hover:shadow-xl transition-all group text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-kidazzle-red/10 text-kidazzle-red rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-red group-hover:text-white transition-all text-2xl">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-ink mb-2">Photo Upload</h3>
+                    <p class="text-brand-ink/60 text-xs mb-6">Upload daily or weekly classroom photos for parents.</p>
+                    <span class="text-kidazzle-red font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 group-hover:underline">Upload Media <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
@@ -178,10 +131,10 @@ if (post_password_required() || $is_locked) {
             </div>
 
             <!-- GHL Forms Overlay (Modal) -->
-            <div id="ghl-modal-overlay" class="fixed inset-0 bg-brand-ink/80 backdrop-blur-sm z-[99999] hidden flex items-center justify-center p-4 md:p-10" onclick="if(event.target === this) hideForms()">
+            <div id="teacher-modal-overlay" class="fixed inset-0 bg-brand-ink/80 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4 md:p-10" onclick="if(event.target === this) hideForms()">
                 
                 <!-- Lesson Plan Modal -->
-                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Weekly Workflow & Lesson Plan</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -193,7 +146,7 @@ if (post_password_required() || $is_locked) {
                 </div>
 
                 <!-- Enrollment Form Modal -->
-                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Master Enrollment Form</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -221,7 +174,7 @@ if (post_password_required() || $is_locked) {
                 </div>
 
                 <!-- Secure Documents Modal (Fixed height style to bypass Tailwind compilation) -->
-                <div id="form-secure-docs" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                <div id="form-secure-docs" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
                         <h3 class="text-2xl font-serif font-bold text-brand-ink">Doc Secure Portal</h3>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -236,20 +189,53 @@ if (post_password_required() || $is_locked) {
                     </div>
                 </div>
 
+                <!-- Photo Upload Modal -->
+                <div id="form-media-upload" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
+                    <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
+                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Classroom Photo & Media Upload</h3>
+                        <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20" style="height: calc(100% - 80px) !important;">
+                        <iframe
+                            src="https://api.leadconnectorhq.com/widget/form/1VBix6u43xo8UaTOfoHK"
+                            style="width:100% !important; height:100% !important; min-height:100% !important; border:none;"
+                            id="inline-1VBix6u43xo8UaTOfoHK"
+                            data-layout="{'id':'INLINE'}"
+                            data-trigger-type="alwaysShow"
+                            data-trigger-value=""
+                            data-activation-type="alwaysActivated"
+                            data-activation-value=""
+                            data-deactivation-type="neverDeactivate"
+                            data-deactivation-value=""
+                            data-form-name="Ripple | teacher to Parent"
+                            data-height="100%"
+                            data-layout-iframe-id="inline-1VBix6u43xo8UaTOfoHK"
+                            data-form-id="1VBix6u43xo8UaTOfoHK"
+                            title="Ripple | teacher to Parent"
+                        ></iframe>
+                        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    </div>
+                </div>
+
             </div>
 
             <script>
             function showForm(formId) {
                 // Hide all modals
-                document.querySelectorAll('.ghl-form-modal').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.ghl-form-modal').forEach(el => {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                });
                 
                 // Show overlay and targeted modal
-                const overlay = document.getElementById('ghl-modal-overlay');
+                const overlay = document.getElementById('teacher-modal-overlay');
                 const formEl = document.getElementById(formId);
                 
                 if(overlay && formEl) {
                     overlay.classList.remove('hidden');
+                    overlay.classList.add('flex');
                     formEl.classList.remove('hidden');
+                    formEl.classList.add('flex');
                     // Prevent background scrolling
                     document.body.style.overflow = 'hidden';
                 }
@@ -257,11 +243,17 @@ if (post_password_required() || $is_locked) {
 
             function hideForms() {
                 // Hide overlay
-                const overlay = document.getElementById('ghl-modal-overlay');
-                if(overlay) overlay.classList.add('hidden');
+                const overlay = document.getElementById('teacher-modal-overlay');
+                if(overlay) {
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('flex');
+                }
                 
                 // Hide all modals
-                document.querySelectorAll('.ghl-form-modal').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.ghl-form-modal').forEach(el => {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                });
                 
                 // Restore background scrolling
                 document.body.style.overflow = '';

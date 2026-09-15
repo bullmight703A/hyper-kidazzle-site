@@ -77,12 +77,15 @@ class kidazzle_Breadcrumbs
         $schema_items = [];
 
         foreach ($items as $index => $item) {
-            $schema_items[] = [
+            $schema_item = [
                 '@type' => 'ListItem',
                 'position' => $index + 1,
-                'name' => $item['label'],
-                'item' => $item['url']
+                'name' => $item['label']
             ];
+            if (!empty($item['url'])) {
+                $schema_item['item'] = $item['url'];
+            }
+            $schema_items[] = $schema_item;
         }
 
         $schema = [
@@ -421,12 +424,15 @@ class kidazzle_Breadcrumbs
         // Generate JSON
         $schema_items = [];
         foreach ($items as $index => $item) {
-            $schema_items[] = [
+            $schema_item = [
                 '@type' => 'ListItem',
                 'position' => $index + 1,
-                'name' => $item['label'],
-                'item' => $item['url']
+                'name' => $item['label']
             ];
+            if (!empty($item['url'])) {
+                $schema_item['item'] = $item['url'];
+            }
+            $schema_items[] = $schema_item;
         }
         $json = [
             '@context' => 'https://schema.org',

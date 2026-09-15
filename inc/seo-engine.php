@@ -464,7 +464,39 @@ function kidazzle_location_schema()
                                 'name' => $program->post_title,
                                 'description' => get_the_excerpt($program->ID),
                                 'url' => get_permalink($program->ID),
-                                'category' => get_post_meta($program->ID, 'program_age_range', true) ?: 'Child Care'
+                                'category' => get_post_meta($program->ID, 'program_age_range', true) ?: 'Child Care',
+                                'hasMerchantReturnPolicy' => array(
+                                        '@type' => 'MerchantReturnPolicy',
+                                        'applicableCountry' => 'US',
+                                        'returnPolicyCategory' => 'https://schema.org/MerchantReturnNotPermitted'
+                                ),
+                                'shippingDetails' => array(
+                                        '@type' => 'OfferShippingDetails',
+                                        'shippingRate' => array(
+                                                '@type' => 'MonetaryAmount',
+                                                'value' => '0',
+                                                'currency' => 'USD'
+                                        ),
+                                        'shippingDestination' => array(
+                                                '@type' => 'DefinedRegion',
+                                                'addressCountry' => 'US'
+                                        ),
+                                        'deliveryTime' => array(
+                                                '@type' => 'ShippingDeliveryTime',
+                                                'handlingTime' => array(
+                                                        '@type' => 'QuantitativeValue',
+                                                        'minValue' => 0,
+                                                        'maxValue' => 0,
+                                                        'unitCode' => 'DAY'
+                                                ),
+                                                'transitTime' => array(
+                                                        '@type' => 'QuantitativeValue',
+                                                        'minValue' => 0,
+                                                        'maxValue' => 0,
+                                                        'unitCode' => 'DAY'
+                                                )
+                                        )
+                                )
                         );
                 }
                 $schema['makesOffer'] = $offers;
@@ -644,6 +676,38 @@ function kidazzle_city_schema()
                                         '@type' => 'ChildCare',
                                         'name' => $loc_name,
                                         'url' => $loc_url
+                                ),
+                                'hasMerchantReturnPolicy' => array(
+                                        '@type' => 'MerchantReturnPolicy',
+                                        'applicableCountry' => 'US',
+                                        'returnPolicyCategory' => 'https://schema.org/MerchantReturnNotPermitted'
+                                ),
+                                'shippingDetails' => array(
+                                        '@type' => 'OfferShippingDetails',
+                                        'shippingRate' => array(
+                                                '@type' => 'MonetaryAmount',
+                                                'value' => '0',
+                                                'currency' => 'USD'
+                                        ),
+                                        'shippingDestination' => array(
+                                                '@type' => 'DefinedRegion',
+                                                'addressCountry' => 'US'
+                                        ),
+                                        'deliveryTime' => array(
+                                                '@type' => 'ShippingDeliveryTime',
+                                                'handlingTime' => array(
+                                                        '@type' => 'QuantitativeValue',
+                                                        'minValue' => 0,
+                                                        'maxValue' => 0,
+                                                        'unitCode' => 'DAY'
+                                                ),
+                                                'transitTime' => array(
+                                                        '@type' => 'QuantitativeValue',
+                                                        'minValue' => 0,
+                                                        'maxValue' => 0,
+                                                        'unitCode' => 'DAY'
+                                                )
+                                        )
                                 )
                         );
                 }
