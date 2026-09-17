@@ -7,9 +7,7 @@
  * @package kidazzle
  */
 
-if (defined('ABSPATH')) {
-    get_header();
-}
+get_header();
 ?>
 
 <!-- Google Fonts: Outfit & Inter -->
@@ -754,7 +752,4 @@ if (defined('ABSPATH')) {
 </script>
 
 <?php
-if (defined('ABSPATH')) {
-    get_footer();
-}
-?>
+get_footer();

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Georgia Lottery Pre-K Attendance Video | Kidazzle Review & GHL Dispatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f293d;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --primary: #f59e0b;
+      --primary-glow: rgba(245, 158, 11, 0.15);
+      --accent: #3b82f6;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px;
+    }
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 32px;
+    }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-glow);
+      color: var(--primary);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .video-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    .version-tabs {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+      background: #080c14;
+      padding: 8px;
+      border-radius: 12px;
+      border: 1px solid #1a2233;
+    }
+    .v-tabs-row {
+      display: flex;
+      gap: 6px;
+    }
+    .v-tab {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .v-tab:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+    }
+    .v-tab.active {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid #334155;
+    }
+    .v-tab.active.gold {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .v-tab.active.blue {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+    .v-tab.active.green {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .phone-mockup {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid #222e47;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .active-badge-pill {
+      background: #0d1526;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      color: #94a3b8;
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .active-badge-pill strong {
+      color: #fff;
+    }
+    .video-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #0b0f19;
+    }
+    .btn-primary:hover {
+      background: #d97706;
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: #3b82f6;
+    }
+    .content-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .content-card h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .script-box {
+      background: #080c14;
+      border: 1px solid #1a2233;
+      border-radius: 12px;
+      padding: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      white-space: pre-wrap;
+      position: relative;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-blue { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .badge-amber { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .badge-green { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-pill {
+      background: #0d1322;
+      border: 1px solid #1b263b;
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+    .stat-val { font-size: 17px; font-weight: 800; color: #fff; margin-top: 4px; }
+    .ghl-template {
+      background: #080c14;
+      border: 1px solid #1a2233;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 10px;
+    }
+    .copy-btn {
+      float: right;
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid #334155;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #334155; }
+    .thumbnail-preview-box {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      background: #080c14;
+      border: 1px solid #1a2233;
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .thumb-img {
+      width: 140px;
+      aspect-ratio: 9 / 16;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid #334155;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .audio-compare-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .audio-card-item {
+      background: #080c14;
+      border: 1px solid #1a2233;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .audio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .audio-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+    }
+    audio {
+      width: 100%;
+      height: 38px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <div class="brand-badge">Georgia Lottery Pre-K • Kidazzle Child Care</div>
+        <h1>8:00 AM Prompt Attendance Video</h1>
+        <div class="subtitle">Featuring Executive Director Robert Hill (15s Speech Pause Thumbnail + ElevenLabs Studio Clean Processing)</div>
+      </div>
+      <div>
+        <span class="badge badge-green">✓ ElevenLabs Studio Clean Audio</span>
+      </div>
+    </header>
+
+    <div class="stats-row">
+      <div class="stat-pill">
+        <div class="stat-label">Presenter</div>
+        <div class="stat-val">Robert Hill (05 Hoodie)</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-label">Thumbnail Opening Shot</div>
+        <div class="stat-val" style="color: #fbbf24;">15s Speech Pause Pose</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-label">Audio Processing</div>
+        <div class="stat-val" style="color: #34d399;">ElevenLabs AI Isolation</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-label">Runtime</div>
+        <div class="stat-val">01:13 (73.4s)</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-label">Destination</div>
+        <div class="stat-val">GoHighLevel Portal & SMS</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Video Player Column -->
+      <div class="video-card">
+        <div class="version-tabs">
+          <div class="v-tabs-row">
+            <button class="v-tab active gold" id="tabIso" onclick="switchVideo('isolated')">🎙️ ElevenLabs Isolated Voice</button>
+            <button class="v-tab" id="tabSts" onclick="switchVideo('sts')">✨ Speech-to-Speech Clone</button>
+          </div>
+          <div class="v-tabs-row">
+            <button class="v-tab" id="tabSub" onclick="switchVideo('subtitled')">💬 Subtitled (Shorts)</button>
+            <button class="v-tab" id="tabRaw" onclick="switchVideo('raw')">📻 Raw Normalized</button>
+          </div>
+        </div>
+
+        <div class="phone-mockup">
+          <video id="mainVideo" controls playsinline preload="metadata" poster="prek_attendance_notice_thumbnail.jpg">
+            <source id="videoSource" src="prek_attendance_robert_hoodie_isolated.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="active-badge-pill">
+          <span>Active Track: <strong id="activeTrackName">ElevenLabs AI Vocal Isolation</strong></span>
+          <span class="badge badge-amber" id="activeBadge">100% Studio Clean</span>
+        </div>
+
+        <div class="video-actions">
+          <a id="downloadBtn" href="https://kidazzle.com/shorts/prek_attendance_robert_hoodie_isolated.mp4" download class="btn btn-primary">
+            ⬇️ Download Current Video (MP4)
+          </a>
+          <a href="https://kidazzle.com/shorts/prek_attendance_notice_thumbnail.jpg" download class="btn btn-outline" style="border-color: #f59e0b; color: #fbbf24;">
+            🖼️ Download 15s Pause Thumbnail (JPG)
+          </a>
+          <a href="https://kidazzle.com/shorts/robert_elevenlabs_isolated.mp3" download class="btn btn-outline" style="border-color: #10b981; color: #34d399;">
+            🎙️ Download ElevenLabs Isolated Audio (MP3)
+          </a>
+          <a href="https://kidazzle.com/shorts/robert_elevenlabs_sts.mp3" download class="btn btn-outline" style="border-color: #3b82f6; color: #60a5fa;">
+            ✨ Download Speech-to-Speech Studio Clone (MP3)
+          </a>
+        </div>
+      </div>
+
+      <!-- Script, Thumbnail & Audio Details Column -->
+      <div>
+        <!-- Official Thumbnail Feature Card (15s Speech Pause) -->
+        <div class="content-card">
+          <h2>🖼️ Official Georgia Lottery Pre-K Thumbnail (15s Speech Pause)</h2>
+          <div class="thumbnail-preview-box">
+            <img src="https://kidazzle.com/shorts/prek_attendance_notice_thumbnail.jpg" alt="Official Pre-K Thumbnail" class="thumb-img">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                <h3 style="font-size: 16px; color: #fff;">15-Second Speech Pause Opening Shot</h3>
+                <span class="badge badge-amber">Updated per Robert</span>
+              </div>
+              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">
+                Features your composed, authoritative speech pause frame at 15.0s with closed lips and focused direct camera gaze. Includes the Georgia Lottery Pre-K golden header ribbon, red "ATTENDANCE & 8:00 AM START" banner, and centered play button.
+              </p>
+              <a href="https://kidazzle.com/shorts/prek_attendance_notice_thumbnail.jpg" target="_blank" class="badge badge-amber" style="text-decoration: none; padding: 6px 12px;">
+                🔍 View Full 1080x1920 Resolution
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Audio Compare Section -->
+        <div class="content-card">
+          <h2>🎧 ElevenLabs Audio Processing Suite</h2>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            Listen directly to each audio version generated from your authentic voice memo:
+          </p>
+          <div class="audio-compare-row">
+            <div class="audio-card-item">
+              <div class="audio-header">
+                <span class="audio-title">1. ElevenLabs Voice Isolation (Recommended)</span>
+                <span class="badge badge-green">Zero Noise / 100% Studio Clean</span>
+              </div>
+              <audio controls src="https://kidazzle.com/shorts/robert_elevenlabs_isolated.mp3"></audio>
+            </div>
+
+            <div class="audio-card-item">
+              <div class="audio-header">
+                <span class="audio-title">2. ElevenLabs Speech-to-Speech (Studio Voice Clone)</span>
+                <span class="badge badge-blue">Robert Clone Model (UZBDLjvnO82xEg3p8jT6)</span>
+              </div>
+              <audio controls src="https://kidazzle.com/shorts/robert_elevenlabs_sts.mp3"></audio>
+            </div>
+
+            <div class="audio-card-item">
+              <div class="audio-header">
+                <span class="audio-title">3. Raw Normalized Recording</span>
+                <span class="badge badge-amber">Original Phone Mic Recording</span>
+              </div>
+              <audio controls src="https://kidazzle.com/shorts/robert_real_recording_prek.mp3"></audio>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>
+            📜 Master Spoken Script (Verbatim)
+            <button class="copy-btn" onclick="copyScript()">Copy Script</button>
+          </h2>
+          <div class="script-box" id="scriptText">Good morning, Georgia Lottery Pre-K families. This is Robert.
+
+I want to speak directly to you regarding your child’s future.
+
+The issue at hand that we're having is late attendance. We are needing all children in by 8:00 AM. Understand this: at 8:00 o'clock, they are considered late.
+
+This is a precursor and a guide to public school and to their educational future. Please know that we look to have about 20% of our student population score and test into the first-grade percentile. But we cannot do this without the children being here.
+
+Your teachers are the direct pipeline to your child's growth and education. So if you have a doctor’s visit, or something that came up—these things we knew about—please let the teachers know. Feel free to let me know. The goal is communication.
+
+So, I look forward to seeing everyone here by 8:00 o'clock. Thank you.</div>
+        </div>
+
+        <div class="content-card">
+          <h2>📲 GoHighLevel (GHL) Broadcast Templates (Kidazzle Branded)</h2>
+          
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"><b>SMS Broadcast (Direct to Pre-K Parents):</b></p>
+          <div class="ghl-template">
+            <p style="font-size: 13px; color: #cbd5e1;">"Good morning Pre-K Families! Important video message from Executive Director Robert Hill regarding our 8:00 AM instructional start time and protecting your child's educational future: https://kidazzle.com/shorts/prek_video_review.html — Please watch today!"</p>
+          </div>
+
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px; margin-bottom: 8px;"><b>Email Announcement Subject & Body:</b></p>
+          <div class="ghl-template">
+            <p style="font-size: 13px; color: #60a5fa; font-weight: 700;">Subject: Important Pre-K Video Notice: 8:00 AM Start Time & Your Child's Future</p>
+            <p style="font-size: 13px; color: #cbd5e1; margin-top: 8px; line-height: 1.6;">
+              Dear Georgia Lottery Pre-K Families,<br><br>
+              Every minute in our Pre-K classroom shapes lifelong learning habits. Please take 70 seconds to watch this vital message from Executive Director Robert Hill regarding our prompt 8:00 AM instructional start and advance notice for appointments.<br><br>
+              Watch the official video now on your parent portal or at <a href="https://kidazzle.com/shorts/prek_video_review.html" style="color: #60a5fa; text-decoration: underline;">https://kidazzle.com/shorts/prek_video_review.html</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tabs = {
+      isolated: { file: 'https://kidazzle.com/shorts/prek_attendance_robert_hoodie_isolated.mp4', name: 'ElevenLabs AI Vocal Isolation', badge: '100% Studio Clean', id: 'tabIso', color: 'gold' },
+      sts: { file: 'https://kidazzle.com/shorts/prek_attendance_robert_hoodie_sts.mp4', name: 'ElevenLabs Speech-to-Speech Clone', badge: 'Voice Clone Model', id: 'tabSts', color: 'blue' },
+      subtitled: { file: 'https://kidazzle.com/shorts/prek_attendance_robert_hoodie_subtitled.mp4', name: 'Word-Timed Burned-in Subtitles', badge: 'Shorts & Social', id: 'tabSub', color: 'green' },
+      raw: { file: 'https://kidazzle.com/shorts/prek_attendance_robert_hoodie_master.mp4', name: 'Raw Normalized Voice Track', badge: 'Original Memo', id: 'tabRaw', color: 'gold' }
+    };
+
+    function switchVideo(version) {
+      const vid = document.getElementById('mainVideo');
+      const src = document.getElementById('videoSource');
+      const dlBtn = document.getElementById('downloadBtn');
+      const trackName = document.getElementById('activeTrackName');
+      const trackBadge = document.getElementById('activeBadge');
+
+      for (let k in tabs) {
+        document.getElementById(tabs[k].id).className = 'v-tab';
+      }
+
+      const selected = tabs[version];
+      src.src = selected.file;
+      document.getElementById(selected.id).className = 'v-tab active ' + selected.color;
+      trackName.innerText = selected.name;
+      trackBadge.innerText = selected.badge;
+      dlBtn.href = selected.file;
+      dlBtn.innerText = '⬇️ Download ' + selected.name + ' (MP4)';
+
+      vid.load();
+      vid.play();
+    }
+
+    function copyScript() {
+      const text = document.getElementById('scriptText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = 'Copied!';
+        setTimeout(() => btn.innerText = 'Copy Script', 2000);
+      });
+    }
+  </script>
+</body>
+</html>

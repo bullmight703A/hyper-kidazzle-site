@@ -96,6 +96,8 @@ require_once KIDAZZLE_THEME_DIR . '/inc/customizer-seo.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/customizer-scripts.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/growth-tracking.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/essential-page-fallbacks.php';
+require_once KIDAZZLE_THEME_DIR . '/inc/shorts-router.php';
+require_once KIDAZZLE_THEME_DIR . '/inc/openclaw-api-bridge.php';
 
 // Legacy helper files (ACF plugin optional; helpers run on core WP functions only)
 require_once KIDAZZLE_THEME_DIR . '/inc/acf-options.php';
