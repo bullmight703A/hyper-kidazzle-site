@@ -331,10 +331,7 @@
       background: #eff6ff;
     }
     .upload-box input[type="file"] {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      opacity: 0;
-      cursor: pointer;
+      display: none;
     }
     .upload-prompt {
       display: flex;
@@ -532,9 +529,15 @@
     let currentStudent = null;
 
     // Fetch student list on page load
+    const API_BASE = window.location.origin.includes('kidazzle-webhook')
+      ? ''
+      : (window.location.origin.includes('bullmight.com') || window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
+        ? ''
+        : 'https://kidazzle-webhook.bullmight.com');
+
     async function loadStudents() {
       try {
-        const res = await fetch('/api/students-list');
+        const res = await fetch(API_BASE + '/api/students-list');
         const list = await res.json();
         const select = document.getElementById('child-select');
         select.innerHTML = '<option value="">-- Choose Enrolled Child --</option>';
@@ -570,14 +573,11 @@
       btn.textContent = 'Verifying...';
       btn.disabled = true;
 
-      const formData = new FormData();
-      formData.append('crm_id', crm_id);
-      formData.append('dob', dob);
-
       try {
-        const res = await fetch('/api/verify-parent', {
+        const res = await fetch(API_BASE + '/api/verify-parent', {
           method: 'POST',
-          body: formData
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ crm_id: crm_id, dob: dob })
         });
         const data = await res.json();
 
@@ -588,7 +588,7 @@
           document.getElementById('portal-section').style.display = 'block';
           showToast(`Welcome! Viewing file for ${data.student.child_name}`, 'success');
         } else {
-          showToast(data.detail || 'Verification failed. Please check birth date.', 'error');
+          showToast(data.error || data.detail || 'Verification failed. Please check birth date.', 'error');
         }
       } catch (err) {
         showToast('Network error during verification. Try again.', 'error');
@@ -674,18 +674,18 @@
             </div>
             <p class="doc-desc">${cfg.desc}</p>
             ${appxButton}
-            <div class="upload-box" id="drop-${cfg.key}" onclick="triggerInput('${cfg.key}')">
-              <input type="file" id="file-${cfg.key}" accept=".pdf,.png,.jpg,.jpeg,.heic" onchange="fileChosen('${cfg.key}', '${cfg.title}')">
+            <div class="upload-box" id="drop-${cfg.key}" onclick="triggerInput('${cfg.key}')" style="cursor:pointer;">
+              <input type="file" id="file-${cfg.key}" accept=".pdf,.png,.jpg,.jpeg,.heic,image/*" style="display:none;" onchange="fileChosen('${cfg.key}', '${cfg.title}')">
               <div class="upload-prompt" id="prompt-${cfg.key}">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                <span><strong>Click to Upload</strong> or drag file / photo here</span>
+                <span><strong>Click to Upload</strong> or take a photo</span>
                 <span style="font-size: 11px;">Supports PDF, JPG, PNG, phone camera photos</span>
               </div>
             </div>
-            <div class="file-selected" id="selected-${cfg.key}">
-              <span id="fname-${cfg.key}">--</span>
-              <div>
-                <button type="button" class="btn-upload-action" onclick="submitUpload('${cfg.key}', '${cfg.title}')">Submit File</button>
+            <div class="file-selected" id="selected-${cfg.key}" style="display:none;">
+              <span id="fname-${cfg.key}" style="font-weight:600;">--</span>
+              <div style="display:flex; gap:8px;">
+                <button type="button" class="btn-upload-action" id="btn-up-${cfg.key}" onclick="submitUpload('${cfg.key}', '${cfg.title}')">Submit File</button>
               </div>
             </div>
           `;
@@ -709,15 +709,23 @@
     }
 
     function triggerInput(key) {
-      document.getElementById(`file-${key}`).click();
+      const el = document.getElementById(`file-${key}`);
+      if (el) {
+        el.value = '';
+        el.click();
+      }
     }
 
     function fileChosen(key, docTitle) {
       const input = document.getElementById(`file-${key}`);
-      if (input.files.length > 0) {
+      if (input.files && input.files.length > 0) {
         const file = input.files[0];
-        document.getElementById(`fname-${key}`).textContent = `📄 ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
-        document.getElementById(`selected-${key}`).style.display = 'flex';
+        const fnameEl = document.getElementById(`fname-${key}`);
+        const selEl = document.getElementById(`selected-${key}`);
+        if (fnameEl) fnameEl.textContent = `📄 ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
+        if (selEl) selEl.style.display = 'flex';
+        // Automatically start upload so parent doesn't need to click a second time
+        submitUpload(key, docTitle);
       }
     }
 
@@ -734,7 +742,7 @@
       showToast(`Uploading ${file.name}...`, 'info');
 
       try {
-        const res = await fetch('/api/upload-document', {
+        const res = await fetch(API_BASE + '/api/upload-document', {
           method: 'POST',
           body: formData
         });
@@ -746,11 +754,11 @@
           const verifyData = new FormData();
           verifyData.append('crm_id', currentStudent.crm_id);
           verifyData.append('dob', currentStudent.dob);
-          const rRes = await fetch('/api/verify-parent', { method: 'POST', body: verifyData });
+          const rRes = await fetch(API_BASE + '/api/verify-parent', { method: 'POST', body: verifyData });
           const rData = await rRes.json();
           renderPortal(rData.student, rData.uploads);
         } else {
-          showToast(data.detail || 'Upload failed. Please try again.', 'error');
+          showToast(data.error || data.detail || 'Upload failed. Please try again.', 'error');
         }
       } catch (err) {
         showToast('Network error during upload.', 'error');

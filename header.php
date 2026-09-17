@@ -98,8 +98,8 @@
 	
 	<!-- STICKY MOBILE TOUR / CALL BAR -->
 	<div class="fixed bottom-0 left-0 w-full z-[100] bg-[#023047] text-white py-3 px-4 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] flex md:hidden justify-between items-center border-t border-[#EAE0D5] rounded-t-2xl">
-		<a href="tel:4043056950" class="flex-1 text-center font-bold text-sm border-r border-[#EAE0D5]/20 flex items-center justify-center gap-2 hover:opacity-80 transition-opacity">
-			<i class="fa-solid fa-phone"></i> Call Now
+		<a href="tel:18774101002" class="flex-1 text-center font-bold text-sm border-r border-[#EAE0D5]/20 flex items-center justify-center gap-2 hover:opacity-80 transition-opacity">
+			<i class="fa-solid fa-phone"></i> Call 877-410-1002
 		</a>
 		<a href="/contact/" class="flex-1 text-center font-bold text-sm flex items-center justify-center gap-2 text-[#FB8500] hover:opacity-80 transition-opacity">
 			<i class="fa-solid fa-calendar-check"></i> Book Tour
@@ -116,8 +116,7 @@
 		<div class="flex gap-4 items-center">
 			<a href="/locations/" class="flex items-center gap-1 hover:text-cyan-600 transition"><i
 					data-lucide="map-pin" class="w-3 h-3 text-red-500"></i> Serving GA, TN, & FL</a>
-			<span class="flex items-center gap-1"><i data-lucide="phone" class="w-3 h-3 text-green-500"></i>
-				877-410-1002</span>
+			<a href="tel:18774101002" class="flex items-center gap-1 hover:text-green-600 transition"><i data-lucide="phone" class="w-3 h-3 text-green-500"></i> 877-410-1002</a>
 			<a href="/acquisitions/"
 				class="flex items-center gap-1 font-bold text-indigo-600 hover:underline transition"><i
 					data-lucide="briefcase" class="w-3 h-3"></i> Acquisitions</a>
