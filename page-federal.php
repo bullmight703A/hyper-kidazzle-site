@@ -1254,6 +1254,39 @@ $page_id = get_the_ID();
             </div>
           </div>
         </div>
+
+        <!-- Campus 5: Hampton / Lovejoy Federal Center -->
+        <div class="fed-campus-card">
+          <div class="fed-campus-media-box">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/campus_reading_nook_1772749540264.png" alt="Hampton Lovejoy FAA Regional Center KIDazzle">
+            <span class="fed-campus-badge-tag">FAA Atlanta Region</span>
+            <span class="fed-campus-rate-badge">$520 Savings Eligible</span>
+          </div>
+          <div class="fed-campus-content">
+            <div class="fed-campus-agency-strip">Serving FAA Atlanta Center, Clayton &amp; Henry County Federal Personnel</div>
+            <h3>Hampton / Lovejoy Regional Center</h3>
+            <div class="fed-campus-address">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              49 Woolsey Rd, Hampton, GA 30228 (Henry / Clayton Corridor)
+            </div>
+            <p class="fed-campus-desc">
+              Conveniently positioned for South Metro federal civil servants, FAA Atlanta Center operations, and regional personnel. Features expansive indoor exploration discovery zones, dedicated early learning suites, and Georgia Lottery Pre-K.
+            </p>
+            <ul class="fed-campus-features-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>FAA Atlanta Regional Corridor</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Georgia Lottery Pre-K Class</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Spacious Outdoor Playgrounds</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Infant, Toddler &amp; After-School</li>
+            </ul>
+            <div class="fed-campus-actions-row">
+              <a href="#verification" class="btn-fed-campus-tour" onclick="selectCampus('Hampton / Lovejoy')">Claim Hampton Priority &rarr;</a>
+              <a href="tel:7702107290" class="btn-fed-campus-call">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                (770) 210-7290
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- $520 Savings Transparency Card -->
@@ -1352,12 +1385,11 @@ $page_id = get_the_ID();
           <div class="fed-form-group">
             <label class="fed-form-label">Preferred Federal Campus *</label>
             <select id="fedCampus" required>
-              <option value="Peachtree Summit Federal Center" selected>IRS Peachtree Summit Building (Midtown)</option>
-              <option value="Sam Nunn Atlanta Federal Center">Sam Nunn Atlanta Federal Center (Downtown)</option>
-              <option value="Little Flyers Academy (FAA)">Little Flyers Academy (FAA Headquarters)</option>
-              <option value="Tailwinds Development Center (Doral)">Tailwinds Development Center (Doral/Miami)</option>
-              <option value="West End Regional Campus">West End Regional Center (Atlanta)</option>
-              <option value="Hampton Regional Campus">Hampton Center (Henry County)</option>
+              <option value="Peachtree Summit Federal Center" selected>IRS Peachtree Summit Building (Midtown Atlanta)</option>
+              <option value="Sam Nunn Atlanta Federal Center">Sam Nunn Atlanta Federal Center (Downtown Atlanta)</option>
+              <option value="Little Flyers Academy (FAA)">Little Flyers Academy (FAA Regional Headquarters - College Park)</option>
+              <option value="Hampton / Lovejoy (FAA Center) - 49 Woolsey Rd">Hampton / Lovejoy (FAA Center) — 49 Woolsey Rd, Hampton, GA 30228</option>
+              <option value="Tailwinds Development Center (Doral)">Tailwinds Development Center (Doral / Miami)</option>
             </select>
           </div>
           <div class="fed-form-group">
