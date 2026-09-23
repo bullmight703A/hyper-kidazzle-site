@@ -46,16 +46,16 @@ class kidazzle_Combo_Page_Generator
      * Add rewrite rules
      */
     public function add_rewrite_rules() {
-        // Pattern: /program-in-city-state/
+        // Pattern: /program-in-city-state/ (Case-insensitive state matching)
         add_rewrite_rule(
-            '^([a-z0-9-]+)-in-([a-z-]+)-([a-z]{2})/?$',
+            '^([a-z0-9-]+)-in-([a-z0-9-]+)-([a-zA-Z]{2})/?$',
             'index.php?' . self::REWRITE_TAG . '=1&combo_program=$matches[1]&combo_city=$matches[2]&combo_state=$matches[3]',
             'top'
         );
 
-        // Custom Sitemap Rule: /sitemap-combos.xml
+        // Custom Sitemap Rule: /sitemap-combos.xml (with optional trailing slash)
         add_rewrite_rule(
-            '^sitemap-combos\.xml$',
+            '^sitemap-combos\.xml/?$',
             'index.php?kidazzle_combo_sitemap=1',
             'top'
         );
@@ -82,9 +82,22 @@ class kidazzle_Combo_Page_Generator
             return;
         }
         
-        $program_slug = sanitize_title(get_query_var('combo_program'));
+        $raw_program_slug = sanitize_title(get_query_var('combo_program'));
         $city_slug = sanitize_title(get_query_var('combo_city'));
-        $state = strtoupper(sanitize_text_field(get_query_var('combo_state')));
+        $raw_state = sanitize_text_field(get_query_var('combo_state'));
+        $state = strtoupper($raw_state);
+        $state_lower = strtolower($raw_state);
+
+        // Alias mapping for legacy program slugs to active published programs
+        $program_aliases = [
+            'infant-care' => 'infants',
+            'toddler-care' => 'toddlers',
+            'pre-k-prep' => 'pre-k',
+            'camp-summer-winter-fall' => 'summer-camp',
+            'summer-camp' => 'summer-camp',
+            'parents-day-out' => 'preschool',
+        ];
+        $program_slug = $program_aliases[$raw_program_slug] ?? $raw_program_slug;
         
         // Find program
         $program = get_page_by_path($program_slug, OBJECT, 'program');
@@ -95,6 +108,16 @@ class kidazzle_Combo_Page_Generator
                 'posts_per_page' => 1
             ]);
             $program = $programs[0] ?? null;
+        }
+        
+        // Secondary fallback to first published program if still not found
+        if (!$program) {
+            $fallback_programs = get_posts([
+                'post_type' => 'program',
+                'posts_per_page' => 1,
+                'post_status' => 'publish'
+            ]);
+            $program = $fallback_programs[0] ?? null;
         }
         
         if (!$program) {
@@ -145,8 +168,21 @@ class kidazzle_Combo_Page_Generator
             return $classes;
         });
 
-        // Force Canonical (Closure method to ensure context)
-        $combo_canonical = home_url("/{$program_slug}-in-{$city_slug}-{$state}/");
+        // Force Canonical (Lowercase state and kidazzle.com domain)
+        $combo_canonical = home_url("/{$program_slug}-in-{$city_slug}-{$state_lower}/");
+        $combo_canonical = str_replace(
+            ['https://summer.kidazzle.com', 'http://summer.kidazzle.com', 'summer.kidazzle.com'],
+            ['https://kidazzle.com', 'https://kidazzle.com', 'kidazzle.com'],
+            $combo_canonical
+        );
+
+        // 301 Redirect if requested with uppercase state, missing slash, or legacy alias
+        $request_path = isset($_SERVER['REQUEST_URI']) ? (string) wp_parse_url(wp_unslash($_SERVER['REQUEST_URI']), PHP_URL_PATH) : '';
+        $canonical_path = parse_url($combo_canonical, PHP_URL_PATH);
+        if ($request_path && $canonical_path && rtrim($request_path, '/') !== rtrim($canonical_path, '/')) {
+            wp_redirect($combo_canonical, 301);
+            exit;
+        }
         
         // High priority filter for Yoast Canonical AND OpenGraph URL
         foreach (['wpseo_canonical', 'wpseo_opengraph_url'] as $filter) {

@@ -43,9 +43,9 @@ class kidazzle_Canonical_Enforcer
         
         // Handle special cases
         if (get_query_var('kidazzle_combo')) {
-            $program_slug = get_query_var('combo_program');
-            $city_slug = get_query_var('combo_city');
-            $state = get_query_var('combo_state');
+            $program_slug = sanitize_title(get_query_var('combo_program'));
+            $city_slug = sanitize_title(get_query_var('combo_city'));
+            $state = strtolower(sanitize_text_field(get_query_var('combo_state')));
             $url = home_url("/{$program_slug}-in-{$city_slug}-{$state}/");
         } elseif (is_front_page()) {
             $url = home_url('/');
@@ -59,10 +59,15 @@ class kidazzle_Canonical_Enforcer
             $url = get_tag_link(get_queried_object_id());
         }
         
+        // Ensure kidazzle.com domain (purge staging domain leaks)
+        $url = str_replace(
+            ['https://summer.kidazzle.com', 'http://summer.kidazzle.com', 'summer.kidazzle.com'],
+            ['https://kidazzle.com', 'https://kidazzle.com', 'kidazzle.com'],
+            $url
+        );
+
         // Ensure HTTPS
-        if (is_ssl()) {
-            $url = str_replace('http://', 'https://', $url);
-        }
+        $url = str_replace('http://', 'https://', $url);
         
         // Remove tracking parameters
         $url = $this->strip_tracking_params($url);

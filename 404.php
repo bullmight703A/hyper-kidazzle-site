@@ -64,7 +64,7 @@ $locations_query = new WP_Query(array(
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1: Memphis -->
-                <a href="/locations/memphis/"
+                <a href="/locations/cordova/"
                     class="group bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-slate-200">
                     <div class="h-56 relative overflow-hidden">
                         <img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/693c7cb5dbed99e0b07c8310.png"
@@ -101,7 +101,7 @@ $locations_query = new WP_Query(array(
                     </div>
                 </a>
                 <!-- Card 3: Doral -->
-                <a href="/locations/miami/"
+                <a href="/locations/doral/"
                     class="group bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-slate-200">
                     <div class="h-56 relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"

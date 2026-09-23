@@ -1,4 +1,13 @@
-require_once('wp-load.php');
+<?php
+if (!defined('ABSPATH') && php_sapi_name() !== 'cli') {
+    http_response_code(403);
+    exit('Direct access not permitted.');
+}
+if (file_exists('wp-load.php')) {
+    require_once('wp-load.php');
+} elseif (file_exists('../../../wp-load.php')) {
+    require_once('../../../wp-load.php');
+}
 if ( ! function_exists( 'wp_handle_sideload' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/file.php' );
     require_once( ABSPATH . 'wp-admin/includes/image.php' );

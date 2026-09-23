@@ -36,9 +36,9 @@ class kidazzle_Near_Me_Pages
                 'top'
             );
             
-            // City-specific: /daycare-near-cumming-ga/
+            // City-specific: /daycare-near-cumming-ga/ (Case-insensitive state)
             add_rewrite_rule(
-                '^' . $kw . '-near-([a-z-]+)-([a-z]{2})/?$',
+                '^' . $kw . '-near-([a-z0-9-]+)-([a-zA-Z]{2})/?$',
                 'index.php?' . self::REWRITE_TAG . '=' . $kw . '&near_city=$matches[1]&near_state=$matches[2]',
                 'top'
             );
@@ -116,13 +116,37 @@ class kidazzle_Near_Me_Pages
         
         // If city-specific, filter/sort by that city
         $city_name = '';
+        $state_lower = strtolower($state);
         if ($city_slug && $state) {
             $city_name = ucwords(str_replace('-', ' ', $city_slug));
             $page_title = $keyword_label . ' Near ' . $city_name . ', ' . $state;
+            $near_canonical = home_url("/{$keyword}-near-{$city_slug}-{$state_lower}/");
         } else {
             $page_title = $keyword_label . ' Near Me';
+            $near_canonical = home_url("/{$keyword}-near-me/");
         }
-        
+        $near_canonical = str_replace(
+            ['https://summer.kidazzle.com', 'http://summer.kidazzle.com', 'summer.kidazzle.com'],
+            ['https://kidazzle.com', 'https://kidazzle.com', 'kidazzle.com'],
+            $near_canonical
+        );
+
+        add_filter('wpseo_canonical', function() use ($near_canonical) {
+            return $near_canonical;
+        }, PHP_INT_MAX);
+        add_filter('wpseo_opengraph_url', function() use ($near_canonical) {
+            return $near_canonical;
+        }, PHP_INT_MAX);
+        add_filter('pre_get_document_title', function() use ($page_title) {
+            return $page_title . ' | KIDazzle Child Care';
+        }, PHP_INT_MAX);
+        add_action('wp_head', function() use ($near_canonical) {
+            if (!defined('WPSEO_VERSION')) {
+                echo '<link rel="canonical" href="' . esc_url($near_canonical) . '" />' . "\n";
+            }
+        }, 1);
+
+        status_header(200);
         get_header();
         ?>
         <main class="near-me-page">

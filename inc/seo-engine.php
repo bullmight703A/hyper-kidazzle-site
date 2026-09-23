@@ -113,9 +113,22 @@ function kidazzle_seo_headers() {
     if (headers_sent()) return;
     
     // Canonical Link Header
-    if (is_singular()) {
-        $link = get_permalink();
-        if ($link) {
+    if (!is_404() && !is_admin()) {
+        if (is_front_page()) {
+            $link = home_url('/');
+        } elseif (is_singular()) {
+            $link = get_permalink();
+        } else {
+            $link = '';
+        }
+        
+        if ($link && is_string($link)) {
+            $link = str_replace(
+                ['https://summer.kidazzle.com', 'http://summer.kidazzle.com', 'summer.kidazzle.com'],
+                ['https://kidazzle.com', 'https://kidazzle.com', 'kidazzle.com'],
+                $link
+            );
+            $link = trailingslashit($link);
             header("Link: <$link>; rel=\"canonical\"", false);
         }
     }

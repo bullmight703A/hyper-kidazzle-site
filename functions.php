@@ -51,6 +51,7 @@ define('KIDAZZLE_THEME_URI', untrailingslashit(get_template_directory_uri()));
  */
 
 // Core setup and configuration
+require_once KIDAZZLE_THEME_DIR . '/inc/domain-canonical-sanitizer.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/setup.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/critical-css.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/enqueue.php';
@@ -123,6 +124,7 @@ require_once KIDAZZLE_THEME_DIR . '/inc/search-atlas-frontend-suppression.php';
 
 require_once KIDAZZLE_THEME_DIR . '/inc/security.php';
 require_once KIDAZZLE_THEME_DIR . '/inc/force-trailing-slashes.php';
+require_once KIDAZZLE_THEME_DIR . '/inc/smart-404-redirect-router.php';
 
 /**
  * Privacy Policy Route
