@@ -55,9 +55,23 @@ add_filter('plugins_url', 'kidazzle_purge_staging_domain', 9999);
 add_filter('content_url', 'kidazzle_purge_staging_domain', 9999);
 add_filter('theme_file_uri', 'kidazzle_purge_staging_domain', 9999);
 add_filter('get_the_guid', 'kidazzle_purge_staging_domain', 9999);
+add_filter('robots_txt', function ($output, $public = true) {
+    $output = kidazzle_purge_staging_domain($output);
+    if (strpos($output, 'summer.kidazzle.com') !== false) {
+        $output = str_replace(
+            ['https://summer.kidazzle.com', 'http://summer.kidazzle.com', 'summer.kidazzle.com'],
+            ['https://kidazzle.com', 'https://kidazzle.com', 'kidazzle.com'],
+            $output
+        );
+    }
+    if (strpos($output, 'sitemap_index.xml') === false && strpos($output, 'sitemap.xml') === false) {
+        $output .= "\nSitemap: https://kidazzle.com/sitemap_index.xml\n";
+    }
+    return $output;
+}, 9999, 2);
 
 /**
- * 3. Update Database Options Permanently (wp_options)
+ * 3. Update Database Options Permanently (wp_options) & Physical robots.txt
  */
 add_action('init', function () {
     // Check raw options from DB without pre_option filter
@@ -74,6 +88,18 @@ add_action('init', function () {
         }
         if ($raw_home && strpos($raw_home, 'summer.kidazzle.com') !== false) {
             $wpdb->update($wpdb->options, ['option_value' => 'https://kidazzle.com'], ['option_name' => 'home']);
+        }
+    }
+
+    // Clean physical robots.txt in ABSPATH if present
+    if (defined('ABSPATH') && file_exists(ABSPATH . 'robots.txt')) {
+        $r_content = @file_get_contents(ABSPATH . 'robots.txt');
+        if ($r_content && strpos($r_content, 'summer.kidazzle.com') !== false) {
+            @file_put_contents(ABSPATH . 'robots.txt', str_replace(
+                ['https://summer.kidazzle.com', 'http://summer.kidazzle.com', 'summer.kidazzle.com'],
+                ['https://kidazzle.com', 'https://kidazzle.com', 'kidazzle.com'],
+                $r_content
+            ));
         }
     }
 }, 1);
