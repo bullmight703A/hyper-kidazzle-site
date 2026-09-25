@@ -160,6 +160,34 @@ function kidazzle_force_lesson_plans_page()
 }
 add_action('template_redirect', 'kidazzle_force_lesson_plans_page', 0);
 
+function kidazzle_force_apply_page()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $path = kidazzle_get_current_request_path();
+
+    if ($path !== 'apply') {
+        return;
+    }
+
+    $apply_template = KIDAZZLE_THEME_DIR . '/page-apply.php';
+
+    if (!file_exists($apply_template)) {
+        return;
+    }
+
+    global $wp_query;
+    if (isset($wp_query)) {
+        $wp_query->is_404 = false;
+    }
+    status_header(200);
+    include $apply_template;
+    exit;
+}
+add_action('template_redirect', 'kidazzle_force_apply_page', 0);
+
 function kidazzle_essential_fallback_document_title($title)
 {
     $fallback = kidazzle_get_active_essential_fallback();
