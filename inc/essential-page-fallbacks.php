@@ -43,6 +43,11 @@ function kidazzle_get_essential_page_fallbacks()
             'title' => 'Nutrition & Dining Philosophy - KIDazzle Child Care',
             'description' => 'Explore the healthy eating philosophy, curriculum dining integration, and daily schedules at KIDazzle Child Care.',
         ),
+        'lesson-plans' => array(
+            'template' => 'page-lesson-plans.php',
+            'title' => 'Master 12-Month Curriculum & Weekly Lesson Plan Directory - KIDazzle Child Care',
+            'description' => 'Official KIDazzle Child Care Centers 12-month master curriculum and 52-week lesson plans across all age groups: Infants, Toddlers, 2-Year-Olds, Preschool, and Pre-K.',
+        ),
     );
 }
 
@@ -126,6 +131,34 @@ function kidazzle_force_digital_resources_page()
     exit;
 }
 add_action('template_redirect', 'kidazzle_force_digital_resources_page', 0);
+
+function kidazzle_force_lesson_plans_page()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $path = kidazzle_get_current_request_path();
+
+    if ($path !== 'lesson-plans' && $path !== 'lesson_plans') {
+        return;
+    }
+
+    $lp_template = KIDAZZLE_THEME_DIR . '/page-lesson-plans.php';
+
+    if (!file_exists($lp_template)) {
+        return;
+    }
+
+    global $wp_query;
+    if (isset($wp_query)) {
+        $wp_query->is_404 = false;
+    }
+    status_header(200);
+    include $lp_template;
+    exit;
+}
+add_action('template_redirect', 'kidazzle_force_lesson_plans_page', 0);
 
 function kidazzle_essential_fallback_document_title($title)
 {
