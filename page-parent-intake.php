@@ -812,6 +812,46 @@ get_header();
               <input type="number" id="monthly_income" min="0" placeholder="4500" required/>
               <span id="monthlyIncomeHint" style="font-size: 0.8rem; color: var(--text-muted);">Before taxes/deductions (wages, child support, etc.)</span>
             </div>
+
+            <!-- Real-Time CACFP Income Eligibility Determination Card -->
+            <div id="cacfpEligibilityCard" class="intake-group intake-full-width" style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 14px; padding: 18px; margin-top: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #166534;">CACFP Meal Benefit Status (2026-2027 DECAL)</span>
+                <span id="cacfpBadge" style="background: #10b981; color: #ffffff; font-weight: 800; font-size: 0.82rem; padding: 4px 10px; border-radius: 20px;">QUALIFYING...</span>
+              </div>
+              <div id="cacfpCalculationDetails" style="font-size: 0.92rem; color: #1e293b; line-height: 1.5;">
+                Enter household size and monthly income above to see your child's official CACFP meal eligibility status.
+              </div>
+              <div style="margin-top: 12px; border-top: 1px dashed #cbd5e1; padding-top: 10px;">
+                <button type="button" id="toggleGuidelinesBtn" style="background: none; border: none; color: #0284c7; font-size: 0.82rem; cursor: pointer; text-decoration: underline; padding: 0;">
+                  📊 View Official 2026-2027 USDA DECAL Income Eligibility Guidelines Table
+                </button>
+                <div id="guidelinesTableContainer" style="display: none; margin-top: 12px; overflow-x: auto;">
+                  <table style="width: 100%; border-collapse: collapse; font-size: 0.78rem; text-align: right; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+                    <thead>
+                      <tr style="background: #f1f5f9; color: #0f172a;">
+                        <th style="padding: 6px 8px; text-align: left;">Household</th>
+                        <th style="padding: 6px 8px;">Free (Mo)</th>
+                        <th style="padding: 6px 8px;">Free (Yr)</th>
+                        <th style="padding: 6px 8px;">Reduced (Mo)</th>
+                        <th style="padding: 6px 8px;">Reduced (Yr)</th>
+                      </tr>
+                    </thead>
+                    <tbody style="color: #475569;">
+                      <tr><td style="padding: 5px 8px; text-align: left;">1</td><td style="padding: 5px 8px;">$1,729</td><td style="padding: 5px 8px;">$20,748</td><td style="padding: 5px 8px;">$2,461</td><td style="padding: 5px 8px;">$29,526</td></tr>
+                      <tr><td style="padding: 5px 8px; text-align: left;">2</td><td style="padding: 5px 8px;">$2,345</td><td style="padding: 5px 8px;">$28,132</td><td style="padding: 5px 8px;">$3,337</td><td style="padding: 5px 8px;">$40,034</td></tr>
+                      <tr><td style="padding: 5px 8px; text-align: left;">3</td><td style="padding: 5px 8px;">$2,960</td><td style="padding: 5px 8px;">$35,516</td><td style="padding: 5px 8px;">$4,212</td><td style="padding: 5px 8px;">$50,542</td></tr>
+                      <tr><td style="padding: 5px 8px; text-align: left;">4</td><td style="padding: 5px 8px;">$3,575</td><td style="padding: 5px 8px;">$42,900</td><td style="padding: 5px 8px;">$5,088</td><td style="padding: 5px 8px;">$61,050</td></tr>
+                      <tr><td style="padding: 5px 8px; text-align: left;">5</td><td style="padding: 5px 8px;">$4,191</td><td style="padding: 5px 8px;">$50,284</td><td style="padding: 5px 8px;">$5,964</td><td style="padding: 5px 8px;">$71,558</td></tr>
+                      <tr><td style="padding: 5px 8px; text-align: left;">6</td><td style="padding: 5px 8px;">$4,806</td><td style="padding: 5px 8px;">$57,668</td><td style="padding: 5px 8px;">$6,839</td><td style="padding: 5px 8px;">$82,066</td></tr>
+                      <tr><td style="padding: 5px 8px; text-align: left;">7</td><td style="padding: 5px 8px;">$5,421</td><td style="padding: 5px 8px;">$65,052</td><td style="padding: 5px 8px;">$7,715</td><td style="padding: 5px 8px;">$92,574</td></tr>
+                      <tr><td style="padding: 5px 8px; text-align: left;">8</td><td style="padding: 5px 8px;">$6,037</td><td style="padding: 5px 8px;">$72,436</td><td style="padding: 5px 8px;">$8,591</td><td style="padding: 5px 8px;">$103,082</td></tr>
+                      <tr style="font-style: italic;"><td style="padding: 5px 8px; text-align: left;">Add'l Member</td><td style="padding: 5px 8px;">+$616</td><td style="padding: 5px 8px;">+$7,384</td><td style="padding: 5px 8px;">+$876</td><td style="padding: 5px 8px;">+$10,508</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
             <div class="intake-group intake-full-width" id="ssnGroup">
               <label for="ssn">Last 4 Digits of Social Security Number (SSN)</label>
               <input type="text" id="ssn" placeholder="1234" maxlength="4" required/>
@@ -992,7 +1032,111 @@ get_header();
           ssnInput.required = true;
         }
       }
+      updateCacfpCard();
     }
+
+    // Official 2026-2027 USDA DECAL Income Eligibility Scale
+    const cacfpGuidelines = {
+      1: { freeAnnual: 20748, redAnnual: 29526, freeMonthly: 1729, redMonthly: 2461 },
+      2: { freeAnnual: 28132, redAnnual: 40034, freeMonthly: 2345, redMonthly: 3337 },
+      3: { freeAnnual: 35516, redAnnual: 50542, freeMonthly: 2960, redMonthly: 4212 },
+      4: { freeAnnual: 42900, redAnnual: 61050, freeMonthly: 3575, redMonthly: 5088 },
+      5: { freeAnnual: 50284, redAnnual: 71558, freeMonthly: 4191, redMonthly: 5964 },
+      6: { freeAnnual: 57668, redAnnual: 82066, freeMonthly: 4806, redMonthly: 6839 },
+      7: { freeAnnual: 65052, redAnnual: 92574, freeMonthly: 5421, redMonthly: 7715 },
+      8: { freeAnnual: 72436, redAnnual: 103082, freeMonthly: 6037, redMonthly: 8591 },
+      add: { freeAnnual: 7384, redAnnual: 10508, freeMonthly: 616, redMonthly: 876 }
+    };
+
+    function getCacfpLimits(hhSize) {
+      const hh = Math.max(1, parseInt(hhSize, 10) || 1);
+      if (hh <= 8) {
+        return { hh, freeMo: cacfpGuidelines[hh].freeMonthly, redMo: cacfpGuidelines[hh].redMonthly, freeYr: cacfpGuidelines[hh].freeAnnual, redYr: cacfpGuidelines[hh].redAnnual };
+      }
+      const extra = hh - 8;
+      return {
+        hh,
+        freeMo: cacfpGuidelines[8].freeMonthly + (extra * cacfpGuidelines.add.freeMonthly),
+        redMo: cacfpGuidelines[8].redMonthly + (extra * cacfpGuidelines.add.redMonthly),
+        freeYr: cacfpGuidelines[8].freeAnnual + (extra * cacfpGuidelines.add.freeAnnual),
+        redYr: cacfpGuidelines[8].redAnnual + (extra * cacfpGuidelines.add.redAnnual)
+      };
+    }
+
+    const cacfpCard = document.getElementById('cacfpEligibilityCard');
+    const cacfpBadge = document.getElementById('cacfpBadge');
+    const cacfpDetails = document.getElementById('cacfpCalculationDetails');
+    const toggleGuidelinesBtn = document.getElementById('toggleGuidelinesBtn');
+    const guidelinesContainer = document.getElementById('guidelinesTableContainer');
+    const householdSizeInput = document.getElementById('household_size');
+
+    if (toggleGuidelinesBtn && guidelinesContainer) {
+      toggleGuidelinesBtn.addEventListener('click', () => {
+        const isHidden = guidelinesContainer.style.display === 'none' || !guidelinesContainer.style.display;
+        guidelinesContainer.style.display = isHidden ? 'block' : 'none';
+        toggleGuidelinesBtn.innerHTML = isHidden ? '▲ Hide Guidelines Table' : '📊 View Official 2026-2027 USDA DECAL Income Eligibility Guidelines Table';
+      });
+    }
+
+    function updateCacfpCard() {
+      if (!cacfpCard || !cacfpBadge || !cacfpDetails) return;
+
+      const isYes = assistanceYesRadio && assistanceYesRadio.checked;
+      const hasSnap = checkSnap && checkSnap.checked;
+      const hasTanf = checkTanf && checkTanf.checked;
+
+      // 1. Categorical SNAP/TANF
+      if (isYes && (hasSnap || hasTanf)) {
+        cacfpCard.style.background = '#ecfdf5';
+        cacfpCard.style.borderColor = '#6ee7b7';
+        cacfpBadge.style.background = '#059669';
+        cacfpBadge.innerText = 'QUALIFIES: FREE MEALS';
+        cacfpDetails.innerHTML = '<strong>Categorical SNAP/TANF Qualification:</strong> Your household automatically qualifies for <strong>Free Meals</strong> under USDA CACFP guidelines. Income verification is waived with case number on file.';
+        return;
+      }
+
+      const hhVal = householdSizeInput ? parseInt(householdSizeInput.value, 10) : 0;
+      const incomeVal = monthlyIncomeInput ? parseFloat(monthlyIncomeInput.value) : NaN;
+
+      if (!hhVal || isNaN(incomeVal)) {
+        cacfpCard.style.background = '#f8fafc';
+        cacfpCard.style.borderColor = '#cbd5e1';
+        cacfpBadge.style.background = '#64748b';
+        cacfpBadge.innerText = 'ENTER INCOME';
+        cacfpDetails.innerHTML = 'Enter total household size and gross monthly income above to see your child\'s meal category (Free, Reduced, or Paid).';
+        return;
+      }
+
+      const limits = getCacfpLimits(hhVal);
+      const annualIncome = Math.round(incomeVal * 12);
+
+      if (incomeVal <= limits.freeMo) {
+        cacfpCard.style.background = '#ecfdf5';
+        cacfpCard.style.borderColor = '#6ee7b7';
+        cacfpBadge.style.background = '#059669';
+        cacfpBadge.innerText = 'QUALIFIES: FREE MEALS';
+        cacfpDetails.innerHTML = `✅ <strong>Free Meal Benefit Qualified:</strong> Your household income ($${Math.round(incomeVal).toLocaleString()}/mo or $${annualIncome.toLocaleString()}/yr) is within the Federal Free Meal limit ($${limits.freeMo.toLocaleString()}/mo or $${limits.freeYr.toLocaleString()}/yr for household of ${hhVal}).`;
+      } else if (incomeVal <= limits.redMo) {
+        cacfpCard.style.background = '#eff6ff';
+        cacfpCard.style.borderColor = '#bfdbfe';
+        cacfpBadge.style.background = '#2563eb';
+        cacfpBadge.innerText = 'QUALIFIES: REDUCED-PRICE';
+        cacfpDetails.innerHTML = `ℹ️ <strong>Reduced-Price Meal Benefit Qualified:</strong> Your household income ($${Math.round(incomeVal).toLocaleString()}/mo or $${annualIncome.toLocaleString()}/yr) is within the Reduced-Price limit ($${limits.redMo.toLocaleString()}/mo or $${limits.redYr.toLocaleString()}/yr for household of ${hhVal}).`;
+      } else {
+        cacfpCard.style.background = '#fef2f2';
+        cacfpCard.style.borderColor = '#fecaca';
+        cacfpBadge.style.background = '#dc2626';
+        cacfpBadge.innerText = 'PAID STATUS';
+        cacfpDetails.innerHTML = `ℹ️ <strong>Standard Paid Meal Status:</strong> Your household income ($${Math.round(incomeVal).toLocaleString()}/mo or $${annualIncome.toLocaleString()}/yr) exceeds the Reduced-Price limit ($${limits.redMo.toLocaleString()}/mo for household of ${hhVal}). Your child receives the full daily nutritious meal program under standard rate.`;
+      }
+    }
+
+    [householdSizeInput, monthlyIncomeInput].forEach(el => {
+      if (el) {
+        el.addEventListener('input', updateCacfpCard);
+        el.addEventListener('change', updateCacfpCard);
+      }
+    });
 
     [assistanceYesRadio, assistanceNoRadio, checkSnap, checkTanf, checkCaps].forEach(el => {
       if (el) el.addEventListener('change', updateAssistanceState);
@@ -1012,6 +1156,9 @@ get_header();
         }
       });
     }
+
+    // Initial check on load
+    updateCacfpCard();
 
     function updateProgress() {
       // Manage step dots active/completed classes
