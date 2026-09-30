@@ -121,7 +121,8 @@
 				class="flex items-center gap-1 font-bold text-indigo-600 hover:underline transition"><i
 					data-lucide="briefcase" class="w-3 h-3"></i> Acquisitions</a>
 		</div>
-		<div class="flex gap-6 font-medium">
+		<div class="flex gap-6 font-medium items-center">
+			<a href="/ies/" class="hover:text-amber-600 transition flex items-center gap-1 font-bold text-amber-600"><i data-lucide="utensils" class="w-3 h-3"></i> CACFP Renewal</a>
 			<a href="/careers/" class="hover:text-cyan-600 transition flex items-center gap-1">Careers</a>
 			<a href="/teacher-portal/"
 				class="hover:text-orange-600 transition flex items-center gap-1 font-bold text-orange-500"><i
@@ -152,6 +153,7 @@
 				<a href="/programs/" class="hover:text-red-500 transition pb-1">PROGRAMS</a>
 				<a href="/curriculum/" class="hover:text-cyan-500 transition pb-1">CURRICULUM</a>
 				<a href="/digital-resources/" class="hover:text-yellow-400 transition pb-1">RESOURCES</a>
+				<a href="/ies/" class="text-amber-600 hover:text-amber-700 transition pb-1 font-extrabold flex items-center gap-1.5"><span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>CACFP RENEWAL</a>
 				<a href="/locations/" class="hover:text-green-500 transition pb-1">LOCATIONS</a>
 				<a href="/blog/" class="hover:text-purple-500 transition pb-1">BLOG</a>
 				<a href="/contact/" class="hover:text-indigo-600 transition pb-1">CONTACT US</a>
@@ -166,6 +168,7 @@
 			<a href="/programs/" class="hover:text-red-500">PROGRAMS</a>
 			<a href="/curriculum/" class="hover:text-cyan-500">CURRICULUM</a>
 			<a href="/digital-resources/" class="hover:text-yellow-400">RESOURCES</a>
+			<a href="/ies/" class="text-amber-600 hover:text-amber-700 flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>CACFP RENEWAL (IES)</a>
 			<a href="/locations/" class="hover:text-green-500">LOCATIONS</a>
 			<a href="/blog/" class="hover:text-purple-500">BLOG</a>
 			<a href="/teacher-portal/" class="hover:text-orange-500 text-orange-500">TEACHER PORTAL</a>

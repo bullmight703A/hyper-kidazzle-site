@@ -17,7 +17,7 @@ function kidazzle_get_current_request_path()
     $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
     $path = parse_url($request_uri, PHP_URL_PATH);
 
-    return trim((string) $path, '/');
+    return strtolower(trim((string) $path, '/'));
 }
 
 function kidazzle_get_essential_page_fallbacks()
@@ -51,6 +51,16 @@ function kidazzle_get_essential_page_fallbacks()
         'ies' => array(
             'template' => 'page-ies.php',
             'title' => 'CACFP Income Eligibility Statement (IES) Quick Renewal - KIDazzle Child Care',
+            'description' => 'Official USDA / Georgia DECAL CACFP Income Eligibility Statement (IES) annual renewal and intake portal for KIDazzle Child Care families.',
+        ),
+        'cacfp-ies' => array(
+            'template' => 'page-ies.php',
+            'title' => 'CACFP Income Eligibility Statement (IES) Quick Renewal - KIDazzle Child Care',
+            'description' => 'Official USDA / Georgia DECAL CACFP Income Eligibility Statement (IES) annual renewal and intake portal for KIDazzle Child Care families.',
+        ),
+        'cacfp' => array(
+            'template' => 'page-ies.php',
+            'title' => 'CACFP Food Program Renewal - KIDazzle Child Care',
             'description' => 'Official USDA / Georgia DECAL CACFP Income Eligibility Statement (IES) annual renewal and intake portal for KIDazzle Child Care families.',
         ),
     );
@@ -200,8 +210,9 @@ function kidazzle_force_ies_page()
     }
 
     $path = kidazzle_get_current_request_path();
+    $ies_aliases = array('ies', 'cacfp-ies', 'cacfp', 'parent-ies', 'ies-renewal', 'food-program');
 
-    if ($path !== 'ies' && $path !== 'cacfp-ies') {
+    if (!in_array($path, $ies_aliases, true)) {
         return;
     }
 
