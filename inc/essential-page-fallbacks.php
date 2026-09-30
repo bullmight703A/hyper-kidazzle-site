@@ -48,6 +48,11 @@ function kidazzle_get_essential_page_fallbacks()
             'title' => 'Master 12-Month Curriculum & Weekly Lesson Plan Directory - KIDazzle Child Care',
             'description' => 'Official KIDazzle Child Care Centers 12-month master curriculum and 52-week lesson plans across all age groups: Infants, Toddlers, 2-Year-Olds, Preschool, and Pre-K.',
         ),
+        'ies' => array(
+            'template' => 'page-ies.php',
+            'title' => 'CACFP Income Eligibility Statement (IES) Quick Renewal - KIDazzle Child Care',
+            'description' => 'Official USDA / Georgia DECAL CACFP Income Eligibility Statement (IES) annual renewal and intake portal for KIDazzle Child Care families.',
+        ),
     );
 }
 
@@ -187,6 +192,34 @@ function kidazzle_force_apply_page()
     exit;
 }
 add_action('template_redirect', 'kidazzle_force_apply_page', 0);
+
+function kidazzle_force_ies_page()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $path = kidazzle_get_current_request_path();
+
+    if ($path !== 'ies' && $path !== 'cacfp-ies') {
+        return;
+    }
+
+    $ies_template = KIDAZZLE_THEME_DIR . '/page-ies.php';
+
+    if (!file_exists($ies_template)) {
+        return;
+    }
+
+    global $wp_query;
+    if (isset($wp_query)) {
+        $wp_query->is_404 = false;
+    }
+    status_header(200);
+    include $ies_template;
+    exit;
+}
+add_action('template_redirect', 'kidazzle_force_ies_page', 0);
 
 function kidazzle_essential_fallback_document_title($title)
 {
