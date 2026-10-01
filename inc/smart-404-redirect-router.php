@@ -35,6 +35,19 @@ function kidazzle_smart_redirect_router() {
 
     $path = trim($raw_uri, '/');
 
+    // Never intercept essential dynamic application endpoints
+    $essential_paths = array(
+        'prek-dashboard', 'prek_dashboard',
+        'prek-compliance', 'prek_compliance',
+        'prek-portal', 'prek_portal', 'prek-upload',
+        'ies', 'cacfp-ies', 'cacfp',
+        'lesson-plans', 'lesson_plans',
+        'apply', 'portal', 'digital-resources'
+    );
+    if (in_array(strtolower($path), $essential_paths, true)) {
+        return;
+    }
+
     // -------------------------------------------------------------
     // 0. Staging Domain Redirect: summer.kidazzle.com -> kidazzle.com
     // -------------------------------------------------------------
