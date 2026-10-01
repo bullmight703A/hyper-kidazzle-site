@@ -63,6 +63,21 @@ function kidazzle_get_essential_page_fallbacks()
             'title' => 'CACFP Food Program Renewal - KIDazzle Child Care',
             'description' => 'Official USDA / Georgia DECAL CACFP Income Eligibility Statement (IES) annual renewal and intake portal for KIDazzle Child Care families.',
         ),
+        'prek-dashboard' => array(
+            'template' => 'page-prek-dashboard.php',
+            'title' => 'Pre-K DECAL Compliance Cockpit & Document Dossiers - KIDazzle Child Care',
+            'description' => 'Official Real-Time Compliance Cockpit tracking Georgia Lottery Pre-K DECAL state audit readiness, student dossiers, and parent uploads for Class 35485.',
+        ),
+        'prek-compliance' => array(
+            'template' => 'page-prek-dashboard.php',
+            'title' => 'Pre-K DECAL Compliance Cockpit & Document Dossiers - KIDazzle Child Care',
+            'description' => 'Official Real-Time Compliance Cockpit tracking Georgia Lottery Pre-K DECAL state audit readiness, student dossiers, and parent uploads for Class 35485.',
+        ),
+        'prek-portal' => array(
+            'template' => 'page-prek-portal.php',
+            'title' => 'Georgia Pre-K Parent Document Upload Portal - KIDazzle Child Care',
+            'description' => 'Official parent document upload portal for enrolled Georgia Lottery Pre-K families at KIDazzle Child Care.',
+        ),
     );
 }
 
@@ -231,6 +246,62 @@ function kidazzle_force_ies_page()
     exit;
 }
 add_action('template_redirect', 'kidazzle_force_ies_page', 0);
+
+function kidazzle_force_prek_dashboard_page()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $path = kidazzle_get_current_request_path();
+
+    if ($path !== 'prek-dashboard' && $path !== 'prek_dashboard' && $path !== 'prek-compliance' && $path !== 'prek_compliance') {
+        return;
+    }
+
+    $dashboard_template = KIDAZZLE_THEME_DIR . '/page-prek-dashboard.php';
+
+    if (!file_exists($dashboard_template)) {
+        return;
+    }
+
+    global $wp_query;
+    if (isset($wp_query)) {
+        $wp_query->is_404 = false;
+    }
+    status_header(200);
+    include $dashboard_template;
+    exit;
+}
+add_action('template_redirect', 'kidazzle_force_prek_dashboard_page', 0);
+
+function kidazzle_force_prek_portal_page()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $path = kidazzle_get_current_request_path();
+
+    if ($path !== 'prek-portal' && $path !== 'prek_portal' && $path !== 'prek-upload') {
+        return;
+    }
+
+    $portal_template = KIDAZZLE_THEME_DIR . '/page-prek-portal.php';
+
+    if (!file_exists($portal_template)) {
+        return;
+    }
+
+    global $wp_query;
+    if (isset($wp_query)) {
+        $wp_query->is_404 = false;
+    }
+    status_header(200);
+    include $portal_template;
+    exit;
+}
+add_action('template_redirect', 'kidazzle_force_prek_portal_page', 0);
 
 function kidazzle_essential_fallback_document_title($title)
 {
