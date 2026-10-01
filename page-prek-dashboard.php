@@ -1,12 +1,3 @@
-<?php
-/**
- * Template Name: Georgia Pre-K Compliance Dashboard
- *
- * Real-Time Cockpit tracking DECAL compliance, student dossiers, and parent uploads
- *
- * @package kidazzle
- */
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -589,6 +580,9 @@
         <a id="btn-compliance-excel" href="/api/prek/download-compliance-excel" class="btn btn-outline" title="Download Master Excel Roster">
           📊 Excel Roster
         </a>
+        <a id="btn-cacfp-report" href="/api/cacfp/reconciliation-report" target="_blank" class="btn btn-outline" style="border-color: #10b981; color: #10b981;" title="Download 6-Page CACFP IES Rollcall Reconciliation Report">
+          🍎 CACFP Rollcall Audit (6 pgs)
+        </a>
         <a href="/shorts/prek_video_review.html" target="_blank" class="btn btn-outline" title="Open Pre-K Attendance Video Review">
           🎬 Attendance Video
         </a>
@@ -759,6 +753,8 @@
           const el = document.getElementById(id);
           if (el) el.href = `${API_BASE}/api/prek/download-compliance-excel`;
         });
+        const cacfpEl = document.getElementById('btn-cacfp-report');
+        if (cacfpEl) cacfpEl.href = `${API_BASE}/api/cacfp/reconciliation-report`;
       }
     }
 
