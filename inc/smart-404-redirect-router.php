@@ -49,6 +49,20 @@ function kidazzle_smart_redirect_router() {
     }
 
     // -------------------------------------------------------------
+    // 0a. Serve Pristine Clean XML Sitemap (/sitemap.xml, /sitemap_clean.xml)
+    // -------------------------------------------------------------
+    if (in_array(strtolower($path), array('sitemap.xml', 'sitemap_clean.xml', 'sitemap-clean.xml'), true)) {
+        $sitemap_file = KIDAZZLE_THEME_DIR . '/sitemap_clean.xml';
+        if (file_exists($sitemap_file)) {
+            status_header(200);
+            header('Content-Type: application/xml; charset=utf-8');
+            header('Cache-Control: public, max-age=3600');
+            readfile($sitemap_file);
+            exit;
+        }
+    }
+
+    // -------------------------------------------------------------
     // 0. Crawl Traps, Asterisks & Malicious Scans (Return 410 Gone)
     // -------------------------------------------------------------
     if (strpos($raw_uri, '*') !== false || strpos($raw_uri, '%2a') !== false || preg_match('#^wp-content/(plugins|themes)/#i', $path)) {
