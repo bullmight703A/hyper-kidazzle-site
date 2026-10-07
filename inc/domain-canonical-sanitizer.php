@@ -64,6 +64,12 @@ add_filter('robots_txt', function ($output, $public = true) {
             $output
         );
     }
+    // Block wildcard crawl traps and plugin scans
+    if (strpos($output, 'Disallow: /*\*') === false) {
+        $output .= "Disallow: /*\\*\n";
+        $output .= "Disallow: /wp-content/plugins/\n";
+        $output .= "Disallow: /product-details/\n";
+    }
     if (strpos($output, 'sitemap_index.xml') === false && strpos($output, 'sitemap.xml') === false) {
         $output .= "\nSitemap: https://kidazzle.com/sitemap_index.xml\n";
     }

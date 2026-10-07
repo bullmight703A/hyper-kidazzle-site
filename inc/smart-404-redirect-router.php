@@ -49,11 +49,31 @@ function kidazzle_smart_redirect_router() {
     }
 
     // -------------------------------------------------------------
-    // 0. Staging Domain Redirect: summer.kidazzle.com -> kidazzle.com
+    // 0. Crawl Traps, Asterisks & Malicious Scans (Return 410 Gone)
+    // -------------------------------------------------------------
+    if (strpos($raw_uri, '*') !== false || strpos($raw_uri, '%2a') !== false || preg_match('#^wp-content/(plugins|themes)/#i', $path)) {
+        status_header(410);
+        nocache_headers();
+        echo '<!DOCTYPE html><html><head><title>410 Gone</title></head><body><h1>410 Gone</h1><p>This resource has been permanently removed.</p></body></html>';
+        exit;
+    }
+
+    // -------------------------------------------------------------
+    // 0b. Staging & Subdomain Redirects: summer, deskguide, policy
     // -------------------------------------------------------------
     if ($raw_host && (strpos($raw_host, 'summer.kidazzle.com') !== false || strpos($raw_host, 'deskguide.') !== false || strpos($raw_host, 'policy.') !== false || strpos($raw_host, 'daycare-near-grant-park.') !== false)) {
+        if (strpos($raw_host, 'daycare-near-grant-park.') !== false) {
+            wp_redirect('https://kidazzle.com/locations/kidazzle-midtown-atlanta/', 301);
+            exit;
+        }
         $clean_target = kidazzle_resolve_clean_target_path($path);
-        wp_redirect('https://kidazzle.com/' . ltrim($clean_target, '/'), 301);
+        // Verify if clean target has fuzzy match or exists
+        $fuzzy = kidazzle_fuzzy_404_recovery(trim($clean_target, '/'));
+        if ($fuzzy) {
+            wp_redirect('https://kidazzle.com' . $fuzzy, 301);
+            exit;
+        }
+        wp_redirect('https://kidazzle.com' . $clean_target, 301);
         exit;
     }
 
@@ -70,6 +90,19 @@ function kidazzle_smart_redirect_router() {
     // 2. Exact Campus, Program, & Portal Direct Shortcuts
     // -------------------------------------------------------------
     $direct_shortcuts = [
+        // Critical Sitemap 404 & Redirect Rectifications
+        'accredited-childcare-for-government-employees-smyrna-ga' => '/federal/',
+        'daycares-near-me-hialeah-fl'                             => '/locations/doral/',
+        'full-day-kindergarten-prep-summer-camp-sandy-springs-ga' => '/programs/summer-camp/',
+        'kidazzle-child-care-miami-fl'                            => '/locations/doral/',
+        'kidazzle-west-end-locust-grove-ga'                       => '/locations/kidazzle-hampton-ga/',
+        'safe-kindergarten-programs-kidazzle-childcare'           => '/programs/pre-k/',
+        'the-ultimate-guide-to-quality-rated-childcare-early-stem-in-west-end-atlanta-2026' => '/the-ultimate-guide-to-quality-rated-childcare-early-stem-in-west-end-atlanta/',
+        'the-ultimate-guide-to-quality-rated-childcare-early-stem-in-west-end-atlanta-2026-2' => '/the-ultimate-guide-to-quality-rated-childcare-early-stem-in-west-end-atlanta/',
+        'stories'                                                 => '/curriculum/',
+        'fr'                                                      => '/',
+        'es'                                                      => '/',
+
         // Campus Slugs & Root Shortcuts
         'locations/midtown'                     => '/locations/kidazzle-midtown-atlanta/',
         'locations/peachtree-summit'            => '/locations/kidazzle-midtown-atlanta/',
@@ -113,7 +146,6 @@ function kidazzle_smart_redirect_router() {
         'toddler-care'                          => '/programs/toddlers/',
         'pre-k-prep'                            => '/programs/pre-k/',
         'summer-camp'                           => '/programs/summer-camp/',
-        'safe-kindergarten-programs-kidazzle-childcare' => '/programs/pre-k/',
 
         // Portals & Forms
         'lesson-plan'                           => '/teacher-portal/',
@@ -159,25 +191,38 @@ function kidazzle_smart_redirect_router() {
     }
 
     // -------------------------------------------------------------
-    // 4. Legacy Blog Prefix Stripper (/post/{slug} or /blog/{slug})
+    // 4. Legacy Blog Prefix Stripper (/post/{slug}, /blog/{slug}, etc.)
     // -------------------------------------------------------------
-    if (preg_match('#^(post|blog|blogs/b)/([a-z0-9-]+)$#i', $path, $matches)) {
+    if (preg_match('#^(post|blog|blogs/b|vanity_blog)/([a-z0-9-]+)$#i', $path, $matches)) {
         $blog_slug = strtolower($matches[2]);
-        // Also strip trailing numbers like empathy-2
         $clean_blog_slug = preg_replace('/-\d+$/', '', $blog_slug);
         
-        $post = get_page_by_path($clean_blog_slug, OBJECT, 'post');
+        $post = get_page_by_path($clean_blog_slug, OBJECT, ['post', 'page']);
         if (!$post) {
-            $post = get_page_by_path($blog_slug, OBJECT, 'post');
+            $post = get_page_by_path($blog_slug, OBJECT, ['post', 'page']);
         }
         if ($post) {
             wp_redirect(get_permalink($post), 301);
             exit;
-        } else {
-            // Check if there is an exact page or direct root article
-            wp_redirect(home_url('/' . $clean_blog_slug . '/'), 301);
+        }
+
+        // Fuzzy recovery for topical blog post (e.g. empathy, brain, pre-k, etc.)
+        $fuzzy_target = kidazzle_fuzzy_404_recovery($clean_blog_slug);
+        if ($fuzzy_target) {
+            wp_redirect(home_url($fuzzy_target), 301);
             exit;
         }
+
+        // Check if root page exists
+        $root_page = get_page_by_path($clean_blog_slug, OBJECT, ['page', 'program', 'location']);
+        if ($root_page) {
+            wp_redirect(get_permalink($root_page), 301);
+            exit;
+        }
+
+        // Canonical destination for all remaining legacy parenting/childcare blogs:
+        wp_redirect(home_url('/curriculum/'), 301);
+        exit;
     }
 
     // -------------------------------------------------------------
@@ -193,19 +238,38 @@ function kidazzle_smart_redirect_router() {
             exit;
         }
 
-        // Check if college-park variant exists (e.g. kidazzle-child-care-union-city-ga -> kidazzle-college-park-union-city-ga)
+        // Check if college-park or midtown variant exists
         if (strpos($base_slug, 'kidazzle-') === 0 && strpos($base_slug, 'kidazzle-college-park-') === false) {
             $cp_variant = str_replace('kidazzle-child-care-', 'kidazzle-college-park-', $base_slug);
             $cp_variant = str_replace('kidazzle-west-end-', 'kidazzle-college-park-', $cp_variant);
-            $cp_page = get_page_by_path($cp_variant, OBJECT, ['page', 'post']);
+            $cp_page = get_page_by_path($cp_variant, OBJECT, ['page', 'post', 'location']);
             if ($cp_page) {
                 wp_redirect(get_permalink($cp_page), 301);
                 exit;
             }
         }
 
-        // Default redirect to clean base slug
-        wp_redirect(home_url('/' . $base_slug . '/'), 301);
+        // Run fuzzy recovery for base_slug
+        $fuzzy_target = kidazzle_fuzzy_404_recovery($base_slug);
+        if ($fuzzy_target) {
+            wp_redirect(home_url($fuzzy_target), 301);
+            exit;
+        }
+
+        // If it was a location slug, route to main locations index
+        if (strpos($base_slug, 'kidazzle-') === 0 || strpos($base_slug, 'daycare') !== false) {
+            wp_redirect(home_url('/locations/'), 301);
+            exit;
+        }
+
+        // If it was a thank-you slug, route to home
+        if (strpos($base_slug, 'thank-you') !== false) {
+            wp_redirect(home_url('/'), 301);
+            exit;
+        }
+
+        // Fallback to home instead of dead 404
+        wp_redirect(home_url('/'), 301);
         exit;
     }
 
@@ -285,7 +349,7 @@ function kidazzle_resolve_clean_target_path($path) {
     // Strip /amp/
     $path = preg_replace('#/amp/?$#i', '', $path);
     // Strip post/ or blog/
-    $path = preg_replace('#^(post|blog|blogs/b)/#i', '', $path);
+    $path = preg_replace('#^(post|blog|blogs/b|vanity_blog)/#i', '', $path);
     // Strip -2, -3, -4, -5
     $path = preg_replace('#-(\d+)$#', '', $path);
     return '/' . trim($path, '/') . '/';
@@ -295,34 +359,39 @@ function kidazzle_resolve_clean_target_path($path) {
  * Fuzzy 404 keyword matcher to salvage orphan queries
  */
 function kidazzle_fuzzy_404_recovery($slug) {
+    $slug = strtolower($slug);
+
     // Location matches
-    if (strpos($slug, 'midtown') !== false || strpos($slug, 'summit') !== false) {
+    if (strpos($slug, 'midtown') !== false || strpos($slug, 'summit') !== false || strpos($slug, 'grant-park') !== false || strpos($slug, 'smyrna') !== false) {
         return '/locations/kidazzle-midtown-atlanta/';
     }
     if (strpos($slug, 'west-end') !== false || strpos($slug, 'westend') !== false) {
         return '/locations/kidazzle-west-end-of-atlanta/';
     }
-    if (strpos($slug, 'hampton') !== false || strpos($slug, 'stockbridge') !== false || strpos($slug, 'mcdonough') !== false) {
+    if (strpos($slug, 'hampton') !== false || strpos($slug, 'stockbridge') !== false || strpos($slug, 'locust-grove') !== false || strpos($slug, 'mcdonough') !== false || strpos($slug, 'henry') !== false) {
         return '/locations/kidazzle-hampton-ga/';
     }
-    if (strpos($slug, 'college-park') !== false || strpos($slug, 'collegepark') !== false || strpos($slug, 'union-city') !== false || strpos($slug, 'east-point') !== false) {
+    if (strpos($slug, 'college-park') !== false || strpos($slug, 'collegepark') !== false || strpos($slug, 'union-city') !== false || strpos($slug, 'east-point') !== false || strpos($slug, 'fairburn') !== false) {
         return '/locations/kidazzle-college-park-ga/';
     }
-    if (strpos($slug, 'memphis') !== false || strpos($slug, 'cordova') !== false || strpos($slug, 'bartlett') !== false) {
+    if (strpos($slug, 'memphis') !== false || strpos($slug, 'cordova') !== false || strpos($slug, 'bartlett') !== false || strpos($slug, 'southaven') !== false || strpos($slug, 'west-memphis') !== false) {
         return '/locations/cordova/';
     }
     if (strpos($slug, 'miami') !== false || strpos($slug, 'doral') !== false || strpos($slug, 'kendall') !== false || strpos($slug, 'hialeah') !== false) {
         return '/locations/doral/';
     }
+    if (strpos($slug, 'alpharetta') !== false || strpos($slug, 'fulton') !== false) {
+        return '/locations/alpharetta/';
+    }
 
     // Program matches
-    if (strpos($slug, 'pre-k') !== false || strpos($slug, 'prek') !== false || strpos($slug, 'kindergarten') !== false) {
+    if (strpos($slug, 'pre-k') !== false || strpos($slug, 'prek') !== false || strpos($slug, 'kindergarten') !== false || strpos($slug, 'lottery') !== false) {
         return '/programs/pre-k/';
     }
-    if (strpos($slug, 'toddler') !== false) {
+    if (strpos($slug, 'toddler') !== false || strpos($slug, 'potty') !== false) {
         return '/programs/toddlers/';
     }
-    if (strpos($slug, 'infant') !== false) {
+    if (strpos($slug, 'infant') !== false || strpos($slug, 'baby') !== false || strpos($slug, 'crawler') !== false) {
         return '/programs/infants/';
     }
     if (strpos($slug, 'summer') !== false || strpos($slug, 'camp') !== false) {
@@ -331,11 +400,28 @@ function kidazzle_fuzzy_404_recovery($slug) {
     if (strpos($slug, 'preschool') !== false) {
         return '/programs/preschool/';
     }
-    if (strpos($slug, 'curriculum') !== false || strpos($slug, 'stem') !== false) {
+    if (strpos($slug, 'curriculum') !== false || strpos($slug, 'stem') !== false || strpos($slug, 'steam') !== false || strpos($slug, 'math') !== false || strpos($slug, 'science') !== false) {
         return '/curriculum/';
     }
-    if (strpos($slug, 'career') !== false || strpos($slug, 'job') !== false) {
+    if (strpos($slug, 'career') !== false || strpos($slug, 'job') !== false || strpos($slug, 'hiring') !== false) {
         return '/careers/';
+    }
+    if (strpos($slug, 'federal') !== false || strpos($slug, 'government') !== false || strpos($slug, 'faa') !== false || strpos($slug, 'gsa') !== false) {
+        return '/federal/';
+    }
+
+    // Parenting & Developmental Content Keywords (map to Curriculum/Brain Architecture)
+    $parenting_keywords = [
+        'empathy', 'tantrum', 'yell', 'calm', 'behavior', 'social', 'emotional',
+        'reading', 'phonics', 'abc', 'critical-thinking', 'eating', 'habit',
+        'nutrition', 'meal', 'chef', 'food', 'indoor', 'rainy', 'play',
+        'activity', 'activities', 'creativity', 'coloring', 'routine',
+        'sleep', 'nap', 'milestone', 'development', 'brain', 'tantrums'
+    ];
+    foreach ($parenting_keywords as $kw) {
+        if (strpos($slug, $kw) !== false) {
+            return '/curriculum/';
+        }
     }
 
     return null;
