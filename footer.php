@@ -166,6 +166,11 @@ if ($footer_scripts) {
 <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 <!-- GoHighLevel External Tracking Script -->
 <script src='https://link.msgsndr.com/js/external-tracking.js' data-tracking-id='tk_b5f35188691c4d668ce5ca462e39e455'></script>
+
+<?php 
+// KIDazzle VIP Campus Tour & Lead Capture Concierge Modal
+get_template_part('template-parts/kidazzle/tour-concierge-modal'); 
+?>
 </body>
 
 </html>
