@@ -56,6 +56,8 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 			<p class="text-sm mb-4 text-slate-400">674 Joseph E Lowery Boulevard Southwest,<br>Atlanta, Georgia 30310
 			</p>
 			<p class="text-white font-bold text-lg">877-410-1002</p>
+			<p class="text-xs text-slate-400 mt-2 mb-1"><i class="fa-regular fa-clock mr-1 text-cyan-400"></i> Mon–Fri: 7:00 AM – 5:30 PM</p>
+			<p class="text-[11px] text-slate-500 italic mb-2">*Operating hours depend upon location</p>
 			<a href="/contact/"
 				class="text-cyan-400 underline mt-4 block uppercase font-extrabold text-xs tracking-widest transition hover:text-white">Open
 				Contact Form</a>

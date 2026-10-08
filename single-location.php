@@ -42,7 +42,7 @@ while (have_posts()):
 		}
 	}
 	$google_rating = get_post_meta($location_id, 'location_google_rating', true) ?: '4.9';
-	$hours = get_post_meta($location_id, 'location_hours', true) ?: '7am - 6pm';
+	$hours = get_post_meta($location_id, 'location_hours', true) ?: '7:00 AM - 5:30 PM (Operating hours depend upon location)';
 	$ages_served = get_post_meta($location_id, 'location_ages_served', true) ?: '6w - 12y';
 
 	// Director info

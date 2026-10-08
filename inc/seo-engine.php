@@ -215,7 +215,7 @@ function kidazzle_location_schema()
         $description = get_post_meta($location_id, 'schema_loc_description', true) ?: (get_the_excerpt() ?: kidazzle_trimmed_excerpt(30, $location_id));
         $telephone = get_post_meta($location_id, 'schema_loc_telephone', true) ?: $location_fields['phone'];
         $email = get_post_meta($location_id, 'schema_loc_email', true) ?: $location_fields['email'];
-        $opening_hours_raw = get_post_meta($location_id, 'schema_loc_opening_hours', true) ?: $location_fields['hours'];
+        $opening_hours_raw = get_post_meta($location_id, 'schema_loc_opening_hours', true) ?: ($location_fields['hours'] ?: '7:00 AM - 5:30 PM');
         $payment = get_post_meta($location_id, 'schema_loc_payment_accepted', true);
         $price_range = get_post_meta($location_id, 'seo_llm_price_min', true);
         $quality_rated = get_post_meta($location_id, 'location_quality_rated', true);
