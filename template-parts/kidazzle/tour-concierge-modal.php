@@ -144,9 +144,57 @@
     box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
     transition: all 0.2s;
   }
-  .kd-btn-submit:hover {
-    background: #d97706;
-    transform: translateY(-1px);
+  /* Mobile Sticky Bottom Bar */
+  #kd-mobile-action-bar {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    #kd-mobile-action-bar {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99998;
+      background: #0f172a;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 14px;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+    .kd-mob-btn {
+      flex: 1;
+      text-align: center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      font-family: inherit;
+    }
+    .kd-mob-call {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .kd-mob-tour {
+      background: #f59e0b;
+      color: #0f172a;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    }
+    #kd-concierge-pill {
+      bottom: 74px !important;
+      right: 14px !important;
+      padding: 10px 16px !important;
+      font-size: 12px !important;
+    }
   }
 </style>
 
@@ -154,6 +202,12 @@
 <div id="kd-concierge-pill" onclick="kdOpenTourModal()">
   <span class="pulse-dot"></span>
   <span>📅 Schedule Campus Tour & Parent Guide</span>
+</div>
+
+<!-- Mobile Sticky Bottom Bar -->
+<div id="kd-mobile-action-bar">
+  <a href="tel:8774101002" class="kd-mob-btn kd-mob-call">📞 Call 877-410-1002</a>
+  <button type="button" onclick="kdOpenTourModal()" class="kd-mob-btn kd-mob-tour">📅 Book Tour</button>
 </div>
 
 <!-- Tour Booking & Lead Capture Modal -->
@@ -314,16 +368,47 @@
     }
   }
 
-  // Hook standard "Schedule A Tour" header and footer links to open our modal!
+  // Client-side enhancements on DOMContentLoaded
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('a[href*="schedule"], a[href*="tour"], a[href*="contact"]').forEach(el => {
-      const href = el.getAttribute('href') || '';
-      const text = el.innerText ? el.innerText.toLowerCase() : '';
-      if (href === '/schedule-a-tour/' || href === '/contact-us/' || text.includes('schedule a tour')) {
+    // 1. Phone input auto-formatter: (XXX) XXX-XXXX
+    const phoneInput = document.getElementById('kd-phone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function(e) {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+      });
+    }
+
+    // 2. Intercept ALL tour and booking clicks across the entire site
+    document.querySelectorAll('a, button').forEach(el => {
+      const href = (el.getAttribute('href') || '').toLowerCase();
+      const text = (el.innerText || '').toLowerCase();
+      if (
+        text.includes('schedule a tour') ||
+        text.includes('book tour') ||
+        text.includes('schedule your center tour') ||
+        text.includes('schedule a tour / contact us') ||
+        el.classList.contains('ghl-trigger') ||
+        (href.includes('/contact') && (text.includes('tour') || text.includes('schedule') || text.includes('contact')))
+      ) {
         el.addEventListener('click', (ev) => {
           ev.preventDefault();
           kdOpenTourModal();
         });
+      }
+    });
+
+    // 3. Listen for GHL iframe form submissions on /contact/ and fire GA4
+    window.addEventListener('message', function(event) {
+      if (!event.data) return;
+      const msg = typeof event.data === 'string' ? event.data : JSON.stringify(event.data);
+      if (msg.includes('form-submitted') || msg.includes('ghl-form-submitted') || msg.includes('lead-submitted') || msg.includes('N8RYaUY1SuORexcyA6la')) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            event_category: 'conversion',
+            event_label: 'GHL Embedded Contact Form'
+          });
+        }
       }
     });
   });
