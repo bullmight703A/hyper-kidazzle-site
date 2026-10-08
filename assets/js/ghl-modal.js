@@ -75,4 +75,44 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
+
+    // Listen for GHL iframe form submissions and appointment bookings
+    window.addEventListener('message', function(event) {
+        if (!event.data) return;
+        const msg = typeof event.data === 'string' ? event.data : JSON.stringify(event.data);
+        if (msg.includes('form-submitted') || msg.includes('ghl-form-submitted') || msg.includes('lead-submitted')) {
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', {
+                    event_category: 'engagement',
+                    event_label: 'GHL Modal Form Submit'
+                });
+            }
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+        }
+        if (msg.includes('booking') || msg.includes('appointment')) {
+            if (typeof gtag === 'function') {
+                gtag('event', 'book_tour', {
+                    event_category: 'conversion',
+                    event_label: 'GHL Calendar Booking'
+                });
+            }
+            if (typeof fbq === 'function') {
+                fbq('track', 'Schedule');
+            }
+        }
+    });
+
+    // Track click-to-call conversions
+    document.querySelectorAll('a[href^="tel:"]').forEach(telLink => {
+        telLink.addEventListener('click', function() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'click_to_call', {
+                    event_category: 'contact',
+                    event_label: this.getAttribute('href')
+                });
+            }
+        });
+    });
 });
