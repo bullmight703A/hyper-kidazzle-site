@@ -35,6 +35,24 @@ function kidazzle_smart_redirect_router() {
 
     $path = trim($raw_uri, '/');
 
+    // -------------------------------------------------------------
+    // 00. Direct Application Endpoint: Parent Intake & Enrollment Form
+    // Never 404 when query parameters like ?location=hampton are present!
+    // -------------------------------------------------------------
+    if (in_array(strtolower($path), array('parent-intake', 'intake', 'enrollment-form', 'page-parent-intake'), true)) {
+        global $wp_query;
+        if ($wp_query) {
+            $wp_query->is_404 = false;
+            $wp_query->is_page = true;
+        }
+        status_header(200);
+        $template = KIDAZZLE_THEME_DIR . '/page-parent-intake.php';
+        if (file_exists($template)) {
+            include $template;
+            exit;
+        }
+    }
+
     // Never intercept essential dynamic application endpoints
     $essential_paths = array(
         'prek-dashboard', 'prek_dashboard',

@@ -43,6 +43,25 @@ function kidazzle_register_location_cpt()
 add_action('init', 'kidazzle_register_location_cpt', 0);
 
 /**
+ * Prevent CPT 'location' query var from hijacking page requests when ?location=... is passed
+ */
+add_filter('request', 'kidazzle_prevent_location_cpt_hijack', 1);
+function kidazzle_prevent_location_cpt_hijack($query_vars) {
+	if (isset($query_vars['location'])) {
+		$req_uri = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '';
+		$path = trim((string) parse_url($req_uri, PHP_URL_PATH), '/');
+		// If not requesting a single /locations/{slug} endpoint, remove CPT query var
+		if (strpos($path, 'locations') !== 0) {
+			unset($query_vars['location']);
+			if (empty($query_vars['pagename']) && $path) {
+				$query_vars['pagename'] = $path;
+			}
+		}
+	}
+	return $query_vars;
+}
+
+/**
  * Register Location taxonomy (counties/regions)
  */
 function kidazzle_register_location_taxonomy()
