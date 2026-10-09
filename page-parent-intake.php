@@ -425,6 +425,9 @@ get_header();
       <div class="intake-step" id="intakeStep7">7<span class="intake-step-label">Submit</span></div>
     </div>
 
+    <!-- Campus Welcome Banner (Dynamic via URL query e.g. ?location=hampton) -->
+    <div id="campusWelcomeBanner" style="display:none; margin-bottom: 25px;"></div>
+
     <form id="intakePortalForm">
       <!-- Step 1: Parent Details -->
       <div class="intake-form-step active" id="intakeFormStep1">
@@ -550,6 +553,28 @@ get_header();
               <option value="240">3 Year Old Classroom ($240 / week)</option>
               <option value="100">After School ($100 / week)</option>
             </select>
+          </div>
+        </div>
+
+        <!-- Zero-Friction Document Policy: On-Site Verification -->
+        <div class="intake-document-policy-box" style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 16px; padding: 22px; margin-top: 24px;">
+          <div style="display: flex; gap: 14px; align-items: flex-start;">
+            <div style="background: #10b981; color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; flex-shrink: 0; margin-top: 2px;">✓</div>
+            <div style="flex: 1;">
+              <strong style="color: #065f46; font-size: 1.02rem; display: block; margin-bottom: 4px;">Zero-Friction Enrollment • Fast On-Site Document Check</strong>
+              <p style="color: #166534; font-size: 0.90rem; line-height: 1.5; margin: 0 0 12px 0;">
+                To save you time, <strong>no mobile document uploads are required today</strong>! Complete this 3-minute form online to secure your child's priority enrollment, and simply bring the following physical items to your on-site walkthrough:
+              </p>
+              <div style="background: #ffffff; border-radius: 10px; padding: 12px 14px; border: 1px solid #bbf7d0;">
+                <div style="font-weight: 700; color: #0f172a; font-size: 0.85rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Bring On-Site to Center (Our staff scans in 30 seconds):</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 0.86rem; color: #334155;">
+                  <div>📄 <strong>Child's Birth Certificate</strong> (or passport)</div>
+                  <div>💉 <strong>Georgia Immunization (Form 3231)</strong></div>
+                  <div>🪪 <strong>Parent / Guardian Photo ID</strong></div>
+                  <div>📋 <strong>Allergy Action Plan</strong> (if applicable)</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -892,6 +917,14 @@ get_header();
             <label for="consent_medical" style="text-transform:none; font-size:0.95rem; font-weight:normal; cursor:pointer; color: #475569;">
               <strong>Emergency Medical Authorization:</strong> I authorize KIDazzle Staff to contact my child's primary care physician and secure emergency medical treatment in case of a medical crisis.
             </label>
+          </div>
+        </div>
+
+        <!-- On-Site Document Check Notice -->
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 14px 18px; margin-top: 18px; font-size: 0.88rem; color: #334155; display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 22px; flex-shrink: 0;">📋</span>
+          <div>
+            <strong>Zero Mobile Uploads Required:</strong> No document uploads are required on this form. Simply bring your physical <em>Birth Certificate</em>, <em>Immunization Form 3231</em>, and <em>Parent ID</em> to your on-site walkthrough at the center for instant staff scanning.
           </div>
         </div>
       </div>
@@ -1411,6 +1444,77 @@ get_header();
     document.getElementById('intakeSigClear').addEventListener('click', () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
+
+    // Auto-detect location from URL query (e.g. ?location=hampton or ?campus=hampton)
+    function initLocationFromQuery() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const locParam = (urlParams.get('location') || urlParams.get('campus') || urlParams.get('loc') || '').toLowerCase();
+        const locationSelect = document.getElementById('location');
+        const banner = document.getElementById('campusWelcomeBanner');
+        
+        if (!locParam) return;
+        
+        let matchedVal = '';
+        let bannerHtml = '';
+        
+        if (locParam.includes('hampton') || locParam.includes('lovejoy') || locParam.includes('woolsey')) {
+          matchedVal = 'Hampton / Lovejoy (FAA Center) - 49 Woolsey Rd';
+          bannerHtml = `
+            <div style="background: linear-gradient(135deg, #023047 0%, #0e7490 60%, #06b6d4 100%); color: #ffffff; padding: 20px 24px; border-radius: 18px; box-shadow: 0 10px 25px rgba(2, 48, 71, 0.15); border: 1px solid rgba(255,255,255,0.2);">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="font-size: 34px; line-height: 1;">✈️</span>
+                <div style="flex: 1;">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
+                    <span style="background: #fb8500; color: #ffffff; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 12px;">Priority Enrollment</span>
+                    <span style="color: #a5f3fc; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.5px;">FAA &amp; South Metro Working Families</span>
+                  </div>
+                  <div style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 3px;">Welcome to KIDazzle Hampton / Lovejoy Campus</div>
+                  <div style="font-size: 0.90rem; color: #e0f2fe; line-height: 1.4;">Campus location pre-selected: <strong>49 Woolsey Rd, Hampton, GA 30228</strong>. Complete digital enrollment in under 3 minutes.</div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (locParam.includes('summit') || locParam.includes('midtown') || locParam.includes('peachtree')) {
+          matchedVal = 'Peachtree Summit (Midtown Atlanta) - 401 W Peachtree St NW';
+          bannerHtml = `
+            <div style="background: linear-gradient(135deg, #023047 0%, #0369a1 100%); color: #ffffff; padding: 18px 22px; border-radius: 16px;">
+              <div style="font-size: 1.15rem; font-weight: 800;">Welcome to KIDazzle Peachtree Summit (Midtown Atlanta)</div>
+              <div style="font-size: 0.88rem; color: #e0f2fe;">Location pre-selected: 401 W Peachtree St NW, Atlanta, GA 30308</div>
+            </div>
+          `;
+        } else if (locParam.includes('college park') || locParam.includes('flyers')) {
+          matchedVal = 'College Park (Little Flyers CDC) - 1701 Columbia Ave';
+          bannerHtml = `
+            <div style="background: linear-gradient(135deg, #023047 0%, #0369a1 100%); color: #ffffff; padding: 18px 22px; border-radius: 16px;">
+              <div style="font-size: 1.15rem; font-weight: 800;">Welcome to Little Flyers CDC (College Park)</div>
+              <div style="font-size: 0.88rem; color: #e0f2fe;">Location pre-selected: 1701 Columbia Ave, College Park, GA 30337</div>
+            </div>
+          `;
+        } else if (locParam.includes('west end') || locParam.includes('york')) {
+          matchedVal = 'West End Atlanta - 831 York Ave SW';
+        } else if (locParam.includes('afc') || locParam.includes('federal')) {
+          matchedVal = 'Atlanta Federal Center (AFC Downtown) - 61 Forsyth St SW';
+        } else if (locParam.includes('miami') || locParam.includes('doral') || locParam.includes('tailwinds')) {
+          matchedVal = 'Miami / Doral (Tailwinds CDC) - 7500 NW 58th St';
+        } else if (locParam.includes('memphis') || locParam.includes('flying')) {
+          matchedVal = 'Memphis (Flying Start CDC) - 3194 Independent Rd';
+        }
+        
+        if (matchedVal && locationSelect) {
+          locationSelect.value = matchedVal;
+        }
+        if (banner && bannerHtml) {
+          banner.innerHTML = bannerHtml;
+          banner.style.display = 'block';
+        }
+      } catch (err) {
+        console.warn('[Location Query Init Error]:', err);
+      }
+    }
+
+    // Initialize query param selection immediately
+    initLocationFromQuery();
   })();
 </script>
 
