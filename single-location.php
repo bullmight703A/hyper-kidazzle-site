@@ -126,8 +126,26 @@ while (have_posts()):
 				<?php endif; ?>
 				<h1 class="text-5xl md:text-6xl font-extrabold mb-4"><?php the_title(); ?></h1>
 				<?php if ($tagline): ?>
-					<p class="text-xl max-w-2xl mx-auto text-slate-300"><?php echo esc_html($tagline); ?></p>
+					<p class="text-xl max-w-2xl mx-auto text-slate-300 mb-8"><?php echo esc_html($tagline); ?></p>
 				<?php endif; ?>
+				<div class="flex flex-wrap justify-center gap-4 mt-6">
+					<button type="button" onclick="typeof kdOpenTourModal === 'function' ? kdOpenTourModal() : (document.getElementById('tour') ? document.getElementById('tour').scrollIntoView({behavior:'smooth'}) : location.href='/contact/')" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-extrabold text-base md:text-lg px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center gap-2 transform hover:-translate-y-0.5 cursor-pointer">
+						<i class="fa-solid fa-calendar-day"></i> Schedule a VIP Campus Tour
+					</button>
+					<?php 
+					$campus_slug = get_post_field('post_name', $location_id);
+					$intake_param = 'summit';
+					if (strpos($campus_slug, 'hampton') !== false) $intake_param = 'hampton';
+					elseif (strpos($campus_slug, 'doral') !== false || strpos($campus_slug, 'miami') !== false) $intake_param = 'miami';
+					elseif (strpos($campus_slug, 'college-park') !== false) $intake_param = 'college park';
+					elseif (strpos($campus_slug, 'west-end') !== false) $intake_param = 'west end';
+					elseif (strpos($campus_slug, 'afc') !== false) $intake_param = 'afc';
+					elseif (strpos($campus_slug, 'memphis') !== false) $intake_param = 'memphis';
+					?>
+					<a href="<?php echo esc_url(home_url('/parent-intake/?location=' . urlencode($intake_param))); ?>" class="bg-white/10 hover:bg-white/20 text-white font-bold text-base md:text-lg px-7 py-3.5 rounded-full border border-white/20 backdrop-blur-sm transition-all flex items-center gap-2">
+						<i class="fa-solid fa-file-signature text-cyan-400"></i> Start Digital Intake (< 3 Min)
+					</a>
+				</div>
 			</div>
 		</div>
 

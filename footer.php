@@ -94,10 +94,10 @@ if ($show_sticky_cta):
 			<span class="text-sm font-medium tracking-wide">
 				<?php echo $sticky_text; ?>
 			</span>
-			<a href="<?php echo esc_url($sticky_url); ?>"
-				class="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-full hover:bg-white hover:text-orange-500 transition-all shadow-md">
+			<button type="button" onclick="typeof kdOpenTourModal === 'function' ? kdOpenTourModal() : (location.href='<?php echo esc_url($sticky_url); ?>')"
+				class="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-full hover:bg-white hover:text-orange-500 transition-all shadow-md cursor-pointer border-0 font-sans">
 				<?php echo esc_html($sticky_btn_text); ?>
-			</a>
+			</button>
 		</div>
 	</div>
 <?php endif; ?>
