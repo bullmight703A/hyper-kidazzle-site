@@ -428,6 +428,17 @@ get_header();
     <!-- Campus Welcome Banner (Dynamic via URL query e.g. ?location=hampton) -->
     <div id="campusWelcomeBanner" style="display:none; margin-bottom: 25px;"></div>
 
+    <!-- Important Space & Enrollment Notice -->
+    <div style="background: #fffbeb; border: 1.5px solid #f59e0b; border-radius: 14px; padding: 14px 18px; margin-bottom: 25px; display: flex; align-items: flex-start; gap: 12px; text-align: left;">
+      <span style="font-size: 22px; line-height: 1;">⚠️</span>
+      <div>
+        <strong style="color: #92400e; font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 3px;">Important Enrollment &amp; Space Availability Notice</strong>
+        <p style="margin: 0; color: #78350f; font-size: 12.5px; line-height: 1.45;">
+          Submitting this digital intake form registers your family's profile and holds your spot in line. <strong>Please note: Completing this form does not guarantee immediate enrollment or placement.</strong> Final classroom placement and official start dates are confirmed subject to classroom capacity, age-group openings, and completion of your campus walkthrough with the Center Director.
+        </p>
+      </div>
+    </div>
+
     <form id="intakePortalForm">
       <!-- Step 1: Parent Details -->
       <div class="intake-form-step active" id="intakeFormStep1">
@@ -927,6 +938,15 @@ get_header();
             <strong>Zero Mobile Uploads Required:</strong> No document uploads are required on this form. Simply bring your physical <em>Birth Certificate</em>, <em>Immunization Form 3231</em>, and <em>Parent ID</em> to your on-site walkthrough at the center for instant staff scanning.
           </div>
         </div>
+
+        <!-- Space Availability & Placement Notice -->
+        <div style="background: #fffbeb; border: 1.5px solid #f59e0b; border-radius: 12px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; color: #78350f; display: flex; align-items: flex-start; gap: 12px; text-align: left;">
+          <span style="font-size: 20px; flex-shrink: 0; line-height: 1;">⚠️</span>
+          <div>
+            <strong style="color: #92400e; text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px; display: block; margin-bottom: 2px;">Notice of Space Availability &amp; Placement</strong>
+            Submitting this digital intake form registers your child's priority enrollment profile. <strong>Completing this form does not guarantee immediate enrollment or placement.</strong> Official classroom placement and start dates are confirmed subject to classroom availability, age-group capacity, and completion of your on-site campus tour with the Center Director.
+          </div>
+        </div>
       </div>
 
       <div class="intake-buttons">
@@ -942,6 +962,12 @@ get_header();
       <p style="color: var(--text-muted); margin-top: 10px; line-height: 1.6;">
         Your unified parent enrollment package has been completed, signed digitally, and generated as a single package. We have also emailed the completed documents to you.
       </p>
+      
+      <div style="background: #fffbeb; border: 1.5px solid #f59e0b; border-radius: 14px; padding: 16px 20px; margin: 24px auto; max-width: 620px; text-align: left; font-size: 0.9rem; color: #78350f;">
+        <strong style="color: #92400e; display: block; margin-bottom: 3px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Next Step: Classroom Space Verification &amp; Walkthrough</strong>
+        Please note: Submitting this package registers your child's priority record, but <strong>does not guarantee immediate enrollment or placement</strong>. A center director will review classroom capacity, age ratios, and confirm your child's official start date during your scheduled campus walkthrough.
+      </div>
+
       <a href="#" class="intake-download-btn" id="intakeDownloadBtn" target="_blank">Download Completed Packet</a>
     </div>
   </div>
