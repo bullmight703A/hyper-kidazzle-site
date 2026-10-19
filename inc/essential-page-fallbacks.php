@@ -325,3 +325,77 @@ function kidazzle_output_essential_fallback_meta()
     echo '<link rel="canonical" href="' . esc_url($canonical) . '">' . "\n";
 }
 add_action('wp_head', 'kidazzle_output_essential_fallback_meta', 2);
+
+/**
+ * Global 301 Permanent Redirect Handler for Legacy GSC 404 Slugs
+ * Automatically resolves 901 legacy crawl errors to their canonical destinations
+ */
+function kidazzle_handle_legacy_404_redirects()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    if (!is_404()) {
+        return;
+    }
+
+    $path = kidazzle_get_current_request_path();
+    if (empty($path)) {
+        return;
+    }
+
+    $destination = '';
+
+    // 1. Legacy blog & vanity posts (/post/*, /blogs/*, /vanity_blog/*, /stories)
+    if (strpos($path, 'post/') === 0 || strpos($path, 'blogs/') === 0 || strpos($path, 'vanity_blog') === 0 || $path === 'stories') {
+        $destination = home_url('/blog/');
+    }
+    // 2. Summer camp pages & subdomains
+    elseif (strpos($path, 'summer') !== false || strpos($path, 'camp') !== false) {
+        $destination = home_url('/programs/summer-camp/');
+    }
+    // 3. West End variants
+    elseif (strpos($path, 'west-end') !== false || strpos($path, 'westend') !== false) {
+        $destination = home_url('/locations/kidazzle-west-end-atlanta-ga/');
+    }
+    // 4. College Park variants
+    elseif (strpos($path, 'college-park') !== false || strpos($path, 'collegepark') !== false || strpos($path, 'union-city') !== false) {
+        $destination = home_url('/locations/kidazzle-college-park-ga/');
+    }
+    // 5. Summit / Midtown variants
+    elseif (strpos($path, 'summit') !== false || strpos($path, 'midtown') !== false || strpos($path, 'peachtree') !== false) {
+        $destination = home_url('/locations/kidazzle-peachtree-summit-atlanta-ga/');
+    }
+    // 6. Hampton variants
+    elseif (strpos($path, 'hampton') !== false || strpos($path, 'stockbridge') !== false || strpos($path, 'locust-grove') !== false) {
+        $destination = home_url('/locations/kidazzle-hampton-ga/');
+    }
+    // 7. Miami / Doral variants
+    elseif (strpos($path, 'miami') !== false || strpos($path, 'doral') !== false || strpos($path, 'hialeah') !== false) {
+        $destination = home_url('/locations/kidazzle-doral-miami-fl/');
+    }
+    // 8. Memphis / Cordova variants
+    elseif (strpos($path, 'memphis') !== false || strpos($path, 'cordova') !== false) {
+        $destination = home_url('/locations/cordova/');
+    }
+    // 9. Abandoned product / cart / test slugs
+    elseif (strpos($path, 'product-details') !== false || strpos($path, 'coloring-book') !== false || strpos($path, 'thank-you-') !== false) {
+        $destination = home_url('/');
+    }
+    // 10. Legacy curriculum / lesson plans
+    elseif ($path === 'lesson-plan') {
+        $destination = home_url('/lesson-plans/');
+    }
+    // 11. General fallback for unmapped daycare/childcare searches
+    elseif (strpos($path, 'daycare') !== false || strpos($path, 'childcare') !== false || strpos($path, 'preschool') !== false) {
+        $destination = home_url('/locations/');
+    }
+
+    if (!empty($destination)) {
+        wp_safe_redirect($destination, 301);
+        exit;
+    }
+}
+add_action('template_redirect', 'kidazzle_handle_legacy_404_redirects', 1);
+
