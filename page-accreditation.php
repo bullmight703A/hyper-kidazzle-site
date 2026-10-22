@@ -417,6 +417,111 @@ get_header();
     gap: 6px;
   }
 
+
+  /* Curriculum & Lesson Plans Banner */
+  .accred-curriculum-banner {
+    margin-top: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--accred-radius-md);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .accred-curriculum-text {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .accred-curriculum-text i {
+    font-size: 1.6rem;
+    color: #fbbf24;
+    flex-shrink: 0;
+  }
+
+  .accred-curriculum-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .accred-curriculum-desc {
+    font-size: 0.84rem;
+    color: #bae6fd;
+  }
+
+  .accred-curriculum-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fbbf24;
+    color: #023047;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 9px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+    white-space: nowrap;
+  }
+
+  .accred-curriculum-btn:hover {
+    background: #f59e0b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    color: #023047;
+  }
+
+  .accred-btn-word {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 11px;
+    border-radius: var(--accred-radius-sm);
+    border: 1px solid rgba(37, 99, 235, 0.25);
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .accred-btn-word:hover {
+    background: #dbeafe;
+    border-color: #2563eb;
+    color: #1e40af;
+    transform: translateY(-1px);
+  }
+
+  .accred-category-tab-link {
+    background: rgba(2, 132, 199, 0.08) !important;
+    border-color: rgba(2, 132, 199, 0.35) !important;
+    color: #0284c7 !important;
+    text-decoration: none !important;
+  }
+
+  .accred-category-tab-link:hover {
+    background: rgba(2, 132, 199, 0.16) !important;
+    border-color: #0284c7 !important;
+    color: #0369a1 !important;
+    transform: translateY(-1px);
+  }
+
+  .accred-category-tab-link .accred-category-count {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+  }
+
   /* Document Grid */
   .accred-grid {
     display: grid;
@@ -791,7 +896,7 @@ get_header();
           <div class="accred-stat-box">
             <div class="accred-stat-icon"><i class="fa-solid fa-file-pdf"></i></div>
             <div>
-              <div class="accred-stat-number">21</div>
+              <div class="accred-stat-number">25</div>
               <div class="accred-stat-label">Approved PDFs</div>
             </div>
           </div>
@@ -816,6 +921,21 @@ get_header();
               <div class="accred-stat-label">State Audit Ready</div>
             </div>
           </div>
+        </div>
+
+        <!-- 📚 Master 52-Week Curriculum & Lesson Plans Banner -->
+        <div class="accred-curriculum-banner">
+          <div class="accred-curriculum-text">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+              <div class="accred-curriculum-title">Master 52-Week Curriculum & Lesson Plans Portal</div>
+              <div class="accred-curriculum-desc">Explore complete weekly themes, circle time discussion prompts, learning domain objectives, and Georgia GELDS alignments.</div>
+            </div>
+          </div>
+          <a href="https://kidazzle.com/lesson-plans/" class="accred-curriculum-btn" target="_blank" rel="noopener">
+            <span>Open Lesson Plans</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -873,17 +993,17 @@ get_header();
         <button class="accred-category-tab active" data-category="all">
           <i class="fa-solid fa-border-all"></i>
           <span>All Resources</span>
-          <span class="accred-category-count" id="wp-count-all">21</span>
+          <span class="accred-category-count" id="wp-count-all">25</span>
         </button>
         <button class="accred-category-tab" data-category="ers">
           <i class="fa-solid fa-star-half-stroke"></i>
           <span>ERS & Rating Scales</span>
-          <span class="accred-category-count" id="wp-count-ers">5</span>
+          <span class="accred-category-count" id="wp-count-ers">6</span>
         </button>
         <button class="accred-category-tab" data-category="pedagogy">
           <i class="fa-solid fa-comments"></i>
           <span>Teacher Pedagogy</span>
-          <span class="accred-category-count" id="wp-count-pedagogy">2</span>
+          <span class="accred-category-count" id="wp-count-pedagogy">5</span>
         </button>
         <button class="accred-category-tab" data-category="health">
           <i class="fa-solid fa-pump-soap"></i>
@@ -900,12 +1020,17 @@ get_header();
           <span>Diversity & Books</span>
           <span class="accred-category-count" id="wp-count-diversity">8</span>
         </button>
+        <a href="https://kidazzle.com/lesson-plans/" class="accred-category-tab accred-category-tab-link" target="_blank" rel="noopener" title="Open Master 52-Week Lesson Plans in new tab">
+          <i class="fa-solid fa-calendar-check" style="color: #f59e0b;"></i>
+          <span>52-Week Lesson Plans</span>
+          <span class="accred-category-count">LIVE ↗</span>
+        </a>
       </div>
     </section>
 
     <!-- Results Status Bar -->
     <div class="accred-results-bar">
-      <div class="accred-results-count" id="wpResultsCount">Showing <strong>21 of 21</strong> accreditation documents</div>
+      <div class="accred-results-count" id="wpResultsCount">Showing <strong>25 of 25</strong> accreditation documents</div>
       <div class="accred-download-note">
         <i class="fa-solid fa-circle-info"></i>
         <span>Click <strong>Quick View</strong> to preview inside browser or <strong>Download PDF</strong> for local print.</span>
@@ -961,6 +1086,7 @@ get_header();
       id: "ecers-review",
       title: "ECERS Comprehensive Classroom Review",
       filename: "ECERS_Comprehensive_Classroom_Review.pdf",
+      companionDocx: "ECERS_Comprehensive_Classroom_Review.docx",
       category: "ers",
       categoryName: "ERS & Rating Scales",
       targetLevel: "Preschool & Pre-K (3-5 yr)",
@@ -1334,7 +1460,82 @@ get_header();
       priority: 21,
       description: "Teacher reference scripts, vocabulary definitions, and developmentally appropriate discussion prompts to guide cultural circle time and storytelling.",
       tags: ["Teaching Scripts", "Cultural Verbiage", "Circle Time", "GELDS Alignment"]
-    }
+    },
+    {
+      id: "gross-motor-standards",
+      title: "ITERS-3 & ECERS-3 Gross Motor Materials, Supervision & Weather Standards",
+      filename: "Gross_Motor_Indoor_and_Outdoor_Materials_Standards.pdf",
+      companionDocx: "Gross_Motor_Indoor_and_Outdoor_Materials_Standards.docx",
+      category: "ers",
+      categoryName: "ERS & Rating Scales",
+      targetLevel: "Infants, Toddlers & Preschool",
+      targetKey: "classroom",
+      size: "384 KB",
+      sizeBytes: 393565,
+      accentClass: "accred-accent-ers",
+      catClass: "accred-cat-ers",
+      iconClass: "ers",
+      icon: "fa-person-running",
+      priority: 4,
+      description: "Comprehensive indoor/outdoor gross motor guidelines, 7 core skill areas (climbing, sliding, kicking, balance, jumping), 30-min weather requirements, and clock-method active supervision.",
+      tags: ["ITERS-3", "ECERS-3", "Gross Motor", "Playground", "Supervision", "Weather Chart"]
+    },
+    {
+      id: "transitions-protocol",
+      title: "Classroom Transitions Protocol & Visual Engagement Routines",
+      filename: "Classroom_Transitions_Protocol_and_Visual_Routines.pdf",
+      companionDocx: "Classroom_Transitions_Protocol_and_Visual_Routines.docx",
+      category: "pedagogy",
+      categoryName: "Teacher Pedagogy",
+      targetLevel: "All Classrooms & Teaching Staff",
+      targetKey: "staff",
+      size: "159 KB",
+      sizeBytes: 162914,
+      accentClass: "accred-accent-pedagogy",
+      catClass: "accred-cat-pedagogy",
+      iconClass: "pedagogy",
+      icon: "fa-arrows-split-up-and-left",
+      priority: 7,
+      description: "Official protocol for structured transitions without long wait periods, including 5-minute whole-class advance reminders, individualized visual cueing, and ritual transition games.",
+      tags: ["Transitions", "Visual Schedule", "Classroom Management", "Wait Times", "Pedagogy"]
+    },
+    {
+      id: "transition-cards",
+      title: "Classroom Transition Cards & Practical Activity Collection",
+      filename: "Classroom_Transition_Cards_and_Strategies.pdf",
+      companionDocx: "Classroom_Transition_Cards_and_Strategies.docx",
+      category: "pedagogy",
+      categoryName: "Teacher Pedagogy",
+      targetLevel: "Toddlers, Preschool & GA Pre-K",
+      targetKey: "prek",
+      size: "689 KB",
+      sizeBytes: 705974,
+      accentClass: "accred-accent-pedagogy",
+      catClass: "accred-cat-pedagogy",
+      iconClass: "pedagogy",
+      icon: "fa-id-card-clip",
+      priority: 8,
+      description: "20 practical transition tools & routines: Arrival warm greetings, Wash Your Hands song, countdown 5-minute glove, helping hands clips, beanbag line-up, Go Fish, partner sticks, and quiet rest cues.",
+      tags: ["Transition Cards", "Songs", "Accommodations", "Clean-Up", "Line-Up", "Resting"]
+    },
+    {
+      id: "art-teachers-role",
+      title: "Inviting Creativity: The Teacher's Role in Early Childhood Art",
+      filename: "Art_The_Teachers_Role_in_Early_Childhood.pdf",
+      category: "pedagogy",
+      categoryName: "Teacher Pedagogy",
+      targetLevel: "Preschool, Pre-K & Art Centers",
+      targetKey: "staff",
+      size: "344 KB",
+      sizeBytes: 352622,
+      accentClass: "accred-accent-pedagogy",
+      catClass: "accred-cat-pedagogy",
+      iconClass: "pedagogy",
+      icon: "fa-palette",
+      priority: 9,
+      description: "Pedagogical analysis of teacher-guided vs. child-centered exploration, process vs. product art, open-ended materials, Reggio Emilia practices, and stimulating artistic reasoning.",
+      tags: ["Art Center", "Creativity", "Pedagogy", "Process Art", "Reggio Emilia", "ECERS-3"]
+    },
   ];
 
   const WP_DOCS_CDN_BASE = 'https://kidazzle.bullmight.com/accreditation/docs/';
@@ -1439,6 +1640,12 @@ get_header();
                 <i class="fa-solid fa-eye"></i>
                 <span>Quick View</span>
               </button>
+              ${doc.companionDocx ? `
+                <a href="${getWpDocUrl(doc.companionDocx)}" class="accred-btn-word" download="${wpEscape(doc.companionDocx)}" title="Download editable Word document (.docx)">
+                  <i class="fa-solid fa-file-word"></i>
+                  <span>Word</span>
+                </a>
+              ` : ''}
               <a href="${docUrl}" class="accred-btn-download" download="${wpEscape(doc.filename)}" title="Download PDF">
                 <i class="fa-solid fa-download"></i>
                 <span>Download</span>
