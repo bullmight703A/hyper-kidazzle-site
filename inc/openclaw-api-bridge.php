@@ -78,6 +78,12 @@ class OpenClaw_API_Bridge {
             'callback' => array($this, 'handle_update_siteurl'),
             'permission_callback' => array($this, 'verify_token')
         ));
+
+        register_rest_route('openclaw/v1', '/flush-cache', array(
+            'methods' => 'POST, GET',
+            'callback' => array($this, 'handle_flush_cache'),
+            'permission_callback' => array($this, 'verify_token')
+        ));
     }
 
     public function verify_token($request) {
@@ -329,10 +335,37 @@ class OpenClaw_API_Bridge {
             return new WP_REST_Response(['error' => 'Failed to write file on server.'], 500);
         }
 
+        // Flush WordPress Object Cache and common cache plugins if active
+        if (function_exists('wp_cache_flush')) {
+            @wp_cache_flush();
+        }
+        if (function_exists('litespeed_purge_all')) {
+            @litespeed_purge_all();
+        }
+        if (class_exists('W3_Plugin_TotalCache')) {
+            @w3tc_flush_all();
+        }
+
         return new WP_REST_Response([
             'success' => true,
             'file' => $file_name,
             'bytes' => $written
+        ], 200);
+    }
+
+    public function handle_flush_cache($request) {
+        if (function_exists('wp_cache_flush')) {
+            @wp_cache_flush();
+        }
+        if (function_exists('litespeed_purge_all')) {
+            @litespeed_purge_all();
+        }
+        if (class_exists('W3_Plugin_TotalCache')) {
+            @w3tc_flush_all();
+        }
+        return new WP_REST_Response([
+            'success' => true,
+            'message' => 'WordPress and plugin caches purged successfully.'
         ], 200);
     }
 
