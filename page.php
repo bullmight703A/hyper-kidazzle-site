@@ -16,6 +16,17 @@ if ( is_page('employee-intake') || is_page('page-employee-intake') ) {
     return;
 }
 
+if ( is_page('accreditation') || is_page(1734) || is_page('page-accreditation') || is_page('ers') ) {
+    $accred_template = get_stylesheet_directory() . '/page-accreditation.php';
+    if ( ! file_exists( $accred_template ) ) {
+        $accred_template = get_template_directory() . '/page-accreditation.php';
+    }
+    if ( file_exists( $accred_template ) ) {
+        include $accred_template;
+        return;
+    }
+}
+
 get_header();
 ?>
 

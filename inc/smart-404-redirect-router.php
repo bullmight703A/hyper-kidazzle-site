@@ -185,7 +185,7 @@ function kidazzle_smart_redirect_router() {
         'teacher-daily-tasks'                   => '/teacher-portal/',
         'write-up'                              => '/teacher-portal/',
         'suspension-form'                       => '/teacher-portal/',
-        'ers'                                   => '/teacher-portal/',
+        'ers'                                   => '/accreditation/',
         'enrollment-form'                       => '/parent-intake/',
         'schedule-a-tour'                       => '/contact/',
         'tour'                                  => '/contact/',
