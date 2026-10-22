@@ -11,9 +11,15 @@ if ( is_page('parent-intake') || is_page(1645) || is_page('page-parent-intake') 
     return;
 }
 
-if ( is_page('employee-intake') || is_page('page-employee-intake') ) {
-    include get_template_directory() . '/page-employee-intake.php';
-    return;
+if ( is_page('employee-intake') || is_page('page-employee-intake') || is_page('employment-intake') || is_page('employment') || is_page('staff-intake') || is_page('onboarding') ) {
+    $emp_tpl = get_stylesheet_directory() . '/page-employee-intake.php';
+    if ( ! file_exists( $emp_tpl ) ) {
+        $emp_tpl = get_template_directory() . '/page-employee-intake.php';
+    }
+    if ( file_exists( $emp_tpl ) ) {
+        include $emp_tpl;
+        return;
+    }
 }
 
 if ( is_page('accreditation') || is_page(1734) || is_page('page-accreditation') || is_page('ers') ) {

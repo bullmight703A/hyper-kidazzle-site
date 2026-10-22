@@ -53,6 +53,71 @@ function kidazzle_smart_redirect_router() {
         }
     }
 
+    // -------------------------------------------------------------
+    // 00a. Direct Application Endpoint: Employee & Employment Intake Form
+    // -------------------------------------------------------------
+    if (in_array(strtolower($path), array('employee-intake', 'employment-intake', 'employment', 'employee-intake-form', 'page-employee-intake', 'staff-intake', 'onboarding'), true)) {
+        global $wp_query;
+        if ($wp_query) {
+            $wp_query->is_404 = false;
+            $wp_query->is_page = true;
+        }
+        status_header(200);
+        header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+        $emp_tpl = KIDAZZLE_THEME_DIR . '/page-employee-intake.php';
+        if (!file_exists($emp_tpl)) {
+            $emp_tpl = get_stylesheet_directory() . '/page-employee-intake.php';
+        }
+        if (!file_exists($emp_tpl)) {
+            $emp_tpl = get_template_directory() . '/page-employee-intake.php';
+        }
+        if (file_exists($emp_tpl)) {
+            include $emp_tpl;
+            exit;
+        }
+    }
+
+    // -------------------------------------------------------------
+    // 00b. Direct Application Endpoint: Accreditation & Quality Standards Portal
+    // Bypasses any cached page templates, sets no-cache, and serves full portal
+    // -------------------------------------------------------------
+    if (in_array(strtolower($path), array('accreditation', 'accreditations', 'accreditation-portal', 'quality-standards', 'ers-standards', 'ers-portal'), true)) {
+        global $wp_query;
+        if ($wp_query) {
+            $wp_query->is_404 = false;
+            $wp_query->is_page = true;
+        }
+        status_header(200);
+        header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+        $accred_tpl = KIDAZZLE_THEME_DIR . '/page-accreditation.php';
+        if (!file_exists($accred_tpl)) {
+            $accred_tpl = get_stylesheet_directory() . '/page-accreditation.php';
+        }
+        if (!file_exists($accred_tpl)) {
+            $accred_tpl = get_template_directory() . '/page-accreditation.php';
+        }
+        if (file_exists($accred_tpl)) {
+            include $accred_tpl;
+            exit;
+        }
+    }
+
+    // -------------------------------------------------------------
+    // 00c. Direct Application Endpoint: Accreditation PDF Proxy
+    // Seamlessly deliver PDF assets via edge CDN without 404
+    // -------------------------------------------------------------
+    if (strpos(strtolower($raw_uri), '/accreditation/docs/') !== false || strpos(strtolower($raw_uri), '/docs/accreditation/') !== false) {
+        $pdf_name = basename($raw_uri);
+        if (!empty($pdf_name)) {
+            wp_redirect('https://kidazzle.bullmight.com/accreditation/docs/' . rawurlencode($pdf_name), 302);
+            exit;
+        }
+    }
+
     // Never intercept essential dynamic application endpoints
     $essential_paths = array(
         'prek-dashboard', 'prek_dashboard',

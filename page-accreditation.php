@@ -1337,11 +1337,12 @@ get_header();
     }
   ];
 
+  const WP_DOCS_CDN_BASE = 'https://kidazzle.bullmight.com/accreditation/docs/';
   function getWpDocUrl(filename) {
     if (window.KIDAZZLE_WP_DOCS_BASE) {
       return window.KIDAZZLE_WP_DOCS_BASE + encodeURIComponent(filename);
     }
-    return '/accreditation/docs/' + encodeURIComponent(filename);
+    return WP_DOCS_CDN_BASE + encodeURIComponent(filename);
   }
 
   // Filter State
