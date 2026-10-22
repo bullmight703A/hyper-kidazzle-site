@@ -102,7 +102,7 @@ if ($show_sticky_cta):
 	</div>
 <?php endif; ?>
 
-<!-- Global Contact Modal functionality is now handled entirely by assets/js/ghl-modal.js which automatically loads forms on-demand using .ghl-trigger buttons, saving significant page load size. -->
+<!-- Global Contact Modal functionality is handled by assets/js/ghl-modal.js and K.Ai tour-concierge-modal.php (.kai-trigger / .ghl-trigger buttons). -->
 
 <!-- Scripts -->
 <script>
@@ -149,7 +149,6 @@ if ($footer_scripts) {
 		// Custom footer scripts loaded
 	});
 </script>
-</script>
 
 <!-- GTranslate: Automatic Browser Language Detection -->
 <div class="gtranslate_wrapper"></div>
@@ -164,11 +163,11 @@ if ($footer_scripts) {
 	}
 </script>
 <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
-<!-- GoHighLevel External Tracking Script -->
+<!-- K.Ai Telemetry & Dispatch Tracking Script -->
 <script src='https://link.msgsndr.com/js/external-tracking.js' data-tracking-id='tk_b5f35188691c4d668ce5ca462e39e455'></script>
 
 <?php 
-// KIDazzle VIP Campus Tour & Lead Capture Concierge Modal
+// K.Ai (KIDazzle AI) VIP Campus Tour & Lead Capture Concierge Modal
 get_template_part('template-parts/kidazzle/tour-concierge-modal'); 
 ?>
 </body>

@@ -26,7 +26,7 @@ $default_sections = array(
     ),
     array(
         'title' => '3. Website, Advertising, and Form Tracking',
-        'content' => '<p>Our website may use cookies, analytics tools, Meta/Facebook advertising tools, Google tools, GoHighLevel/LeadConnector forms, and similar technologies to understand page visits, improve our website, measure ad performance, and respond to enrollment inquiries.</p><p>If you submit a Facebook, Instagram, website, or GoHighLevel lead form, we use the information to contact you about KIDazzle programs, Georgia Lottery Pre-K enrollment, tours, tuition, availability, and related family resources.</p>',
+        'content' => '<p>Our website may use cookies, analytics tools, Meta/Facebook advertising tools, Google tools, K.Ai (KIDazzle AI) intelligent forms and enrollment portals, and similar technologies to understand page visits, improve our website, measure ad performance, and respond to enrollment inquiries.</p><p>If you submit an inquiry through K.Ai, social media, or website contact forms, we use the information to contact you about KIDazzle programs, Georgia Lottery Pre-K enrollment, tours, tuition, availability, and related family resources.</p>',
     ),
     array(
         'title' => '4. How We Use Information',

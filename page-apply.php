@@ -417,15 +417,15 @@
       </div>
     </section>
 
-    <!-- Embedded LeadConnector Survey Form -->
+    <!-- Embedded K.Ai Personnel Survey Form -->
     <section class="survey-card">
       <div class="survey-card-top">
         <div class="survey-card-title">
-          <i class="fa-solid fa-clipboard-check"></i>
-          <span>KIDazzle HR Corporate Interview Survey</span>
+          <i class="fa-solid fa-sparkles" style="color: #7c3aed;"></i>
+          <span>K.Ai Personnel Desk • Educator Application &amp; Interview</span>
         </div>
         <div class="survey-card-meta">
-          <i class="fa-solid fa-lock" style="color: #10b981; margin-right: 4px;"></i> Secure &amp; Confidential
+          <i class="fa-solid fa-shield-halved" style="color: #10b981; margin-right: 4px;"></i> Powered by K.Ai
         </div>
       </div>
 
@@ -435,7 +435,7 @@
           style="border:none;width:100%;min-height:850px;"
           scrolling="no"
           id="BOYM2PBNfJB2l53T8Wq9"
-          title="KIDazzle Educator Application & HR Interview">
+          title="K.Ai Educator Application &amp; HR Interview">
         </iframe>
         <script src="https://link.msgsndr.com/js/form_embed.js"></script>
       </div>

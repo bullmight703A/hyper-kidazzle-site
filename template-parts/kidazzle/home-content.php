@@ -137,13 +137,16 @@
                 </div>
                 <div class="relative z-10 bg-white/95 backdrop-blur-sm rounded-[3.3rem] p-8 h-[1000px] overflow-hidden">
                     <div class="text-center mb-8">
-                        <h3 class="text-3xl font-bold text-white tracking-tight">Start Your Journey</h3>
-                        <p class="text-purple-100 font-medium mt-2">Schedule a tour at your location today.</p>
+                        <div class="inline-flex items-center gap-2 bg-purple-900/60 text-amber-300 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 border border-amber-400/30">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> K.Ai • KIDazzle AI Admissions
+                        </div>
+                        <h3 class="text-3xl font-bold text-white tracking-tight">Start Your Journey with K.Ai</h3>
+                        <p class="text-purple-100 font-medium mt-2">Instant VIP campus tours, tuition quotes, and enrollment guidance.</p>
                     </div>
                     <!-- DYNAMIC FORM MODAL TRIGGER -->
-                    <div class="text-center py-24">
-                        <button class="ghl-trigger bg-white text-purple-700 px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-purple-50 transition shadow-2xl hover:scale-105 transform duration-300" data-ghl-url="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la">
-                            Start Enrollment Process
+                    <div class="text-center py-20">
+                        <button class="kai-trigger ghl-trigger bg-white text-purple-700 px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-purple-50 transition shadow-2xl hover:scale-105 transform duration-300" data-kai-url="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la" data-ghl-url="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la">
+                            ✨ Start Enrollment with K.Ai
                         </button>
                     </div>
                 </div>

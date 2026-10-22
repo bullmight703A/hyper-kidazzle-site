@@ -60,6 +60,7 @@ get_header();
                     <div class="w-16 h-16 bg-kidazzle-orange/10 text-kidazzle-orange rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-orange group-hover:text-white transition-all text-2xl">
                         <i class="fa-solid fa-layer-group"></i>
                     </div>
+                    <span class="inline-block bg-kidazzle-orange/10 text-kidazzle-orange text-[9px] font-bold px-2 py-0.5 rounded-full mb-1">⚡ K.Ai Enabled</span>
                     <h3 class="font-bold text-brand-ink mb-2">Weekly Workflow</h3>
                     <p class="text-brand-ink/60 text-xs mb-6">Submit supply requests and upcoming weekly plans.</p>
                     <span class="text-kidazzle-orange font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 group-hover:underline">Submit Tasks <i class="fa-solid fa-arrow-right"></i></span>
@@ -70,6 +71,7 @@ get_header();
                     <div class="w-16 h-16 bg-kidazzle-red/10 text-kidazzle-red rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-kidazzle-red group-hover:text-white transition-all text-2xl">
                         <i class="fa-solid fa-camera"></i>
                     </div>
+                    <span class="inline-block bg-kidazzle-red/10 text-kidazzle-red text-[9px] font-bold px-2 py-0.5 rounded-full mb-1">📸 K.Ai Media</span>
                     <h3 class="font-bold text-brand-ink mb-2">Photo Upload</h3>
                     <p class="text-brand-ink/60 text-xs mb-6">Upload daily or weekly classroom photos for parents.</p>
                     <span class="text-kidazzle-red font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 group-hover:underline">Upload Media <i class="fa-solid fa-arrow-right"></i></span>
@@ -95,7 +97,7 @@ get_header();
                     </div>
                     <div>
                         <h4 class="font-bold text-brand-ink text-sm">Enrollment App</h4>
-                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest group-hover:text-kidazzle-blue transition-colors">Process &rarr;</p>
+                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest group-hover:text-kidazzle-blue transition-colors">K.Ai Instant &rarr;</p>
                     </div>
                 </div>
 
@@ -125,22 +127,28 @@ get_header();
                     </div>
                     <div>
                         <h4 class="font-bold text-brand-ink text-sm">Doc Secure</h4>
-                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest group-hover:text-kidazzle-purple transition-colors">Lock & Send &rarr;</p>
+                        <p class="text-[10px] text-brand-ink/40 uppercase font-bold tracking-widest group-hover:text-kidazzle-purple transition-colors">K.Ai Verified &rarr;</p>
                     </div>
                 </div>
             </div>
 
-            <!-- GHL Forms Overlay (Modal) -->
+            <!-- K.Ai Intelligent Portals & Forms Overlay (Modal) -->
             <div id="teacher-modal-overlay" class="fixed inset-0 bg-brand-ink/80 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4 md:p-10" onclick="if(event.target === this) hideForms()">
                 
                 <!-- Lesson Plan Modal -->
                 <div id="form-lesson-plan" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
-                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Weekly Workflow & Lesson Plan</h3>
+                        <div class="flex items-center gap-3">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <div>
+                                <h3 class="text-2xl font-serif font-bold text-brand-ink">Weekly Workflow & Lesson Plan</h3>
+                                <p class="text-xs text-brand-ink/60 font-medium">⚡ Powered by K.Ai (KIDazzle AI)</p>
+                            </div>
+                        </div>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20">
-                        <iframe src="https://api.leadconnectorhq.com/widget/survey/AttvnaSbqgMaJxTBXSdS" style="border:none;width:100%;height:100%;" scrolling="auto" id="AttvnaSbqgMaJxTBXSdS" title="survey"></iframe>
+                        <iframe src="https://api.leadconnectorhq.com/widget/survey/AttvnaSbqgMaJxTBXSdS" style="border:none;width:100%;height:100%;" scrolling="auto" id="AttvnaSbqgMaJxTBXSdS" title="K.Ai Lesson Plan & Workflow Survey"></iframe>
                         <script src="https://link.msgsndr.com/js/form_embed.js"></script>
                     </div>
                 </div>
@@ -148,7 +156,13 @@ get_header();
                 <!-- Enrollment Form Modal -->
                 <div id="form-enrollment" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
-                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Master Enrollment Form</h3>
+                        <div class="flex items-center gap-3">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <div>
+                                <h3 class="text-2xl font-serif font-bold text-brand-ink">Master Enrollment Form</h3>
+                                <p class="text-xs text-brand-ink/60 font-medium">⚡ Powered by K.Ai (KIDazzle AI)</p>
+                            </div>
+                        </div>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20">
@@ -167,7 +181,7 @@ get_header();
                             data-height="100%"
                             data-layout-iframe-id="inline-zv8cXPa0HaShOybmKli4"
                             data-form-id="zv8cXPa0HaShOybmKli4"
-                            title="aster Enrollment form "
+                            title="K.Ai Master Enrollment Form"
                         ></iframe>
                         <script src="https://link.msgsndr.com/js/form_embed.js"></script>
                     </div>
@@ -176,7 +190,13 @@ get_header();
                 <!-- Secure Documents Modal (Fixed height style to bypass Tailwind compilation) -->
                 <div id="form-secure-docs" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
-                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Doc Secure Portal</h3>
+                        <div class="flex items-center gap-3">
+                            <span class="w-3 h-3 rounded-full bg-purple-500 animate-pulse"></span>
+                            <div>
+                                <h3 class="text-2xl font-serif font-bold text-brand-ink">Doc Secure Portal</h3>
+                                <p class="text-xs text-brand-ink/60 font-medium">🔒 K.Ai Verified • Encrypted Compliance Ingress</p>
+                            </div>
+                        </div>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20" style="height: calc(100% - 80px) !important;">
@@ -184,7 +204,7 @@ get_header();
                             src="<?php echo (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) ? '/secure-pdf.html' : 'https://iro.bullmight.com/crucix/secure-pdf.html'; ?>"
                             style="width:100% !important; height:100% !important; min-height:100% !important; border:none;"
                             id="inline-secure-pdf"
-                            title="Doc Secure Ingress"
+                            title="K.Ai Doc Secure Ingress"
                         ></iframe>
                     </div>
                 </div>
@@ -192,7 +212,13 @@ get_header();
                 <!-- Photo Upload Modal -->
                 <div id="form-media-upload" class="ghl-form-modal hidden bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden" style="height: 85vh !important; max-height: 85vh !important;">
                     <div class="flex justify-between items-center p-6 md:p-8 border-b border-brand-ink/10 shrink-0">
-                        <h3 class="text-2xl font-serif font-bold text-brand-ink">Classroom Photo & Media Upload</h3>
+                        <div class="flex items-center gap-3">
+                            <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+                            <div>
+                                <h3 class="text-2xl font-serif font-bold text-brand-ink">Classroom Photo & Media Upload</h3>
+                                <p class="text-xs text-brand-ink/60 font-medium">📸 Powered by K.Ai Media Hub</p>
+                            </div>
+                        </div>
                         <button onclick="hideForms()" class="w-10 h-10 rounded-full bg-brand-cream text-brand-ink hover:bg-kidazzle-red hover:text-white transition-all flex items-center justify-center text-xl"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     <div class="flex-grow w-full overflow-hidden relative bg-brand-cream/20" style="height: calc(100% - 80px) !important;">
@@ -211,7 +237,7 @@ get_header();
                             data-height="100%"
                             data-layout-iframe-id="inline-1VBix6u43xo8UaTOfoHK"
                             data-form-id="1VBix6u43xo8UaTOfoHK"
-                            title="Ripple | teacher to Parent"
+                            title="K.Ai Media Hub Form"
                         ></iframe>
                         <script src="https://link.msgsndr.com/js/form_embed.js"></script>
                     </div>

@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Part: Contact CTA Section
- * Purple gradient CTA with embedded Lead Connector form
+ * Purple gradient CTA with embedded K.Ai intelligent contact form
  *
  * @package kidazzle
  */
@@ -16,10 +16,14 @@ $form_id = get_theme_mod('kidazzle_contact_form_id', 'N8RYaUY1SuORexcyA6la');
 <section class="py-16 bg-white">
     <div class="max-w-6xl mx-auto px-6 bg-ombre-purple rounded-[3rem] p-12 text-center text-white shadow-2xl relative overflow-hidden">
         <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider mb-5 border border-white/20 shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>✨ Powered by K.Ai • KIDazzle AI</span>
+            </div>
             <h3 class="text-3xl font-extrabold mb-4"><?php esc_html_e('Ready to Start Your Journey?', 'kidazzle'); ?></h3>
             <p class="text-purple-100 text-lg mb-8"><?php esc_html_e('Schedule a tour today and see why families have trusted us for 31 years.', 'kidazzle'); ?></p>
             
-            <!-- EMBEDDED FORM -->
+            <!-- K.Ai EMBEDDED FORM -->
             <div class="bg-white/10 border-2 border-dashed border-white/30 rounded-2xl p-4 mb-8 max-w-4xl mx-auto h-[900px] overflow-hidden">
                 <iframe
                     src="https://api.leadconnectorhq.com/widget/form/<?php echo esc_attr($form_id); ?>"
@@ -36,7 +40,7 @@ $form_id = get_theme_mod('kidazzle_contact_form_id', 'N8RYaUY1SuORexcyA6la');
                     data-height="870"
                     data-layout-iframe-id="inline-<?php echo esc_attr($form_id); ?>"
                     data-form-id="<?php echo esc_attr($form_id); ?>"
-                    title="<?php esc_attr_e('KIDazzle Contact Form', 'kidazzle'); ?>">
+                    title="<?php esc_attr_e('K.Ai Contact & Enrollment Concierge', 'kidazzle'); ?>">
                 </iframe>
                 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
             </div>

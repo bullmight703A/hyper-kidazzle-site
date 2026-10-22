@@ -104,10 +104,11 @@
                 </div>
                 <div class="relative z-10 rounded-[3.3rem] p-8 h-[1100px] overflow-hidden">
                     <div class="text-center mb-8">
-                        <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Send Us a Message</h3>
-                        <p class="text-purple-100 font-medium">Have a question? Fill out the form below and our team
-                            will
-                            get back to you shortly.</p>
+                        <div class="inline-flex items-center gap-2 bg-white/20 text-amber-300 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 border border-amber-400/30">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Powered by K.Ai (KIDazzle AI)
+                        </div>
+                        <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Connect with K.Ai &amp; Admissions</h3>
+                        <p class="text-purple-100 font-medium">Have a question? K.Ai routes your inquiry directly to your chosen campus Director instantly.</p>
                     </div>
                     <!-- DYNAMIC FORM IFRAME -->
                     <div class="h-full w-full bg-white rounded-3xl p-2">

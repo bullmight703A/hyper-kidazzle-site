@@ -201,13 +201,13 @@
 <!-- Floating Concierge Pill -->
 <div id="kd-concierge-pill" onclick="kdOpenTourModal()">
   <span class="pulse-dot"></span>
-  <span>📅 Schedule Campus Tour & Parent Guide</span>
+  <span>✨ Ask K.Ai • Tour &amp; Admissions</span>
 </div>
 
 <!-- Mobile Sticky Bottom Bar -->
 <div id="kd-mobile-action-bar">
   <a href="tel:8774101002" class="kd-mob-btn kd-mob-call">📞 Call 877-410-1002</a>
-  <button type="button" onclick="kdOpenTourModal()" class="kd-mob-btn kd-mob-tour">📅 Book Tour</button>
+  <button type="button" onclick="kdOpenTourModal()" class="kd-mob-btn kd-mob-tour">✨ Ask K.Ai</button>
 </div>
 
 <!-- Tour Booking & Lead Capture Modal -->
@@ -216,10 +216,11 @@
     <div class="kd-modal-header">
       <button class="kd-modal-close" onclick="kdCloseTourModal()">&times;</button>
       <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-        <span style="background:#f59e0b; color:#0f172a; font-size:11px; font-weight:900; padding:3px 10px; border-radius:999px; text-transform:uppercase;">Now Enrolling 2026-2027</span>
+        <span style="background:#f59e0b; color:#0f172a; font-size:11px; font-weight:900; padding:3px 10px; border-radius:999px; text-transform:uppercase;">⚡ K.Ai • KIDazzle AI</span>
+        <span style="background:rgba(255,255,255,0.15); color:#ffffff; font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px;">Now Enrolling 2026-2027</span>
       </div>
-      <h3 style="margin:0; font-size:22px; font-weight:800; line-height:1.25;">Book Your VIP Campus Tour</h3>
-      <p style="margin:6px 0 0 0; font-size:13px; color:#cbd5e1;">Experience our research-backed Creative Curriculum® and chef nutrition.</p>
+      <h3 style="margin:0; font-size:22px; font-weight:800; line-height:1.25;">Book Your VIP Campus Tour with K.Ai</h3>
+      <p style="margin:6px 0 0 0; font-size:13px; color:#cbd5e1;">Experience our research-backed Creative Curriculum® and chef nutrition. K.Ai instantly coordinates with your Campus Director.</p>
     </div>
     
     <div class="kd-modal-body" id="kd-modal-content">
@@ -261,8 +262,8 @@
             <option value="School-Age Before & After">School-Age Before & After Care</option>
           </select>
         </div>
-        <button type="submit" class="kd-btn-submit" id="kd-btn-text">🚀 Confirm Tour & Get Welcome Pack</button>
-        <p style="font-size:11px; color:#64748b; margin-top:10px; text-align:center;">🔒 We respect your privacy. Instant confirmation via Email & SMS.</p>
+        <button type="submit" class="kd-btn-submit" id="kd-btn-text">🚀 Confirm Tour with K.Ai &amp; Get Welcome Pack</button>
+        <p style="font-size:11px; color:#64748b; margin-top:10px; text-align:center;">🔒 We respect your privacy. Instant confirmation via Email &amp; SMS by K.Ai.</p>
       </form>
     </div>
   </div>
@@ -344,13 +345,13 @@
         document.getElementById('kd-modal-content').innerHTML = `
           <div style="text-align:center; padding:16px 8px;">
             <div style="font-size:48px; margin-bottom:12px;">🎉</div>
-            <h4 style="font-size:22px; font-weight:800; color:#0f172a; margin:0 0 8px 0;">You're Confirmed, ${payload.name}!</h4>
+            <h4 style="font-size:22px; font-weight:800; color:#0f172a; margin:0 0 8px 0;">You're Confirmed with K.Ai, ${payload.name}!</h4>
             <p style="font-size:14px; color:#475569; line-height:1.5; margin:0 0 16px 0;">
-              Your tour request for <strong>${payload.campus}</strong> has been received! Our Campus Director will call you at <strong>${payload.phone}</strong> shortly.
+              Your tour request for <strong>${payload.campus}</strong> has been received! K.Ai has notified our Campus Director, who will call you at <strong>${payload.phone}</strong> shortly.
             </p>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:14px; margin-bottom:20px; text-align:left;">
               <div style="font-weight:700; color:#0f172a; font-size:13px; margin-bottom:4px;">📬 What happens next:</div>
-              <div style="font-size:12px; color:#64748b;">1. Your official Parent Welcome Guide has been sent to <strong>${payload.email}</strong>.</div>
+              <div style="font-size:12px; color:#64748b;">1. Your official Parent Welcome Guide has been sent to <strong>${payload.email}</strong> by K.Ai.</div>
               <div style="font-size:12px; color:#64748b;">2. Operating Hours: <strong>7:00 AM – 5:30 PM</strong> (Operating hours depend upon location).</div>
             </div>
             <a href="tel:8774101002" style="display:inline-block; width:100%; background:#1e1b4b; color:#ffffff; font-weight:700; padding:12px; border-radius:12px; text-decoration:none; box-sizing:border-box;">📞 Need Immediate Assistance? Call (877) 410-1002</a>
@@ -359,12 +360,12 @@
       } else {
         alert(data.error || 'Submission failed. Please try again.');
         btn.disabled = false;
-        btn.innerText = '🚀 Confirm Tour & Get Welcome Pack';
+        btn.innerText = '🚀 Confirm Tour with K.Ai & Get Welcome Pack';
       }
     } catch (err) {
       alert('Network error. Please call us at (877) 410-1002.');
       btn.disabled = false;
-      btn.innerText = '🚀 Confirm Tour & Get Welcome Pack';
+      btn.innerText = '🚀 Confirm Tour with K.Ai & Get Welcome Pack';
     }
   }
 
@@ -389,6 +390,7 @@
         text.includes('schedule your center tour') ||
         text.includes('schedule a tour / contact us') ||
         el.classList.contains('ghl-trigger') ||
+        el.classList.contains('kai-trigger') ||
         (href.includes('/contact') && (text.includes('tour') || text.includes('schedule') || text.includes('contact')))
       ) {
         el.addEventListener('click', (ev) => {
@@ -398,7 +400,7 @@
       }
     });
 
-    // 3. Listen for GHL iframe form submissions on /contact/ and fire GA4
+    // 3. Listen for K.Ai / GHL iframe form submissions on /contact/ and fire GA4
     window.addEventListener('message', function(event) {
       if (!event.data) return;
       const msg = typeof event.data === 'string' ? event.data : JSON.stringify(event.data);
@@ -406,7 +408,7 @@
         if (typeof gtag === 'function') {
           gtag('event', 'generate_lead', {
             event_category: 'conversion',
-            event_label: 'GHL Embedded Contact Form'
+            event_label: 'K.Ai Embedded Contact Form'
           });
         }
       }

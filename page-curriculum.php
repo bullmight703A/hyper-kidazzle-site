@@ -292,17 +292,23 @@ $zones = array(
                 </button>
             </div>
             
-            <!-- Survey Modal -->
+            <!-- K.Ai Registration Modal -->
             <div id="survey-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm text-left">
                 <div class="bg-white w-full max-w-2xl h-[85vh] rounded-[3rem] shadow-2xl flex flex-col relative overflow-hidden">
                     <div class="px-8 py-5 border-b border-slate-200 flex justify-between items-center bg-brand-cream shrink-0">
-                        <h3 class="text-xl font-bold text-brand-ink">State Program Registration</h3>
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <div>
+                                <h3 class="text-xl font-bold text-brand-ink">State Program Registration</h3>
+                                <p class="text-xs text-brand-ink/60 font-medium">⚡ Powered by K.Ai • Instant State Roster Sync</p>
+                            </div>
+                        </div>
                         <button type="button" onclick="document.getElementById('survey-modal').classList.add('hidden'); document.getElementById('survey-modal').classList.remove('flex');" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
                             <i class="fa-solid fa-xmark text-lg"></i>
                         </button>
                     </div>
                     <div class="flex-grow bg-slate-50 relative overflow-y-auto w-full">
-                        <iframe id="survey-iframe" src="" style="border:none;width:100%;height:100%;min-height:700px;" scrolling="yes" title="survey"></iframe>
+                        <iframe id="survey-iframe" src="" style="border:none;width:100%;height:100%;min-height:700px;" scrolling="yes" title="K.Ai State Program Registration"></iframe>
                         <script src="https://link.msgsndr.com/js/form_embed.js"></script>
                     </div>
                 </div>

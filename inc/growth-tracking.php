@@ -17,7 +17,7 @@ function kidazzle_growth_tracking_customizer_settings($wp_customize)
 {
     $wp_customize->add_section('kidazzle_growth_tracking', array(
         'title' => __('Growth Tracking', 'kidazzle-theme'),
-        'description' => __('Google, Meta, Clarity, and GoHighLevel attribution settings for KIDazzle.', 'kidazzle-theme'),
+        'description' => __('Google, Meta, Clarity, and K.Ai attribution settings for KIDazzle.', 'kidazzle-theme'),
         'priority' => 121,
     ));
 
