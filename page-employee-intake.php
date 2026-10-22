@@ -374,6 +374,187 @@ get_header();
     .intake-step-label {
       display: none;
     }
+  /* Document Upload Hub */
+  .upload-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+  }
+  
+  .upload-slot {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  
+  .upload-slot:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 14px rgba(6, 182, 212, 0.12);
+  }
+  
+  .upload-slot.uploaded {
+    border-color: #86efac;
+    background: #f0fdf4;
+  }
+  
+  .slot-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .slot-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  
+  .slot-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #023047;
+    margin-bottom: 2px;
+  }
+  
+  .slot-subtitle {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+  }
+  
+  .slot-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10px 14px;
+    background: #f8fafc;
+    color: #334155;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .slot-action-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    border-color: #94a3b8;
+  }
+  
+  .upload-slot.uploaded .slot-action-btn {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #86efac;
+  }
+  
+  .upload-slot.uploaded .slot-action-btn:hover {
+    background: #bbf7d0;
+  }
+  
+  .slot-file-info {
+    display: none;
+    font-size: 0.8rem;
+    color: #166534;
+    margin-top: 8px;
+    line-height: 1.35;
+  }
+  
+  .upload-slot.uploaded .slot-file-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .slot-progress-bar {
+    display: none;
+    height: 5px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .slot-progress-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+  
+  /* Additional Custom Supporting Documents */
+  .custom-doc-card {
+    background: #ffffff;
+    border: 1.5px dashed #0284c7;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .custom-doc-card:hover {
+    border-color: #0369a1;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+  }
+  .custom-doc-card.uploaded {
+    border-style: solid;
+    border-color: #86efac;
+    background: #f0fdf4;
+  }
+  .custom-doc-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .custom-doc-label-input {
+    flex: 1;
+    font-weight: 700;
+    color: #023047;
+    border: 1.5px solid #cbd5e1;
+    background: #f8fafc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-family: inherit;
+  }
+  .custom-doc-label-input:focus {
+    outline: none;
+    border-color: #0284c7;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  }
+  .btn-remove-doc {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+  }
+  .btn-remove-doc:hover {
+    background: #fca5a5;
+    color: #7f1d1d;
   }
 </style>
 
@@ -632,6 +813,176 @@ get_header();
             <label for="emergency_relation">Relationship to Employee</label>
             <input type="text" id="emergency_relation" placeholder="Spouse" required/>
           </div>
+
+          <!-- DOCUMENT UPLOAD HUB -->
+          <div class="intake-group intake-full-width" style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 1.1rem; font-weight: 700; color: #023047; display: flex; align-items: center; gap: 8px;">
+                📎 <span>Employee Credentials &amp; Verification Uploads</span>
+              </span>
+              <span style="font-size: 0.72rem; background: #ccfbf1; color: #0f766e; padding: 4px 10px; border-radius: 999px; font-weight: 700; text-transform: uppercase;">
+                Cloud Vault Sync
+              </span>
+            </div>
+            
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0 0 16px; line-height: 1.5;">
+              Upload your verification credentials and supporting documents now to accelerate HR clearance. Files are securely transmitted directly to Executive HR. (Accepted: PDF, PNG, JPG, DOC, DOCX up to 30MB each).
+            </p>
+
+            <div class="upload-grid">
+              <!-- Slot 1: Resume / CV -->
+              <div class="upload-slot" id="slot_resume">
+                <div class="slot-header">
+                  <div class="slot-icon">📄</div>
+                  <div>
+                    <div class="slot-title">Resume / Curriculum Vitae (CV)</div>
+                    <div class="slot-subtitle">Current resume with child care experience &amp; history</div>
+                  </div>
+                </div>
+                <div class="slot-body">
+                  <input type="file" id="file_resume" accept=".pdf,.doc,.docx,image/*" style="display: none;"/>
+                  <button type="button" class="slot-action-btn" id="btn_upload_resume">
+                    <span class="btn-label">📤 Upload Resume</span>
+                  </button>
+                  <div class="slot-progress-bar"><div class="slot-progress-fill"></div></div>
+                  <div class="slot-file-info"></div>
+                </div>
+              </div>
+
+              <!-- Slot 2: Georgia PDS Profile -->
+              <div class="upload-slot" id="slot_pds">
+                <div class="slot-header">
+                  <div class="slot-icon">🌟</div>
+                  <div>
+                    <div class="slot-title">Georgia PDS Profile</div>
+                    <div class="slot-subtitle">GA Professional Development System transcript/summary</div>
+                  </div>
+                </div>
+                <div class="slot-body">
+                  <input type="file" id="file_pds" accept=".pdf,image/*" style="display: none;"/>
+                  <button type="button" class="slot-action-btn" id="btn_upload_pds">
+                    <span class="btn-label">📤 Upload GA PDS Profile</span>
+                  </button>
+                  <div class="slot-progress-bar"><div class="slot-progress-fill"></div></div>
+                  <div class="slot-file-info"></div>
+                </div>
+              </div>
+
+              <!-- Slot 3: DECAL CRC / Background Check -->
+              <div class="upload-slot" id="slot_crc">
+                <div class="slot-header">
+                  <div class="slot-icon">📜</div>
+                  <div>
+                    <div class="slot-title">DECAL CRC / Background Check</div>
+                    <div class="slot-subtitle">Bright from the Start CRC determination letter</div>
+                  </div>
+                </div>
+                <div class="slot-body">
+                  <input type="file" id="file_crc" accept=".pdf,image/*" style="display: none;"/>
+                  <button type="button" class="slot-action-btn" id="btn_upload_crc">
+                    <span class="btn-label">📤 Upload CRC Letter</span>
+                  </button>
+                  <div class="slot-progress-bar"><div class="slot-progress-fill"></div></div>
+                  <div class="slot-file-info"></div>
+                </div>
+              </div>
+
+              <!-- Slot 4: Transcripts / CDA / Degrees -->
+              <div class="upload-slot" id="slot_transcripts">
+                <div class="slot-header">
+                  <div class="slot-icon">🎓</div>
+                  <div>
+                    <div class="slot-title">Transcripts, CDA, or Diplomas</div>
+                    <div class="slot-subtitle">CDA Credential, Degree, or College Transcripts</div>
+                  </div>
+                </div>
+                <div class="slot-body">
+                  <input type="file" id="file_transcripts" accept=".pdf,image/*" style="display: none;"/>
+                  <button type="button" class="slot-action-btn" id="btn_upload_transcripts">
+                    <span class="btn-label">📤 Upload Education Docs</span>
+                  </button>
+                  <div class="slot-progress-bar"><div class="slot-progress-fill"></div></div>
+                  <div class="slot-file-info"></div>
+                </div>
+              </div>
+
+              <!-- Slot 5: Government Photo ID -->
+              <div class="upload-slot" id="slot_photo_id">
+                <div class="slot-header">
+                  <div class="slot-icon">🪪</div>
+                  <div>
+                    <div class="slot-title">Government Photo ID</div>
+                    <div class="slot-subtitle">Driver's License, State ID, or Passport</div>
+                  </div>
+                </div>
+                <div class="slot-body">
+                  <input type="file" id="file_photo_id" accept=".pdf,image/*" style="display: none;"/>
+                  <button type="button" class="slot-action-btn" id="btn_upload_photo_id">
+                    <span class="btn-label">📤 Upload Photo ID</span>
+                  </button>
+                  <div class="slot-progress-bar"><div class="slot-progress-fill"></div></div>
+                  <div class="slot-file-info"></div>
+                </div>
+              </div>
+
+              <!-- Slot 6: Pediatric CPR & First Aid -->
+              <div class="upload-slot" id="slot_cpr">
+                <div class="slot-header">
+                  <div class="slot-icon">🩺</div>
+                  <div>
+                    <div class="slot-title">Pediatric CPR &amp; First Aid</div>
+                    <div class="slot-subtitle">Current CPR/AED/First Aid certificate card</div>
+                  </div>
+                </div>
+                <div class="slot-body">
+                  <input type="file" id="file_cpr" accept=".pdf,image/*" style="display: none;"/>
+                  <button type="button" class="slot-action-btn" id="btn_upload_cpr">
+                    <span class="btn-label">📤 Upload CPR Card</span>
+                  </button>
+                  <div class="slot-progress-bar"><div class="slot-progress-fill"></div></div>
+                  <div class="slot-file-info"></div>
+                </div>
+              </div>
+
+              <!-- Slot 7: Voided Check / Direct Deposit -->
+              <div class="upload-slot" id="slot_voided_check">
+                <div class="slot-header">
+                  <div class="slot-icon">💳</div>
+                  <div>
+                    <div class="slot-title">Voided Check / Bank Letter</div>
+                    <div class="slot-subtitle">For payroll direct deposit verification</div>
+                  </div>
+                </div>
+                <div class="slot-body">
+                  <input type="file" id="file_voided_check" accept=".pdf,image/*" style="display: none;"/>
+                  <button type="button" class="slot-action-btn" id="btn_upload_voided_check">
+                    <span class="btn-label">📤 Upload Voided Check</span>
+                  </button>
+                  <div class="slot-progress-bar"><div class="slot-progress-fill"></div></div>
+                  <div class="slot-file-info"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DYNAMIC ADDITIONAL SUPPORTING DOCUMENTS -->
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1.5px dashed #cbd5e1;">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+                <div>
+                  <div style="font-weight: 800; color: #023047; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+                    <span>📂</span> <span>Additional Supporting Documents</span>
+                  </div>
+                  <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
+                    Need to add more? Click below to create custom slots for reference letters, specialized training, awards, or other credentials.
+                  </div>
+                </div>
+                <button type="button" id="btnAddCustomDoc" class="slot-action-btn" style="width: auto; padding: 10px 18px; background: #0284c7; color: #ffffff; border-color: #0284c7; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);">
+                  <span>➕ Add Another Document</span>
+                </button>
+              </div>
+
+              <div id="customDocsContainer" class="upload-grid" style="margin-top: 10px;"></div>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -680,6 +1031,14 @@ get_header();
         <a href="#" class="intake-download-btn" id="downloadBtn" download>Download Hire Packet PDF</a>
         <a href="#" class="intake-download-btn" id="downloadDocxBtn" style="background: #475569; box-shadow: 0 4px 14px rgba(71, 85, 105, 0.3); display: none;" download>Download GSA CIW Word Doc</a>
       </div>
+
+      <!-- Uploaded Documents Summary -->
+      <div id="uploadedDocsSummary" style="display: none; max-width: 550px; margin: 25px auto 0; text-align: left; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 18px;">
+        <div style="font-weight: 700; color: #166534; font-size: 0.95rem; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+          <span>📎</span> <span>Uploaded Credentials &amp; Documents</span>
+        </div>
+        <div id="uploadedDocsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
+      </div>
     </div>
     
   </div>
@@ -700,6 +1059,7 @@ get_header();
     const canvas = document.getElementById('intakeSigCanvas');
     const ctx = canvas.getContext('2d');
     let drawing = false;
+    let hasDrawn = false;
     
     function resizeCanvas() {
       const rect = canvas.getBoundingClientRect();
@@ -714,6 +1074,7 @@ get_header();
     
     canvas.addEventListener('mousedown', (e) => {
       drawing = true;
+      hasDrawn = true;
       const rect = canvas.getBoundingClientRect();
       ctx.beginPath();
       ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
@@ -732,6 +1093,7 @@ get_header();
     // Touch support (fixed coordinates)
     canvas.addEventListener('touchstart', (e) => {
       drawing = true;
+      hasDrawn = true;
       const touch = e.touches[0];
       const rect = canvas.getBoundingClientRect();
       ctx.beginPath();
@@ -752,7 +1114,197 @@ get_header();
     
     document.getElementById('intakeSigClear').addEventListener('click', () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasDrawn = false;
     });
+
+    // --- 📎 DOCUMENT UPLOAD SYSTEM ---
+    const UPLOAD_API_ENDPOINT = 'https://kidazzle.bullmight.com/api/kidazzle/upload-document';
+    let uploadedDocs = {};
+    const UPLOAD_SLOT_DEFS = [
+      { id: 'resume', btnId: 'btn_upload_resume', fileId: 'file_resume', slotId: 'slot_resume', label: 'Resume / Curriculum Vitae (CV)' },
+      { id: 'pds', btnId: 'btn_upload_pds', fileId: 'file_pds', slotId: 'slot_pds', label: 'Georgia PDS Profile' },
+      { id: 'crc', btnId: 'btn_upload_crc', fileId: 'file_crc', slotId: 'slot_crc', label: 'DECAL CRC / Background Check' },
+      { id: 'transcripts', btnId: 'btn_upload_transcripts', fileId: 'file_transcripts', slotId: 'slot_transcripts', label: 'Transcripts, CDA, or Diplomas' },
+      { id: 'photo_id', btnId: 'btn_upload_photo_id', fileId: 'file_photo_id', slotId: 'slot_photo_id', label: 'Government Photo ID' },
+      { id: 'cpr', btnId: 'btn_upload_cpr', fileId: 'file_cpr', slotId: 'slot_cpr', label: 'Pediatric CPR & First Aid' },
+      { id: 'voided_check', btnId: 'btn_upload_voided_check', fileId: 'file_voided_check', slotId: 'slot_voided_check', label: 'Voided Check / Direct Deposit' }
+    ];
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+    }
+
+    async function handleFileUpload(slot, file) {
+      const slotEl = document.getElementById(slot.slotId);
+      if (!slotEl) return;
+      const btn = document.getElementById(slot.btnId);
+      const btnLabel = btn ? btn.querySelector('.btn-label') : null;
+      const progressBar = slotEl.querySelector('.slot-progress-bar');
+      const progressFill = slotEl.querySelector('.slot-progress-fill');
+      const infoEl = slotEl.querySelector('.slot-file-info');
+
+      if (file.size > 30 * 1024 * 1024) {
+        alert('File size exceeds the 30MB limit.');
+        return;
+      }
+
+      if (progressBar) progressBar.style.display = 'block';
+      if (progressFill) progressFill.style.width = '35%';
+      if (btn) btn.disabled = true;
+      if (btnLabel) btnLabel.innerText = 'Uploading to Secure HR Vault...';
+
+      let resolvedLabel = slot.label;
+      if (slot.id.startsWith('custom_doc_')) {
+        const customInput = document.getElementById('label_' + slot.id);
+        if (customInput && customInput.value.trim()) {
+          resolvedLabel = customInput.value.trim();
+        }
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+      const fullName = ((document.getElementById('first_name')?.value || '') + ' ' + (document.getElementById('last_name')?.value || '')).trim();
+      formData.append('applicant_name', fullName || 'applicant');
+      formData.append('doc_type', resolvedLabel);
+
+      try {
+        if (progressFill) progressFill.style.width = '70%';
+        const res = await fetch(UPLOAD_API_ENDPOINT, {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+
+        if (data.success && data.url) {
+          if (progressFill) progressFill.style.width = '100%';
+          setTimeout(() => { 
+            if (progressBar) progressBar.style.display = 'none'; 
+            if (progressFill) progressFill.style.width = '0%'; 
+          }, 400);
+
+          slotEl.classList.add('uploaded');
+          if (btn) btn.disabled = false;
+          if (btnLabel) btnLabel.innerHTML = '✓ Uploaded (Click to Replace)';
+
+          if (infoEl) {
+            infoEl.style.display = 'flex';
+            infoEl.innerHTML = `<span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:200px;" title="${escapeHtml(file.name)}">📄 ${escapeHtml(file.name)}</span> <a href="${data.url}" target="_blank" style="color:#0284c7; font-weight:700; text-decoration:underline; margin-left:auto;">View</a>`;
+          }
+
+          uploadedDocs[slot.id] = {
+            url: data.url,
+            filename: file.name,
+            docType: resolvedLabel,
+            size: file.size
+          };
+        } else {
+          alert('Upload failed: ' + (data.error || 'Server rejected file'));
+          if (btn) btn.disabled = false;
+          if (btnLabel) btnLabel.innerText = '📤 Upload ' + resolvedLabel;
+          if (progressBar) progressBar.style.display = 'none';
+        }
+      } catch (err) {
+        console.error('File upload error:', err);
+        alert('Upload failed. Please check network connection and try again.');
+        if (btn) btn.disabled = false;
+        if (btnLabel) btnLabel.innerText = '📤 Upload ' + resolvedLabel;
+        if (progressBar) progressBar.style.display = 'none';
+      }
+    }
+
+    // Attach standard slot listeners
+    UPLOAD_SLOT_DEFS.forEach(slot => {
+      const btn = document.getElementById(slot.btnId);
+      const fileInput = document.getElementById(slot.fileId);
+      if (btn && fileInput) {
+        btn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => {
+          const file = e.target.files && e.target.files[0];
+          if (file) handleFileUpload(slot, file);
+        });
+      }
+    });
+
+    // --- ➕ DYNAMIC ADDITIONAL SUPPORTING DOCUMENTS ---
+    let customDocIndex = 0;
+
+    function addCustomDocSlot(existingData = null) {
+      customDocIndex++;
+      const slotId = existingData?.id || ('custom_doc_' + Date.now() + '_' + customDocIndex);
+      const initialLabel = existingData?.docType || '';
+      
+      const card = document.createElement('div');
+      card.className = 'upload-slot custom-doc-card' + (existingData?.url ? ' uploaded' : '');
+      card.id = 'slot_' + slotId;
+      
+      card.innerHTML = `
+        <div class="custom-doc-header">
+          <div style="font-size: 1.4rem;">📁</div>
+          <input type="text" class="custom-doc-label-input" id="label_${slotId}" 
+                 placeholder="Document Name (e.g. Reference Letter, Food Handler Permit, Specialized Certificate)" 
+                 value="${escapeHtml(initialLabel)}" />
+          <button type="button" class="btn-remove-doc" id="remove_${slotId}" title="Remove document slot">✕ Remove</button>
+        </div>
+        <div class="slot-body" style="margin-top: 8px;">
+          <input type="file" id="file_${slotId}" accept=".pdf,.doc,.docx,image/*" style="display: none;"/>
+          <button type="button" class="slot-action-btn" id="btn_upload_${slotId}">
+            <span class="btn-label">${existingData?.url ? '✓ Uploaded (Click to Replace)' : '📤 Upload Document'}</span>
+          </button>
+          <div class="slot-progress-bar"><div class="slot-progress-fill"></div></div>
+          <div class="slot-file-info" style="${existingData?.url ? 'display: flex; align-items:center; justify-content:space-between; gap:6px;' : ''}">
+            ${existingData?.url ? `<span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:200px;" title="${escapeHtml(existingData.filename || 'Uploaded File')}">📄 ${escapeHtml(existingData.filename || 'Uploaded File')}</span> <a href="${existingData.url}" target="_blank" style="color:#0284c7; font-weight:700; text-decoration:underline; margin-left:auto;">View</a>` : ''}
+          </div>
+        </div>
+      `;
+
+      const container = document.getElementById('customDocsContainer');
+      if (container) container.appendChild(card);
+
+      const labelInput = card.querySelector('#label_' + slotId);
+      const fileInput = card.querySelector('#file_' + slotId);
+      const uploadBtn = card.querySelector('#btn_upload_' + slotId);
+      const removeBtn = card.querySelector('#remove_' + slotId);
+
+      labelInput.addEventListener('input', () => {
+        if (uploadedDocs[slotId]) {
+          uploadedDocs[slotId].docType = labelInput.value.trim() || 'Additional Supporting Document';
+        }
+      });
+
+      uploadBtn.addEventListener('click', () => {
+        if (!labelInput.value.trim()) {
+          labelInput.focus();
+        }
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (file) {
+          const docLabel = labelInput.value.trim() || 'Additional Supporting Document';
+          handleFileUpload({
+            id: slotId,
+            btnId: 'btn_upload_' + slotId,
+            fileId: 'file_' + slotId,
+            slotId: 'slot_' + slotId,
+            label: docLabel
+          }, file);
+        }
+      });
+
+      removeBtn.addEventListener('click', () => {
+        delete uploadedDocs[slotId];
+        card.remove();
+      });
+    }
+
+    const btnAddCustomDoc = document.getElementById('btnAddCustomDoc');
+    if (btnAddCustomDoc) {
+      btnAddCustomDoc.addEventListener('click', () => {
+        addCustomDocSlot();
+      });
+    }
     
     function updateProgress() {
       for (let i = 1; i <= totalSteps; i++) {
@@ -816,6 +1368,7 @@ get_header();
         updateProgress();
       } else {
         // Collect form data
+        const sigImage = hasDrawn ? canvas.toDataURL('image/png') : '';
         const payload = {
           first_name: document.getElementById('first_name').value,
           middle_name: document.getElementById('middle_name').value,
@@ -860,14 +1413,18 @@ get_header();
           emergency_relation: document.getElementById('emergency_relation').value,
           
           signature: document.getElementById('sigText').value,
-          handbook_agreed: document.getElementById('handbook_agree').checked
+          signature_image: sigImage,
+          handbook_agreed: document.getElementById('handbook_agree').checked,
+
+          // 📎 Include all uploaded documents
+          uploaded_documents: uploadedDocs
         };
         
         btnNext.innerText = 'Processing documents...';
         btnNext.disabled = true;
         
         try {
-          const res = await fetch('https://kidazzle-webhook.bullmight.com/api/kidazzle/employee-intake', {
+          const res = await fetch('https://kidazzle.bullmight.com/api/kidazzle/employee-intake', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -886,6 +1443,20 @@ get_header();
               docxBtn.href = result.downloadDocxUrl;
               docxBtn.style.display = 'inline-block';
             }
+
+            // Render uploaded document summary on success screen
+            const docEntries = Object.values(uploadedDocs);
+            if (docEntries.length > 0) {
+              const summaryList = document.getElementById('uploadedDocsList');
+              summaryList.innerHTML = docEntries.map(d => `
+                <div style="display:flex; align-items:center; justify-content:space-between; background:#ffffff; padding:10px 14px; border-radius:8px; border:1px solid #bbf7d0;">
+                  <span style="font-size:0.88rem;"><strong>${escapeHtml(d.docType || 'Document')}:</strong> ${escapeHtml(d.filename || 'File')}</span>
+                  <a href="${d.url}" target="_blank" style="background:#16a34a; color:#ffffff; text-decoration:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700;">View File</a>
+                </div>
+              `).join('');
+              document.getElementById('uploadedDocsSummary').style.display = 'block';
+            }
+
             successScreen.style.display = 'block';
           } else {
             alert('Submission failed: ' + (result.error || 'Unknown error'));
